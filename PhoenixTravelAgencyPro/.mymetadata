@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="PhoenixTravelAgencyPro"
+  id="myeclipse.1369147625102"
+  context-root="/PhoenixTravelAgencyPro"
+  j2ee-spec="6.0"
+  archive="PhoenixTravelAgencyPro.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
