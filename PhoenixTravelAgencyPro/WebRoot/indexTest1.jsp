@@ -46,6 +46,7 @@
 			pagination : true,
 			checkOnSelect:true,
 			onRowContextMenu:function(e, rowIndex, rowData){
+			    e.preventDefault();
 			    alert(rowData.itemid);
 			}
 		});
