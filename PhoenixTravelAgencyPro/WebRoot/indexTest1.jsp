@@ -25,6 +25,11 @@
 </head>
 
 <body>
+
+    <div>
+        可以在这里添加相应的 查询，条件等操作
+    </div>
+
 	<table id="dg" class="easyui-datagrid"
 		data-options="url:'js/demo/layout/datagrid_data1.json',border:false,singleSelect:true,fit:true,fitColumns:true">
 		<thead>
@@ -41,15 +46,42 @@
 			</tr>
 		</thead>
 	</table>
+	<div id="mm" class="easyui-menu" style="width:120px;">
+		<div onClick="view()" data-options="iconCls:'icon-search'">查看</div>
+		<div onClick="add()" data-options="iconCls:'icon-add'">新增</div>
+		<div onClick="edit()" data-options="iconCls:'icon-edit'">编辑</div>
+		<div onClick="del()" data-options="iconCls:'icon-remove'">删除</div>
+	</div>
 	<script type="text/javascript">
 		$('#dg').datagrid({
 			pagination : true,
-			checkOnSelect:true,
-			onRowContextMenu:function(e, rowIndex, rowData){
-			    e.preventDefault();
-			    alert(rowData.itemid);
-			}
+			checkOnSelect : true,
+			onRowContextMenu : onRowContextMenu,
 		});
+		function onRowContextMenu(e, rowIndex, rowData) {
+			e.preventDefault();
+			var selected = $("#dg").datagrid('getRows'); //获取所有行集合对象
+			selected[rowIndex].id; //index为当前右键行的索引，指向当前行对象
+			$('#mm').menu('show', {
+				left : e.pageX,
+				top : e.pageY
+			});
+		}
+
+		function view() {
+			var node = $('#dg').datagrid('getSelected');
+			alert(node.itemid);
+
+		}
+		function edit() {
+
+		}
+		function del() {
+		}
+
+		function add() {
+
+		}
 	</script>
 </body>
 </html>
