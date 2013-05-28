@@ -25,17 +25,16 @@
 </head>
 
 <body>
-
+    <!-- 页面的样式让赵阳 他们来决定吧，这个要根据需求来定义啊 -->
     <div>
         可以在这里添加相应的 查询，条件等操作
     </div>
-
+    <!-- 如果在正式开发环境下 url可以为后台的请求，地址 -->
 	<table id="dg" class="easyui-datagrid"
 		data-options="url:'js/demo/layout/datagrid_data1.json',border:false,singleSelect:true,fit:true,fitColumns:true">
 		<thead>
 			<tr>
-				<th data-options="field:'ck',checkbox:true"></th>
-				<th data-options="field:'itemid'" width="80">Item ID</th>
+				<th data-options="field:'itemid',checkbox:true"></th>
 				<th data-options="field:'productid'" width="100">Product ID</th>
 				<th data-options="field:'listprice',align:'right'" width="80">List
 					Price</th>
@@ -71,16 +70,22 @@
 		function view() {
 			var node = $('#dg').datagrid('getSelected');
 			alert(node.itemid);
+			//在这里可以通过请求后台，查看该信息。是否打开tab，还是直接弹出window 
 
 		}
 		function edit() {
-
+			var node = $('#dg').datagrid('getSelected');
+			alert(node.itemid);
+          //通过主键，查询该操作，并处于编辑状态。 是否打开tab，还是直接弹出window 
 		}
 		function del() {
+			var node = $('#dg').datagrid('getSelected');
+			alert(node.itemid);
+			//通过主键，删除该记录，并重新加载datagrid。
 		}
 
 		function add() {
-
+			//是否打开tab，还是直接弹出window 
 		}
 	</script>
 </body>
