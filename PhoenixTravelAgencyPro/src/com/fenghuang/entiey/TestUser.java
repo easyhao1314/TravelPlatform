@@ -1,5 +1,7 @@
 package com.fenghuang.entiey;
 
+import java.io.Serializable;
+
 /**
  * 
  * @author 鲍国浩
@@ -12,7 +14,7 @@ package com.fenghuang.entiey;
  * 
  * 
  */
-public class TestUser {
+public class TestUser implements Serializable {
 	public Long id;
 	public String username;
 	public String password;

@@ -3,6 +3,10 @@
  */
 package com.fenghuang.web.action;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fenghuang.entiey.TestUser;
 import com.fenghuang.service.ITestUserService;
+import com.fenghuang.util.Pagination;
 
 /**
  * @author 鲍国浩
@@ -29,12 +34,13 @@ import com.fenghuang.service.ITestUserService;
 @Controller
 public class TestUserController {
 
-	@Autowired  //自动匹配ITestUserService类型的实现，并将该实现注入到该类中。
+	@Autowired
+	// 自动匹配ITestUserService类型的实现，并将该实现注入到该类中。
 	public ITestUserService iTestUserService;
-    
-	
+
 	/**
 	 * 添加TestUser的Action动作。
+	 * 
 	 * @param request
 	 * @param response
 	 * @return
@@ -42,18 +48,41 @@ public class TestUserController {
 	@RequestMapping("/testUser.do")
 	@ResponseBody
 	public String testUserAction(HttpServletRequest request,
-			HttpServletResponse response,String userName,String password){
-           TestUser test = new TestUser();
-           test.setUsername(userName);
-           test.setPassword(password);
-           
+			HttpServletResponse response, String userName, String password) {
+		TestUser test = new TestUser();
+		test.setUsername(userName);
+		test.setPassword(password);
+
 		try {
-			  iTestUserService.addTestUser(test);
+			iTestUserService.addTestUser(test);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-         
-           return "0000";
+
+		return "0000";
+	}
+	@RequestMapping("/getUsers.do")
+	@ResponseBody
+	public Map<String,Object> getUsersAction(HttpServletRequest request,
+			HttpServletResponse response, Integer page,
+			Integer rows) {
+
+		try {
+			Pagination<TestUser> pagination = iTestUserService
+					.getByQueryConditionPagination(page, rows);
+			List<Map<String, Object>> testUsers = pagination.getResultList();
+			Map<String,Object> returnValue  = new HashMap<String, Object>();
+			returnValue.put("total",  pagination.getTotalRows());
+			returnValue.put("rows", testUsers);
+			
+			return returnValue;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return null;
+
 	}
 
 }

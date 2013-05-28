@@ -9,8 +9,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.fenghuang.dao.BaseDao;
 import com.fenghuang.dao.ITestUserDao;
 import com.fenghuang.entiey.TestUser;
+import com.fenghuang.util.Pagination;
 
 /**
  * @author 鲍国浩
@@ -25,7 +27,7 @@ import com.fenghuang.entiey.TestUser;
  *
  */
 @Repository //这个标记类似于spring配置文件中bean的id=“testUserDaoImpl”的配置，
-public class TestUserDaoImpl extends JdbcTemplate implements ITestUserDao {
+public class TestUserDaoImpl extends BaseDao implements ITestUserDao {
 	/**
 	 * 通过构造函数和注解@Qualifier("dataSource")将数据源dataSource 注入到该类中
 	 * dataSource 就是applicationContext.xml中的 id=dataSource的数据源，可以修改成其他的名字
@@ -54,5 +56,14 @@ public class TestUserDaoImpl extends JdbcTemplate implements ITestUserDao {
 		TestUser testUser = this.queryForObject(sql,TestUser.class,id);
 		return testUser;
 	}
+	
+	
+	public Pagination<TestUser> getByQueryConditionPagination(int currentPage,int numPerPage) throws Exception{
+		String sql = "select * from TestUser";
+		return this.getPagination(currentPage, numPerPage, sql);
+		
+	}
+	
+	
 
 }

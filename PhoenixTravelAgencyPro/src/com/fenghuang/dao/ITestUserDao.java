@@ -4,6 +4,7 @@
 package com.fenghuang.dao;
 
 import com.fenghuang.entiey.TestUser;
+import com.fenghuang.util.Pagination;
 
 /**
  * @author 鲍国浩
@@ -32,8 +33,14 @@ public interface ITestUserDao {
 	 * @throws Exception
 	 */
 	public TestUser queryTestUserById(Long id) throws Exception;
-	
-	
+	/**
+	 * 分页操作 在这里可以得到分页对象Pagination
+	 * @param currentPage
+	 * @param numPerPage
+	 * @return
+	 * @throws Exception
+	 */
+	public Pagination<TestUser> getByQueryConditionPagination(int currentPage,int numPerPage) throws Exception;
 	
 
 }

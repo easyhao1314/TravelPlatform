@@ -4,6 +4,7 @@
 package com.fenghuang.service;
 
 import com.fenghuang.entiey.TestUser;
+import com.fenghuang.util.Pagination;
 
 /**
  * @author 鲍国浩
@@ -24,4 +25,7 @@ public interface ITestUserService {
 	 * @throws Exception
 	 */
 	public int addTestUser(TestUser testUser) throws Exception;
+	
+	public Pagination<TestUser> getByQueryConditionPagination(int currentPage,int numPerPage) throws Exception;
+
 }
