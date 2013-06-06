@@ -102,6 +102,11 @@
 						href="javascript:open1('导游-导游类型字典','dictionaryDesc.do?dicType=7');">导游-导游类型字典</a>
 			      </li>
 			   </ul>
+			    <ul>
+			      <li iconCls="icon-gears">
+			        <a href="javascript:open1('币种使用维护','currencyList.do');">币种使用维护</a>
+			      </li>
+			   </ul>
 			</li>
 		</ul>
 	</div>

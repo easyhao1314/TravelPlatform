@@ -254,7 +254,7 @@
 		}
 		function closeEditDic() {
 			$('#editDic').dialog('close');
-		}
+		} 
 
 		//
 		function searchDiJi() {
