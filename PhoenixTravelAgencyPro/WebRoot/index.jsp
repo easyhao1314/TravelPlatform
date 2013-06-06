@@ -10,7 +10,6 @@
 <html>
 <head>
 <base href="<%=basePath%>">
-<%--ddddd --%>
 <title>首页</title>
 <link rel="stylesheet" type="text/css"
 	href="js/themes/default/easyui.css">
@@ -19,7 +18,7 @@
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery.easyui.min.js"></script>
 <script type="text/javascript">
-        function submitForm(){  
+        function submitForm(){
             $('#loginFrom').form('submit');  
         }  
         function clearForm(){  

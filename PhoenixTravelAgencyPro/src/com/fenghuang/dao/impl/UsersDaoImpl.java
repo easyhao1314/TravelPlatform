@@ -11,7 +11,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.fenghuang.dao.IUserDao;
-import com.fenghuang.entiey.Users;
+import com.fenghuang.entiey.Usersrr;
 
 /**
  * @author 鲍国浩
@@ -33,14 +33,14 @@ public class UsersDaoImpl extends JdbcTemplate implements IUserDao {
 	}
 
 	@Override
-	public int addUsers(Users users) throws Exception {
+	public int addUsers(Usersrr users) throws Exception {
 	    String sql = "insert into users (userName,loginName,enName,sex,phone,birthday,phone1,email,fax,password)";
-		return 0;
+	    return 0;
 	}
 
 
 	@Override
-	public Users queryUsersById(Long id) throws Exception {
+	public Usersrr queryUsersById(Long id) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}

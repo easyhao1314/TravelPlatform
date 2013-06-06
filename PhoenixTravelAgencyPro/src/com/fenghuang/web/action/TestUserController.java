@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -48,7 +49,7 @@ public class TestUserController {
 	@RequestMapping("/testUser.do")
 	@ResponseBody
 	public String testUserAction(HttpServletRequest request,
-			HttpServletResponse response, String userName, String password) {
+			HttpServletResponse response, String userName, String password,ModelMap map) {
 		TestUser test = new TestUser();
 		test.setUsername(userName);
 		test.setPassword(password);
@@ -58,14 +59,14 @@ public class TestUserController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		map.put("ddd", "ddd");
 		return "0000";
 	}
 	@RequestMapping("/getUsers.do")
 	@ResponseBody
 	public Map<String,Object> getUsersAction(HttpServletRequest request,
 			HttpServletResponse response, Integer page,
-			Integer rows) {
+			Integer rows,String test) {
 
 		try {
 			Pagination<TestUser> pagination = iTestUserService
@@ -84,5 +85,16 @@ public class TestUserController {
 		return null;
 
 	}
+	
+	
+    @RequestMapping("/test/test.do")
+    @ResponseBody
+	public String Test()
+	{
+		return "test";
+	}
+	
+	
+	
 
 }

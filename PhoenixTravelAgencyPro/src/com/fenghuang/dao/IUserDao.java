@@ -3,7 +3,7 @@
  */
 package com.fenghuang.dao;
 
-import com.fenghuang.entiey.Users;
+import com.fenghuang.entiey.Usersrr;
 
 /**
  * @author 鲍国浩
@@ -17,9 +17,9 @@ import com.fenghuang.entiey.Users;
  *
  */
 public interface IUserDao {
-	public int addUsers(Users users) throws Exception;
+	public int addUsers(Usersrr users) throws Exception;
 	
-	public Users queryUsersById(Long id) throws Exception;
+	public Usersrr queryUsersById(Long id) throws Exception;
 	
     
 	

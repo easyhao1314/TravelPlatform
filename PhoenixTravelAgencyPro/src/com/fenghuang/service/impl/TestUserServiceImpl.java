@@ -26,6 +26,7 @@ import com.fenghuang.util.Pagination;
 public class TestUserServiceImpl implements ITestUserService {
 	@Autowired  //自动匹配接口类型，将实现类注入到该类中
 	public ITestUserDao iTestUserDao;
+
 	
 	@Override
 	public int addTestUser(TestUser testUser) throws Exception {

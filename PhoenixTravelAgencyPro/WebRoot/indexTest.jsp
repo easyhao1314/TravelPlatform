@@ -35,7 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div data-options="region:'west',split:true" title="West" style="width:100px;"></div>  
         <div data-options="region:'center',title:'Main Title',iconCls:'icon-ok'">  
             <table class="easyui-datagrid"  
-                    data-options="url:'getUsers.do',border:false,singleSelect:true,fit:true,fitColumns:true" rownumbers="true" pagination="true" >  
+                    data-options="url:'dantuan.do',border:false,singleSelect:true,fit:true,fitColumns:true" rownumbers="true" pagination="true" >  
                 <thead>  
                     <tr>  
                         <th data-options="field:'id'" width="80">ID</th>  

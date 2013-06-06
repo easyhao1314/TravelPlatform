@@ -85,8 +85,13 @@
 		}
 
 		function add() {
-			//是否打开tab，还是直接弹出window 
+		$('#w').window('open','index.jsp');
+			
+			
 		}
 	</script>
+	
+	  <div id="w" class="easyui-window" title="Basic Window" data-options="iconCls:'icon-save'" style="width:500px;height:200px;padding:10px;">    
+    </div>  
 </body>
 </html>

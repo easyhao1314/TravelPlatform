@@ -27,5 +27,5 @@ public interface ITestUserService {
 	public int addTestUser(TestUser testUser) throws Exception;
 	
 	public Pagination<TestUser> getByQueryConditionPagination(int currentPage,int numPerPage) throws Exception;
-
+	
 }
