@@ -27,7 +27,7 @@ public class Currency {
    /** 描述
     * 
     * @pdOid 20dbe61c-16d6-46bd-8cff-944fbbde7dd6 */
-   public String desc;
+   public String currDesc;
    /** 是否使用 0：不使用，1：使用
     * 
     * @pdOid 159e22d0-da00-445b-8dc6-492083603caa */
@@ -89,18 +89,20 @@ public void setSymbol(String symbol) {
 	this.symbol = symbol;
 }
 
+
+
 /**
- * @return the desc
+ * @return the currDesc
  */
-public String getDesc() {
-	return desc;
+public String getCurrDesc() {
+	return currDesc;
 }
 
 /**
- * @param desc the desc to set
+ * @param currDesc the currDesc to set
  */
-public void setDesc(String desc) {
-	this.desc = desc;
+public void setCurrDesc(String currDesc) {
+	this.currDesc = currDesc;
 }
 
 /**
