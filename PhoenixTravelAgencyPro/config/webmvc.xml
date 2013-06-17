@@ -73,6 +73,8 @@
 	<!--path 代表已layout.do的方式来方位 jsp页面， view-name 代表的就是/WEB-INF/views/layout.jsp -->
 	<mvc:view-controller path="layout.do" view-name="layout" />
 	<mvc:view-controller path="dictionaryDesc.do" view-name="dictionaryDesc"/>
-	 <mvc:view-controller path="currencyList.do" view-name="currencyList"/>
+	<mvc:view-controller path="currencyList.do" view-name="currencyList"/>
+	<mvc:view-controller path="functionMenu.do" view-name="functionmenu/functionMenu"/>
+	<mvc:view-controller path="department.do" view-name="department/department"/>
 </beans>
            

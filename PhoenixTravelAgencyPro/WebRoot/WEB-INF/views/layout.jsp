@@ -34,83 +34,84 @@
 		<!-- 在这里可以添加 版权之类的东西 -->
 	</div>
 	<!-- 在这里配置 左侧菜单项  split  这说明页面中带分割条 可以用鼠标拖动-->
-	<div data-options="region:'west',split:true" title="菜单"
+	<div data-options="region:'west',split:true"
 		style="width:200px;">
 		<!-- 在这里添加菜单的样式和菜单的数据，子菜单 等等 -->
 		<ul class="easyui-tree">
 			<li iconCls="icon-base"><span>自我管理</span>
 				<ul>
 					<li iconCls="icon-gears"><a
-						href="javascript:open1('个人基本信息','');">个人基本信息</a></li>
+						href="javascript:open1('个人基本信息','');">个人基本信息</a>
+					</li>
 				</ul>
 				<ul>
 
+				</ul></li>
+			<li iconCls="icon-base"><span>系统管理</span>
+				<ul>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('系统功能管理','functionMenu.do');">系统功能管理</a>
+					</li>
 				</ul>
-			</li>
-			<li iconCls="icon-base"><span>系统基础设置管理</span> 
-			   <ul>
-			      <li iconCls="icon-gears">
-			        <a
+					<ul>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('部门管理','department.do');">部门管理</a>
+					</li>
+				</ul>
+				</li>
+			<li iconCls="icon-base"><span>系统基础设置管理</span>
+				<ul>
+					<li iconCls="icon-gears"><a
 						href="javascript:open1('团队进展状态字典','dictionaryDesc.do?dicType=8');">团队进展状态字典</a>
-			      </li>
-			   </ul>
-			     <ul>
-			      <li iconCls="icon-gears">
-			        <a
+					</li>
+				</ul>
+				<ul>
+					<li iconCls="icon-gears"><a
 						href="javascript:open1('酒店-星级字典维护','dictionaryDesc.do?dicType=9');">酒店-星级字典维护</a>
-			      </li>
-			   </ul>
-			     <ul>
-			      <li iconCls="icon-gears">
-			        <a
+					</li>
+				</ul>
+				<ul>
+					<li iconCls="icon-gears"><a
 						href="javascript:open1('巴士-用车性质字典','dictionaryDesc.do?dicType=1');">巴士-用车性质字典</a>
-			      </li>
-			   </ul>
-			       <ul>
-			      <li iconCls="icon-gears">
-			        <a
+					</li>
+				</ul>
+				<ul>
+					<li iconCls="icon-gears"><a
 						href="javascript:open1('交通-乘车类型字典','dictionaryDesc.do?dicType=2');">交通-乘车类型字典</a>
-			      </li>
-			   </ul>
-			       <ul>
-			      <li iconCls="icon-gears">
-			        <a
+					</li>
+				</ul>
+				<ul>
+					<li iconCls="icon-gears"><a
 						href="javascript:open1('早餐-餐标字典维护','dictionaryDesc.do?dicType=3');">早餐-餐标字典维护</a>
-			      </li>
-			   </ul>
-			       <ul>
-			      <li iconCls="icon-gears">
-			        <a
+					</li>
+				</ul>
+				<ul>
+					<li iconCls="icon-gears"><a
 						href="javascript:open1('午餐-餐标字典维护','dictionaryDesc.do?dicType=4');">午餐-餐标字典维护</a>
-			      </li>
-			   </ul>
-			       <ul>
-			      <li iconCls="icon-gears">
-			        <a
+					</li>
+				</ul>
+				<ul>
+					<li iconCls="icon-gears"><a
 						href="javascript:open1('晚餐-餐标字典维护','dictionaryDesc.do?dicType=5');">晚餐-餐标字典维护</a>
-			      </li>
-			   </ul>
-			       <ul>
-			      <li iconCls="icon-gears">
-			        <a
+					</li>
+				</ul>
+				<ul>
+					<li iconCls="icon-gears"><a
 						href="javascript:open1('导游-服务类型字典','dictionaryDesc.do?dicType=6');">导游-服务类型字典</a>
-			      </li>
-			   </ul>
-			      <ul>
-			      <li iconCls="icon-gears">
-			        <a
+					</li>
+				</ul>
+				<ul>
+					<li iconCls="icon-gears"><a
 						href="javascript:open1('导游-导游类型字典','dictionaryDesc.do?dicType=7');">导游-导游类型字典</a>
-			      </li>
-			   </ul>
-			    <ul>
-			      <li iconCls="icon-gears">
-			        <a href="javascript:open1('币种使用维护','currencyList.do');">币种使用维护</a>
-			      </li>
-			   </ul>
-			</li>
+					</li>
+				</ul>
+				<ul>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('币种使用维护','currencyList.do');">币种使用维护</a></li>
+				</ul></li>
 		</ul>
 	</div>
-	<div data-options="region:'center',title:'操作管理'">
+	<div data-options="region:'center'">
 		<div id="tt" class="easyui-tabs" fit="true" border="false"
 			plain="true">
 			<div title="欢迎页面">
@@ -120,15 +121,15 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-		function open1(plugin,url) {
+		function open1(plugin, url) {
 			if ($('#tt').tabs('exists', plugin)) {
 				$('#tt').tabs('select', plugin);
 			} else {
-			   var tab = $('#tt').tabs('getSelected');  
-                if (tab){  
-                   var index = $('#tt').tabs('getTabIndex', tab);  
-                   $('#tt').tabs('close', index);  
-                } 
+				var tab = $('#tt').tabs('getSelected');
+				if (tab) {
+					var index = $('#tt').tabs('getTabIndex', tab);
+					$('#tt').tabs('close', index);
+				}
 				$('#tt').tabs('add', {
 					title : plugin,
 					href : url,

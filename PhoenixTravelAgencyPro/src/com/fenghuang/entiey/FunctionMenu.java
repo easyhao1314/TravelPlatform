@@ -55,6 +55,9 @@ public class FunctionMenu {
 	 * @pdOid d56c3e06-2c73-4be4-87f4-6027408b2dcd
 	 */
 	public String menuPath;
+	
+	
+	public Long parentId;
 
 	/**
 	 * @return the id
@@ -161,6 +164,8 @@ public class FunctionMenu {
 		this.menuPath = menuPath;
 	}
 
+	
+	
 	/**
 	 * @pdRoleInfo migr=no name=FunctionMenu assc=menuRefMenu
 	 *             coll=java.util.Collection impl=java.util.HashSet mult=0..*
@@ -330,6 +335,20 @@ public class FunctionMenu {
 				this.functionMenuA.addFunctionMenuB(this);
 			}
 		}
+	}
+
+	/**
+	 * @return the parentId
+	 */
+	public Long getParentId() {
+		return parentId;
+	}
+
+	/**
+	 * @param parentId the parentId to set
+	 */
+	public void setParentId(Long parentId) {
+		this.parentId = parentId;
 	}
 
 }

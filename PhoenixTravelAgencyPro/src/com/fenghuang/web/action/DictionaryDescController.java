@@ -84,6 +84,7 @@ public class DictionaryDescController {
 	@ResponseBody
 	public Map<String,Object> updateDic(HttpServletRequest request,
 			HttpServletResponse response,String updateRows){
+	
 		Map<String,Object>  result = new HashMap<String, Object>();
 		JSONArray jsonArray =  JSONArray.fromObject(updateRows);
 		List<DictionaryDesc>  dics = JSONArray.toList(jsonArray, DictionaryDesc.class);	

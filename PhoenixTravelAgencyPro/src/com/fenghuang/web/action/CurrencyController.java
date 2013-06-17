@@ -9,6 +9,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -39,7 +40,7 @@ public class CurrencyController {
 	@RequestMapping("fenghuang/currencylist.do")
 	@ResponseBody
 	public Map<String, Object> getCurrencyList(HttpServletRequest request,
-			HttpServletResponse response, String currencyName,
+			HttpServletResponse response,HttpSession session, String currencyName,
 			String currencyShort, Integer page, Integer rows) {
 
 		try {
