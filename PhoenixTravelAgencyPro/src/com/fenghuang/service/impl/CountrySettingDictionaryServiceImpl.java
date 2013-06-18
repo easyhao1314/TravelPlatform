@@ -3,6 +3,7 @@ package com.fenghuang.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fenghuang.dao.ICountrySettingDictionaryDao;
 import com.fenghuang.entiey.CountrySettingDictionary;
 import com.fenghuang.service.ICountrySettingDictionaryService;
 import com.fenghuang.util.Pagination;
@@ -12,30 +13,30 @@ public class CountrySettingDictionaryServiceImpl implements
 		ICountrySettingDictionaryService {
 
 	@Autowired
-	private ICountrySettingDictionaryService iCountrySettingDictionaryService;
+	private ICountrySettingDictionaryDao ICountrySettingDictionaryDao;
 	@Override
 	public boolean saveCountrySettingDictionary(CountrySettingDictionary csd)
 			throws Exception {
-		return iCountrySettingDictionaryService.saveCountrySettingDictionary(csd);
+		return ICountrySettingDictionaryDao.saveCountrySettingDictionary(csd);
 	}
 
 	@Override
 	public boolean updateCountrySettingDictionary(CountrySettingDictionary csd)
 			throws Exception {
-		return iCountrySettingDictionaryService.updateCountrySettingDictionary(csd);
+		return ICountrySettingDictionaryDao.updateCountrySettingDictionary(csd);
 	}
 
 	@Override
 	public boolean deleteCountrySettingDictionaryByCsdNo(String csdNo)
 			throws Exception {
-		return iCountrySettingDictionaryService.deleteCountrySettingDictionaryByCsdNo(csdNo);
+		return ICountrySettingDictionaryDao.deleteCountrySettingDictionaryByCsdNo(csdNo);
 	}
 
 	@Override
 	public Pagination<CountrySettingDictionary> getPaginationCountrySettingDictionarys(
 			int currentPage, int numPerPage, CountrySettingDictionary csd)
 			throws Exception {
-		return iCountrySettingDictionaryService.getPaginationCountrySettingDictionarys(currentPage, numPerPage, csd);
+		return ICountrySettingDictionaryDao.getPaginationCountrySettingDictionarys(currentPage, numPerPage, csd);
 	}
 
 }

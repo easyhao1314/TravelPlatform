@@ -1,5 +1,7 @@
 package com.fenghuang.service;
 
+import java.util.List;
+
 import com.fenghuang.entiey.Role;
 import com.fenghuang.util.Pagination;
 /**
@@ -22,4 +24,9 @@ public interface IRoleService {
 
 	public Pagination<Role> getPaginationRoles(int currentPage, int numPerPage,
 			String roleNo, String roleName, String roleDesc) throws Exception;
+	public void updateRoles(List<Role> roles) throws Exception;
+	
+	public void deleteRoles(List<Role> roles) throws Exception;
+	
+	
 }

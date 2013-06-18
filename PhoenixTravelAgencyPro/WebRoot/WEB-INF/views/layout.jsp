@@ -64,12 +64,17 @@
 						href="javascript:open1('系统功能管理','functionMenu.do');">系统功能管理</a>
 					</li>
 				</ul>
-					<ul>
+				<ul>
 					<li iconCls="icon-gears"><a
 						href="javascript:open1('部门管理','department.do');">部门管理</a>
 					</li>
 				</ul>
-				</li>
+				<ul>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('角色管理','role.do');">系统角色管理</a>
+					</li>
+				</ul>
+			</li>
 			<li iconCls="icon-base"><span>系统基础设置管理</span>
 				<ul>
 					<li iconCls="icon-gears"><a

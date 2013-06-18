@@ -18,7 +18,7 @@ public class Role {
 	 * 
 	 * @pdOid 4eacdfa0-9c8a-485b-95ab-55039e01b145
 	 */
-	public long id;
+	public Long id;
 	/**
 	 * 角色编号
 	 * 
@@ -41,7 +41,7 @@ public class Role {
 	/**
 	 * @return the id
 	 */
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
@@ -49,7 +49,7 @@ public class Role {
 	 * @param id
 	 *            the id to set
 	 */
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

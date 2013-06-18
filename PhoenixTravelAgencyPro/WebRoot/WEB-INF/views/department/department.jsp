@@ -32,26 +32,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<td><div class="fitem">
 						<label>部门编号:</label>
 				</td>
-				<td><input name="departNo" class="easyui-validatebox">
+				<td><input id="departNo" name="departNo" class="easyui-validatebox">
 					</div></td>
 				<td><div class="fitem">
 						<label>部门名称:</label>
 				</td>
-				<td><input name="departName" class="easyui-validatebox">
+				<td><input id="departName" name="departName" class="easyui-validatebox">
 					</div></td>
 			</tr>
 		</table>
 	</div>
 	<div id="searchpanel">
 		<a href="javascript:void(0)" iconCls="icon-search"
-			onclick="javascript:alert('查询')"></a> <a href="javascript:void(0)"
-			iconCls="icon-undo" onclick="javascript:alert('重置')"></a>
+			onclick="javascript:searchDepartment();"></a> <a href="javascript:void(0)"
+			iconCls="icon-undo" onclick="javascript:searchDepartmentReset()"></a>
 	</div>
 	<div class="easyui-panel" title="部门列表"
 		style="height:480px;width: auto;">
-		<table id="dg" class="easyui-datagrid"
-			data-options="border:false,singleSelect:false,fit:true,fitColumns:true,pageSize:20"
-			pagination="true" toolbar="#menuDatagridtoolbar">
+		<table id="dgDepartment" class="easyui-datagrid"
+			data-options="url:'fenghuang/getDepartments.do',border:false,singleSelect:false,fit:true,fitColumns:true,pageSize:20"
+			pagination="true" toolbar="#departmentDatagridtoolbar">
 			<thead>
 				<tr>
 					<th data-options="field:'departNo'" width="80">部门编号</th>
@@ -61,10 +61,51 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</tr>
 			</thead>
 		</table>
-		<div id="menuDatagridtoolbar">
-		     <a href="javascript:alert('新增');" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>  
+		<div id="departmentDatagridtoolbar">
+		     <a href="javascript:newDepartment();" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>  
 		</div>
 	</div>
+	<div id="editDepartment" class="easyui-dialog" title="新增部门"
+		data-options="modal:true,closed:true,iconCls:'icon-save'"
+		style="width:500px;height:200px;padding:10px;">
+		<form id="newDepartment" method="post">
+			<table align="left">
+				<tr>
+					<td><div class="fitem">
+							<label>部门编号:</label></div>
+					</td>
+					<td><div><input name="departNo" class="easyui-validatebox"
+						required="true">
+						</div></td>
+					<td><div class="fitem">
+							<label>部门名称:</label></div>
+					</td>
+					<td><div><input name="departName" class="easyui-validatebox"
+						required="true">
+						</div></td>
+				</tr>
+				<tr>
+					<td><div class="fitem">
+							<label>排序号:</label></div>
+					</td>
+					<td><div><input name="sortNo" class="easyui-validatebox">
+						</div></td>
+					<td>
+					</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td colspan="4s" align="center"><a
+						href="javascript:newDepartmentSave();" class="easyui-linkbutton"
+						iconCls="icon-ok">保存</a> <a href="javascript:closeDepartment();"
+						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
+				</tr>
+			</table>
+			<input id="id" name="id" type="hidden" value="">
+		</form>
+	</div>
+	
+	
 	<script type="text/javascript" src="js/department/department.js">
 	</script>
   </body>
