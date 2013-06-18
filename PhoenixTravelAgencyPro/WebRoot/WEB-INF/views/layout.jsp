@@ -52,7 +52,7 @@
 				<li iconCls="icon-base"><span>散拼中心</span>
 				<ul>
 					<li iconCls="icon-gears"><a
-						href="javascript:open1('SanPin_new.do','新建散拼');">新建散拼</a>
+						href="javascript:open1('新建散拼','SanPin_new.do');">新建散拼</a>
 					</li>
 				</ul>
 				<ul>
