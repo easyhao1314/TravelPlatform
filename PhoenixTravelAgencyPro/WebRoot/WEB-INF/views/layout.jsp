@@ -47,6 +47,17 @@
 				<ul>
 
 				</ul></li>
+				
+				
+				<li iconCls="icon-base"><span>散拼中心</span>
+				<ul>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('SanPin_new.do','新建散拼');">新建散拼</a>
+					</li>
+				</ul>
+				<ul>
+
+				</ul></li>
 			<li iconCls="icon-base"><span>系统管理</span>
 				<ul>
 					<li iconCls="icon-gears"><a
