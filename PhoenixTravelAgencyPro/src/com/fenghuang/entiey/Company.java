@@ -36,7 +36,7 @@ public class Company {
 	 * 
 	 * @pdOid 68cc1e5d-83af-4fab-ab15-969c26845059
 	 */
-	public int parentNumber;
+	public String parentNumber;
 
 	/**
 	 * @pdRoleInfo migr=no name=Users assc=userRefCompany
@@ -154,19 +154,14 @@ public class Company {
 		this.companyName = companyName;
 	}
 
-	/**
-	 * @return the parentNumber
-	 */
-	public int getParentNumber() {
+	public String getParentNumber() {
 		return parentNumber;
 	}
 
-	/**
-	 * @param parentNumber
-	 *            the parentNumber to set
-	 */
-	public void setParentNumber(int parentNumber) {
+	public void setParentNumber(String parentNumber) {
 		this.parentNumber = parentNumber;
 	}
+
+
 
 }

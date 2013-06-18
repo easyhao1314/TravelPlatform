@@ -31,59 +31,6 @@ public class RoleAndPagePermission {
 		this.id = id;
 	}
 
-	/**
-	 * @pdRoleInfo migr=no name=PagePermission assc=pagePermissionRef mult=0..1
-	 *             side=A
-	 */
-	public PagePermission pagePermission;
-	/** @pdRoleInfo migr=no name=Role assc=roleRefPP mult=0..1 side=A */
-	public Role role;
-
-	/** @pdGenerated default parent getter */
-	public PagePermission getPagePermission() {
-		return pagePermission;
-	}
-
-	/**
-	 * @pdGenerated default parent setter
-	 * @param newPagePermission
-	 */
-	public void setPagePermission(PagePermission newPagePermission) {
-		if (this.pagePermission == null
-				|| !this.pagePermission.equals(newPagePermission)) {
-			if (this.pagePermission != null) {
-				PagePermission oldPagePermission = this.pagePermission;
-				this.pagePermission = null;
-				oldPagePermission.removeRoleAndPagePermission(this);
-			}
-			if (newPagePermission != null) {
-				this.pagePermission = newPagePermission;
-				this.pagePermission.addRoleAndPagePermission(this);
-			}
-		}
-	}
-
-	/** @pdGenerated default parent getter */
-	public Role getRole() {
-		return role;
-	}
-
-	/**
-	 * @pdGenerated default parent setter
-	 * @param newRole
-	 */
-	public void setRole(Role newRole) {
-		if (this.role == null || !this.role.equals(newRole)) {
-			if (this.role != null) {
-				Role oldRole = this.role;
-				this.role = null;
-				oldRole.removeRoleAndPagePermission(this);
-			}
-			if (newRole != null) {
-				this.role = newRole;
-				this.role.addRoleAndPagePermission(this);
-			}
-		}
-	}
+	
 
 }

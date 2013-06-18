@@ -11,7 +11,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.fenghuang.dao.IUserDao;
+import com.fenghuang.entiey.Users;
 import com.fenghuang.entiey.Usersrr;
+import com.fenghuang.util.Pagination;
 
 /**
  * @author 鲍国浩
@@ -42,6 +44,32 @@ public class UsersDaoImpl extends JdbcTemplate implements IUserDao {
 	@Override
 	public Usersrr queryUsersById(Long id) throws Exception {
 		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean saveUsers(Users users) throws Exception {
+		return false;
+	}
+
+	@Override
+	public boolean updateUsers(Users users) throws Exception {
+		return false;
+	}
+
+	@Override
+	public boolean deleteUserById(Long id) throws Exception {
+		return false;
+	}
+
+	@Override
+	public Pagination<Users> getPaginationUsers(int currentPage,
+			int numPerPage, Users users) throws Exception {
+		return null;
+	}
+
+	@Override
+	public Users getUsersById(Long id) throws Exception {
 		return null;
 	}
 
