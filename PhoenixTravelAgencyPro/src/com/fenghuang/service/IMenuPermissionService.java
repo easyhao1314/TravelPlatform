@@ -1,5 +1,7 @@
 package com.fenghuang.service;
 
+import java.util.List;
+
 import com.fenghuang.entiey.MenuPermission;
 import com.fenghuang.util.Pagination;
 
@@ -15,4 +17,9 @@ public interface IMenuPermissionService {
 			int numPerPage,Long id,String mpNo,String mpName,String mpDesc,String functionNo)throws Exception;
 	
 	public MenuPermission  getMenuPermissionById(Long id) throws Exception;
+	
+	
+	public void updateMenuPermissions(List<MenuPermission> mps)throws Exception;
+	
+	public void deleteMenuPermissions(List<MenuPermission> mps)throws Exception;
 }

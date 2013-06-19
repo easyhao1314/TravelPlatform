@@ -1,5 +1,8 @@
 package com.fenghuang.service.impl;
 
+import java.util.Iterator;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -41,6 +44,30 @@ public class MenuPermissionServiceImpl implements IMenuPermissionService {
 	@Override
 	public MenuPermission getMenuPermissionById(Long id) throws Exception {
 		return iMenuPermissionDao.getMenuPermissionById(id);
+	}
+
+	@Override
+	public void updateMenuPermissions(List<MenuPermission> mps)
+			throws Exception {
+		for (Iterator iterator = mps.iterator(); iterator.hasNext();) {
+			MenuPermission menuPermission = (MenuPermission) iterator.next();
+			if(menuPermission.getId()!= null &&menuPermission.getId()!=0){
+				iMenuPermissionDao.updateMenuPermission(menuPermission);
+			}else{
+				iMenuPermissionDao.saveMenuPermission(menuPermission);
+			}
+		}
+	}
+
+	@Override
+	public void deleteMenuPermissions(List<MenuPermission> mps)
+			throws Exception {
+		for (Iterator iterator = mps.iterator(); iterator.hasNext();) {
+			MenuPermission menuPermission = (MenuPermission) iterator.next();
+			if(menuPermission.getId()!= null &&menuPermission.getId()!=0){
+				iMenuPermissionDao.deleteMenuPermissionById(menuPermission.getId());
+			}
+		}
 	}
 
 }

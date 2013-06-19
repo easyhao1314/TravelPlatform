@@ -18,7 +18,7 @@ public class MenuPermission {
 	 * 
 	 * @pdOid 782d88e5-27ef-44c0-bab1-8a56f86a0ec4
 	 */
-	public long id;
+	public Long id;
 	/**
 	 * 菜单权限编号
 	 * 
@@ -39,7 +39,7 @@ public class MenuPermission {
 	/**
 	 * @return the id
 	 */
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
@@ -47,7 +47,7 @@ public class MenuPermission {
 	 * @param id
 	 *            the id to set
 	 */
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

@@ -94,7 +94,11 @@ public class TestUserController {
 		return "test";
 	}
 	
-	
+	@RequestMapping("/test/indextReturn.do")
+    public String TestIndexReturn(){
+    	return "indexTestReturn";
+    }
+    
 	
 
 }
