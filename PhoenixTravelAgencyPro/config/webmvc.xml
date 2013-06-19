@@ -77,5 +77,6 @@
 	<mvc:view-controller path="functionMenu.do" view-name="functionmenu/functionMenu"/>
 	<mvc:view-controller path="department.do" view-name="department/department"/>
 	<mvc:view-controller path="SanPin_new.do" view-name="SanPin/SanPin_New"/>
+	<mvc:view-controller path="SanPin_caozuo.do" view-name="SanPin/SanPin_CaoZuo"/>
 </beans>
            

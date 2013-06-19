@@ -54,6 +54,9 @@
 					<li iconCls="icon-gears"><a
 						href="javascript:open1('新建散拼','SanPin_new.do');">新建散拼</a>
 					</li>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('散拼操作','SanPin_caozuo.do');">散拼操作</a>
+					</li>
 				</ul>
 				<ul>
 
