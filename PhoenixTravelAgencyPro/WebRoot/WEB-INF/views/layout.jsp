@@ -81,12 +81,12 @@
 			<li iconCls="icon-base"><span>系统基础设置管理</span>
 				<ul>
 					<li iconCls="icon-gears"><a
-						href="javascript:open1('团队进展状态字典','dictionaryDesc.do');">团队进展状态字典</a>
+						href="javascript:open1('团队进展状态字典','dictionaryDesc.do?dicType=8');">团队进展状态字典</a>
 					</li>
 				</ul>
 				<ul>
 					<li iconCls="icon-gears"><a
-						href="javascript:open1('酒店-星级字典维护','dictionaryDesc.do');">酒店-星级字典维护</a>
+						href="javascript:open1('酒店-星级字典维护','dictionaryDesc.do?dicType=9');">酒店-星级字典维护</a>
 					</li>
 				</ul>
 				<ul>
@@ -128,6 +128,8 @@
 					<li iconCls="icon-gears"><a
 						href="javascript:open1('币种使用维护','currencyList.do');">币种使用维护</a></li>
 				</ul></li>
+<<<<<<< HEAD
+=======
 			<li iconCls="icon-base"><span>单团中心</span>
 				<ul>
 					<li iconCls="icon-gears">
@@ -196,6 +198,7 @@
 				     <a href="javascript:open1('自费节目维护','ZiyuanZifei.do?dicType=10');">自费节目维护</a></li>
 				</ul>
 			</li>
+>>>>>>> branch 'master' of https://github.com/easyhao1314/TravelPlatform.git
 		</ul>
 		
 	</div>

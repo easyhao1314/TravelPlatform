@@ -66,9 +66,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	  	<tr>
   	<td>回团日期：</td><td><input id="dd" class="easyui-datebox" required="true"></input></td>
   	<td></td><td></td>
-  	<td>地域类型：</td><td>
-  	
-  	<input class="easyui-combobox" 
+  	<td>地域类型：</td><td><input class="easyui-combobox" 
 			name="language"
 			data-options="
 					url:'fenghuang/getDicByTypeComboboxs.do?dicType=12',

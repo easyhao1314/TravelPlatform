@@ -97,6 +97,5 @@
      <mvc:view-controller path="ZiyuanGouwu.do" view-name="Ziyuan/ZiyuanGouwu"/>
      <mvc:view-controller path="ZiyuanYaoqing.do" view-name="Ziyuan/ZiyuanYaoqing"/>
      <mvc:view-controller path="ZiyuanZifei.do" view-name="Ziyuan/ZiyuanZifei"/>
-
 </beans>
            
