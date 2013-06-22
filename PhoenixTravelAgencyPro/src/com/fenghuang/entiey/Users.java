@@ -98,7 +98,7 @@ public class Users {
 	 * 
 	 * @pdOid 912f9556-74ac-4077-a418-5282555cd3cc
 	 */
-	public long sortNumber;
+	public Long sortNumber;
 	/**
 	 * 地址
 	 * 
@@ -281,7 +281,7 @@ public class Users {
 		this.jobDescription = jobDescription;
 	}
 
-	public long getSortNumber() {
+	public Long getSortNumber() {
 		return sortNumber;
 	}
 
