@@ -42,7 +42,6 @@ public class CurrencyController {
 	public Map<String, Object> getCurrencyList(HttpServletRequest request,
 			HttpServletResponse response,HttpSession session, String currencyName,
 			String currencyShort, Integer page, Integer rows) {
-
 		try {
 			Pagination<Currency> currencyPagings = iCurrencyService
 					.getCurrencyPaginations(page, rows, currencyName,
@@ -54,7 +53,6 @@ public class CurrencyController {
 			returnValue.put("rows", currencyRows);
 			return returnValue;
 		} catch (Exception e) {
-
 			e.printStackTrace();
 		}
 		return null;
@@ -62,8 +60,6 @@ public class CurrencyController {
 
 	public Map<String, Object> updateCurrency(HttpServletRequest request,
 			HttpServletResponse response, String updateRows) {
-		
-		
 		
 		return null;
 
