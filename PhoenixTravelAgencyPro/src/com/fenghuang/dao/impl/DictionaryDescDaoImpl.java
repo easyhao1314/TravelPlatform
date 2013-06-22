@@ -3,6 +3,9 @@
  */
 package com.fenghuang.dao.impl;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -160,6 +163,17 @@ public class DictionaryDescDaoImpl extends BaseDao implements
 		}
 		Pagination<DictionaryDesc> pages= this.getPagination(currentPage, numPerPage, sqlSb.toString());
 		return pages;
+	}
+
+	/* 
+	 * @see com.fenghuang.dao.IDictionaryDescDao#getDictionaryComboboxs(java.lang.String)
+	 */
+	@Override
+	public List<Map<String, Object>> getDictionaryComboboxs(String dicType)
+			throws Exception {
+		String sql = "SELECT dicId, dicName FROM dictionarydesc  where dicType=?";
+		List<Map<String,Object>>  dics =this.queryForList(sql,dicType);
+		return dics;
 	}
 
 }

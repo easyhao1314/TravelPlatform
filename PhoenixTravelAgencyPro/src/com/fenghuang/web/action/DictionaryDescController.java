@@ -145,6 +145,20 @@ public class DictionaryDescController {
 		
 		return result;
 	}
+	@RequestMapping("fenghuang/getDicByTypeComboboxs.do")
+	public List<Map<String, Object>> getComboxs(HttpServletRequest request,
+			HttpServletResponse response,String dicType){
+		
+		try {
+			return iDictionaryDescService.getDictionaryComboboxs(dicType);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		return null;
+	}
+	
 	
 	
 	
