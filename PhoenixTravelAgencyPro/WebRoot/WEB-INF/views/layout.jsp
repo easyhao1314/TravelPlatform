@@ -81,12 +81,12 @@
 			<li iconCls="icon-base"><span>系统基础设置管理</span>
 				<ul>
 					<li iconCls="icon-gears"><a
-						href="javascript:open1('团队进展状态字典','dictionaryDesc.do?dicType=8');">团队进展状态字典</a>
+						href="javascript:open1('团队进展状态字典','dictionaryDesc.do');">团队进展状态字典</a>
 					</li>
 				</ul>
 				<ul>
 					<li iconCls="icon-gears"><a
-						href="javascript:open1('酒店-星级字典维护','dictionaryDesc.do?dicType=9');">酒店-星级字典维护</a>
+						href="javascript:open1('酒店-星级字典维护','dictionaryDesc.do');">酒店-星级字典维护</a>
 					</li>
 				</ul>
 				<ul>
@@ -128,7 +128,76 @@
 					<li iconCls="icon-gears"><a
 						href="javascript:open1('币种使用维护','currencyList.do');">币种使用维护</a></li>
 				</ul></li>
+			<li iconCls="icon-base"><span>单团中心</span>
+				<ul>
+					<li iconCls="icon-gears">
+					<a href="javascript:open1('新增询价','DantuanAdd.do?dicType=1');">新增询价</a></li>
+				</ul>
+				 <ul>
+			      <li iconCls="icon-gears">
+			        <a href="javascript:open1('询价列表','DantuanXunjia.do?dicType=2');">询价列表</a>
+			      </li>
+			   </ul>
+			    <ul>
+			      <li iconCls="icon-gears">
+			        <a href="javascript:open1('成团列表','DantuanChengtuan.do?dicType=3');">成团列表</a>
+			      </li>
+			   </ul>
+			    <ul>
+			      <li iconCls="icon-gears">
+			        <a href="javascript:open1('报价团列表','DantuanBaojia.do?dicType=4');">报价团列表</a>
+			      </li>
+			   </ul>
+			    <ul>
+			      <li iconCls="icon-gears">
+			        <a href="javascript:open1('待审批报价团','DantuanDaishen.do');">待审批报价团</a>
+			      </li>
+			   </ul>
+			</li>
+			<li iconCls="icon-base"><span>资源中心 </span>
+				<ul>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('酒店供应商','ZiyuanJiudian.do?dicType=1');">酒店供应商</a></li>
+				</ul>
+				<ul>
+				   <li iconCls="icon-gears">
+				     <a href="javascript:open1('交通供应商','ZiyuanJiaotong.do?dicType=2');">交通供应商</a></li>
+				</ul>
+				<ul>
+				   <li iconCls="icon-gears">
+				     <a href="javascript:open1('航空公司','ZiyuanHangkong.do?dicType=3');">航空公司</a></li>
+				</ul>
+				<ul>
+				   <li iconCls="icon-gears">
+				     <a href="javascript:open1('餐饮供应商','ZiyuanCanyin.do?dicType=4');">餐饮供应商</a></li>
+				</ul>
+				<ul>
+				   <li iconCls="icon-gears">
+				     <a href="javascript:open1('导游供应商','ZiyuanDy.do?dicType=5');">导游供应商</a></li>
+				</ul>
+				<ul>
+				   <li iconCls="icon-gears">
+				     <a href="javascript:open1('景点供应商','ZiyuanJingdian.do?dicType=6');">景点供应商</a></li>
+				</ul>
+				<ul>
+				   <li iconCls="icon-gears">
+				     <a href="javascript:open1('地接社供应商','ZiyuanDijie.do?dicType=7');">地接社供应商</a></li>
+				</ul>
+				<ul>
+				   <li iconCls="icon-gears">
+				     <a href="javascript:open1('购物点','ZiyuanGouwu.do?dicType=8');">购物点</a></li>
+				</ul>
+				<ul>
+				   <li iconCls="icon-gears">
+				     <a href="javascript:open1('邀请函成本维护','ZiyuanYaoqing.do?dicType=9');">邀请函成本维护</a></li>
+				</ul>
+				<ul>
+				   <li iconCls="icon-gears">
+				     <a href="javascript:open1('自费节目维护','ZiyuanZifei.do?dicType=10');">自费节目维护</a></li>
+				</ul>
+			</li>
 		</ul>
+		
 	</div>
 	<div data-options="region:'center'">
 		<div id="tt" class="easyui-tabs" fit="true" border="false"
