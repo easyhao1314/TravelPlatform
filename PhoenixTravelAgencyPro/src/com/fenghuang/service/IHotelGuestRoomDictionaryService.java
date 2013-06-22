@@ -3,6 +3,8 @@
  */
 package com.fenghuang.service;
 
+import com.fenghuang.entiey.HotelGuestRoomDictionary;
+
 /**
  * @author 鲍国浩
  * 
@@ -15,5 +17,7 @@ package com.fenghuang.service;
  *
  */
 public interface IHotelGuestRoomDictionaryService {
+	
+	public boolean saveHotelGuestRoomDictionary(HotelGuestRoomDictionary hgrd)throws Exception;
 
 }
