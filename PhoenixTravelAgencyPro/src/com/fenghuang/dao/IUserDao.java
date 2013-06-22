@@ -3,7 +3,9 @@
  */
 package com.fenghuang.dao;
 
+import com.fenghuang.entiey.Users;
 import com.fenghuang.entiey.Usersrr;
+import com.fenghuang.util.Pagination;
 
 /**
  * @author 鲍国浩
@@ -17,12 +19,35 @@ import com.fenghuang.entiey.Usersrr;
  *
  */
 public interface IUserDao {
+	/**
+	 * 测试用的，目前不需要了
+	 * @param users
+	 * @return
+	 * @throws Exception
+	 */
 	public int addUsers(Usersrr users) throws Exception;
-	
+	/**
+	 * 测试用的，目前不需要了
+	 * @param id
+	 * @return
+	 * @throws Exception
+	 */
 	public Usersrr queryUsersById(Long id) throws Exception;
 	
     
 	
+	public boolean saveUsers(Users users)throws Exception;
+	
+	
+	public boolean updateUsers(Users users)throws Exception;
+	
+	public boolean deleteUserById(Long id) throws Exception;
+	
+	public Pagination<Users>  getPaginationUsers(int currentPage,
+			int numPerPage,Users users)throws Exception;
+	
+	
+	public Users getUsersById(Long id)throws Exception;
 	
 
 }
