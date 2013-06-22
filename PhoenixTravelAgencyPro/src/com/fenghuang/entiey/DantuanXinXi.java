@@ -130,6 +130,23 @@ public class DantuanXinXi {
     * 
     * @pdOid 69d03899-9779-487e-9b0c-94d6c40ab15e */
    public String tsDesc;
+   /** 审批状态
+    * 
+    * @pdOid 69d03899-9779-487e-9b0c-94d6c40ab15e */
+   public boolean shenpi;
+   /**
+    * @return the tuanNO
+    */
+   public boolean getShenpi() {
+   	return shenpi;
+   }
+   /**
+    * @param tuanNO the tuanNO to set
+    */
+   public void setShenpi(boolean shenpi) {
+   	this.shenpi = shenpi;
+   }
+   
 /**
  * @return the tuanNO
  */
