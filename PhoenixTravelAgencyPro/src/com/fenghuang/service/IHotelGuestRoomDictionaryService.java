@@ -20,5 +20,6 @@ public interface IHotelGuestRoomDictionaryService {
 	
 	public boolean saveHotelGuestRoomDictionary(HotelGuestRoomDictionary hgrd)throws Exception;
 	public boolean updateHotelGuestRoomDictionary(HotelGuestRoomDictionary hgrd)throws Exception;
+	public boolean updateHotelGuestRoomDictionarytest(HotelGuestRoomDictionary hgrd)throws Exception;
 
 }
