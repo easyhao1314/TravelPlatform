@@ -58,13 +58,13 @@
 			<thead>
 				<tr>
 					<th data-options="field:'ck',checkbox:true"></th>
-					<th data-options="field:''" width="80">编号</th>
-					<th data-options="field:''" width="80">城市</th>
-					<th data-options="field:''" width="80">酒店供应商名称</th>
-					<th data-options="field:''" width="80">所属类别</th>
-					<th data-options="field:''" width="80">合作级别</th>
-					<th data-options="field:''" width="80">维护人</th>
-					<th data-options="field:''" width="80">备注</th>
+					<th data-options="field:'id'" width="80">编号</th>
+					<th data-options="field:'chengshi'" width="80">城市</th>
+					<th data-options="field:'name'" width="80">酒店供应商名称</th>
+					<th data-options="field:'jdtype'" width="80">所属类别</th>
+					<th data-options="field:'hzjb'" width="80">合作级别</th>
+					<th data-options="field:'whr'" width="80">维护人</th>
+					<th data-options="field:'bz'" width="80">备注</th>
 					<th data-options="field:'8',formatter:onOperateStyle" width="80">操作</th>
 				</tr>
 			</thead>

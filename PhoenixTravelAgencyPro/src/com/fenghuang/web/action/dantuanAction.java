@@ -42,10 +42,10 @@ public class dantuanAction {
 	@RequestMapping("fenghuang/DantuanAdd.do")
 	@ResponseBody
     //如果不是json格式的话 就去掉 不加	@ResponseBody(用到ajax提交的 就加上	@ResponseBody不用ajax 就不要加了啊)
-	public Map<String,Object> dantuanAdd(HttpServletRequest request,
-			HttpServletResponse response,String tuanNO,Long khId,String tdczlx,String tdm,String tdjb,
-			String tdzt,Long cfrs,Long cfts,String cfgj,Long lyqy,Date ctsj,Date htsj,String xsNo,String jdNo,
-			String khjlNo,String qzlx,String xbqz,String xbyq,String jdbzNo,String zcNo,String zhongcNo,String wcNo,String bssdNo,
+	public Map<String,Object> dantuanAdd(HttpServletRequest request,HttpServletResponse response,
+			String tuanNO,Long khId,String tdczlx,String tdm,String tdjb,String tdzt,Long cfrs,Long cfts,String cfgj,Long lyqy,
+			Date ctsj,Date htsj,String xsNo,String jdNo,String khjlNo,String qzlx,String xbqz,String xbyq,String jdbzNo,
+			String zcNo,String zhongcNo,String wcNo,String bssdNo,
 			String cheXingNo,String jdbjNo,String bsbjNo,String ycbjNo,String dybjNo,String qtdjDesc,String tsDesc) {
 		 DantuanXinXi dt=new DantuanXinXi();
         dt.setTuanNO(tuanNO);
@@ -122,6 +122,38 @@ public class dantuanAction {
 		
 		return null;
 
+	}
+	//模糊查询
+	@RequestMapping("fenghuang/DantuanLike.do")
+	@ResponseBody
+	public Map<String,Object> DantuanLike(HttpServletRequest request,
+			HttpServletResponse response, Integer page,Integer rows,
+			Date ctsj,String lyqy,String tdzt,Long tdjb){
+		try {
+		Pagination<DantuanXinXi> pagination=(Pagination<DantuanXinXi>)ids.getDantuanLike(page, rows, ctsj, lyqy, tdzt, tdjb);
+		List<Map<String, Object>> testUsers = pagination.getResultList();
+		Map<String,Object> returnValue  = new HashMap<String, Object>();
+		for(int i = 0 ;i<testUsers.size();i++){
+			for(Entry<String, Object> entry : testUsers.get(i).entrySet()){
+				if(entry.getValue() == null){
+					entry.setValue("") ;
+				}
+			}
+		}
+		returnValue.put("total",  pagination.getTotalRows());
+		returnValue.put("rows", testUsers);	
+		JsonConfig config = new JsonConfig();
+     	config.registerJsonValueProcessor(Timestamp.class,new DateJsonValueProcessor("yyyy-MM-dd"));
+     			//把MAP转换成JSON，返回到前台
+     	JSONObject fromObject = JSONObject.fromObject(returnValue,config);
+     	System.out.println(fromObject);
+		return fromObject;
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	
+	return null;
+		
 	}
 	//待审批报价团查询
 	@RequestMapping("fenghuang/DantuanDaishen.do")
@@ -350,43 +382,6 @@ public class dantuanAction {
 }
 	
 	
-	//查询国家
-	@RequestMapping("fenghuang/CountrySetting.do")
-	@ResponseBody
-	public List<Map<String, Object>> Country(HttpServletRequest request,
-			HttpServletResponse response) {
-		try {
-			List<Map<String, Object>> currency=ids.getCurrencySettingboboxs();			
-			return currency;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}		
-		return null;
-	}
-	//查询所属洲
-	@RequestMapping("fenghuang/CountryState.do")
-	@ResponseBody
-	public List<Map<String,Object>> getCountryState(HttpServletRequest request,HttpServletResponse response){
-		try{
-		   List<Map<String,Object>> countrystate=ids.getCountryState();
-		   return countrystate;
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		return null;
-	}
-	//查询酒店星级
-	@RequestMapping("fenghuang/HotleStar.do")
-	@ResponseBody
-	public List<Map<String,Object>>  getHotleStar(HttpServletRequest request,HttpServletResponse response){
-		try{
-		   List<Map<String,Object>> countrystate=ids.getHotleStar();
-		   return countrystate;
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		return null;
-	}
 
 	}
 

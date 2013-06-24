@@ -30,6 +30,57 @@
 </head>
 
 <body>
+	<!-- 询价查询 -->
+		 <div class="easyui-panel" title="单团查询"
+		style="height:100px;padding:10px;width:auto;"
+		data-options="closable:false,tools:'#searchpanel'" align="center">
+		<table>
+			<tr>
+				<td><div class="fitem">
+						<label>出团日期:</label>
+				</td>
+				<td><input name="ctsj" type="text" class="easyui-datebox" required="required">
+					</div>
+				</td>
+				<!--<td><div class="fitem">
+						<label>登记日期:</label>
+				</td>
+				<td><input  name="ctsj" type="text" class="easyui-datebox" required="required">
+					</div>
+				</td>-->
+					<td><div class="fitem">
+						<label>旅游区域:</label>
+				</td>
+				<td><input  name="lyqy" class="easyui-combobox"
+ data-options="url:'fenghuang/CountryState.do',valueField:'id',textField:'csName'">
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td><div class="fitem">
+						<label>团队状态:</label>
+				</td>
+				<td><input  name="tdzt" class="easyui-combobox"
+ data-options="url:'fenghuang/CountryState.do',valueField:'id',textField:'csName'">
+					</div>
+				</td>
+				<td><div class="fitem">
+						<label>跟单情况:</label>
+				</td>
+				<td><input  name="tdjb" class="easyui-combobox"
+ data-options="url:'fenghuang/CountryState.do',valueField:'id',textField:'csName'">
+					</div>
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>
+	</div>
+	<div id="searchpanel">
+		<a href="javascript:dantuanSelectLike();" 
+				class="easyui-linkbutton" iconCls="icon-ok">保存</a><a href="javascript:void(0)"
+			iconCls="icon-undo" onclick="javascript:alert('重置')"></a>
+	</div>
 	<!-- 如果在正式开发环境下 url可以为后台的请求，地址 -->
 	<table id="dg" class="easyui-datagrid"
 		data-options="url:'fenghuang/DantuanXunjia.do?dicType=${param.dicType}',border:false,singleSelect:false,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
@@ -66,6 +117,8 @@
 			 <a href="javascript:chengtuan();" class="easyui-linkbutton"
 			iconCls="icon-add" plain="true">成团申请</a>&nbsp;&nbsp;|
      <a href="javascript:shanchu();" class="easyui-linkbutton"
+			iconCls="icon-cut" plain="true">删除</a>&nbsp;&nbsp;| 
+	 <a href="javascript:shanchu();" class="easyui-linkbutton"
 			iconCls="icon-cut" plain="true">删除</a>&nbsp;&nbsp;| 
 	 <a href="javascript:selectDtId();" class="easyui-linkbutton"
 			iconCls="icon-save" plain="true">修改</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -260,7 +313,25 @@
 				}
 			}
 		}
-			
+		
+		function dantuanSelectLike(){
+		   if (true) {
+				
+				$.ajax({
+					url : "fenghuang/DantuanLike.do",
+					data : param,
+					dataType : "json",
+					success : function(data) {
+						
+							$("#dg").datagrid('reload');
+						
+					},
+					error : function() {
+						$.messager.alert("删除失败", "服务器请求失败!", "error");
+					}
+				});
+			}
+		}
 		
       //新增
 		function addDt() {
@@ -345,8 +416,6 @@
 						$.messager.alert("查询失败", "服务器请求失败!", "error");
 					}
 				});
-				
-          
 		}
 		}
 		 //修改

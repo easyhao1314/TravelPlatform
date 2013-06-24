@@ -1,5 +1,6 @@
 package com.fenghuang.dao.impl;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -14,6 +15,7 @@ import com.fenghuang.dao.Idantuan;
 import com.fenghuang.entiey.CitySettingDictionary;
 import com.fenghuang.entiey.CountrySettingDictionary;
 import com.fenghuang.entiey.DantuanXinXi;
+import com.fenghuang.entiey.FunctionMenu;
 import com.fenghuang.entiey.TestUser;
 import com.fenghuang.util.Pagination;
 @Repository
@@ -43,6 +45,37 @@ public class dantuanImpl extends BaseDao implements Idantuan{
 		return this.getPagination(currentPage, numPerPage, sql);
 		
 	}
+	//模糊查询
+	public Pagination<DantuanXinXi>  getDantuanLike(int currentPage,
+	int numPerPage,Date ctsj,String lyqy,String tdzt,Long tdjb)throws Exception{
+		StringBuffer sql = new StringBuffer("SELECT * from dantanxinxi  where  and 1=1");
+		if(ctsj != null && !"".equals(ctsj)){
+			sql.append(" and  ctsj ='");
+			sql.append(ctsj);
+			sql.append("'");
+			
+		}
+		if(lyqy != null && !"".equals(lyqy)){
+			sql.append(" and  lyqy like '");
+			sql.append(lyqy);
+			sql.append("%'");
+			
+		}
+		if(tdzt != null && !"".equals(tdzt)){
+			sql.append(" and  tdzt like '");
+			sql.append(tdzt);
+			sql.append("%'");
+			
+		}
+		if(tdjb != null && tdjb!=0){
+			sql.append(" and  tdjb like'");
+			sql.append(tdjb);
+			sql.append("%'");
+			
+		}
+	    Pagination<DantuanXinXi>  dtlike = this.getPagination(currentPage, numPerPage, sql.toString());
+		return dtlike;
+	}
 	// 单团按id查询.queryForObject
 	@Override
 	public List<Map<String, Object>> selectDantuanId(String tuanNo){
@@ -70,29 +103,7 @@ public class dantuanImpl extends BaseDao implements Idantuan{
 		return count>0;
 	}
 
-	@Override
-	public List<Map<String,Object>> getCurrencySettingboboxs() throws Exception{
-		String sql = "select csdNo,csdName from countrysettingdictionary";
-		List<Map<String, Object>> currency = this.queryForList(sql);
-		return currency ;
-		
-	}
 
-	@Override
-	public List<Map<String, Object>> getCountryState() throws Exception {
-		// TODO所属 洲
-		String sql="select id,csName from countrystate";
-		List<Map<String,Object>> countryState=this.queryForList(sql);
-		return countryState;
-	}
-
-	@Override
-	public List<Map<String, Object>> getHotleStar() throws Exception {
-		// TODO 酒店星级
-		String sql="select hsdNo,hsbName from hotlestardictionary";
-		List<Map<String,Object>> hotlestar=this.queryForList(sql);
-		return hotlestar;
-	}
 
 	@Override
 	public Pagination<DantuanXinXi> getDantuanDaishen(int currentPage,
@@ -132,5 +143,6 @@ public class dantuanImpl extends BaseDao implements Idantuan{
 		int count=this.update(sql,tuanNo);
 		return count>0;
 	}
+
 
 }

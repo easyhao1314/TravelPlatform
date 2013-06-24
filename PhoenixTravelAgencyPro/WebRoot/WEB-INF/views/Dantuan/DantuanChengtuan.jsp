@@ -265,7 +265,7 @@
 			$("#addDt").dialog("open");
 			$("#addFrome").form("clear");
 		}
-         
+         //新增
 		function dantuanSave() {
 			$('#addForm').form('submit', {
 				url : 'fenghuang/DantuanAdd.do',
@@ -343,7 +343,7 @@
 					}
 				});
 				
-          
+          }
 		}
 		 //修改
 		function dantuanUpdate() {
@@ -374,7 +374,7 @@
 		function closedSearch() {
 			$('#updateDt').dialog('close');
 		}
-		}
+		
 	</script>
 </body>
 </html>

@@ -342,7 +342,7 @@
 						$.messager.alert("查询失败", "服务器请求失败!", "error");
 					}
 				});
-				
+			}
           
 		}
 		 //修改
@@ -374,7 +374,7 @@
 		function closedSearch() {
 			$('#updateDt').dialog('close');
 		}
-		}
+		
 	</script>
 </body>
 </html>
