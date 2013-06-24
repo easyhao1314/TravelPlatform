@@ -15,4 +15,16 @@ public interface IUsersService {
 			int numPerPage, Users users) throws Exception;
 
 	public Users getUsersById(Long id) throws Exception;
+	
+	public boolean updateUserPassword(Long id,String newPassword)throws Exception;
+	/**
+	 * 根据用户的id，查询用户的密码，用来验证密码是否正确
+	 * @param id
+	 * @return
+	 * @throws Exception
+	 */
+	public String getUsersPasswordById(Long id) throws Exception;
+	
+	
+	
 }

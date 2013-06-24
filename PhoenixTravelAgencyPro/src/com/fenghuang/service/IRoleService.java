@@ -3,6 +3,8 @@ package com.fenghuang.service;
 import java.util.List;
 
 import com.fenghuang.entiey.Role;
+import com.fenghuang.entiey.RoleAndMenuPermission;
+import com.fenghuang.entiey.RoleAndPagePermission;
 import com.fenghuang.util.Pagination;
 /**
  * 
@@ -28,5 +30,13 @@ public interface IRoleService {
 	
 	public void deleteRoles(List<Role> roles) throws Exception;
 	
-	
+	public boolean saveRoleAndMenuPermission(
+			RoleAndMenuPermission roleAndMenuPermission) throws Exception;
+
+	public boolean deleteRoleAndMenuPermission(Long id) throws Exception;
+
+	public boolean saveRoleAndPagePermission(
+			RoleAndPagePermission roleAndPagePermission) throws Exception;
+
+	public boolean deleteRoleAndPagePermission(Long id) throws Exception;
 }

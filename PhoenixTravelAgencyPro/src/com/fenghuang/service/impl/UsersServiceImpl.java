@@ -40,4 +40,15 @@ public class UsersServiceImpl  implements IUsersService {
 		return iUserDao.getUsersById(id);
 	}
 
+	@Override
+	public boolean updateUserPassword(Long id, String newPassword)
+			throws Exception {
+		return iUserDao.updateUserPassword(id, newPassword);
+	}
+
+	@Override
+	public String getUsersPasswordById(Long id) throws Exception {
+		return iUserDao.getUsersPasswordById(id);
+	}
+
 }
