@@ -92,4 +92,61 @@ public class RoleServiceImpl implements IRoleService {
 		return iRoleDao.deleteRoleAndMenuPermission(id);
 	}
 
+	
+	@Override
+	public void insertRoleAddMenuPermissions(
+			List<RoleAndMenuPermission> roleAndMenuPermissions)
+			throws Exception {
+		for (Iterator iterator = roleAndMenuPermissions.iterator(); iterator
+				.hasNext();) {
+			RoleAndMenuPermission roleAndMenuPermission = (RoleAndMenuPermission) iterator
+					.next();
+				iRoleDao.saveRoleAndMenuPermission(roleAndMenuPermission);
+		}
+	}
+
+
+	@Override
+	public void deleteRoleAndMenuPermissions(
+			List<RoleAndMenuPermission> roleAndMenuPermissions)
+			throws Exception {
+		for (Iterator iterator = roleAndMenuPermissions.iterator(); iterator
+				.hasNext();) {
+			RoleAndMenuPermission roleAndMenuPermission = (RoleAndMenuPermission) iterator
+					.next();
+			if(roleAndMenuPermission.getId() != null){
+				iRoleDao.deleteRoleAndMenuPermission(roleAndMenuPermission.getId());
+			}
+			
+		}
+	}
+
+	
+	@Override
+	public void insertRoleAndPagePermissions(
+			List<RoleAndPagePermission> roleAndPagePermissions)
+			throws Exception {
+		for (Iterator iterator = roleAndPagePermissions.iterator(); iterator
+				.hasNext();) {
+			RoleAndPagePermission roleAndPagePermission = (RoleAndPagePermission) iterator
+					.next();
+			iRoleDao.saveRoleAndPagePermission(roleAndPagePermission);
+		}
+	}
+	@Override
+	public void deleteRoleAndPagePermissions(
+			List<RoleAndPagePermission> roleAndPagePermissions)
+			throws Exception {
+		for (Iterator iterator = roleAndPagePermissions.iterator(); iterator
+				.hasNext();) {
+			RoleAndPagePermission roleAndPagePermission = (RoleAndPagePermission) iterator
+					.next();
+			if(roleAndPagePermission.getId() != null){
+				iRoleDao.deleteRoleAndPagePermission(roleAndPagePermission.getId());
+			}
+			
+		}
+		
+	}
+
 }

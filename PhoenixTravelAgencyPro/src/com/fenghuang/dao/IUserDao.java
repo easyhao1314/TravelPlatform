@@ -53,5 +53,12 @@ public interface IUserDao {
 	
 	
 	public String getUsersPasswordById(Long id) throws Exception;
+	
+	public boolean isExistUserLoginName(String LoginName) throws Exception;
+	public Users getUsersByLoginName(String loginName) throws Exception;
+	
+	
+	
+	
 
 }

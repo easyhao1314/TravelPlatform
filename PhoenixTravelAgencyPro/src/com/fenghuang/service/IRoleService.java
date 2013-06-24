@@ -39,4 +39,20 @@ public interface IRoleService {
 			RoleAndPagePermission roleAndPagePermission) throws Exception;
 
 	public boolean deleteRoleAndPagePermission(Long id) throws Exception;
+	
+	public void insertRoleAddMenuPermissions(List<RoleAndMenuPermission> roleAndMenuPermissions) throws Exception;
+	
+	public void deleteRoleAndMenuPermissions(List<RoleAndMenuPermission> roleAndMenuPermissions) throws Exception;
+	
+	public void insertRoleAndPagePermissions(List<RoleAndPagePermission> roleAndPagePermissions) throws Exception;
+	
+	
+	public void deleteRoleAndPagePermissions(List<RoleAndPagePermission> roleAndPagePermissions) throws Exception;
+	
+	
+	
+	
+	
+	
+	
 }

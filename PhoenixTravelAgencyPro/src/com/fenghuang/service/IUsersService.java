@@ -24,7 +24,19 @@ public interface IUsersService {
 	 * @throws Exception
 	 */
 	public String getUsersPasswordById(Long id) throws Exception;
-	
-	
+	/**
+	 * 查看登陆名称是否存在
+	 * @param LoginName
+	 * @return
+	 * @throws Exception
+	 */
+	public boolean isExistUserLoginName(String LoginName) throws Exception;
+    /**
+     * 根据登陆名字查找用户信息，登陆的是用
+     * @param loginName
+     * @return
+     * @throws Exception
+     */
+	public Users getUsersByLoginName(String loginName) throws Exception;
 	
 }

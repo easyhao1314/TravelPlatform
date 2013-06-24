@@ -51,4 +51,22 @@ public class UsersServiceImpl  implements IUsersService {
 		return iUserDao.getUsersPasswordById(id);
 	}
 
+	/* 
+	 * @see com.fenghuang.service.IUsersService#isExistUserLoginName(java.lang.String)
+	 */
+	@Override
+	public boolean isExistUserLoginName(String LoginName) throws Exception {
+		return iUserDao.isExistUserLoginName(LoginName);
+	}
+
+	/* 
+	 * @see com.fenghuang.service.IUsersService#getUsersByLoginName(java.lang.String)
+	 */
+	@Override
+	public Users getUsersByLoginName(String loginName) throws Exception {
+		return iUserDao.getUsersByLoginName(loginName);
+	}
+
+
+
 }

@@ -162,5 +162,26 @@ public class UserController {
 		result.put("success", isSuccess);
 		return result;
 	}
-
+    
+    
+    @RequestMapping("fenghuang/isExistLoginName.do")
+    @ResponseBody
+    public Map<String,Object> isExistLoginName(HttpServletRequest request,HttpServletResponse response,String loginName){
+    	boolean isExist = false;
+		Map<String, Object> result = new HashMap<String, Object>();
+    	try {
+			isExist = iUsersService.isExistUserLoginName(loginName);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		result.put("success", isExist);
+		return result;
+    }
+    
+    
+    
+    
+    
+    
+    
 }
