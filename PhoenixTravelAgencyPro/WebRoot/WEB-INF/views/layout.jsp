@@ -47,7 +47,35 @@
 				<ul>
 
 				</ul></li>
-				
+				<li iconCls="icon-base"><span>财务中心</span>
+				<ul>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('付款审批','a.do');">付款审批</a>
+					</li>
+				</ul>
+				<ul>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('散团费用列表','sanpin.do');">散团费用列表</a>
+					</li>
+				</ul>
+				<ul>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('单团费用列表','sanpin.do');">单团费用列表</a>
+					</li>
+				</ul>
+				<ul>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('团队费用列表','sanpin.do');">团队费用列表</a>
+					</li>
+				</ul>
+				<ul>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('收款确认','shoukuan.do');">收款确认</a>
+					</li>
+				</ul>
+				<ul>
+
+				</ul></li>
 				
 				<li iconCls="icon-base"><span>散拼中心</span>
 				<ul>
