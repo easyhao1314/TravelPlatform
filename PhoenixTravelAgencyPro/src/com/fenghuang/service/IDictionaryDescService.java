@@ -4,7 +4,6 @@
 package com.fenghuang.service;
 
 import java.util.List;
-import java.util.Map;
 
 import com.fenghuang.entiey.DictionaryDesc;
 import com.fenghuang.util.Pagination;
@@ -69,5 +68,5 @@ public interface IDictionaryDescService {
      public void deleteDictionaryDescs(List<DictionaryDesc> dicDescs)throws Exception;
      
      public Pagination<DictionaryDesc>  getDictionaryDescPaginations(int currentPage,int numPerPage,DictionaryDesc ddDesc)throws Exception;
-     public List<Map<String,Object>>  getDictionaryComboboxs(String dicType) throws Exception;
+
 }

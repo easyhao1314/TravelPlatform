@@ -69,33 +69,16 @@
 		<property name="prefix" value="/WEB-INF/views/" />
 		<property name="suffix" value=".jsp" />
 	</bean> 
-
 	<!-- 这是配置静态页面已*.do 的方式访问 -->
 	<!--path 代表已layout.do的方式来方位 jsp页面， view-name 代表的就是/WEB-INF/views/layout.jsp -->
 	<mvc:view-controller path="layout.do" view-name="layout" />
 	<mvc:view-controller path="dictionaryDesc.do" view-name="dictionaryDesc"/>
 	<mvc:view-controller path="currencyList.do" view-name="currencyList"/>
-	<mvc:view-controller path="functionMenu.do" view-name="functionmenu/functionMenu"/>
-	<mvc:view-controller path="department.do" view-name="department/department"/>
-	<mvc:view-controller path="SanPin_new.do" view-name="SanPin/SanPin_New"/>
-	<mvc:view-controller path="role.do" view-name="role/role"/>
-	 <!-- 单团中心-->
-	  <mvc:view-controller path="DantuanAdd.do" view-name="Dantuan/DantuanAddd"/>
-	  <mvc:view-controller path="DantuanXunjia.do" view-name="Dantuan/DantuanXunjia"/>
-	  <mvc:view-controller path="DantuanChengtuan.do" view-name="Dantuan/DantuanChengtuan"/>
-     <!-- <mvc:view-controller path="DantuanUpdate.do" view-name="Dantuan/DantuanXunjia"/> -->
-     <mvc:view-controller path="DantuanBaojia.do" view-name="Dantuan/DantuanBaojia"/>
-     <mvc:view-controller path="DantuanDaishen.do" view-name="Dantuan/DantuanDaishen"/> 
-     <!-- 资源中心 -->    
-     <mvc:view-controller path="ZiyuanJiudian.do" view-name="Ziyuan/ZiyuanJiudian"/>
-     <mvc:view-controller path="ZiyuanJiaotong.do" view-name="Ziyuan/ZiyuanJiaotong"/>
-     <mvc:view-controller path="ZiyuanHangkong.do" view-name="Ziyuan/ZiyuanHangkong"/>
-     <mvc:view-controller path="ZiyuanCanyin.do" view-name="Ziyuan/ZiyuanCanyin"/>
-     <mvc:view-controller path="ZiyuanDy.do" view-name="Ziyuan/ZiyuanDy"/>
-     <mvc:view-controller path="ZiyuanJingdian.do" view-name="Ziyuan/ZiyuanJingdian"/>
-     <mvc:view-controller path="ZiyuanDijie.do" view-name="Ziyuan/ZiyuanDijie"/> 
-     <mvc:view-controller path="ZiyuanGouwu.do" view-name="Ziyuan/ZiyuanGouwu"/>
-     <mvc:view-controller path="ZiyuanYaoqing.do" view-name="Ziyuan/ZiyuanYaoqing"/>
-     <mvc:view-controller path="ZiyuanZifei.do" view-name="Ziyuan/ZiyuanZifei"/>
+	<!-- 陈家海的配置 -->
+	<mvc:view-controller path="operateCenterUI.do" view-name="operTeamQuery" />
+	<mvc:view-controller path="dingfangrenwu.do" view-name="dingfangrenwu" />
+	<mvc:view-controller path="customerInfoList.do" view-name="customerInfoList" />
+	<mvc:view-controller path="contactInfoList.do" view-name="contactInfoList" />
+	<mvc:view-controller path="customerVIPDic.do" view-name="customerVIPDic" />
 </beans>
            

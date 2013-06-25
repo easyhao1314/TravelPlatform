@@ -36,7 +36,78 @@ public class Company {
 	 * 
 	 * @pdOid 68cc1e5d-83af-4fab-ab15-969c26845059
 	 */
-	public String parentNumber;
+	public int parentNumber;
+
+	/**
+	 * @pdRoleInfo migr=no name=Users assc=userRefCompany
+	 *             coll=java.util.Collection impl=java.util.HashSet mult=0..*
+	 */
+	public java.util.Collection users;
+
+	/** @pdGenerated default getter */
+	public java.util.Collection getUsers() {
+		if (users == null)
+			users = new java.util.HashSet();
+		return users;
+	}
+
+	/** @pdGenerated default iterator getter */
+	public java.util.Iterator getIteratorUsers() {
+		if (users == null)
+			users = new java.util.HashSet();
+		return users.iterator();
+	}
+
+	/**
+	 * @pdGenerated default setter
+	 * @param newUsers
+	 */
+	public void setUsers(java.util.Collection newUsers) {
+		removeAllUsers();
+		for (java.util.Iterator iter = newUsers.iterator(); iter.hasNext();)
+			addUsers((Users) iter.next());
+	}
+
+	/**
+	 * @pdGenerated default add
+	 * @param newUsers
+	 */
+	public void addUsers(Users newUsers) {
+		if (newUsers == null)
+			return;
+		if (this.users == null)
+			this.users = new java.util.HashSet();
+		if (!this.users.contains(newUsers)) {
+			this.users.add(newUsers);
+			newUsers.setCompany(this);
+		}
+	}
+
+	/**
+	 * @pdGenerated default remove
+	 * @param oldUsers
+	 */
+	public void removeUsers(Users oldUsers) {
+		if (oldUsers == null)
+			return;
+		if (this.users != null)
+			if (this.users.contains(oldUsers)) {
+				this.users.remove(oldUsers);
+				oldUsers.setCompany((Company) null);
+			}
+	}
+
+	/** @pdGenerated default removeAll */
+	public void removeAllUsers() {
+		if (users != null) {
+			Users oldUsers;
+			for (java.util.Iterator iter = getIteratorUsers(); iter.hasNext();) {
+				oldUsers = (Users) iter.next();
+				iter.remove();
+				oldUsers.setCompany((Company) null);
+			}
+		}
+	}
 
 	/**
 	 * @return the id
@@ -83,14 +154,19 @@ public class Company {
 		this.companyName = companyName;
 	}
 
-	public String getParentNumber() {
+	/**
+	 * @return the parentNumber
+	 */
+	public int getParentNumber() {
 		return parentNumber;
 	}
 
-	public void setParentNumber(String parentNumber) {
+	/**
+	 * @param parentNumber
+	 *            the parentNumber to set
+	 */
+	public void setParentNumber(int parentNumber) {
 		this.parentNumber = parentNumber;
 	}
-
-
 
 }

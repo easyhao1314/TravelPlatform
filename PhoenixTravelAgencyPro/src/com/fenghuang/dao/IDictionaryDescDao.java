@@ -3,9 +3,6 @@
  */
 package com.fenghuang.dao;
 
-import java.util.List;
-import java.util.Map;
-
 import com.fenghuang.entiey.DictionaryDesc;
 import com.fenghuang.util.Pagination;
 
@@ -66,8 +63,5 @@ public interface IDictionaryDescDao {
      public boolean deleteDictionaryDesc(String dicNo)throws Exception;
 	
      public Pagination<DictionaryDesc>  getDictionaryDescPaginations(int currentPage,int numPerPage,DictionaryDesc ddDesc)throws Exception;
-     
-     
-     public List<Map<String,Object>>  getDictionaryComboboxs(String dicType) throws Exception;
 
 }

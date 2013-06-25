@@ -1,5 +1,13 @@
 package com.fenghuang.entiey;
 
+/***********************************************************************
+ * Module:  CitySettingDictionary.java
+ * Author:  baoguohao
+ * Purpose: Defines the Class CitySettingDictionary
+ ***********************************************************************/
+
+import java.util.*;
+
 /**
  * 旅游城市设置
  * 
@@ -42,60 +50,129 @@ public class CitySettingDictionary {
 	 * @pdOid a06a494c-2984-47f0-bb38-03ebc8aec7a9
 	 */
 	public String isUserd;
-    /**
-     * 国家编号
-     */
-	public String csdNo;
+
 	/**
-	 * 报价区域id，也就是CountryArea表的caType=0的id
+	 * @pdRoleInfo migr=no name=CountrySettingDictionary assc=csdAndCitySdRef
+	 *             mult=0..1 side=A
 	 */
-	public Long caId;
+	public CountrySettingDictionary countrySettingDictionary;
+	/** @pdRoleInfo migr=no name=CountryArea assc=caANDCitysdRef mult=0..1 side=A */
+	public CountryArea countryArea;
 	/**
-	 * 省份id
+	 * @pdRoleInfo migr=no name=ProvinceSettingDictionary assc=psdAndCityCsd
+	 *             mult=0..1 side=A
 	 */
-	public Long psdId;
+	public ProvinceSettingDictionary provinceSettingDictionary;
 	/**
-	 * 城市默认币种
+	 * @pdRoleInfo migr=no name=Currency assc=currencyAndCityCsdRef mult=0..1
+	 *             side=A
 	 */
-	public Long currencyId;
-	
+	public Currency currency;
+
+	/** @pdGenerated default parent getter */
+	public CountrySettingDictionary getCountrySettingDictionary() {
+		return countrySettingDictionary;
+	}
+
+	/**
+	 * @pdGenerated default parent setter
+	 * @param newCountrySettingDictionary
+	 */
+	public void setCountrySettingDictionary(
+			CountrySettingDictionary newCountrySettingDictionary) {
+		if (this.countrySettingDictionary == null
+				|| !this.countrySettingDictionary
+						.equals(newCountrySettingDictionary)) {
+			if (this.countrySettingDictionary != null) {
+				CountrySettingDictionary oldCountrySettingDictionary = this.countrySettingDictionary;
+				this.countrySettingDictionary = null;
+				oldCountrySettingDictionary.removeCitySettingDictionary(this);
+			}
+			if (newCountrySettingDictionary != null) {
+				this.countrySettingDictionary = newCountrySettingDictionary;
+				this.countrySettingDictionary.addCitySettingDictionary(this);
+			}
+		}
+	}
+
+	/** @pdGenerated default parent getter */
+	public CountryArea getCountryArea() {
+		return countryArea;
+	}
+
+	/**
+	 * @pdGenerated default parent setter
+	 * @param newCountryArea
+	 */
+	public void setCountryArea(CountryArea newCountryArea) {
+		if (this.countryArea == null
+				|| !this.countryArea.equals(newCountryArea)) {
+			if (this.countryArea != null) {
+				CountryArea oldCountryArea = this.countryArea;
+				this.countryArea = null;
+				oldCountryArea.removeCitySettingDictionary(this);
+			}
+			if (newCountryArea != null) {
+				this.countryArea = newCountryArea;
+				this.countryArea.addCitySettingDictionary(this);
+			}
+		}
+	}
+
+	/** @pdGenerated default parent getter */
+	public ProvinceSettingDictionary getProvinceSettingDictionary() {
+		return provinceSettingDictionary;
+	}
+
+	/**
+	 * @pdGenerated default parent setter
+	 * @param newProvinceSettingDictionary
+	 */
+	public void setProvinceSettingDictionary(
+			ProvinceSettingDictionary newProvinceSettingDictionary) {
+		if (this.provinceSettingDictionary == null
+				|| !this.provinceSettingDictionary
+						.equals(newProvinceSettingDictionary)) {
+			if (this.provinceSettingDictionary != null) {
+				ProvinceSettingDictionary oldProvinceSettingDictionary = this.provinceSettingDictionary;
+				this.provinceSettingDictionary = null;
+				oldProvinceSettingDictionary.removeCitySettingDictionary(this);
+			}
+			if (newProvinceSettingDictionary != null) {
+				this.provinceSettingDictionary = newProvinceSettingDictionary;
+				this.provinceSettingDictionary.addCitySettingDictionary(this);
+			}
+		}
+	}
+
+	/** @pdGenerated default parent getter */
+	public Currency getCurrency() {
+		return currency;
+	}
+
+	/**
+	 * @pdGenerated default parent setter
+	 * @param newCurrency
+	 */
+	public void setCurrency(Currency newCurrency) {
+		if (this.currency == null || !this.currency.equals(newCurrency)) {
+			if (this.currency != null) {
+				Currency oldCurrency = this.currency;
+				this.currency = null;
+				oldCurrency.removeCitySettingDictionary(this);
+			}
+			if (newCurrency != null) {
+				this.currency = newCurrency;
+				this.currency.addCitySettingDictionary(this);
+			}
+		}
+	}
+
 	/**
 	 * @return the id
 	 */
 	public long getId() {
 		return id;
-	}
-
-	public String getCsdNo() {
-		return csdNo;
-	}
-
-	public void setCsdNo(String csdNo) {
-		this.csdNo = csdNo;
-	}
-
-	public Long getCaId() {
-		return caId;
-	}
-
-	public void setCaId(Long caId) {
-		this.caId = caId;
-	}
-
-	public Long getPsdId() {
-		return psdId;
-	}
-
-	public void setPsdId(Long psdId) {
-		this.psdId = psdId;
-	}
-
-	public Long getCurrencyId() {
-		return currencyId;
-	}
-
-	public void setCurrencyId(Long currencyId) {
-		this.currencyId = currencyId;
 	}
 
 	/**

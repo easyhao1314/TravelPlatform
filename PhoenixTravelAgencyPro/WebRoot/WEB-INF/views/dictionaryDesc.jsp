@@ -144,7 +144,7 @@
 		var editIndex = undefined;
 		function endEditing() {
 			if (editIndex == undefined) {
-				return true
+				return true;
 			}
 			if ($('#dg').datagrid('validateRow', editIndex)) {
 				$('#dg').datagrid('endEdit', editIndex);
@@ -165,10 +165,10 @@
 			editIndex = undefined;
 		}
 		function onClickRow(index) {
-			if (editIndex != index) {
+			if (editIndex != index) {//当点击的行和增加的行不是同一行的时候
 				if (endEditing()) {
 					$('#dg').datagrid('selectRow', index).datagrid('beginEdit',
-							index);
+							index);//就把点击的行开启编辑
 					editIndex = index;
 				} else {
 					$('#dg').datagrid('selectRow', editIndex);

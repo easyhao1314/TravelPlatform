@@ -14,32 +14,76 @@ import java.util.*;
  */
 public class RoleAndPagePermission {
 	/** @pdOid efc3567c-4fcd-4e60-b6f5-b01cc18ed370 */
-	//自动增长列
-	public Long id;
-	//角色id
-	public Long roleId;
-	//页面权限id
-	public Long ppId;
-	public Long getId() {
+	public long id;
+
+	/**
+	 * @return the id
+	 */
+	public long getId() {
 		return id;
 	}
-	public void setId(Long id) {
+
+	/**
+	 * @param id
+	 *            the id to set
+	 */
+	public void setId(long id) {
 		this.id = id;
 	}
-	public Long getRoleId() {
-		return roleId;
-	}
-	public void setRoleId(Long roleId) {
-		this.roleId = roleId;
-	}
-	public Long getPpId() {
-		return ppId;
-	}
-	public void setPpId(Long ppId) {
-		this.ppId = ppId;
+
+	/**
+	 * @pdRoleInfo migr=no name=PagePermission assc=pagePermissionRef mult=0..1
+	 *             side=A
+	 */
+	public PagePermission pagePermission;
+	/** @pdRoleInfo migr=no name=Role assc=roleRefPP mult=0..1 side=A */
+	public Role role;
+
+	/** @pdGenerated default parent getter */
+	public PagePermission getPagePermission() {
+		return pagePermission;
 	}
 
+	/**
+	 * @pdGenerated default parent setter
+	 * @param newPagePermission
+	 */
+	public void setPagePermission(PagePermission newPagePermission) {
+		if (this.pagePermission == null
+				|| !this.pagePermission.equals(newPagePermission)) {
+			if (this.pagePermission != null) {
+				PagePermission oldPagePermission = this.pagePermission;
+				this.pagePermission = null;
+				oldPagePermission.removeRoleAndPagePermission(this);
+			}
+			if (newPagePermission != null) {
+				this.pagePermission = newPagePermission;
+				this.pagePermission.addRoleAndPagePermission(this);
+			}
+		}
+	}
 
-	
+	/** @pdGenerated default parent getter */
+	public Role getRole() {
+		return role;
+	}
+
+	/**
+	 * @pdGenerated default parent setter
+	 * @param newRole
+	 */
+	public void setRole(Role newRole) {
+		if (this.role == null || !this.role.equals(newRole)) {
+			if (this.role != null) {
+				Role oldRole = this.role;
+				this.role = null;
+				oldRole.removeRoleAndPagePermission(this);
+			}
+			if (newRole != null) {
+				this.role = newRole;
+				this.role.addRoleAndPagePermission(this);
+			}
+		}
+	}
 
 }
