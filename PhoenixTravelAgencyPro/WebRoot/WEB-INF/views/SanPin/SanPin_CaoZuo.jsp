@@ -30,23 +30,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 <body>
 <table id="dg" class="easyui-datagrid"
-		data-options="url:'fenghuang/getDictionaryDescs.do?dicType=${param.dicType}',border:false,singleSelect:false,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
+		data-options="url:'fenghuang/Sanpinliebiao.do',border:false,singleSelect:false,fit:true,fitColumns:true, onClickRow: onClickRow"
 		pagination="true" toolbar="#tb">
 		<thead>
 			<tr>
+				<th data-options="field:'ck',checkbox:true"></th>
+				<th data-options="field:'tuanNo'" width="50">团号</th>
+				<th data-options="field:'tuanName'" width="50">团名/路线</th>
+				<th data-options="field:'groupdate'" width="50">出团日期</th>
+				<th data-options="field:'Tourdate'" width="50">回团日期</th>
+				<th data-options="field:'targetpopulation'" width="50">出发城市</th>
+				<th data-options="field:'tonghang'" width="50">同行价</th>
+				<th data-options="field:'zhikejia'" width="50">直客价</th>
+				<th data-options="field:'numbermaster'" width="50">预收人数</th>
+
 				
-				<th data-options="field:'dicNo',editor:'text'" width="80">团号</th>
-				<th data-options="field:'dicName',editor:'text'" width="80">团名/线路</th>
-				<th data-options="field:'dicDesc',editor:'text'" width="80">出团日期</th>
-				<th data-options="field:'dicHelp',editor:'text'" width="80">回团日期</th>
-				<th data-options="field:'dicSortNo',editor:'text'" width="100">出发城市</th>
-				<th data-options="field:'dicSortNo',editor:'text'" width="100">同行价</th>
-				<th data-options="field:'dicSortNo',editor:'text'" width="100">直客价</th>
-				<th data-options="field:'dicSortNo',editor:'text'" width="80">预收数</th>
-				<th data-options="field:'dicSortNo',editor:'text'" width="80">报名数</th>
-				<th data-options="field:'dicSortNo',editor:'text'" width="80">客人名单</th>
-				<th data-options="field:'dicType',hidden:true"></th>
-				<th data-options="field:'dicId',hidden:true"></th>
 			</tr>
 		</thead>
 	</table>

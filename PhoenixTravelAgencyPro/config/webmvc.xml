@@ -78,6 +78,8 @@
 	<mvc:view-controller path="department.do" view-name="department/department"/>
 	<mvc:view-controller path="SanPin_new.do" view-name="SanPin/SanPin_New"/>
 	<mvc:view-controller path="role.do" view-name="role/role"/>
+	<!-- 赵杨的配置 -->
+	<mvc:view-controller path="SanPin_caozuo.do" view-name="SanPin/SanPin_CaoZuo"/>
 	 <!-- 单团中心-->
 	  <mvc:view-controller path="DantuanAdd.do" view-name="Dantuan/DantuanAddd"/>
 	  <mvc:view-controller path="DantuanXunjia.do" view-name="Dantuan/DantuanXunjia"/>

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.fenghuang.dao.BaseDao;
 import com.fenghuang.dao.ISanpinzhongxinDao;
 import com.fenghuang.entiey.Sanpinzhongxin;
+import com.fenghuang.util.Pagination;
 @Repository
 public class SanpinzhongxinDaoImpl extends BaseDao implements ISanpinzhongxinDao {
 	@Autowired
@@ -66,6 +67,13 @@ public class SanpinzhongxinDaoImpl extends BaseDao implements ISanpinzhongxinDao
 		        sanpin.getGroupdate(),
 		        sanpin.getTourdate());
 		return num>0;
+	}
+	@Override
+	public Pagination<Sanpinzhongxin> getByQueryConditionPagination(
+			int currentPage, int numPerPage) throws Exception {
+		// TODO Auto-generated method stub 
+		String sql = "select tuanNo,tuanName,groupdate,Tourdate,targetpopulation,tonghang,zhikejia,numbermaster from sanpinzhongxin";
+		return this.getPagination(currentPage, numPerPage, sql);
 	}
 
 }
