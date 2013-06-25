@@ -1,12 +1,18 @@
 package com.fenghuang.service.impl;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fenghuang.dao.IFunctionMenuDao;
+import com.fenghuang.dao.IMenuPermissionDao;
+import com.fenghuang.dao.IRoleAndMenuPermissionDao;
 import com.fenghuang.dao.IRoleDao;
+import com.fenghuang.entiey.FunctionMenu;
+import com.fenghuang.entiey.MenuPermission;
 import com.fenghuang.entiey.Role;
 import com.fenghuang.entiey.RoleAndMenuPermission;
 import com.fenghuang.entiey.RoleAndPagePermission;
@@ -18,7 +24,12 @@ public class RoleServiceImpl implements IRoleService {
 
 	@Autowired
 	private IRoleDao iRoleDao;
-	
+	@Autowired
+	private IRoleAndMenuPermissionDao iRoleAndMenuPermissionDao;
+	@Autowired
+	private IMenuPermissionDao iMenuPermissionDao;
+	@Autowired
+	private IFunctionMenuDao iFunctionMenuDao;
 	@Override
 	public boolean saveRole(Role role) throws Exception {
 		return iRoleDao.saveRole(role);
@@ -147,6 +158,25 @@ public class RoleServiceImpl implements IRoleService {
 			
 		}
 		
+	}
+
+	@Override
+	public List<FunctionMenu> getFunctionMenuByRoleId(Long roleId)
+			throws Exception {
+		List<FunctionMenu> fms = new ArrayList<FunctionMenu>();
+		List<RoleAndMenuPermission> ramps = iRoleAndMenuPermissionDao.getRoleAndMenuPermissionsByRoleId(roleId);
+		if(ramps != null){
+			for (Iterator iterator = ramps.iterator(); iterator.hasNext();) {
+				RoleAndMenuPermission roleAndMenuPermission = (RoleAndMenuPermission) iterator
+						.next();
+			   MenuPermission  mp = iMenuPermissionDao.getMenuPermissionById(roleAndMenuPermission.getMpId());
+			   FunctionMenu fm = iFunctionMenuDao.getFunctionMenuById(Long.valueOf(mp.getFunctionNo()));	
+				fms.add(fm);
+				
+			}
+		}
+
+		return fms;
 	}
 
 }

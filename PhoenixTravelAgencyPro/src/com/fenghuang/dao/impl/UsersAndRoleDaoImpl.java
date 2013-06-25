@@ -3,6 +3,8 @@
  */
 package com.fenghuang.dao.impl;
 
+import java.util.List;
+
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +51,13 @@ public class UsersAndRoleDaoImpl extends BaseDao implements IUsersAndRoleDao {
 		String sql = "delete from usersandrole where id = ?";
 		int rs = this.update(sql,id);
 		return rs>0;
+	}
+
+	@Override
+	public List<UsersAndRole> getUsersAndRoles(Long userId) throws Exception {
+		String sql = " select * from usersandrole where userId = ?";
+		List<UsersAndRole>  uars = this.queryForList(sql, UsersAndRole.class);
+		return uars;
 	}
 	
 	

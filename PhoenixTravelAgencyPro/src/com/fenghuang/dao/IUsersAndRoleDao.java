@@ -3,6 +3,8 @@
  */
 package com.fenghuang.dao;
 
+import java.util.List;
+
 import com.fenghuang.entiey.UsersAndRole;
 
 /**
@@ -20,5 +22,8 @@ public interface IUsersAndRoleDao {
 	
 	public boolean saveUsersAndRole(UsersAndRole usersAndRole) throws Exception;
 	public boolean deleteUsersAndRole(Long id) throws Exception;
+	
+	public List<UsersAndRole>  getUsersAndRoles (Long userId) throws Exception;
+	
 
 }

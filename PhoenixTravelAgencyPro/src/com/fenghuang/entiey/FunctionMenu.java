@@ -178,4 +178,66 @@ public class FunctionMenu {
 		this.parentId = parentId;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result
+				+ ((imagePath == null) ? 0 : imagePath.hashCode());
+		result = prime * result + ((menuNo == null) ? 0 : menuNo.hashCode());
+		result = prime * result
+				+ ((menuPath == null) ? 0 : menuPath.hashCode());
+		result = prime * result + (int) (menuType ^ (menuType >>> 32));
+		result = prime * result
+				+ ((meunName == null) ? 0 : meunName.hashCode());
+		result = prime * result
+				+ ((parentId == null) ? 0 : parentId.hashCode());
+		result = prime * result + (int) (sortNo ^ (sortNo >>> 32));
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		FunctionMenu other = (FunctionMenu) obj;
+		if (id != other.id)
+			return false;
+		if (imagePath == null) {
+			if (other.imagePath != null)
+				return false;
+		} else if (!imagePath.equals(other.imagePath))
+			return false;
+		if (menuNo == null) {
+			if (other.menuNo != null)
+				return false;
+		} else if (!menuNo.equals(other.menuNo))
+			return false;
+		if (menuPath == null) {
+			if (other.menuPath != null)
+				return false;
+		} else if (!menuPath.equals(other.menuPath))
+			return false;
+		if (menuType != other.menuType)
+			return false;
+		if (meunName == null) {
+			if (other.meunName != null)
+				return false;
+		} else if (!meunName.equals(other.meunName))
+			return false;
+		if (parentId == null) {
+			if (other.parentId != null)
+				return false;
+		} else if (!parentId.equals(other.parentId))
+			return false;
+		if (sortNo != other.sortNo)
+			return false;
+		return true;
+	}
+
 }
