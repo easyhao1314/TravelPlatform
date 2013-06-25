@@ -75,8 +75,8 @@ public class FunctionMenuDaoImpl extends BaseDao implements IFunctionMenuDao {
 	@Override
 	public Pagination<FunctionMenu> getPaginationFunctionMenu(int currentPage,
 			int numPerPage, Long id, String menuNo, String menuName,
-			String menuPath, Long parentId,String sortNo) throws Exception {
-		StringBuffer sql = new StringBuffer("SELECT sub.id,sub.menuNo,sub.meunName,sub.menuType,sub.imagePath,sub.parentId,sub.sortNo,sub.menuPath,parent.meunName AS parentName FROM functionmenu  as sub,functionmenu as parent   where sub.parentId = parent.id  and 1=1");
+			String menuPath, Long parentId,String sortNo,String menuType) throws Exception {
+		StringBuffer sql = new StringBuffer("SELECT sub.id,sub.menuNo,sub.meunName,sub.menuType,sub.imagePath,sub.parentId,sub.sortNo,sub.menuPath,parent.meunName AS parentName,if(sub.menuType=1,'主菜单','子菜单') as menuTypeName FROM functionmenu  as sub,functionmenu as parent   where sub.parentId = parent.id  and 1=1");
 		if(id != null && id != 0){
 			sql.append(" and  sub.id ='");
 			sql.append(id);
@@ -107,6 +107,13 @@ public class FunctionMenuDaoImpl extends BaseDao implements IFunctionMenuDao {
 			sql.append("'");
 			
 		}
+		if(menuType != null && !"".equals(menuType)){
+			sql.append(" and  sub.menuType ='");
+			sql.append(menuType);
+			sql.append("'");
+			
+		}
+		
 	    Pagination<FunctionMenu>  fms = this.getPagination(currentPage, numPerPage, sql.toString());
 		return fms;
 	}

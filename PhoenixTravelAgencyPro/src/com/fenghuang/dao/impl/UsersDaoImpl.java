@@ -219,4 +219,34 @@ public class UsersDaoImpl extends BaseDao implements IUserDao {
 		return user;
 	}
 
+	@Override
+	public boolean updateUserPassword(Long id, String newPassword)
+			throws Exception {
+		String sql = "update users set password=? where id=?";
+		int rs = this.update(sql,newPassword,id);
+		return rs>0;
+	}
+
+	@Override
+	public String getUsersPasswordById(Long id) throws Exception {
+		String sql = "select password from users where id=?";
+		String password = this.queryForObject(sql, String.class);
+		return password;
+	}
+	
+	@Override
+	public boolean isExistUserLoginName(String LoginName) throws Exception {
+		String sql ="selec count(1) from users where loginName=?";
+		int rs = this.queryForInt(sql);
+		return rs>0;
+	}
+
+	@Override
+	public Users getUsersByLoginName(String loginName) throws Exception {
+		String sql = "select * from users where loginName = ?";
+		Users users = this.queryForObject(sql, Users.class,loginName);
+		
+		return null;
+	}
+
 }

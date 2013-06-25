@@ -43,11 +43,11 @@ public class FunctionMenuController {
 	@ResponseBody
 	public Map<String, Object> getFunctionMenus(HttpServletRequest request,
 			HttpServletResponse response, Integer page, Integer rows, Long id,
-			String menuNo, String meunName, String menuPath, Long parentId,String sortNo) {
+			String menuNo, String meunName, String menuPath, Long parentId,String sortNo,String menuType) {
 		try {
 			Pagination<FunctionMenu> fmspagination = iFunctionMenuService
 					.getPaginationFunctionMenu(page, rows, id, menuNo,
-							meunName, menuPath, parentId,sortNo);
+							meunName, menuPath, parentId,sortNo,menuType);
 			Map<String, Object> returnValue = new HashMap<String, Object>();
 			if (fmspagination != null) {
 				List<Map<String, Object>> fmsRows = fmspagination
@@ -72,13 +72,17 @@ public class FunctionMenuController {
 	public Map<String, Object> saveFunctionMeun(HttpServletRequest request,
 			HttpServletResponse response, Integer page, Integer rows,
 			String menuNo, String meunName, String menuPath, Long parentId,
-			Long sortNo,String id) {
+			Long sortNo,String id,String menuType) {
 		FunctionMenu fm = new FunctionMenu();
 		fm.setMenuNo(menuNo);
 		fm.setMeunName(meunName);
 		fm.setMenuPath(menuPath);
 		fm.setSortNo(sortNo);
 		fm.setParentId(parentId);
+		if(menuType!=null && !"".equals(menuType))
+		{
+			fm.setMenuType(Long.valueOf(menuType));
+		}
 		boolean isSuccess = false;
 		Map<String, Object> result = new HashMap<String, Object>();
 		if(id != null&& !"".equals(id))

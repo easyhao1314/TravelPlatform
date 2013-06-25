@@ -64,8 +64,8 @@ public class FunctionMenuServiceImpl implements IFunctionMenuService {
 	@Override
 	public Pagination<FunctionMenu> getPaginationFunctionMenu(int currentPage,
 			int numPerPage, Long id, String menuNo, String menuName,
-			String menuPath, Long parentId,String sortNo) throws Exception {
-		return iFunctionMenuDao.getPaginationFunctionMenu(currentPage, numPerPage, id, menuNo, menuName, menuPath, parentId,sortNo);
+			String menuPath, Long parentId,String sortNo,String menuType) throws Exception {
+		return iFunctionMenuDao.getPaginationFunctionMenu(currentPage, numPerPage, id, menuNo, menuName, menuPath, parentId,sortNo,menuType);
 	}
 
 	/* 

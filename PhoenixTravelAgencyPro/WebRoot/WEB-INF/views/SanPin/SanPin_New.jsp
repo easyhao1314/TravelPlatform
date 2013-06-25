@@ -33,7 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
    <div style="background:#fafafa;padding:10px;width:10	00px;height:300px;">
-  <form id="ff" method="post">
+  <form id="addform" method="post">
   <div >
   <h4><p>基础信息</p></h4> 
   <table style="" >
@@ -174,10 +174,44 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <br>      
    <textarea name="message" style="height:60px; width: 500px;"></textarea>
    <br>
-  <a  class="easyui-linkbutton" >保存</a><a  class="easyui-linkbutton" >重置</a>
+  <a href="javascript:sanpinSave();" class="easyui-linkbutton" >保存</a><a  class="easyui-linkbutton" >重置</a>
         </div>
        
     </form>
 </div>
+<script type="text/javascript">
+			function sanpinSave() {
+			$('#addform').form('submit', {
+				url : 'fenghuang/addsanpin.do',
+				onSubmit : function() {
+					return $(this).form('validate');
+				},
+				success : function(result) {
+					var result = eval('(' + result + ')');
+					if (result.success) {
+			
+						$.messager.alert("保存成功", "保存成功！", "info");
+					   // $('#addDt').dialog('close');
+					   var tab = $('#tt').tabs('getSelected');
+					   
+					if (tab){  
+		                   var index = $('#tt').tabs('getTabIndex', tab);  
+		                   $('#tt').tabs('close', index);  
+		                } 
+						$('#tt').tabs('add', {
+							title : "询价列表",
+							href : "DantuanXunjia.do",
+							closable : true
+						});
+					   
+					} else {
+						$.messager.alert("保存失败", "保存失败!", "error");
+					
+					}
+				}
+			});
+		}
+		
+	</script>
   </body>
 </html>

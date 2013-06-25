@@ -79,6 +79,7 @@
 				<tr>
 					<th data-options="field:'id'" width="80">菜单编码</th>
 					<th data-options="field:'meunName'" width="80">菜单名称</th>
+					<th data-options="field:'menuTypeName'" width="80">菜单类型</th>
 					<th data-options="field:'menuPath'" width="80">应用程序名称</th>
 					<th data-options="field:'parentName'" width="80">菜单父级编号</th>
 					<th data-options="field:'sortNo'" width="80">菜单排序号</th>
@@ -133,8 +134,15 @@
 					<td><div><input name="sortNo" class="easyui-validatebox">
 						</div></td>
 					<td>
+					    <div class="fitem">
+							<label>菜单类型:</label></div>
 					</td>
-					<td></td>
+					<td>
+					     <select class="easyui-combobox" name="menuType">
+					        <option value="1">主菜单</option>
+					        <option value="2">子菜单</option>
+					     </select>
+					</td>
 				</tr>
 				<tr>
 					<td colspan="4s" align="center"><a
