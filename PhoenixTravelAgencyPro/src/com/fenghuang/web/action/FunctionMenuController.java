@@ -79,6 +79,7 @@ public class FunctionMenuController {
 		fm.setMenuPath(menuPath);
 		fm.setSortNo(sortNo);
 		fm.setParentId(parentId);
+		//kan
 		if(menuType!=null && !"".equals(menuType))
 		{
 			fm.setMenuType(Long.valueOf(menuType));

@@ -18,7 +18,7 @@ public class SanpinzhongxinDaoImpl extends BaseDao implements ISanpinzhongxinDao
 	@Override
 	public boolean AddSanpinzhongxin(Sanpinzhongxin sanpin) throws Exception {
 		// TODO Auto-generated method stub
-		String sql = "insert into Sanpinzhongxin value(tuanNo,tuanName," +
+		String sql = "insert into sanpinzhongxin (tuanNo,tuanName," +
 				"Areatype,targetpopulation," +
 				"Departurecity,TerminalCity," +
 				"Producttypes,productbrand," +
@@ -29,18 +29,42 @@ public class SanpinzhongxinDaoImpl extends BaseDao implements ISanpinzhongxinDao
 				"teamexplains," +"Servicesinclude," +
 				"servicenoinclude,notes," +
 				"Reviewstatus,Shenpijia," +
-				"dakehujia,zhikejia,tonghang,ertongzhanchuang,ertongbuzhanchuang,zibeiqianjia)";
-		int num = this.update(sql,sanpin.getTuanNo(),sanpin.getTuanName(),sanpin.getAreatype(),sanpin.getTargetpopulation(),sanpin.getDeparturecity(),sanpin.getTerminalCity(),sanpin.getProducttypes(),sanpin.getProductbrand(),sanpin.getHotel(),sanpin.getNumbercountry(),
-				        sanpin.getNumbermaster(),sanpin.getAirways(),
-				        sanpin.getGroupflight(),sanpin.getTourflight(),
-				        sanpin.getPredict(),sanpin.getReport(),
-				        sanpin.getTeamexplains(),sanpin.getServicenoinclude(),
-				        sanpin.getServicesinclude(),sanpin.getNotes(),
-				        sanpin.getReviewstatus(),sanpin.getShenpijia(),
-				        sanpin.getDakehujia(),sanpin.getZhikejia(),sanpin.getTonghang(),
-				        sanpin.getErtongzhanchuang(),
-				        sanpin.getErtongbuzhanchuang(),sanpin.getZibeiqianjia());
-				
+				"dakehujia,zhikejia,tonghang,ertongzhanchuang,ertongbuzhanchuang,zibeiqianjia,numberday,zao,zhong,wan,groupdate,Tourdate) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		int num = this.update(sql,
+				sanpin.getTuanNo(),
+				sanpin.getTuanName(),
+				sanpin.getAreatype(),
+				sanpin.getTargetpopulation(),
+				sanpin.getDeparturecity(),
+				sanpin.getTerminalCity(),
+				sanpin.getProducttypes(),
+				sanpin.getProductbrand(),
+				sanpin.getHotel(),
+				sanpin.getNumbercountry(),
+		        sanpin.getNumbermaster(),
+		        sanpin.getAirways(),
+		        sanpin.getGroupflight(),
+		        sanpin.getTourflight(),
+		        sanpin.getPredict(),
+		        sanpin.getReport(),
+		        sanpin.getTeamexplains(),
+		        sanpin.getServicenoinclude(),
+		        sanpin.getServicesinclude(),
+		        sanpin.getNotes(),
+		        sanpin.getReviewstatus(),
+		        sanpin.getShenpijia(),
+		        sanpin.getDakehujia(),
+		        sanpin.getZhikejia(),
+		        sanpin.getTonghang(),
+		        sanpin.getErtongzhanchuang(),
+		        sanpin.getErtongbuzhanchuang(),
+		        sanpin.getZibeiqianjia(),
+		        sanpin.getNumberday(),
+		        sanpin.getZao(),
+		        sanpin.getZhong(),
+		        sanpin.getWan(),
+		        sanpin.getGroupdate(),
+		        sanpin.getTourdate());
 		return num>0;
 	}
 

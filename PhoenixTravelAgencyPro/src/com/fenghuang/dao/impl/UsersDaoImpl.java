@@ -51,7 +51,8 @@ public class UsersDaoImpl extends BaseDao implements IUserDao {
 	@Override
 	public boolean saveUsers(Users users) throws Exception {
 		String sql = "insert into users (userNumber,userName,loginName,enName,sex,telephone,birthday,telephoneExt,email,mobilePhone,msn,fax,msn2,skype,msn3,qq,companyId,departmentId,jobDescription,sortNumber,address,zip,remark,imagePath,password) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-		int rs = this.update(sql, users.getUserNumber(), users.getUserName(),
+		int rs = this.update(sql, users.getUserNumber(), 
+				users.getUserName(),
 				users.getLoginName(), users.getEnName(), users.getSex(),
 				users.getTelephone(), users.getBirthday(),
 				users.getTelephoneExt(), users.getEmail(),

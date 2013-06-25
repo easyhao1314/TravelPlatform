@@ -1,17 +1,280 @@
-package com.fenghuang.entiey;
 /***********************************************************************
  * Module:  Sanpinzhongxin.java
  * Author:  Administrator
  * Purpose: Defines the Class Sanpinzhongxin
  ***********************************************************************/
-
+package com.fenghuang.entiey;
 import java.util.*;
 
 /** 散拼中心
  * 
  * @pdOid 3b9ec0f7-bd72-4d52-a746-e11a0b8cfa75 */
 public class Sanpinzhongxin {
-   /** 团号
+   public java.lang.String getTuanName() {
+		return tuanName;
+	}
+
+	public void setTuanName(java.lang.String tuanName) {
+		this.tuanName = tuanName;
+	}
+
+	public long getAreatype() {
+		return areatype;
+	}
+
+	public void setAreatype(long areatype) {
+		this.areatype = areatype;
+	}
+
+	public long getTargetpopulation() {
+		return targetpopulation;
+	}
+
+	public void setTargetpopulation(long targetpopulation) {
+		this.targetpopulation = targetpopulation;
+	}
+
+	public long getDeparturecity() {
+		return departurecity;
+	}
+
+	public void setDeparturecity(long departurecity) {
+		this.departurecity = departurecity;
+	}
+
+	public long getTerminalCity() {
+		return terminalCity;
+	}
+
+	public void setTerminalCity(long terminalCity) {
+		this.terminalCity = terminalCity;
+	}
+
+	public long getProducttypes() {
+		return producttypes;
+	}
+
+	public void setProducttypes(long producttypes) {
+		this.producttypes = producttypes;
+	}
+
+	public long getProductbrand() {
+		return productbrand;
+	}
+
+	public void setProductbrand(long productbrand) {
+		this.productbrand = productbrand;
+	}
+
+	public long getHotel() {
+		return hotel;
+	}
+
+	public void setHotel(long hotel) {
+		this.hotel = hotel;
+	}
+
+	public int getNumbercountry() {
+		return numbercountry;
+	}
+
+	public void setNumbercountry(int numbercountry) {
+		this.numbercountry = numbercountry;
+	}
+
+	public int getNumbermaster() {
+		return numbermaster;
+	}
+
+	public void setNumbermaster(int numbermaster) {
+		this.numbermaster = numbermaster;
+	}
+
+	public java.lang.String getAirways() {
+		return airways;
+	}
+
+	public void setAirways(java.lang.String airways) {
+		this.airways = airways;
+	}
+
+	public java.lang.String getGroupflight() {
+		return groupflight;
+	}
+
+	public void setGroupflight(java.lang.String groupflight) {
+		this.groupflight = groupflight;
+	}
+
+	public java.lang.String getTourflight() {
+		return tourflight;
+	}
+
+	public void setTourflight(java.lang.String tourflight) {
+		this.tourflight = tourflight;
+	}
+
+	public int getPredict() {
+		return predict;
+	}
+
+	public void setPredict(int predict) {
+		this.predict = predict;
+	}
+
+	public int getReport() {
+		return report;
+	}
+
+	public void setReport(int report) {
+		this.report = report;
+	}
+
+	public java.lang.String getTeamexplains() {
+		return teamexplains;
+	}
+
+	public void setTeamexplains(java.lang.String teamexplains) {
+		this.teamexplains = teamexplains;
+	}
+
+	public java.lang.String getServicesinclude() {
+		return servicesinclude;
+	}
+
+	public void setServicesinclude(java.lang.String servicesinclude) {
+		this.servicesinclude = servicesinclude;
+	}
+
+	public java.lang.String getServicenoinclude() {
+		return servicenoinclude;
+	}
+
+	public void setServicenoinclude(java.lang.String servicenoinclude) {
+		this.servicenoinclude = servicenoinclude;
+	}
+
+	public java.lang.String getNotes() {
+		return notes;
+	}
+
+	public void setNotes(java.lang.String notes) {
+		this.notes = notes;
+	}
+
+	public int getReviewstatus() {
+		return reviewstatus;
+	}
+
+	public void setReviewstatus(int reviewstatus) {
+		this.reviewstatus = reviewstatus;
+	}
+
+	public float getShenpijia() {
+		return shenpijia;
+	}
+
+	public void setShenpijia(float shenpijia) {
+		this.shenpijia = shenpijia;
+	}
+
+	public float getDakehujia() {
+		return dakehujia;
+	}
+
+	public void setDakehujia(float dakehujia) {
+		this.dakehujia = dakehujia;
+	}
+
+	public float getZhikejia() {
+		return zhikejia;
+	}
+
+	public void setZhikejia(float zhikejia) {
+		this.zhikejia = zhikejia;
+	}
+
+	public float getTonghang() {
+		return tonghang;
+	}
+
+	public void setTonghang(float tonghang) {
+		this.tonghang = tonghang;
+	}
+
+	public float getErtongzhanchuang() {
+		return ertongzhanchuang;
+	}
+
+	public void setErtongzhanchuang(float ertongzhanchuang) {
+		this.ertongzhanchuang = ertongzhanchuang;
+	}
+
+	public float getErtongbuzhanchuang() {
+		return ertongbuzhanchuang;
+	}
+
+	public void setErtongbuzhanchuang(float ertongbuzhanchuang) {
+		this.ertongbuzhanchuang = ertongbuzhanchuang;
+	}
+
+	public float getZibeiqianjia() {
+		return zibeiqianjia;
+	}
+
+	public void setZibeiqianjia(float zibeiqianjia) {
+		this.zibeiqianjia = zibeiqianjia;
+	}
+
+	public int getNumberday() {
+		return numberday;
+	}
+
+	public void setNumberday(int numberday) {
+		this.numberday = numberday;
+	}
+
+	public java.util.Date getGroupdate() {
+		return groupdate;
+	}
+
+	public void setGroupdate(java.util.Date groupdate) {
+		this.groupdate = groupdate;
+	}
+
+	public java.util.Date getTourdate() {
+		return tourdate;
+	}
+
+	public void setTourdate(java.util.Date tourdate) {
+		this.tourdate = tourdate;
+	}
+
+	public long getZao() {
+		return zao;
+	}
+
+	public void setZao(long zao) {
+		this.zao = zao;
+	}
+
+	public long getZhong() {
+		return zhong;
+	}
+
+	public void setZhong(long zhong) {
+		this.zhong = zhong;
+	}
+
+	public long getWan() {
+		return wan;
+	}
+
+	public void setWan(long wan) {
+		this.wan = wan;
+	}
+
+/** 团号
     * 
     * @pdOid 095b2b8b-67d6-4bf9-b400-6359d5b9f4a5 */
    public java.lang.String tuanNo;
@@ -27,223 +290,7 @@ public class Sanpinzhongxin {
     * 
     * @pdOid c3b6da34-d9c7-4e41-b9ed-0fdea6115fc8 */
    public long targetpopulation;
-   public java.lang.String getTuanName() {
-	return tuanName;
-}
-
-public void setTuanName(java.lang.String tuanName) {
-	this.tuanName = tuanName;
-}
-
-public long getAreatype() {
-	return areatype;
-}
-
-public void setAreatype(long areatype) {
-	this.areatype = areatype;
-}
-
-public long getTargetpopulation() {
-	return targetpopulation;
-}
-
-public void setTargetpopulation(long targetpopulation) {
-	this.targetpopulation = targetpopulation;
-}
-
-public long getDeparturecity() {
-	return departurecity;
-}
-
-public void setDeparturecity(long departurecity) {
-	this.departurecity = departurecity;
-}
-
-public long getTerminalCity() {
-	return terminalCity;
-}
-
-public void setTerminalCity(long terminalCity) {
-	this.terminalCity = terminalCity;
-}
-
-public long getProducttypes() {
-	return producttypes;
-}
-
-public void setProducttypes(long producttypes) {
-	this.producttypes = producttypes;
-}
-
-public long getProductbrand() {
-	return productbrand;
-}
-
-public void setProductbrand(long productbrand) {
-	this.productbrand = productbrand;
-}
-
-public long getHotel() {
-	return hotel;
-}
-
-public void setHotel(long hotel) {
-	this.hotel = hotel;
-}
-
-public int getNumbercountry() {
-	return numbercountry;
-}
-
-public void setNumbercountry(int numbercountry) {
-	this.numbercountry = numbercountry;
-}
-
-public int getNumbermaster() {
-	return numbermaster;
-}
-
-public void setNumbermaster(int numbermaster) {
-	this.numbermaster = numbermaster;
-}
-
-public java.lang.String getAirways() {
-	return airways;
-}
-
-public void setAirways(java.lang.String airways) {
-	this.airways = airways;
-}
-
-public java.lang.String getGroupflight() {
-	return groupflight;
-}
-
-public void setGroupflight(java.lang.String groupflight) {
-	this.groupflight = groupflight;
-}
-
-public java.lang.String getTourflight() {
-	return tourflight;
-}
-
-public void setTourflight(java.lang.String tourflight) {
-	this.tourflight = tourflight;
-}
-
-public int getPredict() {
-	return predict;
-}
-
-public void setPredict(int predict) {
-	this.predict = predict;
-}
-
-public int getReport() {
-	return report;
-}
-
-public void setReport(int report) {
-	this.report = report;
-}
-
-public java.lang.String getTeamexplains() {
-	return teamexplains;
-}
-
-public void setTeamexplains(java.lang.String teamexplains) {
-	this.teamexplains = teamexplains;
-}
-
-public java.lang.String getServicesinclude() {
-	return servicesinclude;
-}
-
-public void setServicesinclude(java.lang.String servicesinclude) {
-	this.servicesinclude = servicesinclude;
-}
-
-public java.lang.String getServicenoinclude() {
-	return servicenoinclude;
-}
-
-public void setServicenoinclude(java.lang.String servicenoinclude) {
-	this.servicenoinclude = servicenoinclude;
-}
-
-public java.lang.String getNotes() {
-	return notes;
-}
-
-public void setNotes(java.lang.String notes) {
-	this.notes = notes;
-}
-
-public int getReviewstatus() {
-	return reviewstatus;
-}
-
-public void setReviewstatus(int reviewstatus) {
-	this.reviewstatus = reviewstatus;
-}
-
-public float getShenpijia() {
-	return shenpijia;
-}
-
-public void setShenpijia(float shenpijia) {
-	this.shenpijia = shenpijia;
-}
-
-public float getDakehujia() {
-	return dakehujia;
-}
-
-public void setDakehujia(float dakehujia) {
-	this.dakehujia = dakehujia;
-}
-
-public float getZhikejia() {
-	return zhikejia;
-}
-
-public void setZhikejia(float zhikejia) {
-	this.zhikejia = zhikejia;
-}
-
-public float getTonghang() {
-	return tonghang;
-}
-
-public void setTonghang(float tonghang) {
-	this.tonghang = tonghang;
-}
-
-public float getErtongzhanchuang() {
-	return ertongzhanchuang;
-}
-
-public void setErtongzhanchuang(float ertongzhanchuang) {
-	this.ertongzhanchuang = ertongzhanchuang;
-}
-
-public float getErtongbuzhanchuang() {
-	return ertongbuzhanchuang;
-}
-
-public void setErtongbuzhanchuang(float ertongbuzhanchuang) {
-	this.ertongbuzhanchuang = ertongbuzhanchuang;
-}
-
-public float getZibeiqianjia() {
-	return zibeiqianjia;
-}
-
-public void setZibeiqianjia(float zibeiqianjia) {
-	this.zibeiqianjia = zibeiqianjia;
-}
-
-/** 出发城市
+   /** 出发城市
     * 
     * @pdOid 8047d8c7-1df5-45c9-bcf0-f543dc33e94d */
    public long departurecity;
@@ -339,6 +386,30 @@ public void setZibeiqianjia(float zibeiqianjia) {
     * 
     * @pdOid e2655aba-2e47-4c9b-92e9-8471e18674a5 */
    public float zibeiqianjia;
+   /** 全程天数
+    * 
+    * @pdOid 497bdfc9-b198-4001-930f-bc7c3b36971e */
+   public int numberday;
+   /** 出团日期
+    * 
+    * @pdOid 6132a5ae-d763-4405-a4e0-43a7d150da2c */
+   public java.util.Date groupdate;
+   /** 回团日期
+    * 
+    * @pdOid b24b4abc-32cb-45ed-b458-4ab0430df9c4 */
+   public java.util.Date tourdate;
+   /** 早餐
+    * 
+    * @pdOid dc717860-d809-43ee-8cc6-0556dea7b2c3 */
+   public long zao;
+   /** 中餐
+    * 
+    * @pdOid a9f5e59a-dce2-4f16-9839-a61ddbd33f30 */
+   public long zhong;
+   /** 晚餐
+    * 
+    * @pdOid cc4f9a82-39ca-4ddb-8866-49386201d5c6 */
+   public long wan;
    
    /** @pdOid 8dc544b2-6fd6-4ff1-a4c8-4fed5c672394 */
    public java.lang.String getTuanNo() {
