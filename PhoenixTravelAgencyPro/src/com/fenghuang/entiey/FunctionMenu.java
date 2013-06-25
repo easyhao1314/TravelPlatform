@@ -32,7 +32,7 @@ public class FunctionMenu {
 	 */
 	public String meunName;
 	/**
-	 * 菜单类型
+	 * 菜单类型  1：主菜单，2：子菜单
 	 * 
 	 * @pdOid 40ef5836-4608-425e-a623-3abe114e87e0
 	 */
