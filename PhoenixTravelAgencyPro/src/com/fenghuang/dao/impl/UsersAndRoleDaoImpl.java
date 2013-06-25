@@ -38,8 +38,8 @@ public class UsersAndRoleDaoImpl extends BaseDao implements IUsersAndRoleDao {
 
 	@Override
 	public boolean saveUsersAndRole(UsersAndRole usersAndRole) throws Exception {
-		String sql = "insert into usersandrole (userId,roleId) values(?,?)";
-		int rs = this.update(sql,usersAndRole.getUserId(),usersAndRole.getUserId());
+		String sql = "insert into usersandrole (userId,roleId,roleCode) values(?,?)";
+		int rs = this.update(sql,usersAndRole.getUserId(),usersAndRole.getUserId(),usersAndRole.getRoleCode());
 		return rs>0;
 	}
 

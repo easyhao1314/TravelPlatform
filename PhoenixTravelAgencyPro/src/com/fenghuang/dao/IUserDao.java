@@ -56,9 +56,5 @@ public interface IUserDao {
 	
 	public boolean isExistUserLoginName(String LoginName) throws Exception;
 	public Users getUsersByLoginName(String loginName) throws Exception;
-	
-	
-	
-	
 
 }

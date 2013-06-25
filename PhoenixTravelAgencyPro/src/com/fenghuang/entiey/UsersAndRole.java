@@ -30,6 +30,10 @@ public class UsersAndRole implements Serializable{
 	 */
 	private Long roleId;
 	/**
+	 * 权限编号，通过uuid产品，避免暴露id
+	 */
+	private String roleCode;
+	/**
 	 * @return the id
 	 */
 	public Long getId() {
@@ -64,6 +68,12 @@ public class UsersAndRole implements Serializable{
 	 */
 	public void setRoleId(Long roleId) {
 		this.roleId = roleId;
+	}
+	public String getRoleCode() {
+		return roleCode;
+	}
+	public void setRoleCode(String roleCode) {
+		this.roleCode = roleCode;
 	}
 	
 

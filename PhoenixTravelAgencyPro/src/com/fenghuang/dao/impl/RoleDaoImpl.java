@@ -1,5 +1,8 @@
 package com.fenghuang.dao.impl;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -104,6 +107,12 @@ public class RoleDaoImpl extends BaseDao implements IRoleDao {
 		String sql = "delete from roleandpagepermission where id =?";
 		int rs = this.update(sql, id);
 		return rs>0;
+	}
+
+	@Override
+	public List<Map<String, Object>> getMenusByRoleCode(String roleCode)
+			throws Exception {
+		return null;
 	}
 
 }

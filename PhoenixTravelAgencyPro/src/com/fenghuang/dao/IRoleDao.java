@@ -1,5 +1,8 @@
 package com.fenghuang.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import com.fenghuang.entiey.Role;
 import com.fenghuang.entiey.RoleAndMenuPermission;
 import com.fenghuang.entiey.RoleAndPagePermission;
@@ -36,5 +39,12 @@ public interface IRoleDao {
 			RoleAndPagePermission roleAndPagePermission) throws Exception;
 
 	public boolean deleteRoleAndPagePermission(Long id) throws Exception;
+	/**
+	 * 根据角色编码，来得到改
+	 * @param roleCode
+	 * @return
+	 * @throws Exception
+	 */
+	public List<Map<String,Object>> getMenusByRoleCode(String roleCode)throws Exception;
 
 }
