@@ -32,7 +32,7 @@ public class FunctionMenu {
 	 */
 	public String meunName;
 	/**
-	 * 菜单类型
+	 * 菜单类型  1：主菜单，2：子菜单
 	 * 
 	 * @pdOid 40ef5836-4608-425e-a623-3abe114e87e0
 	 */
@@ -55,6 +55,8 @@ public class FunctionMenu {
 	 * @pdOid d56c3e06-2c73-4be4-87f4-6027408b2dcd
 	 */
 	public String menuPath;
+
+	public Long parentId;
 
 	/**
 	 * @return the id
@@ -162,174 +164,18 @@ public class FunctionMenu {
 	}
 
 	/**
-	 * @pdRoleInfo migr=no name=FunctionMenu assc=menuRefMenu
-	 *             coll=java.util.Collection impl=java.util.HashSet mult=0..*
+	 * @return the parentId
 	 */
-	public java.util.Collection functionMenuB;
-	/**
-	 * @pdRoleInfo migr=no name=MenuPermission assc=functionMenuRefMenuPer
-	 *             coll=java.util.Collection impl=java.util.HashSet mult=0..*
-	 */
-	public java.util.Collection menuPermission;
-	/** @pdRoleInfo migr=no name=FunctionMenu assc=menuRefMenu mult=0..1 side=A */
-	public FunctionMenu functionMenuA;
-
-	/** @pdGenerated default getter */
-	public java.util.Collection getFunctionMenuB() {
-		if (functionMenuB == null)
-			functionMenuB = new java.util.HashSet();
-		return functionMenuB;
-	}
-
-	/** @pdGenerated default iterator getter */
-	public java.util.Iterator getIteratorFunctionMenuB() {
-		if (functionMenuB == null)
-			functionMenuB = new java.util.HashSet();
-		return functionMenuB.iterator();
+	public Long getParentId() {
+		return parentId;
 	}
 
 	/**
-	 * @pdGenerated default setter
-	 * @param newFunctionMenuB
+	 * @param parentId
+	 *            the parentId to set
 	 */
-	public void setFunctionMenuB(java.util.Collection newFunctionMenuB) {
-		removeAllFunctionMenuB();
-		for (java.util.Iterator iter = newFunctionMenuB.iterator(); iter
-				.hasNext();)
-			addFunctionMenuB((FunctionMenu) iter.next());
-	}
-
-	/**
-	 * @pdGenerated default add
-	 * @param newFunctionMenu
-	 */
-	public void addFunctionMenuB(FunctionMenu newFunctionMenu) {
-		if (newFunctionMenu == null)
-			return;
-		if (this.functionMenuB == null)
-			this.functionMenuB = new java.util.HashSet();
-		if (!this.functionMenuB.contains(newFunctionMenu)) {
-			this.functionMenuB.add(newFunctionMenu);
-			newFunctionMenu.setFunctionMenuA(this);
-		}
-	}
-
-	/**
-	 * @pdGenerated default remove
-	 * @param oldFunctionMenu
-	 */
-	public void removeFunctionMenuB(FunctionMenu oldFunctionMenu) {
-		if (oldFunctionMenu == null)
-			return;
-		if (this.functionMenuB != null)
-			if (this.functionMenuB.contains(oldFunctionMenu)) {
-				this.functionMenuB.remove(oldFunctionMenu);
-				oldFunctionMenu.setFunctionMenuA((FunctionMenu) null);
-			}
-	}
-
-	/** @pdGenerated default removeAll */
-	public void removeAllFunctionMenuB() {
-		if (functionMenuB != null) {
-			FunctionMenu oldFunctionMenu;
-			for (java.util.Iterator iter = getIteratorFunctionMenuB(); iter
-					.hasNext();) {
-				oldFunctionMenu = (FunctionMenu) iter.next();
-				iter.remove();
-				oldFunctionMenu.setFunctionMenuA((FunctionMenu) null);
-			}
-		}
-	}
-
-	/** @pdGenerated default getter */
-	public java.util.Collection getMenuPermission() {
-		if (menuPermission == null)
-			menuPermission = new java.util.HashSet();
-		return menuPermission;
-	}
-
-	/** @pdGenerated default iterator getter */
-	public java.util.Iterator getIteratorMenuPermission() {
-		if (menuPermission == null)
-			menuPermission = new java.util.HashSet();
-		return menuPermission.iterator();
-	}
-
-	/**
-	 * @pdGenerated default setter
-	 * @param newMenuPermission
-	 */
-	public void setMenuPermission(java.util.Collection newMenuPermission) {
-		removeAllMenuPermission();
-		for (java.util.Iterator iter = newMenuPermission.iterator(); iter
-				.hasNext();)
-			addMenuPermission((MenuPermission) iter.next());
-	}
-
-	/**
-	 * @pdGenerated default add
-	 * @param newMenuPermission
-	 */
-	public void addMenuPermission(MenuPermission newMenuPermission) {
-		if (newMenuPermission == null)
-			return;
-		if (this.menuPermission == null)
-			this.menuPermission = new java.util.HashSet();
-		if (!this.menuPermission.contains(newMenuPermission)) {
-			this.menuPermission.add(newMenuPermission);
-			newMenuPermission.setFunctionMenu(this);
-		}
-	}
-
-	/**
-	 * @pdGenerated default remove
-	 * @param oldMenuPermission
-	 */
-	public void removeMenuPermission(MenuPermission oldMenuPermission) {
-		if (oldMenuPermission == null)
-			return;
-		if (this.menuPermission != null)
-			if (this.menuPermission.contains(oldMenuPermission)) {
-				this.menuPermission.remove(oldMenuPermission);
-				oldMenuPermission.setFunctionMenu((FunctionMenu) null);
-			}
-	}
-
-	/** @pdGenerated default removeAll */
-	public void removeAllMenuPermission() {
-		if (menuPermission != null) {
-			MenuPermission oldMenuPermission;
-			for (java.util.Iterator iter = getIteratorMenuPermission(); iter
-					.hasNext();) {
-				oldMenuPermission = (MenuPermission) iter.next();
-				iter.remove();
-				oldMenuPermission.setFunctionMenu((FunctionMenu) null);
-			}
-		}
-	}
-
-	/** @pdGenerated default parent getter */
-	public FunctionMenu getFunctionMenuA() {
-		return functionMenuA;
-	}
-
-	/**
-	 * @pdGenerated default parent setter
-	 * @param newFunctionMenu
-	 */
-	public void setFunctionMenuA(FunctionMenu newFunctionMenu) {
-		if (this.functionMenuA == null
-				|| !this.functionMenuA.equals(newFunctionMenu)) {
-			if (this.functionMenuA != null) {
-				FunctionMenu oldFunctionMenu = this.functionMenuA;
-				this.functionMenuA = null;
-				oldFunctionMenu.removeFunctionMenuB(this);
-			}
-			if (newFunctionMenu != null) {
-				this.functionMenuA = newFunctionMenu;
-				this.functionMenuA.addFunctionMenuB(this);
-			}
-		}
+	public void setParentId(Long parentId) {
+		this.parentId = parentId;
 	}
 
 }

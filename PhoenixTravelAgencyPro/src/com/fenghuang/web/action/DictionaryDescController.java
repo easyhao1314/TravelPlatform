@@ -84,6 +84,7 @@ public class DictionaryDescController {
 	@ResponseBody
 	public Map<String,Object> updateDic(HttpServletRequest request,
 			HttpServletResponse response,String updateRows){
+	
 		Map<String,Object>  result = new HashMap<String, Object>();
 		JSONArray jsonArray =  JSONArray.fromObject(updateRows);
 		List<DictionaryDesc>  dics = JSONArray.toList(jsonArray, DictionaryDesc.class);	
@@ -144,6 +145,21 @@ public class DictionaryDescController {
 		
 		return result;
 	}
+	@RequestMapping("fenghuang/getDicByTypeComboboxs.do")
+	@ResponseBody
+	public List<Map<String, Object>> getComboxs(HttpServletRequest request,
+			HttpServletResponse response,String dicType){
+		
+		try {
+			return iDictionaryDescService.getDictionaryComboboxs(dicType);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		return null;
+	}
+	
 	
 	
 	
