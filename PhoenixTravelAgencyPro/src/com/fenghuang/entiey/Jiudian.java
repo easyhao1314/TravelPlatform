@@ -22,10 +22,10 @@ public class Jiudian {
     * 
     * @pdOid 194eb6e8-5a41-4cdb-8660-91e3c088f001 */
    public java.lang.String name;
-   /** 酒店类别
+   /** 酒店房间数
     * 
     * @pdOid 6076c883-3854-4c4f-8b54-6023e79883bf */
-   public java.lang.String jdtype;
+   public long fangjian;
    /** 合作级别
     * 
     * @pdOid 691d3945-f06d-409b-9011-acd1acb8cfd2 */
@@ -42,7 +42,7 @@ public class Jiudian {
    /** 电话
     * 
     * @pdOid 69cb080e-4792-4d47-94cc-19bee4f9b050 */
-   public int dianhua;
+   public java.lang.String dianhua;
    /** 传真
     * 
     * @pdOid 0edfc2b3-6cc2-496d-b908-644b4dc929e7 */

@@ -37,7 +37,7 @@ public class dantuanServiceImpl implements IdantuanService{
 	
 	@Override
 		public Pagination<DantuanXinXi>  getDantuanLike(int currentPage,
-				int numPerPage,Date ctsj,String lyqy,String tdzt,Long tdjb)throws Exception{
+				int numPerPage,String ctsj,String lyqy,String tdzt,Long tdjb)throws Exception{
 		//模糊查询
 			return idt.getDantuanLike(currentPage, numPerPage, ctsj, lyqy, tdzt, tdjb);
 		}

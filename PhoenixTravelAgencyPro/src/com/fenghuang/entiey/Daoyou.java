@@ -14,6 +14,10 @@ public class Daoyou {
     * 
     * @pdOid 01a942cb-5f79-4496-956b-59e6a7a6e936 */
    public long id;
+   /** 国籍（国家）
+    * 
+    * @pdOid 1dd2e75f-4bdc-4658-8ff1-140ca77da7e4 */
+   public long guojiaId;
    /** 姓名
     * 
     * @pdOid 1dd2e75f-4bdc-4658-8ff1-140ca77da7e4 */

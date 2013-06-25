@@ -47,8 +47,8 @@ public class dantuanImpl extends BaseDao implements Idantuan{
 	}
 	//模糊查询
 	public Pagination<DantuanXinXi>  getDantuanLike(int currentPage,
-	int numPerPage,Date ctsj,String lyqy,String tdzt,Long tdjb)throws Exception{
-		StringBuffer sql = new StringBuffer("SELECT * from dantanxinxi  where  and 1=1");
+	int numPerPage,String ctsj,String lyqy,String tdzt,Long tdjb)throws Exception{
+		StringBuffer sql = new StringBuffer("SELECT * from dantuanxinxi  where 1=1 ");
 		if(ctsj != null && !"".equals(ctsj)){
 			sql.append(" and  ctsj ='");
 			sql.append(ctsj);
@@ -56,19 +56,19 @@ public class dantuanImpl extends BaseDao implements Idantuan{
 			
 		}
 		if(lyqy != null && !"".equals(lyqy)){
-			sql.append(" and  lyqy like '");
+			sql.append(" and  lyqy like '%");
 			sql.append(lyqy);
 			sql.append("%'");
 			
 		}
 		if(tdzt != null && !"".equals(tdzt)){
-			sql.append(" and  tdzt like '");
+			sql.append(" and  tdzt like '%");
 			sql.append(tdzt);
 			sql.append("%'");
 			
 		}
 		if(tdjb != null && tdjb!=0){
-			sql.append(" and  tdjb like'");
+			sql.append(" and  tdjb like '%");
 			sql.append(tdjb);
 			sql.append("%'");
 			

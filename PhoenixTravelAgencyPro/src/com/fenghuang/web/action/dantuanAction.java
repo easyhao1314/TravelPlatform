@@ -1,34 +1,25 @@
 package com.fenghuang.web.action;
 
-import java.io.PrintWriter;
-
 import java.sql.Date;
 import java.sql.Timestamp;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import net.sf.json.JsonConfig;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.fenghuang.entiey.CitySettingDictionary;
-import com.fenghuang.entiey.CountrySettingDictionary;
 import com.fenghuang.entiey.DantuanXinXi;
-import com.fenghuang.entiey.DictionaryDesc;
-import com.fenghuang.entiey.TestUser;
 import com.fenghuang.service.IdantuanService;
 import com.fenghuang.util.DateJsonValueProcessor;
 import com.fenghuang.util.Pagination;
@@ -127,10 +118,11 @@ public class dantuanAction {
 	@RequestMapping("fenghuang/DantuanLike.do")
 	@ResponseBody
 	public Map<String,Object> DantuanLike(HttpServletRequest request,
-			HttpServletResponse response, Integer page,Integer rows,
-			Date ctsj,String lyqy,String tdzt,Long tdjb){
+			HttpServletResponse response, Integer page,Integer rows ,
+			String ctsj){
+		
 		try {
-		Pagination<DantuanXinXi> pagination=(Pagination<DantuanXinXi>)ids.getDantuanLike(page, rows, ctsj, lyqy, tdzt, tdjb);
+		Pagination<DantuanXinXi> pagination = ids.getDantuanLike(page, rows, ctsj, null, null, null);
 		List<Map<String, Object>> testUsers = pagination.getResultList();
 		Map<String,Object> returnValue  = new HashMap<String, Object>();
 		for(int i = 0 ;i<testUsers.size();i++){

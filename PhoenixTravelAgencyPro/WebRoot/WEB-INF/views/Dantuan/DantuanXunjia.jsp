@@ -32,14 +32,15 @@
 <body>
 	<!-- 询价查询 -->
 		 <div class="easyui-panel" title="单团查询"
-		style="height:100px;padding:10px;width:auto;"
+		style="height:105px;padding:10px;"
 		data-options="closable:false,tools:'#searchpanel'" align="center">
+		<form id="searchPanelForm">
 		<table>
 			<tr>
 				<td><div class="fitem">
 						<label>出团日期:</label>
 				</td>
-				<td><input name="ctsj" type="text" class="easyui-datebox" required="required">
+				<td><input id="ctsj" name="ctsj" type="text" editable="false" class="easyui-datebox" required="required">
 					</div>
 				</td>
 				<!--<td><div class="fitem">
@@ -71,19 +72,31 @@
  data-options="url:'fenghuang/CountryState.do',valueField:'id',textField:'csName'">
 					</div>
 				</td>
-				<td></td>
-				<td></td>
+				
+				
+				
+				
+				<td>
+				
+					<a href="javascript:dantuanSelectLike();" 
+								class="easyui-linkbutton" iconCls="icon-ok">查询</a><a href="javascript:void(0)" class="easyui-linkbutton"
+							iconCls="icon-undo" onclick="$('#searchPanelForm').form('clear')">重置</a>
+					<!-- <div id="searchpanel">
+						<a href="javascript:dantuanSelectLike();" 
+								class="easyui-linkbutton" iconCls="icon-ok">保存</a><a href="javascript:void(0)" class="easyui-linkbutton"
+							iconCls="icon-undo" onclick="$('#searchPanelForm').form('clear')">重置</a>
+					</div> -->
+				</td>
 			</tr>
 		</table>
+		</form>
+		
 	</div>
-	<div id="searchpanel">
-		<a href="javascript:dantuanSelectLike();" 
-				class="easyui-linkbutton" iconCls="icon-ok">保存</a><a href="javascript:void(0)"
-			iconCls="icon-undo" onclick="javascript:alert('重置')"></a>
-	</div>
+	
 	<!-- 如果在正式开发环境下 url可以为后台的请求，地址 -->
+	<div style="height:470px;width:100%">
 	<table id="dg" class="easyui-datagrid"
-		data-options="url:'fenghuang/DantuanXunjia.do?dicType=${param.dicType}',border:false,singleSelect:false,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
+		data-options="url:'fenghuang/DantuanXunjia.do',border:false,singleSelect:false,fit:true,fitColumns:true, onClickRow: onClickRow"
 		pagination="true" toolbar="#tb">
 		<thead>  
                     <tr>  
@@ -109,8 +122,7 @@
                     </tr>  
                 </thead>  
 	</table>
-	 
-	
+	</div> 
 	<div id="tb">
 	 <a href="javascript:addDt();" class="easyui-linkbutton"
 			iconCls="icon-add" plain="true">新增(面板模式)</a>&nbsp;&nbsp;|
@@ -313,24 +325,24 @@
 				}
 			}
 		}
-		
+		 	
 		function dantuanSelectLike(){
-		   if (true) {
-				
+		console.info($('#dg').datagrid('options'));
+		var opts = $('#dg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
+			var param = {
+				"ctsj" :   $("#ctsj").datebox("getValue") ,//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
+				"page" :  opts.pageNumber ,
+				"rows" :  opts.pageSize
+			};
+			console.info(param);
 				$.ajax({
-					url : "fenghuang/DantuanLike.do",
-					data : param,
-					dataType : "json",
-					success : function(data) {
-						
-							$("#dg").datagrid('reload');
-						
-					},
-					error : function() {
-						$.messager.alert("删除失败", "服务器请求失败!", "error");
+					url : 'fenghuang/DantuanLike.do' ,
+					data : param ,
+					dataType : 'json' ,
+					success : function(data){
+						$('#dg').datagrid('loadData',data);
 					}
 				});
-			}
 		}
 		
       //新增

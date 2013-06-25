@@ -19,7 +19,7 @@ public interface Idantuan {
 	public Pagination<DantuanXinXi> getByQueryConditionPagination(int currentPage,int numPerPage) throws Exception;
 	//模糊查询
 	public Pagination<DantuanXinXi>  getDantuanLike(int currentPage,
-			int numPerPage,Date ctsj,String lyqy,String tdzt,Long tdjb)throws Exception;
+			int numPerPage,String ctsj,String lyqy,String tdzt,Long tdjb)throws Exception;
 	//待审批报价团查询
 	public Pagination<DantuanXinXi> getDantuanDaishen(int currentPage,int numPerPage) throws Exception;
 	//是否成团
