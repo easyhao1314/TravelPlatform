@@ -64,23 +64,78 @@
 			<thead>
 				<tr>
 					<th data-options="field:'ck',checkbox:true"></th>
-					<th data-options="field:''" width="80">国籍</th>
-					<th data-options="field:''" width="80">姓名</th>
-					<th data-options="field:''" width="80">证件号码</th>
-					<th data-options="field:''" width="80">常驻地</th>
-					<th data-options="field:''" width="80">移动电话</th>
-					<th data-options="field:''" width="80">传真</th>
-					<th data-options="field:''" width="80">手机</th>
-					<th data-options="field:''" width="80">EMAIL</th>
-					<th data-options="field:''" width="80">备注</th>
+					<th data-options="field:'guojiaId'" width="80">国籍</th>
+					<th data-options="field:'name'" width="80">姓名</th>
+					<th data-options="field:'zjhm'" width="80">证件号码</th>
+					<th data-options="field:'chengshiId'" width="80">常驻地</th>
+					<th data-options="field:'dinhua'" width="80">移动电话</th>
+					<th data-options="field:'fax'" width="80">传真</th>
+					<th data-options="field:'shouji'" width="80">手机</th>
+					<th data-options="field:'email'" width="80">EMAIL</th>
+					<th data-options="field:'bz'" width="80">备注</th>
 					<th data-options="field:'8',formatter:onOperateStyle" width="80">操作</th>
 				</tr>
 			</thead>
 		</table>
 		<div id="currencyDatagridtoolbar">
-		     <a href="javascript:currencyAdd();" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>  
+		     <a href="javascript:addDaoyou();" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>  
 		</div>
 	</div>
+<div id="addDaoyou" class="easyui-dialog" title="导游新增"
+		data-options="modal:true,closed:true,iconCls:'icon-save'"
+		style="width:600px;height:500px;padding:10px;">
+		<form id="addForm" method="post">
+			<table align="center">
+				<tr>
+<td><div class="fitem"><label>编号:</label></td><td><input name="id" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>国籍：</label></td><td><input name="guojiaId" class="easyui-validatebox" required="true"></div></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>姓名：</label></td><td><input name="name" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>姓名拼音：</label></td><td><input name="name2" class="easyui-validatebox" required="true"></div></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>英文名称：</label></td><td><input name="name3"  class="easyui-combobox"
+ data-options="url:'fenghuang/CountrySetting.do',valueField:'csdNo',textField:'csdName'"/></div></td>
+<td><div class="fitem"><label>证件类型：</label></td><td><input name="zjlx"  class="easyui-combobox"
+ data-options="url:'fenghuang/CountrySetting.do',valueField:'csdNo',textField:'csdName'"/></div></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>证件号码：</label></td><td><input name="zjhm" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>常驻地：</label></td><td><input  name="chengshiId" class="easyui-validatebox" required="true"></div></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>电话：</label></td><td><input name="dinhua" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>联系方式1：</label></td><td><input name="lxfs1" class="easyui-validatebox" required="true"></div></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>手机：</label></td><td><input name="shouji" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>联系2：</label></td><td><input name="lxfs2" class="easyui-validatebox" required="true"></div></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>传真：</label></td><td><input name="fax" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>联系3：</label></td><td><input name="lxfs3" class="easyui-validatebox" required="true"></div></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>EMAIL：</label></td><td><input name="email" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>合作级别：</label></td><td><input name="hzjbId" class="easyui-validatebox" required="true"></div></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>导游费用：</label></td><td><input name="dyfy" class="easyui-validatebox" required="true"></div></td>
+<td></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>备注：</label></td><td><input name="bz" class="easyui-validatebox" required="true"></div></td>
+<td></td>
+</tr>
+<tr>
+<tr><td colspan="4s" align="center"><a href="javascript:SaveDaoyou();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> <input  type="reset" value="重置"></td>
+</tr>
+			</table>
+			<input id="dicType" name="dicType" type="hidden">
+		</form>
+	</div>
+
 
 
 	<script type="text/javascript">
@@ -108,10 +163,36 @@
 	function onOperateDelete(id){
 	  alert("删除操作");
 	}
-	//这个方法用来点击新增按钮
-	function currencyAdd(){
-	   alert("新增");
-	}
+	  //新增
+		function addDaoyou() {
+			$("#addDaoyou").dialog("open");
+			$("#addFrome").form("clear");
+		}
+         
+		function SaveDaoyou() {
+			$('#addForm').form('submit', {
+				url : 'fenghuang/.do',
+				onSubmit : function() {
+					return $(this).form('validate');
+				},
+				success : function(result) {
+					var result = eval('(' + result + ')');
+					if (result.success) {
+					$('#addDaoyou').dialog('close');
+						$.messager.alert("保存成功", "保存成功！", "info");
+						 $('#dg').datagrid('reload'); 
+					} else {
+						$.messager.alert("保存失败", "保存失败!", "error");
+						$('#dg').datagrid('reload');
+					}
+				}
+			});
+		}
+			//关闭
+		function closeEditDic() {
+			$('#addDaoyou').dialog('close');
+		} 
+	
 	
 	
 	</script>

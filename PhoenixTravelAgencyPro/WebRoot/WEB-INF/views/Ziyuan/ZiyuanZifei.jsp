@@ -72,20 +72,58 @@
 			<thead>
 				<tr>
 					<th data-options="field:'ck',checkbox:true"></th>
-					<th data-options="field:''" width="80">自费节目编号</th>
-					<th data-options="field:''" width="80">自费节目名称</th>
+					<th data-options="field:'id'" width="80">自费节目编号</th>
+					<th data-options="field:'name'" width="80">自费节目名称</th>
+					<th data-options="field:'feiyong'" width="80">自费节目费用</th>
+					<th data-options="field:'bizhongId'" width="80">币种</th>
+					<th data-options="field:'chengshiId'" width="80">城市</th>
 					<th data-options="field:''" width="80">自费节目描述</th>
-					<th data-options="field:''" width="80">自费节目费用</th>
-					<th data-options="field:''" width="80">币种</th>
-					<th data-options="field:''" width="80">城市</th>
-					<th data-options="field:''" width="80">是否均摊</th>
 					<th data-options="field:'8',formatter:onOperateStyle" width="80">操作</th>
 				</tr>
 			</thead>
 		</table>
 		<div id="currencyDatagridtoolbar">
-		     <a href="javascript:currencyAdd();" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>  
+		     <a href="javascript:addZifei();" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>  
 		</div>
+	</div>
+	
+	<div id="addZifei" class="easyui-dialog" title="自费节目新增"
+		data-options="modal:true,closed:true,iconCls:'icon-save'"
+		style="width:600px;height:240px;padding:10px;">
+		<form id="addForm" method="post">
+			<table align="center">
+				<tr>
+<td><div class="fitem"><label>自费节目编号:</label></td><td><input name="id" class="easyui-validatebox" required="true"></div></td>
+<td></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>自费节目名称：</label></td><td><input name="name" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>自费节目费用：</label></td><td><input name="feiyong" class="easyui-validatebox" required="true"></div></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>所属城市：</label></td><td><input name="chengshiId"  class="easyui-combobox"
+ data-options="url:'fenghuang/CountrySetting.do',valueField:'csdNo',textField:'csdName'"/></div></td>
+<td><div class="fitem"><label>币种：</label></td><td><input name="bizhongId"  class="easyui-combobox"
+ data-options="url:'fenghuang/CountrySetting.do',valueField:'csdNo',textField:'csdName'"/></div></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>开放时间起：</label></td><td><input name="kftimeqi" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>开放时间止：</label></td><td><input  name="kftimezhi" class="easyui-validatebox" required="true"></div></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>时间是否可变：</label></td><td><input name="timekb" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>地接安排时间：</label></td><td><input name="djaptime" class="easyui-validatebox" required="true"></div></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>自费节目描述：</label></td><td><input name="miaoshu" class="easyui-validatebox" required="true"></div></td>
+<td></td>
+</tr>
+<tr>
+<tr><td colspan="4s" align="center"><a href="javascript:SaveZifei();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> <input  type="reset" value="重置"></td>
+</tr>
+			</table>
+			<input id="dicType" name="dicType" type="hidden">
+		</form>
 	</div>
 
 
@@ -114,10 +152,35 @@
 	function onOperateDelete(id){
 	  alert("删除操作");
 	}
-	//这个方法用来点击新增按钮
-	function currencyAdd(){
-	   alert("新增");
-	}
+	   //新增
+		function addZifei() {
+			$("#addZifei").dialog("open");
+			$("#addFrome").form("clear");
+		}
+         
+		function SaveZifei() {
+			$('#addForm').form('submit', {
+				url : 'fenghuang/.do',
+				onSubmit : function() {
+					return $(this).form('validate');
+				},
+				success : function(result) {
+					var result = eval('(' + result + ')');
+					if (result.success) {
+					$('#addZifei').dialog('close');
+						$.messager.alert("保存成功", "保存成功！", "info");
+						 $('#dg').datagrid('reload'); 
+					} else {
+						$.messager.alert("保存失败", "保存失败!", "error");
+						$('#dg').datagrid('reload');
+					}
+				}
+			});
+		}
+			//关闭
+		function closeEditDic() {
+			$('#addZifei').dialog('close');
+		} 
 	
 	
 	</script>

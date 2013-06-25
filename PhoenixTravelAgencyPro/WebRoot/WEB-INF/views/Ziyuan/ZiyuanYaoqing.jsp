@@ -66,18 +66,48 @@
 					<th data-options="field:'ck',checkbox:true"></th>
 					<th data-options="field:''" width="80">城市</th>
 					<th data-options="field:''" width="80">国度</th>
-					<th data-options="field:''" width="80">国度描述</th>
 					<th data-options="field:''" width="80">成本</th>
 					<th data-options="field:''" width="80">币种</th>
 					<th data-options="field:''" width="80">使用否</th>
+					<th data-options="field:''" width="80">国度描述</th>
 					<th data-options="field:'8',formatter:onOperateStyle" width="80">操作</th>
 				</tr>
 			</thead>
 		</table>
 		<div id="currencyDatagridtoolbar">
-		     <a href="javascript:currencyAdd();" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>  
+		     <a href="javascript:addYaoqinghan();" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>  
 		</div>
 	</div>
+<div id="addYaoqinghan" class="easyui-dialog" title="邀请函成本信息新增"
+		data-options="modal:true,closed:true,iconCls:'icon-save'"
+		style="width:600px;height:180px;padding:10px;">
+		<form id="addForm" method="post">
+			<table align="center">
+				<tr>
+<td><div class="fitem"><label>编号:</label></td><td><input name="id" class="easyui-validatebox" required="true"  width="280"></div></td>
+<td></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>国度：</label></td><td><input name="guoduid" class="easyui-validatebox" required="true"></div></td>
+<td><label>币种：</label></td><td><input name="bizhongId"  class="easyui-combobox"
+ data-options="url:'fenghuang/CountrySetting.do',valueField:'csdNo',textField:'csdName'"/></div></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>成本：</label></td><td><input name="chengben"  class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>使用否：</label></td><td><input name="shiyongid"  class="easyui-validatebox" required="true"></div></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>国度描述：</label></td><td><input name="miaoshu" class="easyui-validatebox" required="true"></div></div></td>
+<td></td>
+</tr>
+<tr>
+<tr><td colspan="4s" align="center"><a href="javascript:SaveYaoqinghan();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> <input  type="reset" value="重置"></td>
+</tr>
+			</table>
+			<input id="dicType" name="dicType" type="hidden">
+		</form>
+	</div>
+
 
 
 	<script type="text/javascript">
@@ -106,9 +136,35 @@
 	  alert("删除操作");
 	}
 	//这个方法用来点击新增按钮
-	function currencyAdd(){
-	   alert("新增");
-	}
+	 //新增
+		function addYaoqinghan() {
+			$("#addYaoqinghan").dialog("open");
+			$("#addFrome").form("clear");
+		}
+         
+		function SaveYaoqinghan() {
+			$('#addForm').form('submit', {
+				url : 'fenghuang/.do',
+				onSubmit : function() {
+					return $(this).form('validate');
+				},
+				success : function(result) {
+					var result = eval('(' + result + ')');
+					if (result.success) {
+					$('#addYaoqinghan').dialog('close');
+						$.messager.alert("保存成功", "保存成功！", "info");
+						 $('#dg').datagrid('reload'); 
+					} else {
+						$.messager.alert("保存失败", "保存失败!", "error");
+						$('#dg').datagrid('reload');
+					}
+				}
+			});
+		}
+			//关闭
+		function closeEditDic() {
+			$('#addYaoqinghan').dialog('close');
+		} 
 	
 	
 	</script>

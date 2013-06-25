@@ -58,18 +58,40 @@
 			<thead>
 				<tr>
 					<th data-options="field:'ck',checkbox:true"></th>
-					<th data-options="field:''" width="80">国际航协代码</th>
-					<th data-options="field:''" width="80">航空公司名称</th>
-					<th data-options="field:''" width="80">税</th>
-					<th data-options="field:''" width="80">币种</th>
+					<th data-options="field:'daima'" width="80">国际航协代码</th>
+					<th data-options="field:'name'" width="80">航空公司名称</th>
+					<th data-options="field:'shui'" width="80">税</th>
+					<th data-options="field:'bizongId'" width="80">币种</th>
 					<th data-options="field:'8',formatter:onOperateStyle" width="80">操作</th>
 				</tr>
 			</thead>
 		</table>
 		<div id="currencyDatagridtoolbar">
-		     <a href="javascript:currencyAdd();" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>  
+		     <a href="javascript:addHangkong();" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>  
 		</div>
 	</div>
+<div id="addHangkong" class="easyui-dialog" title="航空公司新增"
+		data-options="modal:true,closed:true,iconCls:'icon-save'"
+		style="width:600px;height:240px;padding:10px;">
+		<form id="addForm" method="post">
+			<table align="center">
+				<tr>
+<td><div class="fitem"><label>国际航协代码:</label></td><td><input name="daima" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>航空公司名称:</label></td><td><input name="name" class="easyui-validatebox" required="true"></div></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>税：</label></td><td><input name="shui" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>币种：</label></td><td><input name="bizongId" class="easyui-validatebox" required="true"></div></td>
+</tr>
+
+<tr>
+<tr><td colspan="4s" align="center"><a href="javascript:SaveHangkong();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> <input  type="reset" value="重置"></td>
+</tr>
+			</table>
+			<input id="dicType" name="dicType" type="hidden">
+		</form>
+	</div>
+
 
 
 	<script type="text/javascript">
@@ -97,10 +119,36 @@
 	function onOperateDelete(id){
 	  alert("删除操作");
 	}
-	//这个方法用来点击新增按钮
-	function currencyAdd(){
-	   alert("新增");
-	}
+	  //新增
+		function addHangkong() {
+			$("#addHangkong").dialog("open");
+			$("#addFrome").form("clear");
+		}
+         
+		function SaveHangkong() {
+			$('#addForm').form('submit', {
+				url : 'fenghuang/.do',
+				onSubmit : function() {
+					return $(this).form('validate');
+				},
+				success : function(result) {
+					var result = eval('(' + result + ')');
+					if (result.success) {
+					$('#addHangkong').dialog('close');
+						$.messager.alert("保存成功", "保存成功！", "info");
+						 $('#dg').datagrid('reload'); 
+					} else {
+						$.messager.alert("保存失败", "保存失败!", "error");
+						$('#dg').datagrid('reload');
+					}
+				}
+			});
+		}
+			//关闭
+		function closeEditDic() {
+			$('#addHangkong').dialog('close');
+		} 
+	
 	
 	
 	</script>

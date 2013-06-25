@@ -1,5 +1,8 @@
 package com.fenghuang.service;
 
+import java.util.List;
+import java.util.Map;
+
 import com.fenghuang.entiey.Users;
 import com.fenghuang.util.Pagination;
 
@@ -38,5 +41,11 @@ public interface IUsersService {
      * @throws Exception
      */
 	public Users getUsersByLoginName(String loginName) throws Exception;
+	
+	
+	public List<Map<String,Object>> getFunctionMenusByUserId(Long userId)throws Exception;
+	
+	
+	
 	
 }

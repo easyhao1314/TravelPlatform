@@ -1,5 +1,6 @@
 package com.fenghuang.service.impl;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -10,6 +11,7 @@ import com.fenghuang.dao.Idantuan;
 import com.fenghuang.entiey.CitySettingDictionary;
 import com.fenghuang.entiey.CountrySettingDictionary;
 import com.fenghuang.entiey.DantuanXinXi;
+import com.fenghuang.entiey.FunctionMenu;
 import com.fenghuang.entiey.TestUser;
 import com.fenghuang.service.IdantuanService;
 import com.fenghuang.util.Pagination;
@@ -29,8 +31,16 @@ public class dantuanServiceImpl implements IdantuanService{
 	@Override
 	public Pagination<DantuanXinXi> getByQueryConditionPagination(int currentPage,
 			int numPerPage) throws Exception {
+		//查询全部
 		return (Pagination<DantuanXinXi>) idt.getByQueryConditionPagination(currentPage, numPerPage);
 	}
+	
+	@Override
+		public Pagination<DantuanXinXi>  getDantuanLike(int currentPage,
+				int numPerPage,String ctsj,String lyqy,String tdzt,Long tdjb)throws Exception{
+		//模糊查询
+			return idt.getDantuanLike(currentPage, numPerPage, ctsj, lyqy, tdzt, tdjb);
+		}
 
 	@Override
 	public List<Map<String, Object>> selectDantuanId(String tuanNo) {
@@ -50,23 +60,7 @@ public class dantuanServiceImpl implements IdantuanService{
 		return idt.updateDantuan(dt);
 	}
 
-	@Override
-	public List<Map<String,Object>> getCurrencySettingboboxs() throws Exception{
-		// TODO 查询国家
-		return idt.getCurrencySettingboboxs();
-	}
 
-	@Override
-	public List<Map<String, Object>> getCountryState() throws Exception {
-		// TODO 查询所属洲
-		return idt.getCountryState();
-	}
-
-	@Override
-	public List<Map<String, Object>> getHotleStar() throws Exception {
-		// TODO 查询酒店星级
-		return idt.getHotleStar();
-	}
 
 	//待审批报价团查询
 		public Pagination<DantuanXinXi> getDantuanDaishen(int currentPage,int numPerPage) throws Exception{

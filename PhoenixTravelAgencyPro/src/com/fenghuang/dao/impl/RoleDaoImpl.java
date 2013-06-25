@@ -1,5 +1,8 @@
 package com.fenghuang.dao.impl;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.fenghuang.dao.BaseDao;
 import com.fenghuang.dao.IRoleDao;
+import com.fenghuang.entiey.FunctionMenu;
 import com.fenghuang.entiey.Role;
 import com.fenghuang.entiey.RoleAndMenuPermission;
 import com.fenghuang.entiey.RoleAndPagePermission;
@@ -79,31 +83,35 @@ public class RoleDaoImpl extends BaseDao implements IRoleDao {
 			RoleAndMenuPermission roleAndMenuPermission) throws Exception {
 		String sql = "insert into roleandmenupermission(mpid,roleId) values(?,?)";
 
-		int rs = this.update(sql, roleAndMenuPermission.getMpId(),roleAndMenuPermission.getRoleId());
-		
-		return rs>0;
+		int rs = this.update(sql, roleAndMenuPermission.getMpId(),
+				roleAndMenuPermission.getRoleId());
+
+		return rs > 0;
 	}
 
 	@Override
 	public boolean deleteRoleAndMenuPermission(Long id) throws Exception {
 		String sql = "delete from roleandmenupermission where id =?";
-        int rs = this.update(sql, id);				
-		return rs>0;
+		int rs = this.update(sql, id);
+		return rs > 0;
 	}
 
 	@Override
 	public boolean saveRoleAndPagePermission(
 			RoleAndPagePermission roleAndPagePermission) throws Exception {
 		String sql = "insert into roleandpagepermission values(ppid,roleId)";
-		int rs = this.update(sql, roleAndPagePermission.getPpId(),roleAndPagePermission.getRoleId());
-		return rs>0;
+		int rs = this.update(sql, roleAndPagePermission.getPpId(),
+				roleAndPagePermission.getRoleId());
+		return rs > 0;
 	}
 
 	@Override
 	public boolean deleteRoleAndPagePermission(Long id) throws Exception {
 		String sql = "delete from roleandpagepermission where id =?";
 		int rs = this.update(sql, id);
-		return rs>0;
+		return rs > 0;
 	}
+
+
 
 }

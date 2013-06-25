@@ -119,21 +119,71 @@
 			<thead>
 				<tr>
 					<th data-options="field:'ck',checkbox:true"></th>
-					<th data-options="field:''" width="80">城市</th>
-					<th data-options="field:''" width="80">编号</th>
-					<th data-options="field:''" width="80">供应商名称</th>
-					<th data-options="field:''" width="80">联系电话</th>
-					<th data-options="field:''" width="80">传真</th>
-					<th data-options="field:''" width="80">手机</th>
-					<th data-options="field:''" width="80">价格</th>
-					<th data-options="field:''" width="80">合作级别</th>
+					<th data-options="field:'chengshiId'" width="80">城市</th>
+					<th data-options="field:'id'" width="80">编号</th>
+					<th data-options="field:'name'" width="80">供应商名称</th>
+					<th data-options="field:'dianhua'" width="80">联系电话</th>
+					<th data-options="field:'chuanzhen'" width="80">传真</th>
+					<th data-options="field:'shouji'" width="80">手机</th>
+					<th data-options="field:'jiage'" width="80">价格</th>
+					<th data-options="field:'hzjbId'" width="80">合作级别</th>
 					<th data-options="field:'8',formatter:onOperateStyle" width="80">操作</th>
 				</tr>
 			</thead>
 		</table>
 		<div id="currencyDatagridtoolbar">
-		     <a href="javascript:currencyAdd();" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>  
+		     <a href="javascript:addJiaotong();" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>  
 		</div>
+	</div>
+<div id="addJiaotong" class="easyui-dialog" title="交通供应商新增"
+		data-options="modal:true,closed:true,iconCls:'icon-save'"
+		style="width:600px;height:440px;padding:10px;">
+		<form id="addForm" method="post">
+			<table align="center">
+				<tr>
+<td><div class="fitem"><label>编号:</label></td><td><input name="id" class="easyui-validatebox" required="true"></div></td>
+<td></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>供应商名称：</label></td><td><input name="name" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>供应商英文名称：</label></td><td><input name="feiyong" class="easyui-validatebox" required="true"></div></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>所属城市：</label></td><td><input name="chengshiId"  class="easyui-combobox"
+ data-options="url:'fenghuang/CountrySetting.do',valueField:'csdNo',textField:'csdName'"/></div></td>
+<td><div class="fitem"><label>地址：</label></td><td><input name="dizhi"  class="easyui-combobox"
+ data-options="url:'fenghuang/CountrySetting.do',valueField:'csdNo',textField:'csdName'"/></div></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>联系人：</label></td><td><input name="lianxiren" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>电话：</label></td><td><input  name="dianhua" class="easyui-validatebox" required="true"></div></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>手机：</label></td><td><input name="shouji" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>Email：</label></td><td><input name="email" class="easyui-validatebox" required="true"></div></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>传真：</label></td><td><input name="chuanzhen" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>网址：</label></td><td><input name="wangzhi" class="easyui-validatebox" required="true"></div></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>价格：</label></td><td><input name="jiage" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>合作级别：</label></td><td><input name="hzjbId" class="easyui-validatebox" required="true"></div></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>外呼方式：</label></td><td><input name="whfsid" class="easyui-validatebox" required="true"></div></td>
+<td></div></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>备注：</label></td><td><input name="beizhu" class="easyui-validatebox" required="true"></div></td>
+<td></td>
+</tr>
+<tr>
+<tr><td colspan="4s" align="center"><a href="javascript:SaveJiaotong();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> <input  type="reset" value="重置"></td>
+</tr>
+			</table>
+			<input id="dicType" name="dicType" type="hidden">
+		</form>
 	</div>
 
 
@@ -162,10 +212,35 @@
 	function onOperateDelete(id){
 	  alert("删除操作");
 	}
-	//这个方法用来点击新增按钮
-	function currencyAdd(){
-	   alert("新增");
-	}
+	 //新增
+		function addJiaotong() {
+			$("#addJiaotong").dialog("open");
+			$("#addFrome").form("clear");
+		}
+         
+		function SaveJiaotong() {
+			$('#addForm').form('submit', {
+				url : 'fenghuang/.do',
+				onSubmit : function() {
+					return $(this).form('validate');
+				},
+				success : function(result) {
+					var result = eval('(' + result + ')');
+					if (result.success) {
+					$('#addJiaotong').dialog('close');
+						$.messager.alert("保存成功", "保存成功！", "info");
+						 $('#dg').datagrid('reload'); 
+					} else {
+						$.messager.alert("保存失败", "保存失败!", "error");
+						$('#dg').datagrid('reload');
+					}
+				}
+			});
+		}
+			//关闭
+		function closeEditDic() {
+			$('#addJiaotong').dialog('close');
+		} 
 	
 	
 	</script>
