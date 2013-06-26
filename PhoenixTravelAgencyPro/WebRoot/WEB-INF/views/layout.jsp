@@ -20,6 +20,7 @@
 <script type="text/javascript" src="js/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="js/locale/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript" src="js/jquery.json.js"></script>
+<script type="text/javascript" src="js/datagrid-groupview.js"></script>
 </head>
 
 <body class="easyui-layout">
