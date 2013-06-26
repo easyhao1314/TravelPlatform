@@ -50,18 +50,7 @@
 			</tr>
 		</thead>
 	</table>
-	<div id="tb">
-		<a href="javascript:addHangMoshi();" class="easyui-linkbutton"
-			iconCls="icon-add" plain="true">新增(行模式)</a>&nbsp;&nbsp;| <a
-			href="javascript:addMianBanMoshi();" class="easyui-linkbutton"
-			iconCls="icon-add" plain="true">新增(面板模式)</a>&nbsp;&nbsp;| <a
-			href="javascript:shanchu();" class="easyui-linkbutton"
-			iconCls="icon-cut" plain="true">删除</a>&nbsp;&nbsp;| <a
-			href="javascript:searchDiJi();" class="easyui-linkbutton"
-			iconCls="icon-save" plain="true">查询</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<a href="javascript:getChanges();" class="easyui-linkbutton"
-			iconCls="icon-save" plain="true">保存修改</a>
-	</div>
+	
 	<div id="editDic" class="easyui-dialog" title="新增业务字段"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:500px;height:200px;padding:10px;">
