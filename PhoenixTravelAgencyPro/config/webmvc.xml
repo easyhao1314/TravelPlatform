@@ -77,12 +77,12 @@
 	<mvc:view-controller path="functionMenu.do" view-name="functionmenu/functionMenu"/>
 	<mvc:view-controller path="department.do" view-name="department/department"/>
 	<mvc:view-controller path="SanPin_new.do" view-name="SanPin/SanPin_New"/>
-	<mvc:view-controller path="role.do" view-name="role/role"/
+	<mvc:view-controller path="role.do" view-name="role/role"/>
 	<!-- 财务模块  -->
 	<mvc:view-controller path="a.do" view-name="F.A.D/a"/>
 	<mvc:view-controller path="sanpin.do" view-name="F.A.D/sanpin"/>
 	<mvc:view-controller path="dantuan.do" view-name="F.A.D/dantuan"/>
-    <mvc:view-controller path="shoukuan.do" view-name="F.A.D/shoukuan"/
+    <mvc:view-controller path="shoukuan.do" view-name="F.A.D/shoukuan"/>
 	<!-- 赵杨的配置 -->
 	<mvc:view-controller path="SanPin_caozuo.do" view-name="SanPin/SanPin_CaoZuo"/>
 	 <!-- 单团中心-->
