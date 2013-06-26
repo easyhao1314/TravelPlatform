@@ -105,6 +105,16 @@
 						href="javascript:open1('角色管理','role.do');">系统角色管理</a>
 					</li>
 				</ul>
+				<ul>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('公司管理','company.do');">公司管理</a>
+					</li>
+				</ul>
+				<ul>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('系统用户管理','users.do');">系统用户管理</a>
+					</li>
+				</ul>
 			</li>
 			<li iconCls="icon-base"><span>系统基础设置管理</span>
 				<ul>

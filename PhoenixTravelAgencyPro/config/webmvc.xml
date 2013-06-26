@@ -76,8 +76,10 @@
 	<mvc:view-controller path="currencyList.do" view-name="currencyList"/>
 	<mvc:view-controller path="functionMenu.do" view-name="functionmenu/functionMenu"/>
 	<mvc:view-controller path="department.do" view-name="department/department"/>
+	<mvc:view-controller path="company.do" view-name="company/company"/>
 	<mvc:view-controller path="SanPin_new.do" view-name="SanPin/SanPin_New"/>
 	<mvc:view-controller path="role.do" view-name="role/role"/>
+	<mvc:view-controller path="users.do" view-name="users/users"/>
 	<!-- 财务模块  -->
 	<mvc:view-controller path="a.do" view-name="F.A.D/a"/>
 	<mvc:view-controller path="sanpin.do" view-name="F.A.D/sanpin"/>

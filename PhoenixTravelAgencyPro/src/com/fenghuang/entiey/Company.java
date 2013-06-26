@@ -17,7 +17,7 @@ public class Company {
 	 * 
 	 * @pdOid 88076f3d-9ebb-4df7-80dc-21b6e0f0cc8e
 	 */
-	public long id;
+	public Long id;
 	/**
 	 * 公司编号
 	 * 
@@ -40,7 +40,7 @@ public class Company {
 	/**
 	 * @return the id
 	 */
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
@@ -48,7 +48,7 @@ public class Company {
 	 * @param id
 	 *            the id to set
 	 */
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

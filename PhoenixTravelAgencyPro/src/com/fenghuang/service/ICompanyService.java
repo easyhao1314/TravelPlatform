@@ -1,5 +1,8 @@
 package com.fenghuang.service;
 
+import java.util.List;
+import java.util.Map;
+
 import com.fenghuang.entiey.Company;
 import com.fenghuang.util.Pagination;
 /**
@@ -22,4 +25,11 @@ public interface ICompanyService {
 	
 	public Pagination<Company> getPaginationCompanys(int currentPage,
 			int numPerPage,Company company)throws Exception;
+	
+	public void updateCompanys(List<Company> companys)throws Exception;
+	
+	public void deleteCompanys(List<Company> companys) throws Exception;
+	
+	public List<Map<String, Object>> getCompanyComboboxs() throws Exception;
+	
 }

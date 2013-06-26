@@ -1,5 +1,8 @@
 package com.fenghuang.dao.impl;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,7 +52,7 @@ public class CompanyDaoImpl extends BaseDao implements ICompanyDao {
 			int numPerPage, Company company) throws Exception {
 		StringBuffer sql = new StringBuffer(
 				"SELECT com.id,com.companyNumber,com.companyName,com.parentNumber FROM company AS com where 1=1");
-		if (company.getId() != 0) {
+		if (company.getId() !=null && company.getId() != 0) {
 			sql.append(" and com.id='");
 			sql.append(company.getId());
 			sql.append("'");
@@ -77,6 +80,13 @@ public class CompanyDaoImpl extends BaseDao implements ICompanyDao {
 		
 		Pagination<Company> pcs = this.getPagination(currentPage, numPerPage, sql.toString());
 		return pcs;
+	}
+
+	@Override
+	public List<Map<String, Object>> getCompanyComboboxs() throws Exception {
+		String sql = " select companyNumber,companyName from company ";
+		List<Map<String,Object>> comps = this.queryForList(sql);
+		return comps;
 	}
 
 }

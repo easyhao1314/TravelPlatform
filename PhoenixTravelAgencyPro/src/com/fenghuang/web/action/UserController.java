@@ -70,7 +70,7 @@ public class UserController {
 	@RequestMapping("fenghuang/getUsers.do")
 	@ResponseBody
 	public Map<String, Object> getUsers(HttpServletRequest request,
-			HttpServletResponse response, Integer pages, Integer rows,
+			HttpServletResponse response, Integer page, Integer rows,
 			String userNumber, String userName, String loginName,
 			String enName, String sex, String telephone, String birthday,
 			String telephoneExt, String email, String mobilePhone, String msn,
@@ -85,7 +85,9 @@ public class UserController {
 		user.setEnName(enName);
 		user.setSex(sex);
 		user.setTelephone(telephone);
-		user.setBirthday(FengHuangDateUtil.getDateStringTODate(birthday));
+		if(birthday != null && !"".equals(birthday)){
+		  user.setBirthday(FengHuangDateUtil.getDateStringTODate(birthday));
+		}
 		user.setTelephoneExt(telephoneExt);
 		user.setEmail(email);
 		user.setMobilePhone(mobilePhone);
@@ -112,7 +114,7 @@ public class UserController {
 
 		try {
 			Pagination<Users> userPagins = iUsersService.getPaginationUsers(
-					pages, rows, user);
+					page, rows, user);
 			Map<String, Object> returnValue = new HashMap<String, Object>();
 			if (userPagins != null) {
 				List<Map<String, Object>> userRows = userPagins.getResultList();
