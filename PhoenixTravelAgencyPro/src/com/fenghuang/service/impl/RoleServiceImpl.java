@@ -1,13 +1,21 @@
 package com.fenghuang.service.impl;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fenghuang.dao.IFunctionMenuDao;
+import com.fenghuang.dao.IMenuPermissionDao;
+import com.fenghuang.dao.IRoleAndMenuPermissionDao;
 import com.fenghuang.dao.IRoleDao;
+import com.fenghuang.entiey.FunctionMenu;
+import com.fenghuang.entiey.MenuPermission;
 import com.fenghuang.entiey.Role;
+import com.fenghuang.entiey.RoleAndMenuPermission;
+import com.fenghuang.entiey.RoleAndPagePermission;
 import com.fenghuang.service.IRoleService;
 import com.fenghuang.util.Pagination;
 
@@ -16,7 +24,12 @@ public class RoleServiceImpl implements IRoleService {
 
 	@Autowired
 	private IRoleDao iRoleDao;
-	
+	@Autowired
+	private IRoleAndMenuPermissionDao iRoleAndMenuPermissionDao;
+	@Autowired
+	private IMenuPermissionDao iMenuPermissionDao;
+	@Autowired
+	private IFunctionMenuDao iFunctionMenuDao;
 	@Override
 	public boolean saveRole(Role role) throws Exception {
 		return iRoleDao.saveRole(role);
@@ -66,6 +79,104 @@ public class RoleServiceImpl implements IRoleService {
 				iRoleDao.deteleRoleById(role.getId());
 			}
 		}
+	}
+
+	@Override
+	public boolean saveRoleAndMenuPermission(
+			RoleAndMenuPermission roleAndMenuPermission) throws Exception {
+		return iRoleDao.saveRoleAndMenuPermission(roleAndMenuPermission);
+	}
+
+	@Override
+	public boolean deleteRoleAndMenuPermission(Long id) throws Exception {
+		return iRoleDao.deleteRoleAndMenuPermission(id);
+	}
+
+	@Override
+	public boolean saveRoleAndPagePermission(
+			RoleAndPagePermission roleAndPagePermission) throws Exception {
+		return iRoleDao.saveRoleAndPagePermission(roleAndPagePermission);
+	}
+
+	@Override
+	public boolean deleteRoleAndPagePermission(Long id) throws Exception {
+		return iRoleDao.deleteRoleAndMenuPermission(id);
+	}
+
+	
+	@Override
+	public void insertRoleAddMenuPermissions(
+			List<RoleAndMenuPermission> roleAndMenuPermissions)
+			throws Exception {
+		for (Iterator iterator = roleAndMenuPermissions.iterator(); iterator
+				.hasNext();) {
+			RoleAndMenuPermission roleAndMenuPermission = (RoleAndMenuPermission) iterator
+					.next();
+				iRoleDao.saveRoleAndMenuPermission(roleAndMenuPermission);
+		}
+	}
+
+
+	@Override
+	public void deleteRoleAndMenuPermissions(
+			List<RoleAndMenuPermission> roleAndMenuPermissions)
+			throws Exception {
+		for (Iterator iterator = roleAndMenuPermissions.iterator(); iterator
+				.hasNext();) {
+			RoleAndMenuPermission roleAndMenuPermission = (RoleAndMenuPermission) iterator
+					.next();
+			if(roleAndMenuPermission.getId() != null){
+				iRoleDao.deleteRoleAndMenuPermission(roleAndMenuPermission.getId());
+			}
+			
+		}
+	}
+
+	
+	@Override
+	public void insertRoleAndPagePermissions(
+			List<RoleAndPagePermission> roleAndPagePermissions)
+			throws Exception {
+		for (Iterator iterator = roleAndPagePermissions.iterator(); iterator
+				.hasNext();) {
+			RoleAndPagePermission roleAndPagePermission = (RoleAndPagePermission) iterator
+					.next();
+			iRoleDao.saveRoleAndPagePermission(roleAndPagePermission);
+		}
+	}
+	@Override
+	public void deleteRoleAndPagePermissions(
+			List<RoleAndPagePermission> roleAndPagePermissions)
+			throws Exception {
+		for (Iterator iterator = roleAndPagePermissions.iterator(); iterator
+				.hasNext();) {
+			RoleAndPagePermission roleAndPagePermission = (RoleAndPagePermission) iterator
+					.next();
+			if(roleAndPagePermission.getId() != null){
+				iRoleDao.deleteRoleAndPagePermission(roleAndPagePermission.getId());
+			}
+			
+		}
+		
+	}
+
+	@Override
+	public List<FunctionMenu> getFunctionMenuByRoleId(Long roleId)
+			throws Exception {
+		List<FunctionMenu> fms = new ArrayList<FunctionMenu>();
+		List<RoleAndMenuPermission> ramps = iRoleAndMenuPermissionDao.getRoleAndMenuPermissionsByRoleId(roleId);
+		if(ramps != null){
+			for (Iterator iterator = ramps.iterator(); iterator.hasNext();) {
+				RoleAndMenuPermission roleAndMenuPermission = (RoleAndMenuPermission) iterator
+						.next();
+			   MenuPermission  mp = iMenuPermissionDao.getMenuPermissionById(roleAndMenuPermission.getMpId());
+			   FunctionMenu fm = iFunctionMenuDao.getFunctionMenuById(Long.valueOf(mp.getFunctionNo()));	
+				fms.add(fm);
+				
+			}
+		}
+
+		return fms;
 	}
 
 }

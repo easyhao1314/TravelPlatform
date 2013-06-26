@@ -5,6 +5,7 @@ package com.fenghuang.service.impl;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -136,6 +137,15 @@ public class DictionaryDescServiceImpl implements IDictionaryDescService {
 			int currentPage, int numPerPage, DictionaryDesc ddDesc)
 			throws Exception {
 		return iDictionaryDescDao.getDictionaryDescPaginations(currentPage, numPerPage, ddDesc);
+	}
+
+	/* 
+	 * @see com.fenghuang.service.IDictionaryDescService#getDictionaryComboboxs(java.lang.String)
+	 */
+	@Override
+	public List<Map<String, Object>> getDictionaryComboboxs(String dicType)
+			throws Exception {
+		return iDictionaryDescDao.getDictionaryComboboxs(dicType);
 	}
 
 }

@@ -29,7 +29,7 @@ public interface IFunctionMenuDao {
 	public FunctionMenu  getFunctionMenuById(Long id) throws Exception;
 	
 	public Pagination<FunctionMenu>  getPaginationFunctionMenu(int currentPage,
-			int numPerPage,Long id,String menuNo,String menuName,String menuPath,Long parentId,String sortNo)throws Exception;
+			int numPerPage,Long id,String menuNo,String menuName,String menuPath,Long parentId,String sortNo,String menuType)throws Exception;
 	
 	public boolean deleteFunctionMeunById(Long id)throws Exception;
 	

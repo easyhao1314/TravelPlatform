@@ -51,7 +51,8 @@ public class UsersDaoImpl extends BaseDao implements IUserDao {
 	@Override
 	public boolean saveUsers(Users users) throws Exception {
 		String sql = "insert into users (userNumber,userName,loginName,enName,sex,telephone,birthday,telephoneExt,email,mobilePhone,msn,fax,msn2,skype,msn3,qq,companyId,departmentId,jobDescription,sortNumber,address,zip,remark,imagePath,password) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-		int rs = this.update(sql, users.getUserNumber(), users.getUserName(),
+		int rs = this.update(sql, users.getUserNumber(), 
+				users.getUserName(),
 				users.getLoginName(), users.getEnName(), users.getSex(),
 				users.getTelephone(), users.getBirthday(),
 				users.getTelephoneExt(), users.getEmail(),
@@ -217,6 +218,36 @@ public class UsersDaoImpl extends BaseDao implements IUserDao {
 		String sql = "select * from users where id=?";
 		Users user = this.queryForObject(sql, Users.class, id);
 		return user;
+	}
+
+	@Override
+	public boolean updateUserPassword(Long id, String newPassword)
+			throws Exception {
+		String sql = "update users set password=? where id=?";
+		int rs = this.update(sql,newPassword,id);
+		return rs>0;
+	}
+
+	@Override
+	public String getUsersPasswordById(Long id) throws Exception {
+		String sql = "select password from users where id=?";
+		String password = this.queryForObject(sql, String.class);
+		return password;
+	}
+	
+	@Override
+	public boolean isExistUserLoginName(String LoginName) throws Exception {
+		String sql ="selec count(1) from users where loginName=?";
+		int rs = this.queryForInt(sql);
+		return rs>0;
+	}
+
+	@Override
+	public Users getUsersByLoginName(String loginName) throws Exception {
+		String sql = "select * from users where loginName = ?";
+		Users users = this.queryForObject(sql, Users.class,loginName);
+		
+		return null;
 	}
 
 }

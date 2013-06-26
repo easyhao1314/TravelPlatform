@@ -8,13 +8,18 @@ import com.fenghuang.util.Pagination;
  *
  *  日期    @2013-6-18
  *  
- *  描述：
+ *  描述：城市设置字段
  *
  *
  *
  */
 public interface ICitySettingDictionaryDao {
-	
+	/**
+	 * 
+	 * @param citySd
+	 * @return
+	 * @throws Exception
+	 */
 	public boolean saveCitySettingDictionary(CitySettingDictionary citySd) throws Exception;
 	
 	public boolean updateCitySettingDictionary(CitySettingDictionary citySd) throws Exception;

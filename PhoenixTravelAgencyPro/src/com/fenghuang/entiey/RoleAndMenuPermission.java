@@ -14,12 +14,17 @@ import java.util.*;
  */
 public class RoleAndMenuPermission {
 	/** @pdOid 2568b0c0-8678-4e3a-887a-34821c4d8ff1 */
-	public long id;
-
+	//自动增长列
+	public Long id;
+	//角色id
+	public Long roleId;
+	//菜单权限id
+	public Long mpId;
+	
 	/**
 	 * @return the id
 	 */
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
@@ -27,8 +32,26 @@ public class RoleAndMenuPermission {
 	 * @param id
 	 *            the id to set
 	 */
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
+
+	public Long getRoleId() {
+		return roleId;
+	}
+
+	public void setRoleId(Long roleId) {
+		this.roleId = roleId;
+	}
+
+	public Long getMpId() {
+		return mpId;
+	}
+
+	public void setMpId(Long mpId) {
+		this.mpId = mpId;
+	}
+	
+	
 
 }

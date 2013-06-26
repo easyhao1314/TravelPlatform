@@ -77,15 +77,63 @@
 	<mvc:view-controller path="functionMenu.do" view-name="functionmenu/functionMenu"/>
 	<mvc:view-controller path="department.do" view-name="department/department"/>
 	<mvc:view-controller path="SanPin_new.do" view-name="SanPin/SanPin_New"/>
-	<mvc:view-controller path="role.do" view-name="role/role"/>
-	
-	
-	
-	
+	<mvc:view-controller path="role.do" view-name="role/role"/
 	<!-- 财务模块  -->
 	<mvc:view-controller path="a.do" view-name="F.A.D/a"/>
 	<mvc:view-controller path="sanpin.do" view-name="F.A.D/sanpin"/>
 	<mvc:view-controller path="dantuan.do" view-name="F.A.D/dantuan"/>
-    <mvc:view-controller path="shoukuan.do" view-name="F.A.D/shoukuan"/>
+    <mvc:view-controller path="shoukuan.do" view-name="F.A.D/shoukuan"/
+	<!-- 赵杨的配置 -->
+	<mvc:view-controller path="SanPin_caozuo.do" view-name="SanPin/SanPin_CaoZuo"/>
+	 <!-- 单团中心-->
+	  <mvc:view-controller path="DantuanAdd.do" view-name="Dantuan/DantuanAddd"/>
+	  <mvc:view-controller path="DantuanXunjia.do" view-name="Dantuan/DantuanXunjia"/>
+	  <mvc:view-controller path="DantuanChengtuan.do" view-name="Dantuan/DantuanChengtuan"/>
+     <!-- <mvc:view-controller path="DantuanUpdate.do" view-name="Dantuan/DantuanXunjia"/> -->
+     <mvc:view-controller path="DantuanBaojia.do" view-name="Dantuan/DantuanBaojia"/>
+     <mvc:view-controller path="DantuanDaishen.do" view-name="Dantuan/DantuanDaishen"/> 
+     <!-- 资源中心 -->    
+     <mvc:view-controller path="ZiyuanJiudian.do" view-name="Ziyuan/ZiyuanJiudian"/>
+     <mvc:view-controller path="ZiyuanJiaotong.do" view-name="Ziyuan/ZiyuanJiaotong"/>
+     <mvc:view-controller path="ZiyuanHangkong.do" view-name="Ziyuan/ZiyuanHangkong"/>
+     <mvc:view-controller path="ZiyuanCanyin.do" view-name="Ziyuan/ZiyuanCanyin"/>
+     <mvc:view-controller path="ZiyuanDy.do" view-name="Ziyuan/ZiyuanDy"/>
+     <mvc:view-controller path="ZiyuanJingdian.do" view-name="Ziyuan/ZiyuanJingdian"/>
+     <mvc:view-controller path="ZiyuanDijie.do" view-name="Ziyuan/ZiyuanDijie"/> 
+     <mvc:view-controller path="ZiyuanGouwu.do" view-name="Ziyuan/ZiyuanGouwu"/>
+     <mvc:view-controller path="ZiyuanYaoqing.do" view-name="Ziyuan/ZiyuanYaoqing"/>
+     <mvc:view-controller path="ZiyuanZifei.do" view-name="Ziyuan/ZiyuanZifei"/>
+     <!-- 陈家海的配置 -->
+	<mvc:view-controller path="operateCenterUI.do" view-name="operTeamQuery" />
+	<mvc:view-controller path="dingfangrenwu.do" view-name="dingfangrenwu" />
+	<mvc:view-controller path="customerInfoList.do" view-name="customerInfoList" />
+	<mvc:view-controller path="contactInfoList.do" view-name="contactInfoList" />
+	<mvc:view-controller path="customerVIPDic.do" view-name="customerVIPDic" />
+	<!-- 赵杨的配置 -->
+	<mvc:view-controller path="SanPin_caozuo.do" view-name="SanPin/SanPin_CaoZuo"/>
+	 <!-- 单团中心-->
+	  <mvc:view-controller path="DantuanAdd.do" view-name="Dantuan/DantuanAddd"/>
+	  <mvc:view-controller path="DantuanXunjia.do" view-name="Dantuan/DantuanXunjia"/>
+	  <mvc:view-controller path="DantuanChengtuan.do" view-name="Dantuan/DantuanChengtuan"/>
+     <!-- <mvc:view-controller path="DantuanUpdate.do" view-name="Dantuan/DantuanXunjia"/> -->
+     <mvc:view-controller path="DantuanBaojia.do" view-name="Dantuan/DantuanBaojia"/>
+     <mvc:view-controller path="DantuanDaishen.do" view-name="Dantuan/DantuanDaishen"/> 
+     <!-- 资源中心 -->    
+     <mvc:view-controller path="ZiyuanJiudian.do" view-name="Ziyuan/ZiyuanJiudian"/>
+     <mvc:view-controller path="ZiyuanJiaotong.do" view-name="Ziyuan/ZiyuanJiaotong"/>
+     <mvc:view-controller path="ZiyuanHangkong.do" view-name="Ziyuan/ZiyuanHangkong"/>
+     <mvc:view-controller path="ZiyuanCanyin.do" view-name="Ziyuan/ZiyuanCanyin"/>
+     <mvc:view-controller path="ZiyuanDy.do" view-name="Ziyuan/ZiyuanDy"/>
+     <mvc:view-controller path="ZiyuanJingdian.do" view-name="Ziyuan/ZiyuanJingdian"/>
+     <mvc:view-controller path="ZiyuanDijie.do" view-name="Ziyuan/ZiyuanDijie"/> 
+     <mvc:view-controller path="ZiyuanGouwu.do" view-name="Ziyuan/ZiyuanGouwu"/>
+     <mvc:view-controller path="ZiyuanYaoqing.do" view-name="Ziyuan/ZiyuanYaoqing"/>
+     <mvc:view-controller path="ZiyuanZifei.do" view-name="Ziyuan/ZiyuanZifei"/>
+     <!-- 陈家海的配置 -->
+	<mvc:view-controller path="operateCenterUI.do" view-name="operTeamQuery" />
+	<mvc:view-controller path="dingfangrenwu.do" view-name="dingfangrenwu" />
+	<mvc:view-controller path="customerInfoList.do" view-name="customerInfoList" />
+	<mvc:view-controller path="contactInfoList.do" view-name="contactInfoList" />
+	<mvc:view-controller path="customerVIPDic.do" view-name="customerVIPDic" />
 </beans>
            

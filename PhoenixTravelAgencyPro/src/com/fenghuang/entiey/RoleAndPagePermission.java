@@ -14,22 +14,31 @@ import java.util.*;
  */
 public class RoleAndPagePermission {
 	/** @pdOid efc3567c-4fcd-4e60-b6f5-b01cc18ed370 */
-	public long id;
-
-	/**
-	 * @return the id
-	 */
-	public long getId() {
+	//自动增长列
+	public Long id;
+	//角色id
+	public Long roleId;
+	//页面权限id
+	public Long ppId;
+	public Long getId() {
 		return id;
 	}
-
-	/**
-	 * @param id
-	 *            the id to set
-	 */
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
+	public Long getRoleId() {
+		return roleId;
+	}
+	public void setRoleId(Long roleId) {
+		this.roleId = roleId;
+	}
+	public Long getPpId() {
+		return ppId;
+	}
+	public void setPpId(Long ppId) {
+		this.ppId = ppId;
+	}
+
 
 	
 
