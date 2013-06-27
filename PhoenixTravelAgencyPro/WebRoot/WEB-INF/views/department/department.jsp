@@ -104,8 +104,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<input id="id" name="id" type="hidden" value="">
 		</form>
 	</div>
-	
-	
 	<script type="text/javascript" src="js/department/department.js">
 	</script>
   </body>

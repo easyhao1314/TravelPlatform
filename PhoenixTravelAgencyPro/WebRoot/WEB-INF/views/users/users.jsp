@@ -31,7 +31,7 @@
 		data-options="url:'fenghuang/getUsers.do',border:false,singleSelect:false,fit:true,fitColumns:true,pageSize:20,view:groupview,
           groupField:'departName',
           groupFormatter:function(value,rows){
-           return value + ' - ' + rows.length + ' Item(s)';
+           return '所属部门:'+value + ' - ' + rows.length + '名员工';
           }"
 		pagination="true">
 		<thead>
@@ -40,6 +40,7 @@
 				<th data-options="field:'userNumber',editor:'text'" width="80">编号</th>
 				<th data-options="field:'userName',editor:'text'" width="80">姓名</th>
 				<th data-options="field:'loginName',editor:'text'" width="80">登陆名</th>
+				<th data-options="field:'loginName',editor:'text'" width="80"></th>
 				<th data-options="field:'id',hidden:true"></th>
 			</tr>
 		</thead>

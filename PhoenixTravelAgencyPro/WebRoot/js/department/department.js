@@ -1,3 +1,10 @@
+/**
+ * 
+ * @param val
+ * @param row
+ * @param index
+ * @returns {String}
+ */
 function onOperateStyle(val,row,index){
        var returnStyleValue='<img alt="修改" src="js/themes/icons/pencil.png" onclick="onOperateUpdate('+row.id+','+index+');">';
        returnStyleValue+='&nbsp;&nbsp;&nbsp;&nbsp;<img alt="删除" src="js/themes/icons/cancel.png" onclick="onOperateDelete('+row.id+');">';
@@ -80,7 +87,7 @@ function closeDepartment(){
 function searchDepartment(){
 	$('#dgDepartment').datagrid('load',{
 		departNo:$("#departNo").val(),
-		departName:$("#departName").val(),
+		departName:$("#departName").val()
 		
 	});
 	
