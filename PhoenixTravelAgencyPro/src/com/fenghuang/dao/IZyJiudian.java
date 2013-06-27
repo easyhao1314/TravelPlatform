@@ -12,12 +12,12 @@ public interface IZyJiudian {
 	//添加
 	public int jiudianAdd(Jiudian jd);
 	//删除 
-	public boolean jiudianDelete(int id);
+	public boolean jiudianDelete(long id);
 	//按id询
-	public List<Map<String,Object>> jiudianSelectId(int id);
+	public List<Map<String,Object>> jiudianSelectId(long id);
 	//修改
 	public boolean jiudianUpdate(Jiudian jd);
 	//模糊查询 
-	public  Pagination<Jiudian> jiudainSelectLike(int currentPage,int numPerPage) throws Exception;
+	public  Pagination<Jiudian> jiudainSelectLike(int currentPage,int numPerPage,String name,int chengshi) throws Exception;
 
 }

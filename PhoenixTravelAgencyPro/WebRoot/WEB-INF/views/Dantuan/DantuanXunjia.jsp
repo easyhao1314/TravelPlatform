@@ -24,9 +24,6 @@
 <script type="text/javascript" src="js/locale/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript" src="js/jquery.json.js"></script>
 
-<script>
-	
-</script>
 </head>
 
 <body>
@@ -127,9 +124,7 @@
 	 <a href="javascript:addDt();" class="easyui-linkbutton"
 			iconCls="icon-add" plain="true">新增(面板模式)</a>&nbsp;&nbsp;|
 			 <a href="javascript:chengtuan();" class="easyui-linkbutton"
-			iconCls="icon-add" plain="true">成团申请</a>&nbsp;&nbsp;|
-     <a href="javascript:shanchu();" class="easyui-linkbutton"
-			iconCls="icon-cut" plain="true">删除</a>&nbsp;&nbsp;| 
+			iconCls="icon-add" plain="true">成团申请</a>&nbsp;&nbsp;| 
 	 <a href="javascript:shanchu();" class="easyui-linkbutton"
 			iconCls="icon-cut" plain="true">删除</a>&nbsp;&nbsp;| 
 	 <a href="javascript:selectDtId();" class="easyui-linkbutton"
@@ -325,7 +320,7 @@
 				}
 			}
 		}
-		 	
+		//模糊查询
 		function dantuanSelectLike(){
 		console.info($('#dg').datagrid('options'));
 		var opts = $('#dg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
@@ -348,7 +343,7 @@
       //新增
 		function addDt() {
 			$("#addDt").dialog("open");
-			$("#addFrome").form("clear");
+			$("#addForm").form("clear");
 		}
          
 		function dantuanSave() {

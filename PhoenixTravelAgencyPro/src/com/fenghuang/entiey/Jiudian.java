@@ -17,7 +17,7 @@ public class Jiudian {
    /** 城市
     * 
     * @pdOid c314e748-1410-45dc-965c-cd0e6619b8e1 */
-   public int chengshi;
+   public long chengshi;
    /** 酒店供应商名称
     * 
     * @pdOid 194eb6e8-5a41-4cdb-8660-91e3c088f001 */
@@ -50,8 +50,9 @@ public class Jiudian {
    /** 邮箱
     * 
     * @pdOid 0ca4b285-3468-4de2-8b04-6bc778c6ac21 */
-   public int email;
-   /** 官网
+   public java.lang.String email;
+ 
+/** 官网
     * 
     * @pdOid 802e51af-ebbf-4f31-98e4-5290f536a3ce */
    public java.lang.String guanwang;
@@ -83,5 +84,115 @@ public class Jiudian {
     * 
     * @pdOid 087057a8-206d-4bad-bed5-78b690298c5d */
    public java.lang.String bz;
+   
+   
+   public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	public long getChengshi() {
+		return chengshi;
+	}
+	public void setChengshi(long chengshi) {
+		this.chengshi = chengshi;
+	}
+	public java.lang.String getName() {
+		return name;
+	}
+	public void setName(java.lang.String name) {
+		this.name = name;
+	}
+	public long getFangjian() {
+		return fangjian;
+	}
+	public void setFangjian(long fangjian) {
+		this.fangjian = fangjian;
+	}
+	public java.lang.String getHzjb() {
+		return hzjb;
+	}
+	public void setHzjb(java.lang.String hzjb) {
+		this.hzjb = hzjb;
+	}
+	public java.lang.String getWhr() {
+		return whr;
+	}
+	public void setWhr(java.lang.String whr) {
+		this.whr = whr;
+	}
+	public java.lang.String getXjbz() {
+		return xjbz;
+	}
+	public void setXjbz(java.lang.String xjbz) {
+		this.xjbz = xjbz;
+	}
+	public java.lang.String getDianhua() {
+		return dianhua;
+	}
+	public void setDianhua(java.lang.String dianhua) {
+		this.dianhua = dianhua;
+	}
+	public java.lang.String getChuanzhen() {
+		return chuanzhen;
+	}
+	public void setChuanzhen(java.lang.String chuanzhen) {
+		this.chuanzhen = chuanzhen;
+	}
+	public java.lang.String getEmail() {
+		return email;
+	}
+	public void setEmail(java.lang.String email) {
+		this.email = email;
+	}
+	public java.lang.String getGuanwang() {
+		return guanwang;
+	}
+	public void setGuanwang(java.lang.String guanwang) {
+		this.guanwang = guanwang;
+	}
+	public java.lang.String getDizhi() {
+		return dizhi;
+	}
+	public void setDizhi(java.lang.String dizhi) {
+		this.dizhi = dizhi;
+	}
+	public java.lang.String getPingjia() {
+		return pingjia;
+	}
+	public void setPingjia(java.lang.String pingjia) {
+		this.pingjia = pingjia;
+	}
+	public java.lang.String getTishi() {
+		return tishi;
+	}
+	public void setTishi(java.lang.String tishi) {
+		this.tishi = tishi;
+	}
+	public int getDanjijia() {
+		return danjijia;
+	}
+	public void setDanjijia(int danjijia) {
+		this.danjijia = danjijia;
+	}
+	public int getWangjijia() {
+		return wangjijia;
+	}
+	public void setWangjijia(int wangjijia) {
+		this.wangjijia = wangjijia;
+	}
+	public java.lang.String getJgsm() {
+		return jgsm;
+	}
+	public void setJgsm(java.lang.String jgsm) {
+		this.jgsm = jgsm;
+	}
+	public java.lang.String getBz() {
+		return bz;
+	}
+	public void setBz(java.lang.String bz) {
+		this.bz = bz;
+	}
 
 }

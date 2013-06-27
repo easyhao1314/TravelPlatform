@@ -1,5 +1,8 @@
 package com.fenghuang.service.impl;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,34 +29,35 @@ public class ZyJiudianServiceImpl  implements IZyJiudainService{
 	}
 
 	@Override
-	public Pagination<Jiudian> jiudainSelectLike(int currentPage, int numPerpage)
+	public Pagination<Jiudian> jiudainSelectLike(int currentPage, int numPerpage,String name,int chengshi)
 			throws Exception {
 		// 模糊查询
-		return null;
+		return zyjd.jiudainSelectLike(currentPage, numPerpage, name, chengshi);
 	}
 
 	@Override
 	public int jiudianAdd(Jiudian jd) {
 		// 添加
-		return 0;
+		return zyjd.jiudianAdd(jd);
 	}
-
 	@Override
-	public boolean jiudianDelete(int id) {
+	public boolean jiudianDelete(long id) {
 		// 删除
-		return false;
+		return zyjd.jiudianDelete(id);
 	}
 
 	@Override
-	public Jiudian jiudianSelectId(int id) {
+	public List<Map<String, Object>> jiudianSelectId(long id) {
 		// 按id查询
-		return null;
+				return zyjd.jiudianSelectId(id);
+			
 	}
 
 	@Override
 	public boolean jiudianUpdate(Jiudian jd) {
 		// 修改
-		return false;
+		return zyjd.jiudianUpdate(jd);
 	}
+
 
 }

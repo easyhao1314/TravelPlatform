@@ -76,7 +76,6 @@ public class dantuanAction {
 	   ids.add(dt);
 		isSuccess = true;
 		} catch (Exception e) {
-			isSuccess = false;
 			e.printStackTrace();	
 		}		
 	   result.put("success", isSuccess);
@@ -105,7 +104,7 @@ public class dantuanAction {
 	     	config.registerJsonValueProcessor(Timestamp.class,new DateJsonValueProcessor("yyyy-MM-dd"));
 	     			//把MAP转换成JSON，返回到前台
 	     	JSONObject fromObject = JSONObject.fromObject(returnValue,config);
-	     	System.out.println(fromObject);
+	     	//System.out.println(fromObject);
 			return fromObject;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -123,22 +122,22 @@ public class dantuanAction {
 		
 		try {
 		Pagination<DantuanXinXi> pagination = ids.getDantuanLike(page, rows, ctsj, null, null, null);
-		List<Map<String, Object>> testUsers = pagination.getResultList();
+		List<Map<String, Object>> dantuanList = pagination.getResultList();
 		Map<String,Object> returnValue  = new HashMap<String, Object>();
-		for(int i = 0 ;i<testUsers.size();i++){
-			for(Entry<String, Object> entry : testUsers.get(i).entrySet()){
+		for(int i = 0 ;i<dantuanList.size();i++){
+			for(Entry<String, Object> entry : dantuanList.get(i).entrySet()){
 				if(entry.getValue() == null){
 					entry.setValue("") ;
 				}
 			}
 		}
 		returnValue.put("total",  pagination.getTotalRows());
-		returnValue.put("rows", testUsers);	
+		returnValue.put("rows", dantuanList);	
 		JsonConfig config = new JsonConfig();
      	config.registerJsonValueProcessor(Timestamp.class,new DateJsonValueProcessor("yyyy-MM-dd"));
      			//把MAP转换成JSON，返回到前台
      	JSONObject fromObject = JSONObject.fromObject(returnValue,config);
-     	System.out.println(fromObject);
+     	//System.out.println(fromObject);
 		return fromObject;
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -293,8 +292,7 @@ public class dantuanAction {
 	public Map<String ,Object> DantuanSelectId(HttpServletRequest request,
 			HttpServletResponse response,String updateTuanNO){
 		Map<String, Object> result = new HashMap<String, Object>();
-		
-		
+
 		try {
 			List<Map<String,Object>> customInfo =ids.selectDantuanId(updateTuanNO);
 			
@@ -310,7 +308,6 @@ public class dantuanAction {
 	     	config.registerJsonValueProcessor(Timestamp.class,new DateJsonValueProcessor("yyyy-MM-dd"));
 	     			//把MAP转换成JSON，返回到前台
 	     	JSONObject fromObject = JSONObject.fromObject(result,config);
-	     	System.out.println(fromObject);
 			return fromObject;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -371,7 +368,7 @@ public class dantuanAction {
 		}		
 	   result.put("success", isSuccess);
 		return result;
-}
+       }
 	
 	
 

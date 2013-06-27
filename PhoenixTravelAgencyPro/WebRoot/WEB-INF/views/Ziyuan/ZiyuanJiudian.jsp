@@ -10,6 +10,8 @@
 <html>
 <head>
 <base href="<%=basePath%>">
+
+<title></title>
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
@@ -25,31 +27,39 @@
 </head>
 
 <body>
-	<div class="easyui-panel" title="酒店查询"
+		<div class="easyui-panel" title="酒店查询"
 		style="height:80px;padding:10px;width:auto;"
 		data-options="closable:false,tools:'#searchpanel'" align="center">
+		<form id="searchPanelForm">
 		<table>
 			<tr>
 				<td><div class="fitem">
 						<label>酒店供应商名称:</label>
 				</td>
-				<td><input name="currencyShort" class="easyui-validatebox">
+				<td><input id="name" name="name" class="easyui-validatebox">
 					</div>
 				</td>
 				<td><div class="fitem">
 						<label>城市:</label>
 				</td>
-				<td><input name="currencyShort" class="easyui-validatebox">
+				<td><input id="chengshi" name="chengshi" class="easyui-validatebox">
 					</div>
 				</td>
+				<td>	<a href="javascript:ZyjiudianSelectLike();" 
+								class="easyui-linkbutton" iconCls="icon-ok">查询</a>
+						<a href="javascript:void(0)" class="easyui-linkbutton"
+							iconCls="icon-undo" onclick="$('#searchPanelForm').form('clear')">重置</a></td>
 			</tr>
 		</table>
+		</form>
 	</div>
+	<!--
 	<div id="searchpanel">
-		<a href="javascript:void(0)" iconCls="icon-search"
+		<a href="javascript:ZyjiudianSelectLike()" iconCls="icon-search"
 			onclick="javascript:alert('查询')"></a> <a href="javascript:void(0)"
 			iconCls="icon-undo" onclick="javascript:alert('重置')"></a>
 	</div>
+	  -->
 		<div class="easyui-panel" title="酒店供应商列表"
 		style="height:480px;width: auto;">
 		<table id="dg" class="easyui-datagrid"
@@ -73,58 +83,59 @@
 		     <a href="javascript:addJiudian();" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>  
 		</div>
 	</div>
-<div id="addJiudian" class="easyui-dialog" title="酒店新增"
+	
+	<div id="addJiudian"  class="easyui-dialog" title="酒店新增"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
-		style="width:800px;height:500px;padding:10px;">
+		style="width:600px;height:500px;padding:10px;">
 		<form id="addForm" method="post">
 			<table align="center">
-				<tr>
-<td><div class="fitem"><label>酒店编号:</label></td><td><input name="id" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>酒店名称:</label></td><td><input name="name" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>合作级别:</label></td><td><input name="hzjb" class="easyui-validatebox" required="true"></div></td>
+<tr>
+<td><div class="fitem"><label>酒店编号:</label></td><td><input name="id" class="easyui-validatebox"></div></td>
+<td><div class="fitem"><label>酒店名称:</label></td><td><input name="name" class="easyui-validatebox" ></div></td>
+<td><div class="fitem"><label>合作级别:</label></td><td><input name="hzjb" class="easyui-validatebox" ></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>所属城市：</label></td><td><input name="chengshi" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>星级标准：</label></td><td><input name="xjbz" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>房间数：</label></td><td><input name="fangjian" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>所属城市：</label></td><td><input name="chengshi" class="easyui-validatebox" ></div></td>
+<td><div class="fitem"><label>星级标准：</label></td><td><input name="xjbz" class="easyui-validatebox" ></div></td>
+<td><div class="fitem"><label>房间数：</label></td><td><input name="fangjian" class="easyui-validatebox" ></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>联系人：</label></td><td><input name="whr" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>电话：</label></td><td><input name="dianhua" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>传真:</label></td><td><input name="chuanzhen" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>联系人：</label></td><td><input name="whr" class="easyui-validatebox" ></div></td>
+<td><div class="fitem"><label>电话：</label></td><td><input name="dianhua" class="easyui-validatebox" ></div></td>
+<td><div class="fitem"><label>传真:</label></td><td><input name="chuanzhen" class="easyui-validatebox" ></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>Email：</label></td><td><input name="email" class="easyui-validatebox" required="true"></div></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><div class="fitem"><label>官方网站地址：</label></td><td><input name="guanwang" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>Email：</label></td><td><input name="email" class="easyui-validatebox" ></div></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>酒店地址:</label></td><td><input name="dizhi" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>官方网站地址：</label></td><td><input name="guanwang" class="easyui-validatebox" ></div></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>评价说明：</label></td><td><input name="pingjia" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>酒店地址:</label></td><td><input name="dizhi" class="easyui-validatebox" ></div></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>温馨提示：</label></td><td><input name="tishi" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>评价说明：</label></td><td><input name="pingjia" class="easyui-validatebox" ></div></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>淡季价：</label></td><td><input name="danjijia" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>旺季价：</label></td><td><input name="wangjijia" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>温馨提示：</label></td><td><input name="tishi" class="easyui-validatebox" ></div></td>
+<td></td>
 <td></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>价格说明:</label></td><td><input name="jgsm" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>淡季价：</label></td><td><input name="danjijia" class="easyui-validatebox" ></div></td>
+<td><div class="fitem"><label>旺季价：</label></td><td><input name="wangjijia" class="easyui-validatebox" ></div></td>
+<td></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>价格说明:</label></td><td><input name="jgsm" class="easyui-validatebox" ></div></td>
 <td></td>
 <td></td>
 </tr>
@@ -133,20 +144,88 @@
 <td></td><td></td>
 </tr>
 <tr>
-<tr><td colspan="4s" align="center"><a href="javascript:SaveJingdian();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> <input  type="reset" value="重置"></td>
+<tr>
+<tr><td colspan="4s" align="center"><a href="javascript:SaveJiudian();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> <input  type="reset" value="重置"></td>
 </tr>
 			</table>
 			<input id="dicType" name="dicType" type="hidden">
 		</form>
 	</div>
-
-
-
-	<script type="text/javascript">
+	
+	<div id="updateJiudian"  class="easyui-dialog" title="酒店修改"
+		data-options="modal:true,closed:true,iconCls:'icon-save'"
+		style="width:600px;height:500px;padding:10px;">
+		<form id="updateForm" method="post">
+			<table align="center">
+<tr>
+<td><div class="fitem"><label>酒店编号:</label></td><td><input name="id" class="easyui-validatebox"></div></td>
+<td><div class="fitem"><label>酒店名称:</label></td><td><input name="name" class="easyui-validatebox" ></div></td>
+<td><div class="fitem"><label>合作级别:</label></td><td><input name="hzjb" class="easyui-validatebox" ></div></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>所属城市：</label></td><td><input name="chengshi" class="easyui-validatebox" ></div></td>
+<td><div class="fitem"><label>星级标准：</label></td><td><input name="xjbz" class="easyui-validatebox" ></div></td>
+<td><div class="fitem"><label>房间数：</label></td><td><input name="fangjian" class="easyui-validatebox" ></div></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>联系人：</label></td><td><input name="whr" class="easyui-validatebox" ></div></td>
+<td><div class="fitem"><label>电话：</label></td><td><input name="dianhua" class="easyui-validatebox" ></div></td>
+<td><div class="fitem"><label>传真:</label></td><td><input name="chuanzhen" class="easyui-validatebox" ></div></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>Email：</label></td><td><input name="email" class="easyui-validatebox" ></div></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>官方网站地址：</label></td><td><input name="guanwang" class="easyui-validatebox" ></div></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>酒店地址:</label></td><td><input name="dizhi" class="easyui-validatebox" ></div></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>评价说明：</label></td><td><input name="pingjia" class="easyui-validatebox" ></div></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>温馨提示：</label></td><td><input name="tishi" class="easyui-validatebox" ></div></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>淡季价：</label></td><td><input name="danjijia" class="easyui-validatebox" ></div></td>
+<td><div class="fitem"><label>旺季价：</label></td><td><input name="wangjijia" class="easyui-validatebox" ></div></td>
+<td></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>价格说明:</label></td><td><input name="jgsm" class="easyui-validatebox" ></div></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>备注：</label></td><td><input name=" bz" class="easyui-validatebox" ></div></td>
+<td></td><td></td>
+</tr>
+<tr>
+<tr>
+<tr><td colspan="4s" align="center"><a href="javascript:jiudianUpdate();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> <input  type="reset" value="重置"></td>
+</tr>
+			</table>
+			<input id="dicType" name="dicType" type="hidden">
+		</form>
+	</div>
+	
+	
+		<script type="text/javascript">
     //这个方法是格式化操作列的函数
     function onOperateStyle(val,row){
-       var returnStyleValue='<img alt="修改" src="js/themes/icons/pencil.png" onclick="onOperateUpdate('+row.id+');">';
-       returnStyleValue+='<img alt="删除" src="js/themes/icons/cancel.png" onclick="onOperateDelete('+row.id+');">';
+       var returnStyleValue='<img alt="修改" src="js/themes/icons/pencil.png" onclick="ZiyuanJiudianSelectId('+row.id+');">';
+       returnStyleValue+='<img alt="删除" src="js/themes/icons/cancel.png" onclick="ZyjiudianDelete('+row.id+');">';
        return returnStyleValue;
     }
     //这个方法是格式化是否可用列的，0：为不使用，1：为使用
@@ -158,24 +237,64 @@
 	  }
 	  
 	}
-	//更新操作要执行的方法
-	function onOperateUpdate(id){
-	 alert("更新操作");
-	
-	}
-	//删除操作要执行的方法
-	function onOperateDelete(id){
-	  alert("删除操作");
-	}
-	 //新增
+		//模糊查询
+		function ZyjiudianSelectLike(){
+		console.info($('#dg').datagrid('options'));
+		var opts = $('#dg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
+			var param = {
+				"name" : $("#name").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
+				"chengshi" : $("#chengshi").val() ,
+				"page" :  opts.pageNumber ,
+				"rows" :  opts.pageSize
+			};
+			console.info(param);
+				$.ajax({
+					url : 'fenghuang/ZyjiudianSelectLike.do' ,
+					data : param ,
+					dataType : 'json' ,
+					success : function(data){
+						$('#dg').datagrid('loadData',data);
+					}
+				});
+		}
+		
+
+	//删除
+	function ZyjiudianDelete(){
+	 var row = $("#dg").datagrid("getSelected");
+			if (row) {
+				var param = {
+					"id" :  row.id
+				};
+				$.ajax({
+					url : "fenghuang/ZiyuanJiudianDelete.do",
+					data : param,
+					dataType : "json",
+					success : function(data) {
+						if (data.success) {
+							$.messager.alert("删除成功", "删除成功！", "info");
+							$("#dg").datagrid('reload');
+						} else {
+							$.messager.alert("删除失败", "删除失败!", "error");
+						}
+					},
+					error : function() {
+						$.messager.alert("删除失败", "服务器请求失败!", "error");
+					}
+				});
+			}
+		
+		}
+
+	  //新增
 		function addJiudian() {
 			$("#addJiudian").dialog("open");
-			$("#addFrome").form("clear");
+			$("#addForm").form("clear");
 		}
-         
+         //新增保存
 		function SaveJiudian() {
 			$('#addForm').form('submit', {
-				url : 'fenghuang/.do',
+				url : 'fenghuang/ZiyuanJiudianAdd.do',
 				onSubmit : function() {
 					return $(this).form('validate');
 				},
@@ -196,10 +315,65 @@
 		function closeEditDic() {
 			$('#addJiudian').dialog('close');
 		} 
+		
+		//按id查询
+		function ZiyuanJiudianSelectId() {
+          //通过主键，查询该操作，并处于编辑状态。 是否打开tab，还是直接弹出window 
+			$("#updateJiudian").dialog("open");
+			//准备回显的数据
+			var row = $("#dg").datagrid("getSelected");
+			//alert(row.tuanNO);
+		
+			if(row){
+				var param = {
+					"id" : row.id
+				};
+				
+				$.ajax({
+					url : "fenghuang/ZiyuanJiudianSelectId.do",
+					data : param,
+					dataType : "json",
+					success : function(data) {
+		
+					   $('#updateForm').form('load',data.rows[0]);
+				
+					},
+					error : function() {
+						$.messager.alert("查询失败", "服务器请求失败!", "error");
+					}
+				});
+		}
+		}
+		 //修改
+		function jiudianUpdate() {
+			$("#updateForm").form('submit', {
+				url : 'fenghuang/ZiyuanJiudianUpdate.do',
+				onSubmit : function() {
+					return $(this).form('validate');
+				},
+				success : function(data) {//data 是一个字符串  $.ajax(success:function(data):是一个对象)
+					console.info(data);
+					//var result = val('(' + data + ')');//吧字符串转换为对象
+					var result = $.parseJSON(data) ;
+
+					if (result.success) {
+					  $("#updateJiudian").dialog('close');
+						$.messager.alert("修改成功", "修改成功！", "info"); 
+						$("#dg").datagrid('reload');
+					} else {
+						$.messager.alert("修改失败", "修改失败!", "error");
+						$("#dg").datagrid('reload');
+					}
+				}
+			});
+		}
+		
+		//关闭
+		function closedSearch() {
+			$('#updateJiudian').dialog('close');
+		}
+	
 	
 	</script>
-
-
-
 </body>
 </html>
