@@ -8,9 +8,9 @@ import com.fenghuang.util.Pagination;
 
 public interface IZyJiudainService {
 	//查询
-	public Pagination<Jiudian> jiudainSelect(int currentPage,int numPerPage) throws Exception;
+	public Pagination<Jiudian> jiudianSelect(int currentPage,int numPerPage) throws Exception;
 	//模糊查询
-	public Pagination<Jiudian> jiudainSelectLike(int currentPage,int numPerpage,String name,int chengshi) throws Exception;
+	public Pagination<Jiudian> jiudianSelectLike(int currentPage,int numPerpage,String name,int chengshi) throws Exception;
 	//添加
 	public int jiudianAdd(Jiudian jd);
 	//删除

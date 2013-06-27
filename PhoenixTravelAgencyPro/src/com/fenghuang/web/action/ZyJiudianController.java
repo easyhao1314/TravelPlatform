@@ -33,10 +33,10 @@ public class ZyJiudianController {
 	// 查询
 	@RequestMapping("fenghuang/ZiyuanJiudian.do")
 	@ResponseBody
-	public Map<String,Object> jiudainSelect(HttpServletRequest request,
+	public Map<String,Object> jiudianSelect(HttpServletRequest request,
 			HttpServletResponse response, Integer page,Integer rows) {
 		try {
-			Pagination<Jiudian> pagination=(Pagination<Jiudian>)izyjd.jiudainSelect(page, rows);
+			Pagination<Jiudian> pagination=(Pagination<Jiudian>)izyjd.jiudianSelect(page, rows);
 			List<Map<String, Object>> jiudianList = pagination.getResultList();
 			Map<String,Object> returnValue  = new HashMap<String, Object>();
 			for(int i = 0 ;i<jiudianList.size();i++){
@@ -66,7 +66,7 @@ public class ZyJiudianController {
 		public Map<String,Object> jiudianSelectLike(HttpServletRequest request,HttpServletResponse response,
 				Integer page,Integer rows,String name,int chengshi){
 			try{
-				Pagination<Jiudian> pagination=(Pagination<Jiudian>)izyjd.jiudainSelectLike(page, rows, name, chengshi);
+				Pagination<Jiudian> pagination=(Pagination<Jiudian>)izyjd.jiudianSelectLike(page, rows, name, chengshi);
 				List<Map<String, Object>> jiudianList = pagination.getResultList();
 				Map<String,Object> returnValue  = new HashMap<String, Object>();
 				for(int i = 0 ;i<jiudianList.size();i++){

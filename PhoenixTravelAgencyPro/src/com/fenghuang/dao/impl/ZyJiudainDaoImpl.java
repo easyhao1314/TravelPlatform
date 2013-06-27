@@ -66,7 +66,7 @@ public class ZyJiudainDaoImpl extends BaseDao implements IZyJiudian{
 	}
 
 	@Override
-	public Pagination<Jiudian> jiudainSelectLike(int currentPage, int numPerPage,String name,int chengshi)
+	public Pagination<Jiudian> jiudianSelectLike(int currentPage, int numPerPage,String name,int chengshi)
 			throws Exception {
 		// 模糊查询
 		StringBuffer sql=new StringBuffer("select * from jiudian where 1=1");;

@@ -22,18 +22,12 @@ public class ZyJiudianServiceImpl  implements IZyJiudainService{
 	public IZyJiudian zyjd;
 
 	@Override
-	public Pagination<Jiudian> jiudainSelect(int currentPage, int numPerPage)
+	public Pagination<Jiudian> jiudianSelect(int currentPage, int numPerPage)
 			throws Exception {
 		// 查询
 		return zyjd.jiudianSelect(currentPage, numPerPage);
 	}
 
-	@Override
-	public Pagination<Jiudian> jiudainSelectLike(int currentPage, int numPerpage,String name,int chengshi)
-			throws Exception {
-		// 模糊查询
-		return zyjd.jiudainSelectLike(currentPage, numPerpage, name, chengshi);
-	}
 
 	@Override
 	public int jiudianAdd(Jiudian jd) {
@@ -57,6 +51,13 @@ public class ZyJiudianServiceImpl  implements IZyJiudainService{
 	public boolean jiudianUpdate(Jiudian jd) {
 		// 修改
 		return zyjd.jiudianUpdate(jd);
+	}
+
+	@Override
+	public Pagination<Jiudian> jiudianSelectLike(int currentPage,
+			int numPerpage, String name, int chengshi) throws Exception {
+		// 模糊查询
+				return zyjd.jiudianSelectLike(currentPage, numPerpage, name, chengshi);
 	}
 
 

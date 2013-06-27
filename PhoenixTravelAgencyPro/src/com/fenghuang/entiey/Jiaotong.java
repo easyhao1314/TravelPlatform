@@ -10,7 +10,8 @@ import java.util.*;
  * 
  * @pdOid e5f837c5-7950-4f21-ac75-32ee45c4871d */
 public class Jiaotong {
-   /** 编号
+
+/** 编号
     * 
     * @pdOid f9fb16a8-1fe9-429d-8eb2-f5ecda609038 */
    public long id;
@@ -67,5 +68,90 @@ public class Jiaotong {
     * 
     * @pdOid 86dbc7b6-4dc1-4b25-8002-67f9715ba446 */
    public java.lang.String beizhu;
+   
+   public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	public java.lang.String getName() {
+		return name;
+	}
+	public void setName(java.lang.String name) {
+		this.name = name;
+	}
+	public java.lang.String getLianxiren() {
+		return lianxiren;
+	}
+	public void setLianxiren(java.lang.String lianxiren) {
+		this.lianxiren = lianxiren;
+	}
+	public int getChengshiId() {
+		return chengshiId;
+	}
+	public void setChengshiId(int chengshiId) {
+		this.chengshiId = chengshiId;
+	}
+	public java.lang.String getDizhi() {
+		return dizhi;
+	}
+	public void setDizhi(java.lang.String dizhi) {
+		this.dizhi = dizhi;
+	}
+	public int getDianhua() {
+		return dianhua;
+	}
+	public void setDianhua(int dianhua) {
+		this.dianhua = dianhua;
+	}
+	public int getShouji() {
+		return shouji;
+	}
+	public void setShouji(int shouji) {
+		this.shouji = shouji;
+	}
+	public java.lang.String getEmail() {
+		return email;
+	}
+	public void setEmail(java.lang.String email) {
+		this.email = email;
+	}
+	public java.lang.String getChuanzhen() {
+		return chuanzhen;
+	}
+	public void setChuanzhen(java.lang.String chuanzhen) {
+		this.chuanzhen = chuanzhen;
+	}
+	public java.lang.String getWangzhi() {
+		return wangzhi;
+	}
+	public void setWangzhi(java.lang.String wangzhi) {
+		this.wangzhi = wangzhi;
+	}
+	public int getJiage() {
+		return jiage;
+	}
+	public void setJiage(int jiage) {
+		this.jiage = jiage;
+	}
+	public int getHzjbId() {
+		return hzjbId;
+	}
+	public void setHzjbId(int hzjbId) {
+		this.hzjbId = hzjbId;
+	}
+	public int getWhfsid() {
+		return whfsid;
+	}
+	public void setWhfsid(int whfsid) {
+		this.whfsid = whfsid;
+	}
+	public java.lang.String getBeizhu() {
+		return beizhu;
+	}
+	public void setBeizhu(java.lang.String beizhu) {
+		this.beizhu = beizhu;
+	}
 
 }
