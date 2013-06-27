@@ -46,6 +46,8 @@ public interface IUsersService {
 	public List<Map<String,Object>> getFunctionMenusByUserId(Long userId)throws Exception;
 	
 	
+	public void deleteUsersByList(List<Users> users)throws Exception;
 	
+	public void updateUsersByList(List<Users> users)throws Exception;
 	
 }

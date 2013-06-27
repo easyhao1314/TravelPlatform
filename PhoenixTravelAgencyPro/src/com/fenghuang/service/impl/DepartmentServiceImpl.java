@@ -1,5 +1,8 @@
 package com.fenghuang.service.impl;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -50,6 +53,11 @@ public class DepartmentServiceImpl implements IDepartmentService {
 	@Override
 	public boolean deleteDepartmentById(Long id) throws Exception {
 		return iDepartmentDao.deleteDepartmentById(id);
+	}
+
+	@Override
+	public List<Map<String, Object>> getDepartmentComboboxs() throws Exception {
+		return iDepartmentDao.getDepartmentComboboxs();
 	}
 
 }

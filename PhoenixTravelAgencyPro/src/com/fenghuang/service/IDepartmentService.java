@@ -1,5 +1,8 @@
 package com.fenghuang.service;
 
+import java.util.List;
+import java.util.Map;
+
 import com.fenghuang.entiey.Department;
 import com.fenghuang.util.Pagination;
 /**
@@ -48,4 +51,6 @@ public interface IDepartmentService {
      * @throws Exception
      */
 	public boolean deleteDepartmentById(Long id) throws Exception;
+	
+	List<Map<String, Object>> getDepartmentComboboxs() throws Exception;
 }

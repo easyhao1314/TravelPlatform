@@ -84,7 +84,7 @@ public class CompanyDaoImpl extends BaseDao implements ICompanyDao {
 
 	@Override
 	public List<Map<String, Object>> getCompanyComboboxs() throws Exception {
-		String sql = " select companyNumber,companyName from company ";
+		String sql = " select id,companyNumber,companyName from company ";
 		List<Map<String,Object>> comps = this.queryForList(sql);
 		return comps;
 	}

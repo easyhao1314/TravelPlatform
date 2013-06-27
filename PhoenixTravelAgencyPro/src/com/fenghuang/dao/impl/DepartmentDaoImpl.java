@@ -1,5 +1,8 @@
 package com.fenghuang.dao.impl;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,6 +81,12 @@ public class DepartmentDaoImpl extends BaseDao implements IDepartmentDao {
 		String sql = "delete from department where id=?";
 		int rs = this.update(sql, id);
 		return rs >0;
+	}
+
+	@Override
+	public List<Map<String, Object>> getDepartmentComboboxs() throws Exception {
+		String sql = "SELECT department.id,department.departName FROM department";
+		return this.queryForList(sql);
 	}
 
 }

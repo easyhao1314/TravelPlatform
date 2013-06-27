@@ -14,7 +14,7 @@ import java.util.*;
  */
 public class Users {
 	/** @pdOid 37b92e84-0c55-4148-9340-389744805148 */
-	public long id;
+	public Long id;
 	/**
 	 * 用户的编号，这个可以通过序列来产生
 	 * 
@@ -137,11 +137,11 @@ public class Users {
 	/** 用户部门关系 */
 	public Long departmentId;
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

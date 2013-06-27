@@ -100,11 +100,12 @@ public class UsersDaoImpl extends BaseDao implements IUserDao {
 		sql.append("users.remark,");
 		sql.append("users.imagePath,");
 		sql.append("department.departName");
+		sql.append("company.companyName");
 		sql.append(" FROM ");
 		sql.append("users ,");
-		sql.append("department");
+		sql.append("department,company");
 		sql.append(" WHERE ");
-		sql.append("department.id =  users.departmentId and 1=1");
+		sql.append("department.id =  users.departmentId  and users.companyId =company.id and 1=1");
 		if (users.getUserNumber() != null && !"".equals(users.getUserNumber())) {
 			sql.append("  and users.userNumber like '");
 			sql.append(users.getUserNumber());

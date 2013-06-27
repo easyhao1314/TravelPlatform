@@ -115,5 +115,16 @@ public class DepartmentController {
 		result.put("success", isSuccess);
 		return result;
 	}
-
+	@RequestMapping("fenghuang/getDepartmentComboboxs.do")
+	@ResponseBody
+	public List<Map<String, Object>> getDepartmentComboboxs(){
+		
+		try {
+			return iDepartmentService.getDepartmentComboboxs();
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

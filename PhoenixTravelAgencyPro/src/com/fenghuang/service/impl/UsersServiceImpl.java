@@ -145,4 +145,32 @@ public class UsersServiceImpl implements IUsersService {
 		return returnValue;
 	}
 
+	@Override
+	public void deleteUsersByList(List<Users> users) throws Exception {
+		if(users != null){
+			for (Iterator iterator = users.iterator(); iterator.hasNext();) {
+				Users users2 = (Users) iterator.next();
+				if(users2.getId()!=null &&users2.getId()!=0l){
+					iUserDao.deleteUserById(users2.getId());
+				}
+			}
+			
+		}
+		
+	}
+
+	@Override
+	public void updateUsersByList(List<Users> users) throws Exception {
+	  if(users != null){
+		  for (Iterator iterator = users.iterator(); iterator.hasNext();) {
+			Users users2 = (Users) iterator.next();
+			if(users2.getId()!=null &&users2.getId()!=0l){
+				iUserDao.updateUsers(users2);
+			}else{
+				iUserDao.saveUsers(users2);
+			}
+		}  
+	  }
+	}
+
 }
