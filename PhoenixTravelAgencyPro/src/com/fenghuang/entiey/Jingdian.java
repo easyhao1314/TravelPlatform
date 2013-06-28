@@ -78,5 +78,108 @@ public class Jingdian {
     * 
     * @pdOid 2cf4bc78-5502-468d-8256-ed2484ed153c */
    public java.lang.String jdms;
+public long getId() {
+	return id;
+}
+public void setId(long id) {
+	this.id = id;
+}
+public java.lang.String getName() {
+	return name;
+}
+public void setName(java.lang.String name) {
+	this.name = name;
+}
+public java.lang.String getName2() {
+	return name2;
+}
+public void setName2(java.lang.String name2) {
+	this.name2 = name2;
+}
+public int getChengsiId() {
+	return chengsiId;
+}
+public void setChengsiId(int chengsiId) {
+	this.chengsiId = chengsiId;
+}
+public int getJiage() {
+	return jiage;
+}
+public void setJiage(int jiage) {
+	this.jiage = jiage;
+}
+public int getBizongId() {
+	return bizongId;
+}
+public void setBizongId(int bizongId) {
+	this.bizongId = bizongId;
+}
+public java.lang.String getKftimeqi() {
+	return kftimeqi;
+}
+public void setKftimeqi(java.lang.String kftimeqi) {
+	this.kftimeqi = kftimeqi;
+}
+public java.lang.String getKftimezhi() {
+	return kftimezhi;
+}
+public void setKftimezhi(java.lang.String kftimezhi) {
+	this.kftimezhi = kftimezhi;
+}
+public int getTimekb() {
+	return timekb;
+}
+public void setTimekb(int timekb) {
+	this.timekb = timekb;
+}
+public java.lang.String getLianxiren() {
+	return lianxiren;
+}
+public void setLianxiren(java.lang.String lianxiren) {
+	this.lianxiren = lianxiren;
+}
+public java.lang.String getDianhua() {
+	return dianhua;
+}
+public void setDianhua(java.lang.String dianhua) {
+	this.dianhua = dianhua;
+}
+public java.lang.String getChuanzhen() {
+	return chuanzhen;
+}
+public void setChuanzhen(java.lang.String chuanzhen) {
+	this.chuanzhen = chuanzhen;
+}
+public java.lang.String getEmail() {
+	return email;
+}
+public void setEmail(java.lang.String email) {
+	this.email = email;
+}
+public int getDcmr() {
+	return dcmr;
+}
+public void setDcmr(int dcmr) {
+	this.dcmr = dcmr;
+}
+public java.lang.String getDizhi() {
+	return dizhi;
+}
+public void setDizhi(java.lang.String dizhi) {
+	this.dizhi = dizhi;
+}
+public java.lang.String getYwdz() {
+	return ywdz;
+}
+public void setYwdz(java.lang.String ywdz) {
+	this.ywdz = ywdz;
+}
+public java.lang.String getJdms() {
+	return jdms;
+}
+public void setJdms(java.lang.String jdms) {
+	this.jdms = jdms;
+}
+   
 
 }

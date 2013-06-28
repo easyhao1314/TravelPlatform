@@ -13,9 +13,9 @@ import com.fenghuang.dao.IZyCanyinDao;
 import com.fenghuang.entiey.Canyin;
 import com.fenghuang.util.Pagination;
 @Repository
-public class IZyCanyinDaoImpl extends BaseDao implements IZyCanyinDao{
+public class ZyCanyinDaoImpl extends BaseDao implements IZyCanyinDao{
 	@Autowired
-	public IZyCanyinDaoImpl(DataSource dataSource) {
+	public ZyCanyinDaoImpl(DataSource dataSource) {
 		super(dataSource);
 		// TODO Auto-generated constructor stub
 	}

@@ -59,7 +59,7 @@
 		<div class="easyui-panel" title="导游列表"
 		style="height:480px;width: auto;">
 		<table id="dg" class="easyui-datagrid"
-			data-options="url:'fenghuang/ZiyuanDy.do',border:false,singleSelect:false,fit:true,fitColumns:true,pageSize:20"
+			data-options="url:'fenghuang/daoyouSelect.do',border:false,singleSelect:false,fit:true,fitColumns:true,pageSize:20"
 			pagination="true" toolbar="#currencyDatagridtoolbar">
 			<thead>
 				<tr>
@@ -81,6 +81,10 @@
 		     <a href="javascript:addDaoyou();" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>  
 		</div>
 	</div>
+	
+	
+
+
 <div id="addDaoyou" class="easyui-dialog" title="导游新增"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:600px;height:500px;padding:10px;">
@@ -137,12 +141,66 @@
 	</div>
 
 
+<div id="updateDaoyou" class="easyui-dialog" title="导游修改"
+		data-options="modal:true,closed:true,iconCls:'icon-save'"
+		style="width:600px;height:500px;padding:10px;">
+		<form id="updateForm" method="post">
+			<table align="center">
+				<tr>
+<td><div class="fitem"><label>编号:</label></td><td><input name="id" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>国籍：</label></td><td><input name="guojiaId" class="easyui-validatebox" required="true"></div></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>姓名：</label></td><td><input name="name" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>姓名拼音：</label></td><td><input name="name2" class="easyui-validatebox" required="true"></div></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>英文名称：</label></td><td><input name="name3"  class="easyui-combobox"
+ data-options="url:'fenghuang/CountrySetting.do',valueField:'csdNo',textField:'csdName'"/></div></td>
+<td><div class="fitem"><label>证件类型：</label></td><td><input name="zjlx"  class="easyui-combobox"
+ data-options="url:'fenghuang/CountrySetting.do',valueField:'csdNo',textField:'csdName'"/></div></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>证件号码：</label></td><td><input name="zjhm" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>常驻地：</label></td><td><input  name="chengshiId" class="easyui-validatebox" required="true"></div></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>电话：</label></td><td><input name="dinhua" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>联系方式1：</label></td><td><input name="lxfs1" class="easyui-validatebox" required="true"></div></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>手机：</label></td><td><input name="shouji" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>联系2：</label></td><td><input name="lxfs2" class="easyui-validatebox" required="true"></div></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>传真：</label></td><td><input name="fax" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>联系3：</label></td><td><input name="lxfs3" class="easyui-validatebox" required="true"></div></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>EMAIL：</label></td><td><input name="email" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>合作级别：</label></td><td><input name="hzjbId" class="easyui-validatebox" required="true"></div></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>导游费用：</label></td><td><input name="dyfy" class="easyui-validatebox" required="true"></div></td>
+<td></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>备注：</label></td><td><input name="bz" class="easyui-validatebox" required="true"></div></td>
+<td></td>
+</tr>
+<tr>
+<tr><td colspan="4s" align="center"><a href="javascript:daoyouUpdate();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> <input  type="reset" value="重置"></td>
+</tr>
+			</table>
+			<input id="dicType" name="dicType" type="hidden">
+		</form>
+	</div>
 
 	<script type="text/javascript">
     //这个方法是格式化操作列的函数
     function onOperateStyle(val,row){
-       var returnStyleValue='<img alt="修改" src="js/themes/icons/pencil.png" onclick="onOperateUpdate('+row.id+');">';
-       returnStyleValue+='<img alt="删除" src="js/themes/icons/cancel.png" onclick="onOperateDelete('+row.id+');">';
+       var returnStyleValue='<img alt="修改" src="js/themes/icons/pencil.png" onclick="daoyouSelectId('+row.id+');">';
+       returnStyleValue+='<img alt="删除" src="js/themes/icons/cancel.png" onclick="daoyouDelete('+row.id+');">';
        return returnStyleValue;
     }
     //这个方法是格式化是否可用列的，0：为不使用，1：为使用
@@ -154,15 +212,7 @@
 	  }
 	  
 	}
-	//更新操作要执行的方法
-	function onOperateUpdate(id){
-	 alert("更新操作");
 	
-	}
-	//删除操作要执行的方法
-	function onOperateDelete(id){
-	  alert("删除操作");
-	}
 	  //新增
 		function addDaoyou() {
 			$("#addDaoyou").dialog("open");
@@ -171,7 +221,7 @@
          
 		function SaveDaoyou() {
 			$('#addForm').form('submit', {
-				url : 'fenghuang/.do',
+				url : 'fenghuang/daoyouAdd.do',
 				onSubmit : function() {
 					return $(this).form('validate');
 				},
@@ -193,6 +243,87 @@
 			$('#addDaoyou').dialog('close');
 		} 
 	
+	//删除操作要执行的方法
+	function daoyouDelete(){
+	  var row = $("#dg").datagrid("getSelected");
+			if (row) {
+				var param = {
+					"id" :  row.id
+				};
+				$.ajax({
+					url : "fenghuang/daoyouDelete.do",
+					data : param,
+					dataType : "json",
+					success : function(data) {
+						if (data.success) {
+							$.messager.alert("删除成功", "删除成功！", "info");
+							$("#dg").datagrid('reload');
+						} else {
+							$.messager.alert("删除失败", "删除失败!", "error");
+						}
+					},
+					error : function() {
+						$.messager.alert("删除失败", "服务器请求失败!", "error");
+					}
+				});
+			}
+	}
+	//按id查询
+		function daoyouSelectId() {
+          //通过主键，查询该操作，并处于编辑状态。 是否打开tab，还是直接弹出window 
+			$("#updateDaoyou").dialog("open");
+			//准备回显的数据
+			var row = $("#dg").datagrid("getSelected");
+			//alert(row.tuanNO);
+		
+			if(row){
+				var param = {
+					"id" : row.id
+				};
+				
+				$.ajax({
+					url : "fenghuang/daoyouSelectId.do",
+					data : param,
+					dataType : "json",
+					success : function(data) {
+		
+					   $('#updateForm').form('load',data.rows[0]);
+				
+					},
+					error : function() {
+						$.messager.alert("查询失败", "服务器请求失败!", "error");
+					}
+				});
+		}
+		}
+		 //修改
+		function daoyouUpdate() {
+			$("#updateForm").form('submit', {
+				url : 'fenghuang/daoyouUpdate.do',
+				onSubmit : function() {
+					return $(this).form('validate');
+				},
+				success : function(data) {//data 是一个字符串  $.ajax(success:function(data):是一个对象)
+					console.info(data);
+					//var result = val('(' + data + ')');//吧字符串转换为对象
+					var result = $.parseJSON(data) ;
+
+					if (result.success) {
+					  $("#updateDaoyou").dialog('close');
+						$.messager.alert("修改成功", "修改成功！", "info"); 
+						$("#dg").datagrid('reload');
+					} else {
+						$.messager.alert("修改失败", "修改失败!", "error");
+						$("#dg").datagrid('reload');
+					}
+				}
+			});
+		}
+		
+		//关闭
+		function closedSearch() {
+			$('#updateDaoyou').dialog('close');
+		}
 	
 	
 	</script>

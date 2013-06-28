@@ -87,5 +87,120 @@ public class Daoyou {
     * 
     * @pdOid 680ee95d-dbf4-4f1d-ab34-7ebac7f84eef */
    public java.lang.String zhaopian;
+public long getId() {
+	return id;
+}
+public void setId(long id) {
+	this.id = id;
+}
+public long getGuojiaId() {
+	return guojiaId;
+}
+public void setGuojiaId(long guojiaId) {
+	this.guojiaId = guojiaId;
+}
+public java.lang.String getName() {
+	return name;
+}
+public void setName(java.lang.String name) {
+	this.name = name;
+}
+public java.lang.String getName2() {
+	return name2;
+}
+public void setName2(java.lang.String name2) {
+	this.name2 = name2;
+}
+public java.lang.String getName3() {
+	return name3;
+}
+public void setName3(java.lang.String name3) {
+	this.name3 = name3;
+}
+public java.lang.String getZjlx() {
+	return zjlx;
+}
+public void setZjlx(java.lang.String zjlx) {
+	this.zjlx = zjlx;
+}
+public java.lang.String getZjhm() {
+	return zjhm;
+}
+public void setZjhm(java.lang.String zjhm) {
+	this.zjhm = zjhm;
+}
+public int getChengshiId() {
+	return chengshiId;
+}
+public void setChengshiId(int chengshiId) {
+	this.chengshiId = chengshiId;
+}
+public java.lang.String getDinhua() {
+	return dinhua;
+}
+public void setDinhua(java.lang.String dinhua) {
+	this.dinhua = dinhua;
+}
+public java.lang.String getLxfs1() {
+	return lxfs1;
+}
+public void setLxfs1(java.lang.String lxfs1) {
+	this.lxfs1 = lxfs1;
+}
+public java.lang.String getLxfs2() {
+	return lxfs2;
+}
+public void setLxfs2(java.lang.String lxfs2) {
+	this.lxfs2 = lxfs2;
+}
+public java.lang.String getLxfs3() {
+	return lxfs3;
+}
+public void setLxfs3(java.lang.String lxfs3) {
+	this.lxfs3 = lxfs3;
+}
+public java.lang.String getEmail() {
+	return email;
+}
+public void setEmail(java.lang.String email) {
+	this.email = email;
+}
+public java.lang.String getShouji() {
+	return shouji;
+}
+public void setShouji(java.lang.String shouji) {
+	this.shouji = shouji;
+}
+public java.lang.String getFax() {
+	return fax;
+}
+public void setFax(java.lang.String fax) {
+	this.fax = fax;
+}
+public int getDyfy() {
+	return dyfy;
+}
+public void setDyfy(int dyfy) {
+	this.dyfy = dyfy;
+}
+public int getHzjbId() {
+	return hzjbId;
+}
+public void setHzjbId(int hzjbId) {
+	this.hzjbId = hzjbId;
+}
+public java.lang.String getBz() {
+	return bz;
+}
+public void setBz(java.lang.String bz) {
+	this.bz = bz;
+}
+public java.lang.String getZhaopian() {
+	return zhaopian;
+}
+public void setZhaopian(java.lang.String zhaopian) {
+	this.zhaopian = zhaopian;
+}
+   
 
 }

@@ -23,9 +23,9 @@ public class ZyCanyinServiceImpl implements IZyCanyinService{
 	}
 
 	@Override
-	public boolean canyinAdd(Canyin jd) throws Exception {
+	public boolean canyinAdd(Canyin dy) throws Exception {
 		// TODO Auto-generated method stub
-		return izcd.canyinAdd(jd);
+		return izcd.canyinAdd(dy);
 	}
 
 	@Override
@@ -41,9 +41,9 @@ public class ZyCanyinServiceImpl implements IZyCanyinService{
 	}
 
 	@Override
-	public boolean canyinUpdate(Canyin jd) throws Exception {
+	public boolean canyinUpdate(Canyin dy) throws Exception {
 		// TODO Auto-generated method stub
-		return izcd.canyinUpdate(jd);
+		return izcd.canyinUpdate(dy);
 	}
 
 	@Override
