@@ -363,9 +363,7 @@
 		function closedSearch() {
 			$('#jiaotongUpdate').dialog('close');
 		}
-	
-	
-	
+
 	
 	</script>
 

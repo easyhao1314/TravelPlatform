@@ -110,5 +110,156 @@ public class Canyin {
     * 
     * @pdOid 8ced5e9a-c723-4413-9b0d-c10fe62e2f99 */
    public java.lang.String beizhu;
+public long getId() {
+	return id;
+}
+public void setId(long id) {
+	this.id = id;
+}
+public int getChengshiId() {
+	return chengshiId;
+}
+public void setChengshiId(int chengshiId) {
+	this.chengshiId = chengshiId;
+}
+public java.lang.String getName() {
+	return name;
+}
+public void setName(java.lang.String name) {
+	this.name = name;
+}
+public java.lang.String getDizhi() {
+	return dizhi;
+}
+public void setDizhi(java.lang.String dizhi) {
+	this.dizhi = dizhi;
+}
+public java.lang.String getLianxiren() {
+	return lianxiren;
+}
+public void setLianxiren(java.lang.String lianxiren) {
+	this.lianxiren = lianxiren;
+}
+public java.lang.String getDianhua() {
+	return dianhua;
+}
+public void setDianhua(java.lang.String dianhua) {
+	this.dianhua = dianhua;
+}
+public java.lang.String getShouji() {
+	return shouji;
+}
+public void setShouji(java.lang.String shouji) {
+	this.shouji = shouji;
+}
+public java.lang.String getChuanzhen() {
+	return chuanzhen;
+}
+public void setChuanzhen(java.lang.String chuanzhen) {
+	this.chuanzhen = chuanzhen;
+}
+public java.lang.String getEmail() {
+	return email;
+}
+public void setEmail(java.lang.String email) {
+	this.email = email;
+}
+public int getFkfsId() {
+	return fkfsId;
+}
+public void setFkfsId(int fkfsId) {
+	this.fkfsId = fkfsId;
+}
+public int getHzjbId() {
+	return hzjbId;
+}
+public void setHzjbId(int hzjbId) {
+	this.hzjbId = hzjbId;
+}
+public int getCbwu() {
+	return cbwu;
+}
+public void setCbwu(int cbwu) {
+	this.cbwu = cbwu;
+}
+public int getCbliu() {
+	return cbliu;
+}
+public void setCbliu(int cbliu) {
+	this.cbliu = cbliu;
+}
+public int getCbqi() {
+	return cbqi;
+}
+public void setCbqi(int cbqi) {
+	this.cbqi = cbqi;
+}
+public int getCbba() {
+	return cbba;
+}
+public void setCbba(int cbba) {
+	this.cbba = cbba;
+}
+public int getYecf() {
+	return yecf;
+}
+public void setYecf(int yecf) {
+	this.yecf = yecf;
+}
+public java.lang.String getYenlsm() {
+	return yenlsm;
+}
+public void setYenlsm(java.lang.String yenlsm) {
+	this.yenlsm = yenlsm;
+}
+public int getEtcf() {
+	return etcf;
+}
+public void setEtcf(int etcf) {
+	this.etcf = etcf;
+}
+public java.lang.String getEtcfsm() {
+	return etcfsm;
+}
+public void setEtcfsm(java.lang.String etcfsm) {
+	this.etcfsm = etcfsm;
+}
+public int getCgczs() {
+	return cgczs;
+}
+public void setCgczs(int cgczs) {
+	this.cgczs = cgczs;
+}
+public int getRnrs() {
+	return rnrs;
+}
+public void setRnrs(int rnrs) {
+	this.rnrs = rnrs;
+}
+public java.lang.String getMfzdsm() {
+	return mfzdsm;
+}
+public void setMfzdsm(java.lang.String mfzdsm) {
+	this.mfzdsm = mfzdsm;
+}
+public int getSfxydw() {
+	return sfxydw;
+}
+public void setSfxydw(int sfxydw) {
+	this.sfxydw = sfxydw;
+}
+public int getSffxdw() {
+	return sffxdw;
+}
+public void setSffxdw(int sffxdw) {
+	this.sffxdw = sffxdw;
+}
+public java.lang.String getBeizhu() {
+	return beizhu;
+}
+public void setBeizhu(java.lang.String beizhu) {
+	this.beizhu = beizhu;
+}
+   
 
 }

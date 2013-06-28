@@ -30,5 +30,35 @@ public class Hangkong {
     * 
     * @pdOid 49051a06-cdf7-4334-b7a6-a621c3f98a4f */
    public int bizongId;
+public long getId() {
+	return id;
+}
+public void setId(long id) {
+	this.id = id;
+}
+public java.lang.String getDaima() {
+	return daima;
+}
+public void setDaima(java.lang.String daima) {
+	this.daima = daima;
+}
+public java.lang.String getName() {
+	return name;
+}
+public void setName(java.lang.String name) {
+	this.name = name;
+}
+public float getShui() {
+	return shui;
+}
+public void setShui(float shui) {
+	this.shui = shui;
+}
+public int getBizongId() {
+	return bizongId;
+}
+public void setBizongId(int bizongId) {
+	this.bizongId = bizongId;
+}
 
 }

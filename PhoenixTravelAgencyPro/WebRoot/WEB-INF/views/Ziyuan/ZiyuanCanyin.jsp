@@ -79,7 +79,7 @@
 		<div class="easyui-panel" title="酒店列表"
 		style="height:480px;width: auto;">
 		<table id="dg" class="easyui-datagrid"
-			data-options="url:'fenghuang/ZiyuanCanyin.do',border:false,singleSelect:false,fit:true,fitColumns:true,pageSize:20"
+			data-options="url:'fenghuang/canyinSelect.do',border:false,singleSelect:false,fit:true,fitColumns:true,pageSize:20"
 			pagination="true" toolbar="#currencyDatagridtoolbar">
 			<thead>
 				<tr>
@@ -115,8 +115,7 @@
 </tr>
 <tr>
 <td><div class="fitem"><label>联系人：</label></td><td><input name="lianxiren" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>联系电话：</label></td><td><input name="dianhua"  class="easyui-combobox"
- data-options="url:'fenghuang/CountrySetting.do',valueField:'csdNo',textField:'csdName'"/></div></td>
+<td><div class="fitem"><label>联系电话：</label></td><td><input name="dianhua"  class="easyui-validatebox" required="true"></div></td>
 </tr>
 <tr>
 <td><div class="fitem"><label>手机：</label></td><td><input name="shouji" class="easyui-validatebox" required="true"></div></td>
@@ -169,13 +168,84 @@
 			<input id="dicType" name="dicType" type="hidden">
 		</form>
 	</div>
+	
+	<div id="updateCanyin" class="easyui-dialog" title="餐饮修改"
+		data-options="modal:true,closed:true,iconCls:'icon-save'"
+		style="width:600px;height:500px;padding:10px;">
+		<form id="updateForm" method="post">
+			<table align="center">
+				<tr>
+<td><div class="fitem"><label>餐馆编号:</label></td><td><input name="id" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>所属城市：</label></td><td><input name="chengshiId"  class="easyui-combobox"
+ data-options="url:'fenghuang/CountrySetting.do',valueField:'csdNo',textField:'csdName'"/></div></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>餐馆名称：</label></td><td><input name="name" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>具体地址：</label></td><td><input name="dizhi" class="easyui-validatebox" required="true"></div></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>联系人：</label></td><td><input name="lianxiren" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>联系电话：</label></td><td><input name="dianhua"  class="easyui-validatebox" required="true"></div></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>手机：</label></td><td><input name="shouji" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>传真：</label></td><td><input  name="chuanzhen" class="easyui-validatebox" required="true"></div></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>Email：</label></td><td><input name="email" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>付款方式：</label></td><td><input name="fkfsId" class="easyui-validatebox" required="true"></div></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>合作级别：</label></td><td><input name="hzjbId" class="easyui-validatebox" required="true"></div></td>
+<td></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>餐标五菜一汤：</label></td><td><input name="cbwu" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>餐标六菜一汤：</label></td><td><input name="cbliu" class="easyui-validatebox" required="true"></div></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>餐标七菜一汤：</label></td><td><input name="cbqi" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>餐标八菜一汤：</label></td><td><input name="cbba" class="easyui-validatebox" required="true"></div></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>幼儿餐费：</label></td><td><input name="yecf" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>幼儿年龄说明：</label></td><td><input name="yenlsm" class="easyui-validatebox" required="true"></div></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>儿童餐费：</label></td><td><input name="etcf" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>儿童餐费说明：</label></td><td><input name="etcfsm" class="easyui-validatebox" required="true"></div></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>餐馆餐桌数：</label></td><td><input name="cgczs" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>容纳人数：</label></td><td><input name="rnrs" class="easyui-validatebox" required="true"></div></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>免费额度说明：</label></td><td><input name="mfzdsm" class="easyui-validatebox" required="true"></div></td>
+<td></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>是否协议单位：</label></td><td><input name="sfxydw" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>是否付现单位：</label></td><td><input name="sffxdw" class="easyui-validatebox" required="true"></div></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>备注：</label></td><td><input name="beizhu" class="easyui-validatebox" required="true"></div></td>
+<td></td>
+</tr>
+<tr>
+<tr><td colspan="4s" align="center"><a href="javascript:canyinUpdate();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> <input  type="reset" value="重置"></td>
+</tr>
+			</table>
+			<input id="dicType" name="dicType" type="hidden">
+		</form>
+	</div>
+	
 
 
 	<script type="text/javascript">
     //这个方法是格式化操作列的函数
     function onOperateStyle(val,row){
-       var returnStyleValue='<img alt="修改" src="js/themes/icons/pencil.png" onclick="onOperateUpdate('+row.id+');">';
-       returnStyleValue+='<img alt="删除" src="js/themes/icons/cancel.png" onclick="onOperateDelete('+row.id+');">';
+       var returnStyleValue='<img alt="修改" src="js/themes/icons/pencil.png" onclick="canyinSelectId('+row.id+');">';
+       returnStyleValue+='<img alt="删除" src="js/themes/icons/cancel.png" onclick="canyinDelete('+row.id+');">';
        return returnStyleValue;
     }
     //这个方法是格式化是否可用列的，0：为不使用，1：为使用
@@ -187,15 +257,7 @@
 	  }
 	  
 	}
-	//更新操作要执行的方法
-	function onOperateUpdate(id){
-	 alert("更新操作");
-	
-	}
-	//删除操作要执行的方法
-	function onOperateDelete(id){
-	  alert("删除操作");
-	}
+
 	 //新增
 		function addCanyin() {
 			$("#addCanyin").dialog("open");
@@ -204,7 +266,7 @@
          
 		function SaveCanyin() {
 			$('#addForm').form('submit', {
-				url : 'fenghuang/.do',
+				url : 'fenghuang/canyinAdd.do',
 				onSubmit : function() {
 					return $(this).form('validate');
 				},
@@ -225,7 +287,87 @@
 		function closeEditDic() {
 			$('#addCanyin').dialog('close');
 		} 
-	
+	//删除操作要执行的方法
+	function canyinDelete(){
+	  var row = $("#dg").datagrid("getSelected");
+			if (row) {
+				var param = {
+					"id" :  row.id
+				};
+				$.ajax({
+					url : "fenghuang/canyinDelete.do",
+					data : param,
+					dataType : "json",
+					success : function(data) {
+						if (data.success) {
+							$.messager.alert("删除成功", "删除成功！", "info");
+							$("#dg").datagrid('reload');
+						} else {
+							$.messager.alert("删除失败", "删除失败!", "error");
+						}
+					},
+					error : function() {
+						$.messager.alert("删除失败", "服务器请求失败!", "error");
+					}
+				});
+			}
+	}
+	//按id查询
+		function canyinSelectId() {
+          //通过主键，查询该操作，并处于编辑状态。 是否打开tab，还是直接弹出window 
+			$("#updateCanyin").dialog("open");
+			//准备回显的数据
+			var row = $("#dg").datagrid("getSelected");
+			//alert(row.tuanNO);
+		
+			if(row){
+				var param = {
+					"id" : row.id
+				};
+				
+				$.ajax({
+					url : "fenghuang/canyinSelectId.do",
+					data : param,
+					dataType : "json",
+					success : function(data) {
+		
+					   $('#updateForm').form('load',data.rows[0]);
+				
+					},
+					error : function() {
+						$.messager.alert("查询失败", "服务器请求失败!", "error");
+					}
+				});
+		}
+		}
+		 //修改
+		function canyinUpdate() {
+			$("#updateForm").form('submit', {
+				url : 'fenghuang/canyinUpdate.do',
+				onSubmit : function() {
+					return $(this).form('validate');
+				},
+				success : function(data) {//data 是一个字符串  $.ajax(success:function(data):是一个对象)
+					console.info(data);
+					//var result = val('(' + data + ')');//吧字符串转换为对象
+					var result = $.parseJSON(data) ;
+
+					if (result.success) {
+					  $("#updateCanyin").dialog('close');
+						$.messager.alert("修改成功", "修改成功！", "info"); 
+						$("#dg").datagrid('reload');
+					} else {
+						$.messager.alert("修改失败", "修改失败!", "error");
+						$("#dg").datagrid('reload');
+					}
+				}
+			});
+		}
+		
+		//关闭
+		function closedSearch() {
+			$('#updateCanyin').dialog('close');
+		}
 	
 	</script>
 
