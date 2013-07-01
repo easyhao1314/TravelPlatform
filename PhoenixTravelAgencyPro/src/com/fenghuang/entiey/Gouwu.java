@@ -54,5 +54,72 @@ public class Gouwu {
     * 
     * @pdOid 8f5c6e7c-18db-4bf8-bc11-8d169fa4c91a */
    public java.lang.String bz;
+public long getId() {
+	return id;
+}
+public void setId(long id) {
+	this.id = id;
+}
+public java.lang.String getLianxiren() {
+	return lianxiren;
+}
+public void setLianxiren(java.lang.String lianxiren) {
+	this.lianxiren = lianxiren;
+}
+public java.lang.String getName() {
+	return name;
+}
+public void setName(java.lang.String name) {
+	this.name = name;
+}
+public java.lang.String getChuanzhen() {
+	return chuanzhen;
+}
+public void setChuanzhen(java.lang.String chuanzhen) {
+	this.chuanzhen = chuanzhen;
+}
+public int getChengshiId() {
+	return chengshiId;
+}
+public void setChengshiId(int chengshiId) {
+	this.chengshiId = chengshiId;
+}
+public java.lang.String getDizhi() {
+	return dizhi;
+}
+public void setDizhi(java.lang.String dizhi) {
+	this.dizhi = dizhi;
+}
+public java.lang.String getDianhua() {
+	return dianhua;
+}
+public void setDianhua(java.lang.String dianhua) {
+	this.dianhua = dianhua;
+}
+public java.lang.String getShouji() {
+	return shouji;
+}
+public void setShouji(java.lang.String shouji) {
+	this.shouji = shouji;
+}
+public java.lang.String getEmail() {
+	return email;
+}
+public void setEmail(java.lang.String email) {
+	this.email = email;
+}
+public int getHzjbId() {
+	return hzjbId;
+}
+public void setHzjbId(int hzjbId) {
+	this.hzjbId = hzjbId;
+}
+public java.lang.String getBz() {
+	return bz;
+}
+public void setBz(java.lang.String bz) {
+	this.bz = bz;
+}
+   
 
 }

@@ -19,31 +19,31 @@ public class ZyJingdianServiceImpl implements IZyJingdianService{
 	public Pagination<Jingdian> jingdianSelect(int currentPage, int numPerPage)
 			throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return izjd.jingdianSelect(currentPage, numPerPage);
 	}
 
 	@Override
 	public boolean jingdianAdd(Jingdian jd) throws Exception {
 		// TODO Auto-generated method stub
-		return false;
+		return izjd.jingdianAdd(jd);
 	}
 
 	@Override
 	public boolean jingdianDelete(long id) throws Exception {
 		// TODO Auto-generated method stub
-		return false;
+		return izjd.jingdianDelete(id);
 	}
 
 	@Override
 	public List<Map<String, Object>> jingdianSelectId(long id) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return izjd.jingdianSelectId(id);
 	}
 
 	@Override
 	public boolean jingdianUpdate(Jingdian jd) throws Exception {
 		// TODO Auto-generated method stub
-		return false;
+		return izjd.jingdianUpdate(jd);
 	}
 
 	@Override

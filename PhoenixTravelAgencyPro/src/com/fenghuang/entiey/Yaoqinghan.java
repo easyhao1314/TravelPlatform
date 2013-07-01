@@ -34,5 +34,42 @@ public class Yaoqinghan {
     * 
     * @pdOid 2dd6e0f1-aed2-4c98-b3b8-d89b6231f4bc */
    public int shiyongid;
+public long getId() {
+	return id;
+}
+public void setId(long id) {
+	this.id = id;
+}
+public int getGuoduid() {
+	return guoduid;
+}
+public void setGuoduid(int guoduid) {
+	this.guoduid = guoduid;
+}
+public java.lang.String getMiaoshu() {
+	return miaoshu;
+}
+public void setMiaoshu(java.lang.String miaoshu) {
+	this.miaoshu = miaoshu;
+}
+public java.lang.String getChengben() {
+	return chengben;
+}
+public void setChengben(java.lang.String chengben) {
+	this.chengben = chengben;
+}
+public int getBizhongId() {
+	return bizhongId;
+}
+public void setBizhongId(int bizhongId) {
+	this.bizhongId = bizhongId;
+}
+public int getShiyongid() {
+	return shiyongid;
+}
+public void setShiyongid(int shiyongid) {
+	this.shiyongid = shiyongid;
+}
+   
 
 }

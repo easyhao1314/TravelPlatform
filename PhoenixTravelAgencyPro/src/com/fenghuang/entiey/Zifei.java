@@ -50,6 +50,66 @@ public class Zifei {
     * 
     * @pdOid 3adc4601-e6dc-4864-87af-d3c51b92eef5 */
    public java.lang.String miaoshu;
+public long getId() {
+	return id;
+}
+public void setId(long id) {
+	this.id = id;
+}
+public java.lang.String getName() {
+	return name;
+}
+public void setName(java.lang.String name) {
+	this.name = name;
+}
+public int getFeiyong() {
+	return feiyong;
+}
+public void setFeiyong(int feiyong) {
+	this.feiyong = feiyong;
+}
+public int getBizhongId() {
+	return bizhongId;
+}
+public void setBizhongId(int bizhongId) {
+	this.bizhongId = bizhongId;
+}
+public int getChengshiId() {
+	return chengshiId;
+}
+public void setChengshiId(int chengshiId) {
+	this.chengshiId = chengshiId;
+}
+public java.lang.String getKftimeqi() {
+	return kftimeqi;
+}
+public void setKftimeqi(java.lang.String kftimeqi) {
+	this.kftimeqi = kftimeqi;
+}
+public java.lang.String getKftimezhi() {
+	return kftimezhi;
+}
+public void setKftimezhi(java.lang.String kftimezhi) {
+	this.kftimezhi = kftimezhi;
+}
+public int getTimekb() {
+	return timekb;
+}
+public void setTimekb(int timekb) {
+	this.timekb = timekb;
+}
+public int getDjaptime() {
+	return djaptime;
+}
+public void setDjaptime(int djaptime) {
+	this.djaptime = djaptime;
+}
+public java.lang.String getMiaoshu() {
+	return miaoshu;
+}
+public void setMiaoshu(java.lang.String miaoshu) {
+	this.miaoshu = miaoshu;
+}
    
    
 

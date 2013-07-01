@@ -25,17 +25,17 @@ public class ZyDijieDaoImpl extends BaseDao implements IZyDijieDao{
 			throws Exception {
 		// TODO Auto-generated method stub
 		String sql="select * from dijie";
-		return null;
+		return this.getPagination(currentPage, numPerPage, sql);
 	}
 
 	@Override
 	public boolean dijieAdd(Dijie dj) throws Exception {
 		// TODO Auto-generated method stub
-		String sql="insert into dijie() values()";
-		int count=this.update(sql);
+		String sql="insert into dijie(id,name,ywname,chengshiId,dizhi,hzjbId,lianxiren,dianhua,shouji,chuanzhen,email,skype,msn,yahoo,wangzhi,kaihu,dlrzh,yhdz,skrzh,skrxm,skrdz,ywqyId,djsms,xjb,youshi,bz) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		int count=this.update(sql,dj.getId(),dj.getName(),dj.getYwname(),dj.getChengshiId(),dj.getDizhi(),dj.getHzjbId(),dj.getLianxiren(),dj.getDianhua(),dj.getShouji(),dj.getChuanzhen(),dj.getEmail(),dj.getSkype(),
+				                dj.getMsn(),dj.getYahoo(),dj.getWangzhi(),dj.getKaihu(),dj.getDlrzh(),dj.getYhdz(),dj.getSkrzh(),dj.getSkrxm(),dj.getSkrdz(),dj.getYwqyId(),dj.getDjsms(),dj.getXjb(),dj.getYoushi(),dj.getBz());
 		return count>0;
 	}
-
 	@Override
 	public boolean dijieDelete(long id) throws Exception {
 		// TODO Auto-generated method stub
@@ -52,10 +52,11 @@ public class ZyDijieDaoImpl extends BaseDao implements IZyDijieDao{
 	}
 
 	@Override
-	public boolean jingdianUpdate(Dijie dj) throws Exception {
+	public boolean dijieUpdate(Dijie dj) throws Exception {
 		// TODO Auto-generated method stub
-		String sql="update dijie set  where id=?";
-		int count=this.update(sql);
+		String sql="update dijie set name=?,ywname=?,chengshiId=?,dizhi=?,hzjbId=?,lianxiren=?,dianhua=?,shouji=?,chuanzhen=?,email=?,skype=?,msn=?,yahoo=?,wangzhi=?,kaihu=?,dlrzh=?,yhdz=?,skrzh=?,skrxm=?,skrdz=?,ywqyId=?,djsms=?,xjb=?,youshi=?,bz=? where id=?";
+		int count=this.update(sql,dj.getName(),dj.getYwname(),dj.getChengshiId(),dj.getDizhi(),dj.getHzjbId(),dj.getLianxiren(),dj.getDianhua(),dj.getShouji(),dj.getChuanzhen(),dj.getEmail(),dj.getSkype(),
+                dj.getMsn(),dj.getYahoo(),dj.getWangzhi(),dj.getKaihu(),dj.getDlrzh(),dj.getYhdz(),dj.getSkrzh(),dj.getSkrxm(),dj.getSkrdz(),dj.getYwqyId(),dj.getDjsms(),dj.getXjb(),dj.getYoushi(),dj.getBz(),dj.getId());
 		return count>0;
 	}
 

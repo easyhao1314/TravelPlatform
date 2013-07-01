@@ -17,7 +17,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.fenghuang.entiey.DantuanXinXi;
 import com.fenghuang.entiey.Jiudian;
 import com.fenghuang.service.IZyJiudainService;
 import com.fenghuang.service.IdantuanService;
