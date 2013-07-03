@@ -86,6 +86,15 @@
 					<li iconCls="icon-gears"><a
 						href="javascript:open1('散拼操作','SanPin_caozuo.do');">散拼操作</a>
 					</li>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('报名确认受理','SanPin_baoming.do');">报名确认受理</a>
+					</li>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('散拼团列表','SanPin_liebiao.do');">散拼团列表</a>
+					</li>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('我的退团申请','SanPin_tuituan.do');">我的退团申请</a>
+					</li>
 				</ul>
 				<ul>
 
