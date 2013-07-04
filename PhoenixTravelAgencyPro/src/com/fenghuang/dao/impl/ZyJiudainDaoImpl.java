@@ -66,20 +66,26 @@ public class ZyJiudainDaoImpl extends BaseDao implements IZyJiudian{
 	}
 
 	@Override
-	public Pagination<Jiudian> jiudianSelectLike(int currentPage, int numPerPage,String name,int chengshi)
+	public Pagination<Jiudian> jiudianSelectLike(int currentPage, int numPerPage,String name,String chengshi,String weihuren)
 			throws Exception {
 		// 模糊查询
-		StringBuffer sql=new StringBuffer("select * from jiudian where 1=1");;
+		StringBuffer sql=new StringBuffer("select * from jiudian where 1=1 ");
+		if(chengshi != null && !"".equals(chengshi)){
+			sql.append(" and chengshi = '");
+			sql.append(chengshi);
+			sql.append("'");
+		}
 		if(!"".equals(name) && name!=null){
 			sql.append(" and name like '%");
 			sql.append(name);
 			sql.append("%'");
 		}
-		if(!"".equals(chengshi) && chengshi!=0){
-			sql.append(" and chengshi='");
-			sql.append(chengshi);
-			sql.append("'");
+		if(!"".equals(weihuren) && weihuren!=null){
+			sql.append(" and whr like '%");
+			sql.append(weihuren);
+			sql.append("%'");
 		}
+		
 		 Pagination<Jiudian> jdLike=this.getPagination(currentPage, numPerPage, sql.toString());
 		return jdLike;
 	}

@@ -144,5 +144,11 @@ public class dantuanImpl extends BaseDao implements Idantuan{
 		return count>0;
 	}
 
+	@Override
+	public List<Map<String,Object>> getDate(String ctsj, String cfts) {
+		String sql = "SELECT DATE_ADD('"+ ctsj +"',INTERVAL " + cfts + " DAY) AS htsj";
+		return this.queryForList(sql);
+	}
+
 
 }

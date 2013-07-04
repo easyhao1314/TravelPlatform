@@ -37,5 +37,12 @@ public interface IdantuanService {
 		//修改
 		public boolean updateDantuan(DantuanXinXi dt);
 		
+		/**
+		 * 
+		 * @param ctsj fdsfsd
+		 * @param cftsf fsdfs
+		 * @return
+		 */
+		public List<Map<String,Object>> getDate(String ctsj ,String cfts);
 
 }

@@ -18,6 +18,6 @@ public interface IZyJiudian {
 	//修改
 	public boolean jiudianUpdate(Jiudian jd);
 	//模糊查询 
-	public  Pagination<Jiudian> jiudianSelectLike(int currentPage,int numPerPage,String name,int chengshi) throws Exception;
+	public  Pagination<Jiudian> jiudianSelectLike(int currentPage,int numPerPage,String name,String chengshi,String weihuren) throws Exception;
 
 }

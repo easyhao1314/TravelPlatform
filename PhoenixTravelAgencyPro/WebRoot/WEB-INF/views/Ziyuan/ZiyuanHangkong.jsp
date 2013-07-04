@@ -58,7 +58,7 @@
 			iconCls="icon-undo" onclick="javascript:alert('重置')"></a>
 	</div>
 	  -->
-		<div class="easyui-panel" title="酒店列表"
+		<div class="easyui-panel" title="航空公司列表"
 		style="height:480px;width: auto;">
 		<table id="dg" class="easyui-datagrid"
 			data-options="url:'fenghuang/hangkongSelect.do',border:false,singleSelect:false,fit:true,fitColumns:true,pageSize:20"

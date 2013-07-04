@@ -30,34 +30,9 @@
 		data-options="closable:false,tools:'#searchpanel'" align="center">
 		<table>
 			<tr>
-				<td><div class="fitem">
-						<label>供应商编号:</label>
-				</td>
-				<td><input name="currencyName" class="easyui-validatebox">
-					</div>
-				</td>
+				
 				<td><div class="fitem">
 						<label>供应商名称:</label>
-				</td>
-				<td><input name="currencyShort" class="easyui-validatebox">
-					</div>
-				</td>
-				<td><div class="fitem">
-						<label>英文名称:</label>
-				</td>
-				<td><input name="currencyShort" class="easyui-validatebox">
-					</div>
-				</td>
-			</tr>
-				<tr>
-				<td><div class="fitem">
-						<label>合作级别:</label>
-				</td>
-				<td><input name="currencyName" class="easyui-validatebox">
-					</div>
-				</td>
-				<td><div class="fitem">
-						<label>报价联系人:</label>
 				</td>
 				<td><input name="currencyShort" class="easyui-validatebox">
 					</div>
@@ -68,27 +43,15 @@
 				<td><input name="currencyShort" class="easyui-validatebox">
 					</div>
 				</td>
-			</tr>
-				<tr>
 				<td><div class="fitem">
-						<label>联系电话:</label>
+						<label>合作级别:</label>
 				</td>
 				<td><input name="currencyName" class="easyui-validatebox">
 					</div>
 				</td>
-				<td><div class="fitem">
-						<label>传真:</label>
-				</td>
-				<td><input name="currencyShort" class="easyui-validatebox">
-					</div>
-				</td>
-				<td><div class="fitem">
-						<label>EMAIL:</label>
-				</td>
-				<td><input name="currencyShort" class="easyui-validatebox">
-					</div>
-				</td>
 			</tr>
+				
+	
 		</table>
 	</div>
 	<div id="searchpanel">

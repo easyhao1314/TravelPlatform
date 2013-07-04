@@ -8,7 +8,7 @@ import com.fenghuang.util.Pagination;
 
 public interface IZyGouwuDao {
 	//分页查询全部
-	public Pagination<Gouwu> gouwuSelect(int currentPage,int numPerPage) throws Exception;
+	public Pagination<Gouwu> gouwuSelect(int currentPage,int numPerPage,String name,String chengshiId,String hzjbId) throws Exception;
 	//添加
 	public boolean gouwuAdd(Gouwu gw) throws Exception;
 	//删除 

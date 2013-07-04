@@ -1,4 +1,4 @@
-Z <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -27,9 +27,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body> 
 	<div id="addDt" >
 		<form id="addForm" method="post">
-			<table align="center">
+			<table align="left">
 				<tr>
-<td><div class="fitem"><label>客户名称:</label></td><td><input name="khId" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>客户名称:</label></td><td><input name="khId" class="easyui-validatebox" required="true"></div>
+     <a href="javascript:addKehu();" class="easyui-linkbutton" iconCls="icon-ok">新增客户</a></td>
 <td><div class="fitem"><label>团号:</label></td><td><input name="tuanNO" class="easyui-validatebox" required="true"></div></td>
 </tr>
 <tr>
@@ -47,14 +48,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  data-options="url:'fenghuang/CountrySetting.do',valueField:'csdNo',textField:'csdName'"></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>出访天数：</label></td><td><input name="cfts" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>出访天数：</label></td><td><input id="cfts" name="cfts" type="text" class="easyui-numberbox" required="true"></div></td>
 <!-- CountryState 国家所属州 --> 
 <td><div class="fitem"><label>旅游区域：</label></td><td><input name="lyqy" class="easyui-combobox"
  data-options="url:'fenghuang/CountryState.do',valueField:'id',textField:'csName'"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>出团时间：</label></td><td><input name="ctsj" type="text" class="easyui-datebox" required="required"></div></td>
-<td><div class="fitem"><label>回团时间：</label></td><td><input name="htsj" type="text" class="easyui-datebox" required="required"></div></td>
+<td><div class="fitem"><label>出团时间：</label></td><td><input  id="ctsj" name="ctsj" type="text" class="easyui-datebox"></div></td>
+<td><div class="fitem"><label>回团时间：</label></td><td><input disabled="true" editable="false" id="htsj" name="htsj" type="text" class="easyui-datebox" required="required"></div></td>
 </tr>
 <tr>
 <td><div class="fitem"><label>销售：</label></td><td><input name="xsNo" class="easyui-validatebox" required="true"></div></td>
@@ -91,8 +92,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <td><div class="fitem"><label>导游报价标准：</label></td><td><input name="dybjNo" class="easyui-validatebox" required="true"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>其他地接要求：</label></td><td><input name="qtdjDesc" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>特殊要求：</label></td><td><input name="tsDesc" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>其他地接要求：</label></td><td colspan="3"><input name="qtdjDesc" class="easyui-validatebox" required="true" size="80"></div></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>特殊要求：</label></td><td colspan="3"><input name="tsDesc" class="easyui-validatebox" required="true" size="80"></div></td>
 </tr>
 <tr>
 <tr><td colspan="4s" align="center"><a href="javascript:dantuanSave();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> <input  type="reset" value="重置"></td>
@@ -101,8 +104,163 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<input id="dicType" name="dicType" type="hidden">
 		</form>
 	</div>
+	
+<div id="addKehu" class="easyui-dialog" title="新增客户"
+		data-options="modal:true,closed:true,iconCls:'icon-save'"
+		style="width:600px;height:300px;padding:10px;">
+		<form id="addForm" method="post">
+			<table align="center">
+				<table align="center">
+				<tr>
+					<td><div class="fitem">
+							<label>客户公司名称:</label>
+					</td>
+					<td colspan="3"><input name="name" class="easyui-validatebox"
+						required="true" size="60">
+						</div></td>
+				</tr>
+				<tr>
+					<td><div class="fitem">
+							<label>所在省份:</label>
+					</td>
+					<td><input id="shengfen" name="province" class="easyui-combobox" 
+						required="true">
+						</div></td>
+					<td><div class="fitem">
+							<label>所在城市:</label>
+					</td>
+					<td><input id="chengshi" name="city" class="easyui-combobox" 
+						required="true">
+						</div></td>
+				</tr>
+				<tr>
+					<td><div class="fitem">
+							<label>联系人:</label>
+					</td>
+					<td><input name="contact" class="easyui-validatebox" required="true">
+						</div></td>
+					<td><div class="fitem">
+							<label>职位:</label>
+					</td>
+					<td><input name="post" >
+						</div></td>
+				</tr>
+				<tr>
+					<td><div class="fitem">
+							<label>通讯地址:</label>
+					</td>
+					<td  colspan="3"><input name="address" class="easyui-validatebox"
+						required="true" size="60">
+						</div></td>
+				</tr>
+				<tr>
+					<td><div class="fitem">
+							<label>手机:</label>
+					</td>
+					<td><input name="moblePhone" class="easyui-validatebox">
+						</div></td>
+					<td><div class="fitem">
+							<label>座机:</label>
+					</td>
+					<td><input name="telePhone" class="easyui-numberbox"
+						>
+						</div></td>
+				</tr>
+				
+				<tr>
+					<td><div class="fitem">
+							<label>QQ:</label>
+					</td>
+					<td><input name="qq" class="easyui-validatebox">
+						</div></td>
+					<td><div class="fitem">
+							<label>MSN:</label>
+					</td>
+					<td><input name="msn" class="easyui-validatebox"
+						>
+						</div></td>
+				</tr>
+				
+				<tr>
+					<td><div class="fitem">
+							<label>邮箱:</label>
+					</td>
+					<td><input name="email" class="easyui-validatebox" validType="email">
+						</div></td>
+					<td><div class="fitem">
+							<label>传真:</label>
+					</td>
+					<td><input name="fax" class="easyui-numberbox"
+						>
+						</div></td>
+				</tr>
+				<tr>
+					<td colspan="4s" align="center"><a
+						href="javascript:kehuSave();" class="easyui-linkbutton"
+						iconCls="icon-ok">保存</a> <a href="javascript:closeaddMianBan();"
+						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
+				</tr>
+			</table>
+			<input id="dicType" name="dicType" type="hidden">
+		</form>
+	</div>
 	<script type="text/javascript">
-		
+	$("#cfts").numberbox({
+				required : true ,
+				editable : false ,
+				//onSelect: function(date){
+						//		console.info((date.getFullYear()+":"+(date.getMonth()+1)+":"+date.getDate()));
+						//	},
+				onChange : function(newValue, oldValue){
+					var ctsjValue = $("#ctsj").datebox("getValue");
+					var param = {
+						ctsj : ctsjValue ,
+						cfts : newValue
+					};
+					
+					$.ajax({
+						url : 'fenghuang/getHtsjDate.do' ,
+						data : param ,
+						dateType:'json' ,
+						success : function(date){
+						//	console.info(date[0].htsj);
+							$("#htsj").datebox('setValue',date[0].htsj);
+						}
+					});
+				}
+			});
+	    
+			$("#ctsj").datebox({
+				required : true ,
+				editable : false ,
+				//onSelect: function(date){
+						//		console.info((date.getFullYear()+":"+(date.getMonth()+1)+":"+date.getDate()));
+						//	},
+				onChange : function(newValue, oldValue){
+					var cftsValue = $("#cfts").val();
+					var param = {
+						cfts : cftsValue ,
+						ctsj : newValue
+					};
+					
+					$.ajax({
+						url : 'fenghuang/getHtsjDate.do' ,
+						data : param ,
+						dateType:'json' ,
+						success : function(date){
+							console.info(date[0].htsj);
+							$("#htsj").datebox('setValue',date[0].htsj);
+						}
+					});
+				}
+			});
+			function caclHtsj(){
+				console.info($("#ctsj").datetimebox('options'));
+				//var ctsj = $("#ctsj").val();
+				//var cfts = $("#cfts").val();
+				//alert("出团时间:"+ctsj+"---出访天数："+cfts);
+			}
+			
 			function dantuanSave() {
 			$('#addForm').form('submit', {
 				url : 'fenghuang/DantuanAdd.do',
@@ -134,6 +292,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				}
 			});
 		}
+		 //新增
+		function addKehu() {
+			$("#addKehu").dialog("open");
+			$("#addForm").form("clear");
+		}
+         
+		function kehuSave() {
+			$('#addForm').form('submit', {
+				url : 'fenghuang/.do',
+				onSubmit : function() {
+					return $(this).form('validate');
+				},
+				success : function(result) {
+					var result = eval('(' + result + ')');
+					if (result.success) {
+					$('#addKehu').dialog('close');
+						$.messager.alert("保存成功", "保存成功！", "info");
+						 $('#dg').datagrid('reload'); 
+					} else {
+						$.messager.alert("保存失败", "保存失败!", "error");
+						$('#dg').datagrid('reload');
+					}
+				}
+			});
+		}
+			//关闭
+		function closeEditDic() {
+			$('#addKehu').dialog('close');
+		} 
 		
 	</script>
 </body>

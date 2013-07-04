@@ -8,7 +8,7 @@ import com.fenghuang.util.Pagination;
 
 public interface IZyYaoqingDao {
 	//分页查询全部
-			public Pagination<Yaoqinghan> yaoqingSelect(int currentPage,int numPerPage) throws Exception;
+			public Pagination<Yaoqinghan> yaoqingSelect(int currentPage,int numPerPage,String guoduid,String miaoshu) throws Exception;
 			//添加
 			public boolean yaoqingAdd(Yaoqinghan yq) throws Exception;
 			//删除 

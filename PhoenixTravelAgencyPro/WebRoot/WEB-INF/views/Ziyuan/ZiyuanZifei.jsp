@@ -28,41 +28,37 @@
 	<div class="easyui-panel" title="自费节目查询"
 		style="height:80px;padding:10px;width:auto;"
 		data-options="closable:false,tools:'#searchpanel'" align="center">
+		<form id="resetForm">
 		<table>
+	
 			<tr>
-				<td><div class="fitem">
-						<label>编号:</label>
-				</td>
-				<td><input name="currencyName" class="easyui-validatebox">
-					</div>
-				</td>
-				<td><div class="fitem">
+			<td><div class="fitem">
 						<label>名称:</label>
 				</td>
-				<td><input name="currencyShort" class="easyui-validatebox">
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<td><div class="fitem">
-						<label>描述:</label>
-				</td>
-				<td><input name="currencyName" class="easyui-validatebox">
+				<td><input id="name" name="name" class="easyui-validatebox">
 					</div>
 				</td>
 				<td><div class="fitem">
 						<label>所属城市:</label>
 				</td>
-				<td><input name="currencyShort" class="easyui-validatebox">
+				<td><input id="chengshiId" name="chengshiId" class="easyui-validatebox">
 					</div>
+				</td>
+				<td><div class="fitem">
+						<label>描述:</label>
+				</td>
+				<td><input id="miaoshu" name="miaoshu" class="easyui-validatebox">
+					</div>
+				</td>
+				<td>
+					<a href="javascript:zifeiSelectLike();" 
+								class="easyui-linkbutton" iconCls="icon-ok">查询</a>
+						<a href="javascript:void(0)" class="easyui-linkbutton"
+							iconCls="icon-undo" onclick="$('#resetForm').form('clear')">重置</a>
 				</td>
 			</tr>
 		</table>
-	</div>
-	<div id="searchpanel">
-		<a href="javascript:void(0)" iconCls="icon-search"
-			onclick="javascript:alert('查询')"></a> <a href="javascript:void(0)"
-			iconCls="icon-undo" onclick="javascript:alert('重置')"></a>
+		</form>
 	</div>
 		<div class="easyui-panel" title="自费节目列表"
 		style="height:480px;width: auto;">
@@ -182,6 +178,32 @@
 	  }
 	  
 	}
+	/**
+ * 查询按钮
+ */
+		function zifeiSelectLike(){
+		console.info($('#dg').datagrid('options'));
+		var opts = $('#dg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
+			var param = {
+				name: $("#name").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
+				chengshiId: $("#chengshiId").val() ,
+				miaoshu : $("#miaoshu").val(),
+				page:  opts.pageNumber ,
+				rows:  opts.pageSize
+			};
+		
+				$.ajax({
+					url : 'fenghuang/zifeiSelect.do' ,
+					data :  param,
+					type : 'POST' ,
+					dataType : 'json' ,
+					success : function(data){
+						$('#dg').datagrid('loadData',data);
+					}
+				});
+		}
+		
+
 	   //新增
 		function addZifei() {
 			$("#addZifei").dialog("open");

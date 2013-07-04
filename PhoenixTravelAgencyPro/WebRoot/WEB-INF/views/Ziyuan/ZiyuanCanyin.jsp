@@ -31,27 +31,13 @@
 		<table>
 			<tr>
 				<td><div class="fitem">
-						<label>餐馆编号:</label>
-				</td>
-				<td><input name="currencyName" class="easyui-validatebox">
-					</div>
-				</td>
-				<td><div class="fitem">
-						<label>餐馆名称:</label>
+						<label>所属城市:</label>
 				</td>
 				<td><input name="currencyShort" class="easyui-validatebox">
 					</div>
 				</td>
 				<td><div class="fitem">
-						<label>联系人:</label>
-				</td>
-				<td><input name="currencyName" class="easyui-validatebox">
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<td><div class="fitem">
-						<label>联系电话:</label>
+						<label>餐馆名称:</label>
 				</td>
 				<td><input name="currencyShort" class="easyui-validatebox">
 					</div>
@@ -62,13 +48,8 @@
 				<td><input name="currencyName" class="easyui-validatebox">
 					</div>
 				</td>
-				<td><div class="fitem">
-						<label>所属城市:</label>
-				</td>
-				<td><input name="currencyShort" class="easyui-validatebox">
-					</div>
-				</td>
 			</tr>
+		
 		</table>
 	</div>
 	<div id="searchpanel">

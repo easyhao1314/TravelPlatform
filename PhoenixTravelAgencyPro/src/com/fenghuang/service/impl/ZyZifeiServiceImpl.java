@@ -16,10 +16,10 @@ public class ZyZifeiServiceImpl implements IZyZifeiService{
 	public IZyZifeiDao izzd;
 
 	@Override
-	public Pagination<Zifei> zifeiSelect(int currentPage, int numPerPage)
+	public Pagination<Zifei> zifeiSelect(int currentPage, int numPerPage,String name,String chengshiId,String miaoshu)
 			throws Exception {
 		// TODO Auto-generated method stub
-		return izzd.zifeiSelect(currentPage, numPerPage);
+		return izzd.zifeiSelect(currentPage, numPerPage,name,chengshiId,miaoshu);
 	}
 
 	@Override

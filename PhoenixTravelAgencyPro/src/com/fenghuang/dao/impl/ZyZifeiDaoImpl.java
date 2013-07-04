@@ -21,11 +21,26 @@ public class ZyZifeiDaoImpl extends BaseDao implements IZyZifeiDao{
 	}
 
 	@Override
-	public Pagination<Zifei> zifeiSelect(int currentPage, int numPerPage)
+	public Pagination<Zifei> zifeiSelect(int currentPage, int numPerPage,String name,String chengshiId,String miaoshu)
 			throws Exception {
 		// TODO Auto-generated method stub
-		String sql="select * from zifei";
-		return this.getPagination(currentPage, numPerPage, sql);
+		StringBuffer sql=new StringBuffer("select * from zifei where 1=1");
+		if(!"".equals(name) && name != null){
+			sql.append(" and name like '%");
+			sql.append(name);
+			sql.append("%'");
+		}
+		if(!"".equals(chengshiId) && chengshiId != null){
+			sql.append(" and chengshiId ='");
+			sql.append(chengshiId);
+			sql.append("'");
+		}
+		if(!"".equals(miaoshu) && miaoshu != null){
+			sql.append(" and miaoshu like '%");
+			sql.append(miaoshu);
+			sql.append("%'");
+		}
+		return this.getPagination(currentPage, numPerPage, sql.toString());
 	}
 
 	@Override

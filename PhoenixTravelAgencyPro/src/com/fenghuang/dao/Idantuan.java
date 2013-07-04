@@ -37,4 +37,13 @@ public interface Idantuan {
 	//修改
 	public boolean updateDantuan(DantuanXinXi dt);
 	
+	
+	/**
+	 * 回团时间自动填充
+	 * @param ctsj
+	 * @param cfts
+	 * @return
+	 */
+	public List<Map<String,Object>> getDate(String ctsj, String cfts);
+	
 }

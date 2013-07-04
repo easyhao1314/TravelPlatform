@@ -15,10 +15,10 @@ public class ZyGouwuServiceImpl implements IZyGouwuService{
 	@Autowired
 	public IZyGouwuDao izgd;
 	@Override
-	public Pagination<Gouwu> gouwuSelect(int currentPage, int numPerPage)
+	public Pagination<Gouwu> gouwuSelect(int currentPage, int numPerPage,String name,String chengshiId,String hzjbId)
 			throws Exception {
 		// TODO Auto-generated method stub
-		return izgd.gouwuSelect(currentPage, numPerPage);
+		return izgd.gouwuSelect(currentPage, numPerPage,name,chengshiId,hzjbId);
 	}
 
 	@Override

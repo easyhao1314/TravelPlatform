@@ -25,17 +25,11 @@
 </head>
 
 <body>
-	<div class="easyui-panel" title="酒店查询"
-		style="height:160px;padding:10px;width:auto;"
+	<div class="easyui-panel" title="交通供应商查询"
+		style="height:100px;padding:10px;width:auto;"
 		data-options="closable:false,tools:'#searchpanel'" align="center">
 		<table>
 			<tr>
-				<td><div class="fitem">
-						<label>编号:</label>
-				</td>
-				<td><input name="currencyName" class="easyui-validatebox">
-					</div>
-				</td>
 				<td><div class="fitem">
 						<label>所属城市:</label>
 				</td>
@@ -48,53 +42,24 @@
 				<td><input name="currencyShort" class="easyui-validatebox">
 					</div>
 				</td>
-			</tr>
-				<tr>
 				<td><div class="fitem">
 						<label>供应商名称:</label>
 				</td>
-				<td><input name="currencyName" class="easyui-validatebox">
-					</div>
-				</td>
-				<td><div class="fitem">
-						<label>供应商英文名称:</label>
-				</td>
-				<td><input name="currencyName" class="easyui-validatebox">
-					</div>
-				</td>
-				<td><div class="fitem">
-						<label>联系人:</label>
-				</td>
 				<td><input name="currencyShort" class="easyui-validatebox">
 					</div>
 				</td>
 			</tr>
 				<tr>
 				<td><div class="fitem">
-						<label>联系电话:</label>
+						<label>联系人:</label>
 				</td>
 				<td><input name="currencyName" class="easyui-validatebox">
-					</div>
-				</td>
-				<td><div class="fitem">
-						<label>手机:</label>
-				</td>
-				<td><input name="currencyShort" class="easyui-validatebox">
 					</div>
 				</td>
 				<td><div class="fitem">
 						<label>合作级别:</label>
 				</td>
 				<td><input name="currencyName" class="easyui-validatebox">
-					</div>
-				</td>
-			</tr>
-				<tr>
-				
-				<td><div class="fitem">
-						<label>所属国家:</label>
-				</td>
-				<td><input name="currencyShort" class="easyui-validatebox">
 					</div>
 				</td>
 				<td><div class="fitem">
@@ -104,6 +69,7 @@
 					</div>
 				</td>
 			</tr>
+			
 		</table>
 	</div>
 	<div id="searchpanel">
@@ -120,8 +86,8 @@
 				<tr>
 					<th data-options="field:'ck',checkbox:true"></th>
 					<th data-options="field:'chengshiId'" width="80">城市</th>
-					<th data-options="field:'id'" width="80">编号</th>
 					<th data-options="field:'name'" width="80">供应商名称</th>
+					<th data-options="field:'lianxiren'" width="80">联系人</th>
 					<th data-options="field:'dianhua'" width="80">联系电话</th>
 					<th data-options="field:'chuanzhen'" width="80">传真</th>
 					<th data-options="field:'shouji'" width="80">手机</th>

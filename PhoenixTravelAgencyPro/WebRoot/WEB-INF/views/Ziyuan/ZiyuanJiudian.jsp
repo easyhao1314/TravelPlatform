@@ -40,6 +40,12 @@
 					</div>
 				</td>
 				<td><div class="fitem">
+						<label>维护人:</label>
+				</td>
+				<td><input id="weihuren" name="weihuren" class="easyui-validatebox">
+					</div>
+				</td>
+				<td><div class="fitem">
 						<label>城市:</label>
 				</td>
 				<td><input id="chengshi" name="chengshi" class="easyui-validatebox">
@@ -48,7 +54,8 @@
 				<td>	<a href="javascript:ZyjiudianSelectLike();" 
 								class="easyui-linkbutton" iconCls="icon-ok">查询</a>
 						<a href="javascript:void(0)" class="easyui-linkbutton"
-							iconCls="icon-undo" onclick="$('#searchPanelForm').form('clear')">重置</a></td>
+							iconCls="icon-undo" onclick="$('#searchPanelForm').form('clear')">重置</a>
+				</td>
 			</tr>
 		</table>
 		</form>
@@ -242,15 +249,20 @@
 		console.info($('#dg').datagrid('options'));
 		var opts = $('#dg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
 			var param = {
-				"name" : $("#name").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
-				"chengshi" : $("#chengshi").val() ,
-				"page" :  opts.pageNumber ,
-				"rows" :  opts.pageSize
+				name: $("#name").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
+				chengshi: $("#chengshi").val() ,
+				weihuren : $("#weihuren").val(),
+				page:  opts.pageNumber ,
+				rows:  opts.pageSize
 			};
-			console.info(param);
+			//{name:$("#name").val(),chengshi:$("#chengshi").val() ,page:opts.pageNumber ,rows:opts.pageSize} 
+			//console.info(param);
+			//console.info($.toJSON(param));
+			//console.info(JSON.stringify(param));
 				$.ajax({
 					url : 'fenghuang/ZyjiudianSelectLike.do' ,
-					data : param ,
+					data :  param,
+					type : 'POST' ,
 					dataType : 'json' ,
 					success : function(data){
 						$('#dg').datagrid('loadData',data);
