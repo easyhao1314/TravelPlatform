@@ -39,7 +39,7 @@
 		style="width:200px;">
 		<!-- 在这里添加菜单的样式和菜单的数据，子菜单 等等 -->
 		<ul class="easyui-tree">
-			<li iconCls="icon-base"><span>自我管理</span>
+			<li iconCls="icon-base" state="closed"><span>自我管理</span>
 				<ul>
 					<li iconCls="icon-gears"><a
 						href="javascript:open1('个人基本信息','');">个人基本信息</a>
@@ -48,7 +48,7 @@
 				<ul>
 
 				</ul></li>
-				<li iconCls="icon-base"><span>财务中心</span>
+				<li iconCls="icon-base" state="closed"><span>财务中心</span>
 				<ul>
 					<li iconCls="icon-gears"><a
 						href="javascript:open1('付款审批','a.do');">付款审批</a>
@@ -78,7 +78,7 @@
 
 				</ul></li>
 				
-				<li iconCls="icon-base"><span>散拼中心</span>
+				<li iconCls="icon-base" state="closed"><span>散拼中心</span>
 				<ul>
 					<li iconCls="icon-gears"><a
 						href="javascript:open1('新建散拼','SanPin_new.do');">新建散拼</a>
@@ -90,7 +90,7 @@
 				<ul>
 
 				</ul></li>
-			<li iconCls="icon-base"><span>系统管理</span>
+			<li iconCls="icon-base" state="closed"><span>系统管理</span>
 				<ul>
 					<li iconCls="icon-gears"><a
 						href="javascript:open1('系统功能管理','functionMenu.do');">系统功能管理</a>
@@ -117,7 +117,7 @@
 					</li>
 				</ul>
 			</li>
-			<li iconCls="icon-base"><span>系统基础设置管理</span>
+			<li iconCls="icon-base" state="closed"><span>系统基础设置管理</span>
 				<ul>
 					<li iconCls="icon-gears"><a
 						href="javascript:open1('团队进展状态字典','dictionaryDesc.do?dicType=8');">团队进展状态字典</a>
