@@ -1,8 +1,11 @@
 
 package com.fenghuang.web.action;
 
-import java.sql.Date;
 import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,7 +22,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.fenghuang.entiey.DantuanXinXi;
 import com.fenghuang.entiey.Sanpinzhongxin;
 import com.fenghuang.service.ISanpinzhongxinService;
 import com.fenghuang.util.DateJsonValueProcessor;
@@ -92,9 +94,33 @@ public class SanpinAction {
 	@RequestMapping("fenghuang/Sanpinliebiao.do")
 	@ResponseBody
 	public Map<String,Object> DantuanXunjia(HttpServletRequest request,
-			HttpServletResponse response, Integer page,Integer rows) {
+			HttpServletResponse response, Integer page,Integer rows
+			) {
 		try {
-			Pagination<Sanpinzhongxin> pagination=(Pagination<Sanpinzhongxin>)iss.getByQueryConditionPagination(page, rows);
+
+			DateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");    
+			Sanpinzhongxin s = new Sanpinzhongxin();
+			String tuanName= request.getParameter("tuanName");
+			String groupdate=request.getParameter("groupdate") ;
+			
+			String Tourdate= request.getParameter("Tourdate");
+			String productbrand= request.getParameter("productbrand");
+
+			if(tuanName!=null && !"".equals(tuanName)){
+				s.setTuanName(tuanName);
+			}
+			if(groupdate!=null && !"".equals(groupdate)){
+				s.setGroupdate(format1.parse(groupdate));
+			}
+			if(Tourdate!=null && !"".equals(Tourdate)){
+				s.setTourdate(format1.parse(Tourdate));
+			}
+			if(productbrand!=null && !"".equals(productbrand)){
+				s.setProductbrand(Long.parseLong(productbrand));
+			}
+			
+			
+			Pagination<Sanpinzhongxin> pagination=(Pagination<Sanpinzhongxin>)iss.getByQueryConditionPagination(page, rows,s);
 			List<Map<String, Object>> testUsers = pagination.getResultList();
 			Map<String,Object> returnValue  = new HashMap<String, Object>();
 			for(int i = 0 ;i<testUsers.size();i++){

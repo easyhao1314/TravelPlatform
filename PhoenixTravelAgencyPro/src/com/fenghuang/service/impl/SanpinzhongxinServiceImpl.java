@@ -19,9 +19,9 @@ public class SanpinzhongxinServiceImpl implements ISanpinzhongxinService {
 	}
 	@Override
 	public Pagination<Sanpinzhongxin> getByQueryConditionPagination(
-			int currentPage, int numPerPage) throws Exception {
+			int currentPage, int numPerPage,Sanpinzhongxin s) throws Exception {
 		// TODO Auto-generated method stub
-		return isanpin.getByQueryConditionPagination(currentPage, numPerPage);
+		return isanpin.getByQueryConditionPagination(currentPage, numPerPage,s);
 	}
 
 }
