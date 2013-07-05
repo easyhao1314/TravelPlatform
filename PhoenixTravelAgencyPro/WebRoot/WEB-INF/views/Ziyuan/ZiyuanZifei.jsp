@@ -28,7 +28,7 @@
 	<div class="easyui-panel" title="自费节目查询"
 		style="height:80px;padding:10px;width:auto;"
 		data-options="closable:false,tools:'#searchpanel'" align="center">
-		<form id="resetForm">
+		<form id="zifeiForm">
 		<table>
 	
 			<tr>
@@ -54,7 +54,7 @@
 					<a href="javascript:zifeiSelectLike();" 
 								class="easyui-linkbutton" iconCls="icon-ok">查询</a>
 						<a href="javascript:void(0)" class="easyui-linkbutton"
-							iconCls="icon-undo" onclick="$('#resetForm').form('clear')">重置</a>
+							iconCls="icon-undo" onclick="$('#zifeiForm').form('clear')">重置</a>
 				</td>
 			</tr>
 		</table>
@@ -71,7 +71,7 @@
 					<th data-options="field:'id'" width="80">自费节目编号</th>
 					<th data-options="field:'name'" width="80">自费节目名称</th>
 					<th data-options="field:'feiyong'" width="80">自费节目费用</th>
-					<th data-options="field:'bizhongId'" width="80">币种</th>
+					<th data-options="field:'currencyNamet'" width="80">币种</th>
 					<th data-options="field:'chengshiId'" width="80">城市</th>
 					<th data-options="field:'miaoshu'" width="80">自费节目描述</th>
 					<th data-options="field:'8',formatter:onOperateStyle" width="80">操作</th>
@@ -182,7 +182,6 @@
  * 查询按钮
  */
 		function zifeiSelectLike(){
-		console.info($('#dg').datagrid('options'));
 		var opts = $('#dg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
 			var param = {
 				name: $("#name").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')

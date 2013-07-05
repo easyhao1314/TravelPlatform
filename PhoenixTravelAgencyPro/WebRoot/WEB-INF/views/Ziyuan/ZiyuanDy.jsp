@@ -28,34 +28,39 @@
 	<div class="easyui-panel" title="导游查询"
 		style="height:80px;padding:10px;width:auto;"
 		data-options="closable:false,tools:'#searchpanel'" align="center">
+		<form id="daoyouForm">
 		<table>
 			<tr>
 				<td><div class="fitem">
 						<label>姓名:</label>
 				</td>
-				<td><input name="currencyName" class="easyui-validatebox">
+				<td><input id="name" name="name" class="easyui-validatebox">
 					</div>
 				</td>
 				<td><div class="fitem">
 						<label>国籍:</label>
 				</td>
-				<td><input name="currencyShort" class="easyui-validatebox">
+				<td><input id="guojiaId" name="guojiaId" class="easyui-validatebox">
 					</div>
 				</td>
 				<td><div class="fitem">
 						<label>常驻地:</label>
 				</td>
-				<td><input name="currencyShort" class="easyui-validatebox">
+				<td><input id="chengshiId" name="chengshiId" class="easyui-validatebox">
 					</div>
 				</td>
+				<td>
+					<a href="javascript:daoyouSelectLike();" 
+								class="easyui-linkbutton" iconCls="icon-ok">查询</a>
+						<a href="javascript:void(0)" class="easyui-linkbutton"
+							iconCls="icon-undo" onclick="$('#daoyouForm').form('clear')">重置</a>
+				</td>
+				
 			</tr>			
 		</table>
+		</form>
 	</div>
-	<div id="searchpanel">
-		<a href="javascript:void(0)" iconCls="icon-search"
-			onclick="javascript:alert('查询')"></a> <a href="javascript:void(0)"
-			iconCls="icon-undo" onclick="javascript:alert('重置')"></a>
-	</div>
+	
 		<div class="easyui-panel" title="导游列表"
 		style="height:480px;width: auto;">
 		<table id="dg" class="easyui-datagrid"
@@ -212,6 +217,33 @@
 	  }
 	  
 	}
+	
+	/**
+ * 查询按钮
+ */
+		function daoyouSelectLike(){
+		console.info($('#dg').datagrid('options'));
+		var opts = $('#dg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
+			var param = {
+				name: $("#name").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
+				guojiaId: $("#guojiaId").val() ,
+				chengshiId : $("#chengshiId").val(),
+				page:  opts.pageNumber ,
+				rows:  opts.pageSize
+			};
+		console.info(param);
+				$.ajax({
+					url : 'fenghuang/daoyouSelect.do' ,
+					data :  param,
+					type : 'POST' ,
+					dataType : 'json' ,
+					success : function(data){
+						$('#dg').datagrid('loadData',data);
+					}
+				});
+		}
+		
+	
 	
 	  //新增
 		function addDaoyou() {

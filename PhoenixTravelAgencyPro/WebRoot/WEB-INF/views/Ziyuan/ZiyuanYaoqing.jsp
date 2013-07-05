@@ -28,7 +28,7 @@
 	<div class="easyui-panel" title="邀请函成本信息查询"
 		style="height:80px;padding:10px;width:auto;"
 		data-options="closable:false,tools:'#searchpanel'" align="center">
-		<form id="resetForm">
+		<form id="yaoqingForm">
 		<table>
 			<tr>
 				<td><div class="fitem">
@@ -46,7 +46,7 @@
 				<td>	<a href="javascript:YaoqingSelectLike();" 
 								class="easyui-linkbutton" iconCls="icon-ok">查询</a>
 						<a href="javascript:void(0)" class="easyui-linkbutton"
-							iconCls="icon-undo" onclick="$('#resetForm').form('clear')">重置</a>
+							iconCls="icon-undo" onclick="$('#yaoqingForm').form('clear')">重置</a>
 				</td>
 			</tr>
 		</table>
@@ -156,7 +156,6 @@
       * 查询按钮
     */
 		function YaoqingSelectLike(){
-		console.info($('#dg').datagrid('options'));
 		var opts = $('#dg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
 			var param = {
 				guoduid: $("#guoduid").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')

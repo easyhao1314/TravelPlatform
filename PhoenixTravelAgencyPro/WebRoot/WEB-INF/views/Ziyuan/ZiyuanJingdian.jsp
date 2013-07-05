@@ -28,34 +28,37 @@
 	<div class="easyui-panel" title="景点查询"
 		style="height:80px;padding:10px;width:auto;"
 		data-options="closable:false,tools:'#searchpanel'" align="center">
+		<form id="jingdianForm">
 		<table>
-			<tr>
-				<td><div class="fitem">
-						<label>所属城市:</label>
-				</td>
-				<td><input name="currencyName" class="easyui-validatebox">
-					</div>
-				</td>
+			<tr>				
 				<td><div class="fitem">
 						<label>景点名称:</label>
 				</td>
-				<td><input name="currencyShort" class="easyui-validatebox">
+				<td><input id="name" name="name" class="easyui-validatebox">
 					</div>
 				</td>
 				<td><div class="fitem">
-						<label>景点英文名称:</label>
+						<label>所属城市:</label>
 				</td>
-				<td><input name="currencyShort" class="easyui-validatebox">
+				<td><input id="chengsiId" name="chengsiId" class="easyui-validatebox">
 					</div>
 				</td>
+				<td><div class="fitem">
+						<label>价格:</label>
+				</td>
+				<td><input id="jiage" name="jiage" class="easyui-validatebox">
+					</div>
+				</td>
+				<td>
+					<a href="javascript:jingdianSelectLike();" 
+								class="easyui-linkbutton" iconCls="icon-ok">查询</a>
+						<a href="javascript:void(0)" class="easyui-linkbutton"
+							iconCls="icon-undo" onclick="$('#jingdianForm').form('clear')">重置</a>
 			</tr>
 		</table>
+		</form>
 	</div>
-	<div id="searchpanel">
-		<a href="javascript:void(0)" iconCls="icon-search"
-			onclick="javascript:alert('查询')"></a> <a href="javascript:void(0)"
-			iconCls="icon-undo" onclick="javascript:alert('重置')"></a>
-	</div>
+
 		<div class="easyui-panel" title="景点列表"
 		style="height:480px;width: auto;">
 		<table id="dg" class="easyui-datagrid"
@@ -195,6 +198,32 @@
 	  }
 	  
 	}
+
+/**
+ * 查询按钮
+ */
+		function jingdianSelectLike(){
+		var opts = $('#dg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
+			var param = {
+				name: $("#name").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
+				chengsiId: $("#chengsiId").val() ,
+				jiage : $("#jiage").val(),
+				page:  opts.pageNumber ,
+				rows:  opts.pageSize
+			};
+		console.info(param);
+				$.ajax({
+					url : 'fenghuang/JingdianSelect.do' ,
+					data :  param,
+					type : 'POST' ,
+					dataType : 'json' ,
+					success : function(data){
+						$('#dg').datagrid('loadData',data);
+					}
+				});
+		}
+		
+	
 
 
 	  //新增

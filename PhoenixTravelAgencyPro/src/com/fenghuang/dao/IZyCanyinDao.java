@@ -8,7 +8,7 @@ import com.fenghuang.util.Pagination;
 
 public interface IZyCanyinDao {
 	    //分页查询全部
-		public Pagination<Canyin> canyinSelect(int currentPage,int numPerPage) throws Exception;
+		public Pagination<Canyin> canyinSelect(int currentPage,int numPerPage,String name,String chengshiId,String hzjbId) throws Exception;
 		//添加
 		public boolean canyinAdd(Canyin dy) throws Exception;
 		//删除 

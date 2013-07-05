@@ -312,17 +312,17 @@
 		</table>
 	</div>	  
 	 
-	 <div id="addDt" class="easyui-dialog" title="设定日程"
+	 <div id="xingcheng" class="easyui-dialog" title="设定日程"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:600px;height:200px;padding:10px;">
-		<form id="addForm" method="post">
+		<form id="xingchengForm" method="post">
 			<table align="center">
 				<tr>
 				<td><div class="fitem"><label>行程设定:</label></td>
 				<td><input name="khId" class="easyui-validatebox" required="true"  size="80"></div></td>
                </tr>
          <tr><td colspan="2" align="center">
-       <a href="javascript:dantuanSave();" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
+       <a href="javascript:xingchengSave();" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
        <input  type="reset" value="重置"></td>
       </tr>
 				</table>
@@ -353,8 +353,8 @@
  
  //新增
 		function xingcheng() {
-			$("#addDt").dialog("open");
-			$("#addForm").form("clear");
+			$("#xingcheng").dialog("open");
+			$("#xingchengForm").form("clear");
 		}  
     </script>
   </body>

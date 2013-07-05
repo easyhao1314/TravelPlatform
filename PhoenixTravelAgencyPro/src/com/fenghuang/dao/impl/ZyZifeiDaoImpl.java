@@ -24,7 +24,7 @@ public class ZyZifeiDaoImpl extends BaseDao implements IZyZifeiDao{
 	public Pagination<Zifei> zifeiSelect(int currentPage, int numPerPage,String name,String chengshiId,String miaoshu)
 			throws Exception {
 		// TODO Auto-generated method stub
-		StringBuffer sql=new StringBuffer("select * from zifei where 1=1");
+		StringBuffer sql=new StringBuffer("select z.id,z.name,z.feiyong,c.currencyName,z.chengshiId,z.miaoshu from zifei as z,Currency as c where z.bizhongId=c.id and 1=1");
 		if(!"".equals(name) && name != null){
 			sql.append(" and name like '%");
 			sql.append(name);

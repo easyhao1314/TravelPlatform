@@ -40,17 +40,11 @@ public class ZyJiaotongServiceImpl implements IZyJiaotongService{
 	}
 
 	@Override
-	public Pagination<Jiaotong> jiaotongSelect(int currentPage, int numPerPage)
+	public Pagination<Jiaotong> jiaotongSelect(int currentPage, int numPerPage,String name,String chengshiId,String lianxiren,String hzjbId)
 			throws Exception {
 		// TODO Auto-generated method stub
-		return izjd.jiaotongSelect(currentPage, numPerPage);
+		return izjd.jiaotongSelect(currentPage, numPerPage,name,chengshiId,lianxiren,hzjbId);
 	}
 
-	@Override
-	public Pagination<Jiaotong> jiaotongSelectLike(int currentPage,
-			int numPerPage, int chengshi, String name) throws Exception {
-		// TODO Auto-generated method stub
-		return izjd.jiaotongSelectLike(currentPage, numPerPage, chengshi, name);
-	}
-
+	
 }

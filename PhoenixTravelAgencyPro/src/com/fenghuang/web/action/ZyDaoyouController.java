@@ -33,9 +33,9 @@ public class ZyDaoyouController {
 	@RequestMapping("fenghuang/daoyouSelect.do")
 	@ResponseBody
 	public Map<String,Object> daoyouSelect(HttpServletRequest request,
-			HttpServletResponse response, Integer page,Integer rows){
+			HttpServletResponse response, Integer page,Integer rows,String name,String guojiaId,String chengshiId){
 		 try{
-	    	   Pagination<Daoyou> pagination=(Pagination<Daoyou>)izds.daoyouSelect(page, rows);
+	    	   Pagination<Daoyou> pagination=(Pagination<Daoyou>)izds.daoyouSelect(page, rows,name,guojiaId,chengshiId);
 				List<Map<String, Object>> daoyouList = pagination.getResultList();
 				Map<String,Object> returnValue  = new HashMap<String, Object>();
 				for(int i = 0 ;i<daoyouList.size();i++){

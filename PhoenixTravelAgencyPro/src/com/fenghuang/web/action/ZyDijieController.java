@@ -32,9 +32,9 @@ public class ZyDijieController {
 	@RequestMapping("fenghuang/DijieSelect.do")
 	@ResponseBody
 	public Map<String,Object> dijieSelect(HttpServletRequest request,
-			HttpServletResponse response, Integer page,Integer rows){
+			HttpServletResponse response, Integer page,Integer rows,String name,String chengshiId,String lianxiren,String hzjbId){
 		 try{
-	    	   Pagination<Dijie> pagination=(Pagination<Dijie>)izds.dijieSelect(page, rows);
+	    	   Pagination<Dijie> pagination=(Pagination<Dijie>)izds.dijieSelect(page, rows,name,chengshiId,lianxiren,hzjbId);
 				List<Map<String, Object>> dijieList = pagination.getResultList();
 				Map<String,Object> returnValue  = new HashMap<String, Object>();
 				for(int i = 0 ;i<dijieList.size();i++){

@@ -16,10 +16,10 @@ public class ZyJingdianServiceImpl implements IZyJingdianService{
 	public IZyJingdianDao izjd;
 	
 	@Override
-	public Pagination<Jingdian> jingdianSelect(int currentPage, int numPerPage)
+	public Pagination<Jingdian> jingdianSelect(int currentPage, int numPerPage,String name,String chengsiId,String jiage)
 			throws Exception {
 		// TODO Auto-generated method stub
-		return izjd.jingdianSelect(currentPage, numPerPage);
+		return izjd.jingdianSelect(currentPage, numPerPage,name,chengsiId,jiage);
 	}
 
 	@Override

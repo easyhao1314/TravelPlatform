@@ -55,32 +55,34 @@ public class ZyJiaotongDaoIMpl extends BaseDao implements IZyJiaotongDao{
 	}
 
 	@Override
-	public Pagination<Jiaotong> jiaotongSelect(int currentPage, int numPerPage)
+	public Pagination<Jiaotong> jiaotongSelect(int currentPage, int numPerPage,String name,String chengshiId,String lianxiren,String hzjbId)
 			throws Exception {
 		// TODO Auto-generated method stub
-		String sql="select * from jiaotong";
-		Pagination<Jiaotong> jt=this.getPagination(currentPage, numPerPage, sql);
-		return jt;
-	};
-
-	@Override
-	public Pagination<Jiaotong> jiaotongSelectLike(int currentPage,
-			int numPerPage, int chengshi, String name) throws Exception {
-		// TODO Auto-generated method stub
-		
 		StringBuffer sql=new StringBuffer("select * from jiaotong where 1=1 ");
-		if(chengshi!=0 && !"".equals(chengshi)){
-			sql.append(" and chengshi= '");
-			sql.append(chengshi);
-			sql.append("'");
-		}
 		if(name !=null && !"".equals(name)){
-			sql.append(" and name like %'");
+			sql.append(" and name like '%");
 			sql.append(name);
 			sql.append("%'");
 		}
+		if(chengshiId !=null && !"".equals(chengshiId)){
+			sql.append(" and chengshiId ='");
+			sql.append(chengshiId);
+			sql.append("'");
+		}
+		if(lianxiren !=null && !"".equals(lianxiren)){
+			sql.append(" and lianxiren ='");
+			sql.append(lianxiren);
+			sql.append("'");
+		}
+		if(hzjbId !=null && !"".equals(hzjbId)){
+			sql.append(" and hzjbId ='");
+			sql.append(hzjbId);
+			sql.append("'");
+		}
 		Pagination<Jiaotong> jt=this.getPagination(currentPage, numPerPage, sql.toString());
 		return jt;
-	}
+	};
+
+	
 
 }

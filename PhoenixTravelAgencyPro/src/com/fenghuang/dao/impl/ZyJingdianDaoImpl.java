@@ -21,11 +21,26 @@ public class ZyJingdianDaoImpl extends BaseDao implements IZyJingdianDao{
 	}
 
 	@Override
-	public Pagination<Jingdian> jingdianSelect(int currentPage, int numPerPage)
+	public Pagination<Jingdian> jingdianSelect(int currentPage, int numPerPage,String name,String chengsiId,String jiage)
 			throws Exception {
 		// TODO Auto-generated method stub
-		String sql="select * from jingdian";
-		return this.getPagination(currentPage, numPerPage, sql);
+		StringBuffer sql=new StringBuffer("select * from jingdian where 1=1 ");
+		if(!"".equals(name) && name !=null){
+			sql.append(" and name like '%");
+			sql.append(name);
+			sql.append("%'");
+		}
+		if(!"".equals(chengsiId) && chengsiId !=null){
+			sql.append(" and chengsiId ='");
+			sql.append(chengsiId);
+			sql.append("'");
+		}
+		if(!"".equals(jiage) && jiage !=null){
+			sql.append(" and jiage ='");
+			sql.append(jiage);
+			sql.append("'");
+		}
+		return this.getPagination(currentPage, numPerPage, sql.toString());
 	}
 
 	@Override

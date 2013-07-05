@@ -28,7 +28,7 @@
 	<div class="easyui-panel" title="购物店查询"
 		style="height:80px;padding:10px;width:auto;"
 		data-options="closable:false,tools:'#searchpanel'" align="center">
-		<form id="">
+		<form id="gouwuForm">
 		<table>
 			<tr>
 				
@@ -54,7 +54,7 @@
 					<a href="javascript:gouwuSelectLike();" 
 								class="easyui-linkbutton" iconCls="icon-ok">查询</a>
 						<a href="javascript:void(0)" class="easyui-linkbutton"
-							iconCls="icon-undo" onclick="$('#resetForm').form('clear')">重置</a>
+							iconCls="icon-undo" onclick="$('#gouwuForm').form('clear')">重置</a>
 				</td>
 			</tr>
 				
@@ -190,7 +190,7 @@
 	  
 	}
 	
-	/**
+/**
  * 查询按钮
  */
 		function gouwuSelectLike(){

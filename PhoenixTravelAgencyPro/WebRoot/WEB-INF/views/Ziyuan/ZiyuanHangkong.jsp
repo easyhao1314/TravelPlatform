@@ -28,7 +28,7 @@
 	<div class="easyui-panel" title="航空公司查询"
 		style="height:80px;padding:10px;width:auto;"
 		data-options="closable:false,tools:'#searchpanel'" align="center">
-		<form id="searchPanelForm">
+		<form id="hangkongForm">
 		<table>
 			<tr>
 				<td><div class="fitem">
@@ -46,7 +46,8 @@
 				<td>	<a href="javascript:hangkongSelectLike();" 
 								class="easyui-linkbutton" iconCls="icon-ok">查询</a>
 						<a href="javascript:void(0)" class="easyui-linkbutton"
-							iconCls="icon-undo" onclick="$('#searchPanelForm').form('clear')">重置</a></td>
+							iconCls="icon-undo" onclick="$('#hangkongForm').form('clear')">重置</a>
+							</td>
 			</tr>
 		</table>
 		</form>
@@ -262,7 +263,6 @@
 		
 		//模糊查询
 		function hangkongSelectLike(){
-		console.info($('#dg').datagrid('options'));
 		var opts = $('#dg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
 			var param = {
 				"daima" : $("#daima").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
@@ -270,7 +270,6 @@
 				"page" :  opts.pageNumber ,
 				"rows" :  opts.pageSize
 			};
-			console.info(param);
 				$.ajax({
 					url : 'fenghuang/hangkongSelectLike.do' ,
 					data : param ,

@@ -32,9 +32,9 @@ public class ZyJingdianController {
 	@RequestMapping("fenghuang/JingdianSelect.do")
 	@ResponseBody
 	public Map<String,Object> jingdianSelect(HttpServletRequest request,
-			HttpServletResponse response, Integer page,Integer rows){
+			HttpServletResponse response, Integer page,Integer rows,String name,String chengsiId,String jiage){
 		 try{
-	    	   Pagination<Jingdian> pagination=(Pagination<Jingdian>)izjs.jingdianSelect(page, rows);
+	    	   Pagination<Jingdian> pagination=(Pagination<Jingdian>)izjs.jingdianSelect(page, rows,name,chengsiId,jiage);
 				List<Map<String, Object>> jingdanList = pagination.getResultList();
 				Map<String,Object> returnValue  = new HashMap<String, Object>();
 				for(int i = 0 ;i<jingdanList.size();i++){
