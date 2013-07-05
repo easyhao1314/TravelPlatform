@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>散拼团列表</title>
+    <title>报名确认受理 </title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -23,17 +23,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-  <!-- 下拉列表 -->
-		
-
-	
-	
-   <div id="tb">
+    <div id="tb">
 		<a href="javascript:Select();" class="easyui-linkbutton"
 			iconCls="icon-save" plain="true">查询</a>
 	</div>
 <table id="dg" class="easyui-datagrid"
-		data-options="url:'fenghuang/Sanpinliebiao.do',border:false,singleSelect:false,fit:true,fitColumns:true, onClickRow: onClickRow"
+		data-options="url:'fenghuang/Sanpinliebiao.do?Reviewstatus=1',border:false,singleSelect:false,fit:true,fitColumns:true, onClickRow: onClickRow"
 		pagination="true" toolbar="#tb">
 		<thead>
 			<tr>
@@ -96,8 +91,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</table>
 			<input id="searchDicType" name="dicType" type="hidden">
 		</form>
-		
-		
 	</div>
 	<script type="text/javascript">
 		function Select() {
@@ -129,11 +122,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 		}
 	</script>
-  
-  
-  
-  
-  
 	
   </body>
 </html>

@@ -33,7 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			iconCls="icon-save" plain="true">查询</a>
 	</div>
 <table id="dg" class="easyui-datagrid"
-		data-options="url:'fenghuang/Sanpinliebiao.do',border:false,singleSelect:false,fit:true,fitColumns:true, onClickRow: onClickRow"
+		data-options="url:'fenghuang/Sanpinliebiao.do?Reviewstatus=1',border:false,singleSelect:false,fit:true,fitColumns:true, onClickRow: onClickRow"
 		pagination="true" toolbar="#tb">
 		<thead>
 			<tr>
@@ -98,6 +98,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</form>
 		
 		
+	</div>
+		<div id="mm1" style="width:150px;">
+		<div iconCls="icon-undo">Undo</div>
+		<div iconCls="icon-redo">Redo</div>
+		<div class="menu-sep"></div>
+		<div>Cut</div>
+		<div>Copy</div>
+		<div>Paste</div>
+		<div class="menu-sep"></div>
+		<div iconCls="icon-remove">Delete</div>
+		<div>Select All</div>
 	</div>
 	<script type="text/javascript">
 		function Select() {

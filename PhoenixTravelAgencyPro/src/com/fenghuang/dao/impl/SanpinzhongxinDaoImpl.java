@@ -70,10 +70,24 @@ public class SanpinzhongxinDaoImpl extends BaseDao implements ISanpinzhongxinDao
 	}
 	@Override
 	public Pagination<Sanpinzhongxin> getByQueryConditionPagination(
-			int currentPage, int numPerPage) throws Exception {
+			int currentPage, int numPerPage,Sanpinzhongxin s) throws Exception {
 		// TODO Auto-generated method stub 
-		String sql = "select tuanNo,tuanName,groupdate,Tourdate,targetpopulation,tonghang,zhikejia,numbermaster from sanpinzhongxin";
-		return this.getPagination(currentPage, numPerPage, sql);
+		String sql = "select tuanNo,tuanName,groupdate,Tourdate,targetpopulation,tonghang,zhikejia,numbermaster,productbrand from sanpinzhongxin where 1=1";
+		StringBuffer sb = new StringBuffer(sql);
+		if(s.getTuanName()!=null && !"".equals(s.getTuanName())){
+			sb.append(" and tuanName LIKE '%"+s.getTuanName()+"%'");
+		}
+		if(s.getGroupdate()!=null && !"".equals(s.getGroupdate())){
+			sb.append(" and groupdate >= '"+s.getGroupdate()+"'");
+		}
+		if(s.getTourdate()!=null && !"".equals(s.getTourdate())){
+			sb.append(" and Tourdate >= '"+s.getTourdate()+"'");
+		}
+		if(s.getProductbrand()!=0 && !"".equals(s.getProductbrand())){
+			sb.append(" and productbrand = '"+s.getProductbrand()+"'");
+		}
+		
+		return this.getPagination(currentPage, numPerPage, sb.toString());
 	}
 
 }

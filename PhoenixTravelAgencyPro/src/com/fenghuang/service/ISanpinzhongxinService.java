@@ -7,5 +7,5 @@ public interface ISanpinzhongxinService {
 	//添加散拼信息
 	public boolean AddSanpinzhongxin(Sanpinzhongxin sanpin)throws Exception;
 	//分页查询散拼列表
-	public Pagination<Sanpinzhongxin> getByQueryConditionPagination(int currentPage,int numPerPage) throws Exception;
+	public Pagination<Sanpinzhongxin> getByQueryConditionPagination(int currentPage,int numPerPage,Sanpinzhongxin s) throws Exception;
 }
