@@ -30,67 +30,64 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
    <div id="tb">
 		<a href="javascript:Select();" class="easyui-linkbutton"
-			iconCls="icon-save" plain="true">查询</a>
+			iconCls="icon-add" plain="true">添加</a>
 	</div>
 <table id="dg" class="easyui-datagrid"
-		data-options="url:'fenghuang/Sanpinliebiao.do',border:false,singleSelect:false,fit:true,fitColumns:true, onClickRow: onClickRow"
+		data-options="url:'fenghuang/selectrixingcheng.do',border:false,singleSelect:false,fit:true,fitColumns:true, onClickRow: onClickRow"
 		pagination="true" toolbar="#tb">
 		<thead>
 			<tr>
-				<th data-options="field:'tuanNo'" width="50">团号</th>
-				<th data-options="field:'tuanName'" width="50" onclick="select();">团名/路线</th>
-				<th data-options="field:'groupdate'" width="50">出团日期</th>
-				<th data-options="field:'Tourdate'" width="50">回团日期</th>
-				<th data-options="field:'targetpopulation'" width="50">出发城市</th>
-				<th data-options="field:'tonghang'" width="50">同行价</th>
-				<th data-options="field:'zhikejia'" width="50">直客价</th>
-				<th data-options="field:'numbermaster'" width="50">预收人数</th>
-				<th data-options="field:'productbrand',hidden:true" width="50">产品品牌_隐藏的</th>
+				<th data-options="field:'id'" width="50">编号</th>
+				<th data-options="field:'richenganpai'" width="50">日程安排</th>
+				<th data-options="field:'tujingchengshiid'" width="50">途径城市ID</th>
+				<th data-options="field:'moren'" width="50">是否默认</th>
+				<th data-options="field:'caiyong'" width="50">是否采用</th>
 			</tr>
 		</thead>
 	</table>
-	<div id="searchDic" class="easyui-dialog" title="查询业务字段"
+	<div id="searchDic" class="easyui-dialog" title="添加日行程"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:500px;height:200px;padding:10px;">
-		<form id="selectFrome" method="post">
+		<form id="addform" method="post">
 			<table align="left">
 				<tr>
 					<td><div class="fitem">
-							<label>出团日期:</label>
+							<label>编号:</label>
 					</td>
-					<td><input id="searchgroupdate" name="groupdate" class="easyui-datebox" ></input>
+					<td><input id="searchid" name="id" class="easyui-validatebox" ></input>
 						</div></td>
 					<td><div class="fitem">
-							<label>回团日期:</label>
+							<label>日程安排:</label>
 					</td>
-					<td><input id="searchTourdate" name="Tourdate" class="easyui-datebox" ></input>
+					<td><input id="searchrichenganpai" name="richenganpai" class="easyui-validatebox" ></input>
 						</div></td>
 				</tr>
 				<tr>
 					<td><div class="fitem">
-							<label>关键字:</label>
+							<label>途径城市ID:</label>
 					</td>
-					<td><input id="searchtuanName" name="tuanName"
+					<td><input id="searchtujingchengshiid" name="tujingchengshiid"
 						class="easyui-validatebox">
 						</div></td>
 					<td><div class="fitem">
-							<label>产品品牌:</label>
+							<label>是否默认:</label>
 					</td>
-					<td><input id="searchproductbrand" class="easyui-combobox" 
-			name="productbrand"
-			data-options="
-					url:'fenghuang/getDicByTypeComboboxs.do?dicType=12',
-					valueField:'dicId',
-					textField:'dicName',
-					panelHeight:'auto',
-					editable:false 
-	">
+					<td><input id="searchmoren" name="moren" class="easyui-validatebox" ></input>
 						</div></td>
 				</tr>
 				<tr>
+					<td><div class="fitem">
+							<label>是否采用:</label>
+					</td>
+					<td><input id="searchcaiyong" name="caiyong"
+						class="easyui-validatebox">
+						</div></td>
+					
+				</tr>
+				<tr>
 					<td colspan="4s" align="center"><a
-						href="javascript:searchFormSubmit();" class="easyui-linkbutton"
-						iconCls="icon-ok">查询</a> <a href="javascript:closedSearch();"
+						href="javascript:xingchengSave();" class="easyui-linkbutton"
+						iconCls="icon-save">提交</a> <a href="javascript:closedSearch();"
 						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
 				</tr>
 			</table>
@@ -100,7 +97,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 	</div>
 	<script type="text/javascript">
-		function Select() {
+	function Select() {
 			$("#searchDic").dialog("open");
 			$("#searchForm").form("clear");
 		}
@@ -118,15 +115,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				}
 			}
 		}
-		function searchFormSubmit() {
-			$("#searchDic").dialog("close");
-			$("#dg").datagrid("load", {
-				tuanName : $("#searchtuanName").val(),
-				groupdate : $("#searchgroupdate").datebox('getValue'),
-				Tourdate : $("#searchTourdate").datebox('getValue'),
-				productbrand : $("#searchproductbrand").combobox('getValue')
+		function xingchengSave() {
+			$('#addform').form('submit', {
+				url : 'fenghuang/insertrixingcheng.do',
+				onSubmit : function() {
+					return $(this).form('validate');
+				},
+				success : function(result) {
+					var result = eval('(' + result + ')');
+					if (result.success) {
+						$.messager.alert("保存成功", "保存成功！", "info");
+						closedSearch();
+					   $("#dg").datagrid("reload");
+					} else {
+						$.messager.alert("保存失败", "保存失败!", "error");
+					
+					}
+				}
 			});
-
 		}
 	</script>
   

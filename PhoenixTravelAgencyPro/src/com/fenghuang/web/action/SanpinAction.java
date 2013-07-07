@@ -35,45 +35,60 @@ public class SanpinAction {
 	@RequestMapping("fenghuang/addsanpin.do")
 	@ResponseBody
 	public Map<String, Object> Addsanpin(HttpServletRequest request,
-			HttpServletResponse response,Integer shenpijia,Float dakehu,Float zhikejia,
-			Float tonghang,Float ertongzhanchuang,Float ertongbuzhanchuang,Float zibeiqianjia,
-			String tuanname,String tuanno,Integer tianshu,Integer guojiashu,Date groupdate,Integer numbermaster,
-			Date Tourdate,Long Areatype,String airways,Long targetpopulation,String groupflight,
-			Long Departurecity,String Tourflight,Long TerminalCity,Long hotel,Long Producttypes,
-			Long zao,Long zhong,Long wan,Long productbrand,Integer predict,Integer report,Integer visa,
+			HttpServletResponse response,String shenpijia,String dakehu,String zhikejia,
+			String tonghang,String ertongzhanchuang,String ertongbuzhanchuang,String zibeiqianjia,
+			String tuanname,String tuanno,String tianshu,String guojiashu,String groupdate,String numbermaster,
+			String Tourdate,String Areatype,String airways,String targetpopulation,String groupflight,
+			String Departurecity,String Tourflight,String TerminalCity,String hotel,String Producttypes,
+			String zao,String zhong,String wan,String productbrand,String predict,String report,String visa,
 			String teamexplains,String Servicesinclude,String servicenoinclude,String notes){
 			Sanpinzhongxin sanpin = new Sanpinzhongxin();
-			sanpin.setShenpijia(shenpijia);
-			sanpin.setDakehujia(dakehu);
-			sanpin.setZhikejia(zhikejia);
-			sanpin.setTonghang(tonghang);
-			sanpin.setErtongzhanchuang(ertongzhanchuang);
-			sanpin.setErtongbuzhanchuang(ertongbuzhanchuang);
-			sanpin.setZibeiqianjia(zibeiqianjia);
-			sanpin.setNumberday(tianshu);
-			sanpin.setNumbercountry(guojiashu);
-			sanpin.setGroupdate(groupdate);
-			sanpin.setNumbermaster(numbermaster);
-			sanpin.setTourdate(Tourdate);
-			sanpin.setAreatype(Areatype);
-			sanpin.setAirways(airways);
-			sanpin.setTargetpopulation(targetpopulation);
-			sanpin.setGroupflight(groupflight);
-			sanpin.setDeparturecity(Departurecity);
-			sanpin.setTourflight(Tourflight);
-			sanpin.setTerminalCity(TerminalCity);
-			sanpin.setHotel(hotel);
-			sanpin.setProducttypes(Producttypes);
-			sanpin.setZao(zao);
-			sanpin.setZhong(zhong);
-			sanpin.setWan(wan);
-			sanpin.setProductbrand(productbrand);
-			sanpin.setPredict(predict);
+//			sanpin.setShenpijia(shenpijia);
+//			sanpin.setDakehujia(dakehu);
+//			sanpin.setZhikejia(zhikejia);
+//			sanpin.setTonghang(tonghang);
+//			sanpin.setErtongzhanchuang(ertongzhanchuang);
+//			sanpin.setErtongbuzhanchuang(ertongbuzhanchuang);
+//			sanpin.setZibeiqianjia(zibeiqianjia);
+//			sanpin.setNumberday(tianshu);
+//			sanpin.setNumbercountry(guojiashu);
+//			sanpin.setGroupdate(groupdate);
+//			sanpin.setNumbermaster(numbermaster);
+//			sanpin.setTourdate(Tourdate);
+//			sanpin.setAreatype(Areatype);
+//			sanpin.setAirways(airways);
+//			sanpin.setTargetpopulation(targetpopulation);
+//			sanpin.setGroupflight(groupflight);
+//			sanpin.setDeparturecity(Departurecity);
+//			sanpin.setTourflight(Tourflight);
+//			sanpin.setTerminalCity(TerminalCity);
+//			sanpin.setHotel(hotel);
+//			sanpin.setProducttypes(Producttypes);
+//			sanpin.setZao(zao);
+//			sanpin.setZhong(zhong);
+//			sanpin.setWan(wan);
+//			sanpin.setProductbrand(productbrand);
+//			sanpin.setPredict(predict);
 			//续办签证 没写
 			sanpin.setTeamexplains(teamexplains);
 			sanpin.setServicesinclude(Servicesinclude);
 			sanpin.setServicenoinclude(servicenoinclude);
 			sanpin.setNotes(notes);
+			DateFormat format1 = new SimpleDateFormat("yyyy-MM-dd"); 
+			try {
+				Date date = format1.parse(Tourdate);
+				
+				
+				
+				
+				System.out.println(date);
+				sanpin.setTourdate(date);
+				System.out.println(format1.format(date));
+			    System.out.println("dddddd"+sanpin.getTourdate());
+			} catch (ParseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			
 			sanpin.setTuanName(tuanname);
 			sanpin.setTuanNo(tuanno);

@@ -127,7 +127,8 @@
 	  <mvc:view-controller path="DantuanChengtuan.do" view-name="Dantuan/DantuanChengtuan"/>
      <!-- <mvc:view-controller path="DantuanUpdate.do" view-name="Dantuan/DantuanXunjia"/> -->
      <mvc:view-controller path="DantuanBaojia.do" view-name="Dantuan/DantuanBaojia"/>
-     <mvc:view-controller path="DantuanDaishen.do" view-name="Dantuan/DantuanDaishen"/> 
+     <mvc:view-controller path="DantuanDaishen.do" view-name="Dantuan/DantuanDaishen"/>
+     <mvc:view-controller path="DantuanMingxi.do" view-name="Dantuan/DantuanMingxi"/> 
      <!-- 资源中心 -->    
      <mvc:view-controller path="ZiyuanJiudian.do" view-name="Ziyuan/ZiyuanJiudian"/>
      <mvc:view-controller path="ZiyuanJiaotong.do" view-name="Ziyuan/ZiyuanJiaotong"/>
@@ -150,6 +151,14 @@
 	<mvc:view-controller path="SanPin_baoming.do" view-name="SanPin/Sanpin_Baoming"/>
 	<mvc:view-controller path="SanPin_liebiao.do" view-name="SanPin/Sanpin_Liebiao"/>
 	<mvc:view-controller path="SanPin_tuituan.do" view-name="SanPin/Sanpin_Tuituan"/>
+	<mvc:view-controller path="SanPin_baomingsp.do" view-name="SanPin/Sanpin_Baomingsp"/>
+	<mvc:view-controller path="SanPin_tuituansp.do" view-name="SanPin/Sanpin_Tuituansp"/>
+	<mvc:view-controller path="SanPin_wodebaomingsp.do" view-name="SanPin/Sanpin_WodeBaomingsp"/>
+	<mvc:view-controller path="Sanpin_zhuantuan.do" view-name="SanPin/Sanpin_Zhuantuan"/>
+	<!-- 赵杨_______行程库管理 -->
+	<mvc:view-controller path="Xingcheng_weihu.do" view-name="XingCheng/Xingcheng_weihu"/>
+	<mvc:view-controller path="Xingcheng_ri.do" view-name="XingCheng/Xingcheng_ri"/>
+	
 	 <!-- 单团中心-->
 	  <mvc:view-controller path="DantuanAdd.do" view-name="Dantuan/DantuanAddd"/>
 	  <mvc:view-controller path="DantuanXunjia.do" view-name="Dantuan/DantuanXunjia"/>
