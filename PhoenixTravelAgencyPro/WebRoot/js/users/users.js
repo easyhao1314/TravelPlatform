@@ -38,7 +38,7 @@ var editIndex = undefined;
 					"updateRows" : $.toJSON(rows)
 				};
 				$.ajax({
-					url : "fenghuang/updateCompanys.do",
+					url : "fenghuang/updateUsers.do",
 					data : param,
 					dataType : "json",
 					success : function(data) {
@@ -59,13 +59,13 @@ var editIndex = undefined;
 		}
 
 		function addMianBanMoshi() {
-			$("#editCompany").dialog("open");
-			$("#companyFrome").form("clear");
+			$("#editUsers").dialog("open");
+			$("#userForm").form("clear");
 		}
 
 		function mainBanMoshiSave() {
-			$('#companyFrome').form('submit', {
-				url : 'fenghuang/saveCompanyInfo.do',
+			$('#userForm').form('submit', {
+				url : 'fenghuang/saveUsers.do',
 				onSubmit : function() {
 					return $(this).form('validate');
 				},
@@ -73,7 +73,7 @@ var editIndex = undefined;
 					var result = eval('(' + result + ')');
 					if (result.success) {
 						$.messager.alert("保存成功", "保存成功！", "info");
-						$('#editCompany').dialog('close');
+						$('#editUsers').dialog('close');
 						$('#dgUsers').datagrid('reload');
 					} else {
 						$.messager.alert("保存失败", "保存失败!", "error");
@@ -90,7 +90,7 @@ var editIndex = undefined;
 					"deleteRows" : $.toJSON(rows)
 				};
 				$.ajax({
-					url : "",
+					url : "fenghuang/deleteUsers.do",
 					data : param,
 					dataType : "json",
 					success : function(data) {
@@ -107,25 +107,77 @@ var editIndex = undefined;
 				});
 			}
 		}
-		function closeEditRole() {
-			$('#editCompany').dialog('close');
+		function closeEditUsers() {
+			$('#editUsers').dialog('close');
 		} 
 
 		//
 		function searchDiJi() {
-			$("#searchCompany").dialog("open");
-			$("#searchCompanyForm").form("clear");
+			$("#searchUsers").dialog("open");
+			$("#searchUsersForm").form("clear");
 		}
 		function searchFormSubmit() {
-			$("#searchCompany").dialog("close");
+			$("#searchUsers").dialog("close");
 			$("#dgUsers").datagrid("load", {
-				companyNumber : $("#companyNumber").val(),
-				companyName : $("#companyName").val(),
-				parentId:$('#parentNumber').combobox('getValue')==""?0:$('#parentNumber').combobox('getValue')
+				userNumber:$("#searchUserNumber").val(),
+				userName:$("#searchUserName").val(),
+				loginName:$("#searchLoginName").val(),
+				enName:$("#searchEnName").val(),
+				sex:$("#searchSex").combobox('getValue'),
+				enName1:$("#searchEnName1").val(),
+				telephone:$("#searchTelephone").val(),
+				birthday:$("#searchBirthday").datebox("getValue"),
+				telephoneExt:$("#searchTelephoneExt").val(),
+				email:$("#searchEmail").val(),
+				mobilePhone:$("#searchMobilePhone").val(),
+				msn:$("#searchMsn").val(),
+				fax:$("#searchFax").val(),
+				msn2:$("#searchMsn2").val(),
+				skype:$("#searchSkype").val(),
+				msn3:$("#searchMsn3").val(),
+				companyId:$("#searchCompanyId").combobox('getValue'),
+				departmentId:$("#searchDepartmentId").combobox('getValue'),
+				jobDescription:$("#searchjobDescription").val(),
+				sortNumber:$("#searchSortNumber").val(),
+				address:$("#searchAddress").val(),
+				zip:$("#searchZip").val(),
+				qq:$("#searchQq").val()
 			});
 
 		}
 
 		function closedSearch() {
-			$('#searchCompany').dialog('close');
+			$('#searchUsers').dialog('close');
 		}
+		function myformatter(date){
+			var y = date.getFullYear();
+			var m = date.getMonth()+1;
+			var d = date.getDate();
+			return y+'-'+(m<10?('0'+m):m)+'-'+(d<10?('0'+d):d);
+		}
+		function myparser(s){
+			if (!s) return new Date();
+			var ss = (s.split('-'));
+			var y = parseInt(ss[0],10);
+			var m = parseInt(ss[1],10);
+			var d = parseInt(ss[2],10);
+			if (!isNaN(y) && !isNaN(m) && !isNaN(d)){
+				return new Date(y,m-1,d);
+			} else {
+				return new Date();
+			}
+		}
+		$('#dgUsers').datagrid({
+			onRowContextMenu : onRowContextMenu,
+		});
+		function onRowContextMenu(e, rowIndex, rowData) {
+			e.preventDefault();
+			var selected = $("#dgUsers").datagrid('getRows'); //获取所有行集合对象
+			selected[rowIndex].id; //index为当前右键行的索引，指向当前行对象
+			$('#dgUserMm').menu('show', {
+				left : e.pageX,
+				top : e.pageY
+			});
+		}
+		
+		

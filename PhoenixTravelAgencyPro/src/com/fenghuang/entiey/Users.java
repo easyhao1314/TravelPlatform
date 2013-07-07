@@ -5,6 +5,7 @@
  ***********************************************************************/
 package com.fenghuang.entiey;
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
@@ -12,7 +13,11 @@ import java.util.*;
  * 
  * @pdOid b461777c-0892-4f48-a4a6-7bf8c3668f61
  */
-public class Users {
+public class Users implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	/** @pdOid 37b92e84-0c55-4148-9340-389744805148 */
 	public Long id;
 	/**
@@ -136,6 +141,17 @@ public class Users {
 	public Long companyId;
 	/** 用户部门关系 */
 	public Long departmentId;
+	
+	/**
+	 *  这个字段是在显示的时候用的
+	 */
+	public String companyName;
+	/**
+	 * 这个字段是在显示的时候用的
+	 */
+	public String departName;
+	
+	
 
 	public Long getId() {
 		return id;
@@ -345,4 +361,40 @@ public class Users {
 		this.departmentId = departmentId;
 	}
 
+	/**
+	 * @return the companyName
+	 */
+	public String getCompanyName() {
+		return companyName;
+	}
+
+	/**
+	 * @param companyName the companyName to set
+	 */
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
+	}
+
+	/**
+	 * @return the departName
+	 */
+	public String getDepartName() {
+		return departName;
+	}
+
+	/**
+	 * @param departName the departName to set
+	 */
+	public void setDepartName(String departName) {
+		this.departName = departName;
+	}
+
+	/**
+	 * @param sortNumber the sortNumber to set
+	 */
+	public void setSortNumber(Long sortNumber) {
+		this.sortNumber = sortNumber;
+	}
+
+	
 }

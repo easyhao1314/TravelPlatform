@@ -56,9 +56,9 @@ public class UsersDaoImpl extends BaseDao implements IUserDao {
 				users.getTelephone(), users.getBirthday(),
 				users.getTelephoneExt(), users.getEmail(),
 				users.getMobilePhone(), users.getMsn(), users.getFax(),
-				users.getMsn2(), users.getMsn2(), users.getSkype(),
+				users.getMsn2(),users.getSkype(),
 				users.getMsn3(), users.getQq(), users.getCompanyId(),
-				users.getDepartmentId(), users.getSortNumber(),
+				users.getDepartmentId(),users.getJobDescription(), users.getSortNumber(),
 				users.getAddress(), users.getZip(), users.getRemark(),
 				users.getImagePath(), users.getPassword());
 		return rs > 0;
@@ -73,9 +73,9 @@ public class UsersDaoImpl extends BaseDao implements IUserDao {
 				users.getTelephone(), users.getBirthday(),
 				users.getTelephoneExt(), users.getEmail(),
 				users.getMobilePhone(), users.getMsn(), users.getFax(),
-				users.getMsn2(), users.getMsn2(), users.getSkype(),
+				users.getMsn2(),users.getSkype(),
 				users.getMsn3(), users.getQq(), users.getCompanyId(),
-				users.getDepartmentId(), users.getSortNumber(),
+				users.getDepartmentId(),users.getJobDescription(), users.getSortNumber(),
 				users.getAddress(), users.getZip(), users.getRemark(),
 				users.getImagePath(), users.getId());
 		return rs > 0;
@@ -91,15 +91,16 @@ public class UsersDaoImpl extends BaseDao implements IUserDao {
 	@Override
 	public Pagination<Users> getPaginationUsers(int currentPage,
 			int numPerPage, Users users) throws Exception {
+		//date_format(users.birthday,'%Y-%m-%d') as birthday
 		StringBuffer sql = new StringBuffer(
-				"SELECT users.id,users.userNumber,users.userName,users.loginName,users.enName,users.sex,users.telephone,users.birthday,users.telephoneExt,users.email,users.mobilePhone,users.msn,users.fax,users.msn2,users.skype,users.msn3,users.qq,users.companyId,users.departmentId,");
+				"SELECT users.id,users.userNumber,users.userName,users.loginName,users.enName,users.sex,users.telephone,date_format(users.birthday,'%Y-%m-%d') as birthday,users.telephoneExt,users.email,users.mobilePhone,users.msn,users.fax,users.msn2,users.skype,users.msn3,users.qq,users.companyId,users.departmentId,");
 		sql.append("users.jobDescription,");
 		sql.append("users.sortNumber,");
 		sql.append("users.address,");
 		sql.append("users.zip,");
 		sql.append("users.remark,");
 		sql.append("users.imagePath,");
-		sql.append("department.departName");
+		sql.append("department.departName,");
 		sql.append("company.companyName");
 		sql.append(" FROM ");
 		sql.append("users ,");
