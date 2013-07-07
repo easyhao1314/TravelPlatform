@@ -22,11 +22,26 @@ public class ZyDaoyouDaoImpl extends BaseDao implements IZyDaoyouDao{
 	}
 
 	@Override
-	public Pagination<Daoyou> daoyouSelect(int currentPage, int numPerPage)
+	public Pagination<Daoyou> daoyouSelect(int currentPage, int numPerPage,String name,String guojiaId,String chengshiId)
 			throws Exception {
 		// TODO Auto-generated method stub
-		String sql="select * from daoyou";
-		return this.getPagination(currentPage, numPerPage, sql);
+		StringBuffer sql=new StringBuffer("select * from daoyou where 1=1");
+		if(name !=null && !"".equals(name)){
+			sql.append(" and name like '%");
+			sql.append(name);
+			sql.append("%'");
+		}
+		if(guojiaId !=null && !"".equals(guojiaId)){
+			sql.append(" and guojiaId ='");
+			sql.append(guojiaId);
+			sql.append("'");
+		}
+		if(chengshiId !=null && !"".equals(chengshiId)){
+			sql.append(" and chengshiId ='");
+			sql.append(chengshiId);
+			sql.append("'");
+		}
+		return this.getPagination(currentPage, numPerPage, sql.toString());
 	}
 
 	@Override

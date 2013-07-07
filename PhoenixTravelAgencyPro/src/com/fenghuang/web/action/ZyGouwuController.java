@@ -27,14 +27,14 @@ import com.fenghuang.util.Pagination;
 public class ZyGouwuController{
 	@Autowired
 	public IZyGouwuService izgs;
-private Object returnValue;
+	private Object returnValue;
 	
 	@RequestMapping("fenghuang/gouwuSelect.do")
 	@ResponseBody
 	public Map<String,Object> gouwuSelect(HttpServletRequest request,
-			HttpServletResponse response, Integer page,Integer rows){
+			HttpServletResponse response, Integer page,Integer rows,String name,String chengshiId,String hzjbId){
 		 try{
-	    	   Pagination<Gouwu> pagination=(Pagination<Gouwu>)izgs.gouwuSelect(page, rows);
+	    	   Pagination<Gouwu> pagination=(Pagination<Gouwu>)izgs.gouwuSelect(page, rows, name, chengshiId, hzjbId);
 				List<Map<String, Object>> gouwuList = pagination.getResultList();
 				Map<String,Object> returnValue  = new HashMap<String, Object>();
 				for(int i = 0 ;i<gouwuList.size();i++){

@@ -16,10 +16,10 @@ public class ZyYaoqingServiceImpl implements IZyYaoqingService{
 	public IZyYaoqingDao izyd;
 
 	@Override
-	public Pagination<Yaoqinghan> yaoqingSelect(int currentPage, int numPerPage)
+	public Pagination<Yaoqinghan> yaoqingSelect(int currentPage, int numPerPage,String guoduid,String miaoshu)
 			throws Exception {
 		// TODO Auto-generated method stub
-		return izyd.yaoqingSelect(currentPage, numPerPage);
+		return izyd.yaoqingSelect(currentPage, numPerPage,guoduid,miaoshu);
 	}
 
 	@Override

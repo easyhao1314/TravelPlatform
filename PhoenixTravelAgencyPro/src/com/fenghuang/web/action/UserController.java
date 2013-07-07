@@ -1,5 +1,6 @@
 package com.fenghuang.web.action;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -9,14 +10,22 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.sf.ezmorph.object.DateMorpher;
 import net.sf.json.JSONArray;
+import net.sf.json.JSONException;
+import net.sf.json.JSONObject;
+import net.sf.json.JsonConfig;
+import net.sf.json.processors.JsDateJsonBeanProcessor;
+import net.sf.json.processors.JsonBeanProcessor;
+import net.sf.json.util.JSONUtils;
+import net.sf.json.util.JsonEventListener;
+import net.sf.json.util.PropertyFilter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.fenghuang.entiey.Company;
 import com.fenghuang.entiey.Users;
 import com.fenghuang.service.IUsersService;
 import com.fenghuang.util.FengHuangDateUtil;
@@ -185,7 +194,8 @@ public class UserController {
 		result.put("success", isExist);
 		return result;
 	}
-
+    @RequestMapping("fenghuang/deleteUsers.do")
+    @ResponseBody
 	public Map<String, Object> deleteUsers(HttpServletRequest request,
 			HttpServletResponse response, String deleteRows) {
 		Map<String, Object> result = new HashMap<String, Object>();
@@ -206,6 +216,10 @@ public class UserController {
 	@ResponseBody
 	public Map<String,Object>  updateUsers(HttpServletRequest request,HttpServletResponse response,String updateRows){
 		Map<String, Object> result = new HashMap<String, Object>();
+		 JSONUtils.getMorpherRegistry().registerMorpher( new  DateMorpher( new String[]{
+                 "yyyy-MM-dd HH:mm" ,
+                 "yyyy-MM-dd"
+        })); 
 		JSONArray jsonArray = JSONArray.fromObject(updateRows);
 		List<Users> users = JSONArray.toList(jsonArray,Users.class);
 		boolean isSuccess = false;
@@ -220,6 +234,62 @@ public class UserController {
 		result.put("success", isSuccess);
 		return result;
 	}
+	@RequestMapping("fenghuang/saveUsers.do")
+	@ResponseBody
+	public Map<String,Object> saveUsers(HttpServletRequest request,HttpServletResponse response,String userNumber, String userName, String loginName,
+			String enName, String sex, String telephone, String birthday,
+			String telephoneExt, String email, String mobilePhone, String msn,
+			String fax, String msn2, String skype, String msn3, String qq,
+			String companyId, String departmentId, String jobDescription,
+			String sortNumber, String address, String zip,String imagePath){
+		Map<String, Object> result = new HashMap<String, Object>();
+		boolean isSuccess = false;
+		Users user = new Users();
+		user.setUserNumber(userNumber);
+		user.setUserName(userName);
+		user.setLoginName(loginName);
+		user.setEnName(enName);
+		user.setSex(sex);
+		user.setTelephone(telephone);
+		if (birthday != null && !"".equals(birthday)) {
+			user.setBirthday(FengHuangDateUtil.getDateStringTODate(birthday));
+		}
+		user.setTelephoneExt(telephoneExt);
+		user.setEmail(email);
+		user.setMobilePhone(mobilePhone);
+		user.setMsn(msn);
+		user.setFax(fax);
+		user.setMsn2(msn2);
+		user.setSkype(skype);
+		user.setMsn3(msn3);
+		user.setQq(qq);
+		if (companyId != null && !"".equals(companyId)) {
+			user.setCompanyId(Long.valueOf(companyId));
+		}
+
+		if (departmentId != null && !"".equals(departmentId)) {
+			user.setDepartmentId(Long.valueOf(departmentId));
+		}
+
+		user.setJobDescription(jobDescription);
+		if (sortNumber != null && !"".equals(sortNumber)) {
+			user.setSortNumber(Long.valueOf(sortNumber));
+		}
+		user.setAddress(address);
+		user.setZip(zip);
+		user.setImagePath(imagePath);
+		try {
+			iUsersService.saveUsers(user);
+			isSuccess = true;
+		} catch (Exception e) {
+			isSuccess = false;
+			e.printStackTrace();
+		}
+		result.put("success", isSuccess);
+		return result;
+	}
+	
+	
 	
 
 }

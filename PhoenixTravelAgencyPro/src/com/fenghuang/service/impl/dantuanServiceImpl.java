@@ -86,6 +86,11 @@ public class dantuanServiceImpl implements IdantuanService{
 			// TODO 撤销审批
 			return idt.updateChexiao(tuanNo);
 		}
+
+		@Override
+		public List<Map<String,Object>> getDate(String ctsj, String cfts) {
+			return idt.getDate(ctsj,cfts);
+		}
 	
 
 }

@@ -9,7 +9,7 @@ import com.fenghuang.util.Pagination;
 
 public interface IZyDijieDao {
 	//分页查询全部
-			public Pagination<Dijie> dijieSelect(int currentPage,int numPerPage) throws Exception;
+			public Pagination<Dijie> dijieSelect(int currentPage,int numPerPage,String name,String chengshiId,String lianxiren,String hzjbId) throws Exception;
 			//添加
 			public boolean dijieAdd(Dijie dj) throws Exception;
 			//删除 

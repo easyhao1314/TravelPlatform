@@ -25,86 +25,49 @@
 </head>
 
 <body>
-	<div class="easyui-panel" title="酒店查询"
-		style="height:160px;padding:10px;width:auto;"
+	<div class="easyui-panel" title="交通供应商查询"
+		style="height:100px;padding:10px;width:auto;"
 		data-options="closable:false,tools:'#searchpanel'" align="center">
+		<form id="jiaotongForm">
 		<table>
 			<tr>
-				<td><div class="fitem">
-						<label>编号:</label>
+			<td><div class="fitem">
+						<label>供应商名称:</label>
 				</td>
-				<td><input name="currencyName" class="easyui-validatebox">
+				<td><input id="name" name="name" class="easyui-validatebox">
 					</div>
 				</td>
 				<td><div class="fitem">
 						<label>所属城市:</label>
 				</td>
-				<td><input name="currencyShort" class="easyui-validatebox">
+				<td><input id="chengshiId" name="chengshiId" class="easyui-validatebox">
 					</div>
 				</td>
-				<td><div class="fitem">
-						<label>地址:</label>
-				</td>
-				<td><input name="currencyShort" class="easyui-validatebox">
-					</div>
-				</td>
+				
+				<td></td>
 			</tr>
-				<tr>
-				<td><div class="fitem">
-						<label>供应商名称:</label>
-				</td>
-				<td><input name="currencyName" class="easyui-validatebox">
-					</div>
-				</td>
-				<td><div class="fitem">
-						<label>供应商英文名称:</label>
-				</td>
-				<td><input name="currencyName" class="easyui-validatebox">
-					</div>
-				</td>
-				<td><div class="fitem">
+			<tr>
+			<td><div class="fitem">
 						<label>联系人:</label>
 				</td>
-				<td><input name="currencyShort" class="easyui-validatebox">
-					</div>
-				</td>
-			</tr>
-				<tr>
-				<td><div class="fitem">
-						<label>联系电话:</label>
-				</td>
-				<td><input name="currencyName" class="easyui-validatebox">
-					</div>
-				</td>
-				<td><div class="fitem">
-						<label>手机:</label>
-				</td>
-				<td><input name="currencyShort" class="easyui-validatebox">
+				<td><input id="lianxiren" name="lianxiren" class="easyui-validatebox">
 					</div>
 				</td>
 				<td><div class="fitem">
 						<label>合作级别:</label>
 				</td>
-				<td><input name="currencyName" class="easyui-validatebox">
+				<td><input id="hzjbId" name="hzjbId" class="easyui-validatebox">
 					</div>
 				</td>
+				<td><a href="javascript:jiaotongSelectLike();" 
+								class="easyui-linkbutton" iconCls="icon-ok">查询</a>
+						<a href="javascript:void(0)" class="easyui-linkbutton"
+							iconCls="icon-undo" onclick="$('#jiaotongForm').form('clear')">重置</a>
+				</td>
 			</tr>
-				<tr>
 				
-				<td><div class="fitem">
-						<label>所属国家:</label>
-				</td>
-				<td><input name="currencyShort" class="easyui-validatebox">
-					</div>
-				</td>
-				<td><div class="fitem">
-						<label>外呼方式:</label>
-				</td>
-				<td><input name="currencyName" class="easyui-validatebox">
-					</div>
-				</td>
-			</tr>
 		</table>
+		</form>
 	</div>
 	<div id="searchpanel">
 		<a href="javascript:void(0)" iconCls="icon-search"
@@ -120,8 +83,8 @@
 				<tr>
 					<th data-options="field:'ck',checkbox:true"></th>
 					<th data-options="field:'chengshiId'" width="80">城市</th>
-					<th data-options="field:'id'" width="80">编号</th>
 					<th data-options="field:'name'" width="80">供应商名称</th>
+					<th data-options="field:'lianxiren'" width="80">联系人</th>
 					<th data-options="field:'dianhua'" width="80">联系电话</th>
 					<th data-options="field:'chuanzhen'" width="80">传真</th>
 					<th data-options="field:'shouji'" width="80">手机</th>
@@ -251,6 +214,31 @@
 	  }
 	  
 	}
+/**
+      * 查询按钮
+    */
+		function jiaotongSelectLike(){
+		var opts = $('#dg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
+			var param = {
+				name: $("#name").val(),				
+				chengshiId: $("#chengshiId").val(),
+				lianxiren: $("#lianxiren").val(),
+				hzjbId: $("#hzjbId").val(),
+				page:  opts.pageNumber ,
+				rows:  opts.pageSize
+			};
+				$.ajax({
+					url : 'fenghuang/jiaotongSelect.do' ,
+					data :  param,
+					type : 'POST' ,
+					dataType : 'json' ,
+					success : function(data){
+						$('#dg').datagrid('loadData',data);
+					}
+				});
+		}
+		
+
 
 	//删除操作要执行的方法
 	function jiaotongDelete(){

@@ -28,34 +28,31 @@
 	<div class="easyui-panel" title="邀请函成本信息查询"
 		style="height:80px;padding:10px;width:auto;"
 		data-options="closable:false,tools:'#searchpanel'" align="center">
+		<form id="yaoqingForm">
 		<table>
 			<tr>
 				<td><div class="fitem">
-						<label>编号:</label>
-				</td>
-				<td><input name="currencyName" class="easyui-validatebox">
-					</div>
-				</td>
-				<td><div class="fitem">
 						<label>国度:</label>
 				</td>
-				<td><input name="currencyShort" class="easyui-validatebox">
+				<td><input id="guoduid" name="guoduid" class="easyui-validatebox">
 					</div>
 				</td>
 				<td><div class="fitem">
 						<label>描述:</label>
 				</td>
-				<td><input name="currencyShort" class="easyui-validatebox">
+				<td><input id="miaoshu" name="miaoshu" class="easyui-validatebox">
 					</div>
+				</td>
+				<td>	<a href="javascript:YaoqingSelectLike();" 
+								class="easyui-linkbutton" iconCls="icon-ok">查询</a>
+						<a href="javascript:void(0)" class="easyui-linkbutton"
+							iconCls="icon-undo" onclick="$('#yaoqingForm').form('clear')">重置</a>
 				</td>
 			</tr>
 		</table>
+		</form>
 	</div>
-	<div id="searchpanel">
-		<a href="javascript:void(0)" iconCls="icon-search"
-			onclick="javascript:alert('查询')"></a> <a href="javascript:void(0)"
-			iconCls="icon-undo" onclick="javascript:alert('重置')"></a>
-	</div>
+
 		<div class="easyui-panel" title="邀请函成本信息列表"
 		style="height:480px;width: auto;">
 		<table id="dg" class="easyui-datagrid"
@@ -155,6 +152,30 @@
 	  }
 	  
 	}
+	/**
+      * 查询按钮
+    */
+		function YaoqingSelectLike(){
+		var opts = $('#dg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
+			var param = {
+				guoduid: $("#guoduid").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
+				miaoshu: $("#miaoshu").val() ,
+				page:  opts.pageNumber ,
+				rows:  opts.pageSize
+			};
+		
+				$.ajax({
+					url : 'fenghuang/yaoqinghanSelect.do' ,
+					data :  param,
+					type : 'POST' ,
+					dataType : 'json' ,
+					success : function(data){
+						$('#dg').datagrid('loadData',data);
+					}
+				});
+		}
+		
+
 
 	//这个方法用来点击新增按钮
 	 //新增

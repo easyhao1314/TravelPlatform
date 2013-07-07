@@ -30,9 +30,9 @@ public class ZyCanyinController {
 	@RequestMapping("fenghuang/canyinSelect.do")
 	@ResponseBody
 	public Map<String,Object> canyinSelect(HttpServletRequest request,
-			HttpServletResponse response, Integer page,Integer rows) {
+			HttpServletResponse response, Integer page,Integer rows,String name,String chengshiId,String hzjbId) {
 		try {
-			Pagination<Canyin> pagination=(Pagination<Canyin>)izcs.canyinSelect(page, rows);
+			Pagination<Canyin> pagination=(Pagination<Canyin>)izcs.canyinSelect(page, rows,name,chengshiId,hzjbId);
 			List<Map<String, Object>> canyinList = pagination.getResultList();
 			Map<String,Object> returnValue  = new HashMap<String, Object>();
 			for(int i = 0 ;i<canyinList.size();i++){

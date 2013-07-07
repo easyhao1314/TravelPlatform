@@ -34,9 +34,9 @@ public class ZyYaoqingController {
 	@RequestMapping("fenghuang/yaoqinghanSelect.do")
 	@ResponseBody
 	public Map<String,Object> yaoqinghanSelect(HttpServletRequest request,
-			HttpServletResponse response, Integer page,Integer rows) {
+			HttpServletResponse response, Integer page,Integer rows,String guoduid,String miaoshu) {
 		try {
-			Pagination<Yaoqinghan> pagination=(Pagination<Yaoqinghan>)izys.yaoqingSelect(page, rows);
+			Pagination<Yaoqinghan> pagination=(Pagination<Yaoqinghan>)izys.yaoqingSelect(page, rows,guoduid,miaoshu);
 			List<Map<String, Object>> yaoqingList = pagination.getResultList();
 			Map<String,Object> returnValue  = new HashMap<String, Object>();
 			for(int i = 0 ;i<yaoqingList.size();i++){

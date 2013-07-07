@@ -100,7 +100,7 @@
                       <th data-options="field:'ck',checkbox:true"></th>
                      <th data-options="field:'tdjb'" width="60">跟单进展</th> 
                      <!--点击团号进入客户信息  -->
-                     <th id="tuanNO" data-options="field:'tuanNO'" width="40" >团号</th>  
+                     <th id="tuanNO" data-options="field:'tuanNO'" width="40" ><a href="DantuanMingxi.do">团号</a></th>  
                      <th data-options="field:'tdzt'" width="60"> 团队状态</th>  
                      <!--点击团队名称进入团队详情（新增页面） -->                     
                      <th data-options="field:'tdm'" width="60">团队名称</th> 
@@ -134,11 +134,12 @@
 	
 	<div id="addDt" class="easyui-dialog" title="新增业务字段"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
-		style="width:600px;height:500px;padding:10px;">
+		style="width:700px;height:500px;padding:10px;">
 		<form id="addForm" method="post">
 			<table align="center">
 				<tr>
-<td><div class="fitem"><label>客户名称:</label></td><td><input name="khId" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>客户名称:</label></td><td><input name="khId" class="easyui-validatebox" required="true"></div>
+     <a href="javascript:addKehu();" class="easyui-linkbutton" iconCls="icon-ok">新增客户</a></td>
 <td><div class="fitem"><label>团号:</label></td><td><input name="tuanNO" class="easyui-validatebox" required="true"></div></td>
 </tr>
 <tr>
@@ -200,8 +201,10 @@
 <td><div class="fitem"><label>导游报价标准：</label></td><td><input name="dybjNo" class="easyui-validatebox" required="true"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>其他地接要求：</label></td><td><input name="qtdjDesc" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>特殊要求：</label></td><td><input name="tsDesc" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>其他地接要求：</label></td><td colspan="3"><input name="qtdjDesc" class="easyui-validatebox" required="true" size="80"></div></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>特殊要求：</label></td><td colspan="3"><input name="tsDesc" class="easyui-validatebox" required="true" size="80"></div></td>
 </tr>
 <tr>
 <tr><td colspan="4s" align="center"><a href="javascript:dantuanSave();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> <input  type="reset" value="重置"></td>
@@ -215,10 +218,10 @@
 	
 	<div id="updateDt" class="easyui-dialog" title="修改业务字段"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
-		style="width:600px;height:500px;padding:10px;">
+		style="width:700px;height:500px;padding:10px;">
 		<form id="updateForm" action="">
 			<table align="center">
-				<tr>
+<tr>
 <td><div class="fitem"><label>客户名称:</label></td><td><input name="khId" class="easyui-validatebox" required="true"></div></td>
 <td><div class="fitem"><label>团号:</label></td><td><input name="tuanNO" class="easyui-validatebox" required="true"></div></td>
 </tr>
@@ -281,8 +284,10 @@
 <td><div class="fitem"><label>导游报价标准：</label></td><td><input name="dybjNo" class="easyui-validatebox" required="true"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>其他地接要求：</label></td><td><input name="qtdjDesc" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>特殊要求：</label></td><td><input name="tsDesc" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>其他地接要求：</label></td><td colspan="3"><input name="qtdjDesc" class="easyui-validatebox" required="true" size="80"></div></td>
+</tr>
+<tr>
+<td><div class="fitem"><label>特殊要求：</label></td><td colspan="3"><input name="tsDesc" class="easyui-validatebox" required="true" size="80"></div></td>
 </tr>
 <tr>
 <tr><td colspan="4s" align="center"><a href="javascript:dantuanUpdate1();" 

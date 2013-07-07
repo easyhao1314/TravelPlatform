@@ -16,10 +16,10 @@ public class ZyCanyinServiceImpl implements IZyCanyinService{
 	public IZyCanyinDao izcd;
 
 	@Override
-	public Pagination<Canyin> canyinSelect(int currentPage, int numPerPage)
+	public Pagination<Canyin> canyinSelect(int currentPage, int numPerPage,String name,String chengshiId,String hzjbId)
 			throws Exception {
 		// TODO Auto-generated method stub
-		return izcd.canyinSelect(currentPage, numPerPage);
+		return izcd.canyinSelect(currentPage, numPerPage,name,chengshiId,hzjbId);
 	}
 
 	@Override

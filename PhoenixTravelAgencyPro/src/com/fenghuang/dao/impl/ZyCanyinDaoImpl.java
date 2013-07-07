@@ -21,11 +21,26 @@ public class ZyCanyinDaoImpl extends BaseDao implements IZyCanyinDao{
 	}
 
 	@Override
-	public Pagination<Canyin> canyinSelect(int currentPage, int numPerPage)
+	public Pagination<Canyin> canyinSelect(int currentPage, int numPerPage,String name,String chengshiId,String hzjbId)
 			throws Exception {
 		// TODO Auto-generated method stub
-		String sql="select * from canyin";
-		return this.getPagination(currentPage, numPerPage, sql);
+		StringBuffer sql=new StringBuffer("select * from canyin where 1=1 ");
+		if(name !=null && !"".equals(name)){
+			sql.append(" and name like '%");
+			sql.append(name);
+			sql.append("%'");
+		}
+		if(chengshiId !=null && !"".equals(chengshiId)){
+			sql.append(" and chengshiId = '");
+			sql.append(chengshiId);
+			sql.append("'");
+		}
+		if(hzjbId !=null && !"".equals(hzjbId)){
+			sql.append(" and hzjbId = '");
+			sql.append(hzjbId);
+			sql.append("'");
+		}
+		return this.getPagination(currentPage, numPerPage, sql.toString());
 	}
 
 	@Override

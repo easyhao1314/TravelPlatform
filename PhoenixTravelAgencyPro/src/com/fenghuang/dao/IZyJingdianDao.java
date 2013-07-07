@@ -9,7 +9,7 @@ import com.fenghuang.util.Pagination;
 
 public interface IZyJingdianDao {
 	 //分页查询全部
-		public Pagination<Jingdian> jingdianSelect(int currentPage,int numPerPage) throws Exception;
+		public Pagination<Jingdian> jingdianSelect(int currentPage,int numPerPage,String name,String chengsiId,String jiage) throws Exception;
 		//添加
 		public boolean jingdianAdd(Jingdian jd) throws Exception;
 		//删除 

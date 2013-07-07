@@ -32,9 +32,9 @@ public class ZyZifeiController {
 	@RequestMapping("fenghuang/zifeiSelect.do")
 	@ResponseBody
 	public Map<String,Object> zifeiSelect(HttpServletRequest request,
-			HttpServletResponse response, Integer page,Integer rows) {
+			HttpServletResponse response, Integer page,Integer rows,String name,String chengshiId,String miaoshu) {
 		try {
-			Pagination<Zifei> pagination=(Pagination<Zifei>)izzs.zifeiSelect(page, rows);
+			Pagination<Zifei> pagination=(Pagination<Zifei>)izzs.zifeiSelect(page, rows,name,chengshiId,miaoshu);
 			List<Map<String, Object>> zifeiList = pagination.getResultList();
 			Map<String,Object> returnValue  = new HashMap<String, Object>();
 			for(int i = 0 ;i<zifeiList.size();i++){

@@ -16,10 +16,10 @@ public class ZyDijieServiceImpl implements IZyDijieService{
 	public IZyDijieDao izdd;
 	
 	@Override
-	public Pagination<Dijie> dijieSelect(int currentPage, int numPerPage)
+	public Pagination<Dijie> dijieSelect(int currentPage, int numPerPage,String name,String chengshiId,String lianxiren,String hzjbId)
 			throws Exception {
 		// TODO Auto-generated method stub
-		return izdd.dijieSelect(currentPage, numPerPage);
+		return izdd.dijieSelect(currentPage, numPerPage,name,chengshiId,lianxiren,hzjbId);
 	}
 
 	@Override

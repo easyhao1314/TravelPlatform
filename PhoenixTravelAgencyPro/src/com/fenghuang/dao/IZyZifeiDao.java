@@ -9,7 +9,7 @@ import com.fenghuang.util.Pagination;
 
 public interface IZyZifeiDao {
 	//分页查询全部
-			public Pagination<Zifei> zifeiSelect(int currentPage,int numPerPage) throws Exception;
+			public Pagination<Zifei> zifeiSelect(int currentPage,int numPerPage,String name,String chengshiId,String miaoshu) throws Exception;
 			//添加
 			public boolean zifeiAdd(Zifei zf) throws Exception;
 			//删除 

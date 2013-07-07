@@ -33,9 +33,9 @@ public class ZyJiaotongController {
 	@RequestMapping("fenghuang/jiaotongSelect.do")
 	@ResponseBody
 	public Map<String,Object> jiaotongSelect(HttpServletRequest request,
-			HttpServletResponse response, Integer page,Integer rows){
+			HttpServletResponse response, Integer page,Integer rows,String name,String chengshiId,String lianxiren,String hzjbId){
        try{
-    	   Pagination<Jiaotong> pagination=(Pagination<Jiaotong>)izjs.jiaotongSelect(page, rows);
+    	   Pagination<Jiaotong> pagination=(Pagination<Jiaotong>)izjs.jiaotongSelect(page, rows	,name,chengshiId,lianxiren,hzjbId);
 			List<Map<String, Object>> jiaotongList = pagination.getResultList();
 			Map<String,Object> returnValue  = new HashMap<String, Object>();
 			for(int i = 0 ;i<jiaotongList.size();i++){
@@ -157,19 +157,6 @@ public class ZyJiaotongController {
 		}
 		return result;
 	}
-	
-	@RequestMapping("fenghuang/jiaotongSelectLike.do")
-	@ResponseBody
-	public Map<String,Object> jiaotongSelectLike(){
-		
-       try{
-			
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		return null;
-	}
-
 
 	
 	}

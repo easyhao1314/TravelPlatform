@@ -15,10 +15,10 @@ public class ZyDaoyouServiceImpl implements IZyDaoyouService{
 	@Autowired
 	public IZyDaoyouDao izdd;
 	@Override
-	public Pagination<Daoyou> daoyouSelect(int currentPage, int numPerPage)
+	public Pagination<Daoyou> daoyouSelect(int currentPage, int numPerPage,String name,String guojiaId,String chengshiId)
 			throws Exception {
 		// TODO Auto-generated method stub
-		return izdd.daoyouSelect(currentPage, numPerPage);
+		return izdd.daoyouSelect(currentPage, numPerPage,name,guojiaId,chengshiId);
 	}
 
 	@Override

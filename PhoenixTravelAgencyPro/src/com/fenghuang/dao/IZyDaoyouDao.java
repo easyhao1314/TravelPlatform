@@ -8,7 +8,7 @@ import com.fenghuang.util.Pagination;
 
 public interface IZyDaoyouDao {
 	 //分页查询全部
-	public Pagination<Daoyou> daoyouSelect(int currentPage,int numPerPage) throws Exception;
+	public Pagination<Daoyou> daoyouSelect(int currentPage,int numPerPage,String name,String guojiaId,String chengshiId) throws Exception;
 	//添加
 	public boolean daoyouAdd(Daoyou jd) throws Exception;
 	//删除 

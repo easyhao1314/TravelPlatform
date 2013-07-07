@@ -55,9 +55,9 @@ public class ZyJiudianServiceImpl  implements IZyJiudainService{
 
 	@Override
 	public Pagination<Jiudian> jiudianSelectLike(int currentPage,
-			int numPerpage, String name, int chengshi) throws Exception {
+			int numPerpage, String name, String chengshi,String weihuren) throws Exception {
 		// 模糊查询
-				return zyjd.jiudianSelectLike(currentPage, numPerpage, name, chengshi);
+				return zyjd.jiudianSelectLike(currentPage, numPerpage, name, chengshi,weihuren);
 	}
 
 

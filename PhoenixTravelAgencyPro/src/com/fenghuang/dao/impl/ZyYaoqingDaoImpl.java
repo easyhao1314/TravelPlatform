@@ -21,11 +21,21 @@ public class ZyYaoqingDaoImpl extends BaseDao implements IZyYaoqingDao{
 	}
 
 	@Override
-	public Pagination<Yaoqinghan> yaoqingSelect(int currentPage, int numPerPage)
+	public Pagination<Yaoqinghan> yaoqingSelect(int currentPage, int numPerPage,String guoduid,String miaoshu)
 			throws Exception {
 		// TODO Auto-generated method stub
-		String sql="select * from yaoqinghan";
-		return this.getPagination(currentPage, numPerPage, sql);
+		StringBuffer sql=new StringBuffer("select * from yaoqinghan where 1=1");
+		if(guoduid != null && !"".equals(guoduid)){
+			sql.append(" and guoduid ='");
+			sql.append(guoduid);
+			sql.append("'");
+		}
+		if(miaoshu != null && !"".equals(miaoshu)){
+			sql.append(" and miaoshu like '%");
+			sql.append(miaoshu);
+			sql.append("%'");
+		}
+		return this.getPagination(currentPage, numPerPage, sql.toString());
 	}
 
 	@Override

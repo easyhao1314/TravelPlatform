@@ -14,6 +14,7 @@ import net.sf.json.JsonConfig;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -63,9 +64,9 @@ public class ZyJiudianController {
 	@RequestMapping("fenghuang/ZyjiudianSelectLike.do")
 	@ResponseBody
 		public Map<String,Object> jiudianSelectLike(HttpServletRequest request,HttpServletResponse response,
-				Integer page,Integer rows,String name,int chengshi){
+			Integer page,Integer rows,String name,String chengshi,String weihuren){
 			try{
-				Pagination<Jiudian> pagination=(Pagination<Jiudian>)izyjd.jiudianSelectLike(page, rows, name, chengshi);
+				Pagination<Jiudian> pagination=(Pagination<Jiudian>)izyjd.jiudianSelectLike(page, rows, name, chengshi,weihuren);
 				List<Map<String, Object>> jiudianList = pagination.getResultList();
 				Map<String,Object> returnValue  = new HashMap<String, Object>();
 				for(int i = 0 ;i<jiudianList.size();i++){

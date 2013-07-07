@@ -10,7 +10,7 @@ public interface IZyJiudainService {
 	//查询
 	public Pagination<Jiudian> jiudianSelect(int currentPage,int numPerPage) throws Exception;
 	//模糊查询
-	public Pagination<Jiudian> jiudianSelectLike(int currentPage,int numPerpage,String name,int chengshi) throws Exception;
+	public Pagination<Jiudian> jiudianSelectLike(int currentPage,int numPerpage,String name,String chengshi,String weihuren) throws Exception;
 	//添加
 	public int jiudianAdd(Jiudian jd);
 	//删除

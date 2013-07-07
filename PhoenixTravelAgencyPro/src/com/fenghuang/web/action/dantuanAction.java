@@ -10,6 +10,7 @@ import java.util.Map.Entry;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import net.sf.json.JsonConfig;
 
@@ -261,7 +262,6 @@ public class dantuanAction {
 	     	config.registerJsonValueProcessor(Timestamp.class,new DateJsonValueProcessor("yyyy-MM-dd"));
 	     			//把MAP转换成JSON，返回到前台
 	     	JSONObject fromObject = JSONObject.fromObject(returnValue,config);
-	     	//System.out.println(fromObject);
 			return fromObject;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -371,6 +371,21 @@ public class dantuanAction {
        }
 	
 	
+	@RequestMapping("fenghuang/getHtsjDate.do")
+	@ResponseBody
+	public JSONArray getHtsjDate(String ctsj ,String cfts){
+		Map<String ,Object> result = new HashMap<String, Object>();
+	
+		if(cfts ==null || "".equals(cfts)){
+			cfts = "0";
+		}
+		List<Map<String,Object>> date = ids.getDate(ctsj, cfts);
+		
+		//result.put("htsj", date);
+		JSONArray fromOjbect = JSONArray.fromObject(date);
+		//System.out.println(fromOjbect);
+		return fromOjbect ;
+	}
 
 	}
 

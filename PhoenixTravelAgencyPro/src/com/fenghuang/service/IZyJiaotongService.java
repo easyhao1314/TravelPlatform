@@ -16,9 +16,7 @@ public interface IZyJiaotongService {
 		//查Id
 		public List<Map<String,Object>> jiaotongSelectId(long id) throws Exception;
 		//查全部
-		public Pagination<Jiaotong> jiaotongSelect(int currentPage,int numPerPage) throws Exception;
-		//模糊查询
-		public Pagination<Jiaotong> jiaotongSelectLike(int currentPage,int numPerPage,int chengshi,String name) throws Exception;
-
+		public Pagination<Jiaotong> jiaotongSelect(int currentPage,int numPerPage,String name,String chengshiId,String lianxiren,String hzjbId) throws Exception;
+	
 
 }

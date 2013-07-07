@@ -21,11 +21,31 @@ public class ZyDijieDaoImpl extends BaseDao implements IZyDijieDao{
 	}
 
 	@Override
-	public Pagination<Dijie> dijieSelect(int currentPage, int numPerPage)
+	public Pagination<Dijie> dijieSelect(int currentPage, int numPerPage,String name,String chengshiId,String lianxiren,String hzjbId)
 			throws Exception {
 		// TODO Auto-generated method stub
-		String sql="select * from dijie";
-		return this.getPagination(currentPage, numPerPage, sql);
+		StringBuffer sql=new StringBuffer("select * from dijie where 1=1 ");
+		if(!"".equals(name) && name != null){
+			sql.append(" and name like '%");
+			sql.append(name);
+			sql.append("%'");
+		}
+		if(!"".equals(chengshiId) && chengshiId != null){
+			sql.append(" and chengshiId = '");
+			sql.append(chengshiId);
+			sql.append("'");
+		}
+		if(!"".equals(lianxiren) && lianxiren != null){
+			sql.append(" and lianxiren like '%");
+			sql.append(lianxiren);
+			sql.append("%'");
+		}
+		if(!"".equals(hzjbId) && hzjbId != null){
+			sql.append(" and hzjbId = '");
+			sql.append(hzjbId);
+			sql.append("'");
+		}
+		return this.getPagination(currentPage, numPerPage, sql.toString());
 	}
 
 	@Override
