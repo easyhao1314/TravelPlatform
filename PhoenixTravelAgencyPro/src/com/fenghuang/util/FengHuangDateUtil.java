@@ -34,5 +34,15 @@ public class FengHuangDateUtil {
 		return date;
 
 	}
+	public static String getDateTOString(Date date){
+		String date_str = "";
+		SimpleDateFormat sdf = new SimpleDateFormat(DEFAULT_DATE_PATTERN);
+		try {
+			date_str = sdf.format(date);
+		} catch (Exception e) {
 
+			e.printStackTrace();
+		}
+		return date_str;
+	}
 }
