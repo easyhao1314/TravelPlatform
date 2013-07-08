@@ -20,6 +20,7 @@
 <script type="text/javascript" src="js/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="js/locale/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript" src="js/jquery.json.js"></script>
+<script type="text/javascript" src="js/datagrid-groupview.js"></script>
 </head>
 
 <body class="easyui-layout">
@@ -38,7 +39,7 @@
 		style="width:200px;">
 		<!-- 在这里添加菜单的样式和菜单的数据，子菜单 等等 -->
 		<ul class="easyui-tree">
-			<li iconCls="icon-base"><span>自我管理</span>
+			<li iconCls="icon-base" state="closed"><span>自我管理</span>
 				<ul>
 					<li iconCls="icon-gears"><a
 						href="javascript:open1('个人基本信息','');">个人基本信息</a>
@@ -47,12 +48,38 @@
 				<ul>
 
 				</ul></li>
-				<li iconCls="icon-base"><span>财务中心</span>
+				<li iconCls="icon-base" state="closed"><span>财务中心</span>
 				<ul>
 					<li iconCls="icon-gears"><a
 						href="javascript:open1('付款审批','a.do');">付款审批</a>
 					</li>
 				</ul>
+				<ul>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('应付款统计','yfktj.do');">应付款统计</a>
+					</li>
+				</ul>
+				<ul>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('应收款统计','ysktj.do');">应收款统计</a>
+					</li>
+				</ul>
+				<ul>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('退款返佣审核','tuikuanshenhe.do');">退款返佣审核</a>
+					</li>
+				</ul>
+				<ul>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('付款方式设置','fkfssz.do');">付款方式设置</a>
+					</li>
+				</ul>
+					<ul>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('付款审核','fukuanshenhe.do');">付款 审核</a>
+					</li>
+				</ul>
+				
 				<ul>
 					<li iconCls="icon-gears"><a
 						href="javascript:open1('散团费用列表','sanpin.do');">散团费用列表</a>
@@ -70,6 +97,29 @@
 				</ul>
 				<ul>
 					<li iconCls="icon-gears"><a
+						href="javascript:open1('币种汇率设置	','bzhlsz.do');">币种汇率设置</a>
+					</li>
+				</ul>
+					<ul>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('费用项大类维护','fydxwh.do');">费用项大类维护</a>
+					</li>
+				</ul>
+				
+					<ul>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('未收未付款查询','wswfcx.do');">未收未付款查询</a>
+					</li>
+				</ul>
+				
+				
+					<ul>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('付款确认','querenfukuan.do');">付款确认</a>
+					</li>
+				</ul>
+				<ul>
+					<li iconCls="icon-gears"><a
 						href="javascript:open1('收款确认','shoukuan.do');">收款确认</a>
 					</li>
 				</ul>
@@ -77,7 +127,7 @@
 
 				</ul></li>
 				
-				<li iconCls="icon-base"><span>散拼中心</span>
+				<li iconCls="icon-base" state="closed"><span>散拼中心</span>
 				<ul>
 					<li iconCls="icon-gears"><a
 						href="javascript:open1('新建散拼','SanPin_new.do');">新建散拼</a>
@@ -85,11 +135,32 @@
 					<li iconCls="icon-gears"><a
 						href="javascript:open1('散拼操作','SanPin_caozuo.do');">散拼操作</a>
 					</li>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('报名确认受理','SanPin_baoming.do');">报名确认受理</a>
+					</li>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('散拼团列表','SanPin_liebiao.do');">散拼团列表</a>
+					</li>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('我的退团申请','SanPin_tuituan.do');">我的退团申请</a>
+					</li>
 				</ul>
 				<ul>
 
 				</ul></li>
-			<li iconCls="icon-base"><span>系统管理</span>
+			<li iconCls="icon-base"><span>行程库维护</span>
+				<ul>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('日行程库维护','Xingcheng_ri.do');">日行程库维护</a>
+					</li>
+				</ul>
+				<ul>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('线路/行程维护','Xingcheng_weihu.do');">线路/行程维护</a>
+					</li>
+				</ul>
+			</li>
+			<li iconCls="icon-base" state="closed"><span>系统管理</span>
 				<ul>
 					<li iconCls="icon-gears"><a
 						href="javascript:open1('系统功能管理','functionMenu.do');">系统功能管理</a>
@@ -105,8 +176,18 @@
 						href="javascript:open1('角色管理','role.do');">系统角色管理</a>
 					</li>
 				</ul>
+				<ul>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('公司管理','company.do');">公司管理</a>
+					</li>
+				</ul>
+				<ul>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('系统用户管理','users.do');">系统用户管理</a>
+					</li>
+				</ul>
 			</li>
-			<li iconCls="icon-base"><span>系统基础设置管理</span>
+			<li iconCls="icon-base" state="closed"><span>系统基础设置管理</span>
 				<ul>
 					<li iconCls="icon-gears"><a
 						href="javascript:open1('团队进展状态字典','dictionaryDesc.do?dicType=8');">团队进展状态字典</a>
@@ -224,6 +305,70 @@
 				     <a href="javascript:open1('自费节目维护','ZiyuanZifei.do?dicType=10');">自费节目维护</a></li>
 				</ul>
 			</li>
+			<!--陈家海的配置 -->
+		<li iconCls="icon-base"><span>操作中心</span>
+				<ul>
+					<li iconCls="icon-gears">
+					<a href="javascript:open1('操作团队查询','operTeamQuery.do');">操作团队查询</a></li>
+				</ul>
+				 <ul>
+			      <li iconCls="icon-gears">
+			        <a href="javascript:open1('我派的订房任务','dingfangrenwu.do');">我派的订房任务</a>
+			      </li>
+			   </ul>
+			   <ul>
+			      <li iconCls="icon-gears">
+			        <a href="javascript:open1('我派的订车任务','dingcherenwu.do');">我派的订车任务</a>
+			      </li>
+			   </ul>
+			    <ul>
+			      <li iconCls="icon-gears">
+			        <a href="javascript:open1('我派的导游任务','daoyourenwu.do');">我派的导游任务</a>
+			      </li>
+			   </ul>
+			    <ul>
+			      <li iconCls="icon-gears">
+			        <a href="javascript:open1('我派的购物店任务单','gouwudianrenwu.do');">我派的购物店任务单</a>
+			      </li>
+			   </ul>
+		</li>
+		<li iconCls="icon-base"><span>客户中心</span>
+			    <ul>
+			      <li iconCls="icon-gears">
+			        <a href="javascript:open1('客户信息列表','customerInfoList.do');">客户信息列表</a>
+			      </li>
+			   </ul>
+			    <ul>
+			      <li iconCls="icon-gears">
+			        <a href="javascript:open1('联系人信息列表','contactInfoList.do');">联系人信息列表</a>
+			      </li>
+			   </ul>
+			    <ul>
+			      <li iconCls="icon-gears">
+			        <a href="javascript:open1('客户VIP字典','customerVIPDic.do?wordprefix=100001003');">客户VIP字典</a>
+			      </li>
+			   </ul>
+			     <ul>
+			      <li iconCls="icon-gears">
+			        <a href="javascript:open1('客户资信字典','customerZiXinDic.do?wordprefix=100001005');">客户资信字典</a>
+			      </li>
+			   </ul>
+			     <ul>
+			      <li iconCls="icon-gears">
+			        <a href="javascript:open1('客户价值字典','customerZiXinDic.do?wordprefix=100001004');">客户价值字典</a>
+			      </li>
+			   </ul>
+			   <ul>
+			      <li iconCls="icon-gears">
+			        <a href="javascript:open1('客户合作级别','customerCoperLevel.do?wordprefix=100001001');">客户合作级别</a>
+			      </li>
+			   </ul>
+			    <ul>
+			      <li iconCls="icon-gears">
+			        <a href="javascript:open1('客户区域维护','customerAreaWeihu.do');">客户区域维护</a>
+			      </li>
+			   </ul>
+		</li>
 		</ul>
 		
 	</div>

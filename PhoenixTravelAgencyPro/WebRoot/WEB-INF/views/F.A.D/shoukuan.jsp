@@ -66,7 +66,7 @@
 	    		日期:
               <input class="easyui-combobox"
               name="" 
-              data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=12',
+              data-options="url:'',
               valueField:'dicId',
               textFiedld:'dicName',
               panelHeight:'auto'
