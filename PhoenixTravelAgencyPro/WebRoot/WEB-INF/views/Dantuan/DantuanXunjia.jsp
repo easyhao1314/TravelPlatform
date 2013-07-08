@@ -70,9 +70,6 @@
 					</div>
 				</td>
 				
-				
-				
-				
 				<td>
 				
 					<a href="javascript:dantuanSelectLike();" 
@@ -100,10 +97,14 @@
                       <th data-options="field:'ck',checkbox:true"></th>
                      <th data-options="field:'tdjb'" width="60">跟单进展</th> 
                      <!--点击团号进入客户信息  -->
-                     <th id="tuanNO" data-options="field:'tuanNO'" width="40" ><a href="DantuanMingxi.do">团号</a></th>  
+                     <th id="tuanNO" data-options="field:'tuanNO',formatter:onOperateDantuanList" width="40" >团号
+                     <!--  
+                     <a href="DantuanMingxi.do">团号</a>
+                     -->
+                     </th>  
                      <th data-options="field:'tdzt'" width="60"> 团队状态</th>  
                      <!--点击团队名称进入团队详情（新增页面） -->                     
-                     <th data-options="field:'tdm'" width="60">团队名称</th> 
+                    <a href="javascript:selectDtId();"> <th data-options="field:'tdm'" width="60"></a>团队名称</th> 
                       <!--点击报价数进入客户信息  -->
                       <th data-options="field:'05'" width="40">报价数</th>                                                               
                       <th data-options="field:'ctsj'" width="60">出团时间</th> 
@@ -219,7 +220,7 @@
 	<div id="updateDt" class="easyui-dialog" title="修改业务字段"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:700px;height:500px;padding:10px;">
-		<form id="updateForm" action="">
+		<form id="updateForm" >
 			<table align="center">
 <tr>
 <td><div class="fitem"><label>客户名称:</label></td><td><input name="khId" class="easyui-validatebox" required="true"></div></td>
@@ -485,6 +486,52 @@
 				});
 			}
 			}
+   function	onOperateDantuanList(val,row){
+      return '<a href="javascript:openDanTuanDetail('+row.tuanNO+')">'+row.tuanNO+'</a>';
+   
+   }
+   function openDanTuanDetail(tuanNo){
+   	
+      var url= "DantuanMingxi.do?tuanNO="+tuanNo;
+       var tab = $('#tt').tabs('getSelected'); 
+		if (tab){  
+	                 var index = $('#tt').tabs('getTabIndex', tab); 
+	                 $('#tt').tabs('close', index);  
+	       } 
+	       
+	       $('#tt').tabs('add', {
+				         title : "单团详细信息",
+				         href : url,
+				         closable : true,
+				         });
+		
+			alert(row);
+				$.ajax({
+					url : "fenghuang/DantuanSelectId.do",
+					data : row.tuanNO,
+					dataType : "json",
+					success : function(data) {
+					   $('#mingxiForm').form('load',data.rows[0]);
+				
+					},
+					error : function() {
+						$.messager.alert("查询失败", "服务器请求失败!", "error");
+					}
+				});
+				
+			
+
+				
+		}
+				
+				
+				
+			
+					   
+   
+
+   		
+	//'<a href="DantuanMingxi.do?tuanNO='+row.tuanNO+'">'+row.tuanNO+'</a>';		
 	</script>
 </body>
 </html>

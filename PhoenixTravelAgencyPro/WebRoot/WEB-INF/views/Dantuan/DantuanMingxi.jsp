@@ -28,29 +28,31 @@
 	<div class="easyui-panel" title="客户信息"
 		style="height:80px;padding:10px;width:auto;"
 		data-options="closable:false,tools:'#searchpanel'" align="center">
+		<form id="mingxiForm" >
 		<table>
 			<tr>
 				<td><div class="fitem">
 						<label>客户:</label>
 				</td>
-				<td><input name="currencyShort" class="easyui-validatebox">
+				<td><input name="khId" class="easyui-validatebox">
 					</div>
 				</td>
 				<td><div class="fitem">
 						<label>联系人:</label>
 				</td>
-				<td><input name="currencyShort" class="easyui-validatebox">
+				<td><input name="" class="easyui-validatebox">
 					</div>
 				</td>
 				<td><div class="fitem">
 						<label>电话:</label>
 				</td>
-				<td><input name="currencyName" class="easyui-validatebox">
+				<td><input name="" class="easyui-validatebox">
 					</div>
 				</td>
 			</tr>
 		
 		</table>
+		</form>
 	</div>
 
 	</div>
@@ -63,19 +65,19 @@
 				<td><div class="fitem">
 						<label>团号:</label>
 				</td>
-				<td><input name="currencyShort" class="easyui-validatebox">
+				<td><input name="tuanNO" class="easyui-validatebox">
 					</div>
 				</td>
 				<td><div class="fitem">
 						<label>团队名称:</label>
 				</td>
-				<td><input name="currencyShort" class="easyui-validatebox">
+				<td><input name="tdm" class="easyui-validatebox">
 					</div>
 				</td>
 				<td><div class="fitem">
 						<label>出团日期:</label>
 				</td>
-				<td><input name="currencyName" class="easyui-validatebox">
+				<td><input name="ctsj" class="easyui-validatebox">
 					</div>
 				</td>
 			</tr>
@@ -83,19 +85,19 @@
 				<td><div class="fitem">
 						<label>酒店标准:</label>
 				</td>
-				<td><input name="currencyShort" class="easyui-validatebox">
+				<td><input name="jdbzNo" class="easyui-validatebox">
 					</div>
 				</td>
 				<td><div class="fitem">
 						<label>用餐标准:</label>
 				</td>
-				<td><input name="currencyShort" class="easyui-validatebox">
+				<td><input name="ycbjNo" class="easyui-validatebox">
 					</div>
 				</td>
 				<td><div class="fitem">
 						<label>交通:</label>
 				</td>
-				<td><input name="currencyName" class="easyui-validatebox">
+				<td><input name="" class="easyui-validatebox">
 					</div>
 				</td>
 			</tr>
@@ -103,7 +105,7 @@
 				<td><div class="fitem">
 						<label>特殊要求:</label>
 				</td>
-				<td colspan="5"><input name="currencyShort" class="easyui-validatebox">
+				<td colspan="5"><input name="tsDesc" class="easyui-validatebox">
 					</div>
 				</td>
 				
@@ -111,7 +113,9 @@
 
 		</table>
 	</div>
-	<div class="easyui-panel" title="行程设计"
+	 <div class="easyui-tabs"  style="width:1000px;height:800px;">      
+    <div title="行程设计" style="padding:10px;">  
+	<div class="easyui-panel" title="行程属性"
 		style="height:150px;padding:10px;width:auto;"
 		data-options="closable:false,tools:'#searchpanel'" align="center">
 		<table>
@@ -119,13 +123,13 @@
 			<td><div class="fitem">
 						<label>团号:</label>
 				</td>
-				<td><input name="currencyShort" class="easyui-validatebox">
+				<td><input name="tuanNO" class="easyui-validatebox">
 					</div>
 				</td>
 				<td><div class="fitem">
 						<label>团名:</label>
 				</td>
-				<td><input name="currencyShort" class="easyui-validatebox">
+				<td><input name="tdm" class="easyui-validatebox">
 					</div>
 				</td>
 				<td><div class="fitem">
@@ -147,33 +151,33 @@
 				<td><div class="fitem">
 						<label>全程天数:</label>
 				</td>
-				<td><input name="currencyName" class="easyui-validatebox">
+				<td><input name="cfts" class="easyui-validatebox">
 					</div>
 				</td>
 				<td><div class="fitem">
 						<label>出团人数:</label>
 				</td>
-				<td><input name="currencyName" class="easyui-validatebox">
+				<td><input name="cfrs" class="easyui-validatebox">
 					</div>
 				</td>
 				<td><div class="fitem">
 						<label>出团日期:</label>
 				</td>
-				<td><input name="currencyName" class="easyui-validatebox">
+				<td><input name="ctsj" class="easyui-validatebox">
 					</div>
 				</td>
 				<td><div class="fitem">
 						<label>选择国家:</label>
 				</td>
-				<td><input name="currencyName" class="easyui-validatebox">
+				<td><input name="cfgj" class="easyui-validatebox">
 					</div>
 				</td>
 			</tr>
 		
 		</table>
 	 </div>
- 
-       <div class="easyui-panel" title="日程设置"
+
+          <div class="easyui-panel" title="日程设置"
 		style="height:350px;padding:10px;width:auto;"
 		data-options="closable:false,tools:'#searchpanel'" align="left">
 		<table border="1" width="800">
@@ -311,24 +315,75 @@
 			</tr>
 		</table>
 	</div>	  
-	 
-	 <div id="xingcheng" class="easyui-dialog" title="设定日程"
-		data-options="modal:true,closed:true,iconCls:'icon-save'"
-		style="width:600px;height:200px;padding:10px;">
-		<form id="xingchengForm" method="post">
-			<table align="center">
-				<tr>
-				<td><div class="fitem"><label>行程设定:</label></td>
-				<td><input name="khId" class="easyui-validatebox" required="true"  size="80"></div></td>
-               </tr>
-         <tr><td colspan="2" align="center">
-       <a href="javascript:xingchengSave();" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
-       <input  type="reset" value="重置"></td>
-      </tr>
-				</table>
-			<input id="dicType" name="dicType" type="hidden">
-		</form>
-	</div> 
+	      
+           </div>      
+       <div title="团员信息" closable="true" style="padding:10px;">
+       <!-- 
+       <table>
+       <tr><td>姓名</td><td>性别</td><td>生日</td><td>单位</td><td>身份证号</td><td>职务</td><td>手机</td><td>航空公司</td><td>国籍</td><td>护照号</td></tr>
+       </table>
+        -->
+         <div style="height:470px;width:100%">
+	        <table id="dg" class="easyui-datagrid"
+		      data-options="url:'fenghuang/DantuanXunjia.do',border:false,singleSelect:false,fit:true,fitColumns:true, onClickRow: onClickRow"
+		       pagination="true" toolbar="#tb">
+		      <thead>  
+                    <tr>  
+                      <th data-options="field:'ck',checkbox:true"></th>
+                     <th data-options="field:'tdjb'" width="60">姓名</th> 
+                     <th id="tuanNO" data-options="field:'tuanNO'" width="40" >性别</th>  
+                     <th data-options="field:'tdzt'" width="60">生日</th>                      
+                     <th data-options="field:'tdm'" width="60">单位</th> 
+                      <th data-options="field:'05'" width="40">身份证号</th>                                                               
+                      <th data-options="field:'ctsj'" width="60">职务</th> 
+                      <th data-options="field:'htsj'" width="60">手机</th>  
+                      <th data-options="field:'xsNo'" width="60"> 航空公司</th>  
+                      <th data-options="field:'jdNo'" width="60">国籍</th> 
+                      <th data-options="field:'01'" width="40">护照号</th>
+                      <th data-options="field:'khId'" width="60"> 护照有效期</th>  
+                      <th data-options="field:'02'" width="40">护照签发日期</th> 
+                      <th data-options="field:'03'" width="40">护照签发地</th>
+                      <th data-options="field:'04'" width="80">出生地</th> 
+                      <th data-options="field:'04'" width="80">备注</th> 
+                    </tr>  
+                </thead>  
+	           </table>
+	        </div> 
+          </div>
+        <div title="团队财务" icon="icon-reload" closable="true" style="padding:10px;">  
+           <div style="height:470px;width:100%">
+	        <table id="dg" class="easyui-datagrid"
+		      data-options="url:'fenghuang/DantuanXunjia.do',border:false,singleSelect:false,fit:true,fitColumns:true, onClickRow: onClickRow"
+		       pagination="true" toolbar="#tb">
+		      <thead>  
+                    <tr>  
+                      <th data-options="field:'ck',checkbox:true"></th>
+                      <th data-options="field:'tdjb'" width="60">单号</th> 
+                      <th id="tuanNO" data-options="field:'tuanNO'" width="40" >款项/说明</th>  
+                      <th data-options="field:'tdzt'" width="60">客户名称</th>                      
+                      <th data-options="field:'tdm'" width="60">预收日期</th> 
+                      <th data-options="field:'05'" width="40">汇率</th>                                                               
+                      <th data-options="field:'ctsj'" width="60">币种</th> 
+                      <th data-options="field:'htsj'" width="60">应收</th>  
+                      <th data-options="field:'xsNo'" width="60"> 已收</th>  
+                      <th data-options="field:'jdNo'" width="60">未收</th> 
+                      <th data-options="field:'01'" width="40">已开发票</th>
+                      <th data-options="field:'khId'" width="60"> 发票许可</th>  
+                      <th data-options="field:'02'" width="40">销售确认</th> 
+                      <th data-options="field:'03'" width="40">财务确认</th>
+                      <th data-options="field:'04'" width="80">责任人</th> 
+                      <th data-options="field:'04'" width="80">备注</th> 
+                    </tr>  
+                </thead>  
+	           </table>
+	         </div>  
+           </div>
+           <div title="团员文档" icon="icon-reload" closable="true" style="padding:10px;">  
+               Third Tab     
+           </div>
+  </div>
+       
+	
     <script type="text/javascript">
     $('#mb').menubutton({  
     iconCls: 'icon-edit',  
