@@ -45,22 +45,11 @@
 	    		
 	    	</table>
 	    	<table>
+	    
 	    		<tr>
-	    		<td>账号：[<a href="">待确认收款</a>][<a href="">已确认收款</a>]</td>
-	    		</tr>
-	    		<tr>
-	    		<td>状态：[<a href="">待确认收款</a>][<a href="">已确认收款</a> ]</td>
-	    		</tr>
-	    		<tr>
-	    		<td>币种：[全部] [人民币][美元][日元][欧元][英镑][瑞士法郎][加拿大元][澳大利亚元][港币][挪威克朗][瑞典克朗][丹麦克朗] </td>
-	    		</tr>
-	    		<tr>
-	    		<td>水单：[全部] [未收到][已收到] </td>
+	    		<td>状态：[全部] [未收款][未付款] </td>
 	    		</tr>
 	    		
-	    		<tr>
-	    		<td>日期：[全部] [未收到][已收到] </td>
-	    		</tr>
 	    		<tr>
 	    		<td>
 	    		日期:
@@ -85,18 +74,16 @@
 		<thead>
 			<tr>
 				<th data-options="field:'ck',checkbox:true"></th>	 
-				<th data-options="field:'dicNo',editor:'text'" width="">付款日期</th>
+				<th data-options="field:'dicNo',editor:'text'" width="">应收账期</th>
 				<th data-options="field:'dicName',editor:'text'" width="">团号</th>
-				<th data-options="field:'dicDesc',editor:'text'" width="">团队名称</th>
-				<th data-options="field:'dicHelp',editor:'text'" width="">供应商名称</th>
-				<th data-options="field:'dicDesc',editor:'text'" width="">款项</th>
-				<th data-options="field:'08',editor:'text'" width="">金额</th>
+				<th data-options="field:'dicDesc',editor:'text'" width="">客户，供应商</th>
+				<th data-options="field:'dicHelp',editor:'text'" width="">款项</th>
+				<th data-options="field:'dicDesc',editor:'text'" width="">应收金额</th>
+				<th data-options="field:'08',editor:'text'" width="">已收金额</th>
 			
-				<th data-options="field:'09',editor:'numberbox'" width="">提交人</th>
-				<th data-options="field:'09',editor:'numberbox'" width="">审批状态</th>
-				<th data-options="field:'09',editor:'numberbox'" width="">财务审核</th>
-				<th data-options="field:'09',editor:'numberbox'" width="">财务确认</th>
-				<th data-options="field:'09',editor:'numberbox'" width="">操作</th>
+				<th data-options="field:'09',editor:'numberbox'" width="">未收金额</th>
+				<th data-options="field:'09',editor:'numberbox'" width="">经手人</th>
+				
 			
 			</tr>
 		</thead>

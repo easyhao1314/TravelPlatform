@@ -30,10 +30,11 @@
    <table>
 	    		<tr>
 
-	    			<td>应收日期:<input class="easyui-validatebox" type="text" name="name" ></input></td>
-	    			<td>到<input class="easyui-validatebox" type="text" name="name" ></input></td>
-	    		   	<td>团号:<input class="easyui-validatebox" type="text" name="name" ></input></td>
-	    			<td>销售，客户<input class="easyui-validatebox" type="text" name="name" ></input></td>
+	    			<td>费用项编号:<input class="easyui-validatebox" type="text" name="name" ></input></td>
+	    			<td>付款性质<input class="easyui-validatebox" type="text" name="name" ></input></td>
+	    		   	<td>会计科目代码:<input class="easyui-validatebox" type="text" name="name" ></input></td>
+	    			<td>会计科目名称:<input class="easyui-validatebox" type="text" name="name" ></input></td>
+	    			
 	    			<td>
 	    		<div style="padding:5px;border:1px solid #ddd;">
 		<a href="#" class="easyui-linkbutton" data-options="toggle:true,group:'g1'">Button 1</a>
@@ -44,39 +45,9 @@
 	    	
 	    		
 	    	</table>
-	    	<table>
-	    		<tr>
-	    		<td>账号：[<a href="">待确认收款</a>][<a href="">已确认收款</a>]</td>
-	    		</tr>
-	    		<tr>
-	    		<td>状态：[<a href="">待确认收款</a>][<a href="">已确认收款</a> ]</td>
-	    		</tr>
-	    		<tr>
-	    		<td>币种：[全部] [人民币][美元][日元][欧元][英镑][瑞士法郎][加拿大元][澳大利亚元][港币][挪威克朗][瑞典克朗][丹麦克朗] </td>
-	    		</tr>
-	    		<tr>
-	    		<td>水单：[全部] [未收到][已收到] </td>
-	    		</tr>
-	    		
-	    		<tr>
-	    		<td>日期：[全部] [未收到][已收到] </td>
-	    		</tr>
-	    		<tr>
-	    		<td>
-	    		日期:
-              <input class="easyui-combobox"
-              name="" 
-              data-options="url:'',
-              valueField:'dicId',
-              textFiedld:'dicName',
-              panelHeight:'auto'
-              ">
-              
-               [全部] [1月] [2月] [3月] [4月] [5月] [6月] [7月] [8月] [9月] [10月] [11月] [12月]
-               
-                 </td> 
-	    		
-	    		</tr>
+	<table>
+	
+	    	
 	    	
 	    	</table>
 	<table id="dg" class="easyui-datagrid"

@@ -66,7 +66,7 @@ public class SanpinzhongxinDaoImpl extends BaseDao implements ISanpinzhongxinDao
 		        sanpin.getZhong(),
 		        sanpin.getWan(),
 		        sanpin.getGroupdate(),
-		        sanpin.getTourdate());
+	 	        sanpin.getTourdate());
 		return num>0;
 	}
 	@Override
