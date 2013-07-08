@@ -170,20 +170,20 @@
      <mvc:view-controller path="ZiyuanZifei.do" view-name="Ziyuan/ZiyuanZifei"/>
       <!-- 陈家海的配置 -->
     <!-- 操作中心 -->
-	<mvc:view-controller path="operTeamQuery.do" view-name="operTeamQuery" />
-	<mvc:view-controller path="dingfangrenwu.do" view-name="dingfangrenwu" />
-	<mvc:view-controller path="dingcherenwu.do" view-name="dingcherenwu" />   
-	<mvc:view-controller path="daoyourenwu.do" view-name="daoyourenwu" />
-	<mvc:view-controller path="gouwudianrenwu.do" view-name="gouwudianrenwu" />
+	<mvc:view-controller path="operTeamQuery.do" view-name="CaoZuo/operTeamQuery" />
+	<mvc:view-controller path="dingfangrenwu.do" view-name="CaoZuo/dingfangrenwu" />
+	<mvc:view-controller path="dingcherenwu.do" view-name="CaoZuo/dingcherenwu" />   
+	<mvc:view-controller path="daoyourenwu.do" view-name="CaoZuo/daoyourenwu" />
+	<mvc:view-controller path="gouwudianrenwu.do" view-name="CaoZuo/gouwudianrenwu" />
 	<!-- 操作中心结束 -->
 	<!-- 客户中心 -->
-	<mvc:view-controller path="customerInfoList.do" view-name="customerInfoList" />
-	<mvc:view-controller path="contactInfoList.do" view-name="contactInfoList" />
-	<mvc:view-controller path="customerVIPDic.do" view-name="customerVIPDic" />
-	<mvc:view-controller path="customerZiXinDic.do" view-name="customerZiXinDic" />
-	<mvc:view-controller path="customerValueDic.do" view-name="customerValueDic" />
-	<mvc:view-controller path="customerCoperLevel.do" view-name="customerCoperLevel" />
-	<mvc:view-controller path="customerAreaWeihu.do" view-name="customerAreaWeihu" />
+	<mvc:view-controller path="customerInfoList.do" view-name="KeHu/customerInfoList" />
+	<mvc:view-controller path="contactInfoList.do" view-name="KeHu/contactInfoList" />
+	<mvc:view-controller path="customerVIPDic.do" view-name="KeHu/customerVIPDic" />
+	<mvc:view-controller path="customerZiXinDic.do" view-name="KeHu/customerZiXinDic" />
+	<mvc:view-controller path="customerValueDic.do" view-name="KeHu/customerValueDic" />
+	<mvc:view-controller path="customerCoperLevel.do" view-name="KeHu/customerCoperLevel" />
+	<mvc:view-controller path="customerAreaWeihu.do" view-name="KeHu/customerAreaWeihu" />
 	<!-- 客户中心结束 -->
 	<!-- 陈家海的配置结束 -->
 </beans>
