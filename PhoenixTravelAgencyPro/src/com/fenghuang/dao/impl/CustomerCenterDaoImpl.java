@@ -18,6 +18,7 @@ import org.springframework.stereotype.Repository;
 
 import com.fenghuang.dao.BaseDao;
 import com.fenghuang.dao.ICustomerCenterDao;
+import com.fenghuang.entiey.CustomerAreaWeihu;
 import com.fenghuang.entiey.CustomerInfo;
 import com.fenghuang.entiey.DictionaryDesc;
 import com.fenghuang.entiey.ProvinceSettingDictionary;
@@ -133,8 +134,8 @@ public class CustomerCenterDaoImpl extends BaseDao implements
 
 	@Override
 	public Pagination<TeamProgressStateDictionary> getCustomVIPListPaginations(
-			Integer page, Integer rows) {
-		String sql = "SELECT * FROM teamprogressstatedictionary";
+			String wordprefix , Integer page, Integer rows) {
+		String sql = "SELECT * FROM teamprogressstatedictionary t WHERE t.tpsdNo LIKE '%"+wordprefix+"%'";
 		return this.getPagination(page, rows, sql);
 	}
 
@@ -162,29 +163,60 @@ public class CustomerCenterDaoImpl extends BaseDao implements
 
 	@Override
 	public boolean updateCustomVIP(TeamProgressStateDictionary team) {
-		String sql = "UPDATE teamprogressstatedictionary SET tpsdName=?,tpsdHelp=?,tpsdSort=? WHERE tpsdNo=?" ;
-		int count = this.update(sql, team.getTpsdName(),team.getTpsdHelp(),team.getTpsdSort(),team.getTpsdNo());
+		String sql = "UPDATE teamprogressstatedictionary SET tpsdName=?,tpsdHelp=?,tpsdSort=?,tpsdDesc=? WHERE tpsdNo=?" ;
+		int count = this.update(sql, team.getTpsdName(),team.getTpsdHelp(),team.getTpsdSort(),team.getTpsdDesc(),team.getTpsdNo());
 		return count > 0;
 	}
 
 	@Override
 	public List<Map<String, Object>> searchCustomVIP(String tpsdNo,
-			String tpsdName, String tpsdHelp, String tpsdSort) {
-		StringBuffer sql = new StringBuffer("SELECT * FROM teamprogressstatedictionary t WHERE 1=1 ");
+			String tpsdName, String tpsdHelp, String tpsdSort,String wordprefix) {
+		StringBuffer sql = new StringBuffer("SELECT * FROM teamprogressstatedictionary t WHERE ");
+		sql.append(" t.tpsdNo LIKE '%").append(wordprefix).append("%'");
+		
 		if(!"".equals(tpsdNo) && tpsdNo != null){
-			sql.append(" AND t.tpsdNo="+tpsdNo);
+			sql.append(" AND t.tpsdNo='"+tpsdNo).append("'");
 		}
 		if(!"".equals(tpsdName) && tpsdName != null){
 			sql.append(" AND t.tpsdName LIKE '%" + tpsdName + "%'");
 		}
 		if(!"".equals(tpsdHelp) && tpsdHelp != null){
-			sql.append(" AND tpsdHelp="+tpsdHelp);
+			sql.append(" AND t.tpsdHelp LIKE '%"+tpsdHelp).append("%'");
 		}
 		if(!"".equals(tpsdSort) && tpsdSort != null){
-			sql.append(" AND t.tpsdSort="+tpsdSort);
+			sql.append(" AND t.tpsdSort='"+tpsdSort).append("'");
 		}
+		//System.out.println(sql.toString());
 		return this.queryForList(sql.toString());
 	}
 
+	@Override
+	public Pagination<CustomerAreaWeihu> findAllCustomerAreaWeihu(Integer page ,Integer rows) {
+		String sql = "SELECT * FROM customerAreaMaintenance" ;
+		return this.getPagination(page, rows, sql);
+	}
+
+	@Override
+	public boolean addCustomerArea(Integer id, String name) {
+		String sql = "INSERT INTO customerareamaintenance (name) VALUES(?)";
+		int count = this.update(sql, name); 
+		return count > 0 ;
+	}
+
+	@Override
+	public boolean deleteCustomerArea(Integer id) {
+		String sql = "DELETE FROM customerareamaintenance WHERE id = ?";
+		int count = this.update(sql, id);
+		return count > 0;
+	}
+
+	@Override
+	public boolean updateCustomerArea(Integer updateRow,String name) {
+		String sql = "UPDATE customerareamaintenance SET name=? WHERE id = ?";
+		int count = this.update(sql, name,updateRow);
+		return count > 0;
+	}
+
+	
 	
 }

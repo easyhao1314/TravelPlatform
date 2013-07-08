@@ -12,6 +12,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.fenghuang.dao.ICustomerCenterDao;
+import com.fenghuang.entiey.CustomerAreaWeihu;
 import com.fenghuang.entiey.CustomerInfo;
 import com.fenghuang.entiey.ProvinceSettingDictionary;
 import com.fenghuang.entiey.TeamProgressStateDictionary;
@@ -85,8 +86,8 @@ public class CustomerCenterServiceImpl implements ICustomerCenterService {
 
 	@Override
 	public Pagination<TeamProgressStateDictionary> getCustomVIPListPaginations(
-			Integer page, Integer rows) {
-		return iCustomerCenterDao.getCustomVIPListPaginations(page,rows);
+			String wordprefix , Integer page, Integer rows ) {
+		return iCustomerCenterDao.getCustomVIPListPaginations(wordprefix,page,rows);
 	}
 
 	@Override
@@ -106,8 +107,28 @@ public class CustomerCenterServiceImpl implements ICustomerCenterService {
 
 	@Override
 	public List<Map<String, Object>> searchCustomVIP(String tpsdNo,
-			String tpsdName, String tpsdHelp, String tpsdSort) {
-		return iCustomerCenterDao.searchCustomVIP( tpsdNo, tpsdName, tpsdHelp,  tpsdSort);
+			String tpsdName, String tpsdHelp, String tpsdSort,String wordprefix) {
+		return iCustomerCenterDao.searchCustomVIP( tpsdNo, tpsdName, tpsdHelp,  tpsdSort,wordprefix);
+	}
+
+	@Override
+	public Pagination<CustomerAreaWeihu> findAllCustomerAreaWeihu(Integer page,Integer rows) {
+		return iCustomerCenterDao.findAllCustomerAreaWeihu(page,rows);
+	}
+
+	@Override
+	public boolean addCustomerArea(Integer id, String name) {
+		return iCustomerCenterDao.addCustomerArea(id ,name);
+	}
+
+	@Override
+	public boolean deleteCustomerArea(Integer id) {
+		return iCustomerCenterDao.deleteCustomerArea(id);
+	}
+
+	@Override
+	public boolean updateCustomerArea(Integer updateRow,String name) {
+		return iCustomerCenterDao.updateCustomerArea(updateRow,name);
 	}
 
 

@@ -94,18 +94,18 @@ public class OperateCenterController {
 		Pagination<DantuanXinXi> teams = iOperCenterService.getDingFangRenWuPaginations(page==null?1:page, rows==null?10:rows,chutuanStartTime,chutuanEndTime,kw );
 		
 		List<Map<String, Object>> teamsRows = teams.getResultList();
-		
+		System.out.println(teamsRows);
 		Map<String, Object> returnValue = new HashMap<String, Object>();
 		
 		//根据khId查询出客户name，把name存放到List中。
 		for(int i = 0 ;i<teamsRows.size();i++){
-			//System.out.println(teamsRows.get(i));
+			System.out.println(teamsRows.get(i));
 			for(Entry<String, Object> entrySet :teamsRows.get(i).entrySet()){
 				if("khId".equals(entrySet.getKey())){
-					String name = iOperCenterService.findCustomerNameById((Long)entrySet.getValue());
-					teamsRows.get(i).put("name", name);
-					//System.out.println(teamsRows.get(i));
-					break;
+						String name = iOperCenterService.findCustomerNameById((Long)entrySet.getValue());
+						teamsRows.get(i).put("name", name);
+						System.out.println(teamsRows.get(i));
+						break;
 				}
 			}
 		}

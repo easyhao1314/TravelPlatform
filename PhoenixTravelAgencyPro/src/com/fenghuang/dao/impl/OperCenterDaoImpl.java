@@ -72,8 +72,16 @@ public class OperCenterDaoImpl extends BaseDao implements
 
 	@Override
 	public String findCustomerNameById(Long khId) {
-		String sql = "SELECT c.name FROM customerinfo c WHERE c.id=?" ;
-		return this.queryForObject(sql, new Object[]{khId.intValue()}, java.lang.String.class);
+			/*如果dantuanxinxi表中有khId，而customerinfo中没有会出现问题，先查询个数再查询名字。
+			 *也可以把查询出的NULL name值设置为空字符串？
+			 * */
+			String sql1 = "SELECT COUNT(*) FROM customerinfo c WHERE c.id = "+khId ;
+			int count = this.queryForInt(sql1);
+			if(count > 0){
+				String sql = "SELECT c.name FROM customerinfo c INNER JOIN dantuanxinxi d ON d.khId=c.id WHERE c.id=?" ;
+				return this.queryForObject(sql, new Object[]{khId.intValue()}, java.lang.String.class);
+			}
+			return null ;
 	}
 
 	

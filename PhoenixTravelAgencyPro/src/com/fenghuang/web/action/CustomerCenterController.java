@@ -20,11 +20,13 @@ import net.sf.json.JSONObject;
 import net.sf.json.JsonConfig;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fenghuang.entiey.CustomerAreaWeihu;
 import com.fenghuang.entiey.CustomerInfo;
 import com.fenghuang.entiey.DictionaryDesc;
 import com.fenghuang.entiey.TeamProgressStateDictionary;
@@ -255,8 +257,8 @@ public class CustomerCenterController {
 	 */
 	@RequestMapping("/fenghuang/customerVIPDic.do")
 	@ResponseBody
-	public Map<String,Object> CustomerVIPList(Integer page,Integer rows){
-		Pagination<TeamProgressStateDictionary> teams = iCustomerCenterService.getCustomVIPListPaginations(page,rows);
+	public Map<String,Object> CustomerVIPList(Integer page,Integer rows,String wordprefix){
+		Pagination<TeamProgressStateDictionary> teams = iCustomerCenterService.getCustomVIPListPaginations(wordprefix,page,rows);
 		List<Map<String, Object>> teamsRows = teams.getResultList();
 		
 		Map<String, Object> returnValue = new HashMap<String, Object>();
@@ -345,13 +347,83 @@ public class CustomerCenterController {
 	 */
 	@RequestMapping("fenghuang/searchCustomVIP.do")
 	@ResponseBody
-	public Map<String ,Object> searchCustomVIP(String tpsdNo,String tpsdName,String tpsdHelp,String tpsdSort){
-		List<Map<String, Object>> customVIPs = iCustomerCenterService.searchCustomVIP(tpsdNo,tpsdName,tpsdHelp,tpsdSort);
+	public Map<String ,Object> searchCustomVIP(HttpServletRequest request ,String tpsdNo,String tpsdName,String tpsdHelp,String tpsdSort,String wordprefix){
+		List<Map<String, Object>> customVIPs = iCustomerCenterService.searchCustomVIP(tpsdNo,tpsdName,tpsdHelp,tpsdSort,wordprefix);
 		Map<String, Object> returnValue = new HashMap<String, Object>();
+		setJsonValueToEmptyString(customVIPs);
 		returnValue.put("rows", customVIPs);
+		returnValue.put("total",customVIPs.size());
 		
 		JSONObject fromObject = JSONObject.fromObject(returnValue);
 		return fromObject;
 		
+	}
+	
+	/**
+	 * 客户区域维护列表
+	 * @return
+	 */
+	@RequestMapping("fenghuang/customerAreaWeihu")
+	@ResponseBody
+	public Map<String ,Object> customerAreaWeihu(Integer page,Integer rows){
+		Map<String, Object> returnValue = new HashMap<String, Object>();
+		Pagination<CustomerAreaWeihu> customerAreaList = iCustomerCenterService.findAllCustomerAreaWeihu(page,rows);
+		returnValue.put("rows", customerAreaList.getResultList());
+		returnValue.put("total",customerAreaList.getTotalRows());
+		
+		JSONObject fromObject = JSONObject.fromObject(returnValue);
+		return fromObject;
+	}
+	
+	/**
+	 * 新增客户区域维护
+	 * @param ca
+	 * @return
+	 */
+	@RequestMapping("/fenghuang/addCustomerArea")
+	@ResponseBody
+	public Map<String ,Object> addCustomerArea(@RequestBody CustomerAreaWeihu ca){
+		Map<String ,Object> result = new HashMap<String ,Object>() ;
+		boolean isSuccess = false ; 
+		try{
+			isSuccess = iCustomerCenterService.addCustomerArea(ca.getId(),ca.getName());
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		result.put("success", isSuccess);
+		return result ; 
+	}
+	
+	/**
+	 * 删除客户区域维护
+	 * @param deleteRow
+	 * @return
+	 */
+	@RequestMapping("/fenghuang/deleteCustomerArea")
+	@ResponseBody
+	public Map<String ,Object> deleteCustomerArea(Integer deleteRow){
+		Map<String ,Object> result = new HashMap<String ,Object>() ;
+		boolean isSuccess = false ; 
+		try{
+			isSuccess = iCustomerCenterService.deleteCustomerArea(deleteRow);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		result.put("success", isSuccess);
+		return result ; 
+	}
+	
+	@RequestMapping("/fenghuang/updateCustomerArea")
+	@ResponseBody
+	public Map<String ,Object> updateCustomerArea(@RequestBody CustomerAreaWeihu ca){
+		Map<String ,Object> result = new HashMap<String ,Object>() ;
+		boolean isSuccess = false ; 
+		try{
+			isSuccess = iCustomerCenterService.updateCustomerArea(ca.getId(),ca.getName());
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		result.put("success", isSuccess);
+		return result ; 
 	}
 }

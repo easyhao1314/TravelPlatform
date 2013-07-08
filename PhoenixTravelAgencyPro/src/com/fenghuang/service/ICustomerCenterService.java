@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.fenghuang.dao.ICustomerCenterDao;
+import com.fenghuang.entiey.CustomerAreaWeihu;
 import com.fenghuang.entiey.CustomerInfo;
 import com.fenghuang.entiey.ProvinceSettingDictionary;
 import com.fenghuang.entiey.TeamProgressStateDictionary;
@@ -99,7 +100,7 @@ public interface ICustomerCenterService{
 	 * @param rows
 	 * @return
 	 */
-	Pagination<TeamProgressStateDictionary> getCustomVIPListPaginations(
+	Pagination<TeamProgressStateDictionary> getCustomVIPListPaginations(String wordprefix,
 			Integer page, Integer rows);
 
 	/**
@@ -131,6 +132,14 @@ public interface ICustomerCenterService{
 	 * @return
 	 */
 	List<Map<String, Object>> searchCustomVIP(String tpsdNo, String tpsdName,
-			String tpsdHelp, String tpsdSort);
+			String tpsdHelp, String tpsdSort,String wordprefix);
+
+	Pagination<CustomerAreaWeihu> findAllCustomerAreaWeihu(Integer page,Integer rows);
+
+	boolean addCustomerArea(Integer id, String name);
+
+	boolean deleteCustomerArea(Integer id);
+
+	boolean updateCustomerArea(Integer updateRow,String name);
 	
 }
