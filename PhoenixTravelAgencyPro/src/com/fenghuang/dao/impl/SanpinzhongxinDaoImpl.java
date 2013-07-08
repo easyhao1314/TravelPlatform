@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.fenghuang.dao.BaseDao;
 import com.fenghuang.dao.ISanpinzhongxinDao;
 import com.fenghuang.entiey.Sanpinzhongxin;
+import com.fenghuang.util.FengHuangDateUtil;
 import com.fenghuang.util.Pagination;
 @Repository
 public class SanpinzhongxinDaoImpl extends BaseDao implements ISanpinzhongxinDao {
@@ -78,10 +79,12 @@ public class SanpinzhongxinDaoImpl extends BaseDao implements ISanpinzhongxinDao
 			sb.append(" and tuanName LIKE '%"+s.getTuanName()+"%'");
 		}
 		if(s.getGroupdate()!=null && !"".equals(s.getGroupdate())){
-			sb.append(" and groupdate >= '"+s.getGroupdate()+"'");
+			String Groupdate = FengHuangDateUtil.getDateTOString(s.getGroupdate());
+			sb.append(" and groupdate >= '"+Groupdate+"'");
 		}
 		if(s.getTourdate()!=null && !"".equals(s.getTourdate())){
-			sb.append(" and Tourdate >= '"+s.getTourdate()+"'");
+			String Tourdate = FengHuangDateUtil.getDateTOString(s.getTourdate());
+			sb.append(" and Tourdate <= '"+Tourdate+"'");
 		}
 		if(s.getProductbrand()!=0 && !"".equals(s.getProductbrand())){
 			sb.append(" and productbrand = '"+s.getProductbrand()+"'");

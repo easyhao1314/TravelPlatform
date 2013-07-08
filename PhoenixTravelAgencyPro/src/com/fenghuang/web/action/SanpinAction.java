@@ -43,55 +43,115 @@ public class SanpinAction {
 			String zao,String zhong,String wan,String productbrand,String predict,String report,String visa,
 			String teamexplains,String Servicesinclude,String servicenoinclude,String notes){
 			Sanpinzhongxin sanpin = new Sanpinzhongxin();
-//			sanpin.setShenpijia(shenpijia);
-//			sanpin.setDakehujia(dakehu);
-//			sanpin.setZhikejia(zhikejia);
-//			sanpin.setTonghang(tonghang);
-//			sanpin.setErtongzhanchuang(ertongzhanchuang);
-//			sanpin.setErtongbuzhanchuang(ertongbuzhanchuang);
-//			sanpin.setZibeiqianjia(zibeiqianjia);
-//			sanpin.setNumberday(tianshu);
-//			sanpin.setNumbercountry(guojiashu);
-//			sanpin.setGroupdate(groupdate);
-//			sanpin.setNumbermaster(numbermaster);
-//			sanpin.setTourdate(Tourdate);
-//			sanpin.setAreatype(Areatype);
-//			sanpin.setAirways(airways);
-//			sanpin.setTargetpopulation(targetpopulation);
-//			sanpin.setGroupflight(groupflight);
-//			sanpin.setDeparturecity(Departurecity);
-//			sanpin.setTourflight(Tourflight);
-//			sanpin.setTerminalCity(TerminalCity);
-//			sanpin.setHotel(hotel);
-//			sanpin.setProducttypes(Producttypes);
-//			sanpin.setZao(zao);
-//			sanpin.setZhong(zhong);
-//			sanpin.setWan(wan);
-//			sanpin.setProductbrand(productbrand);
-//			sanpin.setPredict(predict);
-			//续办签证 没写
-			sanpin.setTeamexplains(teamexplains);
-			sanpin.setServicesinclude(Servicesinclude);
-			sanpin.setServicenoinclude(servicenoinclude);
-			sanpin.setNotes(notes);
+			
+		try {
+			if(tuanno!=null && !"".equals(tuanno)){
+				sanpin.setTuanNo(tuanno);
+			}
+			if(tuanname!=null && !"".equals(tuanname)){
+				sanpin.setTuanName(tuanname);
+			}
+			if(shenpijia!=null && !"".equals(shenpijia)){				
+				sanpin.setShenpijia(Integer.parseInt(shenpijia));
+			}
+			if(dakehu!=null && !"".equals(dakehu)){
+				sanpin.setDakehujia(Float.parseFloat(dakehu));
+			}
+			if(zhikejia!=null && !"".equals(zhikejia)){
+				sanpin.setZhikejia(Float.parseFloat(zhikejia));
+			}
+			if(tonghang!=null && !"".equals(tonghang)){
+				sanpin.setTonghang(Float.parseFloat(tonghang));
+			}
+			if(ertongzhanchuang!=null && !"".equals(ertongzhanchuang)){
+				sanpin.setErtongzhanchuang(Float.parseFloat(ertongzhanchuang));
+			}
+			if(ertongbuzhanchuang!=null && !"".equals(ertongbuzhanchuang)){
+				sanpin.setErtongbuzhanchuang(Float.parseFloat(ertongbuzhanchuang));
+			}
+			if(zibeiqianjia!=null && !"".equals(zibeiqianjia)){
+				sanpin.setZibeiqianjia(Float.parseFloat(zibeiqianjia));
+			}
+			if(tianshu!=null && !"".equals(tianshu)){
+				sanpin.setNumberday(Integer.parseInt(tianshu));
+			}
+			if(guojiashu!=null && !"".equals(guojiashu)){
+				sanpin.setNumbercountry(Integer.parseInt(guojiashu));
+			}
 			DateFormat format1 = new SimpleDateFormat("yyyy-MM-dd"); 
-			try {
-				Date date = format1.parse(Tourdate);
+			if(groupdate!=null && !"".equals(groupdate)){
+				Date dategroupdate = format1.parse(groupdate);
+				sanpin.setGroupdate(dategroupdate);
 				
-				
-				
-				
-				System.out.println(date);
-				sanpin.setTourdate(date);
-				System.out.println(format1.format(date));
-			    System.out.println("dddddd"+sanpin.getTourdate());
+			}
+			if(numbermaster!=null && !"".equals(numbermaster)){				
+				sanpin.setNumbermaster(Integer.parseInt(numbermaster));
+			}
+			if(Tourdate!=null && !"".equals(Tourdate)){
+				Date dateTourdate = format1.parse(Tourdate);
+				sanpin.setTourdate(dateTourdate);
+			}
+			if(Areatype!=null && !"".equals(Areatype)){
+				sanpin.setAreatype(Long.parseLong(Areatype));
+			}
+			if(airways!=null && !"".equals(airways)){
+				sanpin.setAirways(airways);
+			}
+			if(targetpopulation!=null && !"".equals(targetpopulation)){
+				sanpin.setTargetpopulation(Long.parseLong(targetpopulation));
+			}
+			if(groupflight!=null && !"".equals(groupflight)){
+				sanpin.setGroupflight(groupflight);
+			}
+			if(Departurecity!=null && !"".equals(Departurecity)){
+				sanpin.setDeparturecity(Long.parseLong(Departurecity));
+			}
+			if(Tourflight!=null && !"".equals(Tourflight)){
+				sanpin.setTourflight(Tourflight);
+			}
+			if(TerminalCity!=null && !"".equals(TerminalCity)){
+				sanpin.setTerminalCity(Long.parseLong(TerminalCity));
+			}
+			if(hotel!=null && !"".equals(hotel)){
+				sanpin.setHotel(Long.parseLong(hotel));
+			}
+			if(Producttypes!=null && !"".equals(Producttypes)){
+				sanpin.setProducttypes(Long.parseLong(Producttypes));
+			}
+			if(zao!=null && !"".equals(zao)){
+				sanpin.setZao(Long.parseLong(zao));
+			}
+			if(zhong!=null && !"".equals(zhong)){
+				sanpin.setZhong(Long.parseLong(zhong));
+			}
+			if(wan!=null && !"".equals(wan)){
+				sanpin.setWan(Long.parseLong(wan));
+			}
+			if(productbrand!=null && !"".equals(productbrand)){
+				sanpin.setProductbrand(Long.parseLong(productbrand));
+			}
+			if(predict!=null && !"".equals(predict)){
+				sanpin.setPredict(Integer.parseInt(predict));
+			}
+			//续办签证 没写
+			if(teamexplains!=null && !"".equals(teamexplains)){
+				sanpin.setTeamexplains(teamexplains);
+			}
+			if(Servicesinclude!=null && !"".equals(Servicesinclude)){
+				sanpin.setServicesinclude(Servicesinclude);
+			}
+			if(servicenoinclude!=null && !"".equals(servicenoinclude)){
+				sanpin.setServicenoinclude(servicenoinclude);
+			}
+			if(notes!=null && !"".equals(notes)){
+				sanpin.setNotes(notes);
+			}
 			} catch (ParseException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			
-			sanpin.setTuanName(tuanname);
-			sanpin.setTuanNo(tuanno);
+
 			boolean isSuccess = false;
 			Map<String,Object> result = new HashMap<String, Object>();
 		try {

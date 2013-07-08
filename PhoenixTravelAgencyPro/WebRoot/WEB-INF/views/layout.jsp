@@ -56,6 +56,32 @@
 				</ul>
 				<ul>
 					<li iconCls="icon-gears"><a
+						href="javascript:open1('应付款统计','yfktj.do');">应付款统计</a>
+					</li>
+				</ul>
+				<ul>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('应收款统计','ysktj.do');">应收款统计</a>
+					</li>
+				</ul>
+				<ul>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('退款返佣审核','tuikuanshenhe.do');">退款返佣审核</a>
+					</li>
+				</ul>
+				<ul>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('付款方式设置','fkfssz.do');">付款方式设置</a>
+					</li>
+				</ul>
+					<ul>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('付款审核','fukuanshenhe.do');">付款 审核</a>
+					</li>
+				</ul>
+				
+				<ul>
+					<li iconCls="icon-gears"><a
 						href="javascript:open1('散团费用列表','sanpin.do');">散团费用列表</a>
 					</li>
 				</ul>
@@ -67,6 +93,29 @@
 				<ul>
 					<li iconCls="icon-gears"><a
 						href="javascript:open1('团队费用列表','sanpin.do');">团队费用列表</a>
+					</li>
+				</ul>
+				<ul>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('币种汇率设置	','bzhlsz.do');">币种汇率设置</a>
+					</li>
+				</ul>
+					<ul>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('费用项大类维护','fydxwh.do');">费用项大类维护</a>
+					</li>
+				</ul>
+				
+					<ul>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('未收未付款查询','wswfcx.do');">未收未付款查询</a>
+					</li>
+				</ul>
+				
+				
+					<ul>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('付款确认','querenfukuan.do');">付款确认</a>
 					</li>
 				</ul>
 				<ul>
@@ -256,6 +305,70 @@
 				     <a href="javascript:open1('自费节目维护','ZiyuanZifei.do?dicType=10');">自费节目维护</a></li>
 				</ul>
 			</li>
+			<!--陈家海的配置 -->
+		<li iconCls="icon-base"><span>操作中心</span>
+				<ul>
+					<li iconCls="icon-gears">
+					<a href="javascript:open1('操作团队查询','operTeamQuery.do');">操作团队查询</a></li>
+				</ul>
+				 <ul>
+			      <li iconCls="icon-gears">
+			        <a href="javascript:open1('我派的订房任务','dingfangrenwu.do');">我派的订房任务</a>
+			      </li>
+			   </ul>
+			   <ul>
+			      <li iconCls="icon-gears">
+			        <a href="javascript:open1('我派的订车任务','dingcherenwu.do');">我派的订车任务</a>
+			      </li>
+			   </ul>
+			    <ul>
+			      <li iconCls="icon-gears">
+			        <a href="javascript:open1('我派的导游任务','daoyourenwu.do');">我派的导游任务</a>
+			      </li>
+			   </ul>
+			    <ul>
+			      <li iconCls="icon-gears">
+			        <a href="javascript:open1('我派的购物店任务单','gouwudianrenwu.do');">我派的购物店任务单</a>
+			      </li>
+			   </ul>
+		</li>
+		<li iconCls="icon-base"><span>客户中心</span>
+			    <ul>
+			      <li iconCls="icon-gears">
+			        <a href="javascript:open1('客户信息列表','customerInfoList.do');">客户信息列表</a>
+			      </li>
+			   </ul>
+			    <ul>
+			      <li iconCls="icon-gears">
+			        <a href="javascript:open1('联系人信息列表','contactInfoList.do');">联系人信息列表</a>
+			      </li>
+			   </ul>
+			    <ul>
+			      <li iconCls="icon-gears">
+			        <a href="javascript:open1('客户VIP字典','customerVIPDic.do?wordprefix=100001003');">客户VIP字典</a>
+			      </li>
+			   </ul>
+			     <ul>
+			      <li iconCls="icon-gears">
+			        <a href="javascript:open1('客户资信字典','customerZiXinDic.do?wordprefix=100001005');">客户资信字典</a>
+			      </li>
+			   </ul>
+			     <ul>
+			      <li iconCls="icon-gears">
+			        <a href="javascript:open1('客户价值字典','customerZiXinDic.do?wordprefix=100001004');">客户价值字典</a>
+			      </li>
+			   </ul>
+			   <ul>
+			      <li iconCls="icon-gears">
+			        <a href="javascript:open1('客户合作级别','customerCoperLevel.do?wordprefix=100001001');">客户合作级别</a>
+			      </li>
+			   </ul>
+			    <ul>
+			      <li iconCls="icon-gears">
+			        <a href="javascript:open1('客户区域维护','customerAreaWeihu.do');">客户区域维护</a>
+			      </li>
+			   </ul>
+		</li>
 		</ul>
 		
 	</div>
