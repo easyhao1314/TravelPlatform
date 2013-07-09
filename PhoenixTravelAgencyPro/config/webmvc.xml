@@ -101,8 +101,7 @@
 	  <mvc:view-controller path="DantuanChengtuan.do" view-name="Dantuan/DantuanChengtuan"/>
      <!-- <mvc:view-controller path="DantuanUpdate.do" view-name="Dantuan/DantuanXunjia"/> -->
      <mvc:view-controller path="DantuanBaojia.do" view-name="Dantuan/DantuanBaojia"/>
-     <mvc:view-controller path="DantuanDaishen.do" view-name="Dantuan/DantuanDaishen"/>
-     <mvc:view-controller path="DantuanMingxi.do" view-name="Dantuan/DantuanMingxi"/> 
+     <mvc:view-controller path="DantuanDaishen.do" view-name="Dantuan/DantuanDaishen"/> 
      <!-- 资源中心 -->    
      <mvc:view-controller path="ZiyuanJiudian.do" view-name="Ziyuan/ZiyuanJiudian"/>
      <mvc:view-controller path="ZiyuanJiaotong.do" view-name="Ziyuan/ZiyuanJiaotong"/>

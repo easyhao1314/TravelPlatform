@@ -30,10 +30,20 @@
    <table>
 	    		<tr>
 
-	    			<td>应收日期:<input class="easyui-validatebox" type="text" name="name" ></input></td>
-	    			<td>到<input class="easyui-validatebox" type="text" name="name" ></input></td>
-	    		   	<td>团号:<input class="easyui-validatebox" type="text" name="name" ></input></td>
-	    			<td>销售，客户<input class="easyui-validatebox" type="text" name="name" ></input></td>
+	    			<td>
+	    		币种:
+              <input class="easyui-combobox"
+              name="" 
+              data-options="url:'',
+              valueField:'dicId',
+              textFiedld:'dicName',
+              panelHeight:'auto'
+              ">
+              
+               
+                 </td> 
+	    			<td>日期:<input id="dt" class="easyui-datetimebox" style="width:150px"></td>
+	    		
 	    			<td>
 	    		<div style="padding:5px;border:1px solid #ddd;">
 		<a href="#" class="easyui-linkbutton" data-options="toggle:true,group:'g1'">Button 1</a>
@@ -44,59 +54,27 @@
 	    	
 	    		
 	    	</table>
-	    	<table>
-	    		<tr>
-	    		<td>账号：[<a href="">待确认收款</a>][<a href="">已确认收款</a>]</td>
-	    		</tr>
-	    		<tr>
-	    		<td>状态：[<a href="">待确认收款</a>][<a href="">已确认收款</a> ]</td>
-	    		</tr>
-	    		<tr>
-	    		<td>币种：[全部] [人民币][美元][日元][欧元][英镑][瑞士法郎][加拿大元][澳大利亚元][港币][挪威克朗][瑞典克朗][丹麦克朗] </td>
-	    		</tr>
-	    		<tr>
-	    		<td>水单：[全部] [未收到][已收到] </td>
-	    		</tr>
+	
 	    		
-	    		<tr>
-	    		<td>日期：[全部] [未收到][已收到] </td>
-	    		</tr>
-	    		<tr>
-	    		<td>
-	    		日期:
-              <input class="easyui-combobox"
-              name="" 
-              data-options="url:'',
-              valueField:'dicId',
-              textFiedld:'dicName',
-              panelHeight:'auto'
-              ">
-              
-               [全部] [1月] [2月] [3月] [4月] [5月] [6月] [7月] [8月] [9月] [10月] [11月] [12月]
-               
-                 </td> 
-	    		
-	    		</tr>
 	    	
 	    	</table>
 	<table id="dg" class="easyui-datagrid"
 		data-options="url:'',border:false,singleSelect:false,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
 		pagination="true" toolbar="#tb">
 		<thead>
+		
 			<tr>
-				<th data-options="field:'ck',checkbox:true"></th>	 
-				<th data-options="field:'dicNo',editor:'text'" width="">付款日期</th>
-				<th data-options="field:'dicName',editor:'text'" width="">团号</th>
-				<th data-options="field:'dicDesc',editor:'text'" width="">团队名称</th>
-				<th data-options="field:'dicHelp',editor:'text'" width="">供应商名称</th>
-				<th data-options="field:'dicDesc',editor:'text'" width="">款项</th>
-				<th data-options="field:'08',editor:'text'" width="">金额</th>
-			
-				<th data-options="field:'09',editor:'numberbox'" width="">提交人</th>
-				<th data-options="field:'09',editor:'numberbox'" width="">审批状态</th>
-				<th data-options="field:'09',editor:'numberbox'" width="">财务审核</th>
-				<th data-options="field:'09',editor:'numberbox'" width="">财务确认</th>
-				<th data-options="field:'09',editor:'numberbox'" width="">操作</th>
+				<th data-options="field:'dicNo',editor:'text'" width="">币种</th>
+				<th data-options="field:'dicName',editor:'text'" width="">日期</th>
+				<th data-options="field:'dicName',editor:'text'" width="">汇率</th>
+				<th data-options="field:'dicName',editor:'text'" width="">单位</th>
+				<th data-options="field:'dicName',editor:'text'" width="">现金收款/换汇汇率</th>
+				<th data-options="field:'dicName',editor:'text'" width="">对公收款/换汇汇率</th>
+				<th data-options="field:'dicName',editor:'text'" width="">中行折算价/基准价</th>
+				<th data-options="field:'dicName',editor:'text'" width="">公司最低汇率标准</th>
+				<th data-options="field:'dicName',editor:'text'" width="">操作</th>
+				
+				
 			
 			</tr>
 		</thead>
