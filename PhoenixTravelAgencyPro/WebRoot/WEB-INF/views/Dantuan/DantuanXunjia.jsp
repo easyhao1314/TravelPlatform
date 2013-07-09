@@ -113,12 +113,12 @@
                      <th data-options="field:'jdNo'" width="60">计调编号</th> 
                      <th data-options="field:'01'" width="40">登记人</th>
                       <!--点击客户名称进入客户沟通列表 -->
-                      <th data-options="field:'khId'" width="60"> 客户名称</th>  
+                      <th id="khId" data-options="field:'khId',formatter:onOperateDantuanListKehu" width="60"> 客户名称</th>  
                         <th data-options="field:'02'" width="40">登记日</th> 
                           <th data-options="field:'03'" width="40">报价</th>
                             <th data-options="field:'04'" width="80">预计毛利（万）</th> 
                     </tr>  
-                </thead>  
+              </thead>  
 	</table>
 	</div> 
 	<div id="tb">
@@ -491,8 +491,8 @@
    
    }
    function openDanTuanDetail(tuanNo){
-   	
-      var url= "DantuanMingxi.do?tuanNO="+tuanNo;
+   	var row = $("#dg").datagrid("getSelected");
+      var url= "DantuanMingxi.do?";
        var tab = $('#tt').tabs('getSelected'); 
 		if (tab){  
 	                 var index = $('#tt').tabs('getTabIndex', tab); 
@@ -500,36 +500,66 @@
 	       } 
 	       
 	       $('#tt').tabs('add', {
-				         title : "单团详细信息",
+				         title : "单团行程详细信息",
 				         href : url,
-				         closable : true,
+				        //closable : true,
 				         });
-		
-			alert(row);
+				        			         
+	
+			if(row){
+				var param = {
+					"updateTuanNO" : row.tuanNO
+				};
+				
 				$.ajax({
 					url : "fenghuang/DantuanSelectId.do",
-					data : row.tuanNO,
+					data : param,
 					dataType : "json",
 					success : function(data) {
+		
 					   $('#mingxiForm').form('load',data.rows[0]);
+			
+					},
+					error : function() {
+						$.messager.alert("查询失败", "服务器请求失败!", "error");
+					}
+				});
+		
+				}
+				}
+			
+			
+			
+   function	onOperateDantuanListKehu(val,row){
+        return '<a href="javascript:openDanTuanDetailKehu('+row.khId+')">'+row.khId+'</a>';
+        }
+   
+  function openDanTuanDetailKehu(tuanNo){  	
+     $("#updateDt").dialog("open");
+			//准备回显的数据
+			var row = $("#dg").datagrid("getSelected");
+			if(row){
+				var param = {
+					"updateTuanNO" : row.tuanNO
+				};
+				
+				$.ajax({
+					url : "fenghuang/DantuanSelectId.do",
+					data : param,
+					dataType : "json",
+					success : function(data) {
+		
+					   $('#updateForm').form('load',data.rows[0]);
 				
 					},
 					error : function() {
 						$.messager.alert("查询失败", "服务器请求失败!", "error");
 					}
 				});
-				
+		      }
+		   }		
+		
 			
-
-				
-		}
-				
-				
-				
-			
-					   
-   
-
    		
 	//'<a href="DantuanMingxi.do?tuanNO='+row.tuanNO+'">'+row.tuanNO+'</a>';		
 	</script>

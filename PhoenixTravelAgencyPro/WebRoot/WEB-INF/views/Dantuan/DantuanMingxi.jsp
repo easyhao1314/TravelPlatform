@@ -26,7 +26,7 @@
 
 <body>
 	<div class="easyui-panel" title="客户信息"
-		style="height:80px;padding:10px;width:auto;"
+		style="height:180px;padding:10px;width:auto;"
 		data-options="closable:false,tools:'#searchpanel'" align="center">
 		<form id="mingxiForm" >
 		<table>
@@ -40,28 +40,17 @@
 				<td><div class="fitem">
 						<label>联系人:</label>
 				</td>
-				<td><input name="" class="easyui-validatebox">
+				<td><input name="tdjb" class="easyui-validatebox">
 					</div>
 				</td>
 				<td><div class="fitem">
 						<label>电话:</label>
 				</td>
-				<td><input name="" class="easyui-validatebox">
+				<td><input name="tdjb" class="easyui-validatebox">
 					</div>
 				</td>
 			</tr>
-		
-		</table>
-		</form>
-	</div>
-
-	</div>
-
-		<div class="easyui-panel" title="团队信息和接待要求"
-		style="height:150px;padding:10px;width:auto;"
-		data-options="closable:false,tools:'#searchpanel'" align="center">
-		<table>
-			<tr>
+		<tr>
 				<td><div class="fitem">
 						<label>团号:</label>
 				</td>
@@ -97,7 +86,7 @@
 				<td><div class="fitem">
 						<label>交通:</label>
 				</td>
-				<td><input name="" class="easyui-validatebox">
+				<td><input name="tdjb" class="easyui-validatebox">
 					</div>
 				</td>
 			</tr>
@@ -110,14 +99,19 @@
 				</td>
 				
 			</tr>
-
+		
 		</table>
+		</form>
 	</div>
+
+	</div>
+
 	 <div class="easyui-tabs"  style="width:1000px;height:800px;">      
     <div title="行程设计" style="padding:10px;">  
 	<div class="easyui-panel" title="行程属性"
 		style="height:150px;padding:10px;width:auto;"
 		data-options="closable:false,tools:'#searchpanel'" align="center">
+		<form id="" >
 		<table>
 			<tr>
 			<td><div class="fitem">
@@ -175,6 +169,7 @@
 			</tr>
 		
 		</table>
+		</form>
 	 </div>
 
           <div class="easyui-panel" title="日程设置"
@@ -247,7 +242,32 @@
 			
 		</table>
 	 </div> 
-	 
+	 <div id="caiwu" class="easyui-dialog" title="财务核算"
+		data-options="modal:true,closed:true,iconCls:'icon-save'"
+		style="width:700px;height:500px;padding:10px;">
+		<form id="caiwuForm" method="post">
+		<table align="center" border="1">
+				<tr>
+                    <td>费用核算</td><td>车</td><td>酒店</td>
+                </tr>
+                	<tr>
+                    <td>第一天：</td><td><input id="c1" type="text" class="easyui-numberbox" ></td><td><input id="j1" type="text" class="easyui-numberbox" ></td>
+                </tr>
+                <tr>
+                    <td>第二天：</td><td><input id="c2" type="text" class="easyui-numberbox" ></td><td><input id="j2" class="easyui-numberbox"  type="text" class="easyui-numberbox" ></td>
+                </tr>
+                 <tr>
+                    <td>分项总报价：</td><td><input id="c3" name="c3"  type="text" class="easyui-numberbox" ></td><td><input id="j3" type="text" class="easyui-numberbox" ></td>
+                </tr>
+                  <tr>
+                    <td>总报价：</td><td><input id="z1" type="text"  class="easyui-numberbox" ></td><td><input type="text"></td>
+                </tr>
+			</table>
+			<input id="dicType" name="dicType" type="hidden">
+		</form>
+	</div>
+	
+	
 	 
 	 <div class="easyui-panel" title="成本设置"
 		style="height:80px;padding:10px;width:auto;"
@@ -258,7 +278,7 @@
 						<label>核算:</label>
 				</td>
 				<td>
-				 <a href="javascript:dantuanSave();" class="easyui-linkbutton" iconCls="icon-ok">手动核算</a>
+				 <a href="javascript:caiwu();" class="easyui-linkbutton" iconCls="icon-ok">手动核算</a>
 				</td>
 			</tr>
 		</table>
@@ -406,11 +426,33 @@
     menu: '#mm5'  
 });  
  
- //新增
-		function xingcheng() {
-			$("#xingcheng").dialog("open");
-			$("#xingchengForm").form("clear");
+ // 财务
+		function caiwu() {
+			$("#caiwu").dialog("open");
+			$("#caiwuForm").form("clear");
 		}  
+		$("#c1").numberbox({
+				required : true ,
+				editable : false ,
+				onChange : function(newValue, oldValue){
+					var c1 = $("#c1").val();
+					var c2 = $("#c2").val();
+					var c12= c1+c2;
+					$("#c3").numberbox('setValue', c1);
+					
+				}
+			});
+	    $("#c2").numberbox({
+				required : true ,
+				editable : false ,
+				onChange : function(newValue, oldValue){
+					var c1 = $("#c1").val();
+					var c2 = $("#c2").val();
+					var c12=(Number(c1))+(Number(c2));
+					$("#c3").numberbox('setValue', c12);
+					
+				}
+			});
     </script>
   </body>
 </html>

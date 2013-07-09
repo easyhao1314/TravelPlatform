@@ -214,9 +214,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				onChange : function(newValue, oldValue){
 					var ctsjValue = $("#ctsj").datebox("getValue");
 					var param = {
-						ctsj : ctsjValue ,
+						ctsj : ctsjValue,
 						cfts : newValue
 					};
+					
+					
+					
 					
 					$.ajax({
 						url : 'fenghuang/getHtsjDate.do' ,
