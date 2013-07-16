@@ -53,7 +53,7 @@ public class CustomerCenterController {
 	 * @param page
 	 * @param rows
 	 */
-	@RequestMapping("/fenghuang/customInfoList.do")
+	@RequestMapping("fenghuang/customInfoList.do")
 	public void customInfoList(HttpServletRequest request,HttpServletResponse response,String kw,Integer page,Integer rows){
 		Pagination<CustomerInfo> teams = iCustomerCenterService.getCustomInfoListPaginations(page==null?1:page, rows==null?10:rows,kw);
 		List<Map<String, Object>> teamsRows = teams.getResultList();
@@ -62,13 +62,11 @@ public class CustomerCenterController {
 		
 		for(int i = 0 ;i<teamsRows.size();i++){
 			for(Entry<String, Object> entrySet :teamsRows.get(i).entrySet()){
-				if("city".equals(entrySet.getKey())){
-					if(entrySet.getValue()!=null){
-						String name = iCustomerCenterService.findCityNameById((Long)entrySet.getValue());
-						teamsRows.get(i).put("cityName", name);
-						break;
+				
+					if(entrySet.getValue() == null){
+						entrySet.setValue("") ;
 					}
-				}
+				
 			}
 		}
 		
@@ -94,7 +92,7 @@ public class CustomerCenterController {
 	 * @param deleteRow
 	 * @return
 	 */
-	@RequestMapping("/fenghuang/deleteCustomInfo.do")
+	@RequestMapping("fenghuang/deleteCustomInfo.do")
 	@ResponseBody
 	public Map<String ,Object> deleteCustom(String deleteRow){
 		Map<String, Object> result = new HashMap<String, Object>();

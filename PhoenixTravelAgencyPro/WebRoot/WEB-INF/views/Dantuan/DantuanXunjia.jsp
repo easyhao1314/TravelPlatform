@@ -50,7 +50,13 @@
 						<label>旅游区域:</label>
 				</td>
 				<td><input  name="lyqy" class="easyui-combobox"
- data-options="url:'fenghuang/CountryState.do',valueField:'id',textField:'csName'">
+ data-options="
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=6',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false 
+	">
 					</div>
 				</td>
 			</tr>
@@ -59,14 +65,25 @@
 						<label>团队状态:</label>
 				</td>
 				<td><input  name="tdzt" class="easyui-combobox"
- data-options="url:'fenghuang/CountryState.do',valueField:'id',textField:'csName'">
+data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=3',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false 
+	">
 					</div>
 				</td>
 				<td><div class="fitem">
 						<label>跟单情况:</label>
 				</td>
 				<td><input  name="tdjb" class="easyui-combobox"
- data-options="url:'fenghuang/CountryState.do',valueField:'id',textField:'csName'">
+ data-options="
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=2',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false 
+	">
 					</div>
 				</td>
 				
@@ -75,11 +92,7 @@
 					<a href="javascript:dantuanSelectLike();" 
 								class="easyui-linkbutton" iconCls="icon-ok">查询</a><a href="javascript:void(0)" class="easyui-linkbutton"
 							iconCls="icon-undo" onclick="$('#searchPanelForm').form('clear')">重置</a>
-					<!-- <div id="searchpanel">
-						<a href="javascript:dantuanSelectLike();" 
-								class="easyui-linkbutton" iconCls="icon-ok">保存</a><a href="javascript:void(0)" class="easyui-linkbutton"
-							iconCls="icon-undo" onclick="$('#searchPanelForm').form('clear')">重置</a>
-					</div> -->
+					
 				</td>
 			</tr>
 		</table>
@@ -90,12 +103,12 @@
 	<!-- 如果在正式开发环境下 url可以为后台的请求，地址 -->
 	<div style="height:470px;width:100%">
 	<table id="dg" class="easyui-datagrid"
-		data-options="url:'fenghuang/DantuanXunjia.do',border:false,singleSelect:false,fit:true,fitColumns:true, onClickRow: onClickRow"
+		data-options="url:'fenghuang/DantuanXunjia.do',border:false,singleSelect:false,fit:true,fitColumns:true, onClickRow: onClickRow,onRowContextMenu: onRowContextMenu"
 		pagination="true" toolbar="#tb">
 		<thead>  
                     <tr>  
                       <th data-options="field:'ck',checkbox:true"></th>
-                     <th data-options="field:'tdjb'" width="60">跟单进展</th> 
+                     <th data-options="field:'tdjb'" width="60" >跟单进展</th> 
                      <!--点击团号进入客户信息  -->
                      <th id="tuanNO" data-options="field:'tuanNO',formatter:onOperateDantuanList" width="40" >团号
                      <!--  
@@ -144,36 +157,90 @@
 <td><div class="fitem"><label>团号:</label></td><td><input name="tuanNO" class="easyui-validatebox" required="true"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>团队操作类型：</label></td><td><input name="tdczlx" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>团队级别：</label></td><td><input name="tdjb" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>团队操作类型：</label></td><td><input name="tdczlx"   class="easyui-combobox" data-options="
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=1',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false 
+	"></div></td>
+<td><div class="fitem"><label>团队级别：</label></td><td><input name="tdjb"  class="easyui-combobox" data-options="
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=2',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false 
+	"></div></td>
 </tr>
 <tr>
 <td><div class="fitem"><label>团名：</label></td><td><input name="tdm" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>团对状态：</label></td><td><input name="tdzt" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>团对状态：</label></td><td><input name="tdzt" class="easyui-combobox" data-options="
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=3',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false 
+	"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>出访人数：</label></td><td><input name="cfrs" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>出访人数：</label></td><td><input name="cfrs" class="easyui-numberbox" required="true"></div></td>
 <!-- CountrySettingDictionary 旅游国家 -->
 <td><div class="fitem"><label>出访国家：</label></td><td><input  name="cfgj" class="easyui-combobox"
- data-options="url:'fenghuang/CountrySetting.do',valueField:'csdNo',textField:'csdName'"></td>
+data-options="
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=7',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false 
+	"></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>出访天数：</label></td><td><input name="cfts" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>出访天数：</label></td><td><input id="cfts" name="cfts" class="easyui-numberbox" required="true"></div></td>
 <!-- CountryState 国家所属州 --> 
 <td><div class="fitem"><label>旅游区域：</label></td><td><input name="lyqy" class="easyui-combobox"
- data-options="url:'fenghuang/CountryState.do',valueField:'id',textField:'csName'"></div></td>
+ data-options="
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=6',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false 
+	"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>出团时间：</label></td><td><input name="ctsj" type="text" class="easyui-datebox" required="required"></div></td>
-<td><div class="fitem"><label>回团时间：</label></td><td><input name="htsj" type="text" class="easyui-datebox" required="required"></div></td>
+<td><div class="fitem"><label>出团时间：</label></td><td><input id="ctsj" name="ctsj" type="text" class="easyui-datebox" required="required"></div></td>
+<td><div class="fitem"><label>回团时间：</label></td><td><input id="htsj" name="htsj" type="text" class="easyui-datebox" required="required"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>销售：</label></td><td><input name="xsNo" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>计调：</label></td><td><input name="jdNo" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>销售：</label></td><td><input name="xsNo" class="easyui-combobox" data-options="
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=11',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false 
+	"></div></td>
+<td><div class="fitem"><label>计调：</label></td><td><input name="jdNo" class="easyui-combobox" data-options="
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=12',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false 
+	"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>客户经理：</label></td><td><input name="khjlNo" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>签证类型：</label></td><td><input name="qzlx" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>客户经理：</label></td><td><input name="khjlNo" class="easyui-combobox" data-options="
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=13',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false 
+	"></div></td>
+<td><div class="fitem"><label>签证类型：</label></td><td><input name="qzlx" class="easyui-combobox" data-options="
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=14',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false 
+	"></div></td>
 </tr>
 <tr>
 <td><div class="fitem"><label>需办签证：</label></td><td><input name="xbqz" class="easyui-validatebox" required="true"></div></td>
@@ -182,24 +249,82 @@
 <tr>
 <!-- HotleStardictionary 酒店-星级字典维护 --> 
 <td><div class="fitem"><label>酒店标准：</label></td><td><input name="jdbzNo" class="easyui-combobox"
-  data-options="url:'fenghuang/HotleStar.do',valueField:'hsdNo',textField:'hsbName'"></div></td>
-<td><div class="fitem"><label>酒店报价标准：</label></td><td><input name="jdbjNo" class="easyui-validatebox" required="true"></div></td>
+  data-options="
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=16',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false 
+	"></div></td>
+<td><div class="fitem"><label>酒店报价标准：</label></td><td><input name="jdbjNo" class="easyui-combobox" data-options="
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=17',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false 
+	"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>早餐标准：</label></td><td><input name="zcNo" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>午餐标准：</label></td><td><input name="zhongcNo" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>早餐标准：</label></td><td><input name="zcNo" class="easyui-combobox" data-options="
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=22',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false 
+	"></div></td>
+<td><div class="fitem"><label>午餐标准：</label></td><td><input name="zhongcNo" class="easyui-combobox" data-options="
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=23',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false 
+	"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>晚餐标准：</label></td><td><input name="wcNo" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>用餐报价标准：</label></td><td><input name="ycbjNo" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>晚餐标准：</label></td><td><input name="wcNo" class="easyui-combobox" data-options="
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=24',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false 
+	"></div></td>
+<td><div class="fitem"><label>用餐报价标准：</label></td><td><input name="ycbjNo" class="easyui-combobox" data-options="
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=21',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false "></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>巴士司导：</label></td><td><input name="bssdNo" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>巴士报价标准：</label></td><td><input name="bsbjNo" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>巴士司导：</label></td><td><input name="bssdNo" class="easyui-combobox" data-options="
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=19',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false "></div></td>
+<td><div class="fitem"><label>巴士报价标准：</label></td><td><input name="bsbjNo" class="easyui-combobox" data-options="
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=20',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false 
+	"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>车型：</label></td><td><input name="bssdNo" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>导游报价标准：</label></td><td><input name="dybjNo" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>车型：</label></td><td><input name="bssdNo" class="easyui-combobox" data-options="
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=18',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false 
+	"></div></td>
+<td><div class="fitem"><label>导游报价标准：</label></td><td><input name="dybjNo" class="easyui-combobox" data-options="
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=15',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false 
+	"></div></td>
 </tr>
 <tr>
 <td><div class="fitem"><label>其他地接要求：</label></td><td colspan="3"><input name="qtdjDesc" class="easyui-validatebox" required="true" size="80"></div></td>
@@ -211,7 +336,7 @@
 <tr><td colspan="4s" align="center"><a href="javascript:dantuanSave();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> <input  type="reset" value="重置"></td>
 </tr>
 			</table>
-			<input id="dicType" name="dicType" type="hidden">
+	
 		</form>
 	</div>
 	
@@ -223,40 +348,95 @@
 		<form id="updateForm" >
 			<table align="center">
 <tr>
-<td><div class="fitem"><label>客户名称:</label></td><td><input name="khId" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>客户名称:</label></td><td><input name="khId" class="easyui-validatebox" required="true"></div>
+     <a href="javascript:addKehu();" class="easyui-linkbutton" iconCls="icon-ok">新增客户</a></td>
 <td><div class="fitem"><label>团号:</label></td><td><input name="tuanNO" class="easyui-validatebox" required="true"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>团队操作类型：</label></td><td><input name="tdczlx" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>团队级别：</label></td><td><input name="tdjb" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>团队操作类型：</label></td><td><input name="tdczlx"   class="easyui-combobox" data-options="
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=1',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false 
+	"></div></td>
+<td><div class="fitem"><label>团队级别：</label></td><td><input name="tdjb"  class="easyui-combobox" data-options="
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=2',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false 
+	"></div></td>
 </tr>
 <tr>
 <td><div class="fitem"><label>团名：</label></td><td><input name="tdm" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>团对状态：</label></td><td><input name="tdzt" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>团对状态：</label></td><td><input name="tdzt" class="easyui-combobox" data-options="
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=3',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false 
+	"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>出访人数：</label></td><td><input name="cfrs" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>出访人数：</label></td><td><input name="cfrs" class="easyui-numberbox" required="true"></div></td>
 <!-- CountrySettingDictionary 旅游国家 -->
 <td><div class="fitem"><label>出访国家：</label></td><td><input  name="cfgj" class="easyui-combobox"
- data-options="url:'fenghuang/CountrySetting.do',valueField:'csdNo',textField:'csdName'"></td>
+data-options="
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=7',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false 
+	"></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>出访天数：</label></td><td><input name="cfts" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>出访天数：</label></td><td><input id="cfts" name="cfts" class="easyui-numberbox" required="true"></div></td>
 <!-- CountryState 国家所属州 --> 
 <td><div class="fitem"><label>旅游区域：</label></td><td><input name="lyqy" class="easyui-combobox"
- data-options="url:'fenghuang/CountryState.do',valueField:'id',textField:'csName'"></div></td>
+ data-options="
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=6',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false 
+	"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>出团时间：</label></td><td><input name="ctsj" type="text" class="easyui-datebox" required="required"></div></td>
-<td><div class="fitem"><label>回团时间：</label></td><td><input name="htsj" type="text" class="easyui-datebox" required="required"></div></td>
+<td><div class="fitem"><label>出团时间：</label></td><td><input id="ctsj" name="ctsj" type="text" class="easyui-datebox" required="required"></div></td>
+<td><div class="fitem"><label>回团时间：</label></td><td><input id="htsj" name="htsj" type="text" class="easyui-datebox" required="required"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>销售：</label></td><td><input name="xsNo" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>计调：</label></td><td><input name="jdNo" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>销售：</label></td><td><input name="xsNo" class="easyui-combobox" data-options="
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=11',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false 
+	"></div></td>
+<td><div class="fitem"><label>计调：</label></td><td><input name="jdNo" class="easyui-combobox" data-options="
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=12',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false 
+	"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>客户经理：</label></td><td><input name="khjlNo" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>签证类型：</label></td><td><input name="qzlx" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>客户经理：</label></td><td><input name="khjlNo" class="easyui-combobox" data-options="
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=13',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false 
+	"></div></td>
+<td><div class="fitem"><label>签证类型：</label></td><td><input name="qzlx" class="easyui-combobox" data-options="
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=14',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false 
+	"></div></td>
 </tr>
 <tr>
 <td><div class="fitem"><label>需办签证：</label></td><td><input name="xbqz" class="easyui-validatebox" required="true"></div></td>
@@ -265,24 +445,82 @@
 <tr>
 <!-- HotleStardictionary 酒店-星级字典维护 --> 
 <td><div class="fitem"><label>酒店标准：</label></td><td><input name="jdbzNo" class="easyui-combobox"
-  data-options="url:'fenghuang/HotleStar.do',valueField:'hsdNo',textField:'hsbName'"></div></td>
-<td><div class="fitem"><label>酒店报价标准：</label></td><td><input name="jdbjNo" class="easyui-validatebox" required="true"></div></td>
+  data-options="
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=16',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false 
+	"></div></td>
+<td><div class="fitem"><label>酒店报价标准：</label></td><td><input name="jdbjNo" class="easyui-combobox" data-options="
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=17',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false 
+	"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>早餐标准：</label></td><td><input name="zcNo" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>午餐标准：</label></td><td><input name="zhongcNo" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>早餐标准：</label></td><td><input name="zcNo" class="easyui-combobox" data-options="
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=22',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false 
+	"></div></td>
+<td><div class="fitem"><label>午餐标准：</label></td><td><input name="zhongcNo" class="easyui-combobox" data-options="
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=23',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false 
+	"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>晚餐标准：</label></td><td><input name="wcNo" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>用餐报价标准：</label></td><td><input name="ycbjNo" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>晚餐标准：</label></td><td><input name="wcNo" class="easyui-combobox" data-options="
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=24',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false 
+	"></div></td>
+<td><div class="fitem"><label>用餐报价标准：</label></td><td><input name="ycbjNo" class="easyui-combobox" data-options="
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=21',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false "></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>巴士司导：</label></td><td><input name="bssdNo" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>巴士报价标准：</label></td><td><input name="bsbjNo" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>巴士司导：</label></td><td><input name="bssdNo" class="easyui-combobox" data-options="
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=19',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false "></div></td>
+<td><div class="fitem"><label>巴士报价标准：</label></td><td><input name="bsbjNo" class="easyui-combobox" data-options="
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=20',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false 
+	"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>车型：</label></td><td><input name="bssdNo" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>导游报价标准：</label></td><td><input name="dybjNo" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>车型：</label></td><td><input name="bssdNo" class="easyui-combobox" data-options="
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=18',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false 
+	"></div></td>
+<td><div class="fitem"><label>导游报价标准：</label></td><td><input name="dybjNo" class="easyui-combobox" data-options="
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=15',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false 
+	"></div></td>
 </tr>
 <tr>
 <td><div class="fitem"><label>其他地接要求：</label></td><td colspan="3"><input name="qtdjDesc" class="easyui-validatebox" required="true" size="80"></div></td>
@@ -291,14 +529,25 @@
 <td><div class="fitem"><label>特殊要求：</label></td><td colspan="3"><input name="tsDesc" class="easyui-validatebox" required="true" size="80"></div></td>
 </tr>
 <tr>
-<tr><td colspan="4s" align="center"><a href="javascript:dantuanUpdate1();" 
-				class="easyui-linkbutton" iconCls="icon-ok">保存</a> <input  type="reset" value="重置"></td>
+<tr><td colspan="4s" align="center"><a href="javascript:dantuanUpdate1();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> <input  type="reset" value="重置"></td>
 </tr>
-				
 			</table>
 	
 		</form>
 	</div>
+	
+<div id="mm" class="easyui-menu" style="width:120px;">
+    <div onClick="view()" data-options="iconCls:'icon-search'">查看</div>
+    <div onClick="add()" data-options="iconCls:'icon-add'">新增</div>
+    <div onClick="edit()" data-options="iconCls:'icon-edit'">编辑</div>
+    <div onClick="del()" data-options="iconCls:'icon-remove'">删除</div>
+    <div class="menu-sep"></div>
+    <div onClick="print()" data-options="iconCls:'icon-print'">打印</div>
+    <div onClick="reload()" data-options="iconCls:'icon-reload'">刷新</div>
+</div>   
+
+
+    
 	<script type="text/javascript">
 		var editIndex = undefined;
 		function endEditing() {
@@ -326,6 +575,83 @@
 				}
 			}
 		}
+		
+		$("#cfts").numberbox({
+				required : true ,
+				editable : false ,
+				onChange : function(newValue, oldValue){
+					var ctsjValue = $("#ctsj").datebox("getValue");
+					var param = {
+						ctsj : ctsjValue,
+						cfts : newValue
+					};
+
+					$.ajax({
+						url : 'fenghuang/getHtsjDate.do' ,
+						data : param ,
+						dateType:'json' ,
+						success : function(date){
+							$("#htsj").datebox('setValue',date[0].htsj);
+						}
+					});
+				}
+			});
+	    
+			$("#ctsj").datebox({
+				required : true ,
+				editable : false ,
+				onChange : function(newValue, oldValue){
+					var cftsValue = $("#cfts").val();
+					var param = {
+						cfts : cftsValue ,
+						ctsj : newValue
+					};
+					
+					$.ajax({
+						url : 'fenghuang/getHtsjDate.do' ,
+						data : param ,
+						dateType:'json' ,
+						success : function(date){
+							console.info(date[0].htsj);
+							$("#htsj").datebox('setValue',date[0].htsj);
+						}
+					});
+				}
+			});
+		
+			
+			function dantuanSave() {
+			$('#addForm').form('submit', {
+				url : 'fenghuang/DantuanAdd.do',
+				onSubmit : function() {
+					return $(this).form('validate');
+				},
+				success : function(result) {
+					var result = eval('(' + result + ')');
+					if (result.success) {
+			
+						$.messager.alert("保存成功", "保存成功！", "info");
+					   // $('#addDt').dialog('close');
+					   var tab = $('#tt').tabs('getSelected');
+					   
+					if (tab){  
+		                   var index = $('#tt').tabs('getTabIndex', tab);  
+		                   $('#tt').tabs('close', index);  
+		                } 
+						$('#tt').tabs('add', {
+							title : "询价列表",
+							href : "DantuanXunjia.do",
+							closable : true
+						});
+					   
+					} else {
+						$.messager.alert("保存失败", "保存失败!", "error");
+					
+					}
+				}
+			});
+		}
+		
 		//模糊查询
 		function dantuanSelectLike(){
 		console.info($('#dg').datagrid('options'));
@@ -502,7 +828,7 @@
 	       $('#tt').tabs('add', {
 				         title : "单团行程详细信息",
 				         href : url,
-				        //closable : true,
+				      //  closable : true,
 				         });
 				        			         
 	
@@ -528,7 +854,9 @@
 				}
 				}
 			
-			
+		function	onOperate(val,row){
+        return '<a href="javascript:void(0)" id="sb1" icon="icon-edit" onclick="">Edit</a>';
+        }	
 			
    function	onOperateDantuanListKehu(val,row){
         return '<a href="javascript:openDanTuanDetailKehu('+row.khId+')">'+row.khId+'</a>';
@@ -542,7 +870,7 @@
 				var param = {
 					"updateTuanNO" : row.tuanNO
 				};
-				
+			
 				$.ajax({
 					url : "fenghuang/DantuanSelectId.do",
 					data : param,
@@ -558,8 +886,16 @@
 				});
 		      }
 		   }		
-		
-			
+		function onRowContextMenu(e, rowIndex, rowData){
+  		 e.preventDefault();
+
+    
+    $('#mm').menu('show', {
+        left:e.pageX,
+        top:e.pageY
+    });       
+}
+	  		
    		
 	//'<a href="DantuanMingxi.do?tuanNO='+row.tuanNO+'">'+row.tuanNO+'</a>';		
 	</script>

@@ -1,5 +1,8 @@
 package com.fenghuang.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import com.fenghuang.entiey.CitySettingDictionary;
 import com.fenghuang.util.Pagination;
 /**
@@ -21,6 +24,8 @@ public interface ICitySettingDictionaryDao {
 	 * @throws Exception
 	 */
 	public boolean saveCitySettingDictionary(CitySettingDictionary citySd) throws Exception;
+	
+	public List<Map<String,Object>> weihuSeleteid(long id) throws Exception;
 	
 	public boolean updateCitySettingDictionary(CitySettingDictionary citySd) throws Exception;
 	

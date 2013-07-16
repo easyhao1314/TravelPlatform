@@ -182,9 +182,10 @@
 			iconCls="icon-add" plain="true">酒店</a><a href="javascript:xingcheng();" class="easyui-linkbutton"
 			iconCls="icon-add" plain="true">活动</a> </td>
 			</tr>
+			<%for(int i=1;i<=10;i++){ %>
 			<tr>
 			<td rolspan="4"><a href="javascript:void(0)" id="mb" class="easyui-menubutton"   
-        data-options="menu:'#mm',iconCls:'icon-edit'"> 第1天</a>  
+        data-options="menu:'#mm',iconCls:'icon-edit'"> 第<%=i%>天</a>  
      <div id="mm" style="width:150px;">  
     <div >前加一天</div>  
     <div >后加一天</div>  
@@ -239,36 +240,35 @@
     <div >中式简餐</div>    
     <div >酒店外自助晚餐</div>    
      </div></td>
-			
+			</tr>
+			<%} %>
 		</table>
 	 </div> 
 	 <div id="caiwu" class="easyui-dialog" title="财务核算"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:700px;height:500px;padding:10px;">
 		<form id="caiwuForm" method="post">
-		<table align="center" border="1">
+		<table id="testTable" align="center" border="1">
 				<tr>
-                    <td>费用核算</td><td>车</td><td>酒店</td>
+                    <td>费用核算</td><td>路费</td><td>餐费</td><td>导游</td><td>司导</td><td>路饮</td><td>门票</td><td>自费节目</td>
                 </tr>
-                	<tr>
-                    <td>第一天：</td><td><input id="c1" type="text" class="easyui-numberbox" ></td><td><input id="j1" type="text" class="easyui-numberbox" ></td>
+                <%for(int i=1;i<=10;i++){ %>
+               <tr>
+                    <td>第<%=i%>天：</td><td><input id="c"+<%=i%> type="text" class="easyui-numberbox" onfocus="testC1(this);" ></td><td><input id="j1" type="text" class="easyui-numberbox" ></td><td>导游</td><td>司导</td><td>路饮</td><td>门票</td><td>自费节目</td>
                 </tr>
-                <tr>
-                    <td>第二天：</td><td><input id="c2" type="text" class="easyui-numberbox" ></td><td><input id="j2" class="easyui-numberbox"  type="text" class="easyui-numberbox" ></td>
-                </tr>
+                <%}%>
+               
                  <tr>
-                    <td>分项总报价：</td><td><input id="c3" name="c3"  type="text" class="easyui-numberbox" ></td><td><input id="j3" type="text" class="easyui-numberbox" ></td>
+                    <td>分项总报价：</td><td><input id="fxzc" name="fxzc"  type="text" class="easyui-numberbox" ></td><td><input id="j3" type="text" class="easyui-numberbox" ></td><td></td><td></td><td></td><td></td><td></td>
                 </tr>
                   <tr>
-                    <td>总报价：</td><td><input id="z1" type="text"  class="easyui-numberbox" ></td><td><input type="text"></td>
+                    <td>总报价：</td><td><input id="zc" type="text"  class="easyui-numberbox" ></td><td><input type="text"></td>
                 </tr>
 			</table>
 			<input id="dicType" name="dicType" type="hidden">
 		</form>
 	</div>
-	
-	
-	 
+
 	 <div class="easyui-panel" title="成本设置"
 		style="height:80px;padding:10px;width:auto;"
 		data-options="closable:false,tools:'#searchpanel'" align="left">
@@ -431,28 +431,37 @@
 			$("#caiwu").dialog("open");
 			$("#caiwuForm").form("clear");
 		}  
+		<%for(int i=1;i<=10;i++){ %>
+		var c="c"+<%=i%>;
+		alert(c);
 		$("#c1").numberbox({
-				required : true ,
-				editable : false ,
+				required : true,
+				editable : false,
 				onChange : function(newValue, oldValue){
 					var c1 = $("#c1").val();
 					var c2 = $("#c2").val();
-					var c12= c1+c2;
-					$("#c3").numberbox('setValue', c1);
-					
+					var c12= (Number(c1))+(Number(c2));
+					$("#fxzc").numberbox('setValue', c12);					
 				}
 			});
-	    $("#c2").numberbox({
+			<%}%>
+	   $("#c2").numberbox({
 				required : true ,
 				editable : false ,
 				onChange : function(newValue, oldValue){
 					var c1 = $("#c1").val();
 					var c2 = $("#c2").val();
 					var c12=(Number(c1))+(Number(c2));
-					$("#c3").numberbox('setValue', c12);
+					$("#fxzc").numberbox('setValue', c12);
 					
 				}
 			});
+			
+			function testC1(input){
+			
+			 var id =  $(input).attr("id");
+
+			}
     </script>
   </body>
 </html>

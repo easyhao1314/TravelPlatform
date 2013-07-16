@@ -1,5 +1,8 @@
 package com.fenghuang.dao.impl;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,6 +55,12 @@ public class CitySettingDictionaryDaoImpl extends BaseDao implements
 	public Pagination<CitySettingDictionary> getPaginationCitySettingDictionarys(
 			int currentPage, int numPerPage, CitySettingDictionary citySd)
 			throws Exception {
+		return null;
+	}
+
+	@Override
+	public List<Map<String, Object>> weihuSeleteid(long id) throws Exception {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

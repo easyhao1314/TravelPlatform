@@ -56,8 +56,7 @@ public class ZyJiudianController {
 			return fromObject;
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
-		
+		}		
 		return null;
 	}
 	  //模糊查询
@@ -93,12 +92,12 @@ public class ZyJiudianController {
 	@RequestMapping("fenghuang/ZiyuanJiudianAdd.do")
 	@ResponseBody
 	public Map<String,Object> jiudianAdd(HttpServletRequest request,HttpServletResponse response,
-		   Long	id,Long chengshi,String name,Long fangjian,String hzjb,String whr,String xjbz,String dianhua,
+		  Long chengshi,String name,Long fangjian,String hzjb,String whr,String xjbz,String dianhua,
 		   String chuanzhen,String email,String guanwang,String dizhi,String pingjia,String tishi,
 		   int danjijia,int wangjijia,String jgsm,String bz){
 		
 		  Jiudian jd=new Jiudian();
-		  jd.setId(id);
+		
 		  jd.setChengshi(chengshi);
 		  jd.setName(name);
 		  jd.setFangjian(fangjian);

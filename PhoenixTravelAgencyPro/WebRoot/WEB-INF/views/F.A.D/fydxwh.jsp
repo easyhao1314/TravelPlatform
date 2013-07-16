@@ -29,51 +29,44 @@
 	<!-- 如果在正式开发环境下 url可以为后台的请求，地址 -->
    <table>
 	    		<tr>
-
-	    			<td>费用项编号:<input class="easyui-validatebox" type="text" name="name" ></input></td>
-	    			<td>付款性质<input class="easyui-validatebox" type="text" name="name" ></input></td>
-	    		   	<td>会计科目代码:<input class="easyui-validatebox" type="text" name="name" ></input></td>
-	    			<td>会计科目名称:<input class="easyui-validatebox" type="text" name="name" ></input></td>
-	    			
+	    			<td>费用项编号:<input class="easyui-validatebox" type="text" id="bianhao" name="bianhao" ></input></td>
+	    			<td>付款性质<input class="easyui-validatebox" type="text" id="xingzhi" name="xingzhi" ></input></td>	    
 	    			<td>
 	    		<div style="padding:5px;border:1px solid #ddd;">
-		<a href="#" class="easyui-linkbutton" data-options="toggle:true,group:'g1'">Button 1</a>
+		         <a href="javascript:dijieSelectLike()" class="easyui-linkbutton" data-options="toggle:true,group:'g1'">查询</a>
 	             </div>
 	    			
-	    		</td>
-	    		</tr>
-	    	
 	    		
 	    	</table>
-	<table>
-	
-	    	
-	    	
-	    	</table>
+
+	    	<div class="easyui-panel" title="大类维护列表"
+		style="height:480px;width: auto;">
 	<table id="dg" class="easyui-datagrid"
-		data-options="url:'',border:false,singleSelect:false,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
-		pagination="true" toolbar="#tb">
+		data-options="url:'fenghuang/caiwuweihu.do',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
+		pagination="true" toolbar="#currencyDatagridtoolbar">
 		<thead>
-			<tr>
-				<th data-options="field:'ck',checkbox:true"></th>	 
-				<th data-options="field:'dicNo',editor:'text'" width="">付款日期</th>
-				<th data-options="field:'dicName',editor:'text'" width="">团号</th>
-				<th data-options="field:'dicDesc',editor:'text'" width="">团队名称</th>
-				<th data-options="field:'dicHelp',editor:'text'" width="">供应商名称</th>
-				<th data-options="field:'dicDesc',editor:'text'" width="">款项</th>
-				<th data-options="field:'08',editor:'text'" width="">金额</th>
-			
-				<th data-options="field:'09',editor:'numberbox'" width="">提交人</th>
-				<th data-options="field:'09',editor:'numberbox'" width="">审批状态</th>
-				<th data-options="field:'09',editor:'numberbox'" width="">财务审核</th>
-				<th data-options="field:'09',editor:'numberbox'" width="">财务确认</th>
-				<th data-options="field:'09',editor:'numberbox'" width="">操作</th>
+			<tr> 
+				<th data-options="field:'bianhao'" width="">编号</th>
+				<th data-options="field:'xingzhi'" width="">付款性质</th>
+				<th data-options="field:'shouzhi'" width="">收支类型</th>
+				<th data-options="field:'shuoming'" width="">费用项说明</th>
+				<th data-options="field:'liucheng'" width="">对应审批流程</th>
+				<th data-options="field:'fulei'" width="">父类</th>
 			
 			</tr>
 		</thead>
 	</table>
+	<div id="currencyDatagridtoolbar">
+		     <a href="javascript:addMianBanMoshi()" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>  
 	
-	<div id="editDic" class="easyui-dialog" title="新增业务字段"
+		
+		     <a href="javascript:werhuSelectId();" class="easyui-linkbutton" iconCls="icon-add" plain="true">修改</a>  
+		
+		
+		     <a href="javascript:shanchu('+row.id+');" class="easyui-linkbutton" iconCls="icon-add" plain="true">删除</a>  
+		
+	</div>
+	<div id="addweihu" class="easyui-dialog" title="新增业务字段"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:500px;height:200px;padding:10px;">
 		<form id="dicFrome" method="post">
@@ -82,153 +75,131 @@
 					<td><div class="fitem">
 							<label>编号:</label>
 					</td>
-					<td><input name="dicNo" class="easyui-validatebox"
-						required="true">
+					<td><input name="bianhao" class="easyui-validatebox"
+						>
 						</div></td>
 					<td><div class="fitem">
 							<label>名称:</label>
 					</td>
-					<td><input name="dicName" class="easyui-validatebox"
-						required="true">
+					<td><input name="xingzhi" class="easyui-validatebox"
+						>
+						</div></td>
+						
+				</tr>
+				
+				<tr>
+					<td><div class="fitem">
+							<label>帮助提示:</label>
+					</td>
+					<td><input name="shouzhi" class="easyui-validatebox">
+						</div></td>
+					<td><div class="fitem">
+							<label>显示顺序:</label>
+					</td>
+					<td><input name="shuoming" class="easyui-numberbox"
+					>
 						</div></td>
 				</tr>
 				<tr>
 					<td><div class="fitem">
 							<label>帮助提示:</label>
 					</td>
-					<td><input name="dicHelp" class="easyui-validatebox">
+					<td><input name="liucheng" class="easyui-validatebox">
 						</div></td>
 					<td><div class="fitem">
 							<label>显示顺序:</label>
 					</td>
-					<td><input name="dicSortNo" class="easyui-numberbox"
-						required="true">
+					<td><input name="fulei" class="easyui-numberbox"
+						>
 						</div></td>
 				</tr>
 				<tr>
 					<td colspan="4s" align="center"><a
-						href="javascript:mainBanMoshiSave();" class="easyui-linkbutton"
-						iconCls="icon-ok">保存</a> <a href="javascript:closeEditDic();"
-						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
+						href="javascript:Saveweihu()" class="easyui-linkbutton"
+						iconCls="icon-ok">保存</a> 
+                      <a href="javascript:void(0)" class="easyui-linkbutton"
+							iconCls="icon-undo" onclick="$('#dicFrome').form('clear')">重置</a></td> 
 				</tr>
 			</table>
 			<input id="dicType" name="dicType" type="hidden">
 		</form>
 	</div>
-	<div id="searchDic" class="easyui-dialog" title="查询业务字段"
+	
+	
+	
+	<div id="xiugai" class="easyui-dialog" title="修改"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:500px;height:200px;padding:10px;">
-		<form id="searchForm" action="">
+		<form id="weihuxiugai" method="post">
 			<table align="left">
 				<tr>
-					<td><div class="fitem">
+					<td>
+					<input id="id" name="id" class="easyui-validatebox" hidden="true">
+					<div class="fitem">
 							<label>编号:</label>
 					</td>
-					<td><input id="searchDicNo" name="dicNo"
-						class="easyui-validatebox">
+					<td><input name="bianhao" class="easyui-validatebox">
 						</div></td>
 					<td><div class="fitem">
 							<label>名称:</label>
 					</td>
-					<td><input id="searchDicName" name="dicName"
-						class="easyui-validatebox">
+					<td><input name="xingzhi" class="easyui-validatebox"
+						>
+						</div></td>
+						
+				</tr>
+				
+				<tr>
+					<td><div class="fitem">
+							<label>帮助提示:</label>
+					</td>
+					<td><input name="shouzhi" class="easyui-validatebox">
+						</div></td>
+					<td><div class="fitem">
+							<label>显示顺序:</label>
+					</td>
+					<td><input name="shuoming" class="easyui-numberbox"
+					>
 						</div></td>
 				</tr>
 				<tr>
 					<td><div class="fitem">
 							<label>帮助提示:</label>
 					</td>
-					<td><input id="searchDicHelp" name="dicHelp"
-						class="easyui-validatebox">
+					<td><input name="liucheng" class="easyui-validatebox">
 						</div></td>
 					<td><div class="fitem">
 							<label>显示顺序:</label>
 					</td>
-					<td><input id="searchDicSortNo" name="dicSortNo"
-						class="easyui-numberbox">
+					<td><input name="fulei" class="easyui-numberbox"
+						>
 						</div></td>
 				</tr>
 				<tr>
 					<td colspan="4s" align="center"><a
-						href="javascript:searchFormSubmit();" class="easyui-linkbutton"
-						iconCls="icon-ok">查询</a> <a href="javascript:closedSearch();"
-						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
+						href="javascript:caiwuxiugai()" class="easyui-linkbutton"
+						iconCls="icon-ok">保存</a> 
+						<a href="javascript:void(0)" class="easyui-linkbutton"
+							iconCls="icon-undo" onclick="$('#weihuxiugai').form('clear')">重置</a></td>
 				</tr>
 			</table>
-			<input id="searchDicType" name="dicType" type="hidden">
+			<input id="dicType" name="dicType" type="hidden">
 		</form>
 	</div>
+	
 	<script type="text/javascript">
-		var editIndex = undefined;
-		function endEditing() {
-			if (editIndex == undefined) {
-				return true
-			}
-			if ($('#dg').datagrid('validateRow', editIndex)) {
-				$('#dg').datagrid('endEdit', editIndex);
-				$('#dg').datagrid('unselectRow', editIndex);
-				editIndex = undefined;
-				return true;
-			} else {
-				return false;
-			}
-		}
-		function addHangMoshi() {
-			$("#dg").datagrid("insertRow", {
-				index : 0,
-				row : {
-					dicType : '${param.dicType}'
-				}
-			});
-			editIndex = undefined;
-		}
-		function onClickRow(index) {
-			if (editIndex != index) {
-				if (endEditing()) {
-					$('#dg').datagrid('selectRow', index).datagrid('beginEdit',
-							index);
-					editIndex = index;
-				} else {
-					$('#dg').datagrid('selectRow', editIndex);
-				}
-			}
-		}
-		function getChanges() {
-			$('#dg').datagrid('endEdit', editIndex);
-			var rows = $("#dg").datagrid("getChanges");
-			if (rows.length > 0) {
-				var param = {
-					"updateRows" : $.toJSON(rows)
-				};
-				$.ajax({
-					url : "fenghuang/updateDic.do",
-					data : param,
-					dataType : "json",
-					success : function(data) {
-						if (data.success) {
-							$.messager.alert("保存成功", "保存成功！", "info");
-							$("#dg").datagrid('reload');
-							editIndex = undefined;
-						} else {
-							$.messager.alert("保存失败", "保存失败!", "error");
-						}
-					},
-					error : function() {
-						$.messager.alert("保存失败", "服务器请求失败!", "error");
-					}
-				});
-			}
-
-		}
-
+	
+//添加	
 		function addMianBanMoshi() {
-			$("#editDic").dialog("open");
+			$("#addweihu").dialog("open");
 			$("#dicFrome").form("clear");
 		}
-
-		function mainBanMoshiSave() {
+        function closeEditDic() {
+			$("#addweihu").dialog("close");
+		} 
+		function Saveweihu() {
 			$('#dicFrome').form('submit', {
-				url : 'fenghuang/saveDic.do?dicType=${param.dicType}',
+				url : 'fenghuang/weihutianjia.do',
 				onSubmit : function() {
 					return $(this).form('validate');
 				},
@@ -236,7 +207,7 @@
 					var result = eval('(' + result + ')');
 					if (result.success) {
 						$.messager.alert("保存成功", "保存成功！", "info");
-						$('#editDic').dialog('close');
+						$('#addweihu').dialog('close');
 						$('#dg').datagrid('reload');
 					} else {
 						$.messager.alert("保存失败", "保存失败!", "error");
@@ -245,15 +216,16 @@
 				}
 			});
 		}
-
+//删除
 		function shanchu() {
-			var rows = $("#dg").datagrid("getSelections");
-			if (rows.length > 0) {
+		var row = $("#dg").datagrid("getSelected");
+			if (row) {
 				var param = {
-					"deleteRows" : $.toJSON(rows)
+					"id" :  row.id
 				};
+
 				$.ajax({
-					url : "fenghuang/deleteDics.do",
+					url : "fenghuang/deleteweihu.do?",
 					data : param,
 					dataType : "json",
 					success : function(data) {
@@ -270,29 +242,82 @@
 				});
 			}
 		}
-		function closeEditDic() {
-			$('#editDic').dialog('close');
-		} 
 
-		//
-		function searchDiJi() {
-			$("#searchDic").dialog("open");
-			$("#searchForm").form("clear");
+	
+//模糊查询
+		function dijieSelectLike(){
+		console.info($('#dg').datagrid('options'));
+		var opts = $('#dg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
+			var param = {
+				bianhao: $("#bianhao").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
+				xingzhi: $("#xingzhi").val() ,
+				
+				page:  opts.pageNumber ,
+				rows:  opts.pageSize
+			};
+		console.info(param);
+				$.ajax({
+					url : 'fenghuang/caiwuweihu.do' ,
+					data :  param,
+					type : 'POST' ,
+					dataType : 'json' ,
+					success : function(data){
+						$('#dg').datagrid('loadData',data);
+					}
+				});
 		}
-		function searchFormSubmit() {
-			$("#searchDic").dialog("close");
-			$("#dg").datagrid("load", {
-				dicNo : $("#searchDicNo").val(),
-				dicName : $("#searchDicName").val(),
-				dicHelp : $("#searchDicHelp").val(),
-				dicSortNo : $("#searchDicSortNo").val()
+		//按id查询
+		function werhuSelectId(id) {
+          //通过主键，查询该操作，并处于编辑状态。 是否打开tab，还是直接弹出window 
+			$("#xiugai").dialog("open");
+			//准备回显的数据
+			var row = $("#dg").datagrid("getSelected");
+			//alert(row.id);
+		
+			if(row){
+				var param = {
+					"id" : row.id
+				};
+				
+				$.ajax({
+					url : "fenghuang/caiwuweihu.do",
+					data : param,
+					dataType : "json",
+					success : function(data) {
+		
+					   $('#weihuxiugai').form('load',data.rows[0]);
+				
+					},
+					error : function() {
+						$.messager.alert("查询失败", "服务器请求失败!", "error");
+					}
+				});
+		}
+		}
+		 //修改
+		function caiwuxiugai() {
+			$("#weihuxiugai").form('submit', {
+				url : 'fenghuang/weihuxiugai.do',
+				onSubmit : function() {
+					return $(this).form('validate');
+				},
+				success : function(data) {//data 是一个字符串  $.ajax(success:function(data):是一个对象)
+					console.info(data);
+					//var result = val('(' + data + ')');//吧字符串转换为对象
+					var result = $.parseJSON(data) ;
+
+					if (result.success) {
+					  $("#xiugai").dialog('close');
+						$.messager.alert("修改成功", "修改成功！", "info"); 
+						$("#dg").datagrid('reload');
+					} else {
+						$.messager.alert("修改失败", "修改失败!", "error");
+						$("#dg").datagrid('reload');
+					}
+				}
 			});
-
 		}
-
-		function closedSearch() {
-			$('#searchDic').dialog('close');
-		}
+		
 	</script>
 </body>
 </html>

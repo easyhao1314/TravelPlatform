@@ -148,7 +148,7 @@
 				<ul>
 
 				</ul></li>
-			<li iconCls="icon-base"><span>行程库维护</span>
+			<li iconCls="icon-base"  state="closed"><span>行程库维护</span>
 				<ul>
 					<li iconCls="icon-gears"><a
 						href="javascript:open1('日行程库维护','Xingcheng_ri.do');">日行程库维护</a>
@@ -263,7 +263,7 @@
 			      </li>
 			   </ul>
 			</li>
-			<li iconCls="icon-base"><span>资源中心 </span>
+			<li iconCls="icon-base"  state="closed"><span>资源中心 </span>
 				<ul>
 					<li iconCls="icon-gears"><a
 						href="javascript:open1('酒店供应商','ZiyuanJiudian.do?dicType=1');">酒店供应商</a></li>
@@ -306,7 +306,7 @@
 				</ul>
 			</li>
 			<!--陈家海的配置 -->
-		<li iconCls="icon-base"><span>操作中心</span>
+		<li iconCls="icon-base"  state="closed"><span>操作中心</span>
 				<ul>
 					<li iconCls="icon-gears">
 					<a href="javascript:open1('操作团队查询','operTeamQuery.do');">操作团队查询</a></li>
@@ -332,7 +332,7 @@
 			      </li>
 			   </ul>
 		</li>
-		<li iconCls="icon-base"><span>客户中心</span>
+		<li iconCls="icon-base"  state="closed"><span>客户中心</span>
 			    <ul>
 			      <li iconCls="icon-gears">
 			        <a href="javascript:open1('客户信息列表','customerInfoList.do');">客户信息列表</a>
