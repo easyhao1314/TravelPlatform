@@ -33,12 +33,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			iconCls="icon-save" plain="true">查询</a>
 	</div>
 <table id="dg" class="easyui-datagrid"
-		data-options="url:'fenghuang/Sanpinliebiao.do?Reviewstatus=1',border:false,singleSelect:false,fit:true,fitColumns:true, onClickRow: onClickRow"
+		data-options="url:'fenghuang/Sanpinliebiao.do?fabustate=1',border:false,singleSelect:true,fit:true,fitColumns:true"
 		pagination="true" toolbar="#tb">
 		<thead>
 			<tr>
-				<th data-options="field:'tuanNo'" width="50">团号</th>
-				<th data-options="field:'tuanName'" width="50">团名/路线</th>
+				<th data-options="field:'tuanNo',formatter:onOperateSanpinList1" width="50">团号</th>
+				<th data-options="field:'tuanName',formatter:onOperateSanpinList" width="50">团名/路线</th>
 				<th data-options="field:'groupdate'" width="50">出团日期</th>
 				<th data-options="field:'Tourdate'" width="50">回团日期</th>
 				<th data-options="field:'targetpopulation'" width="50">出发城市</th>
@@ -99,16 +99,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		
 	</div>
-		<div id="mm1" style="width:150px;">
-		<div iconCls="icon-undo">Undo</div>
-		<div iconCls="icon-redo">Redo</div>
-		<div class="menu-sep"></div>
-		<div>Cut</div>
-		<div>Copy</div>
-		<div>Paste</div>
-		<div class="menu-sep"></div>
-		<div iconCls="icon-remove">Delete</div>
-		<div>Select All</div>
+		<div id="mm" class="easyui-menu" style="width:120px;">
+    <div onClick="view(this)" data-options="iconCls:'icon-search'">查看</div>
+    <div onClick="add()" data-options="iconCls:'icon-add'">新增</div>
+    <div onClick="edit()" data-options="iconCls:'icon-edit'">编辑</div>
+    <div onClick="del()" data-options="iconCls:'icon-remove'">删除</div>
+    <div class="menu-sep"></div>
+    <div onClick="print()" data-options="iconCls:'icon-print'">打印</div>
+    <div onClick="reload()" data-options="iconCls:'icon-reload'">刷新</div>
+		</div>
+		
+		
+		
+		
+		
+	<div id="mmtest" class="easyui-menu" style="width:120px;">
+		<input id="hideinput" style="display: none;" />
+		<div data-options="iconCls:'icon-search'" onClick="upfabustate()">取消发布状态</div>
+		<div onClick="testView(2)">查看2</div>
+		<div onClick="testView(3)">查看3</div>
+		<div onClick="testView(4)">查看4</div>
+		<div onClick="testView(5)">查看5</div>
 	</div>
 	<script type="text/javascript">
 		function Select() {
@@ -118,17 +129,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		function closedSearch() {
 			$('#searchDic').dialog('close');
 		}
-		function onClickRow(index) {
-			if (editIndex != index) {
-				if (endEditing()) {
-					$('#dg').datagrid('selectRow', index).datagrid('beginEdit',
-							index);
-					editIndex = index;
-				} else {
-					$('#dg').datagrid('selectRow', editIndex);
-				}
-			}
-		}
+	
 		function searchFormSubmit() {
 			$("#searchDic").dialog("close");
 			$("#dg").datagrid("load", {
@@ -139,10 +140,89 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			});
 
 		}
+		 function	onOperateSanpinList(val,row){
+      return '<a href="javascript:openSanpinDetail('+row.tuanNo+')">'+row.tuanName+'</a>';
+   
+   }
+   function openSanpinDetail(tuanNo){  	
+      var url= "Sanpin_mingxi.do?tuanNo="+tuanNo;
+      
+       var tab = $('#tt').tabs('getSelected'); 
+		if (tab){  
+	                 var index = $('#tt').tabs('getTabIndex', tab); 
+	                 $('#tt').tabs('close', index);  
+	       } 
+	       
+	       $('#tt').tabs('add', {
+				         title : "散拼详细信息",
+				         href : url,
+				      //  closable : true,
+				         });
+				         
+				/*         
+				$.ajax({
+					url : "fenghuang/Sanpinliebiao.do?tuanNo="+tuanNo,
+					data : tuanNo,
+					dataType : "json",
+					success : function(data) {
+					$('#mingxiForm').form('load',{"tuanNo":data.rows[0].tuanNo});
+					//$('#mingxiForm').form('load',data.rows[0]);
+					//alert(data.rows[0].tuanNo);
+					
+					   //$('#mingxiForm').form('load',rows[0]);
+
+					},
+					error : function() {
+						$.messager.alert("查询失败", "服务器请求失败!", "error");
+					}
+				});*/
+		   }		
+		   
+		   
+		   function onOperateSanpinList1(val,row){
+		     return '<span onclick="testOnclick(event,'+row.tuanNo+')" style="width: 20px">'+row.tuanNo+'</span>';
+		   }
+   	      function testOnclick(e,tuan){
+   	      $('#hideinput').attr('value',tuan);
+   	         $('#mmtest').menu('show', {
+				left : e.pageX,
+				top : e.pageY
+			});   
+   	      }
+   	      function upfabustate(){
+   	  	var tuanNo=$('#hideinput').val();
+         var  url = "fenghuang/upsanpin.do?tuanNo="+tuanNo+"&fabustate="+2;
+           $.ajax({
+					url :url,
+					data : tuanNo,
+					dataType : "json",
+					success : function(data) {
+					$("#dg").datagrid("reload");
+					},
+					error : function() {
+						$.messager.alert("查询失败", "服务器请求失败!", "error");
+					}
+				});
+   	      }
+   	      
+   	      /* 
+   	      //右键菜单
+   	     function onRowContextMenu(e, rowIndex, rowData){
+   e.preventDefault();
+	
+    
+    $('#mm').menu('show', {
+        left:e.pageX,
+        top:e.pageY
+    });       
+		}
+		function view(index){
+			var row = $("#dg").datagrid("getSelected");
+			alert(row.tuanNo);
+		}
+	*/
 	</script>
-  
-  
-  
+ 
   
   
 	

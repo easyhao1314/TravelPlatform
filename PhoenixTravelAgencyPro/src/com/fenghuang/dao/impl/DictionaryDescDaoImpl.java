@@ -171,7 +171,7 @@ public class DictionaryDescDaoImpl extends BaseDao implements
 	@Override
 	public List<Map<String, Object>> getDictionaryComboboxs(String dicType)
 			throws Exception {
-		String sql = "SELECT dicId, dicName FROM dictionarydesc  where dicType=?";
+		String sql = "SELECT dicNo, dicName FROM dictionarydesc  where dicType=?";
 		List<Map<String,Object>>  dics =this.queryForList(sql,dicType);
 		return dics;
 	}

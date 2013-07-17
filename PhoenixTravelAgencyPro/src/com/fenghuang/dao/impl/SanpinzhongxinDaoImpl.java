@@ -1,5 +1,8 @@
 package com.fenghuang.dao.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,7 +76,7 @@ public class SanpinzhongxinDaoImpl extends BaseDao implements ISanpinzhongxinDao
 	public Pagination<Sanpinzhongxin> getByQueryConditionPagination(
 			int currentPage, int numPerPage,Sanpinzhongxin s) throws Exception {
 		// TODO Auto-generated method stub 
-		String sql = "select tuanNo,tuanName,groupdate,Tourdate,targetpopulation,tonghang,zhikejia,numbermaster,productbrand from sanpinzhongxin where 1=1";
+		String sql = "select * from sanpinzhongxin where 1=1";
 		StringBuffer sb = new StringBuffer(sql);
 		if(s.getTuanName()!=null && !"".equals(s.getTuanName())){
 			sb.append(" and tuanName LIKE '%"+s.getTuanName()+"%'");
@@ -89,8 +92,39 @@ public class SanpinzhongxinDaoImpl extends BaseDao implements ISanpinzhongxinDao
 		if(s.getProductbrand()!=0 && !"".equals(s.getProductbrand())){
 			sb.append(" and productbrand = '"+s.getProductbrand()+"'");
 		}
-		
+		if(s.getTuanNo()!=null && !"".equals(s.getTuanNo())){
+			sb.append(" and tuanNo = '"+s.getTuanNo()+"'");
+		}
+		//发布状态为必填
+		if(s.getFabustate()!=0){
+		sb.append(" and fabustate = '"+s.getFabustate()+"'");
+		}
 		return this.getPagination(currentPage, numPerPage, sb.toString());
+	}
+	
+	
+	@Override
+	public boolean upSanpinzhongxin(Sanpinzhongxin sanpin) throws Exception {
+		// TODO Auto-generated method stub
+		String sql = "UPDATE sanpinzhongxin SET fabustate=fabustate+1-1";
+		StringBuffer sb = new StringBuffer(sql);
+		List list = new ArrayList();
+		
+		
+		if(sanpin.getFabustate()!=0){
+			sb.append(",fabustate=?");
+			list.add(sanpin.getFabustate());
+		}
+		if(sanpin.tuanNo!=null && !"".equals(sanpin.getTuanNo())){
+			sb.append(" where tuanNo=?");
+			list.add(sanpin.getTuanNo());
+		}
+		int num = this.update(sb.toString(),list.toArray());
+		
+		
+		
+		
+		return num>0;
 	}
 
 }
