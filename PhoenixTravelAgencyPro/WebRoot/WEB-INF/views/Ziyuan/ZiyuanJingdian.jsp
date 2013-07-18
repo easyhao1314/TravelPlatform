@@ -46,10 +46,8 @@
 				<td><div class="fitem">
 						<label>价格:</label>
 				</td>
-				<td><input id="jiage" name="jiage" class="easyui-validatebox">
-					</div>
-				</td>
-				<td>
+				<td><input id="jiage" name="jiage" class="easyui-numberspinner" min="1" max="999999" style="width:133px;"></div></td>
+				
 					<a href="javascript:jingdianSelectLike();" 
 								class="easyui-linkbutton" iconCls="icon-ok">查询</a>
 						<a href="javascript:void(0)" class="easyui-linkbutton"
@@ -62,7 +60,7 @@
 		<div class="easyui-panel" title="景点列表"
 		style="height:480px;width: auto;">
 		<table id="dg" class="easyui-datagrid"
-			data-options="url:'fenghuang/JingdianSelect.do',border:false,singleSelect:false,fit:true,fitColumns:true,pageSize:20"
+			data-options="url:'fenghuang/JingdianSelect.do',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 			pagination="true" toolbar="#currencyDatagridtoolbar">
 			<thead>
 				<tr>
@@ -74,12 +72,14 @@
 					<th data-options="field:'jiage'" width="80">门票价格</th>
 					<th data-options="field:'bizongId'" width="80">币种</th>
 					<th data-options="field:'dcmr'" width="80">是否订车默认景点</th>
-					<th data-options="field:'8',formatter:onOperateStyle" width="80">操作</th>
+					
 				</tr>
 			</thead>
 		</table>
 		<div id="currencyDatagridtoolbar">
 		     <a href="javascript:addJingdian();" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>  
+		     <a href="javascript:jingdianSelectId();" class="easyui-linkbutton" iconCls="icon-save"  plain="true">修改</a>
+		     <a href="javascript:jingdianDelete();" class="easyui-linkbutton" iconCls="icon-cut" plain="true">删除</a>
 		</div>
 	</div>
 <div id="addJingdian" class="easyui-dialog" title="景点新增"
@@ -88,44 +88,58 @@
 		<form id="addForm" method="post">
 			<table align="center">
 				<tr>
-<td><div class="fitem"><label>景点编号:</label></td><td><input name="id" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>景点名称:</label></td><td><input name="name" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>景点英文名称:</label></td><td><input name="name2" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>景点编号:</label></td><td>--系统自动生成--</div></td>
+<td><div class="fitem"><label>景点名称:</label></td><td><input name="name" class="easyui-validatebox" ></div></td>
+<td><div class="fitem"><label>景点英文名称:</label></td><td><input name="name2" class="easyui-validatebox" ></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>所属城市：</label></td><td><input name="chengsiId" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>门票价格：</label></td><td><input name="jiage" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>币种:</label></td><td><input name="bizongId" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>所属城市：</label></td><td><input name="chengsiId" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=8',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false "></div></td>
+<td><div class="fitem"><label>门票价格：</label></td><td><input name="jiage" class="easyui-numberspinner" min="1" max="999999" style="width:133px;"></div></td>
+<td><div class="fitem"><label>币种:</label></td><td><input name="bizongId" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=5',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false "></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>开放时间起：</label></td><td><input name="kftimeqi" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>开放时间止：</label></td><td><input name="kftimezhi" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>时间可变否:</label></td><td><input name="timekb" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>开放时间起：</label></td><td><input name="kftimeqi" class="easyui-validatebox" ></div></td>
+<td><div class="fitem"><label>开放时间止：</label></td><td><input name="kftimezhi" class="easyui-validatebox" ></div></td>
+<td><div class="fitem"><label>时间可变否:</label></td><td><input name="timekb" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=9',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false "></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>联系人：</label></td><td><input name="lianxiren" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>电话：</label></td><td><input name="dianhua" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>传真:</label></td><td><input name="chuanzhen" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>联系人：</label></td><td><input name="lianxiren" class="easyui-validatebox" ></div></td>
+<td><div class="fitem"><label>电话：</label></td><td><input name="dianhua" class="easyui-validatebox" ></div></td>
+<td><div class="fitem"><label>传真:</label></td><td><input name="chuanzhen" class="easyui-validatebox" ></div></td>
 </tr>
 <tr>
 <td><div class="fitem"><label>邮箱：</label></td><td><input name="email" class="easyui-validatebox" ></div></td>
-<td><div class="fitem"><label>是否订车默认景点：</label></td><td><input name="dcmr" class="easyui-validatebox" ></div></td>
+<td><div class="fitem"><label>是否订车默认景点：</label></td><td><input name="dcmr" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=9',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false "></div></td>
 <td></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>地址：</label></td><td><input name="dizhi" class="easyui-validatebox" ></div></td>
-<td></td><td></td>
+<td><div class="fitem"><label>地址：</label></td><td colspan="5"><input name="dizhi" class="easyui-validatebox" ></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>英文地址：</label></td><td><input name="ywdz" class="easyui-validatebox" ></div></td>
-<td></td><td></td>
+<td><div class="fitem"><label>英文地址：</label></td><td colspan="5"><input name="ywdz" class="easyui-validatebox" ></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>景点描述：</label></td><td><input name="jdms" class="easyui-validatebox" ></div></td>
-<td></td><td></td>
+<td><div class="fitem"><label>景点描述：</label></td><td colspan="5"><input name="jdms" class="easyui-validatebox" ></div></td>
 </tr>
 <tr>
-<tr><td colspan="4s" align="center"><a href="javascript:SaveJingdian();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> <input  type="reset" value="重置"></td>
+<tr><td colspan="6" align="center"><a href="javascript:SaveJingdian();" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
+<a class="easyui-linkbutton" iconCls="icon-undo" onclick="$('#addForm').form('clear')">重置</a></td>
 </tr>
 			</table>
 			<input id="dicType" name="dicType" type="hidden">
@@ -138,44 +152,58 @@
 		<form id="updateForm" method="post">
 			<table align="center">
 				<tr>
-<td><div class="fitem"><label>景点编号:</label></td><td><input name="id" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>景点名称:</label></td><td><input name="name" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>景点英文名称:</label></td><td><input name="name2" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>景点编号:</label></td><td><input name="id"  class="easyui-validatebox" readonly="true" style="width:40px;">--不可修改</div></td>
+<td><div class="fitem"><label>景点名称:</label></td><td><input name="name" class="easyui-validatebox" ></div></td>
+<td><div class="fitem"><label>景点英文名称:</label></td><td><input name="name2" class="easyui-validatebox" ></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>所属城市：</label></td><td><input name="chengsiId" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>门票价格：</label></td><td><input name="jiage" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>币种:</label></td><td><input name="bizongId" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>所属城市：</label></td><td><input name="chengsiId" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=8',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false "></div></td>
+<td><div class="fitem"><label>门票价格：</label></td><td><input name="jiage" class="easyui-numberspinner" min="1" max="999999" style="width:133px;"></div></td>
+<td><div class="fitem"><label>币种:</label></td><td><input name="bizongId" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=5',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false "></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>开放时间起：</label></td><td><input name="kftimeqi" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>开放时间止：</label></td><td><input name="kftimezhi" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>时间可变否:</label></td><td><input name="timekb" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>开放时间起：</label></td><td><input name="kftimeqi" class="easyui-validatebox" ></div></td>
+<td><div class="fitem"><label>开放时间止：</label></td><td><input name="kftimezhi" class="easyui-validatebox" ></div></td>
+<td><div class="fitem"><label>时间可变否:</label></td><td><input name="timekb" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=9',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false "></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>联系人：</label></td><td><input name="lianxiren" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>电话：</label></td><td><input name="dianhua" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>传真:</label></td><td><input name="chuanzhen" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>联系人：</label></td><td><input name="lianxiren" class="easyui-validatebox" ></div></td>
+<td><div class="fitem"><label>电话：</label></td><td><input name="dianhua" class="easyui-validatebox" ></div></td>
+<td><div class="fitem"><label>传真:</label></td><td><input name="chuanzhen" class="easyui-validatebox" ></div></td>
 </tr>
 <tr>
 <td><div class="fitem"><label>邮箱：</label></td><td><input name="email" class="easyui-validatebox" ></div></td>
-<td><div class="fitem"><label>是否订车默认景点：</label></td><td><input name="dcmr" class="easyui-validatebox" ></div></td>
+<td><div class="fitem"><label>是否订车默认景点：</label></td><td><input name="dcmr" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=9',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false "></div></td>
 <td></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>地址：</label></td><td><input name="dizhi" class="easyui-validatebox" ></div></td>
-<td></td><td></td>
+<td><div class="fitem"><label>地址：</label></td><td colspan="5"><input name="dizhi" class="easyui-validatebox"  size="80"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>英文地址：</label></td><td><input name="ywdz" class="easyui-validatebox" ></div></td>
-<td></td><td></td>
+<td><div class="fitem"><label>英文地址：</label></td><td colspan="5"><input name="ywdz" class="easyui-validatebox"  size="80"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>景点描述：</label></td><td><input name="jdms" class="easyui-validatebox" ></div></td>
-<td></td><td></td>
+<td><div class="fitem"><label>景点描述：</label></td><td colspan="5"><input name="jdms" class="easyui-validatebox"  size="80"></div></td>
 </tr>
 <tr>
-<tr><td colspan="4s" align="center"><a href="javascript:jingdianUpdate();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> <input  type="reset" value="重置"></td>
+<tr><td colspan="6" align="center"><a href="javascript:jingdianUpdate();" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
+<a class="easyui-linkbutton" iconCls="icon-undo" onclick="$('#updateForm').form('clear')">重置</a></td>
 </tr>
 			</table>
 			<input id="dicType" name="dicType" type="hidden">
@@ -183,12 +211,7 @@
 	</div>
 
 	<script type="text/javascript">
-    //这个方法是格式化操作列的函数
-    function onOperateStyle(val,row){
-       var returnStyleValue='<img alt="修改" src="js/themes/icons/pencil.png" onclick="jingdianSelectId('+row.id+');">';
-       returnStyleValue+='<img alt="删除" src="js/themes/icons/cancel.png" onclick="jingdianDelete('+row.id+');">';
-       return returnStyleValue;
-    }
+   
     //这个方法是格式化是否可用列的，0：为不使用，1：为使用
 	function onIsUesStyle(val,row){
 	  if(val =='1'){
@@ -262,6 +285,7 @@
 				var param = {
 					"id" :  row.id
 				};
+			 if (confirm("确认要删除名称为 “ "+row.name+" ”的供应商吗？")) {
 				$.ajax({
 					url : "fenghuang/jingdianDelete.do",
 					data : param,
@@ -278,6 +302,7 @@
 						$.messager.alert("删除失败", "服务器请求失败!", "error");
 					}
 				});
+				}
 			}
 	}
 	//按id查询

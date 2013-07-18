@@ -27,15 +27,15 @@ public class ZyJiudainDaoImpl extends BaseDao implements IZyJiudian{
 	public Pagination<Jiudian> jiudianSelect(int currentPage, int numPerPage)
 			throws Exception {
 		// 查询
-		String sql="select * from jiudian";
+		String sql="SELECT j.id,j.chengshi,j.name,j.fangjian,j.hzjb,j.whr,j.xjbz,j.dianhua,j.chuanzhen,j.email,j.guanwang,j.dizhi,j.pingjia,j.tishi,j.danjijia,j.wangjijia,j.jgsm,j.bz,dd.dicName as chengshiName,dd1.dicName as hezuojibie,dd2.dicName as xingjibaozhun FROM jiudian as j,dictionarydesc as dd,dictionarydesc as dd1,dictionarydesc as dd2 where j.chengshi = dd.dicno and j.hzjb= dd1.dicno and j.xjbz = dd2.dicno";
 		return this.getPagination(currentPage, numPerPage, sql);
 	}
 
 	@Override
 	public int jiudianAdd(Jiudian jd) {
 		// 添加
-		String sql="insert into jiudian(id,chengshi,name,fangjian,hzjb,whr,xjbz,dianhua,chuanzhen,email,guanwang,dizhi,pingjia,tishi,danjijia,wangjijia,jgsm,bz) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-		int count=this.update(sql,jd.getId(),jd.getChengshi(),jd.getName(),jd.getFangjian(),jd.getHzjb(),jd.getWhr(),jd.getXjbz(),jd.getDanjijia(),jd.getChuanzhen(),jd.getEmail(),jd.getGuanwang(),jd.getDizhi(),
+		String sql="insert into jiudian(chengshi,name,fangjian,hzjb,whr,xjbz,dianhua,chuanzhen,email,guanwang,dizhi,pingjia,tishi,danjijia,wangjijia,jgsm,bz) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		int count=this.update(sql,jd.getChengshi(),jd.getName(),jd.getFangjian(),jd.getHzjb(),jd.getWhr(),jd.getXjbz(),jd.getDanjijia(),jd.getChuanzhen(),jd.getEmail(),jd.getGuanwang(),jd.getDizhi(),
                 jd.getPingjia(),jd.getTishi(),jd.getDanjijia(),jd.getWangjijia(),jd.getJgsm(),jd.getBz());
 		return count;
 	}
@@ -69,7 +69,7 @@ public class ZyJiudainDaoImpl extends BaseDao implements IZyJiudian{
 	public Pagination<Jiudian> jiudianSelectLike(int currentPage, int numPerPage,String name,String chengshi,String weihuren)
 			throws Exception {
 		// 模糊查询
-		StringBuffer sql=new StringBuffer("select * from jiudian where 1=1 ");
+		StringBuffer sql=new StringBuffer("SELECT j.id,j.name,j.fangjian,j.whr,j.dianhua,j.chuanzhen,j.email,j.guanwang,j.dizhi,j.pingjia,j.tishi,j.danjijia,j.wangjijia,j.jgsm,j.bz,dd.dicName as chengshiName,dd1.dicName as hezuojibie,dd2.dicName as xingjibaozhun FROM jiudian as j,dictionarydesc as dd,dictionarydesc as dd1,dictionarydesc as dd2 where j.chengshi = dd.dicno and j.hzjb= dd1.dicno and j.xjbz = dd2.dicno and 1=1 ");
 		if(chengshi != null && !"".equals(chengshi)){
 			sql.append(" and chengshi = '");
 			sql.append(chengshi);

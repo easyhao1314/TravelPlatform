@@ -47,8 +47,8 @@ public class ZyDaoyouDaoImpl extends BaseDao implements IZyDaoyouDao{
 	@Override
 	public boolean daoyouAdd(Daoyou dy) throws Exception {
 		// TODO Auto-generated method stub
-		String sql="insert into daoyou(id,guojiaId,name,name2,name3,zjlx,zjhm,chengshiId,dinhua,lxfs1,lxfs2,lxfs3,email,shouji,fax,dyfy,hzjbId,bz) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-		int count=this.update(sql,dy.getId(),dy.getGuojiaId(),dy.getName(),dy.getName2(),dy.getName3(),dy.getZjlx(),dy.getZjhm(),dy.getChengshiId(),dy.getDinhua(), dy.getLxfs1(),dy.getLxfs2(),dy.getLxfs3(),
+		String sql="insert into daoyou(guojiaId,name,name2,name3,zjlx,zjhm,chengshiId,dinhua,lxfs1,lxfs2,lxfs3,email,shouji,fax,dyfy,hzjbId,bz) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		int count=this.update(sql,dy.getGuojiaId(),dy.getName(),dy.getName2(),dy.getName3(),dy.getZjlx(),dy.getZjhm(),dy.getChengshiId(),dy.getDinhua(), dy.getLxfs1(),dy.getLxfs2(),dy.getLxfs3(),
 				              dy.getEmail(),dy.getShouji(),dy.getFax(),dy.getDyfy(),dy.getHzjbId(),dy.getBz());
 		return count>0;
 	}

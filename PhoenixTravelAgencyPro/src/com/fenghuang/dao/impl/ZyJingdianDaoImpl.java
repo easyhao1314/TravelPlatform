@@ -46,8 +46,8 @@ public class ZyJingdianDaoImpl extends BaseDao implements IZyJingdianDao{
 	@Override
 	public boolean jingdianAdd(Jingdian jd) throws Exception {
 		// TODO Auto-generated method stub
-		String sql="insert into jingdian(id,name,name2,chengsiId,jiage,bizongId,kftimeqi,kftimezhi,timekb,lianxiren,dianhua,chuanzhen,email,dcmr,dizhi,ywdz,jdms) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-		int count=this.update(sql,jd.getId(),jd.getName(),jd.getName2(),jd.getChengsiId(),jd.getJiage(),jd.getBizongId(),jd.getKftimeqi(),jd.getKftimezhi(),jd.getTimekb(),jd.getLianxiren(),jd.getDianhua(),
+		String sql="insert into jingdian(name,name2,chengsiId,jiage,bizongId,kftimeqi,kftimezhi,timekb,lianxiren,dianhua,chuanzhen,email,dcmr,dizhi,ywdz,jdms) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		int count=this.update(sql,jd.getName(),jd.getName2(),jd.getChengsiId(),jd.getJiage(),jd.getBizongId(),jd.getKftimeqi(),jd.getKftimezhi(),jd.getTimekb(),jd.getLianxiren(),jd.getDianhua(),
 				                  jd.getChuanzhen(),jd.getEmail(),jd.getDcmr(),jd.getDizhi(),jd.getYwdz(),jd.getJdms());
 		return count>0;
 	}

@@ -62,19 +62,19 @@
 			fit="true" fitColumns="true" pagination="true" toolbar="#tb" >
 			<thead>
 				<tr>
-					<th data-options="field:'cityName',align:'right'" width="80">城市</th>
-					<th data-options="field:'name',align:'right'" width="100">对应客户</th>
-					<th data-options="field:'contact',align:'right'" width="100">联系人</th>
-					<th data-options="field:'moblePhone',align:'right'" width="100">手机</th>
-					<th data-options="field:'telePhone',align:'right'" width="100">电话</th>
-					<th data-options="field:'fax',align:'right'" width="100" >传真</th>
-					<th data-options="field:'qq',align:'right'" width="100" >QQ</th>
-					<th data-options="field:'msn',align:'right'" width="100" >MSN</th>
-					<th data-options="field:'htsj1',align:'right'" width="100" >销售顾问</th>
-					<th data-options="field:'htsj2',align:'right'" width="60" >联系人数</th>
-					<th data-options="field:'htsj3',align:'right'" width="80" >最后联系日期</th>
-					<th data-options="field:'htsj4',align:'right'" width="80" >创建时间</th>
-					<th data-options="field:'htsj5',align:'right'" width="80" >交易统计</th>
+					<th data-options="field:'cityName',align:'right'" width="40">城市</th>
+					<th data-options="field:'name',align:'right'" width="40">对应客户</th>
+					<th data-options="field:'contact',align:'right'" width="40">联系人</th>
+					<th data-options="field:'moblePhone',align:'right'" width="40">手机</th>
+					<th data-options="field:'telePhone',align:'right'" width="40">电话</th>
+					<th data-options="field:'fax',align:'right'" width="40" >传真</th>
+					<th data-options="field:'qq',align:'right'" width="40" >QQ</th>
+					<th data-options="field:'msn',align:'right'" width="40" >MSN</th>
+					<th data-options="field:'htsj1',align:'right'" width="40" >销售顾问</th>
+					<th data-options="field:'htsj2',align:'right'" width="40" >联系人数</th>
+					<th data-options="field:'htsj3',align:'right'" width="60" >最后联系日期</th>
+					<th data-options="field:'htsj4',align:'right'" width="40" >创建时间</th>
+					<th data-options="field:'htsj5',align:'right'" width="40" >交易统计</th>
 				</tr>
 		</thead>
 	</table>

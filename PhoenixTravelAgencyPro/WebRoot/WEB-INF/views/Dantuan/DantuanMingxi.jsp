@@ -32,70 +32,70 @@
 		<table>
 			<tr>
 				<td><div class="fitem">
-						<label>客户:</label>
+						<strong><label>客户:</label></strong>
 				</td>
-				<td><input name="khId" class="easyui-validatebox">
-					</div>
-				</td>
-				<td><div class="fitem">
-						<label>联系人:</label>
-				</td>
-				<td><input name="tdjb" class="easyui-validatebox">
-					</div>
+				<td><strong><input name="khId" class="easyui-validatebox"></strong>
+					
 				</td>
 				<td><div class="fitem">
-						<label>电话:</label>
+						<strong><label>联系人:</label></strong>
 				</td>
-				<td><input name="tdjb" class="easyui-validatebox">
-					</div>
+				<td><strong><input name="tdjb" class="easyui-validatebox"></strong>
+					
+				</td>
+				<td><div class="fitem">
+						<strong><label>电话:</label></strong>
+				</td>
+				<td><strong><input name="tdjb" class="easyui-validatebox"></strong>
+					
 				</td>
 			</tr>
 		<tr>
 				<td><div class="fitem">
-						<label>团号:</label>
+						<strong><label>团号:</label></strong>
 				</td>
-				<td><input name="tuanNO" class="easyui-validatebox">
-					</div>
-				</td>
-				<td><div class="fitem">
-						<label>团队名称:</label>
-				</td>
-				<td><input name="tdm" class="easyui-validatebox">
-					</div>
+				<td><strong><input name="tuanNO" class="easyui-validatebox"></strong>
+					
 				</td>
 				<td><div class="fitem">
-						<label>出团日期:</label>
+						<strong><label>团队名称:</label></strong>
 				</td>
-				<td><input name="ctsj" class="easyui-validatebox">
-					</div>
+				<td><strong><input name="tdm" class="easyui-validatebox"></strong>
+					
+				</td>
+				<td><div class="fitem">
+						<strong><label>出团日期:</label></strong>
+				</td>
+				<td><strong><input name="ctsj" class="easyui-validatebox"></strong>
+					
 				</td>
 			</tr>
 			<tr>
 				<td><div class="fitem">
-						<label>酒店标准:</label>
+						<strong><label>酒店标准:</label></strong>
 				</td>
-				<td><input name="jdbzNo" class="easyui-validatebox">
-					</div>
-				</td>
-				<td><div class="fitem">
-						<label>用餐标准:</label>
-				</td>
-				<td><input name="ycbjNo" class="easyui-validatebox">
-					</div>
+				<td><strong><input name="jdbzNo" class="easyui-validatebox"></strong>
+					
 				</td>
 				<td><div class="fitem">
-						<label>交通:</label>
+						<strong><label>用餐标准:</label></strong>
 				</td>
-				<td><input name="tdjb" class="easyui-validatebox">
-					</div>
+				<td><strong><input name="ycbjNo" class="easyui-validatebox"></strong>
+					
+				</td>
+				<td><div class="fitem">
+						<strong><label>交通:</label></strong>
+				</td>
+				<td><strong><input name="tdjb" class="easyui-validatebox"></strong>
+					
 				</td>
 			</tr>
 			<tr>
 				<td><div class="fitem">
-						<label>特殊要求:</label>
+						<strong><label>特殊要求:</label></strong>
 				</td>
-				<td colspan="5"><input name="tsDesc" class="easyui-validatebox">
-					</div>
+				<td colspan="5"><strong><input name="tsDesc" class="easyui-validatebox"></strong>
+					
 				</td>
 				
 			</tr>
@@ -104,7 +104,7 @@
 		</form>
 	</div>
 
-	</div>
+	
 
 	 <div class="easyui-tabs"  style="width:1000px;height:800px;">      
     <div title="行程设计" style="padding:10px;">  
@@ -115,56 +115,56 @@
 		<table>
 			<tr>
 			<td><div class="fitem">
-						<label>团号:</label>
+						<strong><label>团号:</label></strong>
 				</td>
-				<td><input name="tuanNO" class="easyui-validatebox">
-					</div>
-				</td>
-				<td><div class="fitem">
-						<label>团名:</label>
-				</td>
-				<td><input name="tdm" class="easyui-validatebox">
-					</div>
+				<td><strong><input name="tuanNO" class="easyui-validatebox"></strong>
+					
 				</td>
 				<td><div class="fitem">
-						<label>路线名称:</label>
+						<strong><label>团名:</label></strong>
 				</td>
-				<td><input name="currencyShort" class="easyui-validatebox">
-					</div>
+				<td><strong><input name="tdm" class="easyui-validatebox"></strong>
+					
 				</td>
 				<td><div class="fitem">
-						<label>旅游国家数:</label>
+						<strong><label>路线名称:</label></strong>
 				</td>
-				<td><input name="currencyShort" class="easyui-validatebox">
-					</div>
+				<td><strong><input name="currencyShort" class="easyui-validatebox"></strong>
+					
+				</td>
+				<td><div class="fitem">
+						<strong><label>旅游国家数:</label></strong>
+				</td>
+				<td><strong><input name="currencyShort" class="easyui-validatebox"></strong>
+					
 				</td>
 				</tr>
 				
 				<tr>
 				
 				<td><div class="fitem">
-						<label>全程天数:</label>
+						<strong><label>全程天数:</label></strong>
 				</td>
-				<td><input name="cfts" class="easyui-validatebox">
-					</div>
-				</td>
-				<td><div class="fitem">
-						<label>出团人数:</label>
-				</td>
-				<td><input name="cfrs" class="easyui-validatebox">
-					</div>
+				<td><strong><input name="cfts" class="easyui-validatebox"></strong>
+					
 				</td>
 				<td><div class="fitem">
-						<label>出团日期:</label>
+						<strong><label>出团人数:</label></strong>
 				</td>
-				<td><input name="ctsj" class="easyui-validatebox">
-					</div>
+				<td><strong><input name="cfrs" class="easyui-validatebox"></strong>
+					
 				</td>
 				<td><div class="fitem">
-						<label>选择国家:</label>
+						<strong><label>出团日期:</label></strong>
 				</td>
-				<td><input name="cfgj" class="easyui-validatebox">
-					</div>
+				<td><strong><input name="ctsj" class="easyui-validatebox"></strong>
+					
+				</td>
+				<td><div class="fitem">
+						<strong><label>选择国家:</label></strong>
+				</td>
+				<td><strong><input name="cfgj" class="easyui-validatebox"></strong>
+					
 				</td>
 			</tr>
 		
@@ -177,108 +177,99 @@
 		data-options="closable:false,tools:'#searchpanel'" align="left">
 		<table border="1" width="800">
 			<tr>
-			<td>日期</td><td>行程   <a href="javascript:xingcheng();" class="easyui-linkbutton"
-			iconCls="icon-add" plain="true">日行程</a> <a href="javascript:xingcheng();" class="easyui-linkbutton"
-			iconCls="icon-add" plain="true">酒店</a><a href="javascript:xingcheng();" class="easyui-linkbutton"
-			iconCls="icon-add" plain="true">活动</a> </td>
+			<td><strong>日期</strong></td><td><strong>行程   <a href="javascript:xingcheng();" class="easyui-linkbutton" iconcls="icon-add" plain="true">日行程</a> <a href="javascript:xingcheng();" class="easyui-linkbutton" iconcls="icon-add" plain="true">酒店</a><a href="javascript:xingcheng();" class="easyui-linkbutton" iconcls="icon-add" plain="true">活动</a></strong> </td>
 			</tr>
+			<strong><%for(int i=1;i<=2;i++){ %></strong>
 			<tr>
-			<td rolspan="4"><a href="javascript:void(0)" id="mb" class="easyui-menubutton"   
-        data-options="menu:'#mm',iconCls:'icon-edit'"> 第1天</a>  
+			<td rolspan="4"><strong><a href="javascript:void(0)" id="mb" class="easyui-menubutton" data-options="menu:'#mm',iconCls:'icon-edit'"> 第<%=i%>天</a></strong>  
      <div id="mm" style="width:150px;">  
-    <div >前加一天</div>  
-    <div >后加一天</div>  
-    <div>删除当天</div>  
-    <div>设定城市</div>  
-    <div>当天行程地图</div>   
-    <div >地图乘车路线</div>  
-    <div>推荐为公共日行程</div>  
-     </div> </td><td>交通工具:<a href="javascript:void(0)" id="mb2" class="easyui-menubutton"   
-        data-options="menu:'#mm2',iconCls:'icon-edit'"> 城市</a>  
+    <div ><strong>前加一天</strong></div>  
+    <div ><strong>后加一天</strong></div>  
+    <div><strong>删除当天</strong></div>  
+    <div><strong>设定城市</strong></div>  
+    <div><strong>当天行程地图</strong></div>   
+    <div ><strong>地图乘车路线</strong></div>  
+    <div><strong>推荐为公共日行程</strong></div>  
+     </div> </td><td><strong>交通工具:<a href="javascript:void(0)" id="mb2" class="easyui-menubutton" data-options="menu:'#mm2',iconCls:'icon-edit'"> 城市</a></strong>  
      <div id="mm2" style="width:150px;">  
-    <div >当天居住</div>  
-    <div >删除</div>  
-    <div>之前插入城市</div>  
-    <div>之后插入城市</div>  
-    <div>乘坐巴士</div>   
-    <div >乘坐飞机</div>  
-    <div>乘坐游轮</div>  
-    <div>设为入境城市</div>   
-    <div >设为出境城市</div>  
-    <div>城市地图资源</div> 
+    <div ><strong>当天居住</strong></div>  
+    <div ><strong>删除</strong></div>  
+    <div><strong>之前插入城市</strong></div>  
+    <div><strong>之后插入城市</strong></div>  
+    <div><strong>乘坐巴士</strong></div>   
+    <div ><strong>乘坐飞机</strong></div>  
+    <div><strong>乘坐游轮</strong></div>  
+    <div><strong>设为入境城市</strong></div>   
+    <div ><strong>设为出境城市</strong></div>  
+    <div><strong>城市地图资源</strong></div> 
      </div>
-     <a href="javascript:void(0)" id="mb3" class="easyui-menubutton"   
-        data-options="menu:'#mm3',iconCls:'icon-edit'">交通</a>  
+     <strong><a href="javascript:void(0)" id="mb3" class="easyui-menubutton" data-options="menu:'#mm3',iconCls:'icon-edit'">交通</a></strong>  
      <div id="mm3" style="width:150px;">  
-    <div>之前插入城市</div>  
-    <div>之后插入城市</div>  
-    <div >删除</div>    
-    <div >设置断开</div>    
-     </div><hr/> 活动 :<hr/>酒店: <hr/>餐:&nbsp;&nbsp; <a href="javascript:void(0)" id="mb4" class="easyui-menubutton"   
-        data-options="menu:'#mm4',iconCls:'icon-edit'">早餐：</a>  
+    <div><strong>之前插入城市</strong></div>  
+    <div><strong>之后插入城市</strong></div>  
+    <div ><strong>删除</strong></div>    
+    <div ><strong>设置断开</strong></div>    
+     </div><hr/><strong> 活动 :</strong><hr/><strong>酒店: </strong><hr/><strong>餐:&nbsp;&nbsp; <a href="javascript:void(0)" id="mb4" class="easyui-menubutton" data-options="menu:'#mm4',iconCls:'icon-edit'">早餐：</a></strong>  
      <div id="mm4" style="width:150px;">  
-    <div>自理</div>  
-    <div>酒店内美式大陆早餐</div>  
-    <div >中式简餐送入房间</div>
-    <div >中式简餐</div>    
-    <div >酒店外自助早餐</div>    
-     </div>&nbsp;&nbsp;<a href="javascript:void(0)" id="mb5" class="easyui-menubutton"   
-        data-options="menu:'#mm5',iconCls:'icon-edit'">午餐：</a>  
+    <div><strong>自理</strong></div>  
+    <div><strong>酒店内美式大陆早餐</strong></div>  
+    <div ><strong>中式简餐送入房间</strong></div>
+    <div ><strong>中式简餐</strong></div>    
+    <div ><strong>酒店外自助早餐</strong></div>    
+     </div><strong>&nbsp;&nbsp;<a href="javascript:void(0)" id="mb5" class="easyui-menubutton" data-options="menu:'#mm5',iconCls:'icon-edit'">午餐：</a></strong>  
      <div id="mm5" style="width:150px;">  
-    <div>自理</div>  
-    <div>四菜一汤</div>  
-    <div >六菜一汤</div>
-    <div >中式简餐</div>    
-    <div >酒店外自助午餐</div>    
-     </div>&nbsp;&nbsp;<a href="javascript:void(0)" id="mb6" class="easyui-menubutton"   
-        data-options="menu:'#mm6',iconCls:'icon-edit'">晚餐</a>  
+    <div><strong>自理</strong></div>  
+    <div><strong>四菜一汤</strong></div>  
+    <div ><strong>六菜一汤</strong></div>
+    <div ><strong>中式简餐</strong></div>    
+    <div ><strong>酒店外自助午餐</strong></div>    
+     </div><strong>&nbsp;&nbsp;<a href="javascript:void(0)" id="mb6" class="easyui-menubutton" data-options="menu:'#mm6',iconCls:'icon-edit'">晚餐</a></strong>  
      <div id="mm6" style="width:150px;">  
-    <div>自理</div>  
-    <div>四菜一汤</div>  
-    <div >六菜一汤</div>
-    <div >中式简餐</div>    
-    <div >酒店外自助晚餐</div>    
+    <div><strong>自理</strong></div>  
+    <div><strong>四菜一汤</strong></div>  
+    <div ><strong>六菜一汤</strong></div>
+    <div ><strong>中式简餐</strong></div>    
+    <div ><strong>酒店外自助晚餐</strong></div>    
      </div></td>
-			
+			</tr>
+			<strong><%} %></strong>
 		</table>
 	 </div> 
 	 <div id="caiwu" class="easyui-dialog" title="财务核算"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:700px;height:500px;padding:10px;">
 		<form id="caiwuForm" method="post">
-		<table align="center" border="1">
+		<table id="testTable" align="center" border="1">
 				<tr>
-                    <td>费用核算</td><td>车</td><td>酒店</td>
+                    <td><strong>费用核算</strong></td><td><strong>路费</strong></td><td><strong>餐费</strong></td><td><strong>导游</strong></td><td><strong>司导</strong></td><td><strong>路饮</strong></td><td><strong>门票</strong></td><td><strong>自费节目</strong></td>
                 </tr>
-                	<tr>
-                    <td>第一天：</td><td><input id="c1" type="text" class="easyui-numberbox" ></td><td><input id="j1" type="text" class="easyui-numberbox" ></td>
+                <strong><%for(int i=1;i<=3;i++){ %></strong>
+               <tr>
+                    <td><strong>第<%=i%>天：</strong></td><td><strong><input type="text" id="c" class="easyui-numberbox" onBlur="testC1(this);"></strong></td><td><strong><input type="text" id="j<%=i%>" class="easyui-numberbox"></strong></td><td><strong>导游</strong></td><td><strong>司导</strong></td><td><strong>路饮</strong></td><td><strong>门票</strong></td><td><strong>自费节目</strong></td>
                 </tr>
-                <tr>
-                    <td>第二天：</td><td><input id="c2" type="text" class="easyui-numberbox" ></td><td><input id="j2" class="easyui-numberbox"  type="text" class="easyui-numberbox" ></td>
-                </tr>
+                <strong><%}%></strong>
+               
                  <tr>
-                    <td>分项总报价：</td><td><input id="c3" name="c3"  type="text" class="easyui-numberbox" ></td><td><input id="j3" type="text" class="easyui-numberbox" ></td>
+                    <td><strong>分项总报价：</strong></td><td><strong><input type="text" id="fxzc" name="fxzc" class="easyui-numberbox"></strong></td><td><strong><input type="text" id="fxcf" class="easyui-numberbox"></strong></td><td><br></td><td><br></td><td><br></td><td><br></td><td><br></td>
                 </tr>
                   <tr>
-                    <td>总报价：</td><td><input id="z1" type="text"  class="easyui-numberbox" ></td><td><input type="text"></td>
+                    <td><strong>总报价：</strong></td><td><strong><input type="text" id="zc" class="easyui-numberbox"></strong></td><td><strong><input type="text"></strong></td>
                 </tr>
 			</table>
-			<input id="dicType" name="dicType" type="hidden">
+			<strong><input type="hidden" id="dicType" name="dicType"></strong>
 		</form>
 	</div>
-	
-	
-	 
+
 	 <div class="easyui-panel" title="成本设置"
 		style="height:80px;padding:10px;width:auto;"
 		data-options="closable:false,tools:'#searchpanel'" align="left">
 		<table>
 			<tr>
 				<td><div class="fitem">
-						<label>核算:</label>
+						<strong><label>核算:</label></strong>
 				</td>
 				<td>
-				 <a href="javascript:caiwu();" class="easyui-linkbutton" iconCls="icon-ok">手动核算</a>
+				 <strong><a href="javascript:caiwu();" class="easyui-linkbutton" iconcls="icon-ok">手动核算</a></strong>
 				</td>
 			</tr>
 		</table>
@@ -427,32 +418,32 @@
 });  
  
  // 财务
-		function caiwu() {
+ function caiwu() {
 			$("#caiwu").dialog("open");
 			$("#caiwuForm").form("clear");
-		}  
-		$("#c1").numberbox({
-				required : true ,
-				editable : false ,
-				onChange : function(newValue, oldValue){
-					var c1 = $("#c1").val();
-					var c2 = $("#c2").val();
-					var c12= c1+c2;
-					$("#c3").numberbox('setValue', c1);
+		} 
+		function testC1(id){
+			var num=0;
+			num+=id.val();
+			alert(num);
 					
-				}
-			});
-	    $("#c2").numberbox({
-				required : true ,
-				editable : false ,
-				onChange : function(newValue, oldValue){
-					var c1 = $("#c1").val();
-					var c2 = $("#c2").val();
-					var c12=(Number(c1))+(Number(c2));
-					$("#c3").numberbox('setValue', c12);
-					
-				}
-			});
+		
+			
+			$("#fxzc").attr('value',num);
+			
+			
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+        
     </script>
   </body>
 </html>
