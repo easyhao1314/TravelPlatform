@@ -8,4 +8,6 @@ public interface ISanpinzhongxinService {
 	public boolean AddSanpinzhongxin(Sanpinzhongxin sanpin)throws Exception;
 	//分页查询散拼列表
 	public Pagination<Sanpinzhongxin> getByQueryConditionPagination(int currentPage,int numPerPage,Sanpinzhongxin s) throws Exception;
+	//修噶散拼中信
+	public boolean upSanpinzhongxin(Sanpinzhongxin sanpin)throws Exception;
 }
