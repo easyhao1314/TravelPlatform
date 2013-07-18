@@ -62,10 +62,9 @@ public class ZyDaoyouController {
 	@RequestMapping("fenghuang/daoyouAdd.do")
 	@ResponseBody
 	public Map<String,Object> daoyouAdd(HttpServletRequest request,HttpServletResponse response,
-			long id,long guojiaId,String name,String name2,String name3,String zjlx,String zjhm,int chengshiId,String dinhua,String lxfs1,String lxfs2,
+			long guojiaId,String name,String name2,String name3,String zjlx,String zjhm,int chengshiId,String dinhua,String lxfs1,String lxfs2,
 			String lxfs3,String email,String shouji,String fax,int dyfy,int hzjbId,String bz){
 		Daoyou dy=new Daoyou();
-		dy.setId(id);
 		dy.setGuojiaId(guojiaId);
 		dy.setName(name);
 		dy.setName2(name2);

@@ -92,13 +92,13 @@ public class ZyJiudianController {
 	@RequestMapping("fenghuang/ZiyuanJiudianAdd.do")
 	@ResponseBody
 	public Map<String,Object> jiudianAdd(HttpServletRequest request,HttpServletResponse response,
-		  Long chengshi,String name,Long fangjian,String hzjb,String whr,String xjbz,String dianhua,
+			String chengshi,String name,Long fangjian,String hzjb,String whr,String xjbz,String dianhua,
 		   String chuanzhen,String email,String guanwang,String dizhi,String pingjia,String tishi,
-		   int danjijia,int wangjijia,String jgsm,String bz){
+		   String danjijia,String wangjijia,String jgsm,String bz){
 		
 		  Jiudian jd=new Jiudian();
 		
-		  jd.setChengshi(chengshi);
+		  jd.setChengshi(Long.parseLong(chengshi));
 		  jd.setName(name);
 		  jd.setFangjian(fangjian);
 		  jd.setHzjb(hzjb);
@@ -111,8 +111,8 @@ public class ZyJiudianController {
 		  jd.setDizhi(dizhi);
 		  jd.setPingjia(pingjia);
 		  jd.setTishi(tishi);
-		  jd.setDanjijia(danjijia);
-		  jd.setWangjijia(wangjijia);
+		  jd.setDanjijia(Integer.parseInt(danjijia));
+		  jd.setWangjijia(Integer.parseInt(wangjijia));
 		  jd.setJgsm(jgsm);
 		  jd.setBz(bz);
 		  
@@ -170,14 +170,15 @@ public class ZyJiudianController {
 	// 修改
 	@RequestMapping("fenghuang/ZiyuanJiudianUpdate.do")
 	@ResponseBody
-	public Map<String,Object> jiudianUpdate(HttpServletRequest request,HttpServletResponse response,Long chengshi,String name,Long fangjian,String hzjb,String whr,String xjbz,String dianhua,
+	public Map<String,Object> jiudianUpdate(HttpServletRequest request,HttpServletResponse response,
+			String chengshi,String name,String fangjian,String hzjb,String whr,String xjbz,String dianhua,
 			   String chuanzhen,String email,String guanwang,String dizhi,String pingjia,String tishi,
-			   int danjijia,int wangjijia,String jgsm,String bz,Long id){
+			   String danjijia,String wangjijia,String jgsm,String bz,String id){
 
 		  Jiudian jd=new Jiudian();
-		  jd.setChengshi(chengshi);
+		  jd.setChengshi(Long.parseLong(chengshi));
 		  jd.setName(name);
-		  jd.setFangjian(fangjian);
+		  jd.setFangjian(Long.parseLong(fangjian));
 		  jd.setHzjb(hzjb);
 		  jd.setWhr(whr);
 		  jd.setXjbz(xjbz);
@@ -188,11 +189,11 @@ public class ZyJiudianController {
 		  jd.setDizhi(dizhi);
 		  jd.setPingjia(pingjia);
 		  jd.setTishi(tishi);
-		  jd.setDanjijia(danjijia);
-		  jd.setWangjijia(wangjijia);
+		  jd.setDanjijia(Integer.parseInt(danjijia));
+		  jd.setWangjijia(Integer.parseInt(wangjijia));
 		  jd.setJgsm(jgsm);
 		  jd.setBz(bz);
-		  jd.setId(id);
+		  jd.setId(Long.parseLong(id));
 		  Map<String,Object> result=new HashMap<String,Object>();
 		  boolean bl=false;
 			try{

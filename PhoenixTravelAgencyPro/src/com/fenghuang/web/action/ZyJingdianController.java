@@ -61,11 +61,11 @@ public class ZyJingdianController {
 	@RequestMapping("fenghuang/jingdanAdd.do")
 	@ResponseBody
 	public Map<String,Object> jingdianAdd(HttpServletRequest request,HttpServletResponse response,
-			long id,String name,String name2,int chengsiId,int jiage,int bizongId,String kftimeqi,
+			String name,String name2,int chengsiId,int jiage,int bizongId,String kftimeqi,
 			String kftimezhi,int timekb,String lianxiren,String dianhua,String chuanzhen,String email,
 			int dcmr,String dizhi,String ywdz,String jdms){
 		Jingdian jd=new Jingdian();
-		jd.setId(id);
+		
 		jd.setName(name);
 		jd.setChengsiId(chengsiId);
 		jd.setJiage(jiage);

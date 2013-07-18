@@ -46,8 +46,8 @@ public class ZyCanyinDaoImpl extends BaseDao implements IZyCanyinDao{
 	@Override
 	public boolean canyinAdd(Canyin cy) throws Exception {
 		// TODO Auto-generated method stub
-		String sql="insert into canyin(id,chengshiId,name,dizhi,lianxiren,dianhua,shouji,chuanzhen,email,fkfsId,hzjbId,cbwu,cbliu,cbqi,cbba,yecf,yenlsm,etcf,etcfsm,cgczs,rnrs,mfzdsm,sfxydw,sffxdw,beizhu) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-		int count=this.update(sql,cy.getId(),cy.getChengshiId(),cy.getName(),cy.getDizhi(),cy.getLianxiren(),cy.getDianhua(),cy.getShouji(),cy.getChuanzhen(),cy.getEmail(),cy.getFkfsId(),cy.getCbwu(),
+		String sql="insert into canyin(chengshiId,name,dizhi,lianxiren,dianhua,shouji,chuanzhen,email,fkfsId,hzjbId,cbwu,cbliu,cbqi,cbba,yecf,yenlsm,etcf,etcfsm,cgczs,rnrs,mfzdsm,sfxydw,sffxdw,beizhu) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		int count=this.update(sql,cy.getChengshiId(),cy.getName(),cy.getDizhi(),cy.getLianxiren(),cy.getDianhua(),cy.getShouji(),cy.getChuanzhen(),cy.getEmail(),cy.getFkfsId(),cy.getCbwu(),
 				              cy.getCbliu(),cy.getCbqi(),cy.getCbba(),cy.getYecf(),cy.getYenlsm(),cy.getYenlsm(),cy.getEtcf(),cy.getEtcfsm(),cy.getCgczs(),cy.getRnrs(),cy.getMfzdsm(),cy.getSfxydw(),cy.getSffxdw(),cy.getBeizhu());
 		return count>0;
 	}

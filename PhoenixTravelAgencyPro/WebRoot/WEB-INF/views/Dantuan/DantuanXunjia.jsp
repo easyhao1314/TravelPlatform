@@ -186,13 +186,11 @@ data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=3',
 <td><div class="fitem"><label>出访人数：</label></td><td><input name="cfrs" class="easyui-numberbox" required="true"></div></td>
 <!-- CountrySettingDictionary 旅游国家 -->
 <td><div class="fitem"><label>出访国家：</label></td><td><input  name="cfgj" class="easyui-combobox"
-data-options="
-					url:'fenghuang/getDicByTypeComboboxs.do?dicType=7',
+data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=7',
 					valueField:'dicNo',
 					textField:'dicName',
 					panelHeight:'auto',
-					editable:false 
-	"></td>
+					editable:false "></div></div></td>
 </tr>
 <tr>
 <td><div class="fitem"><label>出访天数：</label></td><td><input id="cfts" name="cfts" class="easyui-numberbox" required="true"></div></td>
