@@ -115,13 +115,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 	<div id="mmtest" class="easyui-menu" style="width:120px;">
 		<input id="hideinput" style="display: none;" />
-		<div data-options="iconCls:'icon-search'" onClick="upfabustate()">取消发布状态</div>
-		<div onClick="testView(2)">查看2</div>
+		<div data-options="iconCls:'icon-remove'" onClick="upfabustate()">取消发布状态</div>
+		<div data-options="iconCls:'icon-edit'" onClick="tuanduibaoming()">团队报名</div>
 		<div onClick="testView(3)">查看3</div>
 		<div onClick="testView(4)">查看4</div>
 		<div onClick="testView(5)">查看5</div>
 	</div>
 	<script type="text/javascript">
+	
+	
 		function Select() {
 			$("#searchDic").dialog("open");
 			$("#searchForm").form("clear");
@@ -144,9 +146,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       return '<a href="javascript:openSanpinDetail('+row.tuanNo+')">'+row.tuanName+'</a>';
    
    }
-   function openSanpinDetail(tuanNo){  	
+   function openSanpinbaoming(tuanNo){  	
       var url= "Sanpin_mingxi.do?tuanNo="+tuanNo;
-      
        var tab = $('#tt').tabs('getSelected'); 
 		if (tab){  
 	                 var index = $('#tt').tabs('getTabIndex', tab); 
@@ -157,15 +158,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				         title : "散拼详细信息",
 				         href : url,
 				      //  closable : true,
-				         });
-				         
-				/*         
+				         });   
+			        
 				$.ajax({
 					url : "fenghuang/Sanpinliebiao.do?tuanNo="+tuanNo,
 					data : tuanNo,
 					dataType : "json",
 					success : function(data) {
-					$('#mingxiForm').form('load',{"tuanNo":data.rows[0].tuanNo});
+					$('#jibenForm').form('load',{"tuanNo":data.rows[0].tuanNo});
 					//$('#mingxiForm').form('load',data.rows[0]);
 					//alert(data.rows[0].tuanNo);
 					
@@ -175,7 +175,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					error : function() {
 						$.messager.alert("查询失败", "服务器请求失败!", "error");
 					}
-				});*/
+				});
 		   }		
 		   
 		   
@@ -189,6 +189,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				top : e.pageY
 			});   
    	      }
+   	      //取消发布状态功能
    	      function upfabustate(){
    	  	var tuanNo=$('#hideinput').val();
          var  url = "fenghuang/upsanpin.do?tuanNo="+tuanNo+"&fabustate="+2;
@@ -203,6 +204,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						$.messager.alert("查询失败", "服务器请求失败!", "error");
 					}
 				});
+   	      }
+   	      function tuanduibaoming(){
+   	      	var tuanNo=$('#hideinput').val();
+   	      	var url= "SanPin_baoming.do?tuanNo="+tuanNo;
+       var tab = $('#tt').tabs('getSelected'); 
+		if (tab){  
+	                 var index = $('#tt').tabs('getTabIndex', tab); 
+	                 $('#tt').tabs('close', index);  
+	       } 
+	       
+	       $('#tt').tabs('add', {
+				         title : "团队报名",
+				         href : url,
+				      //  closable : true,
+				         });
    	      }
    	      
    	      /* 
