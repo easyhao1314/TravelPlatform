@@ -86,14 +86,14 @@
 			<thead>
 				<tr>
 					<th data-options="field:'ck',checkbox:true"></th>
-					<th data-options="field:'chengshiId'" width="80">城市</th>
+					<th data-options="field:'chengsi'" width="80">城市</th>
 					<th data-options="field:'name'" width="80">供应商名称</th>
 					<th data-options="field:'lianxiren'" width="80">联系人</th>
 					<th data-options="field:'dianhua'" width="80">联系电话</th>
 					<th data-options="field:'chuanzhen'" width="80">传真</th>
 					<th data-options="field:'shouji'" width="80">手机</th>
 					<th data-options="field:'jiage'" width="80">价格</th>
-					<th data-options="field:'hzjbId'" width="80">合作级别</th>
+					<th data-options="field:'hzjb'" width="80">合作级别</th>
 					
 				</tr>
 			</thead>
@@ -240,9 +240,9 @@
 		var opts = $('#dg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
 			var param = {
 				name: $("#name").val(),				
-				chengshiId: $("#chengshiId").val(),
+				chengshiId: $("#chengshiId").combobox('getValue'),
 				lianxiren: $("#lianxiren").val(),
-				hzjbId: $("#hzjbId").val(),
+				hzjbId: $("#hzjbId").combobox('getValue'),
 				page:  opts.pageNumber ,
 				rows:  opts.pageSize
 			};

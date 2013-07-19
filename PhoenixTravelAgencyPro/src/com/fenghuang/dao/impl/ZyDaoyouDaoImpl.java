@@ -25,7 +25,7 @@ public class ZyDaoyouDaoImpl extends BaseDao implements IZyDaoyouDao{
 	public Pagination<Daoyou> daoyouSelect(int currentPage, int numPerPage,String name,String guojiaId,String chengshiId)
 			throws Exception {
 		// TODO Auto-generated method stub
-		StringBuffer sql=new StringBuffer("select * from daoyou where 1=1");
+		StringBuffer sql=new StringBuffer("select dd.dicName as guojia,d.name,d.zjhm,d.dinhua,dd1.dicName as chengshi,d.fax,d.shouji,d.email,d.bz from daoyou as d,dictionarydesc as dd,dictionarydesc as dd1 where d.guojiaId=dd.dicNo and d.chengshiId=dd1.dicNo and 1=1");
 		if(name !=null && !"".equals(name)){
 			sql.append(" and name like '%");
 			sql.append(name);

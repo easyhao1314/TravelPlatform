@@ -24,7 +24,7 @@ public class ZyDijieDaoImpl extends BaseDao implements IZyDijieDao{
 	public Pagination<Dijie> dijieSelect(int currentPage, int numPerPage,String name,String chengshiId,String lianxiren,String hzjbId)
 			throws Exception {
 		// TODO Auto-generated method stub
-		StringBuffer sql=new StringBuffer("select * from dijie where 1=1 ");
+		StringBuffer sql=new StringBuffer("select d.id,d.name,d.lianxiren,d.dianhua,d.chuanzhen,d.shouji,d.bz,dd.dicName as chengshi,dd1.dicName as hzjb from dijie as d,dictionarydesc as dd,dictionarydesc as dd1 where d.chengshiId=dd.dicNo and d.hzjbId=dd1.dicNo and 1=1 ");
 		if(!"".equals(name) && name != null){
 			sql.append(" and name like '%");
 			sql.append(name);
@@ -51,8 +51,8 @@ public class ZyDijieDaoImpl extends BaseDao implements IZyDijieDao{
 	@Override
 	public boolean dijieAdd(Dijie dj) throws Exception {
 		// TODO Auto-generated method stub
-		String sql="insert into dijie(id,name,ywname,chengshiId,dizhi,hzjbId,lianxiren,dianhua,shouji,chuanzhen,email,skype,msn,yahoo,wangzhi,kaihu,dlrzh,yhdz,skrzh,skrxm,skrdz,ywqyId,djsms,xjb,youshi,bz) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-		int count=this.update(sql,dj.getId(),dj.getName(),dj.getYwname(),dj.getChengshiId(),dj.getDizhi(),dj.getHzjbId(),dj.getLianxiren(),dj.getDianhua(),dj.getShouji(),dj.getChuanzhen(),dj.getEmail(),dj.getSkype(),
+		String sql="insert into dijie(name,ywname,chengshiId,dizhi,hzjbId,lianxiren,dianhua,shouji,chuanzhen,email,skype,msn,yahoo,wangzhi,kaihu,dlrzh,yhdz,skrzh,skrxm,skrdz,ywqyId,djsms,xjb,youshi,bz) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		int count=this.update(sql,dj.getName(),dj.getYwname(),dj.getChengshiId(),dj.getDizhi(),dj.getHzjbId(),dj.getLianxiren(),dj.getDianhua(),dj.getShouji(),dj.getChuanzhen(),dj.getEmail(),dj.getSkype(),
 				                dj.getMsn(),dj.getYahoo(),dj.getWangzhi(),dj.getKaihu(),dj.getDlrzh(),dj.getYhdz(),dj.getSkrzh(),dj.getSkrxm(),dj.getSkrdz(),dj.getYwqyId(),dj.getDjsms(),dj.getXjb(),dj.getYoushi(),dj.getBz());
 		return count>0;
 	}

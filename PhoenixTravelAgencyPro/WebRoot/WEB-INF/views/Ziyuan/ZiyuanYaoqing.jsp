@@ -34,9 +34,11 @@
 				<td><div class="fitem">
 						<label>国度:</label>
 				</td>
-				<td><input id="guoduid" name="guoduid" class="easyui-validatebox">
-					</div>
-				</td>
+				<td><input id="guoduid" name="guoduid" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=8',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false "></div></td>
 				<td><div class="fitem">
 						<label>描述:</label>
 				</td>
@@ -56,22 +58,24 @@
 		<div class="easyui-panel" title="邀请函成本信息列表"
 		style="height:480px;width: auto;">
 		<table id="dg" class="easyui-datagrid"
-			data-options="url:'fenghuang/yaoqinghanSelect.do',border:false,singleSelect:false,fit:true,fitColumns:true,pageSize:20"
+			data-options="url:'fenghuang/yaoqinghanSelect.do',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 			pagination="true" toolbar="#currencyDatagridtoolbar">
 			<thead>
 				<tr>
-					<th data-options="field:'ck',checkbox:true"></th>
-					<th data-options="field:'guoduid'" width="80">国度</th>
+					<th data-options="field:'ck',checkbox:true,singleSelect:false"></th>
+					<th data-options="field:'guodu'" width="80">国度</th>
 					<th data-options="field:'chengben'" width="80">成本</th>
-					<th data-options="field:'bizhongId'" width="80">币种</th>
-					<th data-options="field:'shiyongid'" width="80">使用否</th>
+					<th data-options="field:'bizhong'" width="80">币种</th>
+					<th data-options="field:'shifou'" width="80">使用否</th>
 					<th data-options="field:'miaoshu'" width="80">国度描述</th>
-					<th data-options="field:'8',formatter:onOperateStyle" width="80">操作</th>
+
 				</tr>
 			</thead>
 		</table>
 		<div id="currencyDatagridtoolbar">
 		     <a href="javascript:addYaoqinghan();" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>  
+		     <a href="javascript:YaoqingSelectId();" class="easyui-linkbutton" iconCls="icon-save"  plain="true">修改</a>
+		     <a href="javascript:YaoqingDelete();" class="easyui-linkbutton" iconCls="icon-cut" plain="true">删除</a>  
 		</div>
 	</div>
 <div id="addYaoqinghan" class="easyui-dialog" title="邀请函成本信息新增"
@@ -80,24 +84,36 @@
 		<form id="addForm" method="post">
 			<table align="center">
 				<tr>
-<td><div class="fitem"><label>编号:</label></td><td><input name="id" class="easyui-validatebox" required="true"  width="280"></div></td>
+<td><div class="fitem"><label>编号:</label></td><td>--系统自动生成--</div></td>
 <td></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>国度：</label></td><td><input name="guoduid" class="easyui-validatebox" required="true"></div></td>
-<td><label>币种：</label></td><td><input name="bizhongId"  class="easyui-combobox"
- data-options="url:'fenghuang/CountrySetting.do',valueField:'csdNo',textField:'csdName'"/></div></td>
+<td><div class="fitem"><label>国度：</label></td><td><input name="guoduid" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=8',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false "></div></td>
+<td><label>币种：</label></td><td><input name="bizhongId"  class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=5',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false "></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>成本：</label></td><td><input name="chengben"  class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>使用否：</label></td><td><input name="shiyongid"  class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>成本：</label></td><td><input name="chengben"  class="easyui-numberspinner" min="1" max="999999" ></div></td>
+<td><div class="fitem"><label>使用否：</label></td><td><input name="shiyongid"  class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=9',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false "></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>国度描述：</label></td><td><input name="miaoshu" class="easyui-validatebox" required="true"></div></div></td>
-<td></td>
+<td><div class="fitem"><label>国度描述：</label></td><td colspan="3"><input name="miaoshu" class="easyui-validatebox" required="true" size="70"></div></td>
+
 </tr>
-<tr>
-<tr><td colspan="4s" align="center"><a href="javascript:SaveYaoqinghan();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> <input  type="reset" value="重置"></td>
+
+<tr><td colspan="4" align="center"><a href="javascript:SaveYaoqinghan();" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
+ <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-undo" onclick="$('#addForm').form('clear')">重置</a></td>
 </tr>
 			</table>
 			<input id="dicType" name="dicType" type="hidden">
@@ -109,26 +125,38 @@
 		style="width:600px;height:180px;padding:10px;">
 		<form id="updateForm" method="post">
 			<table align="center">
-				<tr>
-<td><div class="fitem"><label>编号:</label></td><td><input name="id" class="easyui-validatebox" required="true"  width="280"></div></td>
-<td></td>
+			
+<tr>
+<td>
+<input id="id" name="id" class="easyui-validatebox" hidden="true">
+<div class="fitem"><label>国度：</label></td><td><input name="guoduid" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=8',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false "></div></td>
+<td><label>币种：</label></td><td><input name="bizhongId"  class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=5',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false "></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>国度：</label></td><td><input name="guoduid" class="easyui-validatebox" required="true"></div></td>
-<td><label>币种：</label></td><td><input name="bizhongId"  class="easyui-combobox"
- data-options="url:'fenghuang/CountrySetting.do',valueField:'csdNo',textField:'csdName'"/></div></td>
+<td><div class="fitem"><label>成本：</label></td><td><input name="chengben"  class="easyui-numberspinner" min="1" max="999999" ></div></td>
+<td><div class="fitem"><label>使用否：</label></td><td><input name="shiyongid"  class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=9',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false "></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>成本：</label></td><td><input name="chengben"  class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>使用否：</label></td><td><input name="shiyongid"  class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>国度描述：</label></td><td colspan="3"><input name="miaoshu" class="easyui-validatebox" required="true" size="70"></div></td>
+
 </tr>
 <tr>
-<td><div class="fitem"><label>国度描述：</label></td><td><input name="miaoshu" class="easyui-validatebox" required="true"></div></div></td>
-<td></td>
+<tr><td colspan="4" align="center"><a href="javascript:YaoqingUpdate();" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
+<a  class="easyui-linkbutton" iconCls="icon-undo" onclick="$('#updateForm').form('clear')">重置</a></td>
 </tr>
-<tr>
-<tr><td colspan="4s" align="center"><a href="javascript:YaoqingUpdate();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> <input  type="reset" value="重置"></td>
-</tr>
+
 			</table>
 			<input id="dicType" name="dicType" type="hidden">
 		</form>
@@ -137,12 +165,7 @@
 
 
 	<script type="text/javascript">
-    //这个方法是格式化操作列的函数
-    function onOperateStyle(val,row){
-       var returnStyleValue='<img alt="修改" src="js/themes/icons/pencil.png" onclick="YaoqingSelectId('+row.id+');">';
-       returnStyleValue+='<img alt="删除" src="js/themes/icons/cancel.png" onclick="YaoqingDelete('+row.id+');">';
-       return returnStyleValue;
-    }
+   
     //这个方法是格式化是否可用列的，0：为不使用，1：为使用
 	function onIsUesStyle(val,row){
 	  if(val =='1'){
@@ -158,7 +181,7 @@
 		function YaoqingSelectLike(){
 		var opts = $('#dg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
 			var param = {
-				guoduid: $("#guoduid").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
+				guoduid: $("#guoduid").combobox('getValue'),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
 				miaoshu: $("#miaoshu").val() ,
 				page:  opts.pageNumber ,
 				rows:  opts.pageSize
@@ -214,6 +237,7 @@
 				var param = {
 					"id" :  row.id
 				};
+		 if (confirm("确认要删除名称为 “ "+row.guodu+" ”的邀请函吗？")) {
 				$.ajax({
 					url : "fenghuang/yaoqingDelete.do",
 					data : param,
@@ -230,6 +254,7 @@
 						$.messager.alert("删除失败", "服务器请求失败!", "error");
 					}
 				});
+			  }
 			}
 	}
 	//按id查询

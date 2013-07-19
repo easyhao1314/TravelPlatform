@@ -40,9 +40,11 @@
 				<td><div class="fitem">
 						<label>国籍:</label>
 				</td>
-				<td><input id="guojiaId" name="guojiaId" class="easyui-validatebox">
-					</div>
-				</td>
+				<td><input id="guojiaId" name="guojiaId" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=7',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false"></div></td>
 				<td><div class="fitem">
 						<label>常驻地:</label>
 				</td>
@@ -50,7 +52,7 @@
 					valueField:'dicNo',
 					textField:'dicName',
 					panelHeight:'auto',
-					editable:false "></div></td>
+					editable:false"></div></td>
 				<td>
 					<a href="javascript:daoyouSelectLike();" 
 								class="easyui-linkbutton" iconCls="icon-ok">查询</a>
@@ -71,16 +73,15 @@
 			<thead>
 				<tr>
 					<th data-options="field:'ck',checkbox:true"></th>
-					<th data-options="field:'guojiaId'" width="80">国籍</th>
+					<th data-options="field:'guojia'" width="80">国籍</th>
 					<th data-options="field:'name'" width="80">姓名</th>
 					<th data-options="field:'zjhm'" width="80">证件号码</th>
-					<th data-options="field:'chengshiId'" width="80">常驻地</th>
+					<th data-options="field:'chengshi'" width="80">常驻地</th>
 					<th data-options="field:'dinhua'" width="80">移动电话</th>
 					<th data-options="field:'fax'" width="80">传真</th>
 					<th data-options="field:'shouji'" width="80">手机</th>
 					<th data-options="field:'email'" width="80">EMAIL</th>
-					<th data-options="field:'bz'" width="80">备注</th>
-					
+					<th data-options="field:'bz'" width="80">备注</th>	
 				</tr>
 			</thead>
 		</table>
@@ -248,8 +249,8 @@ data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=7',
 		var opts = $('#dg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
 			var param = {
 				name: $("#name").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
-				guojiaId: $("#guojiaId").val() ,
-				chengshiId : $("#chengshiId").val(),
+				guojiaId: $("#guojiaId").combobox('getValue') ,
+				chengshiId : $("#chengshiId").combobox('getValue'),
 				page:  opts.pageNumber ,
 				rows:  opts.pageSize
 			};

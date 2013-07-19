@@ -99,7 +99,8 @@
 </tr>
 
 <tr>
-<tr><td colspan="4s" align="center"><a href="javascript:SaveHangkong();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> <input  type="reset" value="重置"></td>
+<tr><td colspan="4s" align="center"><a href="javascript:SaveHangkong();" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
+ <a  class="easyui-linkbutton" iconCls="icon-undo" onclick="$('#addForm').form('clear')">重置</a></td>
 </tr>
 			</table>
 			<input id="dicType" name="dicType" type="hidden">
@@ -129,7 +130,8 @@
 </tr>
 
 <tr>
-<tr><td colspan="4s" align="center"><a href="javascript:hangkongUpdate();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> <input  type="reset" value="重置"></td>
+<tr><td colspan="4s" align="center"><a href="javascript:hangkongUpdate();" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
+<a  class="easyui-linkbutton" iconCls="icon-undo" onclick="$('#updateForm').form('clear')">重置</a></td>
 </tr>
 			</table>
 			<input id="dicType" name="dicType" type="hidden">

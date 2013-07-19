@@ -24,7 +24,7 @@ public class ZyZifeiDaoImpl extends BaseDao implements IZyZifeiDao{
 	public Pagination<Zifei> zifeiSelect(int currentPage, int numPerPage,String name,String chengshiId,String miaoshu)
 			throws Exception {
 		// TODO Auto-generated method stub
-		StringBuffer sql=new StringBuffer("select z.id,z.name,z.feiyong,c.currencyName,z.chengshiId,z.miaoshu from zifei as z,Currency as c where z.bizhongId=c.id and 1=1");
+		StringBuffer sql=new StringBuffer("select z.id,z.name,z.feiyong,d.dicName as chengshi,d1.dicName as bizhong,z.miaoshu from zifei as z,dictionarydesc as d,dictionarydesc as d1 where z.chengshiId=d.dicNo and z.bizhongId=d1.dicNo and 1=1");
 		if(!"".equals(name) && name != null){
 			sql.append(" and name like '%");
 			sql.append(name);
@@ -46,8 +46,8 @@ public class ZyZifeiDaoImpl extends BaseDao implements IZyZifeiDao{
 	@Override
 	public boolean zifeiAdd(Zifei zf) throws Exception {
 		// TODO Auto-generated method stub
-		String sql="insert into zifei(id,name,feiyong,bizhongId,chengshiId,kftimeqi,kftimezhi,timekb,djaptime,miaoshu) values (?,?,?,?,?,?,?,?,?,?)";
-		int count=this.update(sql,zf.getId(),zf.getName(),zf.getFeiyong(),zf.getBizhongId(),zf.getChengshiId(),zf.getKftimeqi(),zf.getKftimezhi(),zf.getTimekb(),zf.getDjaptime(),zf.getMiaoshu());
+		String sql="insert into zifei(name,feiyong,bizhongId,chengshiId,kftimeqi,kftimezhi,timekb,djaptime,miaoshu) values (?,?,?,?,?,?,?,?,?)";
+		int count=this.update(sql,zf.getName(),zf.getFeiyong(),zf.getBizhongId(),zf.getChengshiId(),zf.getKftimeqi(),zf.getKftimezhi(),zf.getTimekb(),zf.getDjaptime(),zf.getMiaoshu());
 		return count>0;
 	}
 

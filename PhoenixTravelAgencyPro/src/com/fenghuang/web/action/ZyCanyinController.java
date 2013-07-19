@@ -61,7 +61,7 @@ public class ZyCanyinController {
 		@ResponseBody
 		public Map<String,Object> canyinAdd(HttpServletRequest request,HttpServletResponse response,
 				String chengshiId,String name,String dizhi,String lianxiren,String dianhua,String shouji,
-				String chuanzhen,String email,String fkfsId,String hzjbId,String cbwu,String cbliu,String cbqi,String cbba,String yecf,
+				String chuanzhen,String Email,String fkfsId,String hzjbId,String cbwu,String cbliu,String cbqi,String cbba,String yecf,
 				String yenlsm,String etcf,String etcfsm,String cgczs,String rnrs,String mfzdsm,String sfxydw,String sffxdw,String beizhu){
 			Canyin cy=new Canyin();			
 			cy.setChengshiId(Integer.parseInt(chengshiId));
@@ -71,8 +71,9 @@ public class ZyCanyinController {
 			cy.setDianhua(dianhua);
 			cy.setShouji(shouji);
 			cy.setChuanzhen(chuanzhen);
-			cy.setEmail(email);
+			cy.setEmail(Email);
 			cy.setFkfsId(Integer.parseInt(fkfsId));
+			cy.setHzjbId(Integer.parseInt(hzjbId));
 			cy.setCbwu(Integer.parseInt(cbwu));
             cy.setCbliu(Integer.parseInt(cbliu));
             cy.setCbqi(Integer.parseInt(cbqi));
@@ -145,7 +146,7 @@ public class ZyCanyinController {
 		@ResponseBody
 		public Map<String,Object> canyinUpdate(HttpServletRequest request,HttpServletResponse response,
 				int chengshiId,String name,String dizhi,String lianxiren,String dianhua,String shouji,
-				String chuanzhen,String email,int fkfsId,int hzjbId,int cbwu,int cbliu,int cbqi,int cbba,int yecf,
+				String chuanzhen,String Email,int fkfsId,int hzjbId,int cbwu,int cbliu,int cbqi,int cbba,int yecf,
 				String yenlsm,int etcf,String etcfsm,int cgczs,int rnrs,String mfzdsm,int sfxydw,int sffxdw,String beizhu,long id){
 			Canyin cy=new Canyin();
 
@@ -156,14 +157,14 @@ public class ZyCanyinController {
 			cy.setDianhua(dianhua);
 			cy.setShouji(shouji);
 			cy.setChuanzhen(chuanzhen);
-			cy.setEmail(email);
+			cy.setEmail(Email);
 			cy.setFkfsId(fkfsId);
+			cy.setHzjbId(hzjbId);
 			cy.setCbwu(cbwu);
             cy.setCbliu(cbliu);
             cy.setCbqi(cbqi);
             cy.setCbba(cbba);
             cy.setYecf(yecf);
-            cy.setYenlsm(yenlsm);
             cy.setYenlsm(yenlsm);
             cy.setEtcf(etcf);
             cy.setEtcfsm(etcfsm);

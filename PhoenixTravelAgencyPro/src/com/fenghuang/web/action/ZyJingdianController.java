@@ -67,6 +67,7 @@ public class ZyJingdianController {
 		Jingdian jd=new Jingdian();
 		
 		jd.setName(name);
+		jd.setName2(name2);
 		jd.setChengsiId(chengsiId);
 		jd.setJiage(jiage);
 		jd.setBizongId(bizongId);
@@ -115,6 +116,7 @@ public class ZyJingdianController {
 		Jingdian jd=new Jingdian();
 
 		jd.setName(name);
+		jd.setName2(name2);
 		jd.setChengsiId(chengsiId);
 		jd.setJiage(jiage);
 		jd.setBizongId(bizongId);

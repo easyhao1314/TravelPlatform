@@ -41,9 +41,11 @@
 				<td><div class="fitem">
 						<label>所属城市:</label>
 				</td>
-				<td><input id="chengshiId" name="chengshiId" class="easyui-validatebox">
-					</div>
-				</td>
+				<td><input id="chengshiId" name="chengshiId" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=8',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false"></div></td>			
 				<td><div class="fitem">
 						<label>描述:</label>
 				</td>
@@ -63,7 +65,7 @@
 		<div class="easyui-panel" title="自费节目列表"
 		style="height:480px;width: auto;">
 		<table id="dg" class="easyui-datagrid"
-			data-options="url:'fenghuang/zifeiSelect.do',border:false,singleSelect:false,fit:true,fitColumns:true,pageSize:20"
+			data-options="url:'fenghuang/zifeiSelect.do',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 			pagination="true" toolbar="#currencyDatagridtoolbar">
 			<thead>
 				<tr>
@@ -71,51 +73,67 @@
 					<th data-options="field:'id'" width="80">自费节目编号</th>
 					<th data-options="field:'name'" width="80">自费节目名称</th>
 					<th data-options="field:'feiyong'" width="80">自费节目费用</th>
-					<th data-options="field:'currencyNamet'" width="80">币种</th>
-					<th data-options="field:'chengshiId'" width="80">城市</th>
+					<th data-options="field:'bizhong'" width="80">币种</th>
+					<th data-options="field:'chengshi'" width="80">城市</th>
 					<th data-options="field:'miaoshu'" width="80">自费节目描述</th>
-					<th data-options="field:'8',formatter:onOperateStyle" width="80">操作</th>
+					
 				</tr>
 			</thead>
 		</table>
 		<div id="currencyDatagridtoolbar">
 		     <a href="javascript:addZifei();" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>  
+		     <a href="javascript:zifeiSelectId();" class="easyui-linkbutton" iconCls="icon-save"  plain="true">修改</a>
+		     <a href="javascript:zifeiDelete();" class="easyui-linkbutton" iconCls="icon-cut" plain="true">删除</a>  
 		</div>
 	</div>
 	
 	<div id="addZifei" class="easyui-dialog" title="自费节目新增"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
-		style="width:600px;height:240px;padding:10px;">
+		style="width:600px;height:340px;padding:10px;">
 		<form id="addForm" method="post">
 			<table align="center">
 				<tr>
-<td><div class="fitem"><label>自费节目编号:</label></td><td><input name="id" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>自费节目编号:</label></td><td>--系统自动生成--</div></td>
 <td></td>
 </tr>
 <tr>
 <td><div class="fitem"><label>自费节目名称：</label></td><td><input name="name" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>自费节目费用：</label></td><td><input name="feiyong" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>自费节目费用：</label></td><td><input name="feiyong" class="easyui-numberspinner" min="1" max="999999" style="width:133px;"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>所属城市：</label></td><td><input name="chengshiId"  class="easyui-combobox"
- data-options="url:'fenghuang/CountrySetting.do',valueField:'csdNo',textField:'csdName'"/></div></td>
-<td><div class="fitem"><label>币种：</label></td><td><input name="bizhongId"  class="easyui-combobox"
- data-options="url:'fenghuang/CountrySetting.do',valueField:'csdNo',textField:'csdName'"/></div></td>
+<td><div class="fitem"><label>所属城市：</label></td><td><input name="chengshiId" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=8',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false"></div></td>			
+<td><div class="fitem"><label>币种：</label></td><td><input name="bizhongId"  class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=5',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false"></div></td>			
 </tr>
 <tr>
 <td><div class="fitem"><label>开放时间起：</label></td><td><input name="kftimeqi" class="easyui-validatebox" required="true"></div></td>
 <td><div class="fitem"><label>开放时间止：</label></td><td><input  name="kftimezhi" class="easyui-validatebox" required="true"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>时间是否可变：</label></td><td><input name="timekb" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>地接安排时间：</label></td><td><input name="djaptime" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>时间是否可变：</label></td><td><input name="timekb" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=9',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false"></div></td>			
+<td><div class="fitem"><label>地接安排时间：</label></td><td><input name="djaptime" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=9',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false"></div></td>			
 </tr>
 <tr>
-<td><div class="fitem"><label>自费节目描述：</label></td><td><input name="miaoshu" class="easyui-validatebox" required="true"></div></td>
-<td></td>
+<td><div class="fitem"><label>自费节目描述：</label></td><td colspan="3"> <input name="miaoshu" class="easyui-validatebox" size="70"></div></td>
 </tr>
 <tr>
-<tr><td colspan="4s" align="center"><a href="javascript:SaveZifei();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> <input  type="reset" value="重置"></td>
+<tr><td colspan="4s" align="center"><a href="javascript:SaveZifei();" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
+<a  class="easyui-linkbutton" iconCls="icon-undo" onclick="$('#addForm').form('clear')">重置</a></td>
 </tr>
 			</table>
 			<input id="dicType" name="dicType" type="hidden">
@@ -123,37 +141,51 @@
 	</div>
 	<div id="updateZifei" class="easyui-dialog" title="自费节目修改"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
-		style="width:600px;height:240px;padding:10px;">
+		style="width:600px;height:340px;padding:10px;">
 		<form id="updateForm" method="post">
 			<table align="center">
-				<tr>
-<td><div class="fitem"><label>自费节目编号:</label></td><td><input name="id" class="easyui-validatebox" required="true"></div></td>
-<td></td>
+				
+<tr>
+<td>
+<input id="id" name="id" class="easyui-validatebox" hidden="true">
+<div class="fitem"><label>自费节目名称：</label></td><td><input name="name" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>自费节目费用：</label></td><td><input name="feiyong" class="easyui-numberspinner" min="1" max="999999" style="width:133px;"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>自费节目名称：</label></td><td><input name="name" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>自费节目费用：</label></td><td><input name="feiyong" class="easyui-validatebox" required="true"></div></td>
-</tr>
-<tr>
-<td><div class="fitem"><label>所属城市：</label></td><td><input name="chengshiId"  class="easyui-combobox"
- data-options="url:'fenghuang/CountrySetting.do',valueField:'csdNo',textField:'csdName'"/></div></td>
-<td><div class="fitem"><label>币种：</label></td><td><input name="bizhongId"  class="easyui-combobox"
- data-options="url:'fenghuang/CountrySetting.do',valueField:'csdNo',textField:'csdName'"/></div></td>
+<td><div class="fitem"><label>所属城市：</label></td><td><input name="chengshiId" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=8',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false"></div></td>			
+<td><div class="fitem"><label>币种：</label></td><td><input name="bizhongId"  class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=5',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false"></div></td>			
 </tr>
 <tr>
 <td><div class="fitem"><label>开放时间起：</label></td><td><input name="kftimeqi" class="easyui-validatebox" required="true"></div></td>
 <td><div class="fitem"><label>开放时间止：</label></td><td><input  name="kftimezhi" class="easyui-validatebox" required="true"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>时间是否可变：</label></td><td><input name="timekb" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>地接安排时间：</label></td><td><input name="djaptime" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>时间是否可变：</label></td><td><input name="timekb" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=9',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false"></div></td>			
+<td><div class="fitem"><label>地接安排时间：</label></td><td><input name="djaptime" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=9',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false"></div></td>			
 </tr>
 <tr>
-<td><div class="fitem"><label>自费节目描述：</label></td><td><input name="miaoshu" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>自费节目描述：</label></td><td colspan="3"> <input name="miaoshu" class="easyui-validatebox" size="70"></div></td>
 <td></td>
 </tr>
 <tr>
-<tr><td colspan="4s" align="center"><a href="javascript:zifeiUpdate();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> <input  type="reset" value="重置"></td>
+<tr><td colspan="4s" align="center"><a href="javascript:zifeiUpdate();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> 
+<a  class="easyui-linkbutton" iconCls="icon-undo" onclick="$('#updateForm').form('clear')">重置</a></td>
 </tr>
 			</table>
 			<input id="dicType" name="dicType" type="hidden">
@@ -163,12 +195,7 @@
 
 
 	<script type="text/javascript">
-    //这个方法是格式化操作列的函数
-    function onOperateStyle(val,row){
-       var returnStyleValue='<img alt="修改" src="js/themes/icons/pencil.png" onclick="zifeiSelectId('+row.id+');">';
-       returnStyleValue+='<img alt="删除" src="js/themes/icons/cancel.png" onclick="zifeiDelete('+row.id+');">';
-       return returnStyleValue;
-    }
+   
     //这个方法是格式化是否可用列的，0：为不使用，1：为使用
 	function onIsUesStyle(val,row){
 	  if(val =='1'){
@@ -185,7 +212,7 @@
 		var opts = $('#dg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
 			var param = {
 				name: $("#name").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
-				chengshiId: $("#chengshiId").val() ,
+				chengshiId: $("#chengshiId").combobox('getValue'),
 				miaoshu : $("#miaoshu").val(),
 				page:  opts.pageNumber ,
 				rows:  opts.pageSize
@@ -239,6 +266,7 @@
 				var param = {
 					"id" :  row.id
 				};
+			 if (confirm("确认要删除名称为 “ "+row.name+" ”的供应商吗？")) {
 				$.ajax({
 					url : "fenghuang/zifeiDelete.do",
 					data : param,
@@ -255,6 +283,7 @@
 						$.messager.alert("删除失败", "服务器请求失败!", "error");
 					}
 				});
+			  }
 			}
 	}
 	//按id查询

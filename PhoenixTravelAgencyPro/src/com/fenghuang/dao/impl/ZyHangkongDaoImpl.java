@@ -56,7 +56,7 @@ public class ZyHangkongDaoImpl extends BaseDao implements IZyHangkongDao{
 	public Pagination<Hangkong> hangkongSelect(int currentPage, int numPerPage)
 			throws Exception {
 		// TODO 查询全部
-		String sql="select daima,name,shui,dicName from hangkong as h,dictionarydesc as d where h.bizongId=d.dicNo";
+		String sql="select id,daima,name,shui,dicName from hangkong as h,dictionarydesc as d where h.bizongId=d.dicNo";
 		Pagination<Hangkong> hkSelect=this.getPagination(currentPage, numPerPage, sql);
 		return hkSelect;
 	}

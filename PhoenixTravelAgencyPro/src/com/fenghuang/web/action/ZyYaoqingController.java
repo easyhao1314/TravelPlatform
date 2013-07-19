@@ -64,9 +64,8 @@ public class ZyYaoqingController {
 		@RequestMapping("fenghuang/yaoqingAdd.do")
 		@ResponseBody
 		public Map<String,Object> yaoqingAdd(HttpServletRequest request,HttpServletResponse response,
-				long id,int guoduid,String miaoshu,String chengben,int bizhongId,int shiyongid){
+				int guoduid,String miaoshu,String chengben,int bizhongId,int shiyongid){
 			Yaoqinghan yq=new Yaoqinghan();
-			yq.setId(id);
 			yq.setGuoduid(guoduid);
 			yq.setMiaoshu(miaoshu);
 			 yq.setChengben(chengben);
