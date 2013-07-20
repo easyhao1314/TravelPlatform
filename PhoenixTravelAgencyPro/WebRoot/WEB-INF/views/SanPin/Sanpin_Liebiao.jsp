@@ -45,6 +45,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<th data-options="field:'tonghang'" width="50">同行价</th>
 				<th data-options="field:'zhikejia'" width="50">直客价</th>
 				<th data-options="field:'numbermaster'" width="50">预收人数</th>
+				<th data-options="field:'shoukestate',formatter:openshouke" width="50">收客状态</th>
 				<th data-options="field:'productbrand',hidden:true" width="50">产品品牌_隐藏的</th>
 			</tr>
 		</thead>
@@ -112,7 +113,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		
 		
-		
+		<!-- 团号下拉菜单 -->
 	<div id="mmtest" class="easyui-menu" style="width:120px;">
 		<input id="hideinput" style="display: none;" />
 		<div data-options="iconCls:'icon-remove'" onClick="upfabustate()">取消发布状态</div>
@@ -120,6 +121,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div onClick="testView(3)">查看3</div>
 		<div onClick="testView(4)">查看4</div>
 		<div onClick="testView(5)">查看5</div>
+	</div>
+	<!-- 收客状态下拉菜单 -->
+	<div id="mmshouke" class="easyui-menu" style="width:120px;">
+		<input id="shoukeinput" style="display: none;" />
+		<div data-options="iconCls:'icon-edit'" onClick="updateshouke(1)">在收客</div>
+		<div data-options="iconCls:'icon-edit'" onClick="updateshouke(2)">已封团</div>
+		<div data-options="iconCls:'icon-edit'" onClick="updateshouke(3)">已下单</div>
+		<div data-options="iconCls:'icon-edit'" onClick="updateshouke(4)">已出团</div>
+		<div data-options="iconCls:'icon-edit'" onClick="updateshouke(5)">已回团</div>
 	</div>
 	<script type="text/javascript">
 	
@@ -180,8 +190,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		   
 		   
 		   function onOperateSanpinList1(val,row){
-		     return '<span onclick="testOnclick(event,'+row.tuanNo+')" style="width: 20px">'+row.tuanNo+'</span>';
+		     return '<div onclick="testOnclick(event,'+row.tuanNo+')" style="width: auto;">'+row.tuanNo+'</div>';
 		   }
+		   function openshouke(val,row){
+		     return '<div onclick="shoukeclick(event,'+row.tuanNo+')" style="width: auto;">'+row.shoukestate+'</div>';
+		   }
+		   //收客状态列表
+		   function shoukeclick(e,tuan){
+   	      $('#shoukeinput').attr('value',tuan);
+   	         $('#mmshouke').menu('show', {
+				left : e.pageX,
+				top : e.pageY
+			});   
+   	      }
+		   //团号列表
    	      function testOnclick(e,tuan){
    	      $('#hideinput').attr('value',tuan);
    	         $('#mmtest').menu('show', {
@@ -221,6 +243,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				         });
    	      }
    	      
+   	      function updateshouke(shoukeid){
+   	      	var tuanNo = $('#shoukeinput').val();
+   	      	var url = "fenghuang/upsanpin.do?tuanNo="+tuanNo+"&shoukestate="+shoukeid;
+   	      	$.ajax({
+   	      		url:url,
+   	      		data:tuanNo,
+   	      		datatype:"json",
+   	      		success:function(data){
+   	      			$("#dg").datagrid("reload");
+   	      		},
+   	      		error : function() {
+						$.messager.alert("修改失败", "服务器请求失败!", "error");
+					}
+   	      	
+   	      	});
+   	      }
    	      /* 
    	      //右键菜单
    	     function onRowContextMenu(e, rowIndex, rowData){

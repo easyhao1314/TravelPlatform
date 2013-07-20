@@ -115,6 +115,10 @@ public class SanpinzhongxinDaoImpl extends BaseDao implements ISanpinzhongxinDao
 			sb.append(",fabustate=?");
 			list.add(sanpin.getFabustate());
 		}
+		if(sanpin.getShoukestate()!=0){
+			sb.append(",shoukestate=?");
+			list.add(sanpin.getShoukestate());
+		}
 		if(sanpin.tuanNo!=null && !"".equals(sanpin.getTuanNo())){
 			sb.append(" where tuanNo=?");
 			list.add(sanpin.getTuanNo());
