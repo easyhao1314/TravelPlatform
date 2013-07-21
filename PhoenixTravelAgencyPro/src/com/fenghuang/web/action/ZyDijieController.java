@@ -61,11 +61,11 @@ public class ZyDijieController {
 	@RequestMapping("fenghuang/dijieAdd.do")
 	@ResponseBody
 	public Map<String,Object> dijieAdd(HttpServletRequest request,HttpServletResponse response,
-			long id,String name,String ywname,int chengshiId,String dizhi,int hzjbId,String lianxiren,String dianhua,String shouji,String chuanzhen,
+			String name,String ywname,int chengshiId,String dizhi,int hzjbId,String lianxiren,String dianhua,String shouji,String chuanzhen,
 			String email,String skype,String msn,String yahoo,String wangzhi,String kaihu,String dlrzh,String yhdz,String skrzh,String skrxm,
 			String skrdz,int ywqyId,String djsms,String xjb,String youshi,String bz){
 		Dijie dj=new Dijie();
-		dj.setId(id);
+
 		dj.setName(name);
 		dj.setYwname(ywname);
 		dj.setChengshiId(chengshiId);

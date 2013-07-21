@@ -24,7 +24,7 @@ public class ZyJingdianDaoImpl extends BaseDao implements IZyJingdianDao{
 	public Pagination<Jingdian> jingdianSelect(int currentPage, int numPerPage,String name,String chengsiId,String jiage)
 			throws Exception {
 		// TODO Auto-generated method stub
-		StringBuffer sql=new StringBuffer("select * from jingdian where 1=1 ");
+		StringBuffer sql=new StringBuffer("select j.id,j.name,j.name2,d.dicName as chengsi,j.jiage,d1.dicName as bizong,d2.dicName as sf from jingdian  as j,dictionarydesc as d,dictionarydesc as d1,dictionarydesc as d2  where j.chengsiId=d.dicNo and j.bizongId=d1.dicNo and j.dcmr=d2.dicNo and 1=1 ");
 		if(!"".equals(name) && name !=null){
 			sql.append(" and name like '%");
 			sql.append(name);
@@ -46,8 +46,8 @@ public class ZyJingdianDaoImpl extends BaseDao implements IZyJingdianDao{
 	@Override
 	public boolean jingdianAdd(Jingdian jd) throws Exception {
 		// TODO Auto-generated method stub
-		String sql="insert into jingdian(id,name,name2,chengsiId,jiage,bizongId,kftimeqi,kftimezhi,timekb,lianxiren,dianhua,chuanzhen,email,dcmr,dizhi,ywdz,jdms) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-		int count=this.update(sql,jd.getId(),jd.getName(),jd.getName2(),jd.getChengsiId(),jd.getJiage(),jd.getBizongId(),jd.getKftimeqi(),jd.getKftimezhi(),jd.getTimekb(),jd.getLianxiren(),jd.getDianhua(),
+		String sql="insert into jingdian(name,name2,chengsiId,jiage,bizongId,kftimeqi,kftimezhi,timekb,lianxiren,dianhua,chuanzhen,email,dcmr,dizhi,ywdz,jdms) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		int count=this.update(sql,jd.getName(),jd.getName2(),jd.getChengsiId(),jd.getJiage(),jd.getBizongId(),jd.getKftimeqi(),jd.getKftimezhi(),jd.getTimekb(),jd.getLianxiren(),jd.getDianhua(),
 				                  jd.getChuanzhen(),jd.getEmail(),jd.getDcmr(),jd.getDizhi(),jd.getYwdz(),jd.getJdms());
 		return count>0;
 	}

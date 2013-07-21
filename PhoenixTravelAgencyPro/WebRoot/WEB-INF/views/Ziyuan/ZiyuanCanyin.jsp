@@ -34,9 +34,11 @@
 				<td><div class="fitem">
 						<label>所属城市:</label>
 				</td>
-				<td><input id="chengshiId" name="chengshiId" class="easyui-validatebox">
-					</div>
-				</td>
+				<td><input id="chengshiId" name="chengshiId" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=8',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false"></div></td>
 				<td><div class="fitem">
 						<label>餐馆名称:</label>
 				</td>
@@ -46,11 +48,13 @@
 				<td><div class="fitem">
 						<label>合作级别:</label>
 				</td>
-				<td><input id="hzjbId" name="hzjbId" class="easyui-validatebox">
-					</div>
-				</td>
+				<td><input id="hzjbId" name="hzjbId" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=4',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false"></div></td>
 				<td>
-					<a href="javascript:dijieSelectLike();" 
+					<a href="javascript:canyinSelectLike();" 
 								class="easyui-linkbutton" iconCls="icon-ok">查询</a>
 						<a href="javascript:void(0)" class="easyui-linkbutton"
 							iconCls="icon-undo" onclick="$('#canyinForm').form('clear')">重置</a>
@@ -64,24 +68,26 @@
 		<div class="easyui-panel" title="酒店列表"
 		style="height:480px;width: auto;">
 		<table id="dg" class="easyui-datagrid"
-			data-options="url:'fenghuang/canyinSelect.do',border:false,singleSelect:false,fit:true,fitColumns:true,pageSize:20"
+			data-options="url:'fenghuang/canyinSelect.do',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 			pagination="true" toolbar="#currencyDatagridtoolbar">
 			<thead>
 				<tr>
 					<th data-options="field:'ck',checkbox:true"></th>
-					<th data-options="field:'chengshiId'" width="80">城市</th>
+					<th data-options="field:'chengshi'" width="80">城市</th>
 					<th data-options="field:'id'" width="80">餐馆编号</th>
 					<th data-options="field:'name'" width="80">餐馆名称</th>
 					<th data-options="field:'dianhua'" width="80">联系电话</th>
 					<th data-options="field:'chuanzhen'" width="80">传真</th>
 					<th data-options="field:'shouji'" width="80">手机</th>
-					<th data-options="field:'hzjbId'" width="80">合作级别</th>
-					<th data-options="field:'8',formatter:onOperateStyle" width="80">操作</th>
+					<th data-options="field:'hzjb'" width="80">合作级别</th>
+			
 				</tr>
 			</thead>
 		</table>
 		<div id="currencyDatagridtoolbar">
 		     <a href="javascript:addCanyin();" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>  
+		     <a href="javascript:canyinSelectId();" class="easyui-linkbutton" iconCls="icon-save"  plain="true">修改</a>
+		     <a href="javascript:canyinDelete();" class="easyui-linkbutton" iconCls="icon-cut" plain="true">删除</a>  
 		</div>
 	</div>
 <div id="addCanyin" class="easyui-dialog" title="餐饮新增"
@@ -90,64 +96,80 @@
 		<form id="addForm" method="post">
 			<table align="center">
 				<tr>
-<td><div class="fitem"><label>餐馆编号:</label></td><td><input name="id" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>所属城市：</label></td><td><input name="chengshiId"  class="easyui-combobox"
- data-options="url:'fenghuang/CountrySetting.do',valueField:'csdNo',textField:'csdName'"/></div></td>
+<td><div class="fitem"><label>餐馆编号:</label></td><td>--系统自动生成--</td>
+<td><div class="fitem"><label>所属城市：</label></td><td><input name="chengshiId"  class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=8',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false "></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>餐馆名称：</label></td><td><input name="name" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>具体地址：</label></td><td><input name="dizhi" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>餐馆名称：</label></td><td><input name="name" class="easyui-validatebox" ></div></td>
+<td><div class="fitem"><label>具体地址：</label></td><td><input name="dizhi" class="easyui-validatebox" ></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>联系人：</label></td><td><input name="lianxiren" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>联系电话：</label></td><td><input name="dianhua"  class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>联系人：</label></td><td><input name="lianxiren" class="easyui-validatebox"></div></td>
+<td><div class="fitem"><label>联系电话：</label></td><td><input name="dianhua"  class="easyui-validatebox" ></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>手机：</label></td><td><input name="shouji" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>传真：</label></td><td><input  name="chuanzhen" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>手机：</label></td><td><input name="shouji" class="easyui-validatebox" ></div></td>
+<td><div class="fitem"><label>传真：</label></td><td><input  name="chuanzhen" class="easyui-validatebox" ></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>Email：</label></td><td><input name="email" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>付款方式：</label></td><td><input name="fkfsId" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>Email：</label></td><td><input name="Email" class="easyui-validatebox" ></div></td>
+<td><div class="fitem"><label>付款方式：</label></td><td><input name="fkfsId" class="easyui-validatebox" ></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>合作级别：</label></td><td><input name="hzjbId" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>合作级别：</label></td><td><input name="hzjbId" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=4',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false"></div></td>
 <td></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>餐标五菜一汤：</label></td><td><input name="cbwu" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>餐标六菜一汤：</label></td><td><input name="cbliu" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>餐标五菜一汤：</label></td><td><input name="cbwu" class="easyui-numberbox" /></div></td>
+<td><div class="fitem"><label>餐标六菜一汤：</label></td><td><input name="cbliu" class="easyui-numberbox" ></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>餐标七菜一汤：</label></td><td><input name="cbqi" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>餐标八菜一汤：</label></td><td><input name="cbba" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>餐标七菜一汤：</label></td><td><input name="cbqi" class="easyui-numberbox" ></div></td>
+<td><div class="fitem"><label>餐标八菜一汤：</label></td><td><input name="cbba" class="easyui-numberbox" ></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>幼儿餐费：</label></td><td><input name="yecf" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>幼儿年龄说明：</label></td><td><input name="yenlsm" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>幼儿餐费：</label></td><td><input name="yecf" class="easyui-numberbox" ></div></td>
+<td><div class="fitem"><label>幼儿年龄说明：</label></td><td><input name="yenlsm" class="easyui-validatebox" ></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>儿童餐费：</label></td><td><input name="etcf" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>儿童餐费说明：</label></td><td><input name="etcfsm" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>儿童餐费：</label></td><td><input name="etcf" class="easyui-numberbox" ></div></td>
+<td><div class="fitem"><label>儿童餐费说明：</label></td><td><input name="etcfsm" class="easyui-validatebox" ></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>餐馆餐桌数：</label></td><td><input name="cgczs" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>容纳人数：</label></td><td><input name="rnrs" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>餐馆餐桌数：</label></td><td><input name="cgczs" class="easyui-numberbox" ></div></td>
+<td><div class="fitem"><label>容纳人数：</label></td><td><input name="rnrs" class="easyui-numberbox" ></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>免费额度说明：</label></td><td><input name="mfzdsm" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>免费额度说明：</label></td><td><input name="mfzdsm" class="easyui-validatebox" ></div></td>
 <td></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>是否协议单位：</label></td><td><input name="sfxydw" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>是否付现单位：</label></td><td><input name="sffxdw" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>是否协议单位：</label></td><td><input name="sfxydw" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=9',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false"></div></td>
+<td><div class="fitem"><label>是否付现单位：</label></td><td><input name="sffxdw" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=9',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>备注：</label></td><td><input name="beizhu" class="easyui-validatebox" required="true"></div></td>
-<td></td>
+<td><div class="fitem"><label>备注：</label></td><td colspan="3"><input name="beizhu" class="easyui-validatebox" size="70" ></div></td>
+
 </tr>
 <tr>
-<tr><td colspan="4s" align="center"><a href="javascript:SaveCanyin();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> <input  type="reset" value="重置"></td>
+<tr><td colspan="4s" align="center"><a href="javascript:SaveCanyin();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> 
+<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-undo" onclick="$('#addForm').form('clear')">重置</a></td>
 </tr>
 			</table>
 			<input id="dicType" name="dicType" type="hidden">
@@ -160,64 +182,79 @@
 		<form id="updateForm" method="post">
 			<table align="center">
 				<tr>
-<td><div class="fitem"><label>餐馆编号:</label></td><td><input name="id" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>所属城市：</label></td><td><input name="chengshiId"  class="easyui-combobox"
- data-options="url:'fenghuang/CountrySetting.do',valueField:'csdNo',textField:'csdName'"/></div></td>
+<td><div class="fitem"><label>餐馆编号:</label></td><td><input name="id" class="easyui-validatebox"></div></td>
+<td><div class="fitem"><label>所属城市：</label></td><td><input name="chengshiId"  class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=8',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false "></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>餐馆名称：</label></td><td><input name="name" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>具体地址：</label></td><td><input name="dizhi" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>餐馆名称：</label></td><td><input name="name" class="easyui-validatebox" ></div></td>
+<td><div class="fitem"><label>具体地址：</label></td><td><input name="dizhi" class="easyui-validatebox" ></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>联系人：</label></td><td><input name="lianxiren" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>联系电话：</label></td><td><input name="dianhua"  class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>联系人：</label></td><td><input name="lianxiren" class="easyui-validatebox"></div></td>
+<td><div class="fitem"><label>联系电话：</label></td><td><input name="dianhua"  class="easyui-validatebox" ></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>手机：</label></td><td><input name="shouji" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>传真：</label></td><td><input  name="chuanzhen" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>手机：</label></td><td><input name="shouji" class="easyui-validatebox" ></div></td>
+<td><div class="fitem"><label>传真：</label></td><td><input  name="chuanzhen" class="easyui-validatebox" ></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>Email：</label></td><td><input name="email" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>付款方式：</label></td><td><input name="fkfsId" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>Email：</label></td><td><input name="Email" class="easyui-validatebox" ></div></td>
+<td><div class="fitem"><label>付款方式：</label></td><td><input name="fkfsId" class="easyui-validatebox" ></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>合作级别：</label></td><td><input name="hzjbId" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>合作级别：</label></td><td><input name="hzjbId" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=4',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false"></div></td>
 <td></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>餐标五菜一汤：</label></td><td><input name="cbwu" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>餐标六菜一汤：</label></td><td><input name="cbliu" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>餐标五菜一汤：</label></td><td><input name="cbwu" class="easyui-numberbox" /></div></td>
+<td><div class="fitem"><label>餐标六菜一汤：</label></td><td><input name="cbliu" class="easyui-numberbox" ></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>餐标七菜一汤：</label></td><td><input name="cbqi" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>餐标八菜一汤：</label></td><td><input name="cbba" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>餐标七菜一汤：</label></td><td><input name="cbqi" class="easyui-numberbox" ></div></td>
+<td><div class="fitem"><label>餐标八菜一汤：</label></td><td><input name="cbba" class="easyui-numberbox" ></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>幼儿餐费：</label></td><td><input name="yecf" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>幼儿年龄说明：</label></td><td><input name="yenlsm" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>幼儿餐费：</label></td><td><input name="yecf" class="easyui-numberbox" ></div></td>
+<td><div class="fitem"><label>幼儿年龄说明：</label></td><td><input name="yenlsm" class="easyui-validatebox" ></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>儿童餐费：</label></td><td><input name="etcf" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>儿童餐费说明：</label></td><td><input name="etcfsm" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>儿童餐费：</label></td><td><input name="etcf" class="easyui-numberbox" ></div></td>
+<td><div class="fitem"><label>儿童餐费说明：</label></td><td><input name="etcfsm" class="easyui-validatebox" ></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>餐馆餐桌数：</label></td><td><input name="cgczs" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>容纳人数：</label></td><td><input name="rnrs" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>餐馆餐桌数：</label></td><td><input name="cgczs" class="easyui-numberbox" ></div></td>
+<td><div class="fitem"><label>容纳人数：</label></td><td><input name="rnrs" class="easyui-numberbox" ></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>免费额度说明：</label></td><td><input name="mfzdsm" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>免费额度说明：</label></td><td><input name="mfzdsm" class="easyui-validatebox" ></div></td>
 <td></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>是否协议单位：</label></td><td><input name="sfxydw" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>是否付现单位：</label></td><td><input name="sffxdw" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>是否协议单位：</label></td><td><input name="sfxydw" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=9',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false"></div></td>
+<td><div class="fitem"><label>是否付现单位：</label></td><td><input name="sffxdw" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=9',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>备注：</label></td><td><input name="beizhu" class="easyui-validatebox" required="true"></div></td>
-<td></td>
+<td><div class="fitem"><label>备注：</label></td><td colspan="3"><input name="beizhu" class="easyui-validatebox" size="70" ></div></td>
 </tr>
 <tr>
-<tr><td colspan="4s" align="center"><a href="javascript:canyinUpdate();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> <input  type="reset" value="重置"></td>
+<tr><td colspan="4s" align="center"><a href="javascript:canyinUpdate();" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
+<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-undo" onclick="$('#updateForm').form('clear')">重置</a></td>
 </tr>
 			</table>
 			<input id="dicType" name="dicType" type="hidden">
@@ -227,12 +264,7 @@
 
 
 	<script type="text/javascript">
-    //这个方法是格式化操作列的函数
-    function onOperateStyle(val,row){
-       var returnStyleValue='<img alt="修改" src="js/themes/icons/pencil.png" onclick="canyinSelectId('+row.id+');">';
-       returnStyleValue+='<img alt="删除" src="js/themes/icons/cancel.png" onclick="canyinDelete('+row.id+');">';
-       return returnStyleValue;
-    }
+    
     //这个方法是格式化是否可用列的，0：为不使用，1：为使用
 	function onIsUesStyle(val,row){
 	  if(val =='1'){
@@ -246,13 +278,13 @@
 /**
  * 查询按钮
  */
-		function dijieSelectLike(){
+		function canyinSelectLike(){
 		console.info($('#dg').datagrid('options'));
 		var opts = $('#dg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
 			var param = {
 				name: $("#name").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
-				chengshiId: $("#chengshiId").val() ,
-				hzjbId : $("#hzjbId").val(),
+				chengshiId: $("#chengshiId").combobox('getValue'),
+				hzjbId : $("#hzjbId").combobox('getValue'),
 				page:  opts.pageNumber ,
 				rows:  opts.pageSize
 			};
@@ -306,6 +338,7 @@
 				var param = {
 					"id" :  row.id
 				};
+				if(confirm("确认要删除名称为 “ "+row.name+" ”的供应商吗？")){
 				$.ajax({
 					url : "fenghuang/canyinDelete.do",
 					data : param,
@@ -322,6 +355,7 @@
 						$.messager.alert("删除失败", "服务器请求失败!", "error");
 					}
 				});
+				}
 			}
 	}
 	//按id查询

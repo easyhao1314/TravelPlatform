@@ -22,7 +22,7 @@ public class ZyGouwuDaoImpl extends BaseDao implements IZyGouwuDao{
 	@Override
 	public Pagination<Gouwu> gouwuSelect(int currentPage, int numPerPage,String name,String chengshiId,String hzjbId)
 			throws Exception {
-		StringBuffer sql=new StringBuffer("select * from gouwu where 1=1 ");
+		StringBuffer sql=new StringBuffer("select g.id,g.lianxiren,g.name,g.chuanzhen,d.dicName as chengshi,g.dizhi,g.dianhua,g.shouji,g.email,d1.dicName as hzjb,g.bz from gouwu as g,dictionarydesc as d,dictionarydesc as d1 where g.chengshiId=d.dicNo and g.hzjbId=d1.dicNo and 1=1 ");
 		if(name !=null && !"".equals(name)){
 			sql.append(" and name like '%");
 			sql.append(name);
@@ -44,8 +44,8 @@ public class ZyGouwuDaoImpl extends BaseDao implements IZyGouwuDao{
 	@Override
 	public boolean gouwuAdd(Gouwu gw) throws Exception {
 		// TODO Auto-generated method stub
-		String sql="insert into gouwu(id,lianxiren,name,chuanzhen,chengshiId,dizhi,dianhua,shouji,email,hzjbId,bz) values(?,?,?,?,?,?,?,?,?,?,?)";
-		int count=this.update(sql,gw.getId(),gw.getLianxiren(),gw.getName(),gw.getChuanzhen(),gw.getChengshiId(),gw.getDizhi(),
+		String sql="insert into gouwu(lianxiren,name,chuanzhen,chengshiId,dizhi,dianhua,shouji,email,hzjbId,bz) values(?,?,?,?,?,?,?,?,?,?)";
+		int count=this.update(sql,gw.getLianxiren(),gw.getName(),gw.getChuanzhen(),gw.getChengshiId(),gw.getDizhi(),
 				gw.getDianhua(),gw.getShouji(),gw.getEmail(),gw.getHzjbId(),gw.getBz());
 		return count>0;
 	}

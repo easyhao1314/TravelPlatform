@@ -5,7 +5,6 @@ package com.fenghuang.dao.impl;
 
 import javax.sql.DataSource;
 
-import org.hibernate.validator.xml.PayloadType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;

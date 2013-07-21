@@ -23,8 +23,8 @@ public class ZyHangkongDaoImpl extends BaseDao implements IZyHangkongDao{
 	@Override
 	public boolean hangkongAdd(Hangkong hk) throws Exception {
 		// TODO 增
-		String sql="insert into hangkong (id,daima,name,shui,bizongId) values (?,?,?,?,?)";
-		int count=this.update(sql,hk.getId(),hk.getDaima(),hk.getName(),hk.getShui(),hk.getBizongId());
+		String sql="insert into hangkong (daima,name,shui,bizongId) values (?,?,?,?)";
+		int count=this.update(sql,hk.getDaima(),hk.getName(),hk.getShui(),hk.getBizongId());
 		return count>0;
 	}
 
@@ -56,7 +56,7 @@ public class ZyHangkongDaoImpl extends BaseDao implements IZyHangkongDao{
 	public Pagination<Hangkong> hangkongSelect(int currentPage, int numPerPage)
 			throws Exception {
 		// TODO 查询全部
-		String sql="select * from hangkong";
+		String sql="select id,daima,name,shui,dicName from hangkong as h,dictionarydesc as d where h.bizongId=d.dicNo";
 		Pagination<Hangkong> hkSelect=this.getPagination(currentPage, numPerPage, sql);
 		return hkSelect;
 	}

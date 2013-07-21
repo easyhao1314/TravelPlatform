@@ -23,5 +23,10 @@ public class SanpinzhongxinServiceImpl implements ISanpinzhongxinService {
 		// TODO Auto-generated method stub
 		return isanpin.getByQueryConditionPagination(currentPage, numPerPage,s);
 	}
+	@Override
+	public boolean upSanpinzhongxin(Sanpinzhongxin sanpin) throws Exception {
+		// TODO Auto-generated method stub
+		return isanpin.upSanpinzhongxin(sanpin);
+	}
 
 }

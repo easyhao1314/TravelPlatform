@@ -160,9 +160,7 @@ public class DictionaryDescController {
 			return iDictionaryDescService.getDictionaryComboboxs(dicType);
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
-		
-		
+		}		
 		return null;
 	}
 	

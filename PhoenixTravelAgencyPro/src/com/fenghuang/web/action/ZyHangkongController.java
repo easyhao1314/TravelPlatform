@@ -62,9 +62,8 @@ public class ZyHangkongController {
 	@RequestMapping("fenghuang/hangkongAdd.do")
 	@ResponseBody
 	public Map<String,Object> jiaotongAdd(HttpServletRequest request,HttpServletResponse response,
-			long id,String daima,String name,float shui,int bizongId){
+			String daima,String name,float shui,int bizongId){
 		Hangkong hk=new Hangkong();
-		hk.setId(id);
 		hk.setDaima(daima);
 		hk.setName(name);
 		hk.setShui(shui);

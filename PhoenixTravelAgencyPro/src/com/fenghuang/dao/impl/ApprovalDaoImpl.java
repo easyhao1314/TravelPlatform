@@ -12,14 +12,11 @@ import com.fenghuang.entiey.Approval;
 import com.fenghuang.util.Pagination;
 @Repository
 public class ApprovalDaoImpl extends BaseDao implements IapprovalDao {
-	
-	/**
-	 * @param dataSource
-	 */
+	//wenjian
 	@Autowired
-	public ApprovalDaoImpl(@Qualifier("dataSource") DataSource dataSource) {
+	public ApprovalDaoImpl(@Qualifier("dataSource")DataSource dataSource) {
 		super(dataSource);
-		
+		// TODO Auto-generated constructor stub
 	}
 
 	@Override

@@ -165,6 +165,36 @@ public class SanpinAction {
 		result.put("success", isSuccess);
 		return result;
 	}
+	@RequestMapping("fenghuang/upsanpin.do")
+	@ResponseBody
+	public Map<String,Object> Update(HttpServletRequest request,HttpServletResponse response,String fabustate,String tuanNo,
+			String shoukestate) {
+		Sanpinzhongxin sanpin = new Sanpinzhongxin();
+	if(fabustate!=null && !"".equals(fabustate)){
+		sanpin.setFabustate(Integer.parseInt(fabustate));
+	}
+	if(tuanNo!=null && !"".equals(tuanNo)){
+		sanpin.setTuanNo(tuanNo);
+	}
+	if(shoukestate!=null && !"".equals(shoukestate)){
+		sanpin.setShoukestate(Integer.parseInt(shoukestate));
+	}
+		
+	boolean isSuccess = false;
+	Map<String,Object> result = new HashMap<String, Object>();
+	try {
+		iss.upSanpinzhongxin(sanpin);
+		isSuccess=true;
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		isSuccess=false;
+	}
+		result.put("success", isSuccess);
+		return result;
+	}
+	
+	
 	//分页散拼列表
 	@RequestMapping("fenghuang/Sanpinliebiao.do")
 	@ResponseBody
@@ -180,7 +210,17 @@ public class SanpinAction {
 			
 			String Tourdate= request.getParameter("Tourdate");
 			String productbrand= request.getParameter("productbrand");
-
+			String tuanNo = request.getParameter("tuanNo");
+			String fabustate = request.getParameter("fabustate");
+			//发布状态
+			if(fabustate!=null && !"".equals(fabustate)){
+				s.setFabustate(Integer.parseInt(fabustate));
+			}
+			
+			
+			if(tuanNo!=null && !"".equals(tuanNo)){
+				s.setTuanNo(tuanNo);
+			}
 			if(tuanName!=null && !"".equals(tuanName)){
 				s.setTuanName(tuanName);
 			}
@@ -194,8 +234,16 @@ public class SanpinAction {
 				s.setProductbrand(Long.parseLong(productbrand));
 			}
 			
+			if(page==null){
+				page=1;
+			}
+			if(rows==null){
+				rows=1;
+			}
 			
-			Pagination<Sanpinzhongxin> pagination=(Pagination<Sanpinzhongxin>)iss.getByQueryConditionPagination(page, rows,s);
+			
+			
+			Pagination<Sanpinzhongxin> pagination=(Pagination<Sanpinzhongxin>)iss.getByQueryConditionPagination(page,rows,s);
 			List<Map<String, Object>> testUsers = pagination.getResultList();
 			Map<String,Object> returnValue  = new HashMap<String, Object>();
 			for(int i = 0 ;i<testUsers.size();i++){
@@ -220,6 +268,8 @@ public class SanpinAction {
 		return null;
 
 	}
+
+	
 	
 	
 }

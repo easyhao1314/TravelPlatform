@@ -25,7 +25,7 @@ public class ZyDaoyouDaoImpl extends BaseDao implements IZyDaoyouDao{
 	public Pagination<Daoyou> daoyouSelect(int currentPage, int numPerPage,String name,String guojiaId,String chengshiId)
 			throws Exception {
 		// TODO Auto-generated method stub
-		StringBuffer sql=new StringBuffer("select * from daoyou where 1=1");
+		StringBuffer sql=new StringBuffer("select dd.dicName as guojia,d.name,d.zjhm,d.dinhua,dd1.dicName as chengshi,d.fax,d.shouji,d.email,d.bz from daoyou as d,dictionarydesc as dd,dictionarydesc as dd1 where d.guojiaId=dd.dicNo and d.chengshiId=dd1.dicNo and 1=1");
 		if(name !=null && !"".equals(name)){
 			sql.append(" and name like '%");
 			sql.append(name);
@@ -47,8 +47,8 @@ public class ZyDaoyouDaoImpl extends BaseDao implements IZyDaoyouDao{
 	@Override
 	public boolean daoyouAdd(Daoyou dy) throws Exception {
 		// TODO Auto-generated method stub
-		String sql="insert into daoyou(id,guojiaId,name,name2,name3,zjlx,zjhm,chengshiId,dinhua,lxfs1,lxfs2,lxfs3,email,shouji,fax,dyfy,hzjbId,bz) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-		int count=this.update(sql,dy.getId(),dy.getGuojiaId(),dy.getName(),dy.getName2(),dy.getName3(),dy.getZjlx(),dy.getZjhm(),dy.getChengshiId(),dy.getDinhua(), dy.getLxfs1(),dy.getLxfs2(),dy.getLxfs3(),
+		String sql="insert into daoyou(guojiaId,name,name2,name3,zjlx,zjhm,chengshiId,dinhua,lxfs1,lxfs2,lxfs3,email,shouji,fax,dyfy,hzjbId,bz) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		int count=this.update(sql,dy.getGuojiaId(),dy.getName(),dy.getName2(),dy.getName3(),dy.getZjlx(),dy.getZjhm(),dy.getChengshiId(),dy.getDinhua(), dy.getLxfs1(),dy.getLxfs2(),dy.getLxfs3(),
 				              dy.getEmail(),dy.getShouji(),dy.getFax(),dy.getDyfy(),dy.getHzjbId(),dy.getBz());
 		return count>0;
 	}

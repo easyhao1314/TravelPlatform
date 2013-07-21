@@ -52,31 +52,27 @@
 		</table>
 		</form>
 	</div>
-	<!--
-	<div id="searchpanel">
-		<a href="javascript:void(0)" iconCls="icon-search"
-			onclick="javascript:hangkongSelectLike()"></a> <a href="javascript:void(0)"
-			iconCls="icon-undo" onclick="javascript:alert('重置')"></a>
-	</div>
-	  -->
 		<div class="easyui-panel" title="航空公司列表"
 		style="height:480px;width: auto;">
 		<table id="dg" class="easyui-datagrid"
-			data-options="url:'fenghuang/hangkongSelect.do',border:false,singleSelect:false,fit:true,fitColumns:true,pageSize:20"
+			data-options="url:'fenghuang/hangkongSelect.do',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 			pagination="true" toolbar="#currencyDatagridtoolbar">
 			<thead>
 				<tr>
 					<th data-options="field:'ck',checkbox:true"></th>
+					<th data-options="field:'id'" width="80">编号</th>
 					<th data-options="field:'daima'" width="80">国际航协代码</th>
 					<th data-options="field:'name'" width="80">航空公司名称</th>
 					<th data-options="field:'shui'" width="80">税</th>
-					<th data-options="field:'bizongId'" width="80">币种</th>
-					<th data-options="field:'8',formatter:onOperateStyle" width="80">操作</th>
+					<th data-options="field:'dicName'" width="80">币种</th>
+					
 				</tr>
 			</thead>
 		</table>
 		<div id="currencyDatagridtoolbar">
 		     <a href="javascript:addHangkong();" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>  
+		    <a href="javascript:hangkongSelectId();" class="easyui-linkbutton" iconCls="icon-save"  plain="true">修改</a>
+		     <a href="javascript:hangkongDelete();" class="easyui-linkbutton" iconCls="icon-cut" plain="true">删除</a>
 		</div>
 	</div>
 	
@@ -86,20 +82,25 @@
 		<form id="addForm" method="post">
 			<table align="center">
 			<tr>
-<td><div class="fitem"><label>id:</label></td><td><input name="id" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>编号:</label></td><td>--系统自动生成--</div></td>
 <td></td>
 </tr>
-				<tr>
+<tr>
 <td><div class="fitem"><label>国际航协代码:</label></td><td><input name="daima" class="easyui-validatebox" required="true"></div></td>
 <td><div class="fitem"><label>航空公司名称:</label></td><td><input name="name" class="easyui-validatebox" required="true"></div></td>
 </tr>
 <tr>
 <td><div class="fitem"><label>税：</label></td><td><input name="shui" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>币种：</label></td><td><input name="bizongId" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>币种：</label></td><td><input name="bizongId" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=5',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false"></div></td>			
 </tr>
 
 <tr>
-<tr><td colspan="4s" align="center"><a href="javascript:SaveHangkong();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> <input  type="reset" value="重置"></td>
+<tr><td colspan="4s" align="center"><a href="javascript:SaveHangkong();" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
+ <a  class="easyui-linkbutton" iconCls="icon-undo" onclick="$('#addForm').form('clear')">重置</a></td>
 </tr>
 			</table>
 			<input id="dicType" name="dicType" type="hidden">
@@ -112,20 +113,25 @@
 		<form id="updateForm" method="post">
 			<table align="center">
 							<tr>
-<td><div class="fitem"><label>id:</label></td><td><input name="id" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>编号:</label></td><td><input name="id" class="easyui-validatebox" readonly="true" style="width:40px;">--不可修改--</div></td>
 <td></td>
 </tr>
-				<tr>
+<tr>
 <td><div class="fitem"><label>国际航协代码:</label></td><td><input name="daima" class="easyui-validatebox" required="true"></div></td>
 <td><div class="fitem"><label>航空公司名称:</label></td><td><input name="name" class="easyui-validatebox" required="true"></div></td>
 </tr>
 <tr>
 <td><div class="fitem"><label>税：</label></td><td><input name="shui" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>币种：</label></td><td><input name="bizongId" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>币种：</label></td><td><input name="bizongId" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=5',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false"></div></td>			
 </tr>
 
 <tr>
-<tr><td colspan="4s" align="center"><a href="javascript:hangkongUpdate();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> <input  type="reset" value="重置"></td>
+<tr><td colspan="4s" align="center"><a href="javascript:hangkongUpdate();" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
+<a  class="easyui-linkbutton" iconCls="icon-undo" onclick="$('#updateForm').form('clear')">重置</a></td>
 </tr>
 			</table>
 			<input id="dicType" name="dicType" type="hidden">
@@ -134,12 +140,7 @@
 
 
 	<script type="text/javascript">
-    //这个方法是格式化操作列的函数
-    function onOperateStyle(val,row){
-       var returnStyleValue='<img alt="修改" src="js/themes/icons/pencil.png" onclick="hangkongSelectId('+row.id+');">';
-       returnStyleValue+='<img alt="删除" src="js/themes/icons/cancel.png" onclick="hangkongDelete('+row.id+');">';
-       return returnStyleValue;
-    }
+   
     //这个方法是格式化是否可用列的，0：为不使用，1：为使用
 	function onIsUesStyle(val,row){
 	  if(val =='1'){
@@ -186,6 +187,7 @@
 				var param = {
 					"id" :  row.id
 				};
+				if (confirm("确认要删除名称为 “ "+row.name+" ”的供应商吗？")) {
 				$.ajax({
 					url : "fenghuang/hangkongDelete.do",
 					data : param,
@@ -202,6 +204,7 @@
 						$.messager.alert("删除失败", "服务器请求失败!", "error");
 					}
 				});
+				}
 			}
 	}
 	//按id查询
@@ -210,7 +213,6 @@
 			$("#hangkongUpdate").dialog("open");
 			//准备回显的数据
 			var row = $("#dg").datagrid("getSelected");
-			//alert(row.tuanNO);
 		
 			if(row){
 				var param = {

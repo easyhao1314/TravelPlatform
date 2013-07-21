@@ -58,7 +58,7 @@ public class ZyJiaotongDaoIMpl extends BaseDao implements IZyJiaotongDao{
 	public Pagination<Jiaotong> jiaotongSelect(int currentPage, int numPerPage,String name,String chengshiId,String lianxiren,String hzjbId)
 			throws Exception {
 		// TODO Auto-generated method stub
-		StringBuffer sql=new StringBuffer("select * from jiaotong where 1=1 ");
+		StringBuffer sql=new StringBuffer("select j.id,j.name,j.dianhua,j.chuanzhen,j.shouji,j.lianxiren,d.dicName as chengsi,d1.dicName as hzjb from jiaotong as j,dictionarydesc as d,dictionarydesc as d1 where j.chengshiId=d.dicNo and j.hzjbId=d1.dicNo and 1=1 ");
 		if(name !=null && !"".equals(name)){
 			sql.append(" and name like '%");
 			sql.append(name);

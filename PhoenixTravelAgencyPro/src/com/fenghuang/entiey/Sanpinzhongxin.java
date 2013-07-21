@@ -8,418 +8,367 @@ import java.util.*;
 
 /** 散拼中心
  * 
- * @pdOid 3b9ec0f7-bd72-4d52-a746-e11a0b8cfa75 */
+ * @pdOid 9376c814-30d5-4512-9b1a-f2c6cdd167bb */
 public class Sanpinzhongxin {
-   public java.lang.String getTuanName() {
-		return tuanName;
-	}
-
-	public void setTuanName(java.lang.String tuanName) {
-		this.tuanName = tuanName;
-	}
-
-	public long getAreatype() {
-		return areatype;
-	}
-
-	public void setAreatype(long areatype) {
-		this.areatype = areatype;
-	}
-
-	public long getTargetpopulation() {
-		return targetpopulation;
-	}
-
-	public void setTargetpopulation(long targetpopulation) {
-		this.targetpopulation = targetpopulation;
-	}
-
-	public long getDeparturecity() {
-		return departurecity;
-	}
-
-	public void setDeparturecity(long departurecity) {
-		this.departurecity = departurecity;
-	}
-
-	public long getTerminalCity() {
-		return terminalCity;
-	}
-
-	public void setTerminalCity(long terminalCity) {
-		this.terminalCity = terminalCity;
-	}
-
-	public long getProducttypes() {
-		return producttypes;
-	}
-
-	public void setProducttypes(long producttypes) {
-		this.producttypes = producttypes;
-	}
-
-	public long getProductbrand() {
-		return productbrand;
-	}
-
-	public void setProductbrand(long productbrand) {
-		this.productbrand = productbrand;
-	}
-
-	public long getHotel() {
-		return hotel;
-	}
-
-	public void setHotel(long hotel) {
-		this.hotel = hotel;
-	}
-
-	public int getNumbercountry() {
-		return numbercountry;
-	}
-
-	public void setNumbercountry(int numbercountry) {
-		this.numbercountry = numbercountry;
-	}
-
-	public int getNumbermaster() {
-		return numbermaster;
-	}
-
-	public void setNumbermaster(int numbermaster) {
-		this.numbermaster = numbermaster;
-	}
-
-	public java.lang.String getAirways() {
-		return airways;
-	}
-
-	public void setAirways(java.lang.String airways) {
-		this.airways = airways;
-	}
-
-	public java.lang.String getGroupflight() {
-		return groupflight;
-	}
-
-	public void setGroupflight(java.lang.String groupflight) {
-		this.groupflight = groupflight;
-	}
-
-	public java.lang.String getTourflight() {
-		return tourflight;
-	}
-
-	public void setTourflight(java.lang.String tourflight) {
-		this.tourflight = tourflight;
-	}
-
-	public int getPredict() {
-		return predict;
-	}
-
-	public void setPredict(int predict) {
-		this.predict = predict;
-	}
-
-	public int getReport() {
-		return report;
-	}
-
-	public void setReport(int report) {
-		this.report = report;
-	}
-
-	public java.lang.String getTeamexplains() {
-		return teamexplains;
-	}
-
-	public void setTeamexplains(java.lang.String teamexplains) {
-		this.teamexplains = teamexplains;
-	}
-
-	public java.lang.String getServicesinclude() {
-		return servicesinclude;
-	}
-
-	public void setServicesinclude(java.lang.String servicesinclude) {
-		this.servicesinclude = servicesinclude;
-	}
-
-	public java.lang.String getServicenoinclude() {
-		return servicenoinclude;
-	}
-
-	public void setServicenoinclude(java.lang.String servicenoinclude) {
-		this.servicenoinclude = servicenoinclude;
-	}
-
-	public java.lang.String getNotes() {
-		return notes;
-	}
-
-	public void setNotes(java.lang.String notes) {
-		this.notes = notes;
-	}
-
-	public int getReviewstatus() {
-		return reviewstatus;
-	}
-
-	public void setReviewstatus(int reviewstatus) {
-		this.reviewstatus = reviewstatus;
-	}
-
-	public float getShenpijia() {
-		return shenpijia;
-	}
-
-	public void setShenpijia(float shenpijia) {
-		this.shenpijia = shenpijia;
-	}
-
-	public float getDakehujia() {
-		return dakehujia;
-	}
-
-	public void setDakehujia(float dakehujia) {
-		this.dakehujia = dakehujia;
-	}
-
-	public float getZhikejia() {
-		return zhikejia;
-	}
-
-	public void setZhikejia(float zhikejia) {
-		this.zhikejia = zhikejia;
-	}
-
-	public float getTonghang() {
-		return tonghang;
-	}
-
-	public void setTonghang(float tonghang) {
-		this.tonghang = tonghang;
-	}
-
-	public float getErtongzhanchuang() {
-		return ertongzhanchuang;
-	}
-
-	public void setErtongzhanchuang(float ertongzhanchuang) {
-		this.ertongzhanchuang = ertongzhanchuang;
-	}
-
-	public float getErtongbuzhanchuang() {
-		return ertongbuzhanchuang;
-	}
-
-	public void setErtongbuzhanchuang(float ertongbuzhanchuang) {
-		this.ertongbuzhanchuang = ertongbuzhanchuang;
-	}
-
-	public float getZibeiqianjia() {
-		return zibeiqianjia;
-	}
-
-	public void setZibeiqianjia(float zibeiqianjia) {
-		this.zibeiqianjia = zibeiqianjia;
-	}
-
-	public int getNumberday() {
-		return numberday;
-	}
-
-	public void setNumberday(int numberday) {
-		this.numberday = numberday;
-	}
-
-	public java.util.Date getGroupdate() {
-		return groupdate;
-	}
-
-	public void setGroupdate(java.util.Date groupdate) {
-		this.groupdate = groupdate;
-	}
-
-	public java.util.Date getTourdate() {
-		return tourdate;
-	}
-
-	public void setTourdate(java.util.Date tourdate) {
-		this.tourdate = tourdate;
-	}
-
-	public long getZao() {
-		return zao;
-	}
-
-	public void setZao(long zao) {
-		this.zao = zao;
-	}
-
-	public long getZhong() {
-		return zhong;
-	}
-
-	public void setZhong(long zhong) {
-		this.zhong = zhong;
-	}
-
-	public long getWan() {
-		return wan;
-	}
-
-	public void setWan(long wan) {
-		this.wan = wan;
-	}
-
-/** 团号
+   /** 团号
     * 
-    * @pdOid 095b2b8b-67d6-4bf9-b400-6359d5b9f4a5 */
+    * @pdOid 969fac73-94fa-4f70-a081-4c758a4d7b18 */
    public java.lang.String tuanNo;
    /** 团名 
     * 
-    * @pdOid e15d9eeb-12c1-49d0-ae0b-84a5b60d0c95 */
+    * @pdOid 55403240-932c-4d7b-94f5-0ddb921bf0b8 */
    public java.lang.String tuanName;
    /** 地域类型
     * 
-    * @pdOid 0908250c-3c40-4079-9ab4-4d58ad23e008 */
+    * @pdOid 5fbfe401-b1d8-4921-aa85-96b6786247e7 */
    public long areatype;
    /** 目标人群
     * 
-    * @pdOid c3b6da34-d9c7-4e41-b9ed-0fdea6115fc8 */
+    * @pdOid 3a9bc051-9915-4bad-98fc-2a6456dc7e73 */
    public long targetpopulation;
    /** 出发城市
     * 
-    * @pdOid 8047d8c7-1df5-45c9-bcf0-f543dc33e94d */
+    * @pdOid 815799d0-1b4b-429f-955d-bfc7c8ce2342 */
    public long departurecity;
    /** 终点城市
     * 
-    * @pdOid 8773d19d-791e-46f8-b388-b898d1eeb2ab */
+    * @pdOid eefacd82-1921-46c8-bd97-70f0c38d8b16 */
    public long terminalCity;
    /** 产品类型
     * 
-    * @pdOid a80170f7-0cd6-4e15-89ef-bf2883b6a3e7 */
+    * @pdOid 4f5f4256-9327-422b-a6ce-1e69132249b7 */
    public long producttypes;
    /** 产品品牌
     * 
-    * @pdOid 8ad19ee1-887d-4484-b306-70261c4cce03 */
+    * @pdOid a428ed5c-1ee8-4984-8588-cf3ca5df850e */
    public long productbrand;
    /** 酒店标准
     * 
-    * @pdOid ac5ad0a0-4d17-48bf-bbed-9d026b37fb9c */
+    * @pdOid 2a4a6576-b474-472c-b3eb-0cce7f87bef4 */
    public long hotel;
    /** 旅游国家数量
     * 
-    * @pdOid bafd96f3-e1e7-490a-88c5-50edf5ee93d5 */
+    * @pdOid 9779f74d-d6f2-4804-ba6e-72d3411ab584 */
    public int numbercountry;
    /** 人数
     * 
-    * @pdOid 75067216-e241-4584-8d61-7994df57edbc */
+    * @pdOid eb15d830-6041-4c79-8fe1-9657669b612e */
    public int numbermaster;
    /** 航空公司
     * 
-    * @pdOid 25aff2ac-7503-4fac-90c6-8ad798581734 */
+    * @pdOid 60f673d3-3d48-41de-ab5f-6318dbf3df1c */
    public java.lang.String airways;
    /** 去程航班
     * 
-    * @pdOid e7017d3b-b9a9-406b-9530-5c81f0b51e03 */
+    * @pdOid 0305186a-f106-42de-9fd5-4c45f1ab1ba2 */
    public java.lang.String groupflight;
    /** 回程航班
     * 
-    * @pdOid b0e9eae4-9132-4d1c-aba7-8a26590e95a4 */
+    * @pdOid 1c77c68c-8737-4e3f-9ff2-94fd82c1393a */
    public java.lang.String tourflight;
    /** 预警人数（出境）
     * 
-    * @pdOid 0f5983ef-fc2b-4a1f-bf1e-f75a64bd4a7d */
+    * @pdOid fb877199-4eaf-49b2-8972-09c9dbf71cb2 */
    public int predict;
    /** 报警人数（出境）
     * 
-    * @pdOid a265ebcf-cafd-476f-af92-90afc311d008 */
+    * @pdOid 62133f3a-05cd-462e-8b68-02b2ea3f47cb */
    public int report;
    /** 团队特色说明
     * 
-    * @pdOid 1f5265a2-e8bf-4419-bfc3-4588f0f8fe91 */
+    * @pdOid 7320e8e0-5d79-417e-aa7e-a2a85538a7af */
    public java.lang.String teamexplains;
    /** 服务包含
     * 
-    * @pdOid a268e457-34c5-4d61-bdb4-7c4f3e1b8b0e */
+    * @pdOid 6801e4d7-2086-455c-89c8-4bf5f3f6a4de */
    public java.lang.String servicesinclude;
    /** 服务不含
     * 
-    * @pdOid 7299d638-3c2f-4ac1-aaac-a8e5753eec37 */
+    * @pdOid ad4ac6d9-7596-4f90-b9a6-e840ccd9f669 */
    public java.lang.String servicenoinclude;
    /** 参团须知
     * 
-    * @pdOid 0e4cf6c3-f72b-47f7-b378-ea4ea4ecd93e */
+    * @pdOid 671b74a6-f6a3-447f-9e6b-a25228cfd653 */
    public java.lang.String notes;
    /** 审核状态
     * 
-    * @pdOid c8e379aa-09c7-4d71-b0e1-43a52b462398 */
+    * @pdOid f60df380-4d96-4d89-abf9-2d96e953cd3f */
    public int reviewstatus;
    /** 审批价
     * 
-    * @pdOid f0d275b6-6eba-4fd8-8c3d-3e7364c863f0 */
+    * @pdOid 9e098fdd-9c01-4a91-8871-30be1ef859a9 */
    public float shenpijia;
    /** 大客户价
     * 
-    * @pdOid e05cb9c0-b949-4534-9396-93e47995578c */
+    * @pdOid 3580a8e9-72ee-4ebb-a8cd-f64c3ae78139 */
    public float dakehujia;
    /** 直客价
     * 
-    * @pdOid 151fbba9-a360-4ddc-a707-9101d79f513b */
+    * @pdOid 196ae5da-e776-47f0-a189-1fed218a4893 */
    public float zhikejia;
    /** 同行价
     * 
-    * @pdOid f7406a27-e78a-49c8-9976-ab72e94b075e */
+    * @pdOid 4c581b31-8a52-4c9c-966a-ecb8861c794f */
    public float tonghang;
    /** 儿童站床价
     * 
-    * @pdOid 89390dd9-e94a-47df-afb0-e6c3ab92a5e1 */
+    * @pdOid bd306e7a-10ce-4bee-907f-720888d49e75 */
    public float ertongzhanchuang;
    /** 儿童不占床价
     * 
-    * @pdOid 0ec7cc8f-a5b9-4b81-a002-d4329ab6a219 */
+    * @pdOid 1eeec1e9-b00e-44f5-9d78-a9f757618149 */
    public float ertongbuzhanchuang;
    /** 自备签价
     * 
-    * @pdOid e2655aba-2e47-4c9b-92e9-8471e18674a5 */
+    * @pdOid 7cd91fdf-e2c0-4d6c-8a96-8e5588ab41fa */
    public float zibeiqianjia;
    /** 全程天数
     * 
-    * @pdOid 497bdfc9-b198-4001-930f-bc7c3b36971e */
+    * @pdOid c35c3748-b199-45e2-ae7d-f1c1b3743442 */
    public int numberday;
    /** 出团日期
     * 
-    * @pdOid 6132a5ae-d763-4405-a4e0-43a7d150da2c */
+    * @pdOid f713d81e-98de-496d-8a24-bc6590934304 */
    public java.util.Date groupdate;
    /** 回团日期
     * 
-    * @pdOid b24b4abc-32cb-45ed-b458-4ab0430df9c4 */
+    * @pdOid 28f76ba5-c3f5-415c-b38b-a034c5ef1ec8 */
    public java.util.Date tourdate;
    /** 早餐
     * 
-    * @pdOid dc717860-d809-43ee-8cc6-0556dea7b2c3 */
+    * @pdOid ed85b88d-2508-47bb-a9e9-078c27559c64 */
    public long zao;
    /** 中餐
     * 
-    * @pdOid a9f5e59a-dce2-4f16-9839-a61ddbd33f30 */
+    * @pdOid 8ec6a22f-3a57-47c0-9d54-f0b8f3aa0811 */
    public long zhong;
    /** 晚餐
     * 
-    * @pdOid cc4f9a82-39ca-4ddb-8866-49386201d5c6 */
+    * @pdOid bbb16735-aa57-49d5-9c4a-c1a691766211 */
    public long wan;
-   
-   /** @pdOid 8dc544b2-6fd6-4ff1-a4c8-4fed5c672394 */
-   public java.lang.String getTuanNo() {
-      return tuanNo;
-   }
-   
-   /** @param newTuanNo
-    * @pdOid 779a7ddc-e0fb-4b66-8523-574b8dc62252 */
-   public void setTuanNo(java.lang.String newTuanNo) {
-      tuanNo = newTuanNo;
-   }
+   /** 发布状态
+    * 
+    * @pdOid 0959eef5-4797-4f17-b0bf-028afa6b3842 */
+   public int fabustate;
+   /** 收客状态
+    * 
+    * @pdOid c4d686bf-eee3-43cc-9f5a-3b12e5dab105 */
+   public int shoukestate;
+public java.lang.String getTuanNo() {
+	return tuanNo;
+}
+public void setTuanNo(java.lang.String tuanNo) {
+	this.tuanNo = tuanNo;
+}
+public java.lang.String getTuanName() {
+	return tuanName;
+}
+public void setTuanName(java.lang.String tuanName) {
+	this.tuanName = tuanName;
+}
+public long getAreatype() {
+	return areatype;
+}
+public void setAreatype(long areatype) {
+	this.areatype = areatype;
+}
+public long getTargetpopulation() {
+	return targetpopulation;
+}
+public void setTargetpopulation(long targetpopulation) {
+	this.targetpopulation = targetpopulation;
+}
+public long getDeparturecity() {
+	return departurecity;
+}
+public void setDeparturecity(long departurecity) {
+	this.departurecity = departurecity;
+}
+public long getTerminalCity() {
+	return terminalCity;
+}
+public void setTerminalCity(long terminalCity) {
+	this.terminalCity = terminalCity;
+}
+public long getProducttypes() {
+	return producttypes;
+}
+public void setProducttypes(long producttypes) {
+	this.producttypes = producttypes;
+}
+public long getProductbrand() {
+	return productbrand;
+}
+public void setProductbrand(long productbrand) {
+	this.productbrand = productbrand;
+}
+public long getHotel() {
+	return hotel;
+}
+public void setHotel(long hotel) {
+	this.hotel = hotel;
+}
+public int getNumbercountry() {
+	return numbercountry;
+}
+public void setNumbercountry(int numbercountry) {
+	this.numbercountry = numbercountry;
+}
+public int getNumbermaster() {
+	return numbermaster;
+}
+public void setNumbermaster(int numbermaster) {
+	this.numbermaster = numbermaster;
+}
+public java.lang.String getAirways() {
+	return airways;
+}
+public void setAirways(java.lang.String airways) {
+	this.airways = airways;
+}
+public java.lang.String getGroupflight() {
+	return groupflight;
+}
+public void setGroupflight(java.lang.String groupflight) {
+	this.groupflight = groupflight;
+}
+public java.lang.String getTourflight() {
+	return tourflight;
+}
+public void setTourflight(java.lang.String tourflight) {
+	this.tourflight = tourflight;
+}
+public int getPredict() {
+	return predict;
+}
+public void setPredict(int predict) {
+	this.predict = predict;
+}
+public int getReport() {
+	return report;
+}
+public void setReport(int report) {
+	this.report = report;
+}
+public java.lang.String getTeamexplains() {
+	return teamexplains;
+}
+public void setTeamexplains(java.lang.String teamexplains) {
+	this.teamexplains = teamexplains;
+}
+public java.lang.String getServicesinclude() {
+	return servicesinclude;
+}
+public void setServicesinclude(java.lang.String servicesinclude) {
+	this.servicesinclude = servicesinclude;
+}
+public java.lang.String getServicenoinclude() {
+	return servicenoinclude;
+}
+public void setServicenoinclude(java.lang.String servicenoinclude) {
+	this.servicenoinclude = servicenoinclude;
+}
+public java.lang.String getNotes() {
+	return notes;
+}
+public void setNotes(java.lang.String notes) {
+	this.notes = notes;
+}
+public int getReviewstatus() {
+	return reviewstatus;
+}
+public void setReviewstatus(int reviewstatus) {
+	this.reviewstatus = reviewstatus;
+}
+public float getShenpijia() {
+	return shenpijia;
+}
+public void setShenpijia(float shenpijia) {
+	this.shenpijia = shenpijia;
+}
+public float getDakehujia() {
+	return dakehujia;
+}
+public void setDakehujia(float dakehujia) {
+	this.dakehujia = dakehujia;
+}
+public float getZhikejia() {
+	return zhikejia;
+}
+public void setZhikejia(float zhikejia) {
+	this.zhikejia = zhikejia;
+}
+public float getTonghang() {
+	return tonghang;
+}
+public void setTonghang(float tonghang) {
+	this.tonghang = tonghang;
+}
+public float getErtongzhanchuang() {
+	return ertongzhanchuang;
+}
+public void setErtongzhanchuang(float ertongzhanchuang) {
+	this.ertongzhanchuang = ertongzhanchuang;
+}
+public float getErtongbuzhanchuang() {
+	return ertongbuzhanchuang;
+}
+public void setErtongbuzhanchuang(float ertongbuzhanchuang) {
+	this.ertongbuzhanchuang = ertongbuzhanchuang;
+}
+public float getZibeiqianjia() {
+	return zibeiqianjia;
+}
+public void setZibeiqianjia(float zibeiqianjia) {
+	this.zibeiqianjia = zibeiqianjia;
+}
+public int getNumberday() {
+	return numberday;
+}
+public void setNumberday(int numberday) {
+	this.numberday = numberday;
+}
+public java.util.Date getGroupdate() {
+	return groupdate;
+}
+public void setGroupdate(java.util.Date groupdate) {
+	this.groupdate = groupdate;
+}
+public java.util.Date getTourdate() {
+	return tourdate;
+}
+public void setTourdate(java.util.Date tourdate) {
+	this.tourdate = tourdate;
+}
+public long getZao() {
+	return zao;
+}
+public void setZao(long zao) {
+	this.zao = zao;
+}
+public long getZhong() {
+	return zhong;
+}
+public void setZhong(long zhong) {
+	this.zhong = zhong;
+}
+public long getWan() {
+	return wan;
+}
+public void setWan(long wan) {
+	this.wan = wan;
+}
+public int getFabustate() {
+	return fabustate;
+}
+public void setFabustate(int fabustate) {
+	this.fabustate = fabustate;
+}
+public int getShoukestate() {
+	return shoukestate;
+}
+public void setShoukestate(int shoukestate) {
+	this.shoukestate = shoukestate;
+}
 
 }

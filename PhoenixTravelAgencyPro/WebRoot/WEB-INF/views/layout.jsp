@@ -127,7 +127,7 @@
 
 				</ul></li>
 				
-				<li iconCls="icon-base" state="closed"><span>散拼中心</span>
+				<li iconCls="icon-base"><span>散拼中心</span>
 				<ul>
 					<li iconCls="icon-gears"><a
 						href="javascript:open1('新建散拼','SanPin_new.do');">新建散拼</a>
@@ -237,7 +237,7 @@
 					<li iconCls="icon-gears"><a
 						href="javascript:open1('币种使用维护','currencyList.do');">币种使用维护</a></li>
 				</ul></li>
-			<li iconCls="icon-base"><span>单团中心</span>
+			<li iconCls="icon-base" state="closed"><span>单团中心</span>
 				<ul>
 					<li iconCls="icon-gears">
 					<a href="javascript:open1('新增询价','DantuanAdd.do?dicType=1');">新增询价</a></li>
