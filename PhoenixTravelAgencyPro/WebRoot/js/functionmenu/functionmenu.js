@@ -38,6 +38,8 @@ function onOperateDelete(id){
 				if (data.success) {
 					$.messager.alert("保存成功", "保存成功！", "info");
 					$("#dgFuncMenu").datagrid('reload');
+					$('#parentId').combobox('reload');
+					$('#editParentId').combobox('reload');
 				} else {
 					$.messager.alert("保存失败", "保存失败!", "error");
 				}
@@ -80,6 +82,9 @@ function newFunctionMenuSave(){
 				$('#editFuncMenu').dialog('close');
 				$.messager.alert("保存成功", "保存成功！", "info");
 				$('#dgFuncMenu').datagrid('reload');
+				$('#parentId').combobox('reload');
+				$('#editParentId').combobox('reload');
+
 			}else{
 				$('#editFuncMenu').dialog('close');
 				$.messager.alert("保存失败", "保存失败!", "error");
