@@ -193,7 +193,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		     return '<div onclick="testOnclick(event,'+row.tuanNo+')" style="width: auto;">'+row.tuanNo+'</div>';
 		   }
 		   function openshouke(val,row){
-		     return '<div onclick="shoukeclick(event,'+row.tuanNo+')" style="width: auto;">'+row.shoukestate+'</div>';
+		   var shouke=null;
+		   	 if(row.shoukestate==1){shouke="在收客";}
+		   	 if(row.shoukestate==2){shouke="已封团";}
+		   	 if(row.shoukestate==3){shouke="已下单";}
+		   	 if(row.shoukestate==4){shouke="已出团";}
+		   	 if(row.shoukestate==5){shouke="已回团";}
+		     return '<div onclick="shoukeclick(event,'+row.tuanNo+')" style="width: auto;">'+shouke+'</div>';
 		   }
 		   //收客状态列表
 		   function shoukeclick(e,tuan){
