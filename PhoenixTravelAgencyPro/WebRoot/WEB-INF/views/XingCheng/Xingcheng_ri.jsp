@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>散拼团列表</title>
+    <title>日行程</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -33,15 +33,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			iconCls="icon-add" plain="true">添加</a>
 	</div>
 <table id="dg" class="easyui-datagrid"
-		data-options="url:'fenghuang/selectrixingcheng.do',border:false,singleSelect:false,fit:true,fitColumns:true, onClickRow: onClickRow"
+		data-options="url:'fenghuang/selectricheng.do',border:false,singleSelect:false,fit:true,fitColumns:true, onClickRow: onClickRow"
 		pagination="true" toolbar="#tb">
 		<thead>
 			<tr>
-				<th data-options="field:'id'" width="50">编号</th>
+				<th data-options="field:'riid'" width="50">编号</th>
 				<th data-options="field:'richenganpai'" width="50">日程安排</th>
-				<th data-options="field:'tujingchengshiid'" width="50">途径城市ID</th>
-				<th data-options="field:'moren'" width="50">是否默认</th>
-				<th data-options="field:'caiyong'" width="50">是否采用</th>
+				<th data-options="field:'chengshiid'" width="50">途径城市ID</th>
+				<th data-options="field:'moren'" width="50">途径城市</th>
+				<th data-options="field:'caiyong'" width="50">操作</th>
 			</tr>
 		</thead>
 	</table>
