@@ -29,11 +29,11 @@
 	<!-- 如果在正式开发环境下 url可以为后台的请求，地址 -->
    <table>
 	    		<tr>
-	    		   	<td>团号:<input class="easyui-validatebox" type="text" name="name" ></input></td>
+	    		   	<td>团号:<input class="easyui-validatebox" type="text" name="team" id="team" ></input></td>
 	    			<td>销售，客户<input class="easyui-validatebox" type="text" name="name" ></input></td>
 	    			<td>
 	    		<div style="padding:5px;border:1px solid #ddd;">
-		<a href="#" class="easyui-linkbutton" data-options="toggle:true,group:'g1'">Button 1</a>
+		<a href="javascript:dijieSelectLike()" class="easyui-linkbutton" data-options="toggle:true,group:'g1'">Button 1</a>
 	             </div>
 	    			
 	    		</td>
@@ -189,6 +189,29 @@
 					$('#dg').datagrid('selectRow', editIndex);
 				}
 			}
+		}
+		
+		//条件查询
+		function dijieSelectLike(){
+		console.info($('#dg').datagrid('options'));
+		var opts = $('#dg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
+			var param = {
+				team: $("#team").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
+				xingzhi: $("#xingzhi").val() ,
+				
+				page:  opts.pageNumber ,
+				rows:  opts.pageSize
+			};
+		console.info(param);
+				$.ajax({
+					url : 'fenghuang/caiwuqrfkselect.do' ,
+					data :  param,
+					type : 'POST' ,
+					dataType : 'json' ,
+					success : function(data){
+						$('#dg').datagrid('loadData',data);
+					}
+				});
 		}
 
 	</script>
