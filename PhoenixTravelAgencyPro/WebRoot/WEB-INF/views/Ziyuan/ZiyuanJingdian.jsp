@@ -40,18 +40,20 @@
 				<td><div class="fitem">
 						<label>所属城市:</label>
 				</td>
-				<td><input id="chengsiId" name="chengsiId" class="easyui-validatebox">
-					</div>
-				</td>
+				<td><input id="chengsiId" name="chengsiId" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=8',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false "></div></td>
 				<td><div class="fitem">
 						<label>价格:</label>
 				</td>
 				<td><input id="jiage" name="jiage" class="easyui-numberspinner" min="1" max="999999" style="width:133px;"></div></td>
-				
+				<td colspan="3">
 					<a href="javascript:jingdianSelectLike();" 
 								class="easyui-linkbutton" iconCls="icon-ok">查询</a>
 						<a href="javascript:void(0)" class="easyui-linkbutton"
-							iconCls="icon-undo" onclick="$('#jingdianForm').form('clear')">重置</a>
+							iconCls="icon-undo" onclick="$('#jingdianForm').form('clear')">重置</a></td>
 			</tr>
 		</table>
 		</form>
@@ -68,10 +70,10 @@
 					<th data-options="field:'id'" width="80">景点编号</th>
 					<th data-options="field:'name'" width="80">景点名称</th>
 					<th data-options="field:'name2'" width="80">景点英文名称</th>
-					<th data-options="field:'chengsiId'" width="80">所属城市</th>
+					<th data-options="field:'chengsi'" width="80">所属城市</th>
 					<th data-options="field:'jiage'" width="80">门票价格</th>
-					<th data-options="field:'bizongId'" width="80">币种</th>
-					<th data-options="field:'dcmr'" width="80">是否订车默认景点</th>
+					<th data-options="field:'bizong'" width="80">币种</th>
+					<th data-options="field:'sf'" width="80">是否订车默认景点</th>
 					
 				</tr>
 			</thead>
@@ -129,13 +131,13 @@
 <td></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>地址：</label></td><td colspan="5"><input name="dizhi" class="easyui-validatebox" ></div></td>
+<td><div class="fitem"><label>地址：</label></td><td colspan="5"><input name="dizhi" class="easyui-validatebox" size="80"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>英文地址：</label></td><td colspan="5"><input name="ywdz" class="easyui-validatebox" ></div></td>
+<td><div class="fitem"><label>英文地址：</label></td><td colspan="5"><input name="ywdz" class="easyui-validatebox" size="80" ></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>景点描述：</label></td><td colspan="5"><input name="jdms" class="easyui-validatebox" ></div></td>
+<td><div class="fitem"><label>景点描述：</label></td><td colspan="5"><input name="jdms" class="easyui-validatebox"  size="80"></div></td>
 </tr>
 <tr>
 <tr><td colspan="6" align="center"><a href="javascript:SaveJingdian();" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
@@ -229,7 +231,7 @@
 		var opts = $('#dg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
 			var param = {
 				name: $("#name").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
-				chengsiId: $("#chengsiId").val() ,
+				chengsiId: $("#chengsiId").combobox('getValue') ,
 				jiage : $("#jiage").val(),
 				page:  opts.pageNumber ,
 				rows:  opts.pageSize

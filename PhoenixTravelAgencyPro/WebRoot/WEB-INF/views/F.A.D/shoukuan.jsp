@@ -29,9 +29,6 @@
 	<!-- 如果在正式开发环境下 url可以为后台的请求，地址 -->
    <table>
 	    		<tr>
-
-	    			<td>应收日期:<input class="easyui-validatebox" type="text" name="name" ></input></td>
-	    			<td>到<input class="easyui-validatebox" type="text" name="name" ></input></td>
 	    		   	<td>团号:<input class="easyui-validatebox" type="text" name="name" ></input></td>
 	    			<td>销售，客户<input class="easyui-validatebox" type="text" name="name" ></input></td>
 	    			<td>
@@ -52,10 +49,14 @@
 	    		<td>状态：[<a href="">待确认收款</a>][<a href="">已确认收款</a> ]</td>
 	    		</tr>
 	    		<tr>
-	    		<td>币种：[全部] [人民币][美元][日元][欧元][英镑][瑞士法郎][加拿大元][澳大利亚元][港币][挪威克朗][瑞典克朗][丹麦克朗] </td>
-	    		</tr>
-	    		<tr>
-	    		<td>水单：[全部] [未收到][已收到] </td>
+	    		<td>币种：  <input class="easyui-combobox"
+              name="" 
+              data-options="url:'',
+              valueField:'dicId',
+              textFiedld:'dicName',
+              panelHeight:'auto'
+              ">
+              </td>
 	    		</tr>
 	    		
 	    		<tr>
@@ -80,24 +81,12 @@
 	    	
 	    	</table>
 	<table id="dg" class="easyui-datagrid"
-		data-options="url:'',border:false,singleSelect:false,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
+		data-options="url:'fenghuang/caiwuqrfkselect.do',border:false,singleSelect:false,fit:true,fitColumns:true,pageSize:20"
 		pagination="true" toolbar="#tb">
 		<thead>
-			<tr>
-				<th data-options="field:'ck',checkbox:true"></th>	 
-				<th data-options="field:'dicNo',editor:'text'" width="">付款日期</th>
-				<th data-options="field:'dicName',editor:'text'" width="">团号</th>
-				<th data-options="field:'dicDesc',editor:'text'" width="">团队名称</th>
-				<th data-options="field:'dicHelp',editor:'text'" width="">供应商名称</th>
-				<th data-options="field:'dicDesc',editor:'text'" width="">款项</th>
-				<th data-options="field:'08',editor:'text'" width="">金额</th>
-			
-				<th data-options="field:'09',editor:'numberbox'" width="">提交人</th>
-				<th data-options="field:'09',editor:'numberbox'" width="">审批状态</th>
-				<th data-options="field:'09',editor:'numberbox'" width="">财务审核</th>
-				<th data-options="field:'09',editor:'numberbox'" width="">财务确认</th>
-				<th data-options="field:'09',editor:'numberbox'" width="">操作</th>
-			
+			<tr>	 
+			 <th data-options="field:'ck',checkbox:true"></th>
+				<th data-options="field:'id'">ID</th>
 			</tr>
 		</thead>
 	</table>
@@ -188,29 +177,8 @@
 		</form>
 	</div>
 	<script type="text/javascript">
-		var editIndex = undefined;
-		function endEditing() {
-			if (editIndex == undefined) {
-				return true
-			}
-			if ($('#dg').datagrid('validateRow', editIndex)) {
-				$('#dg').datagrid('endEdit', editIndex);
-				$('#dg').datagrid('unselectRow', editIndex);
-				editIndex = undefined;
-				return true;
-			} else {
-				return false;
-			}
-		}
-		function addHangMoshi() {
-			$("#dg").datagrid("insertRow", {
-				index : 0,
-				row : {
-					dicType : '${param.dicType}'
-				}
-			});
-			editIndex = undefined;
-		}
+		
+		
 		function onClickRow(index) {
 			if (editIndex != index) {
 				if (endEditing()) {
@@ -222,106 +190,10 @@
 				}
 			}
 		}
-		function getChanges() {
-			$('#dg').datagrid('endEdit', editIndex);
-			var rows = $("#dg").datagrid("getChanges");
-			if (rows.length > 0) {
-				var param = {
-					"updateRows" : $.toJSON(rows)
-				};
-				$.ajax({
-					url : "fenghuang/updateDic.do",
-					data : param,
-					dataType : "json",
-					success : function(data) {
-						if (data.success) {
-							$.messager.alert("保存成功", "保存成功！", "info");
-							$("#dg").datagrid('reload');
-							editIndex = undefined;
-						} else {
-							$.messager.alert("保存失败", "保存失败!", "error");
-						}
-					},
-					error : function() {
-						$.messager.alert("保存失败", "服务器请求失败!", "error");
-					}
-				});
-			}
+		
+		
 
-		}
-
-		function addMianBanMoshi() {
-			$("#editDic").dialog("open");
-			$("#dicFrome").form("clear");
-		}
-
-		function mainBanMoshiSave() {
-			$('#dicFrome').form('submit', {
-				url : 'fenghuang/saveDic.do?dicType=${param.dicType}',
-				onSubmit : function() {
-					return $(this).form('validate');
-				},
-				success : function(result) {
-					var result = eval('(' + result + ')');
-					if (result.success) {
-						$.messager.alert("保存成功", "保存成功！", "info");
-						$('#editDic').dialog('close');
-						$('#dg').datagrid('reload');
-					} else {
-						$.messager.alert("保存失败", "保存失败!", "error");
-						$('#dg').datagrid('reload');
-					}
-				}
-			});
-		}
-
-		function shanchu() {
-			var rows = $("#dg").datagrid("getSelections");
-			if (rows.length > 0) {
-				var param = {
-					"deleteRows" : $.toJSON(rows)
-				};
-				$.ajax({
-					url : "fenghuang/deleteDics.do",
-					data : param,
-					dataType : "json",
-					success : function(data) {
-						if (data.success) {
-							$.messager.alert("删除成功", "删除成功！", "info");
-							$("#dg").datagrid('reload');
-						} else {
-							$.messager.alert("删除失败", "删除失败!", "error");
-						}
-					},
-					error : function() {
-						$.messager.alert("删除失败", "服务器请求失败!", "error");
-					}
-				});
-			}
-		}
-		function closeEditDic() {
-			$('#editDic').dialog('close');
-		} 
-
-		//
-		function searchDiJi() {
-			$("#searchDic").dialog("open");
-			$("#searchForm").form("clear");
-		}
-		function searchFormSubmit() {
-			$("#searchDic").dialog("close");
-			$("#dg").datagrid("load", {
-				dicNo : $("#searchDicNo").val(),
-				dicName : $("#searchDicName").val(),
-				dicHelp : $("#searchDicHelp").val(),
-				dicSortNo : $("#searchDicSortNo").val()
-			});
-
-		}
-
-		function closedSearch() {
-			$('#searchDic').dialog('close');
-		}
+		
 	</script>
 </body>
 </html>

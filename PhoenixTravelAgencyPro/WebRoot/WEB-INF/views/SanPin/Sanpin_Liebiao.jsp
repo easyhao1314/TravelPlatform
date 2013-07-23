@@ -45,6 +45,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<th data-options="field:'tonghang'" width="50">同行价</th>
 				<th data-options="field:'zhikejia'" width="50">直客价</th>
 				<th data-options="field:'numbermaster'" width="50">预收人数</th>
+				<th data-options="field:'shoukestate',formatter:openshouke" width="50">收客状态</th>
 				<th data-options="field:'productbrand',hidden:true" width="50">产品品牌_隐藏的</th>
 			</tr>
 		</thead>
@@ -112,16 +113,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		
 		
-		
+		<!-- 团号下拉菜单 -->
 	<div id="mmtest" class="easyui-menu" style="width:120px;">
 		<input id="hideinput" style="display: none;" />
-		<div data-options="iconCls:'icon-search'" onClick="upfabustate()">取消发布状态</div>
-		<div onClick="testView(2)">查看2</div>
+		<div data-options="iconCls:'icon-remove'" onClick="upfabustate()">取消发布状态</div>
+		<div data-options="iconCls:'icon-edit'" onClick="tuanduibaoming()">团队报名</div>
 		<div onClick="testView(3)">查看3</div>
 		<div onClick="testView(4)">查看4</div>
 		<div onClick="testView(5)">查看5</div>
 	</div>
+	<!-- 收客状态下拉菜单 -->
+	<div id="mmshouke" class="easyui-menu" style="width:120px;">
+		<input id="shoukeinput" style="display: none;" />
+		<div data-options="iconCls:'icon-edit'" onClick="updateshouke(1)">在收客</div>
+		<div data-options="iconCls:'icon-edit'" onClick="updateshouke(2)">已封团</div>
+		<div data-options="iconCls:'icon-edit'" onClick="updateshouke(3)">已下单</div>
+		<div data-options="iconCls:'icon-edit'" onClick="updateshouke(4)">已出团</div>
+		<div data-options="iconCls:'icon-edit'" onClick="updateshouke(5)">已回团</div>
+	</div>
 	<script type="text/javascript">
+	
+	
 		function Select() {
 			$("#searchDic").dialog("open");
 			$("#searchForm").form("clear");
@@ -144,9 +156,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       return '<a href="javascript:openSanpinDetail('+row.tuanNo+')">'+row.tuanName+'</a>';
    
    }
-   function openSanpinDetail(tuanNo){  	
+   function openSanpinbaoming(tuanNo){  	
       var url= "Sanpin_mingxi.do?tuanNo="+tuanNo;
-      
        var tab = $('#tt').tabs('getSelected'); 
 		if (tab){  
 	                 var index = $('#tt').tabs('getTabIndex', tab); 
@@ -157,15 +168,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				         title : "散拼详细信息",
 				         href : url,
 				      //  closable : true,
-				         });
-				         
-				/*         
+				         });   
+			        
 				$.ajax({
 					url : "fenghuang/Sanpinliebiao.do?tuanNo="+tuanNo,
 					data : tuanNo,
 					dataType : "json",
 					success : function(data) {
-					$('#mingxiForm').form('load',{"tuanNo":data.rows[0].tuanNo});
+					$('#jibenForm').form('load',{"tuanNo":data.rows[0].tuanNo});
 					//$('#mingxiForm').form('load',data.rows[0]);
 					//alert(data.rows[0].tuanNo);
 					
@@ -175,13 +185,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					error : function() {
 						$.messager.alert("查询失败", "服务器请求失败!", "error");
 					}
-				});*/
+				});
 		   }		
 		   
 		   
 		   function onOperateSanpinList1(val,row){
-		     return '<span onclick="testOnclick(event,'+row.tuanNo+')" style="width: 20px">'+row.tuanNo+'</span>';
+		     return '<div onclick="testOnclick(event,\''+row.tuanNo+'\')" style="width: auto;">'+row.tuanNo+'</div>';
 		   }
+		   function openshouke(val,row){
+		   var shouke=null;
+		   	 if(row.shoukestate==1){shouke="在收客";}
+		   	 if(row.shoukestate==2){shouke="已封团";}
+		   	 if(row.shoukestate==3){shouke="已下单";}
+		   	 if(row.shoukestate==4){shouke="已出团";}
+		   	 if(row.shoukestate==5){shouke="已回团";}
+		     return '<div onclick="shoukeclick(event,'+row.tuanNo+')" style="width: auto;">'+shouke+'</div>';
+		   }
+		   //收客状态列表
+		   function shoukeclick(e,tuan){
+   	      $('#shoukeinput').attr('value',tuan);
+   	         $('#mmshouke').menu('show', {
+				left : e.pageX,
+				top : e.pageY
+			});   
+   	      }
+		   //团号列表
    	      function testOnclick(e,tuan){
    	      $('#hideinput').attr('value',tuan);
    	         $('#mmtest').menu('show', {
@@ -189,6 +217,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				top : e.pageY
 			});   
    	      }
+   	      //取消发布状态功能
    	      function upfabustate(){
    	  	var tuanNo=$('#hideinput').val();
          var  url = "fenghuang/upsanpin.do?tuanNo="+tuanNo+"&fabustate="+2;
@@ -204,7 +233,38 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					}
 				});
    	      }
+   	      function tuanduibaoming(){
+   	      	var tuanNo=$('#hideinput').val();
+   	      	var url= "SanPin_baoming.do?tuanNo="+tuanNo;
+       var tab = $('#tt').tabs('getSelected'); 
+		if (tab){  
+	                 var index = $('#tt').tabs('getTabIndex', tab); 
+	                 $('#tt').tabs('close', index);  
+	       } 
+	       
+	       $('#tt').tabs('add', {
+				         title : "团队报名",
+				         href : url,
+				      //  closable : true,
+				         });
+   	      }
    	      
+   	      function updateshouke(shoukeid){
+   	      	var tuanNo = $('#shoukeinput').val();
+   	      	var url = "fenghuang/upsanpin.do?tuanNo="+tuanNo+"&shoukestate="+shoukeid;
+   	      	$.ajax({
+   	      		url:url,
+   	      		data:tuanNo,
+   	      		datatype:"json",
+   	      		success:function(data){
+   	      			$("#dg").datagrid("reload");
+   	      		},
+   	      		error : function() {
+						$.messager.alert("修改失败", "服务器请求失败!", "error");
+					}
+   	      	
+   	      	});
+   	      }
    	      /* 
    	      //右键菜单
    	     function onRowContextMenu(e, rowIndex, rowData){

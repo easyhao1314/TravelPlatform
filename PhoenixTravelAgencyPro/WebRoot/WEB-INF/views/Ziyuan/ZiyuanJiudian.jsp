@@ -183,13 +183,13 @@
 		<form id="updateForm" method="post">
 			<table align="center">
 <tr>
-<td><div class="fitem"><label>酒店编号:</label></td><td><input name="id" class="easyui-validatebox" readonly="true" style="width:40px;">--不可修改</div></td>
+<input id="id" name="id" class="easyui-validatebox" hidden="true">
 <td><div class="fitem"><label>酒店名称:</label></td><td><input name="name" class="easyui-validatebox" ></div></td>
 <td><div class="fitem"><label>合作级别:</label></td><td><input name="hzjb" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=4',
 					valueField:'dicNo',
 					textField:'dicName',
 					panelHeight:'auto',
-					editable:false "></div></td>
+					editable:false "></div></td><td></td>
 </tr>
 <tr>
 <td><div class="fitem"><label>所属城市：</label></td><td><input name="chengshi"  class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=8',

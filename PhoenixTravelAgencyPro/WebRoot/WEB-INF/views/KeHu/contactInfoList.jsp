@@ -10,21 +10,18 @@
 <html>
 <head>
 <base href="<%=basePath%>">
-
-<title></title>
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
-<link rel="stylesheet" type="text/css"
-	href="js/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="js/themes/default/easyui.css">
 <link rel="stylesheet" type="text/css" href="js/themes/icon.css">
 <link rel="stylesheet" type="text/css" href="js/demo/demo.css">
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="js/locale/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript" src="js/jquery.json.js"></script>
-</head>
 
+</head>
 <body>
 	<div style="margin:10px 0px;"></div>  
     <div class="easyui-panel" title="联系人列表" style="width:900px">  

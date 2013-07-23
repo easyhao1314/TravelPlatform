@@ -60,10 +60,10 @@ public class ZyGouwuController{
 	@RequestMapping("fenghuang/gouwuAdd.do")
 	@ResponseBody
 	public Map<String,Object> gouwuAdd(HttpServletRequest request,HttpServletResponse response,
-			long id,String lianxiren,String name,String chuanzhen,int chengshiId,String dizhi,
-			String dianhua,String shouji,String email,int hzjbId){
+			String lianxiren,String name,String chuanzhen,int chengshiId,String dizhi,
+			String dianhua,String shouji,String email,int hzjbId,String bz){
 		Gouwu gw=new Gouwu();
-		gw.setId(id);
+	
 		gw.setLianxiren(lianxiren);
 		gw.setName(name);
 		gw.setChuanzhen(chuanzhen);
@@ -73,6 +73,7 @@ public class ZyGouwuController{
 		gw.setShouji(shouji);
 		gw.setEmail(email);
 		gw.setHzjbId(hzjbId);
+		gw.setBz(bz);
          Map<String,Object> result=new HashMap<String,Object>();
          boolean bl=false;
 		try{
@@ -99,10 +100,10 @@ public class ZyGouwuController{
 	@RequestMapping("fenghuang/gouwuUpdate.do")
 	@ResponseBody
 	public Map<String,Object> gouwuUpdate(HttpServletRequest request,HttpServletResponse response,
-			long id,String lianxiren,String name,String chuanzhen,int chengshiId,String dizhi,
-			String dianhua,String shouji,String email,int hzjbId){
+			String lianxiren,String name,String chuanzhen,int chengshiId,String dizhi,
+			String dianhua,String shouji,String email,int hzjbId,String bz,long id){
 		Gouwu gw=new Gouwu();
-		gw.setId(id);
+		
 		gw.setLianxiren(lianxiren);
 		gw.setName(name);
 		gw.setChuanzhen(chuanzhen);
@@ -112,6 +113,8 @@ public class ZyGouwuController{
 		gw.setShouji(shouji);
 		gw.setEmail(email);
 		gw.setHzjbId(hzjbId);
+		gw.setBz(bz);
+		gw.setId(id);
 		Map<String,Object> result=new HashMap<String,Object>();
 		boolean bl=false;
        try{

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import com.fenghuang.dao.BaseDao;
 import com.fenghuang.dao.IcaiwudaleiweihuDao;
-import com.fenghuang.entiey.CitySettingDictionary;
 import com.fenghuang.entiey.Weihu;
 import com.fenghuang.util.Pagination;
 @Repository

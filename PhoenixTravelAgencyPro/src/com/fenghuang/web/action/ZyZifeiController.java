@@ -62,18 +62,28 @@ public class ZyZifeiController {
 		@RequestMapping("fenghuang/zifeiAdd.do")
 		@ResponseBody
 		public Map<String,Object> zifeiAdd(HttpServletRequest request,HttpServletResponse response,
-				long id,String name,int feiyong,int bizhongId,int chengshiId,String kftimeqi,
-				String kftimezhi,int timekb,int djaptime,String miaoshu){
+				String name,String feiyong,String bizhongId,String chengshiId,String kftimeqi,
+				String kftimezhi,String timekb,String djaptime,String miaoshu){
 			Zifei zf=new Zifei();
-			zf.setId(id);
+		
 			zf.setName(name);
-			zf.setFeiyong(feiyong);
-			zf.setBizhongId(bizhongId);
-			zf.setChengshiId(chengshiId);
+			if(feiyong !=null &&!"".equals(feiyong)){
+			zf.setFeiyong(Integer.getInteger(feiyong));
+			}
+			if(bizhongId !=null &&!"".equals(bizhongId)){
+			zf.setBizhongId(Integer.getInteger(bizhongId));
+			}
+			if(chengshiId !=null && !"".equals(chengshiId)){
+			zf.setChengshiId(Integer.getInteger(chengshiId));
+			}
 			zf.setKftimeqi(kftimeqi);
 			zf.setKftimezhi(kftimezhi);
-			zf.setTimekb(timekb);
-			zf.setDjaptime(djaptime);
+			if(timekb !=null && !"".equals(timekb)){
+			zf.setTimekb(Integer.getInteger(timekb));
+			}
+			if(djaptime !=null && !"".equals(djaptime)){
+			zf.setDjaptime(Integer.getInteger(djaptime));
+			}
 			zf.setMiaoshu(miaoshu);
 			  Map<String,Object> result=new HashMap<String,Object>();
 			  boolean bl=false;
@@ -85,8 +95,7 @@ public class ZyZifeiController {
 				}
 				result.put("success", bl);
 				return result;
-			}
-	  
+			}	  
 		//删除
 		@RequestMapping("fenghuang/zifeiDelete.do")
 		@ResponseBody

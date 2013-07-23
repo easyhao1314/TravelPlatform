@@ -245,7 +245,7 @@
                 </tr>
                 <strong><%for(int i=1;i<=3;i++){ %></strong>
                <tr>
-                    <td><strong>第<%=i%>天：</strong></td><td><strong><input type="text" id="c" class="easyui-numberbox" onBlur="testC1(this);"></strong></td><td><strong><input type="text" id="j<%=i%>" class="easyui-numberbox"></strong></td><td><strong>导游</strong></td><td><strong>司导</strong></td><td><strong>路饮</strong></td><td><strong>门票</strong></td><td><strong>自费节目</strong></td>
+                    <td><strong>第<%=i%>天：</strong></td><td><strong><input type="text" name="ss" id="c1" class="easyui-numberbox" onfocus="" onblur="testC1(this);" ></strong></td><td><strong><input type="text" id="j<%=i%>" class="easyui-numberbox"></strong></td><td><strong>导游</strong></td><td><strong>司导</strong></td><td><strong>路饮</strong></td><td><strong>门票</strong></td><td><strong>自费节目</strong></td>
                 </tr>
                 <strong><%}%></strong>
                
@@ -422,25 +422,15 @@
 			$("#caiwu").dialog("open");
 			$("#caiwuForm").form("clear");
 		} 
-		function testC1(id){
-			var num=0;
-			num+=id.val();
-			alert(num);
-					
-		
-			
-			$("#fxzc").attr('value',num);
-			
-			
-			
+		function testC1(object1){
+		 obj = $("input[name='ss']");
+		 for(var i=0;i<obj.length;i++){
+		 	alert($(obj.get(i)).val()+$(obj.get(i+1)).val());
+		}
+		 
 		}
 		
-		
-		
-		
-		
-		
-		
+	
 		
 		
         

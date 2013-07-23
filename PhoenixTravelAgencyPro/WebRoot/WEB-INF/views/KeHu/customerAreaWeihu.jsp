@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -10,21 +10,19 @@
 <html>
 <head>
 <base href="<%=basePath%>">
-
-<title></title>
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-<link rel="stylesheet" type="text/css" href="js/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css"
+	href="js/themes/default/easyui.css">
 <link rel="stylesheet" type="text/css" href="js/themes/icon.css">
 <link rel="stylesheet" type="text/css" href="js/demo/demo.css">
-<script type="text/javascript" src="js/jquery.min.js" charset="UTF-8"></script>
-<script type="text/javascript" src="js/jquery.easyui.min.js" charset="UTF-8"></script>
-<script type="text/javascript" src="js/locale/easyui-lang-zh_CN.js" charset="UTF-8"></script>
-<script type="text/javascript" src="js/jquery.json.js" charset="UTF-8"></script>
-</head>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="js/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="js/jquery.json.js"></script>
 
+</head>
 <body>
 <div style="margin:10px 0px;"></div>  
     <div class="easyui-panel" title="客户所属区域查询" style="width:1000px">  

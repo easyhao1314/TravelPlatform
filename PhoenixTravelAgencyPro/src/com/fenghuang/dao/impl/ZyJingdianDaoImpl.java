@@ -24,7 +24,7 @@ public class ZyJingdianDaoImpl extends BaseDao implements IZyJingdianDao{
 	public Pagination<Jingdian> jingdianSelect(int currentPage, int numPerPage,String name,String chengsiId,String jiage)
 			throws Exception {
 		// TODO Auto-generated method stub
-		StringBuffer sql=new StringBuffer("select * from jingdian where 1=1 ");
+		StringBuffer sql=new StringBuffer("select j.id,j.name,j.name2,d.dicName as chengsi,j.jiage,d1.dicName as bizong,d2.dicName as sf from jingdian  as j,dictionarydesc as d,dictionarydesc as d1,dictionarydesc as d2  where j.chengsiId=d.dicNo and j.bizongId=d1.dicNo and j.dcmr=d2.dicNo and 1=1 ");
 		if(!"".equals(name) && name !=null){
 			sql.append(" and name like '%");
 			sql.append(name);

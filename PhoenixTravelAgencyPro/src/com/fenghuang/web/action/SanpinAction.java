@@ -167,13 +167,17 @@ public class SanpinAction {
 	}
 	@RequestMapping("fenghuang/upsanpin.do")
 	@ResponseBody
-	public Map<String,Object> Update(HttpServletRequest request,HttpServletResponse response,String fabustate,String tuanNo) {
+	public Map<String,Object> Update(HttpServletRequest request,HttpServletResponse response,String fabustate,String tuanNo,
+			String shoukestate) {
 		Sanpinzhongxin sanpin = new Sanpinzhongxin();
 	if(fabustate!=null && !"".equals(fabustate)){
 		sanpin.setFabustate(Integer.parseInt(fabustate));
 	}
 	if(tuanNo!=null && !"".equals(tuanNo)){
 		sanpin.setTuanNo(tuanNo);
+	}
+	if(shoukestate!=null && !"".equals(shoukestate)){
+		sanpin.setShoukestate(Integer.parseInt(shoukestate));
 	}
 		
 	boolean isSuccess = false;
