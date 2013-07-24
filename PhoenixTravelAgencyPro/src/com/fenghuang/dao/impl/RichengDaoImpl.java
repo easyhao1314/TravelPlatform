@@ -69,7 +69,11 @@ public class RichengDaoImpl extends BaseDao implements IRichengDao  {
 			sb.append(",wan=?");
 			list.add(r.getWan());
 		}
-		int num = this.update(sql,list.toArray());
+		if(r.getRiid()!=0){
+			sb.append(" where riid=?");
+			list.add(r.getRiid());
+		}
+		int num = this.update(sb.toString(),list.toArray());
 		
 		
 		return num>0;

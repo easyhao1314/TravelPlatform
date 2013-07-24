@@ -156,7 +156,7 @@
 				</ul>
 				<ul>
 					<li iconCls="icon-gears"><a
-						href="javascript:open1('线路/行程维护','Xingcheng_weihu.do');">线路/行程维护</a>
+						href="javascript:open1('线路/行程维护','Xingcheng_xianlu.do');">线路/行程维护</a>
 					</li>
 				</ul>
 			</li>
