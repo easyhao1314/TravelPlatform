@@ -29,19 +29,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	
    <div id="tb">
-		<a href="javascript:Select();" class="easyui-linkbutton"
+		<a href="javascript:OpenAdd();" class="easyui-linkbutton"
 			iconCls="icon-add" plain="true">添加</a>
 	</div>
 <table id="dg" class="easyui-datagrid"
-		data-options="url:'fenghuang/selectricheng.do',border:false,singleSelect:false,fit:true,fitColumns:true, onClickRow: onClickRow"
+		data-options="url:'fenghuang/selectricheng.do',border:false,singleSelect:true,fit:true,fitColumns:true"
 		pagination="true" toolbar="#tb">
 		<thead>
 			<tr>
-				<th data-options="field:'riid'" width="50">编号</th>
-				<th data-options="field:'richenganpai'" width="50">日程安排</th>
-				<th data-options="field:'chengshiid'" width="50">途径城市ID</th>
-				<th data-options="field:'moren'" width="50">途径城市</th>
-				<th data-options="field:'caiyong'" width="50">操作</th>
+				<th data-options="field:'riid'" width="auto">编号</th>
+				<th data-options="field:'richenganpai'" width="auto">日程安排</th>
+				<th data-options="field:'chengshiid'" width="auto">途径城市ID</th>
+				<th data-options="field:'riid',formatter:onOperateSanpinList" width="10px">操作</th>
 			</tr>
 		</thead>
 	</table>
@@ -54,7 +53,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<td><div class="fitem">
 							<label>编号:</label>
 					</td>
-					<td><input id="searchid" name="id" class="easyui-validatebox" ></input>
+					<td>系统自动生成
 						</div></td>
 					<td><div class="fitem">
 							<label>日程安排:</label>
@@ -97,10 +96,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 	</div>
 	<script type="text/javascript">
-	function Select() {
+	function OpenAdd() {
 			$("#searchDic").dialog("open");
-			$("#searchForm").form("clear");
+			$("#addform").form("clear");
 		}
+	function  onOperateSanpinList(val,row){
+	alert(row);
+		return '<a href="#">修改</a>';
+	}
 		function closedSearch() {
 			$('#searchDic').dialog('close');
 		}
