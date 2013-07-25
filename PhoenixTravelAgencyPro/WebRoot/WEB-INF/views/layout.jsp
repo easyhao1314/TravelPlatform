@@ -54,6 +54,18 @@
 						href="javascript:open1('付款审批','a.do');">付款审批</a>
 					</li>
 				</ul>
+				
+				<ul>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('付款审核','fukuanshenhe.do');">付款 审核</a>
+					</li>
+				</ul>
+				
+				<ul>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('付款确认','querenfukuan.do');">付款确认</a>
+					</li>
+				</ul>
 				<ul>
 					<li iconCls="icon-gears"><a
 						href="javascript:open1('应付款统计','yfktj.do');">应付款统计</a>
@@ -74,11 +86,7 @@
 						href="javascript:open1('付款方式设置','fkfssz.do');">付款方式设置</a>
 					</li>
 				</ul>
-					<ul>
-					<li iconCls="icon-gears"><a
-						href="javascript:open1('付款审核','fukuanshenhe.do');">付款 审核</a>
-					</li>
-				</ul>
+					
 				
 				<ul>
 					<li iconCls="icon-gears"><a
@@ -113,11 +121,7 @@
 				</ul>
 				
 				
-					<ul>
-					<li iconCls="icon-gears"><a
-						href="javascript:open1('付款确认','querenfukuan.do');">付款确认</a>
-					</li>
-				</ul>
+					
 				<ul>
 					<li iconCls="icon-gears"><a
 						href="javascript:open1('收款确认','shoukuan.do');">收款确认</a>

@@ -30,7 +30,8 @@ public class CaiwuskqrSericeImpl implements IcaiwuskqrSerice {
 	@Override
 	public boolean updateskqr(Tuanbiao tuanbiao) throws Exception {
 		// TODO Auto-generated method stub
-		return false;
+		
+		return dao.updatefkqr(tuanbiao);
 	}
 
 	@Override
