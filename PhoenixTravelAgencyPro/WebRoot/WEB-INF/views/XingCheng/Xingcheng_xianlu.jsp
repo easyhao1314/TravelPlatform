@@ -48,11 +48,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	function updateselectxianlu(){
 	var row = $("#dg").datagrid("getSelected");
 	if(row!=null){
-		
+		 	var url= "Xingcheng_mx.do?xianid="+row.xianid;
+       var tab = $('#tt').tabs('getSelected'); 
+		if (tab){  
+	                 var index = $('#tt').tabs('getTabIndex', tab); 
+	                 $('#tt').tabs('close', index);  
+	       } 
+	       
+	       $('#tt').tabs('add', {
+				         title : row.xianluname+"行程明细",
+				         href : url,
+				      //  closable : true,
+				         });
+   	      }
+   	      else{
+   	      	alert("请选择一行要修改的数据");
+   	      }
 	}
 	
 	
-	}
+	
 	</script>
   </body>
 </html>
