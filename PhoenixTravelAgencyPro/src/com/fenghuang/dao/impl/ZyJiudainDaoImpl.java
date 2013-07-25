@@ -36,7 +36,8 @@ public class ZyJiudainDaoImpl extends BaseDao implements IZyJiudian{
 		// 添加
 		String sql="insert into jiudian(chengshi,name,fangjian,hzjb,whr,xjbz,dianhua,chuanzhen,email,guanwang,dizhi,pingjia,tishi,danjijia,wangjijia,jgsm,bz) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		int count=this.update(sql,jd.getChengshi(),jd.getName(),jd.getFangjian(),jd.getHzjb(),jd.getWhr(),jd.getXjbz(),jd.getDanjijia(),jd.getChuanzhen(),jd.getEmail(),jd.getGuanwang(),jd.getDizhi(),
-                jd.getPingjia(),jd.getTishi(),jd.getDanjijia(),jd.getWangjijia(),jd.getJgsm(),jd.getBz());
+                jd.getPingjia(),jd.getTishi(),jd.getDanjijia(),
+                jd.getWangjijia(),jd.getJgsm(),jd.getBz());
 		return count;
 	}
 

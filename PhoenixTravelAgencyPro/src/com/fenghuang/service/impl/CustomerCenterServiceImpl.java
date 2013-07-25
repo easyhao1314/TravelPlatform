@@ -29,46 +29,20 @@ public class CustomerCenterServiceImpl implements ICustomerCenterService {
 	private ICustomerCenterDao iCustomerCenterDao;
 
 	public Pagination<CustomerInfo> getCustomInfoListPaginations(int currentPage,
-			int numPerPage, String kw) {
-		return iCustomerCenterDao.getCustomInfoListPaginations(currentPage, numPerPage, kw);
+			int numPerPage, String name, String type, String lxr,String moblePhone,String telePhone,String qq,String msn, String daqu, String city, String hzjb, String xiaoshou,String zhtime,String jituan) {
+		return iCustomerCenterDao.getCustomInfoListPaginations(currentPage, numPerPage, name,type,lxr,moblePhone,telePhone,qq,msn,daqu,city,hzjb,xiaoshou,zhtime,jituan);
 	}
 
-	@Override
-	public String findCityNameById(Long city) {
-		return iCustomerCenterDao.findCityNameById(city);
-	}
-
-
-	@Override
-	public boolean deleteCustom(String deleteRow) {
-		return iCustomerCenterDao.deleteCustomById(deleteRow);
-	}
-
+	
 	@Override
 	public boolean addCustom(CustomerInfo customInfo) {
 		return iCustomerCenterDao.addCustom(customInfo);
 	}
-
 	@Override
-	public List<Map<String,Object>> findAllCustomName() {
-		return iCustomerCenterDao.findAllCustomName();
+	public boolean deleteCustomById(String id) {
+		// TODO Auto-generated method stub
+		return iCustomerCenterDao.deleteCustomById(id);
 	}
-
-	@Override
-	public List<Map<String, Object>> findAllCityName() {
-		return iCustomerCenterDao.findAllCityName();
-	}
-
-	@Override
-	public long findProvinceByCityId(long city) {
-		return iCustomerCenterDao.findProvinceByCityId(city);
-	}
-
-	@Override
-	public List<Map<String, Object>> findAllProvionceName() {
-		return iCustomerCenterDao.findAllProvionceName();
-	}
-
 	@Override
 	public List<Map<String, Object>> findCustomerInfoById(String updateId) {
 		return iCustomerCenterDao.findCustomerInfoById(updateId);
@@ -78,62 +52,21 @@ public class CustomerCenterServiceImpl implements ICustomerCenterService {
 	public boolean updateCustom(CustomerInfo customerInfo) {
 		return iCustomerCenterDao.updateCustom(customerInfo);
 	}
-
+	@Override
+	public List<Map<String,Object>> findAllCustomName() {
+		return iCustomerCenterDao.findAllCustomName();
+	}
 	@Override
 	public boolean updateContact(CustomerInfo contactInfo) {
 		return iCustomerCenterDao.updateContact(contactInfo);
 	}
 
-	@Override
-	public Pagination<TeamProgressStateDictionary> getCustomVIPListPaginations(
-			String wordprefix , Integer page, Integer rows ) {
-		return iCustomerCenterDao.getCustomVIPListPaginations(wordprefix,page,rows);
-	}
 
 	@Override
-	public boolean addCustomVIP(TeamProgressStateDictionary team) {
-		return iCustomerCenterDao.addCustomVIP(team);
+	public boolean updateXiaoshou(CustomerInfo Customer) {
+		// TODO Auto-generated method stub
+		return iCustomerCenterDao.updateXiaoshou(Customer);
 	}
-
-	@Override
-	public boolean deleteCustomVIP(String deleteRow) {
-		return iCustomerCenterDao.deleteCustomVIP(deleteRow);
-	}
-
-	@Override
-	public void updateCustomVIPs(List<TeamProgressStateDictionary> teamProList) {
-		iCustomerCenterDao.updateCustomVIPs(teamProList);
-	}
-
-	@Override
-	public List<Map<String, Object>> searchCustomVIP(String tpsdNo,
-			String tpsdName, String tpsdHelp, String tpsdSort,String wordprefix) {
-		return iCustomerCenterDao.searchCustomVIP( tpsdNo, tpsdName, tpsdHelp,  tpsdSort,wordprefix);
-	}
-
-	@Override
-	public Pagination<CustomerAreaWeihu> findAllCustomerAreaWeihu(Integer page,Integer rows) {
-		return iCustomerCenterDao.findAllCustomerAreaWeihu(page,rows);
-	}
-
-	@Override
-	public boolean addCustomerArea(Integer id, String name) {
-		return iCustomerCenterDao.addCustomerArea(id ,name);
-	}
-
-	@Override
-	public boolean deleteCustomerArea(Integer id) {
-		return iCustomerCenterDao.deleteCustomerArea(id);
-	}
-
-	@Override
-	public boolean updateCustomerArea(Integer updateRow,String name) {
-		return iCustomerCenterDao.updateCustomerArea(updateRow,name);
-	}
-
-
-
-
 
 
 }

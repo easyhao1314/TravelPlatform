@@ -8,17 +8,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import net.sf.json.JSONArray;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.fenghuang.entiey.CitySettingDictionary;
-import com.fenghuang.entiey.Currency;
-import com.fenghuang.entiey.CustomerInfo;
-import com.fenghuang.entiey.DictionaryDesc;
+
 import com.fenghuang.entiey.Weihu;
 import com.fenghuang.service.ICurrencyService;
 import com.fenghuang.service.IcaiwuweihuSerice;
@@ -70,7 +67,7 @@ public class CaiwuweihuController {
 	@ResponseBody
 	public Map<String,Object> addCustom(HttpServletRequest request,HttpServletResponse response,
 			String bianhao,String xingzhi,String shouzhi,String shuoming,String liucheng,String fulei){
-		Map<String, Object> result = new HashMap<String, Object>();
+		
 		boolean isSuccess = false;
 		Weihu wh=new Weihu();
 		wh.setBianhao(bianhao);
@@ -79,8 +76,9 @@ public class CaiwuweihuController {
 		wh.setShuoming(shuoming);
 		wh.setLiucheng(liucheng);
 		wh.setFulei(fulei);
-
+		Map<String, Object> result = new HashMap<String, Object>();
 		try {
+			
 			isSuccess = serice.saveweihu(wh);
 			isSuccess=true;
 		} catch (Exception e) {

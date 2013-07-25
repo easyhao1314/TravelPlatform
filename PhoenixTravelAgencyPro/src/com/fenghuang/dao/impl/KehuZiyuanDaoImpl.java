@@ -51,8 +51,8 @@ public class KehuZiyuanDaoImpl extends BaseDao implements IKehuziyuanDao{
 	@Override
 	public boolean kehuAdd(KuhuZiyuan khzy) throws Exception {
 		// TODO Auto-generated method stub
-		String sql="insert into kehuziyuan(id,name,shuoming,tishi,type) values(?,?,?,?,?)";
-		int count=this.update(sql,khzy.getId(),khzy.getName(),khzy.getShuoming(),khzy.getTishi(),khzy.getType());
+		String sql="insert into kehuziyuan(name,shuoming,tishi,type) values(?,?,?,?)";
+		int count=this.update(sql,khzy.getName(),khzy.getShuoming(),khzy.getTishi(),khzy.getType());
 		return count>0;
 	}
 

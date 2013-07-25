@@ -54,6 +54,18 @@
 						href="javascript:open1('付款审批','a.do');">付款审批</a>
 					</li>
 				</ul>
+				
+				<ul>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('付款审核','fukuanshenhe.do');">付款 审核</a>
+					</li>
+				</ul>
+				
+				<ul>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('付款确认','querenfukuan.do');">付款确认</a>
+					</li>
+				</ul>
 				<ul>
 					<li iconCls="icon-gears"><a
 						href="javascript:open1('应付款统计','yfktj.do');">应付款统计</a>
@@ -74,11 +86,7 @@
 						href="javascript:open1('付款方式设置','fkfssz.do');">付款方式设置</a>
 					</li>
 				</ul>
-					<ul>
-					<li iconCls="icon-gears"><a
-						href="javascript:open1('付款审核','fukuanshenhe.do');">付款 审核</a>
-					</li>
-				</ul>
+					
 				
 				<ul>
 					<li iconCls="icon-gears"><a
@@ -113,11 +121,7 @@
 				</ul>
 				
 				
-					<ul>
-					<li iconCls="icon-gears"><a
-						href="javascript:open1('付款确认','querenfukuan.do');">付款确认</a>
-					</li>
-				</ul>
+					
 				<ul>
 					<li iconCls="icon-gears"><a
 						href="javascript:open1('收款确认','shoukuan.do');">收款确认</a>
@@ -156,7 +160,7 @@
 				</ul>
 				<ul>
 					<li iconCls="icon-gears"><a
-						href="javascript:open1('线路/行程维护','Xingcheng_weihu.do');">线路/行程维护</a>
+						href="javascript:open1('线路/行程维护','Xingcheng_xianlu.do');">线路/行程维护</a>
 					</li>
 				</ul>
 			</li>
@@ -343,24 +347,60 @@
 			        <a href="javascript:open1('联系人信息列表','contactInfoList.do');">联系人信息列表</a>
 			      </li>
 			   </ul>
-			    <ul>
+			   <ul>
 			      <li iconCls="icon-gears">
-			        <a href="javascript:open1('客户VIP字典','customerVIPDic.do?wordprefix=100001003');">客户VIP字典</a>
-			      </li>
-			   </ul>
-			     <ul>
-			      <li iconCls="icon-gears">
-			        <a href="javascript:open1('客户资信字典','customerZiXinDic.do?wordprefix=100001005');">客户资信字典</a>
-			      </li>
-			   </ul>
-			     <ul>
-			      <li iconCls="icon-gears">
-			        <a href="javascript:open1('客户价值字典','customerZiXinDic.do?wordprefix=100001004');">客户价值字典</a>
+			        <a href="javascript:open1('区域客户信息','customerQuyu.do');">区域客户信息</a>
 			      </li>
 			   </ul>
 			   <ul>
 			      <li iconCls="icon-gears">
-			        <a href="javascript:open1('客户合作级别','customerCoperLevel.do?wordprefix=100001001');">客户合作级别</a>
+			        <a href="javascript:open1('销售负责客户','customerXiaoshou.do');">销售负责客户</a>
+			      </li>
+			   </ul>
+			   <ul>
+			      <li iconCls="icon-gears">
+			        <a href="javascript:open1('团队客人查询','customerTuandui.do');">团队客人查询</a>
+			      </li>
+			   </ul>
+			   <ul>
+			      <li iconCls="icon-gears">
+			        <a href="javascript:open1('日工作统计表','customerDay.do');">日工作统计表</a>
+			      </li>
+			   </ul>
+			   <ul>
+			      <li iconCls="icon-gears">
+			        <a href="javascript:open1('客户沟通情况','customerGoutong.do');">客户沟通情况</a>
+			      </li>
+			   </ul>
+			    <ul>
+			      <li iconCls="icon-gears">
+			        <a href="javascript:open1('客户共享/转移','customerKehuGongxiang.do');">客户共享/转移</a>
+			      </li>
+			   </ul>
+			    <ul>
+			      <li iconCls="icon-gears">
+			        <a href="javascript:open1('联系人共享/转移','customerLxrGongXiang.do');">联系人共享/转移</a>
+			      </li>
+			   </ul>
+			    
+			    <ul>
+			      <li iconCls="icon-gears">
+			        <a href="javascript:open1('销售大区管理','customerXiaoshouDaqu.do');">销售大区管理</a>
+			      </li>
+			   </ul>
+			    <ul>
+			      <li iconCls="icon-gears">
+			        <a href="javascript:open1('客户VIP字典','customerVIPDic.do');">客户VIP字典</a>
+			      </li>
+			   </ul>
+			     <ul>
+			      <li iconCls="icon-gears">
+			        <a href="javascript:open1('客户资信字典','customerZiXinDic.do');">客户资信字典</a>
+			      </li>
+			   </ul>
+			     <ul>
+			      <li iconCls="icon-gears">
+			        <a href="javascript:open1('客户价值字典','customerZiXinDic.do');">客户价值字典</a>
 			      </li>
 			   </ul>
 			    <ul>
@@ -368,6 +408,12 @@
 			        <a href="javascript:open1('客户区域维护','customerAreaWeihu.do');">客户区域维护</a>
 			      </li>
 			   </ul>
+			   <ul>
+			      <li iconCls="icon-gears">
+			        <a href="javascript:open1('客户类别维护','customerCoperLevel.do');">客户类别维护</a>
+			      </li>
+			   </ul>
+			   
 		</li>
 		</ul>
 		

@@ -229,9 +229,10 @@ $(document).ready(function() {
 	load();
 }); 
 function load(){
+var url = "fenghuang/Sanpinliebiao.do?tuanNo="+'<%=request.getParameter("tuanNo") %>';
 	$.ajax({
-					url : "fenghuang/Sanpinliebiao.do?tuanNo="+<%=request.getParameter("tuanNo") %>,
-					data : <%=request.getParameter("tuanNo") %>,
+					url :url ,
+					data : '<%=request.getParameter("tuanNo") %>',
 					dataType : "json",
 					success : function(data) {
 					$('#jibenForm').form('load',data.rows[0]);

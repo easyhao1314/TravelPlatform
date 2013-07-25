@@ -29,21 +29,7 @@
 	<!-- 如果在正式开发环境下 url可以为后台的请求，地址 -->
    <table>
 	    		<tr>
-
-	    		<td>
-	    		日期:
-              <input class="easyui-combobox"
-              name="" 
-              data-options="url:'',
-              valueField:'dicId',
-              textFiedld:'dicName',
-              panelHeight:'auto'
-              ">
-              
-               [全部] [1月] [2月] [3月] [4月] [5月] [6月] [7月] [8月] [9月] [10月] [11月] [12月]
-               
-                 </td> 
-	    			<td>付款方式描述:<input class="easyui-validatebox" type="text" name="name" ></input></td>
+	    			<!-- <td>付款方式描述:<input class="easyui-validatebox" type="text" name="name" ></input></td> 
 	    		
 	    			<td>
 	    		<div style="padding:5px;border:1px solid #ddd;">
@@ -51,6 +37,7 @@
 	             </div>
 	    			
 	    		</td>
+	    		-->
 	    		</tr>
 	    	
 	    		
@@ -59,200 +46,109 @@
 	    		
 	    	
 	    	</table>
+	    	<div class="easyui-panel" title="付款方式"
+		style="height:480px;width: auto;">
 	<table id="dg" class="easyui-datagrid"
-		data-options="url:'',border:false,singleSelect:false,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
-		pagination="true" toolbar="#tb">
+		data-options="url:'fenghuang/caiwufukuanselect.do',border:false,singleSelect:true,fit:true,fitColumns:true"
+		pagination="true" toolbar="#currencyDatagridtoolbar">
 		<thead>
 			<tr>
-				<th data-options="field:'dicNo',editor:'text'" width="200px">付款方式名称:</th>
-				<th data-options="field:'dicName',editor:'text'" width="200px">付款方式描述:</th>
-				<th data-options="field:'dicName',editor:'text'" width="200px">付款方式描述:</th>
-			
-			</tr>
+			    <th data-options="field:'id'" width="200px" hidden="true">ID</th>
+				<th data-options="field:'fukuanfangshi',editor:'text'" width="200px">付款方式名称:</th>
+				<th data-options="field:'miaoshu',editor:'text'" width="200px">付款方式描述:</th>	
+		     </tr>
 		</thead>
 	</table>
+	<div id="currencyDatagridtoolbar">
+		     <a href="javascript:addMianBanMoshi()" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>  
 	
-	<div id="editDic" class="easyui-dialog" title="新增业务字段"
+		
+		     <a href="javascript:werhuSelectId();" class="easyui-linkbutton" iconCls="icon-add" plain="true">修改</a>  
+		
+		
+		     <a href="javascript:shanchu('+row.id+');" class="easyui-linkbutton" iconCls="icon-add" plain="true">删除</a>  
+		
+	</div>
+	
+	<div id="xiugai" class="easyui-dialog" title="修改"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:500px;height:200px;padding:10px;">
 		<form id="dicFrome" method="post">
 			<table align="left">
 				<tr>
-					<td><div class="fitem">
-							<label>编号:</label>
+					<td>
+					<input id="id" name="id" class="easyui-validatebox" hidden="true">
+					<div class="fitem">
+							<label>付款方式名称:</label>
 					</td>
-					<td><input name="dicNo" class="easyui-validatebox"
-						required="true">
+					<td><input name="fukuanfangshi" class="easyui-validatebox">
 						</div></td>
 					<td><div class="fitem">
-							<label>名称:</label>
+							<label>付款描述:</label>
 					</td>
-					<td><input name="dicName" class="easyui-validatebox"
-						required="true">
+					<td><input name="miaoshu" class="easyui-validatebox"
+						>
 						</div></td>
-				</tr>
-				<tr>
-					<td><div class="fitem">
-							<label>帮助提示:</label>
-					</td>
-					<td><input name="dicHelp" class="easyui-validatebox">
-						</div></td>
-					<td><div class="fitem">
-							<label>显示顺序:</label>
-					</td>
-					<td><input name="dicSortNo" class="easyui-numberbox"
-						required="true">
-						</div></td>
+						
 				</tr>
 				<tr>
 					<td colspan="4s" align="center"><a
-						href="javascript:mainBanMoshiSave();" class="easyui-linkbutton"
-						iconCls="icon-ok">保存</a> <a href="javascript:closeEditDic();"
-						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
+						href="javascript:caiwuxiugai()" class="easyui-linkbutton"
+						iconCls="icon-ok">保存</a> 
+						<a href="javascript:void(0)" class="easyui-linkbutton"
+							iconCls="icon-undo" onclick="$('#dicFrome')[0].reset();">重置</a></td>
 				</tr>
 			</table>
 			<input id="dicType" name="dicType" type="hidden">
 		</form>
 	</div>
-	<div id="searchDic" class="easyui-dialog" title="查询业务字段"
+	
+	
+	<div id="sz" class="easyui-dialog" title="添加付款方式"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:500px;height:200px;padding:10px;">
-		<form id="searchForm" action="">
+		<form id="tianjia" method="post">
 			<table align="left">
 				<tr>
 					<td><div class="fitem">
-							<label>编号:</label>
+							<label>付款方式:</label>
 					</td>
-					<td><input id="searchDicNo" name="dicNo"
-						class="easyui-validatebox">
+					<td><input name="fukuanfangshi" class="easyui-validatebox"
+						>
 						</div></td>
 					<td><div class="fitem">
-							<label>名称:</label>
+							<label>付款描述:</label>
 					</td>
-					<td><input id="searchDicName" name="dicName"
-						class="easyui-validatebox">
+					<td><input name="miaoshu" class="easyui-validatebox"
+						>
 						</div></td>
+						
 				</tr>
-				<tr>
-					<td><div class="fitem">
-							<label>帮助提示:</label>
-					</td>
-					<td><input id="searchDicHelp" name="dicHelp"
-						class="easyui-validatebox">
-						</div></td>
-					<td><div class="fitem">
-							<label>显示顺序:</label>
-					</td>
-					<td><input id="searchDicSortNo" name="dicSortNo"
-						class="easyui-numberbox">
-						</div></td>
-				</tr>
+				
+				
 				<tr>
 					<td colspan="4s" align="center"><a
-						href="javascript:searchFormSubmit();" class="easyui-linkbutton"
-						iconCls="icon-ok">查询</a> <a href="javascript:closedSearch();"
-						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
+						href="javascript:Saveweihu()" class="easyui-linkbutton"
+						iconCls="icon-ok">保存</a> 
+                      <a href="javascript:void(0)" class="easyui-linkbutton"
+							iconCls="icon-undo" onclick="$('#dicFrome').form('clear')">重置</a></td> 
 				</tr>
 			</table>
-			<input id="searchDicType" name="dicType" type="hidden">
+			<input id="dicType" name="dicType" type="hidden">
 		</form>
 	</div>
+	
+	
 	<script type="text/javascript">
-		var editIndex = undefined;
-		function endEditing() {
-			if (editIndex == undefined) {
-				return true
-			}
-			if ($('#dg').datagrid('validateRow', editIndex)) {
-				$('#dg').datagrid('endEdit', editIndex);
-				$('#dg').datagrid('unselectRow', editIndex);
-				editIndex = undefined;
-				return true;
-			} else {
-				return false;
-			}
-		}
-		function addHangMoshi() {
-			$("#dg").datagrid("insertRow", {
-				index : 0,
-				row : {
-					dicType : '${param.dicType}'
-				}
-			});
-			editIndex = undefined;
-		}
-		function onClickRow(index) {
-			if (editIndex != index) {
-				if (endEditing()) {
-					$('#dg').datagrid('selectRow', index).datagrid('beginEdit',
-							index);
-					editIndex = index;
-				} else {
-					$('#dg').datagrid('selectRow', editIndex);
-				}
-			}
-		}
-		function getChanges() {
-			$('#dg').datagrid('endEdit', editIndex);
-			var rows = $("#dg").datagrid("getChanges");
-			if (rows.length > 0) {
+	function shanchu() {
+		var row = $("#dg").datagrid("getSelected");
+			if (row) {
 				var param = {
-					"updateRows" : $.toJSON(rows)
+					"id" :  row.id
 				};
+
 				$.ajax({
-					url : "fenghuang/updateDic.do",
-					data : param,
-					dataType : "json",
-					success : function(data) {
-						if (data.success) {
-							$.messager.alert("保存成功", "保存成功！", "info");
-							$("#dg").datagrid('reload');
-							editIndex = undefined;
-						} else {
-							$.messager.alert("保存失败", "保存失败!", "error");
-						}
-					},
-					error : function() {
-						$.messager.alert("保存失败", "服务器请求失败!", "error");
-					}
-				});
-			}
-
-		}
-
-		function addMianBanMoshi() {
-			$("#editDic").dialog("open");
-			$("#dicFrome").form("clear");
-		}
-
-		function mainBanMoshiSave() {
-			$('#dicFrome').form('submit', {
-				url : 'fenghuang/saveDic.do?dicType=${param.dicType}',
-				onSubmit : function() {
-					return $(this).form('validate');
-				},
-				success : function(result) {
-					var result = eval('(' + result + ')');
-					if (result.success) {
-						$.messager.alert("保存成功", "保存成功！", "info");
-						$('#editDic').dialog('close');
-						$('#dg').datagrid('reload');
-					} else {
-						$.messager.alert("保存失败", "保存失败!", "error");
-						$('#dg').datagrid('reload');
-					}
-				}
-			});
-		}
-
-		function shanchu() {
-			var rows = $("#dg").datagrid("getSelections");
-			if (rows.length > 0) {
-				var param = {
-					"deleteRows" : $.toJSON(rows)
-				};
-				$.ajax({
-					url : "fenghuang/deleteDics.do",
+					url : "fenghuang/deletefukuan.do?",
 					data : param,
 					dataType : "json",
 					success : function(data) {
@@ -269,29 +165,94 @@
 				});
 			}
 		}
-		function closeEditDic() {
-			$('#editDic').dialog('close');
-		} 
-
-		//
-		function searchDiJi() {
-			$("#searchDic").dialog("open");
-			$("#searchForm").form("clear");
+		
+		
+		
+		
+		//按id查询
+		function werhuSelectId(id) {
+          //通过主键，查询该操作，并处于编辑状态。 是否打开tab，还是直接弹出window 
+			$("#xiugai").dialog("open");
+			//准备回显的数据
+			var row = $("#dg").datagrid("getSelected");
+			//alert(row.id);
+			
+			if(row){
+				var param = {
+					"id" : row.id
+				};
+				
+				$.ajax({
+					url : "fenghuang/caiwufukuanselect.do",
+					data : param,
+					dataType : "json",
+					success : function(data) {
+		
+					   $('#dicFrome').form('load',data.rows[0]);
+				
+					},
+					error : function() {
+						$.messager.alert("查询失败", "服务器请求失败!", "error");
+					}
+				});
 		}
-		function searchFormSubmit() {
-			$("#searchDic").dialog("close");
-			$("#dg").datagrid("load", {
-				dicNo : $("#searchDicNo").val(),
-				dicName : $("#searchDicName").val(),
-				dicHelp : $("#searchDicHelp").val(),
-				dicSortNo : $("#searchDicSortNo").val()
+		}
+		
+		
+		 //修改
+		function caiwuxiugai() {
+			$("#dicFrome").form('submit', {
+				url : 'fenghuang/updatefukuan.do',
+				onSubmit : function() {
+				
+					return $(this).form('validate');
+				},
+				success : function(data) {//data 是一个字符串  $.ajax(success:function(data):是一个对象)
+					console.info(data);
+					//var result = val('(' + data + ')');//吧字符串转换为对象
+					var result = $.parseJSON(data) ;
+
+					if (result.success) {
+					  $("#xiugai").dialog('close');
+						$.messager.alert("修改成功", "修改成功！", "info"); 
+						$("#dg").datagrid('reload');
+					} else {
+						$.messager.alert("修改失败", "修改失败!", "error");
+						$("#dg").datagrid('reload');
+					}
+				}
 			});
-
 		}
-
-		function closedSearch() {
-			$('#searchDic').dialog('close');
+		
+		
+		//添加	
+		function addMianBanMoshi() {
+			$("#sz").dialog("open");
+			$("#tianjia").form("clear");
+		}
+        function closeEditDic() {
+			$("#sz").dialog("close");
+		} 
+		function Saveweihu() {
+			$('#tianjia').form('submit', {
+				url : 'fenghuang/insertfukuan.do',
+				onSubmit : function() {
+					return $(this).form('validate');
+				},
+				success : function(result) {
+					var result = eval('(' + result + ')');
+					if (result.success) {
+						$.messager.alert("保存成功", "保存成功！", "info");
+						$('#sz').dialog('close');
+						$('#dg').datagrid('reload');
+					} else {
+						$.messager.alert("保存失败", "保存失败!", "error");
+						$('#dg').datagrid('reload');
+					}
+				}
+			});
 		}
 	</script>
+
 </body>
 </html>

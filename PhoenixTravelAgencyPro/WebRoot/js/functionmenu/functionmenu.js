@@ -81,10 +81,10 @@ function newFunctionMenuSave(){
 			if(result.success){
 				$('#editFuncMenu').dialog('close');
 				$.messager.alert("保存成功", "保存成功！", "info");
+			
 				$('#dgFuncMenu').datagrid('reload');
 				$('#parentId').combobox('reload');
 				$('#editParentId').combobox('reload');
-
 			}else{
 				$('#editFuncMenu').dialog('close');
 				$.messager.alert("保存失败", "保存失败!", "error");

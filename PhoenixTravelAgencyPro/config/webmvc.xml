@@ -94,6 +94,9 @@
 	<mvc:view-controller path="dantuan.do" view-name="F.A.D/dantuan"/>
     <mvc:view-controller path="shoukuan.do" view-name="F.A.D/shoukuan"/>
     <mvc:view-controller path="fydxwh.do" view-name="F.A.D/fydxwh"/>
+    <mvc:view-controller path="fkfssz.do" view-name="F.A.D/fkfssz"/>
+    <mvc:view-controller path="shoukuan.do" view-name="F.A.D/shoukuan"/>
+    <mvc:view-controller path="querenfukuan.do" view-name="F.A.D/querenfukuan"/>
 	<!-- 赵杨的配置 -->
 	<mvc:view-controller path="SanPin_caozuo.do" view-name="SanPin/SanPin_CaoZuo"/>
 	 <!-- 单团中心-->
@@ -149,8 +152,9 @@
 	<mvc:view-controller path="Sanpin_zhuantuan.do" view-name="SanPin/Sanpin_Zhuantuan"/>
 	<mvc:view-controller path="Sanpin_mingxi.do" view-name="SanPin/Sanpin_Mingxi"/>
 	<!-- 赵杨_______行程库管理 -->
-	<mvc:view-controller path="Xingcheng_weihu.do" view-name="XingCheng/Xingcheng_weihu"/>
+	<mvc:view-controller path="Xingcheng_xianlu.do" view-name="XingCheng/Xingcheng_xianlu"/>
 	<mvc:view-controller path="Xingcheng_ri.do" view-name="XingCheng/Xingcheng_ri"/>
+	<mvc:view-controller path="Xingcheng_mx.do" view-name="XingCheng/Xingcheng_Mingxi"/>
 	
 	 <!-- 单团中心-->
 	  <mvc:view-controller path="DantuanAdd.do" view-name="Dantuan/DantuanAddd"/>
@@ -181,11 +185,21 @@
 	<!-- 客户中心 -->
 	<mvc:view-controller path="customerInfoList.do" view-name="KeHu/customerInfoList" />
 	<mvc:view-controller path="contactInfoList.do" view-name="KeHu/contactInfoList" />
+	<mvc:view-controller path="customerQuyu.do" view-name="KeHu/customerQuyuKehu" />
+	<mvc:view-controller path="customerXiaoshou.do" view-name="KeHu/customerXiaoshou" />
+	<mvc:view-controller path="customerTuandui.do" view-name="KeHu/customerTuandui" />
+	<mvc:view-controller path="customerDay.do" view-name="KeHu/customerDay" />
+	
+	<mvc:view-controller path="customerGoutong.do" view-name="KeHu/customerGoutong" />
+	<mvc:view-controller path="customerKehuGongxiang.do" view-name="KeHu/customerKehuGongxiang" />
+	<mvc:view-controller path="customerLxrGongXiang.do" view-name="KeHu/customerLxrGongXiang" />	
+	
+	<mvc:view-controller path="customerXiaoshouDaqu.do" view-name="KeHu/customerXiaoshouDaqu" />
 	<mvc:view-controller path="customerVIPDic.do" view-name="KeHu/customerVIPDic" />
 	<mvc:view-controller path="customerZiXinDic.do" view-name="KeHu/customerZiXinDic" />
 	<mvc:view-controller path="customerValueDic.do" view-name="KeHu/customerValueDic" />
-	<mvc:view-controller path="customerCoperLevel.do" view-name="KeHu/customerCoperLevel" />
 	<mvc:view-controller path="customerAreaWeihu.do" view-name="KeHu/customerAreaWeihu" />
+	<mvc:view-controller path="customerCoperLevel.do" view-name="KeHu/customerCoperLevel" />
 	<!-- 客户中心结束 -->
 	<!-- 陈家海的配置结束 -->
 </beans>

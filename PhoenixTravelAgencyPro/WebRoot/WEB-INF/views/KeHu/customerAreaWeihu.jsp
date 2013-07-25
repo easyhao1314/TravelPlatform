@@ -23,208 +23,278 @@
 <script type="text/javascript" src="js/jquery.json.js"></script>
 
 </head>
+
 <body>
-<div style="margin:10px 0px;"></div>  
-    <div class="easyui-panel" title="客户所属区域查询" style="width:1000px">  
-        <div style="padding:0px">  
-        <form id="ff" method="post"> 
-            <table>  
-            <tr>
-               <td>关键字:</td>  
-               <td><input class="easyui-validatebox" type="text" name="kw" /></td>
-               <td>
-               		<a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()">查询</a>
-               		<a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()">重置</a>
-               </td>
-             </tr>         
-             </table>
-          </form>
-            
-    </div>  
-    </div>
-    <!-- 查询结果展示 -->
-    <div style="width:900px;height:540px;">
-	   <table id="queryResult"></table>
+<div class="easyui-panel" title="客户所属区域查询"
+		style="height:80px;padding:10px;width:auto;"
+		data-options="closable:false,tools:'#searchpanel'" align="center">
+		<form id="zixinForm">
+		<table>
+	
+			<tr>
+			<td><div class="fitem">
+						<label>名称:</label>
+				</td>
+				<td><input id="name" name="name" class="easyui-validatebox">
+					</div>
+				</td>
+				<td><div class="fitem">
+						<label>区域城市:</label>
+				</td>
+				<td><input id="shuoming" name="shuoming" class="easyui-validatebox">
+					</div>
+				</td>
+				
+				<td>
+					<a href="javascript:zixinSelectLike();" 
+								class="easyui-linkbutton" iconCls="icon-ok">查询</a>
+						<a href="javascript:void(0)" class="easyui-linkbutton"
+							iconCls="icon-undo" onclick="$('#zixinForm').form('clear')">重置</a>
+				</td>
+			</tr>
+		</table>
+		</form>
 	</div>
+    <!-- 查询结果展示 -->
+    
+	  <div class="easyui-panel" title="客户所属区域列表"
+		style="height:480px;width: auto;">
+		<table id="dg" class="easyui-datagrid"
+			data-options="url:'fenghuang/KehuSelect.do?type=1',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
+			  pagination="true" toolbar="#currencyDatagridtoolbar">
+		
+			<thead>
+				<tr>
+				    <th data-options="field:'ck',checkbox:true"></th>
+					<th data-options="field:'id',align:'right'" width="100">编号</th>
+					<th data-options="field:'name',align:'right'" width="100" editor="text">名称</th>
+					<th data-options="field:'shuoming',align:'right'" width="100" editor="text">区域城市</th>
+					
+				</tr>
+		</thead>
+	</table>
 	<!-- 查询结果展示 -->
+	<div id="currencyDatagridtoolbar">
+		     <a href="javascript:addZiXin();" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>  
+		     <a href="javascript:ZiXinSelectId();" class="easyui-linkbutton" iconCls="icon-save"  plain="true">修改</a>
+		     <a href="javascript:shanchue();" class="easyui-linkbutton" iconCls="icon-cut" plain="true">删除</a>  
+		</div>   
+	</div>
+	
+	<!-- 新增客户资信字典 -->
+	<div id="addZiXin" class="easyui-dialog" title="新增客户所属区域"
+		data-options="modal:true,closed:true,iconCls:'icon-save'"
+		style="width:600px;height:200px;padding:10px;">
+		<form id="addForm" method="post">
+			<table align="center">
+				<tr>
+					<td><div class="fitem">
+							<label>编号:</label>
+					</td>
+					<td>--系统自动生成--</div></td>
+						<td><div class="fitem">
+							<label>名称:</label>
+					</td>
+					<td><input  name="name" class="easyui-validatebox" required="true">
+						</input>
+						</div></td>
+				</tr>
+				<tr>
+					<td><div class="fitem">
+							<label>区域城市:</label>
+					</td>
+					<td><input name="shuoming" class="easyui-validatebox" required="true">
+						</div></td>
+					
+					<td></td>
+				</tr>
+				<tr>
+					<td colspan="4s" align="center">
+					<a href="javascript:SaveZiXin();" class="easyui-linkbutton"
+						iconCls="icon-ok">保存</a> <a href="javascript:closeaddMianBan();"
+						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<!-- 新增客户资信字典结束 -->
+	
+	
+		<!-- 修改客户资信字典 -->
+	<div id="updateZiXin" class="easyui-dialog" title="修改客户所属区域"
+		data-options="modal:true,closed:true,iconCls:'icon-save'"
+		style="width:600px;height:200px;padding:10px;">
+		<form id="updateForm" method="post">
+			<table align="center">
+				<tr>
+						<td>
+						<input id="id" name="id" class="easyui-validatebox" hidden="true">
+						<div class="fitem">
+							<label>名称:</label>
+					</td>
+					<td><input  name="name" class="easyui-validatebox" required="true">
+						</input>
+						</div></td><td></td><td></td>
+				</tr>
+				<tr>
+					<td><div class="fitem">
+							<label>区域城市:</label>
+					</td>
+					<td><input name="shuoming" class="easyui-validatebox" required="true">
+						</div></td>
+					
+				</tr>
+				<tr>
+					<td colspan="4s" align="center"><a
+						href="javascript:ZiXinUpdate();" class="easyui-linkbutton"
+						iconCls="icon-ok">保存</a> <a href="javascript:closeaddMianBan();"
+						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<!-- 修改客户资信字典结束 -->
 	
    <script type="text/javascript">
-   	 	var editIndex = undefined;
-   		$("#queryResult").datagrid({
-   			url : 'fenghuang/customerAreaWeihu.do' ,
-   			border : false ,
-   			singleSelect : true ,
-   			fit : true ,
-   			fitColumns : true ,
-   			toolbar : '#tb' ,
-   			pagination: true,
-			checkOnSelect : true,
-			pageSize : 10 ,
-			pageList : [10,20,50]  ,
-			onClickRow : function(rowIndex,rowData){
-				if(editIndex == undefined){
-					$("#queryResult").datagrid('beginEdit',rowIndex);
-					editIndex = rowIndex ; 
-				}else{
-					if(rowIndex != editIndex){
-						$("#queryResult").datagrid('endEdit',editIndex);
-						$("#queryResult").datagrid('beginEdit',rowIndex);
-						editIndex = rowIndex ; 
-					}
-				}
-			},
-			columns : [[{
-						field : 'id',
-						title : '编号',
-						width : 100 ,
-					},{
-						field : 'name',
-						title : '名称',
-						width : 100 ,
-						editor : {
-							type : 'text'
-						}
-					}
-			]],
-			toolbar : [ {
-				text : '增加',
-				iconCls : 'icon-save',
-				handler : function() {
-					if(editIndex != undefined){//表示有某一行正在编辑
-						//关闭编辑状态
-						$('#queryResult').datagrid('endEdit',editIndex);
-					}else{
-						$('#queryResult').datagrid('insertRow', {
-							index : 0,
-							row : {
-							}
-						});
-						$('#queryResult').datagrid('beginEdit', 0);
-						editIndex = 0 ;
-					}
-				}
-			}, '-', {
-				text : '刪除',
-				iconCls : 'icon-remove',
-				handler : function() {
-					var rows = $('#queryResult').datagrid('getSelected');
-					if(rows){
-						$.messager.confirm("请确认","您确定要删除吗？",function(result){
-							if(result){
-								var param = {
-									"deleteRow" : rows.id
-								};
-								console.info(param);
-								$.ajax({
-									url : 'fenghuang/deleteCustomerArea.do',
-									data : param ,
-									dataType : 'json',
-									type : 'POST' ,
-									success : function(data){
-										if(data.success){
-											$.messager.alert("提示信息","删除成功！","info");
-											$("#queryResult").datagrid('reload');
-										}else{
-											$.messager.alert("提示信息","删除失败！","info");
-										}
-									}
-								});
-							}
-						});
-					}else{
-						$.messager.alert("提示信息","请选择要删除的记录","error");
-					}
-				}
-			}, '-',  {
-				text : '保存修改',
-				iconCls : 'icon-save',
-				handler : function() {
-					$('#queryResult').datagrid('endEdit',editIndex);//有验证功能。验证成功后执行onAfterEdit
-				}	
-			},'-',{
-				text : '取消编辑',
-				iconCls : 'icon-redo',
-				handler : function() {
-					$('#queryResult').datagrid('rejectChanges');//取消编辑，回滚
-					editIndex = undefined ;
-				}	
-			}  ],
-			
-			onAfterEdit : function(rowIndex, rowData, changes){//保存修改之后调用此方法
-				var inserted = $('#queryResult').datagrid('getChanges','inserted');
-				var updated = $('#queryResult').datagrid('getChanges','updated');
-				if(inserted != ""){
-					$.ajax({
-						url : 'fenghuang/addCustomerArea.do',
-						data : $.toJSON(rowData) ,
-						dataType : 'json',
-						type : 'POST' ,
-						contentType : 'application/json;charset=UTF-8',
-						success : function(data){
-							if(data.success){
-								$.messager.alert("提示信息","添加成功","info");
-								$("#queryResult").datagrid('reload');
-								editIndex = undefined ;
-							}else{
-								$.messager.alert("提示信息","添加失败","info");
-							}
-						}
-					});
-				}
-				if(updated != ""){
-				console.info(updated[0]);
-					$.ajax({
-						url : 'fenghuang/updateCustomerArea.do',
-						data : $.toJSON(updated[0]) ,
-						dataType : 'json',
-						type : 'POST' ,
-						contentType : 'application/json;charset=UTF-8',
-						success : function(data){
-							if(data.success){
-								$.messager.alert("提示信息","修改成功","info");
-								$("#queryResult").datagrid('reload');
-								editIndex = undefined ;
-							}else{
-								$.messager.alert("提示信息","修改失败","info");
-							}
-						}
-					});
-				}
-				//console.info(rowData);
-				editIndex = undefined ;
-			} ,
-		});
+ 
+   	/**
+ * 查询按钮
+ */
+		function zixinSelectLike(){
+		var opts = $('#dg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
+			var param = {
+				name: $("#name").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
+				shuoming: $("#shuoming").val() ,
+				tishi : $("#tishi").val(),
+				page:  opts.pageNumber ,
+				rows:  opts.pageSize
+			};
 		
-		//保存修改
-		function getChanges() {
-			$('#queryResult').datagrid('endEdit', editIndex);
-			var row = $("#queryResult").datagrid("getChanges");
-			//console.info(encodeURI($.toJSON(row)));
+				$.ajax({
+					url : 'fenghuang/kehuSelect.do' ,
+					data :  param,
+					type : 'POST' ,
+					dataType : 'json' ,
+					success : function(data){
+						$('#dg').datagrid('loadData',data);
+					}
+				});
+		}
+		
+
+	   //新增
+		function addZiXin() {
+			$("#addZiXin").dialog("open");
+			$("#addForm").form("clear");
+		}
+         
+		function SaveZiXin() {
+			$('#addForm').form('submit', {
+				url : 'fenghuang/KehuAdd.do?type=1',
+				onSubmit : function() {
+					return $(this).form('validate');
+				},
+				success : function(result) {
+					var result = eval('(' + result + ')');
+					if (result.success) {
+					$('#addZiXin').dialog('close');
+						$.messager.alert("保存成功", "保存成功！", "info");
+						 $('#dg').datagrid('reload'); 
+					} else {
+						$.messager.alert("保存失败", "保存失败!", "error");
+						$('#dg').datagrid('reload');
+					}
+				}
+			});
+		}
+			//关闭
+		function closeEditDic() {
+			$('#addZiXin').dialog('close');
+		} 
+	//删除操作要执行的方法
+	function shanchu(){
+	  var row = $("#dg").datagrid("getSelected");
 			if (row) {
 				var param = {
-					"updateRow" : encodeURI($.toJSON(row),"UTF-8")
+					"id" :  row.id
 				};
+				if(confirm("确认要删除名称为 “ "+row.name+" ”的客户所属区域吗？")){
 				$.ajax({
-					url : "fenghuang/updateCustomVIP.do",
+					url : "fenghuang/kehuDelete.do",
 					data : param,
 					dataType : "json",
-					contentType : "application/json;charset=UTF-8",
 					success : function(data) {
 						if (data.success) {
-							$.messager.alert("修改成功", "修改成功！", "info");
-							$("#queryResult").datagrid('reload');
-							editIndex = undefined;
+							$.messager.alert("删除成功", "删除成功！", "info");
+							$("#dg").datagrid('reload');
 						} else {
-							$.messager.alert("修改失败", "修改失败!", "error");
+							$.messager.alert("删除失败", "删除失败!", "error");
 						}
 					},
 					error : function() {
-						$.messager.alert("修改失败", "服务器请求失败!", "error");
+						$.messager.alert("删除失败", "服务器请求失败!", "error");
 					}
 				});
+				}s
 			}
-
+	}
+	//按id查询
+		function ZiXinSelectId() {
+          //通过主键，查询该操作，并处于编辑状态。 是否打开tab，还是直接弹出window 
+			$("#updateZiXin").dialog("open");
+			//准备回显的数据
+			var row = $("#dg").datagrid("getSelected");
+			//alert(row.tuanNO);
+		
+			if(row){
+				var param = {
+					"id" : row.id
+				};
+				
+				$.ajax({
+					url : "fenghuang/kehuSelectId.do",
+					data : param,
+					dataType : "json",
+					success : function(data) {
+		
+					   $('#updateForm').form('load',data.rows[0]);
+				
+					},
+					error : function() {
+						$.messager.alert("查询失败", "服务器请求失败!", "error");
+					}
+				});
 		}
+		}
+		 //修改
+		function ZiXinUpdate() {
+			$("#updateForm").form('submit', {
+				url : 'fenghuang/kehuUpdate.do',
+				onSubmit : function() {
+					return $(this).form('validate');
+				},
+				success : function(data) {//data 是一个字符串  $.ajax(success:function(data):是一个对象)
+					console.info(data);
+					//var result = val('(' + data + ')');//吧字符串转换为对象
+					var result = $.parseJSON(data) ;
+
+					if (result.success) {
+					  $("#updateZiXin").dialog('close');
+						$.messager.alert("修改成功", "修改成功！", "info"); 
+						$("#dg").datagrid('reload');
+					} else {
+						$.messager.alert("修改失败", "修改失败!", "error");
+						$("#dg").datagrid('reload');
+					}
+				}
+			});
+		}
+		
+		//关闭
+		function closedSearch() {
+			$('#updateZiXin').dialog('close');
+		}
+	
    </script>
     	
     

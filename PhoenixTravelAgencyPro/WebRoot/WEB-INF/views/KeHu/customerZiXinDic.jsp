@@ -65,7 +65,7 @@
 	  <div class="easyui-panel" title="客户资信字典列表"
 		style="height:480px;width: auto;">
 		<table id="dg" class="easyui-datagrid"
-			data-options="url:'fenghuang/KehuSelect.do?type=1',border:false,singleSelect:false,fit:true,fitColumns:true,pageSize:20"
+			data-options="url:'fenghuang/KehuSelect.do?type=1',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 			  pagination="true" toolbar="#currencyDatagridtoolbar">
 		
 			<thead>
@@ -75,14 +75,15 @@
 					<th data-options="field:'name',align:'right'" width="100" editor="text">名称</th>
 					<th data-options="field:'shuoming',align:'right'" width="100" editor="text">说明</th>
 					<th data-options="field:'tishi',align:'right'" width="100" editor="text">帮助提示</th>
-					<th data-options="field:'8',formatter:onOperateStyle" width="80">操作</th>
 				</tr>
 		</thead>
 	</table>
 	<!-- 查询结果展示 -->
 	<div id="currencyDatagridtoolbar">
 		     <a href="javascript:addZiXin();" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>  
-		</div>
+		     <a href="javascript:ZiXinSelectId();" class="easyui-linkbutton" iconCls="icon-save"  plain="true">修改</a>
+		     <a href="javascript:shanchue();" class="easyui-linkbutton" iconCls="icon-cut" plain="true">删除</a>  
+		</div>   
 	</div>
 	
 	<!-- 新增客户资信字典 -->
@@ -95,9 +96,7 @@
 					<td><div class="fitem">
 							<label>编号:</label>
 					</td>
-					<td><input name="id" class="easyui-validatebox" required="true">
-						</input>
-						</div></td>
+					<td>--系统自动生成--</div></td>
 						<td><div class="fitem">
 							<label>名称:</label>
 					</td>
@@ -136,18 +135,14 @@
 		<form id="updateForm" method="post">
 			<table align="center">
 				<tr>
-					<td><div class="fitem">
-							<label>编号:</label>
-					</td>
-					<td><input name="id" class="easyui-validatebox" required="true">
-						</input>
-						</div></td>
-						<td><div class="fitem">
+						<td>
+						<input id="id" name="id" class="easyui-validatebox" hidden="true">
+						<div class="fitem">
 							<label>名称:</label>
 					</td>
 					<td><input  name="name" class="easyui-validatebox" required="true">
 						</input>
-						</div></td>
+						</div></td><td></td><td></td>
 				</tr>
 				<tr>
 					<td><div class="fitem">
@@ -173,13 +168,7 @@
 	<!-- 修改客户资信字典结束 -->
 	
    <script type="text/javascript">
-   
-    function onOperateStyle(val,row){
-       var returnStyleValue='<img alt="修改" src="js/themes/icons/pencil.png" onclick="ZiXinSelectId('+row.id+');">';
-       returnStyleValue+=' &nbsp;&nbsp;&nbsp;&nbsp;<img alt="删除" src="js/themes/icons/cancel.png" onclick="shanchu('+row.id+');">';
-       return returnStyleValue;
-    }
-   
+ 
    	/**
  * 查询按钮
  */
@@ -187,8 +176,8 @@
 		var opts = $('#dg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
 			var param = {
 				name: $("#name").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
-				chengshiId: $("#shuoming").val() ,
-				miaoshu : $("#tishi").val(),
+				shuoming: $("#shuoming").val() ,
+				tishi : $("#tishi").val(),
 				page:  opts.pageNumber ,
 				rows:  opts.pageSize
 			};
@@ -241,6 +230,7 @@
 				var param = {
 					"id" :  row.id
 				};
+				if(confirm("确认要删除名称为 “ "+row.name+" ”的客户资信字典吗？")){
 				$.ajax({
 					url : "fenghuang/kehuDelete.do",
 					data : param,
@@ -257,6 +247,7 @@
 						$.messager.alert("删除失败", "服务器请求失败!", "error");
 					}
 				});
+				}
 			}
 	}
 	//按id查询

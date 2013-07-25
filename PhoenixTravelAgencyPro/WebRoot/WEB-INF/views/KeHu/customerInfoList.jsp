@@ -26,68 +26,64 @@
 </head>
 
 <body>
-	<div style="margin:10px 0px;"></div>  
-    <div class="easyui-panel" title="客户列表" style="width:900px">  
-        <div style="padding:0px">  
+	<div class="easyui-panel" title="客户信息查询"
+		style="height:140px;padding:10px;width:auto;"
+		data-options="closable:false,tools:'#searchpanel'" align="center">
         <form id="ff" method="post"> 
             <table>  
             <tr>
-               <td>关键字:</td>  
-               <td><input class="easyui-validatebox" type="text" name="kw" /></td>
-               <td>
-               		<a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()">查询</a>
-               		<a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()">重置</a>
-               </td>
-             </tr>         
+               <td>客户名称:</td>  
+               <td><input class="easyui-validatebox" type="text" id="name" name="name" /></td>             
+               <td>联系人:</td>  
+               <td><input class="easyui-validatebox" type="text" id="lxr" name="lxr" /></td>
+               </tr>
+               <tr> 
+                <td>城市:</td>  
+               <td><input class="easyui-validatebox" type="text" id="city" name="city" /></td>  
+               <td>销售/维护人:</td>  
+               <td><input class="easyui-validatebox" type="text" id="xiaoshou" name="xiaoshou" /></td>       
+               <td>创建时间:</td>  
+               <td><input class="easyui-validatebox" type="text" id="cjtime" name="cjtime" />
+               <a href="javascript:kehuSelectLike();" 
+								class="easyui-linkbutton" iconCls="icon-ok">查询</a>
+						<a href="javascript:void(0)" class="easyui-linkbutton"
+							iconCls="icon-undo" onclick="$('#ff').form('clear')">重置</a>
+               </td>                                             
              </table>
           </form>
             
-    </div>  
-    <script>  
-        function submitForm(){  
-           $.post("fenghuang/customInfoList.do", $("#ff").serialize(),function(data){
-           		$("#queryResult").datagrid('loadData',data);
-           },"json");
-        }  
-          function clearForm(){  
-            $('#ff').form('clear');  
-        }  
-    </script>  
-    </div>
+        </div>  
+   
     
     <!-- 查询结果展示 -->
-    <div style="width:900px;height:505px;">
-	   <table id="queryResult"
-			data-options="url:'fenghuang/customInfoList.do'" border="false" singleSelect="true" 
-			fit="true" fitColumns="true" pagination="true" toolbar="#tb" >
+		<div class="easyui-panel" title="客户列表" style="height:480px;width: auto;">
+	   <table id="dg" class="easyui-datagrid"
+			data-options="url:'fenghuang/customInfoList.do',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
+			pagination="true" toolbar="#currencyDatagridtoolbar">
 			<thead>
 				<tr>
-					<th data-options="field:'cityName',align:'right'" width="80">城市</th>
+				   <th data-options="field:'ck',checkbox:true"></th>
+					<th data-options="field:'city',align:'right'" width="80">城市</th>
 					<th data-options="field:'name',align:'right'" width="100">客户名称</th>
-					<th data-options="field:'moblePhone',align:'right'" width="100">电话</th>
-					<th data-options="field:'fax',align:'right'" width="100" >传真</th>
-					<th data-options="field:'htsj1',align:'right'" width="100" >销售顾问</th>
-					<th data-options="field:'htsj2',align:'right'" width="60" >联系人数</th>
-					<th data-options="field:'htsj3',align:'right'" width="80" >最后联系日期</th>
-					<th data-options="field:'htsj4',align:'right'" width="80" >创建时间</th>
+					<th data-options="field:'telePhone',align:'right'" width="100">电话</th>
+					<th data-options="field:'chuanzhen',align:'right'" width="100" >传真</th>
+					<th data-options="field:'xiaoshou',align:'right'" width="100" >销售顾问</th>
+					<th data-options="field:'lxrs',align:'right'" width="60" >联系人数</th>
+					<th data-options="field:'zhtime',align:'right'" width="80" >最后联系日期</th>
+					<th data-options="field:'cjtime',align:'right'" width="80" >创建时间</th>
 					<th data-options="field:'htsj5',align:'right'" width="80" >交易统计</th>
 				</tr>
 		</thead>
 	</table>
 	<!-- 查询结果展示 -->
+	<div id="currencyDatagridtoolbar">
+		     <a href="javascript:addMianBanMoshi();" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>  
+		     <a href="javascript:editMianBan();" class="easyui-linkbutton" iconCls="icon-save"  plain="true">修改</a>
+		     <a href="javascript:shanchu();" class="easyui-linkbutton" iconCls="icon-cut" plain="true">删除</a>  
+		</div>
 	</div>
 	
-	<div id="tb">
-			<a
-			href="javascript:addMianBanMoshi();" class="easyui-linkbutton"
-			iconCls="icon-add" plain="true">新增</a>&nbsp;&nbsp;|
-			<a
-			href="javascript:editMianBan();" class="easyui-linkbutton"
-			iconCls="icon-edit" plain="true">修改</a>&nbsp;&nbsp;| 
-			<a
-			href="javascript:shanchu();" class="easyui-linkbutton"
-			iconCls="icon-cut" plain="true">删除</a>
-	</div>
+	
 	<!-- 新增客户信息 -->
 	<div id="addCustom" class="easyui-dialog" title="新增客户信息"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
@@ -104,23 +100,27 @@
 				</tr>
 				<tr>
 					<td><div class="fitem">
-							<label>所在省份:</label>
+							<label>所属大区:</label>
 					</td>
-					<td><input id="shengfen" name="province" class="easyui-combobox" 
-						required="true">
-						</div></td>
+					<td><input id="daqu" name="daqu" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=6',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false"></div></td>			
 					<td><div class="fitem">
 							<label>所在城市:</label>
 					</td>
-					<td><input id="chengshi" name="city" class="easyui-combobox" 
-						required="true">
-						</div></td>
+					<td><input id="city" name="city" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=8',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false"></div></td>			
 				</tr>
 				<tr>
 					<td><div class="fitem">
 							<label>联系人:</label>
 					</td>
-					<td><input name="contact" class="easyui-validatebox" required="true">
+					<td><input name="lxr" class="easyui-validatebox" required="true">
 						</div></td>
 					<td><div class="fitem">
 							<label>职位:</label>
@@ -140,13 +140,12 @@
 					<td><div class="fitem">
 							<label>手机:</label>
 					</td>
-					<td><input name="moblePhone" class="easyui-validatebox">
+					<td><input name="moblephone" class="easyui-validatebox">
 						</div></td>
 					<td><div class="fitem">
-							<label>座机:</label>
+							<label>电话:</label>
 					</td>
-					<td><input name="telePhone" class="easyui-numberbox"
-						>
+					<td><input name="telePhone" class="easyui-numberbox">
 						</div></td>
 				</tr>
 				
@@ -159,8 +158,7 @@
 					<td><div class="fitem">
 							<label>MSN:</label>
 					</td>
-					<td><input name="msn" class="easyui-validatebox"
-						>
+					<td><input name="msn" class="easyui-validatebox">
 						</div></td>
 				</tr>
 				
@@ -173,12 +171,11 @@
 					<td><div class="fitem">
 							<label>传真:</label>
 					</td>
-					<td><input name="fax" class="easyui-numberbox"
-						>
+					<td><input name="chuanzhen" class="easyui-numberbox">
 						</div></td>
 				</tr>
 				<tr>
-					<td colspan="4s" align="center"><a
+					<td colspan="4" align="center"><a
 						href="javascript:mainBanMoshiSave();" class="easyui-linkbutton"
 						iconCls="icon-ok">保存</a> <a href="javascript:closeaddMianBan();"
 						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
@@ -199,29 +196,33 @@
 					<td><div class="fitem">
 							<label>客户公司名称:</label>
 					</td>
-					<td><input name="name" class="easyui-validatebox"
+					<td colspan="3"><input name="name" class="easyui-validatebox"
 						required="true" size="70">
 						</div></td>
 				</tr>
 				<tr>
 					<td><div class="fitem">
-							<label>所在省份:</label>
+							<label>所属大区:</label>
 					</td>
-					<td><input id="updateshengfen" name="province" class="easyui-combobox" 
-						required="true">
-						</div></td>
+					<td><input id="daqu" name="daqu" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=6',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false"></div></td>			
 					<td><div class="fitem">
 							<label>所在城市:</label>
 					</td>
-					<td><input id="updatechengshi" name="city" class="easyui-combobox" 
-						required="true">
-						</div></td>
+					<td><input id="city" name="city" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=8',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false"></div></td>			
 				</tr>
 				<tr>
 					<td><div class="fitem">
 							<label>联系人:</label>
 					</td>
-					<td><input name="contact" class="easyui-validatebox" required="true">
+					<td><input name="lxr" class="easyui-validatebox" required="true">
 						</div></td>
 					<td><div class="fitem">
 							<label>职位:</label>
@@ -231,9 +232,17 @@
 				</tr>
 				<tr>
 					<td><div class="fitem">
+							<label>身份证号:</label>
+					</td>
+					<td colspan="3"><input name="sfzn" class="easyui-validatebox"
+						size="70">
+						</div></td>
+				</tr>
+				<tr>
+					<td><div class="fitem">
 							<label>通讯地址:</label>
 					</td>
-					<td><input name="address" class="easyui-validatebox"
+					<td colspan="3"><input name="address" class="easyui-validatebox"
 						size="70">
 						</div></td>
 				</tr>
@@ -241,13 +250,12 @@
 					<td><div class="fitem">
 							<label>手机:</label>
 					</td>
-					<td><input name="moblePhone" class="easyui-validatebox">
+					<td><input name="moblephone" class="easyui-validatebox">
 						</div></td>
 					<td><div class="fitem">
-							<label>座机:</label>
+							<label>电话:</label>
 					</td>
-					<td><input name="telePhone" class="easyui-numberbox"
-						>
+					<td><input name="telePhone" class="easyui-numberbox">
 						</div></td>
 				</tr>
 				
@@ -260,8 +268,7 @@
 					<td><div class="fitem">
 							<label>MSN:</label>
 					</td>
-					<td><input name="msn" class="easyui-validatebox"
-						>
+					<td><input name="msn" class="easyui-validatebox">
 						</div></td>
 				</tr>
 				
@@ -274,12 +281,11 @@
 					<td><div class="fitem">
 							<label>传真:</label>
 					</td>
-					<td><input name="fax" class="easyui-numberbox"
-						>
+					<td><input name="chuanzhen" class="easyui-numberbox">
 						</div></td>
 				</tr>
 				<tr>
-					<td colspan="4s" align="center"><a
+					<td colspan="4" align="center"><a
 						href="javascript:mainBanMoshiUpdate();" class="easyui-linkbutton"
 						iconCls="icon-ok">保存</a> <a href="javascript:closeupdateMianBan();"
 						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
@@ -311,64 +317,46 @@
 				top : e.pageY
 			});
 		}
+		
+		/**
+          * 查询按钮
+          */
+		function kehuSelectLike(){
+		console.info($('#dg').datagrid('options'));
+		var opts = $('#dg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
+			var param = {
+				name: $("#name").val(),
+				lxr : $("#lxr").val(),
+				city: $("#city").val(),
+				xiaoshou: $("#xiaoshou").val(),
+				zhtime: $("#zhtime").val(),
+				page:  opts.pageNumber ,
+				rows:  opts.pageSize
+			};
+		
+				$.ajax({
+					url : 'fenghuang/customInfoList.do' ,
+					data :  param,
+					type : 'POST' ,
+					dataType : 'json' ,
+					success : function(data){
+						$('#dg').datagrid('loadData',data);
+					}
+				});
+		}
+		
+	
 		//弹出增加客户信息面板
 		function addMianBanMoshi() {
 			$("#addCustom").dialog("open");
-			var url = "fenghuang/findCustomAndCityName.do";
-			$.getJSON(url,function(data1){
-		     	//查询所有省份名称
-				 $("#shengfen").combobox({  
-				 data: data1.provinceNames,
-			     valueField:"id",   
-			     textField:"pcdName" ,
-			     filter: function(q, row){
-						var opts = $(this).combobox('options');
-						return row[opts.textField].indexOf(q) != -1;
-					}
-			     });
-			     //查询所有城市名称
-				 $("#chengshi").combobox({  
-				 data: data1.cityNames,
-			     valueField:"id",   
-			     textField:"cityName" ,
-			     filter: function(q, row){
-						var opts = $(this).combobox('options');
-						return row[opts.textField].indexOf(q) != -1;
-					}
-			     }); 
-			     }); 
 				$("#addForm").form("clear");
 			}
 		
 		//弹出修改客户信息面板
 		function editMianBan() {
-			$("#updateCustom").dialog("open");
-				var url = "fenghuang/findCustomAndCityName.do";
-				$.getJSON(url,function(data1){
-		     	//查询所有省份名称
-				 $("#updateshengfen").combobox({  
-				 data: data1.provinceNames,
-			     valueField:"id",   
-			     textField:"pcdName" ,
-			     filter: function(q, row){
-						var opts = $(this).combobox('options');
-						return row[opts.textField].indexOf(q) != -1;
-					}
-			     }); 
-			     
-			     //查询所有城市名称
-				 $("#updatechengshi").combobox({  
-				 data: data1.cityNames,
-			     valueField:"id",   
-			     textField:"cityName",
-			     filter: function(q, row){
-						var opts = $(this).combobox('options');
-						return row[opts.textField].indexOf(q) != -1;
-					}
-			     }); 
-			     });
+			$("#updateCustom").dialog("open");			
 			//准备回显的数据
-				var row = $("#queryResult").datagrid('getSelected') ;
+				var row = $("#dg").datagrid('getSelected') ;
 				//alert(row.id);
 				if(row){
 				var param = {
@@ -411,10 +399,10 @@
 					if (result.success) {
 						$.messager.alert("保存成功", "保存成功！", "info");
 						$("#addCustom").dialog('close');
-						$("#queryResult").datagrid('reload');
+						$("#dg").datagrid('reload');
 					} else {
 						$.messager.alert("保存失败", "保存失败!", "error");
-						$("#queryResult").datagrid('reload');
+						$("#dg").datagrid('reload');
 					}
 				}
 			});
@@ -433,17 +421,17 @@
 					if (result.success) {
 						$.messager.alert("修改成功", "修改成功！", "info");
 						$("#updateCustom").dialog('close');
-						$("#queryResult").datagrid('reload');
+						$("#dg").datagrid('reload');
 					} else {
 						$.messager.alert("修改失败", "修改失败!", "error");
-						$("#queryResult").datagrid('reload');
+						$("#dg").datagrid('reload');
 					}
 				}
 			});
 		}
 		//点击删除按钮
 		function shanchu() {
-			var row = $("#queryResult").datagrid("getSelected");
+			var row = $("#dg").datagrid("getSelected");
 			if (row) {
 				var param = {
 					"deleteRow" : row.id
@@ -457,7 +445,7 @@
 					success : function(data) {
 						if (data.success) {
 							$.messager.alert("删除成功", "删除成功！", "info");
-							$("#queryResult").datagrid('reload');
+							$("#dg").datagrid('reload');
 						} else {
 							$.messager.alert("删除失败", "删除失败!", "error");
 						}
