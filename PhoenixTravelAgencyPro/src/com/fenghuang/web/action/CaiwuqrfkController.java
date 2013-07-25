@@ -18,6 +18,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fenghuang.dao.IcaiwufkqrDao;
+import com.fenghuang.entiey.Fukuanfangshi;
 import com.fenghuang.entiey.Fukuanqueren;
 import com.fenghuang.entiey.Tuanbiao;
 import com.fenghuang.service.IcaiwuskqrSerice;
@@ -31,12 +33,18 @@ public class CaiwuqrfkController {
 	@RequestMapping("fenghuang/caiwuqrfkselect.do")
 	@ResponseBody
 	public Map<String, Object> getCurrencyList(HttpServletRequest request,
-			HttpServletResponse response,HttpSession session,Integer page, Integer rows,String team,
+			HttpServletResponse response,HttpSession session,Integer page, Integer rows,String team,String caozuo,String caiwuid,
             String id) {
 		   Tuanbiao tuanbiao = new Tuanbiao();
 		    try {
 		    	if(team!=null&&!"".equals(team)){
 		    		tuanbiao.setTeam(Integer.parseInt(team));
+		    	}
+		    	if(caiwuid!=null&&!"".equals(caiwuid)){
+		    		tuanbiao.setCaiwuid(Integer.parseInt(caiwuid));
+		    	}
+		    	if(caozuo!=null&&!"".equals(caozuo)){
+		    		tuanbiao.setCaozuo(caozuo);
 		    	}
 			 if(id!=null && !"".equals(id)){
 		    	 tuanbiao.setId(Long.parseLong(id));
@@ -62,9 +70,8 @@ public class CaiwuqrfkController {
 			JsonConfig config = new JsonConfig();
 	     	config.registerJsonValueProcessor(Timestamp.class,new DateJsonValueProcessor("yyyy-MM-dd"));
 	     			//把MAP转换成JSON，返回到前台
-	     	System.out.println(returnValue);
+	     
 	     	JSONObject fromObject = JSONObject.fromObject(returnValue,config);
-	     	System.out.println(fromObject+"执行");
 			return fromObject;
 		} catch (Exception e) {
 
@@ -72,4 +79,25 @@ public class CaiwuqrfkController {
 		}
 	        return null;
 	}
+	
+	@RequestMapping("fenghuang/updateqrfk.do")
+	@ResponseBody
+	public Map<String,Object> xiugai(HttpServletRequest request,
+			HttpServletResponse response,String caiwuid,String id){
+		Map<String, Object> result = new HashMap<String, Object>();
+		boolean isSuccess = false;
+		Tuanbiao tuanbiao = new Tuanbiao();
+		
+		tuanbiao.setCaiwuid(Integer.parseInt(caiwuid));
+		tuanbiao.setId(Integer.parseInt(id));
+		try {
+			isSuccess = icaiwuskqrSerice.updateskqr(tuanbiao);
+			isSuccess=true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}	
+		result.put("success", isSuccess);
+		return result ; 
+	}
+	
 }

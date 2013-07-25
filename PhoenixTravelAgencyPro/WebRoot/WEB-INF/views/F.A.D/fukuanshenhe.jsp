@@ -80,7 +80,7 @@
 	    	
 	    	</table>
 	<table id="dg" class="easyui-datagrid"
-		data-options="url:'',border:false,singleSelect:false,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
+		data-options="url:'',border:false,singleSelect:true,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
 		pagination="true" toolbar="#tb">
 		<thead>
 			<tr>

@@ -39,8 +39,7 @@ public class CustomerCenterDaoImpl extends BaseDao implements
 	}
 
 	@Override
-	public Pagination<CustomerInfo> getCustomInfoListPaginations(int currentPage,int numPerPage,
-			String name, String type, String lxr,String moblePhone,String telePhone,String qq,String msn, String daqu, String city, String hzjb, String xiaoshou,String zhtime,String jituan) {
+	public Pagination<CustomerInfo> getCustomInfoListPaginations(int currentPage,int numPerPage,String name, String type, String lxr,String moblePhone,String telePhone,String qq,String msn, String daqu, String city, String hzjb, String xiaoshou,String zhtime,String jituan) {
 		StringBuffer sql = new StringBuffer("SELECT * FROM customerinfo c WHERE 1=1 ") ;
 		if(name != null && !"".equals(name)){
 			sql.append(" AND c.name LIKE '%");
@@ -182,6 +181,93 @@ public class CustomerCenterDaoImpl extends BaseDao implements
 		String sql="update customerinfo set xiaoshou=? where id=?";
 		int count=this.update(sql,Customer.getXiaoshou(),Customer.getId());
 		return count>0;
+	}
+
+	@Override
+	public String findCityNameById(Long city) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Map<String, Object>> findAllCityName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public long findProvinceByCityId(long city) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<Map<String, Object>> findAllProvionceName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Pagination<TeamProgressStateDictionary> getCustomVIPListPaginations(
+			String wordprefix, Integer page, Integer rows) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean addCustomVIP(TeamProgressStateDictionary team) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean deleteCustomVIP(String deleteRow) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void updateCustomVIPs(List<TeamProgressStateDictionary> teamProList) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean updateCustomVIP(TeamProgressStateDictionary team) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public List<Map<String, Object>> searchCustomVIP(String tpsdNo,
+			String tpsdName, String tpsdHelp, String tpsdSort, String wordprefix) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Pagination<CustomerAreaWeihu> findAllCustomerAreaWeihu(Integer page,
+			Integer rows) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean addCustomerArea(Integer id, String name) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean deleteCustomerArea(Integer id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean updateCustomerArea(Integer updateRow, String name) {
+		// TODO Auto-generated method stub
+		return false;
 	}	
 	
 }
