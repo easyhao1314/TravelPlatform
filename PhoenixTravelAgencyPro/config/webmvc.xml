@@ -154,6 +154,7 @@
 	<!-- 赵杨_______行程库管理 -->
 	<mvc:view-controller path="Xingcheng_xianlu.do" view-name="XingCheng/Xingcheng_xianlu"/>
 	<mvc:view-controller path="Xingcheng_ri.do" view-name="XingCheng/Xingcheng_ri"/>
+	<mvc:view-controller path="Xingcheng_mx.do" view-name="XingCheng/Xingcheng_Mingxi"/>
 	
 	 <!-- 单团中心-->
 	  <mvc:view-controller path="DantuanAdd.do" view-name="Dantuan/DantuanAddd"/>
