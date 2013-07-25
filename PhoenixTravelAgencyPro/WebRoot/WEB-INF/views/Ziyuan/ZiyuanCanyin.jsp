@@ -65,8 +65,7 @@
 		</form>
 	</div>
 	
-		<div class="easyui-panel" title="酒店列表"
-		style="height:480px;width: auto;">
+		<div class="easyui-panel" title="酒店列表" style="height:480px;width: auto;">
 		<table id="dg" class="easyui-datagrid"
 			data-options="url:'fenghuang/canyinSelect.do',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 			pagination="true" toolbar="#currencyDatagridtoolbar">

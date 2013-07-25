@@ -26,29 +26,22 @@
 </head>
 
 <body>
-	<div class="easyui-panel" title="客户信息查询"
+	<div class="easyui-panel" title="销售负责的客户信息查询"
 		style="height:140px;padding:10px;width:auto;"
 		data-options="closable:false,tools:'#searchpanel'" align="center">
         <form id="ff" method="post"> 
             <table>  
             <tr>
-               <td>客户名称:</td>  
-               <td><input class="easyui-validatebox" type="text" id="name" name="name" /></td>             
-               <td>联系人:</td>  
-               <td><input class="easyui-validatebox" type="text" id="lxr" name="lxr" /></td>
-               </tr>
-               <tr> 
-                <td>城市:</td>  
-               <td><input class="easyui-validatebox" type="text" id="city" name="city" /></td>  
+             
                <td>销售/维护人:</td>  
-               <td><input class="easyui-validatebox" type="text" id="xiaoshou" name="xiaoshou" /></td>       
-               <td>创建时间:</td>  
-               <td><input class="easyui-validatebox" type="text" id="cjtime" name="cjtime" />
+               <td><input class="easyui-validatebox" type="text" id="xiaoshou" name="xiaoshou" /></td>
+               <td>
                <a href="javascript:kehuSelectLike();" 
 								class="easyui-linkbutton" iconCls="icon-ok">查询</a>
 						<a href="javascript:void(0)" class="easyui-linkbutton"
 							iconCls="icon-undo" onclick="$('#ff').form('clear')">重置</a>
-               </td>                                             
+               </td>
+               </tr>                
              </table>
           </form>
             
@@ -56,7 +49,7 @@
    
     
     <!-- 查询结果展示 -->
-		<div class="easyui-panel" title="客户列表" style="height:480px;width: auto;">
+		<div class="easyui-panel" title="销售客户列表" style="height:480px;width: auto;">
 	   <table id="dg" class="easyui-datagrid"
 			data-options="url:'fenghuang/customInfoList.do',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 			pagination="true" toolbar="#currencyDatagridtoolbar">
@@ -71,7 +64,7 @@
 					<th data-options="field:'lxrs',align:'right'" width="60" >联系人数</th>
 					<th data-options="field:'zhtime',align:'right'" width="80" >最后联系日期</th>
 					<th data-options="field:'cjtime',align:'right'" width="80" >创建时间</th>
-					<th data-options="field:'htsj5',align:'right'" width="80" >交易统计</th>
+
 				</tr>
 		</thead>
 	</table>
@@ -175,7 +168,7 @@
 						</div></td>
 				</tr>
 				<tr>
-					<td colspan="4" align="center"><a
+					<td colspan="4s" align="center"><a
 						href="javascript:mainBanMoshiSave();" class="easyui-linkbutton"
 						iconCls="icon-ok">保存</a> <a href="javascript:closeaddMianBan();"
 						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
@@ -285,7 +278,7 @@
 						</div></td>
 				</tr>
 				<tr>
-					<td colspan="4" align="center"><a
+					<td colspan="4s" align="center"><a
 						href="javascript:mainBanMoshiUpdate();" class="easyui-linkbutton"
 						iconCls="icon-ok">保存</a> <a href="javascript:closeupdateMianBan();"
 						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
@@ -325,11 +318,9 @@
 		console.info($('#dg').datagrid('options'));
 		var opts = $('#dg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
 			var param = {
-				name: $("#name").val(),
-				lxr : $("#lxr").val(),
-				city: $("#city").val(),
+				
 				xiaoshou: $("#xiaoshou").val(),
-				zhtime: $("#zhtime").val(),
+				
 				page:  opts.pageNumber ,
 				rows:  opts.pageSize
 			};
@@ -337,7 +328,7 @@
 				$.ajax({
 					url : 'fenghuang/customInfoList.do' ,
 					data :  param,
-					type : 'POST' ,
+					type : 'POST',
 					dataType : 'json' ,
 					success : function(data){
 						$('#dg').datagrid('loadData',data);

@@ -18,13 +18,12 @@ public class KuhuZiyuan {
 	   /** 帮助提示
 	    * 
 	    * @pdOid eedb7602-52ce-484b-9549-4c7a3f5f830c */
-	   public int tishi;
+	   public String tishi;
 	   /** 资源类型
 	    * 1.VIP 2.区域 3.资信  4.价值  5.合作  6.大区经理
 	    * @pdOid 37e63d12-c1cb-47c8-bdcd-235ba8a35543 */
 	   public int type;
-
-	   public long getId() {
+	public long getId() {
 		return id;
 	}
 	public void setId(long id) {
@@ -42,10 +41,10 @@ public class KuhuZiyuan {
 	public void setShuoming(java.lang.String shuoming) {
 		this.shuoming = shuoming;
 	}
-	public int getTishi() {
+	public String getTishi() {
 		return tishi;
 	}
-	public void setTishi(int tishi) {
+	public void setTishi(String tishi) {
 		this.tishi = tishi;
 	}
 	public int getType() {
@@ -54,5 +53,7 @@ public class KuhuZiyuan {
 	public void setType(int type) {
 		this.type = type;
 	}
+
+	  
 	
 }

@@ -153,8 +153,8 @@
 <td></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>淡季价：</label></td><td><input name="danjijia" class="easyui-numberspinner" min="0" max="999999" style="width:133px;" ></div></td>
-<td><div class="fitem"><label>旺季价：</label></td><td><input name="wangjijia" class="easyui-numberspinner" min="0" max="999999" style="width:133px;" ></div></td>
+<td><div class="fitem"><label>淡季价：</label></td><td><input name="danjijia" class="easyui-numberspinner" min="0" max="999999" style="width:133px;"  /></div></td>
+<td><div class="fitem"><label>旺季价：</label></td><td><input name="wangjijia" class="easyui-numberspinner" min="0" max="999999" style="width:133px;" /></div></td>
 <td></td>
 </tr>
 <tr>

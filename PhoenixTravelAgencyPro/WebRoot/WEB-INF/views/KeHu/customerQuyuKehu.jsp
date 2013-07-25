@@ -26,29 +26,22 @@
 </head>
 
 <body>
-	<div class="easyui-panel" title="客户信息查询"
+	<div class="easyui-panel" title="区域客户信息查询"
 		style="height:140px;padding:10px;width:auto;"
 		data-options="closable:false,tools:'#searchpanel'" align="center">
         <form id="ff" method="post"> 
             <table>  
             <tr>
-               <td>客户名称:</td>  
-               <td><input class="easyui-validatebox" type="text" id="name" name="name" /></td>             
-               <td>联系人:</td>  
-               <td><input class="easyui-validatebox" type="text" id="lxr" name="lxr" /></td>
-               </tr>
-               <tr> 
-                <td>城市:</td>  
-               <td><input class="easyui-validatebox" type="text" id="city" name="city" /></td>  
-               <td>销售/维护人:</td>  
-               <td><input class="easyui-validatebox" type="text" id="xiaoshou" name="xiaoshou" /></td>       
-               <td>创建时间:</td>  
-               <td><input class="easyui-validatebox" type="text" id="cjtime" name="cjtime" />
+              
+               <td>所属大区:</td>  
+               <td><input class="easyui-validatebox" type="text" id="daqu" name="daqu" /></td>
+               <td>
                <a href="javascript:kehuSelectLike();" 
 								class="easyui-linkbutton" iconCls="icon-ok">查询</a>
 						<a href="javascript:void(0)" class="easyui-linkbutton"
 							iconCls="icon-undo" onclick="$('#ff').form('clear')">重置</a>
-               </td>                                             
+               </td>
+               </tr>                
              </table>
           </form>
             
@@ -56,7 +49,7 @@
    
     
     <!-- 查询结果展示 -->
-		<div class="easyui-panel" title="客户列表" style="height:480px;width: auto;">
+		<div class="easyui-panel" title="区域客户列表" style="height:480px;width: auto;">
 	   <table id="dg" class="easyui-datagrid"
 			data-options="url:'fenghuang/customInfoList.do',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 			pagination="true" toolbar="#currencyDatagridtoolbar">
@@ -85,7 +78,7 @@
 	
 	
 	<!-- 新增客户信息 -->
-	<div id="addCustom" class="easyui-dialog" title="新增客户信息"
+	<div id="addCustom" class="easyui-dialog" title="新增区域客户信息"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:800px;height:300px;padding:10px;">
 		<form id="addForm" method="post">
@@ -175,7 +168,7 @@
 						</div></td>
 				</tr>
 				<tr>
-					<td colspan="4" align="center"><a
+					<td colspan="4s" align="center"><a
 						href="javascript:mainBanMoshiSave();" class="easyui-linkbutton"
 						iconCls="icon-ok">保存</a> <a href="javascript:closeaddMianBan();"
 						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
@@ -187,7 +180,7 @@
 	
 	
 	<!-- 修改客户信息 -->
-	<div id="updateCustom" class="easyui-dialog" title="修改客户信息"
+	<div id="updateCustom" class="easyui-dialog" title="修改区域客户信息"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:800px;height:300px;padding:10px;">
 		<form id="updateForm" method="post">
@@ -285,7 +278,7 @@
 						</div></td>
 				</tr>
 				<tr>
-					<td colspan="4" align="center"><a
+					<td colspan="4s" align="center"><a
 						href="javascript:mainBanMoshiUpdate();" class="easyui-linkbutton"
 						iconCls="icon-ok">保存</a> <a href="javascript:closeupdateMianBan();"
 						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
@@ -325,11 +318,9 @@
 		console.info($('#dg').datagrid('options'));
 		var opts = $('#dg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
 			var param = {
-				name: $("#name").val(),
-				lxr : $("#lxr").val(),
-				city: $("#city").val(),
-				xiaoshou: $("#xiaoshou").val(),
-				zhtime: $("#zhtime").val(),
+				
+				daqu: $("#daqu").val(),
+			
 				page:  opts.pageNumber ,
 				rows:  opts.pageSize
 			};
@@ -346,7 +337,7 @@
 		}
 		
 	
-		//弹出增加客户信息面板
+	//弹出增加客户信息面板
 		function addMianBanMoshi() {
 			$("#addCustom").dialog("open");
 				$("#addForm").form("clear");

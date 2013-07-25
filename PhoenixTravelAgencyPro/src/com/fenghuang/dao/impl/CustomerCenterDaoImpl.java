@@ -39,23 +39,82 @@ public class CustomerCenterDaoImpl extends BaseDao implements
 	}
 
 	@Override
-	public Pagination<CustomerInfo> getCustomInfoListPaginations(int currentPage,
-			int numPerPage, String kw) {
+	public Pagination<CustomerInfo> getCustomInfoListPaginations(int currentPage,int numPerPage,
+			String name, String type, String lxr,String moblePhone,String telePhone,String qq,String msn, String daqu, String city, String hzjb, String xiaoshou,String zhtime,String jituan) {
 		StringBuffer sql = new StringBuffer("SELECT * FROM customerinfo c WHERE 1=1 ") ;
-		if(kw != null && !"".equals(kw)){
+		if(name != null && !"".equals(name)){
 			sql.append(" AND c.name LIKE '%");
-			sql.append(kw);
+			sql.append(name);
 			sql.append("%'");
 		}
+		if(type != null && !"".equals(type)){
+			sql.append(" AND c.type = '");
+			sql.append(type);
+			sql.append("'");
+		}
+		if(lxr != null && !"".equals(lxr)){
+			sql.append(" AND c.lxr LIKE '%");
+			sql.append(lxr);
+			sql.append("%'");
+		}
+		
+		if(moblePhone != null && !"".equals(moblePhone)){
+			sql.append(" AND c.moblePhone LIKE '%");
+			sql.append(moblePhone);
+			sql.append("%'");
+		}
+		if(telePhone != null && !"".equals(telePhone)){
+			sql.append(" AND c.telePhone LIKE '%");
+			sql.append(lxr);
+			sql.append("%'");
+		}
+		if(qq != null && !"".equals(qq)){
+			sql.append(" AND c.qq LIKE '%");
+			sql.append(qq);
+			sql.append("%'");
+		}
+		if(msn != null && !"".equals(msn)){
+			sql.append(" AND c.msn LIKE '%");
+			sql.append(msn);
+			sql.append("%'");
+		}
+		if(daqu != null && !"".equals(daqu)){
+			sql.append(" AND c.daqu LIKE '%");
+			sql.append(daqu);
+			sql.append("%'");
+		}	
+		if(city != null && !"".equals(city)){
+			sql.append(" AND c.city = '");
+			sql.append(city);
+			sql.append("'");
+		}
+		if(hzjb != null && !"".equals(hzjb)){
+			sql.append(" AND c.hzjb = '");
+			sql.append(hzjb);
+			sql.append("'");
+		}
+		if(xiaoshou != null && !"".equals(xiaoshou)){
+			sql.append(" AND c.xiaoshou LIKE '%");
+			sql.append(xiaoshou);
+			sql.append("%'");
+		}
+		if(zhtime != null && !"".equals(zhtime)){
+			sql.append(" AND c.zhtime = '");
+			sql.append(zhtime);
+			sql.append("'");
+		}
+		if(jituan != null && !"".equals(jituan)){
+			sql.append(" AND c.jituan like '%");
+			sql.append(jituan);
+			sql.append("%'");
+		}
+		
+		
 		
 		return this.getPagination(currentPage, numPerPage, sql.toString());
 	}
 
-	@Override
-	public String findCityNameById(Long city) {
-		String sql = "SELECT cd.cityName FROM citysettingdictionary cd WHERE cd.id = ?";
-		return this.queryForObject(sql, new Object[]{city.intValue()},String.class);
-	}
+	
 
 	@Override
 	public boolean deleteCustomById(String id) {
@@ -65,23 +124,25 @@ public class CustomerCenterDaoImpl extends BaseDao implements
 	}
 
 	@Override
-	public boolean addCustom(final CustomerInfo customInfo) {
-		String sql = "INSERT INTO customerinfo(name,province,city,contact,post,address,moblePhone,telePhone,qq,msn,fax,email) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+	public boolean addCustom(final CustomerInfo customerInfo) {
+		String sql = "INSERT INTO customerinfo(name,city,daqu,lxr,post,address,moblePhone,telePhone,qq,msn,email,chuanzhen,bz,type) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		int count = this.update(sql, new PreparedStatementSetter() {
 			@Override
 			public void setValues(PreparedStatement ps) throws SQLException {
-				ps.setString(1, customInfo.getName());
-				ps.setLong(2, customInfo.getProvince());
-				ps.setLong(3, customInfo.getCity());
-				ps.setString(4, customInfo.getContact());
-				ps.setString(5, customInfo.getPost());
-				ps.setString(6, customInfo.getAddress());
-				ps.setString(7, customInfo.getMoblePhone());
-				ps.setString(8, customInfo.getTelePhone());
-				ps.setString(9, customInfo.getQq());
-				ps.setString(10, customInfo.getMsn());
-				ps.setString(11, customInfo.getFax());
-				ps.setString(12, customInfo.getEmail());
+				ps.setString(1, customerInfo.getName());
+				ps.setLong(2, customerInfo.getCity());
+				ps.setLong(3, customerInfo.getDaqu());
+				ps.setString(4, customerInfo.getLxr());
+				ps.setString(5, customerInfo.getPost());
+				ps.setString(6, customerInfo.getAddress());
+				ps.setString(7, customerInfo.getMoblePhone());
+				ps.setString(8, customerInfo.getTelePhone());
+				ps.setString(9, customerInfo.getQq());
+				ps.setString(10, customerInfo.getMsn());
+				ps.setString(11, customerInfo.getEmail());
+				ps.setString(12, customerInfo.getChuanzhen());
+				ps.setString(13, customerInfo.getBz());
+				ps.setInt(14, customerInfo.getType());
 			}
 		});
 		return count>0;
@@ -93,25 +154,7 @@ public class CustomerCenterDaoImpl extends BaseDao implements
 		return this.queryForList(sql);
 	}
 
-	@Override
-	public List<Map<String, Object>> findAllCityName() {
-		String sql = "SELECT c.id , c.cityName FROM citysettingdictionary c";
-		return this.queryForList(sql);
-	}
-
-
-	@Override
-	public long findProvinceByCityId(long city) {
-		String sql = "SELECT c.psdId FROM citysettingdictionary c WHERE c.id=?" ;
-		return this.queryForLong(sql, city);
-	}
-
-	@Override
-	public List<Map<String, Object>> findAllProvionceName() {
-		String sql = "SELECT p.id , p.pcdName FROM provincesettingdictionary p" ;
-		return this.queryForList(sql);
-	}
-
+	
 	@Override
 	public List<Map<String, Object>> findCustomerInfoById(String updateId) {
 		String sql = "SELECT * FROM customerinfo c WHERE c.id = ?";
@@ -120,103 +163,25 @@ public class CustomerCenterDaoImpl extends BaseDao implements
 
 	@Override
 	public boolean updateCustom(CustomerInfo customerInfo) {
-		String sql = "UPDATE customerinfo SET name=?,province=?,city=?,contact=?,post=?,address=?,moblePhone=?,telePhone=?,qq=?,msn=?,fax=?,email=? WHERE id=?";
-		int count = this.update(sql, customerInfo.getName(),customerInfo.getProvince(),customerInfo.getCity(),customerInfo.getContact(),customerInfo.getPost(),customerInfo.getAddress(),customerInfo.getMoblePhone(),customerInfo.getTelePhone(),customerInfo.getQq(),customerInfo.getMsn(),customerInfo.getFax(),customerInfo.getEmail(),customerInfo.getId());
+		String sql = "UPDATE customerinfo SET name=?,city=?,daqu=?,lxr=?,post=?,address=?,moblePhone=?,telePhone=?,qq=?,msn=?,email=?,chuanzhen=?,bz=?,type=? WHERE id=?";
+		int count = this.update(sql, customerInfo.getName(),customerInfo.getCity(),customerInfo.getDaqu(),customerInfo.getLxr(),customerInfo.getPost(),customerInfo.getAddress(),customerInfo.getMoblePhone(),customerInfo.getTelePhone(),customerInfo.getQq(),customerInfo.getMsn(),customerInfo.getEmail(),customerInfo.getChuanzhen(),customerInfo.getBz(),customerInfo.getType(),customerInfo.getId());
 		return count > 0;
 	}
 
 	@Override
 	public boolean updateContact(CustomerInfo contactInfo) {
-		String sql = "UPDATE customerinfo SET name=?,province=?,city=?,contact=?,post=?,moblePhone=?,telePhone=?,qq=?,msn=?,fax=?,email=? WHERE id=?";
-		int count = this.update(sql, contactInfo.getName(),contactInfo.getProvince(),contactInfo.getCity(),contactInfo.getContact(),contactInfo.getAddress(),contactInfo.getMoblePhone(),contactInfo.getTelePhone(),contactInfo.getQq(),contactInfo.getMsn(),contactInfo.getFax(),contactInfo.getEmail(),contactInfo.getId());
-		return count > 0 ;
+		/**String sql = "UPDATE customerinfo SET name=?,province=?,city=?,contact=?,post=?,moblePhone=?,telePhone=?,qq=?,msn=?,fax=?,email=? WHERE id=?";
+		int count = this.update(sql, customerInfo.getName(),customerInfo.getCity(),customerInfo.getDaqu(),customerInfo.getLxr(),customerInfo.getPost(),customerInfo.getAddress(),customerInfo.getMoblePhone(),customerInfo.getTelePhone(),customerInfo.getQq(),customerInfo.getMsn(),customerInfo.getEmail(),customerInfo.getChuanzhen(),customerInfo.getBz(),customerInfo.getType(),customerInfo.getId());
+		return count > 0 ;*/
+		return false;
 	}
 
 	@Override
-	public Pagination<TeamProgressStateDictionary> getCustomVIPListPaginations(
-			String wordprefix , Integer page, Integer rows) {
-		String sql = "SELECT * FROM teamprogressstatedictionary t WHERE t.tpsdNo LIKE '%"+wordprefix+"%'";
-		return this.getPagination(page, rows, sql);
-	}
-
-	@Override
-	public boolean addCustomVIP(TeamProgressStateDictionary team) {
-		String sql = "INSERT INTO teamprogressstatedictionary(tpsdNo,tpsdName,tpsdHelp,tpsdSort) VALUES(?,?,?,?)";
-		int count = this.update(sql, team.getTpsdNo(),team.getTpsdName(),team.getTpsdHelp(),team.getTpsdSort());
-		return count > 0;
-	}
-
-	@Override
-	public boolean deleteCustomVIP(String deleteRow) {
-		String sql = "DELETE FROM teamprogressstatedictionary  WHERE tpsdNo=?";
-		int count = this.update(sql, deleteRow) ;
-		return count > 0;
-	}
-
-	
-	@Override
-	public void updateCustomVIPs(List<TeamProgressStateDictionary> teamProList) {
-		for(TeamProgressStateDictionary team : teamProList){
-			updateCustomVIP(team);
-		}
-	}
-
-	@Override
-	public boolean updateCustomVIP(TeamProgressStateDictionary team) {
-		String sql = "UPDATE teamprogressstatedictionary SET tpsdName=?,tpsdHelp=?,tpsdSort=?,tpsdDesc=? WHERE tpsdNo=?" ;
-		int count = this.update(sql, team.getTpsdName(),team.getTpsdHelp(),team.getTpsdSort(),team.getTpsdDesc(),team.getTpsdNo());
-		return count > 0;
-	}
-
-	@Override
-	public List<Map<String, Object>> searchCustomVIP(String tpsdNo,
-			String tpsdName, String tpsdHelp, String tpsdSort,String wordprefix) {
-		StringBuffer sql = new StringBuffer("SELECT * FROM teamprogressstatedictionary t WHERE ");
-		sql.append(" t.tpsdNo LIKE '%").append(wordprefix).append("%'");
-		
-		if(!"".equals(tpsdNo) && tpsdNo != null){
-			sql.append(" AND t.tpsdNo='"+tpsdNo).append("'");
-		}
-		if(!"".equals(tpsdName) && tpsdName != null){
-			sql.append(" AND t.tpsdName LIKE '%" + tpsdName + "%'");
-		}
-		if(!"".equals(tpsdHelp) && tpsdHelp != null){
-			sql.append(" AND t.tpsdHelp LIKE '%"+tpsdHelp).append("%'");
-		}
-		if(!"".equals(tpsdSort) && tpsdSort != null){
-			sql.append(" AND t.tpsdSort='"+tpsdSort).append("'");
-		}
-		//System.out.println(sql.toString());
-		return this.queryForList(sql.toString());
-	}
-
-	@Override
-	public Pagination<CustomerAreaWeihu> findAllCustomerAreaWeihu(Integer page ,Integer rows) {
-		String sql = "SELECT * FROM customerAreaMaintenance" ;
-		return this.getPagination(page, rows, sql);
-	}
-
-	@Override
-	public boolean addCustomerArea(Integer id, String name) {
-		String sql = "INSERT INTO customerareamaintenance (name) VALUES(?)";
-		int count = this.update(sql, name); 
-		return count > 0 ;
-	}
-
-	@Override
-	public boolean deleteCustomerArea(Integer id) {
-		String sql = "DELETE FROM customerareamaintenance WHERE id = ?";
-		int count = this.update(sql, id);
-		return count > 0;
-	}
-
-	@Override
-	public boolean updateCustomerArea(Integer updateRow,String name) {
-		String sql = "UPDATE customerareamaintenance SET name=? WHERE id = ?";
-		int count = this.update(sql, name,updateRow);
-		return count > 0;
-	}
-
-	
+	public boolean updateXiaoshou(CustomerInfo Customer) {
+		// TOD修改销售
+		String sql="update customerinfo set xiaoshou=? where id=?";
+		int count=this.update(sql,Customer.getXiaoshou(),Customer.getId());
+		return count>0;
+	}	
 	
 }

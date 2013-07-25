@@ -25,7 +25,7 @@
 </head>
 
 <body>
-<div class="easyui-panel" title="客户资信字典查询"
+<div class="easyui-panel" title="销售大区查询"
 		style="height:80px;padding:10px;width:auto;"
 		data-options="closable:false,tools:'#searchpanel'" align="center">
 		<form id="zixinForm">
@@ -39,17 +39,12 @@
 					</div>
 				</td>
 				<td><div class="fitem">
-						<label>说明:</label>
+						<label>大区经理:</label>
 				</td>
 				<td><input id="shuoming" name="shuoming" class="easyui-validatebox">
 					</div>
 				</td>
-				<td><div class="fitem">
-						<label>帮助提示:</label>
-				</td>
-				<td><input id="tishi" name="tishi" class="easyui-validatebox">
-					</div>
-				</td>
+				
 				<td>
 					<a href="javascript:zixinSelectLike();" 
 								class="easyui-linkbutton" iconCls="icon-ok">查询</a>
@@ -62,7 +57,7 @@
 	</div>
     <!-- 查询结果展示 -->
     
-	  <div class="easyui-panel" title="客户资信字典列表"
+	  <div class="easyui-panel" title="销售大区列表"
 		style="height:480px;width: auto;">
 		<table id="dg" class="easyui-datagrid"
 			data-options="url:'fenghuang/KehuSelect.do?type=1',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
@@ -87,7 +82,7 @@
 	</div>
 	
 	<!-- 新增客户资信字典 -->
-	<div id="addZiXin" class="easyui-dialog" title="新增客户资信字典"
+	<div id="addZiXin" class="easyui-dialog" title="新增销售大区"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:600px;height:200px;padding:10px;">
 		<form id="addForm" method="post">
@@ -106,15 +101,11 @@
 				</tr>
 				<tr>
 					<td><div class="fitem">
-							<label>说明:</label>
+							<label>大区经理:</label>
 					</td>
 					<td><input name="shuoming" class="easyui-validatebox" required="true">
 						</div></td>
-					<td><div class="fitem">
-							<label>帮助提示:</label>
-					</td>
-					<td><input name="tishi" class="easyui-numberbox easyui-validatebox" required="true" missingMessage="请输入数字." invalidMessage="请输入数字.">
-						</div></td>
+					
 				</tr>
 				<tr>
 					<td colspan="4s" align="center">
@@ -129,7 +120,7 @@
 	
 	
 		<!-- 修改客户资信字典 -->
-	<div id="updateZiXin" class="easyui-dialog" title="修改客户资信字典"
+	<div id="updateZiXin" class="easyui-dialog" title="修改销售大区字典"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:600px;height:200px;padding:10px;">
 		<form id="updateForm" method="post">
@@ -146,18 +137,14 @@
 				</tr>
 				<tr>
 					<td><div class="fitem">
-							<label>帮助提示:</label>
+							<label>销售大区:</label>
 					</td>
 					<td><input name="shuoming" class="easyui-validatebox" required="true">
 						</div></td>
-					<td><div class="fitem">
-							<label>显示顺序:</label>
-					</td>
-					<td><input name="tishi" class="easyui-numberbox easyui-validatebox" required="true" missingMessage="请输入数字." invalidMessage="请输入数字.">
-						</div></td>
+					
 				</tr>
 				<tr>
-					<td colspan="4s" align="center"><a
+					<td colspan="4" align="center"><a
 						href="javascript:ZiXinUpdate();" class="easyui-linkbutton"
 						iconCls="icon-ok">保存</a> <a href="javascript:closeaddMianBan();"
 						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
@@ -177,7 +164,6 @@
 			var param = {
 				name: $("#name").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
 				shuoming: $("#shuoming").val() ,
-				tishi : $("#tishi").val(),
 				page:  opts.pageNumber ,
 				rows:  opts.pageSize
 			};
@@ -230,7 +216,7 @@
 				var param = {
 					"id" :  row.id
 				};
-				if(confirm("确认要删除名称为 “ "+row.name+" ”的客户资信字典吗？")){
+				if(confirm("确认要删除名称为 “ "+row.name+" ”的销售大区经理吗？")){
 				$.ajax({
 					url : "fenghuang/kehuDelete.do",
 					data : param,
@@ -247,7 +233,7 @@
 						$.messager.alert("删除失败", "服务器请求失败!", "error");
 					}
 				});
-				}
+				}s
 			}
 	}
 	//按id查询
