@@ -39,7 +39,11 @@
                </tr>
                <tr> 
                 <td>城市:</td>  
-               <td><input class="easyui-validatebox" type="text" id="city" name="city" /></td>  
+               <td><input id="city" name="city" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=8',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false"></div></td>			  
                <td>销售/维护人:</td>  
                <td><input class="easyui-validatebox" type="text" id="xiaoshou" name="xiaoshou" /></td>       
                <td>创建时间:</td>  
@@ -57,19 +61,19 @@
     
     <!-- 查询结果展示 -->
 		<div class="easyui-panel" title="客户列表" style="height:480px;width: auto;">
-	   <table id="dg" class="easyui-datagrid"
+	   <table id="dgCustom" class="easyui-datagrid"
 			data-options="url:'fenghuang/customInfoList.do',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 			pagination="true" toolbar="#currencyDatagridtoolbar">
 			<thead>
 				<tr>
 				   <th data-options="field:'ck',checkbox:true"></th>
-					<th data-options="field:'city',align:'right'" width="80">城市</th>
-					<th data-options="field:'name',align:'right'" width="100">客户名称</th>
+					<th data-options="field:'dicName',align:'right'" width="80">城市</th>
+					<th data-options="field:'name',formatter:onOperateKehuXinxi"  width="100">客户名称</th>
 					<th data-options="field:'telePhone',align:'right'" width="100">电话</th>
 					<th data-options="field:'chuanzhen',align:'right'" width="100" >传真</th>
 					<th data-options="field:'xiaoshou',align:'right'" width="100" >销售顾问</th>
 					<th data-options="field:'lxrs',align:'right'" width="60" >联系人数</th>
-					<th data-options="field:'zhtime',align:'right'" width="80" >最后联系日期</th>
+					<!--<th data-options="field:'zhtime',align:'right'" width="80" >最后联系日期</th>-->
 					<th data-options="field:'cjtime',align:'right'" width="80" >创建时间</th>
 					<th data-options="field:'htsj5',align:'right'" width="80" >交易统计</th>
 				</tr>
@@ -88,7 +92,7 @@
 	<div id="addCustom" class="easyui-dialog" title="新增客户信息"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:800px;height:300px;padding:10px;">
-		<form id="addForm" method="post">
+		<form id="addCustomForm" method="post">
 			<table align="center">
 				<tr>
 					<td><div class="fitem">
@@ -140,7 +144,7 @@
 					<td><div class="fitem">
 							<label>手机:</label>
 					</td>
-					<td><input name="moblephone" class="easyui-validatebox">
+					<td><input name="moblePhone" class="easyui-validatebox">
 						</div></td>
 					<td><div class="fitem">
 							<label>电话:</label>
@@ -190,7 +194,7 @@
 	<div id="updateCustom" class="easyui-dialog" title="修改客户信息"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:800px;height:300px;padding:10px;">
-		<form id="updateForm" method="post">
+		<form id="updateCustomForm" method="post">
 			<table id="updateTable" align="center" >
 				<tr>
 					<td><div class="fitem">
@@ -250,7 +254,7 @@
 					<td><div class="fitem">
 							<label>手机:</label>
 					</td>
-					<td><input name="moblephone" class="easyui-validatebox">
+					<td><input name="moblePhone" class="easyui-validatebox">
 						</div></td>
 					<td><div class="fitem">
 							<label>电话:</label>
@@ -322,12 +326,12 @@
           * 查询按钮
           */
 		function kehuSelectLike(){
-		console.info($('#dg').datagrid('options'));
-		var opts = $('#dg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
+		console.info($('#dgCustom').datagrid('options'));
+		var opts = $('#dgCustom').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
 			var param = {
 				name: $("#name").val(),
 				lxr : $("#lxr").val(),
-				city: $("#city").val(),
+				city: $("#city").combobox('getValue'),
 				xiaoshou: $("#xiaoshou").val(),
 				zhtime: $("#zhtime").val(),
 				page:  opts.pageNumber ,
@@ -340,7 +344,7 @@
 					type : 'POST' ,
 					dataType : 'json' ,
 					success : function(data){
-						$('#dg').datagrid('loadData',data);
+						$('#dgCustom').datagrid('loadData',data);
 					}
 				});
 		}
@@ -349,14 +353,14 @@
 		//弹出增加客户信息面板
 		function addMianBanMoshi() {
 			$("#addCustom").dialog("open");
-				$("#addForm").form("clear");
+				$("#addCustomForm").form("clear");
 			}
 		
 		//弹出修改客户信息面板
 		function editMianBan() {
 			$("#updateCustom").dialog("open");			
 			//准备回显的数据
-				var row = $("#dg").datagrid('getSelected') ;
+				var row = $("#dgCustom").datagrid('getSelected') ;
 				//alert(row.id);
 				if(row){
 				var param = {
@@ -367,7 +371,7 @@
 					data : param,
 					dataType : "json",
 					success : function(data) {
-					   $('#updateForm').form('load',data.rows[0]);
+					   $('#updateCustomForm').form('load',data.rows[0]);
 					},
 					error : function() {
 						$.messager.alert("删除失败", "服务器请求失败!", "error");
@@ -376,7 +380,35 @@
 			}
 			$("#updateCustom").form("clear");
 			}
+		function selectKehuId(){
+		$("#addCustom").dialog("open");
+				$("#addCustomForm").form("clear");
+			}
 		
+		//弹出修改客户信息面板
+		function editMianBan() {
+			$("#updateCustom").dialog("open");			
+			//准备回显的数据
+				var row = $("#dgCustom").datagrid('getSelected') ;
+				//alert(row.id);
+				if(row){
+				var param = {
+					"updateId" : row.id 
+				};
+				$.ajax({
+					url : "fenghuang/preparedCustomInfo.do",
+					data : param,
+					dataType : "json",
+					success : function(data) {
+					   $('#updateCustomForm').form('load',data.rows[0]);
+					},
+					error : function() {
+						$.messager.alert("删除失败", "服务器请求失败!", "error");
+					}
+				});
+			}
+			$("#updateCustom").form("clear");
+			}
 		
 		
 		//关闭保存面板
@@ -389,7 +421,7 @@
 		} 
 		//点击面板保存
 		function mainBanMoshiSave() {
-			$("#addForm").form('submit', {
+			$("#addCustomForm").form('submit', {
 				url : 'fenghuang/addCustom.do',
 				onSubmit : function() {
 					return $(this).form('validate');
@@ -399,10 +431,10 @@
 					if (result.success) {
 						$.messager.alert("保存成功", "保存成功！", "info");
 						$("#addCustom").dialog('close');
-						$("#dg").datagrid('reload');
+						$("#dgCustom").datagrid('reload');
 					} else {
 						$.messager.alert("保存失败", "保存失败!", "error");
-						$("#dg").datagrid('reload');
+						$("#dgCustom").datagrid('reload');
 					}
 				}
 			});
@@ -411,7 +443,7 @@
 		
 		//点击面板修改
 		function mainBanMoshiUpdate() {
-			$("#updateForm").form('submit', {
+			$("#updateCustomForm").form('submit', {
 				url : 'fenghuang/updateCustom.do',
 				onSubmit : function() {
 					return $(this).form('validate');
@@ -421,17 +453,17 @@
 					if (result.success) {
 						$.messager.alert("修改成功", "修改成功！", "info");
 						$("#updateCustom").dialog('close');
-						$("#dg").datagrid('reload');
+						$("#dgCustom").datagrid('reload');
 					} else {
 						$.messager.alert("修改失败", "修改失败!", "error");
-						$("#dg").datagrid('reload');
+						$("#dgCustom").datagrid('reload');
 					}
 				}
 			});
 		}
 		//点击删除按钮
 		function shanchu() {
-			var row = $("#dg").datagrid("getSelected");
+			var row = $("#dgCustom").datagrid("getSelected");
 			if (row) {
 				var param = {
 					"deleteRow" : row.id
@@ -445,7 +477,7 @@
 					success : function(data) {
 						if (data.success) {
 							$.messager.alert("删除成功", "删除成功！", "info");
-							$("#dg").datagrid('reload');
+							$("#dgCustom").datagrid('reload');
 						} else {
 							$.messager.alert("删除失败", "删除失败!", "error");
 						}
@@ -459,6 +491,34 @@
 				
 			}
 		}
+		 function	onOperateKehuXinxi(val,row){
+        return '<a href="javascript:openKehuXinxi('+row.id+')">'+row.id+'</a>';
+        }
+   
+  function openKehuXinxi(id){  	
+     
+			//准备回显的数据
+			var row = $("#dgCustom").datagrid("getSelected");
+			if(row){
+				var param = {
+					"updateId" : row.id
+				};
+			
+				$.ajax({
+					url : "fenghuang/preparedCustomInfo.do",
+					data : param,
+					dataType : "json",
+					success : function(data) {
+		
+					   $('#updateCustomForm').form('load',data.rows[0]);
+				       $("#updateCustom").dialog("open");
+					},
+					error : function() {
+						$.messager.alert("查询失败", "服务器请求失败!", "error");
+					}
+				});
+		      }
+		   }		
    </script>
     	
     
