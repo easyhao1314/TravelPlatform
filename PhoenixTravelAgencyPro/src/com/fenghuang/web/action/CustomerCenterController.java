@@ -55,8 +55,8 @@ public class CustomerCenterController {
 	 */
 	@RequestMapping("fenghuang/customInfoList.do")
 	public void customInfoList(HttpServletRequest request,HttpServletResponse response,Integer page,Integer rows,
-			String name, String type, String lxr,String moblePhone,String telePhone,String qq,String msn, String daqu, String city, String hzjb, String xiaoshou,String zhtime,String jituan){
-		Pagination<CustomerInfo> teams = iCustomerCenterService.getCustomInfoListPaginations(page==null?1:page, rows==null?10:rows,name,type,lxr,moblePhone,telePhone,qq,msn,daqu,city,hzjb,xiaoshou,zhtime,jituan);
+			String tuanNo,String name, String type, String lxr,String moblePhone,String telePhone,String qq,String msn, String daqu, String city, String hzjb, String xiaoshou,String zhtime,String jituan){
+		Pagination<CustomerInfo> teams = iCustomerCenterService.getCustomInfoListPaginations(page==null?1:page, rows==null?10:rows,tuanNo,name,type,lxr,moblePhone,telePhone,qq,msn,daqu,city,hzjb,xiaoshou,zhtime,jituan);
 		List<Map<String, Object>> teamsRows = teams.getResultList();
 		Map<String, Object> returnValue = new HashMap<String, Object>();
 		

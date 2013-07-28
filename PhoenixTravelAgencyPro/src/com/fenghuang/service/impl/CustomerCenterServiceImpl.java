@@ -29,8 +29,8 @@ public class CustomerCenterServiceImpl implements ICustomerCenterService {
 	private ICustomerCenterDao iCustomerCenterDao;
 
 	public Pagination<CustomerInfo> getCustomInfoListPaginations(int currentPage,
-			int numPerPage, String name, String type, String lxr,String moblePhone,String telePhone,String qq,String msn, String daqu, String city, String hzjb, String xiaoshou,String zhtime,String jituan) {
-		return iCustomerCenterDao.getCustomInfoListPaginations(currentPage, numPerPage, name,type,lxr,moblePhone,telePhone,qq,msn,daqu,city,hzjb,xiaoshou,zhtime,jituan);
+			int numPerPage,String tuanNo, String name, String type, String lxr,String moblePhone,String telePhone,String qq,String msn, String daqu, String city, String hzjb, String xiaoshou,String zhtime,String jituan) {
+		return iCustomerCenterDao.getCustomInfoListPaginations(currentPage, numPerPage,tuanNo, name,type,lxr,moblePhone,telePhone,qq,msn,daqu,city,hzjb,xiaoshou,zhtime,jituan);
 	}
 
 	

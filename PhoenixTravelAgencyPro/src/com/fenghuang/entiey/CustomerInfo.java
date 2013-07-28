@@ -14,7 +14,23 @@ public class CustomerInfo {
     * 
     * @pdOid 2b8fe5c7-cc34-485c-9448-9d80bbf14d79 */
    public long id;
-   /** 客户公司名称
+   /** 团号
+    * 
+    * @pdOid 58e4655a-604f-44cc-9823-7cee616e7840 */
+   public String tuanNo;
+   public String getTuanNo() {
+	return tuanNo;
+}
+public void setTuanNo(String tuanNo) {
+	this.tuanNo = tuanNo;
+}
+public java.util.Date getZhtime() {
+	return zhtime;
+}
+public void setZhtime(java.util.Date zhtime) {
+	this.zhtime = zhtime;
+}
+/** 客户公司名称
     * 
     * @pdOid 58e4655a-604f-44cc-9823-7cee616e7840 */
    public String name;

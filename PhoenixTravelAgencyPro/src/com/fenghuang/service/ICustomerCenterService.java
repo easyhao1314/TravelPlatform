@@ -25,7 +25,7 @@ public interface ICustomerCenterService{
 	 * @param kw 关键字
 	 * @return
 	 */
-	public Pagination<CustomerInfo>  getCustomInfoListPaginations(int currentPage,int numPerPage,String name, String type, String lxr,String moblePhone,String telePhone,String qq,String msn, String daqu, String city, String hzjb, String xiaoshou,String zhtime,String jituan);
+	public Pagination<CustomerInfo>  getCustomInfoListPaginations(int currentPage,int numPerPage,String tuanNo,String name, String type, String lxr,String moblePhone,String telePhone,String qq,String msn, String daqu, String city, String hzjb, String xiaoshou,String zhtime,String jituan);
 	/**
 	 * 新增客户信息
 	 * @param customInfo
