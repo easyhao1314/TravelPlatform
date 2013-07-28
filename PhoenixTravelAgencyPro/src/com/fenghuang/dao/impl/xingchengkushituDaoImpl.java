@@ -23,12 +23,12 @@ public class xingchengkushituDaoImpl extends BaseDao implements Ixingchengkushit
 	public Pagination<xingchengkushitu> xingchengkushituinfo(xingchengkushitu xc)
 			throws Exception {
 		// TODO Auto-generated method stub
-		String sql = "SELECT * FROM richengandxianlu as rx INNER JOIN xianlu as x ON x.xianid=rx.xianluid INNER JOIN richeng as r ON r.riid=rx.richengid WHERE 1=1 ";
+		String sql = "SELECT xianid,xianluname,tianshu,guojia,weihuren,riid,richenganpai,huodong,jiudian,chengshiid,jiaotong,zao,zhong,wan FROM xrandxr WHERE xianid=xianluid AND riid=richengid ";
 		StringBuffer sb = new StringBuffer(sql);
 		if(xc.getXianluid()!=0){
-			sb.append(" and rx.xianluid='"+xc.getXianluid()+"'");
+			sb.append(" AND xianid='"+xc.getXianluid()+"'");
 		}
-		return this.getPagination(1, 1, sb.toString());
+		return this.getPagination(1, 1000, sb.toString());
 	}
 
 }
