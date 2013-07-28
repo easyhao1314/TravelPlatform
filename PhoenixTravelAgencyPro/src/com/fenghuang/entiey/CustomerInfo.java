@@ -71,7 +71,7 @@ public void setZhtime(java.util.Date zhtime) {
    /** 集团
     * 
     * @pdOid 922bca2b-dc8e-4a60-a0f9-cb37ce7ae236 */
-   public long jituan;
+   public String jituan;
    /** 所在城市
     * 
     * @pdOid 922bca2b-dc8e-4a60-a0f9-cb37ce7ae236 */
@@ -178,10 +178,11 @@ public String getSfzn() {
 public void setSfzn(String sfzn) {
 	this.sfzn = sfzn;
 }
-public long getJituan() {
+
+public String getJituan() {
 	return jituan;
 }
-public void setJituan(long jituan) {
+public void setJituan(String jituan) {
 	this.jituan = jituan;
 }
 public long getCity() {

@@ -35,19 +35,19 @@
 			<td><div class="fitem">
 						<label>名称:</label>
 				</td>
-				<td><input id="name" name="name" class="easyui-validatebox">
+				<td><input id="dicName" name="dicName" class="easyui-validatebox">
 					</div>
 				</td>
 				<td><div class="fitem">
 						<label>说明:</label>
 				</td>
-				<td><input id="shuoming" name="shuoming" class="easyui-validatebox">
+				<td><input id="dicDesc" name="dicDesc" class="easyui-validatebox">
 					</div>
 				</td>
 				<td><div class="fitem">
 						<label>帮助提示:</label>
 				</td>
-				<td><input id="tishi" name="tishi" class="easyui-validatebox">
+				<td><input id="dicHelp" name="dicHelp" class="easyui-validatebox">
 					</div>
 				</td>
 				<td>
@@ -65,16 +65,16 @@
 	  <div class="easyui-panel" title="客户VIP字典列表"
 		style="height:480px;width: auto;">
 		<table id="dg" class="easyui-datagrid"
-			data-options="url:'fenghuang/KehuSelect.do?type=2',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
+			data-options="url:'fenghuang/getDictionaryDescs.do?dicType=4',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 			  pagination="true" toolbar="#currencyDatagridtoolbar">
 		
 			<thead>
 				<tr>
 				    <th data-options="field:'ck',checkbox:true"></th>
-					<th data-options="field:'id',align:'right'" width="100">编号</th>
-					<th data-options="field:'name',align:'right'" width="100" editor="text">名称</th>
-					<th data-options="field:'shuoming',align:'right'" width="100" editor="text">说明</th>
-					<th data-options="field:'tishi',align:'right'" width="100" editor="text">帮助提示</th>
+					<th data-options="field:'dicNo',align:'right'" width="100">编号</th>
+					<th data-options="field:'dicName',align:'right'" width="100" editor="text">名称</th>
+					<th data-options="field:'dicDesc',align:'right'" width="100" editor="text">说明</th>
+					<th data-options="field:'dicHelp',align:'right'" width="100" editor="text">帮助提示</th>
 				</tr>
 		</thead>
 	</table>
@@ -100,7 +100,7 @@
 						<td><div class="fitem">
 							<label>名称:</label>
 					</td>
-					<td><input  name="name" class="easyui-validatebox" required="true">
+					<td><input  name="dicName" class="easyui-validatebox" required="true">
 						</input>
 						</div></td>
 				</tr>
@@ -108,12 +108,12 @@
 					<td><div class="fitem">
 							<label>说明:</label>
 					</td>
-					<td><input name="shuoming" class="easyui-validatebox" required="true">
+					<td><input name="dicDesc" class="easyui-validatebox" required="true">
 						</div></td>
 					<td><div class="fitem">
 							<label>帮助提示:</label>
 					</td>
-					<td><input name="tishi" class="easyui-numberbox easyui-validatebox" required="true" missingMessage="请输入数字." invalidMessage="请输入数字.">
+					<td><input name="dicHelp" class="easyui-numberbox easyui-validatebox" required="true" missingMessage="请输入数字." invalidMessage="请输入数字.">
 						</div></td>
 				</tr>
 				<tr>
@@ -148,12 +148,12 @@
 					<td><div class="fitem">
 							<label>帮助提示:</label>
 					</td>
-					<td><input name="shuoming" class="easyui-validatebox" required="true">
+					<td><input name="dicHelp" class="easyui-validatebox" required="true">
 						</div></td>
 					<td><div class="fitem">
-							<label>显示顺序:</label>
+							<label>说明:</label>
 					</td>
-					<td><input name="tishi" class="easyui-numberbox easyui-validatebox" required="true" missingMessage="请输入数字." invalidMessage="请输入数字.">
+					<td><input name="dicDesc" class="easyui-numberbox" missingMessage="请输入数字." invalidMessage="请输入数字.">
 						</div></td>
 				</tr>
 				<tr>
@@ -202,7 +202,7 @@
          
 		function SaveZiXin() {
 			$('#addForm').form('submit', {
-				url : 'fenghuang/KehuAdd.do?type=2',
+				url : 'fenghuang/saveDic.do?type=4',
 				onSubmit : function() {
 					return $(this).form('validate');
 				},
@@ -228,11 +228,11 @@
 	  var row = $("#dg").datagrid("getSelected");
 			if (row) {
 				var param = {
-					"id" :  row.id
+					"deleteRows" :  row.id
 				};
 				if(confirm("确认要删除名称为 “ "+row.name+" ”的客户资信字典吗？")){
 				$.ajax({
-					url : "fenghuang/kehuDelete.do",
+					url : "fenghuang/deleteDics.do",
 					data : param,
 					dataType : "json",
 					success : function(data) {
@@ -247,7 +247,7 @@
 						$.messager.alert("删除失败", "服务器请求失败!", "error");
 					}
 				});
-				}s
+				}
 			}
 	}
 	//按id查询
@@ -260,11 +260,11 @@
 		
 			if(row){
 				var param = {
-					"id" : row.id
+					"dicNo" : row.id
 				};
 				
 				$.ajax({
-					url : "fenghuang/kehuSelectId.do",
+					url : "fenghuang/getDictionaryDescs.do",
 					data : param,
 					dataType : "json",
 					success : function(data) {
@@ -281,7 +281,7 @@
 		 //修改
 		function ZiXinUpdate() {
 			$("#updateForm").form('submit', {
-				url : 'fenghuang/kehuUpdate.do',
+				url : 'fenghuang/updateDic.do',
 				onSubmit : function() {
 					return $(this).form('validate');
 				},

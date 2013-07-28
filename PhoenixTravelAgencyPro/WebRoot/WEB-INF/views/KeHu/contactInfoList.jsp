@@ -84,6 +84,7 @@
 				<tr>
 				   <th data-options="field:'ck',checkbox:true"></th>
 					<th data-options="field:'dicName',align:'right'" width="80">城市</th>
+					<th data-options="field:'tuanNo',formatter:onOperateKehu" width="100">团号</th>
 					<th data-options="field:'name',formatter:onOperateKehu" width="100">对应客户</th>
 					<th data-options="field:'lxr',formatter:onOperateKehulxr" width="100">联系人</th>
 					<th data-options="field:'moblePhone',align:'right'" width="100">手机</th>					
@@ -109,15 +110,14 @@
 	<!-- 新增客户信息 -->
 	<div id="addContact" class="easyui-dialog" title="新增联系人信息"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
-		style="width:800px;height:300px;padding:10px;">
+		style="width:800px;height:450px;padding:10px;">
 		<form id="addContactForm" method="post">
 			<table align="center">
 				<tr>
 					<td><div class="fitem">
 							<label>客户公司名称:</label>
 					</td>
-					<td><input name="name" class="easyui-validatebox"
-						required="true" size="70">
+					<td colspan="3"><input name="name" class="easyui-validatebox" size="60">
 						</div></td>
 				</tr>
 				<tr>
@@ -142,27 +142,55 @@
 					<td><div class="fitem">
 							<label>联系人:</label>
 					</td>
-					<td><input name="lxr" class="easyui-validatebox" required="true">
+					<td><input name="lxr" class="easyui-validatebox">
 						</div></td>
 					<td><div class="fitem">
 							<label>职位:</label>
 					</td>
-					<td><input name="post" >
+					<td><input name="post" class="easyui-validatebox">
+						</div></td>
+				</tr>
+				<tr>
+					<td><div class="fitem">
+							<label>年龄:</label>
+					</td>
+					<td><input name="age"  class="easyui-numberbox">
+						</div></td>
+					<td><div class="fitem">
+							<label>性别:</label>
+					</td>
+					<td><input name="sex" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=10',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false"></div></td>			
+				</tr>
+				<tr>
+					<td><div class="fitem">
+							<label>身份证号:</label>
+					</td>
+					<td colspan="3"><input name="sfzn" class="easyui-validatebox" size="60">
 						</div></td>
 				</tr>
 				<tr>
 					<td><div class="fitem">
 							<label>通讯地址:</label>
 					</td>
-					<td><input name="address" class="easyui-validatebox"
-						required="true" size="70">
+					<td colspan="3"><input name="address" class="easyui-validatebox" size="60">
+						</div></td>
+				</tr>
+				<tr>
+					<td><div class="fitem">
+							<label>集团:</label>
+					</td>
+					<td colspan="3"><input name="jituan" class="easyui-validatebox" size="60">
 						</div></td>
 				</tr>
 				<tr>
 					<td><div class="fitem">
 							<label>手机:</label>
 					</td>
-					<td><input name="moblePhone" class="easyui-validatebox">
+					<td><input name="moblePhone"  class="easyui-numberbox">
 						</div></td>
 					<td><div class="fitem">
 							<label>电话:</label>
@@ -175,7 +203,7 @@
 					<td><div class="fitem">
 							<label>QQ:</label>
 					</td>
-					<td><input name="qq" class="easyui-validatebox">
+					<td><input name="qq"  class="easyui-numberbox">
 						</div></td>
 					<td><div class="fitem">
 							<label>MSN:</label>
@@ -194,6 +222,47 @@
 							<label>传真:</label>
 					</td>
 					<td><input name="chuanzhen" class="easyui-numberbox">
+						</div></td>
+				</tr>
+				<tr>
+					<td><div class="fitem">
+							<label>销售/维护人:</label>
+					</td>
+					<td><input name="xiaoshou" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=11',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false"></div></td>			
+					<td><div class="fitem">
+							<label>合作级别:</label>
+					</td>
+					<td><input name="hzjb" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=4',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false"></div></td>			
+				</tr>
+				<tr>
+					<td><div class="fitem">
+							<label>联系人数:</label>
+					</td>
+					<td><input name="lxrs"   class="easyui-numberbox">
+						</div></td>
+					<td><div class="fitem">
+							<label>团队类型:</label>
+					</td>
+					<td><input name="type" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=25',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false"></div></td>			
+						</div></td>
+				</tr>
+					<tr>
+					<td><div class="fitem">
+							<label>备注:</label>
+					</td>
+					<td colspan="3"><input name="bz" class="easyui-validatebox" size="60">
 						</div></td>
 				</tr>
 				<tr>
@@ -211,15 +280,14 @@
 	<!-- 修改客户信息 -->
 	<div id="updateContact" class="easyui-dialog" title="修改联系人信息"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
-		style="width:800px;height:300px;padding:10px;">
+		style="width:800px;height:450px;padding:10px;">
 		<form id="updateContactForm" method="post">
-			<table id="updateTable" align="center" >
+			<table align="center">
 				<tr>
 					<td><div class="fitem">
 							<label>客户公司名称:</label>
 					</td>
-					<td colspan="3"><input name="name" class="easyui-validatebox"
-						required="true" size="70">
+					<td colspan="3"><input name="name" class="easyui-validatebox" size="60">
 						</div></td>
 				</tr>
 				<tr>
@@ -244,40 +312,60 @@
 					<td><div class="fitem">
 							<label>联系人:</label>
 					</td>
-					<td><input name="lxr" class="easyui-validatebox" required="true">
+					<td><input name="lxr" class="easyui-validatebox">
 						</div></td>
 					<td><div class="fitem">
 							<label>职位:</label>
 					</td>
-					<td><input name="post" >
+					<td><input name="post" class="easyui-validatebox">
 						</div></td>
+				</tr>
+				<tr>
+					<td><div class="fitem">
+							<label>年龄:</label>
+					</td>
+					<td><input name="age"   class="easyui-numberbox" >
+						</div></td>
+					<td><div class="fitem">
+							<label>性别:</label>
+					</td>
+					<td><input name="sex" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=10',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false"></div></td>			
 				</tr>
 				<tr>
 					<td><div class="fitem">
 							<label>身份证号:</label>
 					</td>
-					<td colspan="3"><input name="sfzn" class="easyui-validatebox"
-						size="70">
+					<td colspan="3"><input name="sfzn" class="easyui-validatebox" size="60">
 						</div></td>
 				</tr>
 				<tr>
 					<td><div class="fitem">
 							<label>通讯地址:</label>
 					</td>
-					<td colspan="3"><input name="address" class="easyui-validatebox"
-						size="70">
+					<td colspan="3"><input name="address" class="easyui-validatebox" size="60">
+						</div></td>
+				</tr>
+				<tr>
+					<td><div class="fitem">
+							<label>集团:</label>
+					</td>
+					<td colspan="3"><input name="jituan" class="easyui-validatebox" size="60">
 						</div></td>
 				</tr>
 				<tr>
 					<td><div class="fitem">
 							<label>手机:</label>
 					</td>
-					<td><input name="moblePhone" class="easyui-validatebox">
+					<td><input name="moblePhone"   class="easyui-numberbox">
 						</div></td>
 					<td><div class="fitem">
 							<label>电话:</label>
 					</td>
-					<td><input name="telePhone" class="easyui-numberbox">
+					<td><input name="telePhone"   class="easyui-numberbox">
 						</div></td>
 				</tr>
 				
@@ -285,7 +373,7 @@
 					<td><div class="fitem">
 							<label>QQ:</label>
 					</td>
-					<td><input name="qq" class="easyui-validatebox">
+					<td><input name="qq"   class="easyui-numberbox">
 						</div></td>
 					<td><div class="fitem">
 							<label>MSN:</label>
@@ -307,9 +395,50 @@
 						</div></td>
 				</tr>
 				<tr>
+					<td><div class="fitem">
+							<label>销售/维护人:</label>
+					</td>
+					<td><input name="xiaoshou" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=11',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false"></div></td>			
+					<td><div class="fitem">
+							<label>合作级别:</label>
+					</td>
+					<td><input name="hzjb" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=4',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false"></div></td>			
+				</tr>
+				<tr>
+					<td><div class="fitem">
+							<label>联系人数:</label>
+					</td>
+					<td><input name="lxrs"   class="easyui-numberbox">
+						</div></td>
+					<td><div class="fitem">
+							<label>团队类型:</label>
+					</td>
+					<td><input name="type" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=25',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false"></div></td>			
+						</div></td>
+				</tr>
+					<tr>
+					<td><div class="fitem">
+							<label>备注:</label>
+					</td>
+					<td colspan="3"><input name="bz" class="easyui-validatebox" size="60">
+						</div></td>
+				</tr>
+				<tr>
 					<td colspan="4s" align="center"><a
-						href="javascript:mainBanMoshiUpdate();" class="easyui-linkbutton"
-						iconCls="icon-ok">保存</a> <a href="javascript:closeupdateMianBan();"
+						href="javascript:mainBanMoshiSave();" class="easyui-linkbutton"
+						iconCls="icon-ok">保存</a> <a href="javascript:closeaddMianBan();"
 						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
 				</tr>
 			</table>
@@ -320,15 +449,14 @@
 	
 	<div id="updateKehu" class="easyui-dialog" title="客户信息"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
-		style="width:800px;height:300px;padding:10px;">
+		style="width:800px;height:450px;padding:10px;">
 		<form id="updateKehuForm" method="post">
-			<table id="updateTable" align="center" >
+			<table align="center">
 				<tr>
 					<td><div class="fitem">
 							<label>客户公司名称:</label>
 					</td>
-					<td colspan="3"><input name="name" class="easyui-validatebox"
-						required="true" size="70">
+					<td colspan="3"><input name="name" class="easyui-validatebox" size="60">
 						</div></td>
 				</tr>
 				<tr>
@@ -353,40 +481,60 @@
 					<td><div class="fitem">
 							<label>联系人:</label>
 					</td>
-					<td><input name="lxr" class="easyui-validatebox" required="true">
+					<td><input name="lxr" class="easyui-validatebox">
 						</div></td>
 					<td><div class="fitem">
 							<label>职位:</label>
 					</td>
-					<td><input name="post" >
+					<td><input name="post" class="easyui-validatebox">
 						</div></td>
+				</tr>
+				<tr>
+					<td><div class="fitem">
+							<label>年龄:</label>
+					</td>
+					<td><input name="age"   class="easyui-numberbox">
+						</div></td>
+					<td><div class="fitem">
+							<label>性别:</label>
+					</td>
+					<td><input name="sex" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=10',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false"></div></td>			
 				</tr>
 				<tr>
 					<td><div class="fitem">
 							<label>身份证号:</label>
 					</td>
-					<td colspan="3"><input name="sfzn" class="easyui-validatebox"
-						size="70">
+					<td colspan="3"><input name="sfzn" class="easyui-validatebox" size="60">
 						</div></td>
 				</tr>
 				<tr>
 					<td><div class="fitem">
 							<label>通讯地址:</label>
 					</td>
-					<td colspan="3"><input name="address" class="easyui-validatebox"
-						size="70">
+					<td colspan="3"><input name="address" class="easyui-validatebox" size="60">
+						</div></td>
+				</tr>
+				<tr>
+					<td><div class="fitem">
+							<label>集团:</label>
+					</td>
+					<td colspan="3"><input name="jituan" class="easyui-validatebox" size="60">
 						</div></td>
 				</tr>
 				<tr>
 					<td><div class="fitem">
 							<label>手机:</label>
 					</td>
-					<td><input name="moblePhone" class="easyui-validatebox">
+					<td><input name="moblePhone"   class="easyui-numberbox">
 						</div></td>
 					<td><div class="fitem">
 							<label>电话:</label>
 					</td>
-					<td><input name="telePhone" class="easyui-numberbox">
+					<td><input name="telePhone"   class="easyui-numberbox">
 						</div></td>
 				</tr>
 				
@@ -394,7 +542,7 @@
 					<td><div class="fitem">
 							<label>QQ:</label>
 					</td>
-					<td><input name="qq" class="easyui-validatebox">
+					<td><input name="qq"   class="easyui-numberbox">
 						</div></td>
 					<td><div class="fitem">
 							<label>MSN:</label>
@@ -416,26 +564,61 @@
 						</div></td>
 				</tr>
 				<tr>
-					<td colspan="4" align="center"><a
-						href="javascript:mainBanMoshiUpdate();" class="easyui-linkbutton"
-						iconCls="icon-ok">保存</a> <a href="javascript:closeupdateMianBan();"
-						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
+					<td><div class="fitem">
+							<label>销售/维护人:</label>
+					</td>
+					<td><input name="xiaoshou" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=11',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false"></div></td>			
+					<td><div class="fitem">
+							<label>合作级别:</label>
+					</td>
+					<td><input name="hzjb" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=4',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false"></div></td>			
 				</tr>
+				<tr>
+					<td><div class="fitem">
+							<label>联系人数:</label>
+					</td>
+					<td><input name="lxrs"   class="easyui-numberbox">
+						</div></td>
+					<td><div class="fitem">
+							<label>团队类型:</label>
+					</td>
+					<td><input name="type" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=25',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false"></div></td>			
+						</div></td>
+				</tr>
+					<tr>
+					<td><div class="fitem">
+							<label>备注:</label>
+					</td>
+					<td colspan="3"><input name="bz" class="easyui-validatebox" size="60">
+						</div></td>
+				</tr>
+				
 			</table>
 			<input type="hidden" name="id" />
 		</form>
 	</div>
 	<div id="updateKehulxr" class="easyui-dialog" title="联系人信息"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
-		style="width:800px;height:300px;padding:10px;">
+		style="width:800px;height:450px;padding:10px;">
 		<form id="updateKehulxrForm" method="post">
-			<table id="updateTable" align="center" >
+			<table align="center">
 				<tr>
 					<td><div class="fitem">
 							<label>客户公司名称:</label>
 					</td>
-					<td colspan="3"><input name="name" class="easyui-validatebox"
-						required="true" size="70">
+					<td colspan="3"><input name="name" class="easyui-validatebox" size="60">
 						</div></td>
 				</tr>
 				<tr>
@@ -460,40 +643,60 @@
 					<td><div class="fitem">
 							<label>联系人:</label>
 					</td>
-					<td><input name="lxr" class="easyui-validatebox" required="true">
+					<td><input name="lxr" class="easyui-validatebox">
 						</div></td>
 					<td><div class="fitem">
 							<label>职位:</label>
 					</td>
-					<td><input name="post" >
+					<td><input name="post" class="easyui-validatebox">
 						</div></td>
+				</tr>
+				<tr>
+					<td><div class="fitem">
+							<label>年龄:</label>
+					</td>
+					<td><input name="age"   class="easyui-numberbox" >
+						</div></td>
+					<td><div class="fitem">
+							<label>性别:</label>
+					</td>
+					<td><input name="sex" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=10',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false"></div></td>			
 				</tr>
 				<tr>
 					<td><div class="fitem">
 							<label>身份证号:</label>
 					</td>
-					<td colspan="3"><input name="sfzn" class="easyui-validatebox"
-						size="70">
+					<td colspan="3"><input name="sfzn" class="easyui-validatebox" size="60">
 						</div></td>
 				</tr>
 				<tr>
 					<td><div class="fitem">
 							<label>通讯地址:</label>
 					</td>
-					<td colspan="3"><input name="address" class="easyui-validatebox"
-						size="70">
+					<td colspan="3"><input name="address" class="easyui-validatebox" size="60">
+						</div></td>
+				</tr>
+				<tr>
+					<td><div class="fitem">
+							<label>集团:</label>
+					</td>
+					<td colspan="3"><input name="jituan" class="easyui-validatebox" size="60">
 						</div></td>
 				</tr>
 				<tr>
 					<td><div class="fitem">
 							<label>手机:</label>
 					</td>
-					<td><input name="moblePhone" class="easyui-validatebox">
+					<td><input name="moblePhone"   class="easyui-numberbox">
 						</div></td>
 					<td><div class="fitem">
 							<label>电话:</label>
 					</td>
-					<td><input name="telePhone" class="easyui-numberbox">
+					<td><input name="telePhone"   class="easyui-numberbox">
 						</div></td>
 				</tr>
 				
@@ -501,7 +704,7 @@
 					<td><div class="fitem">
 							<label>QQ:</label>
 					</td>
-					<td><input name="qq" class="easyui-validatebox">
+					<td><input name="qq"   class="easyui-numberbox">
 						</div></td>
 					<td><div class="fitem">
 							<label>MSN:</label>
@@ -523,11 +726,47 @@
 						</div></td>
 				</tr>
 				<tr>
-					<td colspan="4" align="center"><a
-						href="javascript:mainBanMoshiUpdate();" class="easyui-linkbutton"
-						iconCls="icon-ok">保存</a> <a href="javascript:closeupdateMianBan();"
-						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
+					<td><div class="fitem">
+							<label>销售/维护人:</label>
+					</td>
+					<td><input name="xiaoshou" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=11',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false"></div></td>			
+					<td><div class="fitem">
+							<label>合作级别:</label>
+					</td>
+					<td><input name="hzjb" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=4',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false"></div></td>			
 				</tr>
+				<tr>
+					<td><div class="fitem">
+							<label>联系人数:</label>
+					</td>
+					<td><input name="lxrs"   class="easyui-numberbox">
+						</div></td>
+					<td><div class="fitem">
+							<label>团队类型:</label>
+					</td>
+					<td><input name="type" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=25',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false"></div></td>			
+						</div></td>
+				</tr>
+					<tr>
+					<td><div class="fitem">
+							<label>备注:</label>
+					</td>
+					<td colspan="3"><input name="bz" class="easyui-validatebox" size="60">
+						</div></td>
+				</tr>
+				
 			</table>
 			<input type="hidden" name="id" />
 		</form>
