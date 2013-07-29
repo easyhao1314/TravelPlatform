@@ -103,7 +103,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<thead>
 			<tr>
 				<th data-options="field:'ck',checkbox:true"></th>
-				<th data-options="field:'id',editor:'text'" width="80">编号</th>
+				<th data-options="field:'id'" width="80">编号</th>
 				<th data-options="field:'name',editor:'text'" width="80">姓名</th>
 				<th data-options="field:'sex',editor:'text'">性别</th>
 				<th data-options="field:'sfzn',editor:'text'" width="80">身份证号</th>
@@ -131,10 +131,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 </div>
 <div title="操作进展" style="padding:10px">
-<ul class="easyui-tree" data-options="url:'../tabs/tree_data1.json',animate:true"></ul>
+<ul class="easyui-tree" data-options=""></ul>
 </div>
 <div title="财务情况" style="padding:10px">
-<ul class="easyui-tree" data-options="url:'../tabs/tree_data1.json',animate:true"></ul>
+<ul class="easyui-tree" data-options=""></ul>
 </div>
 </div>
 
@@ -142,49 +142,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 	
 	
-	<div id="searchDic" class="easyui-dialog" title="查询业务字段"
-		data-options="modal:true,closed:true,iconCls:'icon-save'"
-		style="width:500px;height:200px;padding:10px;">
-		<form id="searchForm" action="">
-			<table align="left">
-				<tr>
-					<td><div class="fitem">
-							<label>编号:</label>
-					</td>
-					<td><input id="searchDicNo" name="dicNo"
-						class="easyui-validatebox">
-						</div></td>
-					<td><div class="fitem">
-							<label>名称:</label>
-					</td>
-					<td><input id="searchDicName" name="dicName"
-						class="easyui-validatebox">
-						</div></td>
-				</tr>
-				<tr>
-					<td><div class="fitem">
-							<label>帮助提示:</label>
-					</td>
-					<td><input id="searchDicHelp" name="dicHelp"
-						class="easyui-validatebox">
-						</div></td>
-					<td><div class="fitem">
-							<label>显示顺序:</label>
-					</td>
-					<td><input id="searchDicSortNo" name="dicSortNo"
-						class="easyui-numberbox">
-						</div></td>
-				</tr>
-				<tr>
-					<td colspan="4s" align="center"><a
-						href="javascript:searchFormSubmit();" class="easyui-linkbutton"
-						iconCls="icon-ok">查询</a> <a href="javascript:closedSearch();"
-						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
-				</tr>
-			</table>
-			<input id="searchDicType" name="dicType" type="hidden">
-		</form>
-	</div>
+	
 	<script type="text/javascript">
 $(document).ready(function() {
 	load();
@@ -224,7 +182,8 @@ var url = "fenghuang/Sanpinliebiao.do?tuanNo="+'<%=request.getParameter("tuanNo"
 			$("#dg").datagrid("insertRow", {
 				index : 0,
 				row : {
-					dicType : '${param.dicType}'
+					tuanNo : '${param.tuanNo}',
+					type:33
 				}
 			});
 			editIndex = undefined;
@@ -240,15 +199,29 @@ var url = "fenghuang/Sanpinliebiao.do?tuanNo="+'<%=request.getParameter("tuanNo"
 				}
 			}
 		}
+		
+		//时间格式化转换
+		function ChangeDateFormat(cellval) {
+    try {
+        var date = new Date(parseInt(cellval.replace("/Date(", "").replace(")/", ""), 10));
+        var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+        var currentDate = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+        return date.getFullYear() + "-" + month + "-" + currentDate;
+    } catch (e) {
+        return "";
+    }
+}
 		function getChanges() {
 			$('#dg').datagrid('endEdit', editIndex);
 			var rows = $("#dg").datagrid("getChanges");
 			if (rows.length > 0) {
+			
+				
 				var param = {
 					"updateRows" : $.toJSON(rows)
 				};
 				$.ajax({
-					url : "fenghuang/updateDic.do",
+					url : "fenghuang/updateCustom.do",
 					data : param,
 					dataType : "json",
 					success : function(data) {
@@ -322,16 +295,7 @@ var url = "fenghuang/Sanpinliebiao.do?tuanNo="+'<%=request.getParameter("tuanNo"
 			$("#searchDic").dialog("open");
 			$("#searchForm").form("clear");
 		}
-		function searchFormSubmit() {
-			$("#searchDic").dialog("close");
-			$("#dg").datagrid("load", {
-				dicNo : $("#searchDicNo").val(),
-				dicName : $("#searchDicName").val(),
-				dicHelp : $("#searchDicHelp").val(),
-				dicSortNo : $("#searchDicSortNo").val()
-			});
 
-		}
 
 		function closedSearch() {
 			$('#searchDic').dialog('close');

@@ -41,7 +41,7 @@ public class CustomerCenterDaoImpl extends BaseDao implements
 
 	@Override
 	public Pagination<CustomerInfo> getCustomInfoListPaginations(int currentPage,int numPerPage,String tuanNo,String name, String type, String lxr,String moblePhone,String telePhone,String qq,String msn, String daqu, String city, String hzjb, String xiaoshou,String zhtime,String jituan) {
-		StringBuffer sql = new StringBuffer("select c.id,c.tuanNo,c.name, c.moblePhone,c.telePhone,c.chuanzhen,c.cjtime,c.lxrs,c.lxr,c.xiaoshou,c.type,d.dicName from customerinfo as c left JOIN dictionarydesc as d ON c.city=d.dicNo  where 1=1 ") ;
+		StringBuffer sql = new StringBuffer("select c.id,c.tuanNo,c.name, c.moblePhone,c.telePhone,c.chuanzhen,c.cjtime,c.lxrs,c.lxr,c.xiaoshou,c.type from customerinfo as c left JOIN dictionarydesc as d ON c.city=d.dicNo  where 1=1 ") ;
 		if(tuanNo != null && !"".equals(tuanNo)){
 			sql.append(" AND c.tuanNo LIKE '%");
 			sql.append(tuanNo);
@@ -141,7 +141,7 @@ public class CustomerCenterDaoImpl extends BaseDao implements
 				ps.setString(5, customerInfo.getLxr());
 				ps.setString(6, customerInfo.getPost());
 				ps.setString(7, customerInfo.getAge());
-				ps.setString(8, customerInfo.getSex());
+				ps.setLong(8, customerInfo.getSex());
 				ps.setString(9, customerInfo.getAddress());
 				ps.setString(10, customerInfo.getMoblePhone());
 				ps.setString(11, customerInfo.getTelePhone());

@@ -4,6 +4,7 @@
 package com.fenghuang.service.impl;
 
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -66,6 +67,23 @@ public class CustomerCenterServiceImpl implements ICustomerCenterService {
 	public boolean updateXiaoshou(CustomerInfo Customer) {
 		// TODO Auto-generated method stub
 		return iCustomerCenterDao.updateXiaoshou(Customer);
+	}
+
+ 
+	@Override
+	public boolean updatekehuzhongxin(List<CustomerInfo> customerInfo) {
+		// TODO 页面      行模式添加，修改
+		 boolean b =false;
+         for(Iterator iterator=customerInfo.iterator();iterator.hasNext();){
+        	 CustomerInfo customer=(CustomerInfo) iterator.next();
+        	 if(customer.getId()==0){
+        		 b = iCustomerCenterDao.addCustom(customer);
+        	 }else{
+        		 b =iCustomerCenterDao.updateCustom(customer);
+        	 }
+         }
+		return b;
+		
 	}
 
 

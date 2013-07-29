@@ -49,7 +49,7 @@ public void setZhtime(java.util.Date zhtime) {
    /** 性别
     * 
     * @pdOid 6709731f-54db-4f95-9c61-454acd14c1f6 */
-   public String sex;
+   public long sex;
    /** 手机
     * 
     * @pdOid 16ec1587-ef2c-4d4a-be9b-2eb372dd4842 */
@@ -130,10 +130,11 @@ public String getAge() {
 public void setAge(String age) {
 	this.age = age;
 }
-public String getSex() {
+
+public long getSex() {
 	return sex;
 }
-public void setSex(String sex) {
+public void setSex(long sex) {
 	this.sex = sex;
 }
 public String getMoblePhone() {
