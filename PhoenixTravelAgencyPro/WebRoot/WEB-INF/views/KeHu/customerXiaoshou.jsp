@@ -56,13 +56,12 @@
 			<thead>
 				<tr>
 				   <th data-options="field:'ck',checkbox:true"></th>
-					<th data-options="field:'city',align:'right'" width="80">城市</th>
+					<th data-options="field:'dicName',align:'right'" width="80">城市</th>
 					<th data-options="field:'name',align:'right'" width="100">客户名称</th>
 					<th data-options="field:'telePhone',align:'right'" width="100">电话</th>
 					<th data-options="field:'chuanzhen',align:'right'" width="100" >传真</th>
 					<th data-options="field:'xiaoshou',align:'right'" width="100" >销售顾问</th>
 					<th data-options="field:'lxrs',align:'right'" width="60" >联系人数</th>
-					<th data-options="field:'zhtime',align:'right'" width="80" >最后联系日期</th>
 					<th data-options="field:'cjtime',align:'right'" width="80" >创建时间</th>
 
 				</tr>

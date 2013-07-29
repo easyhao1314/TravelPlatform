@@ -98,23 +98,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  <div class="easyui-tabs" style="width:auto;height:auto">
 <div title="团队资料维护" style="padding:10px">
 <table id="dg" class="easyui-datagrid"
-		data-options="url:'fenghuang/getDictionaryDescs.do',border:false,singleSelect:false,fitColumns:true, onClickRow: onClickRow,pageSize:20"
+		data-options="url:'fenghuang/customInfoList.do?type=33&tuanNo=${param.tuanNo}',border:false,singleSelect:false,fitColumns:true, onClickRow: onClickRow,pageSize:20"
 		pagination="true" toolbar="#tb">
 		<thead>
 			<tr>
 				<th data-options="field:'ck',checkbox:true"></th>
-				<th data-options="field:'dicNo',editor:'text'" width="80">编号</th>
-				<th data-options="field:'dicName',editor:'text'" width="80">名称</th>
-				<th data-options="field:'dicDesc',editor:'text'" width="80">说明</th>
-				<th data-options="field:'dicHelp',editor:'text'" width="80">帮助提示</th>
-				<th data-options="field:'dicSortNo',editor:'numberbox'" width="80">显示顺序</th>
-				<th data-options="field:'dicType',hidden:true"></th>
-				<th data-options="field:'dicId',hidden:true"></th>
+				<th data-options="field:'id',editor:'text'" width="80">编号</th>
+				<th data-options="field:'name',editor:'text'" width="80">姓名</th>
+				<th data-options="field:'sex',editor:'text'">性别</th>
+				<th data-options="field:'sfzn',editor:'text'" width="80">身份证号</th>
+				
+				<th data-options="field:'lxr',editor:'text'" width="80">联系人</th>
+				<th data-options="field:'post',editor:'text'" width="80">职位</th>
+				
+				<th data-options="field:'moblePhone'">电话</th>
 			</tr>
 		</thead>
 	</table>
 	<div id="tb">
-		<a href="javascript:addHangMoshi();" class="easyui-linkbutton"
+		<a href="javascript:addsanpinkehu();" class="easyui-linkbutton"
 			iconCls="icon-add" plain="true">新增</a>&nbsp;&nbsp;|  <a
 			href="javascript:shanchu();" class="easyui-linkbutton"
 			iconCls="icon-cut" plain="true">删除</a>&nbsp;&nbsp;|
@@ -139,48 +141,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- ----------------------------------------------------TABS 选项卡 END----------------------------------------------------------------- --> 
 
 	
-	<div id="editDic" class="easyui-dialog" title="新增业务字段"
-		data-options="modal:true,closed:true,iconCls:'icon-save'"
-		style="width:500px;height:200px;padding:10px;">
-		<form id="dicFrome" method="post">
-			<table align="left">
-				<tr>
-					<td><div class="fitem">
-							<label>编号:</label>
-					</td>
-					<td><input name="dicNo" class="easyui-validatebox"
-						required="true">
-						</div></td>
-					<td><div class="fitem">
-							<label>名称:</label>
-					</td>
-					<td><input name="dicName" class="easyui-validatebox"
-						required="true">
-						</div></td>
-				</tr>
-				<tr>
-					<td><div class="fitem">
-							<label>帮助提示:</label>
-					</td>
-					<td><input name="dicHelp" class="easyui-validatebox">
-						</div></td>
-					<td><div class="fitem">
-							<label>显示顺序:</label>
-					</td>
-					<td><input name="dicSortNo" class="easyui-numberbox"
-						required="true">
-						</div></td>
-				</tr>
-				<tr>
-					<td colspan="4s" align="center"><a
-						href="javascript:mainBanMoshiSave();" class="easyui-linkbutton"
-						iconCls="icon-ok">保存</a> <a href="javascript:closeEditDic();"
-						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
-				</tr>
-			</table>
-			<input id="dicType" name="dicType" type="hidden">
-		</form>
-	</div>
+	
 	<div id="searchDic" class="easyui-dialog" title="查询业务字段"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:500px;height:200px;padding:10px;">
@@ -259,7 +220,7 @@ var url = "fenghuang/Sanpinliebiao.do?tuanNo="+'<%=request.getParameter("tuanNo"
 				return false;
 			}
 		}
-		function addHangMoshi() {
+		function addsanpinkehu() {
 			$("#dg").datagrid("insertRow", {
 				index : 0,
 				row : {
@@ -307,10 +268,6 @@ var url = "fenghuang/Sanpinliebiao.do?tuanNo="+'<%=request.getParameter("tuanNo"
 
 		}
 
-		function addMianBanMoshi() {
-			$("#editDic").dialog("open");
-			$("#dicFrome").form("clear");
-		}
 
 		function mainBanMoshiSave() {
 			$('#dicFrome').form('submit', {

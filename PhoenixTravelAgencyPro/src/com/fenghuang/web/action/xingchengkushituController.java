@@ -28,8 +28,9 @@ public class xingchengkushituController {
 	private IxingchengkushituService is;
 	@RequestMapping("fenghuang/xingchengkushituinfo.do")
 	@ResponseBody
-	public Map<String, Object> xingchengkushituinfo(HttpServletRequest request){
+	public Map<String, Object> xingchengkushituinfo(HttpServletRequest request,String xianid){
 		xingchengkushitu xc = new xingchengkushitu();
+		xc.setXianluid(Long.parseLong(xianid));
 		try {
 			Pagination<xingchengkushitu> pagination = is.xingchengkushituinfo(xc);
 			List<Map<String, Object>> testUsers = pagination.getResultList();
@@ -41,8 +42,8 @@ public class xingchengkushituController {
 					}
 				}
 			}
-			returnValue.put("total",  pagination.getTotalRows());
-			returnValue.put("rows", testUsers);	
+			returnValue.put("total",pagination.getTotalRows());
+			returnValue.put("rows",testUsers);	
 			JsonConfig config = new JsonConfig();
 	     	config.registerJsonValueProcessor(Timestamp.class,new DateJsonValueProcessor("yyyy-MM-dd"));
 	     			//把MAP转换成JSON，返回到前台
@@ -51,7 +52,7 @@ public class xingchengkushituController {
 			return fromObject;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			e.printStackTrace();	
 		}
 		return null;
 	}

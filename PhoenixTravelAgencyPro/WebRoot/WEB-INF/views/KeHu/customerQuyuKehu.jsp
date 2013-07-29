@@ -34,10 +34,14 @@
             <tr>
               
                <td>所属大区:</td>  
-               <td><input class="easyui-validatebox" type="text" id="daqu" name="daqu" /></td>
+               <td><input  id="daqu" name="daqu" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=6',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false"></div></td>			
                <td>
                <a href="javascript:kehuSelectLike();" 
-								class="easyui-linkbutton" iconCls="icon-ok">查询</a>
+                   class="easyui-linkbutton" iconCls="icon-ok">查询</a>
 						<a href="javascript:void(0)" class="easyui-linkbutton"
 							iconCls="icon-undo" onclick="$('#ff').form('clear')">重置</a>
                </td>
@@ -56,15 +60,13 @@
 			<thead>
 				<tr>
 				   <th data-options="field:'ck',checkbox:true"></th>
-					<th data-options="field:'city',align:'right'" width="80">城市</th>
+					<th data-options="field:'dicName',align:'right'" width="80">城市</th>
 					<th data-options="field:'name',align:'right'" width="100">客户名称</th>
 					<th data-options="field:'telePhone',align:'right'" width="100">电话</th>
 					<th data-options="field:'chuanzhen',align:'right'" width="100" >传真</th>
 					<th data-options="field:'xiaoshou',align:'right'" width="100" >销售顾问</th>
 					<th data-options="field:'lxrs',align:'right'" width="60" >联系人数</th>
-					<th data-options="field:'zhtime',align:'right'" width="80" >最后联系日期</th>
 					<th data-options="field:'cjtime',align:'right'" width="80" >创建时间</th>
-					<th data-options="field:'htsj5',align:'right'" width="80" >交易统计</th>
 				</tr>
 		</thead>
 	</table>

@@ -14,7 +14,23 @@ public class CustomerInfo {
     * 
     * @pdOid 2b8fe5c7-cc34-485c-9448-9d80bbf14d79 */
    public long id;
-   /** 客户公司名称
+   /** 团号
+    * 
+    * @pdOid 58e4655a-604f-44cc-9823-7cee616e7840 */
+   public String tuanNo;
+   public String getTuanNo() {
+	return tuanNo;
+}
+public void setTuanNo(String tuanNo) {
+	this.tuanNo = tuanNo;
+}
+public java.util.Date getZhtime() {
+	return zhtime;
+}
+public void setZhtime(java.util.Date zhtime) {
+	this.zhtime = zhtime;
+}
+/** 客户公司名称
     * 
     * @pdOid 58e4655a-604f-44cc-9823-7cee616e7840 */
    public String name;
@@ -55,7 +71,7 @@ public class CustomerInfo {
    /** 集团
     * 
     * @pdOid 922bca2b-dc8e-4a60-a0f9-cb37ce7ae236 */
-   public long jituan;
+   public String jituan;
    /** 所在城市
     * 
     * @pdOid 922bca2b-dc8e-4a60-a0f9-cb37ce7ae236 */
@@ -162,10 +178,11 @@ public String getSfzn() {
 public void setSfzn(String sfzn) {
 	this.sfzn = sfzn;
 }
-public long getJituan() {
+
+public String getJituan() {
 	return jituan;
 }
-public void setJituan(long jituan) {
+public void setJituan(String jituan) {
 	this.jituan = jituan;
 }
 public long getCity() {

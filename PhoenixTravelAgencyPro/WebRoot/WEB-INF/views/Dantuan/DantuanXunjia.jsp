@@ -115,7 +115,7 @@ data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=3',
                      </th>  
                      <th data-options="field:'tdzt'" width="60"> 团队状态</th>  
                      <!--点击团队名称进入团队详情（新增页面） -->                     
-                    <a href="javascript:selectDtId();"> <th data-options="field:'tdm'" width="60"></a>团队名称</th> 
+                    <th data-options="field:'tdm'" width="60">团队名称</th> 
                       <!--点击报价数进入客户信息  -->
                       <th data-options="field:'05'" width="40">报价数</th>                                                               
                       <th data-options="field:'ctsj'" width="60">出团时间</th> 
