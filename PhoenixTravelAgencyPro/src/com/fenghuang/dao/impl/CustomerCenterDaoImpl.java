@@ -4,9 +4,11 @@
 package com.fenghuang.dao.impl;
 
 
-import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 
@@ -131,8 +133,11 @@ public class CustomerCenterDaoImpl extends BaseDao implements
 	@Override
 	public boolean addCustom(final CustomerInfo customerInfo) {
 		String sql = "INSERT INTO customerinfo(tuanNo,name,city,daqu,lxr,post,age,sex,address,moblePhone,telePhone,qq,msn,email,chuanzhen,sfzn,jituan,hzjb,cjtime,zhtime,lxrs,bz,type) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		
 		int count = this.update(sql, new PreparedStatementSetter() {
-			@Override
+			SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:MM:SS");
+			String str=sdf.format(new Date());
+			@Override			
 			public void setValues(PreparedStatement ps) throws SQLException {
 				ps.setString(1, customerInfo.getTuanNo());
 				ps.setString(2, customerInfo.getName());
@@ -152,11 +157,16 @@ public class CustomerCenterDaoImpl extends BaseDao implements
 				ps.setString(16, customerInfo.getSfzn());
 				ps.setString(17, customerInfo.getJituan());
 				ps.setInt(18, customerInfo.getHzjb());
-				ps.setDate(19,(Date) customerInfo.getCjtime());
-				ps.setDate(20, (Date) customerInfo.getZhtime());
+				ps.setString(19, str);
+				ps.setString(20, str);
 				ps.setInt(21, customerInfo.getLxrs());
 				ps.setString(22, customerInfo.getBz());
 				ps.setInt(23, customerInfo.getType());
+			}
+
+			private Date Timestamp(long time) {
+				// TODO Auto-generated method stub
+				return null;
 			}
 		});
 		return count>0;

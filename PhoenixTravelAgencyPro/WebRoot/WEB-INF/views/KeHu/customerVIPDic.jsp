@@ -136,7 +136,7 @@
 			<table align="center">
 				<tr>
 						<td>
-						<input id="id" name="id" class="easyui-validatebox" hidden="true">
+						<input name="dicNo" class="easyui-validatebox" hidden="true">
 						<div class="fitem">
 							<label>名称:</label>
 					</td>
@@ -231,9 +231,10 @@
 				var param = {
 					"dicNo" :  row.dicNo
 				};
+			
 				if(confirm("确认要删除名称为 “ "+row.dicName+" ”的客户资信字典吗？")){
-				$.ajax({
 
+				$.ajax({
 					url : "fenghuang/deleteDics.do?",
 					data : param,
 					dataType : "json",
@@ -255,35 +256,17 @@
 	//按id查询
 		function VIPselectId() {
           //通过主键，查询该操作，并处于编辑状态。 是否打开tab，还是直接弹出window 
-			$("#updateVIP").dialog("open");
+	
 			//准备回显的数据
 			var row = $("#dgVIP").datagrid("getSelected");
-			//alert(row.tuanNO);
-		
-			if(row){
-				var param = {
-					"dicNo" : row.id
-				};
-				
-				$.ajax({
-					url : "fenghuang/getDictionaryDescs.do?dicNo=dicNo",
-					data : param,
-					dataType : "json",
-					success : function(data) {
-		
-					   $('#updateVIPForm').form('load',data.rows[0]);
-				
-					},
-					error : function() {
-						$.messager.alert("查询失败", "服务器请求失败!", "error");
-					}
-				});
-		}
+		    $('#updateVIPForm').form('load',row);
+	     	$("#updateVIP").dialog("open");
+			
 		}
 		 //修改
-		function ZiXinUpdate() {
+		function VIPUpdate() {
 			$("#updateVIPForm").form('submit', {
-				url : 'fenghuang/updateDic.do',
+				url : 'fenghuang/updatedictionary.do',
 				onSubmit : function() {
 					return $(this).form('validate');
 				},

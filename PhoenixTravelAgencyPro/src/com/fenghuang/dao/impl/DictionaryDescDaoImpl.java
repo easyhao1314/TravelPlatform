@@ -95,8 +95,8 @@ public class DictionaryDescDaoImpl extends BaseDao implements
 	 */
 	@Override
 	public boolean updateDictionaryDesc(DictionaryDesc ddesc) throws Exception {
-		String sql = "update dictionarydesc set dicName=?,dicHelp=?,dicSortNo=?,dicDesc=?,dicNo=? where dicId=?";
-		int rs = this.update(sql, ddesc.getDicName(),ddesc.getDicHelp(),ddesc.getDicSortNo(),ddesc.getDicDesc(),ddesc.getDicNo(),ddesc.getDicId());
+		String sql = "update dictionarydesc set dicName=?,dicHelp=?,dicSortNo=?,dicDesc=? where dicNo=?";
+		int rs = this.update(sql, ddesc.getDicName(),ddesc.getDicHelp(),ddesc.getDicSortNo(),ddesc.getDicDesc(),ddesc.getDicNo());
 		return rs>0;
 	}
 

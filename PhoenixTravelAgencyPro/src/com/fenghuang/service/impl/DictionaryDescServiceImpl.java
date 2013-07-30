@@ -106,7 +106,7 @@ public class DictionaryDescServiceImpl implements IDictionaryDescService {
 			throws Exception {
 		for (Iterator iterator = dicDescs.iterator(); iterator.hasNext();) {
 			DictionaryDesc dictionaryDesc = (DictionaryDesc) iterator.next();
-			if (dictionaryDesc.getDicId() == null) {
+			if (dictionaryDesc.getDicNo() == null) {
 				iDictionaryDescDao.insertDictionaryDesc(dictionaryDesc);
 			} else {
 				iDictionaryDescDao.updateDictionaryDesc(dictionaryDesc);

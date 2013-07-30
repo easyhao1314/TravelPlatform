@@ -95,11 +95,24 @@ public class DictionaryDescController {
 		return null;
 	}
     
+	@RequestMapping("fenghuang/updatedictionary.do")
+	@ResponseBody
+	public Map<String,Object> updatedictionary(HttpServletRequest request,HttpServletResponse response,DictionaryDesc dic){
+		Map<String,Object> result=new HashMap<String,Object>();
+		boolean isSuccess=false;
+		try{
+			isSuccess=iDictionaryDescService.updateDictionaryDesc(dic);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		result.put("success", isSuccess);
+		return result;
+	}
+	
 	@RequestMapping("fenghuang/updateDic.do")
 	@ResponseBody
 	public Map<String,Object> updateDic(HttpServletRequest request,
 			HttpServletResponse response,String updateRows){
-	System.out.print(updateRows);
 		Map<String,Object>  result = new HashMap<String, Object>();
 		JSONArray jsonArray =  JSONArray.fromObject(updateRows);
 		List<DictionaryDesc>  dics = JSONArray.toList(jsonArray, DictionaryDesc.class);	
@@ -152,7 +165,7 @@ public class DictionaryDescController {
 			
 		boolean isSuccess = false;
 		try {
-			iDictionaryDescService.deleteDictionaryDesc(dicNo);
+			isSuccess=iDictionaryDescService.deleteDictionaryDesc(dicNo);
 			
 		} catch (Exception e) {
 			isSuccess = false;
