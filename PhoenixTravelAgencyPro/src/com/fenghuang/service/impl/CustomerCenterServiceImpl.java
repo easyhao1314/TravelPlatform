@@ -13,10 +13,12 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.fenghuang.dao.ICustomerCenterDao;
+import com.fenghuang.entiey.Baomingshenpi;
 import com.fenghuang.entiey.CustomerAreaWeihu;
 import com.fenghuang.entiey.CustomerInfo;
 import com.fenghuang.entiey.ProvinceSettingDictionary;
 import com.fenghuang.entiey.TeamProgressStateDictionary;
+import com.fenghuang.service.IBaomingshenpiService;
 import com.fenghuang.service.ICustomerCenterService;
 import com.fenghuang.util.Pagination;
 
@@ -28,6 +30,8 @@ public class CustomerCenterServiceImpl implements ICustomerCenterService {
 
 	@Resource
 	private ICustomerCenterDao iCustomerCenterDao;
+	@Resource
+	private IBaomingshenpiService ibaoming;
 
 	public Pagination<CustomerInfo> getCustomInfoListPaginations(int currentPage,
 			int numPerPage,String tuanNo, String name, String type, String lxr,String moblePhone,String telePhone,String qq,String msn, String daqu, String city, String hzjb, String xiaoshou,String zhtime,String jituan) {
@@ -78,6 +82,27 @@ public class CustomerCenterServiceImpl implements ICustomerCenterService {
         	 CustomerInfo customer=(CustomerInfo) iterator.next();
         	 if(customer.getId()==0){
         		 b = iCustomerCenterDao.addCustom(customer);
+        		 if(b){
+        			 Baomingshenpi baoming = new Baomingshenpi();
+        			 if(customer.getId()!=0){
+        			 baoming.setKehuid(customer.getId());
+        			 }
+        			 if(customer.getName()!=null && !"".equals(customer.getName())){
+        			 baoming.setKehuname(customer.getName());
+        			 }
+        			 if(customer.getSex()!=0){
+        			 baoming.setSex(customer.getSex());
+        			 }
+        			 if(customer.getSfzn()!=null && !"".equals(customer.getSfzn())){
+        			 baoming.setZhengjianhao(customer.getSfzn());
+        			 }
+        		 try {
+        			 ibaoming.addbaoming(baoming);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+        		 }        		 
         	 }else{
         		 b =iCustomerCenterDao.updateCustom(customer);
         	 }

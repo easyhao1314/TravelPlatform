@@ -135,7 +135,7 @@ public class CustomerCenterDaoImpl extends BaseDao implements
 		String sql = "INSERT INTO customerinfo(tuanNo,name,city,daqu,lxr,post,age,sex,address,moblePhone,telePhone,qq,msn,email,chuanzhen,sfzn,jituan,hzjb,cjtime,zhtime,lxrs,bz,type) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		
 		int count = this.update(sql, new PreparedStatementSetter() {
-			SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:MM:SS");
+			SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 			String str=sdf.format(new Date());
 			@Override			
 			public void setValues(PreparedStatement ps) throws SQLException {
