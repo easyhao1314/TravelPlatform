@@ -118,7 +118,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div id="tb">
 		<a href="javascript:addsanpinkehu();" class="easyui-linkbutton"
 			iconCls="icon-add" plain="true">新增</a>&nbsp;&nbsp;|  <a
-			href="javascript:shanchu();" class="easyui-linkbutton"
+			href="javascript:deletesanpinkehu();" class="easyui-linkbutton"
 			iconCls="icon-cut" plain="true">删除</a>&nbsp;&nbsp;|
 		<a href="javascript:getChanges();" class="easyui-linkbutton"
 			iconCls="icon-save" plain="true">保存修改</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -242,49 +242,25 @@ var url = "fenghuang/Sanpinliebiao.do?tuanNo="+'<%=request.getParameter("tuanNo"
 		}
 
 
-		function mainBanMoshiSave() {
-			$('#dicFrome').form('submit', {
-				url : 'fenghuang/saveDic.do?dicType=${param.dicType}',
-				onSubmit : function() {
-					return $(this).form('validate');
-				},
-				success : function(result) {
-					var result = eval('(' + result + ')');
-					if (result.success) {
-						$.messager.alert("保存成功", "保存成功！", "info");
-						$('#editDic').dialog('close');
-						$('#dg').datagrid('reload');
-					} else {
-						$.messager.alert("保存失败", "保存失败!", "error");
-						$('#dg').datagrid('reload');
-					}
-				}
-			});
-		}
+		
 
-		function shanchu() {
-			var rows = $("#dg").datagrid("getSelections");
-			if (rows.length > 0) {
-				var param = {
-					"deleteRows" : $.toJSON(rows)
-				};
-				$.ajax({
-					url : "fenghuang/deleteDics.do",
-					data : param,
+		function deletesanpinkehu() {
+		var row = $("#dg").datagrid("getSelected");
+		alert(row.id);
+		var url="fenghuang/deleteCustomInfo.do?deleteRow="+row.id;
+		$.ajax({
+					url :url ,
+					data : row.id,
 					dataType : "json",
 					success : function(data) {
-						if (data.success) {
-							$.messager.alert("删除成功", "删除成功！", "info");
-							$("#dg").datagrid('reload');
-						} else {
-							$.messager.alert("删除失败", "删除失败!", "error");
-						}
+					$.messager.alert("删除成功", "删除成功", "info");
+					$("#dg").datagrid("reload");
+
 					},
 					error : function() {
-						$.messager.alert("删除失败", "服务器请求失败!", "error");
+						$.messager.alert("查询失败", "服务器请求失败!", "error");
 					}
 				});
-			}
 		}
 		function closeEditDic() {
 			$('#editDic').dialog('close');

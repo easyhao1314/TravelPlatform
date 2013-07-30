@@ -81,6 +81,7 @@ public class CustomerCenterController {
 		config.registerJsonValueProcessor(Timestamp.class,new DateJsonValueProcessor("yyyy-MM-dd HH:mm:ss"));
 		//把MAP转换成JSON，返回到前台
 		JSONObject fromObject = JSONObject.fromObject(returnValue,config);
+		System.out.println(fromObject);
 		PrintWriter out =null ;
 		try {
 			out = response.getWriter();
