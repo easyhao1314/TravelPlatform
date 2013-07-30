@@ -57,7 +57,9 @@ public class BaomingshenpiDaoimpl extends BaseDao implements IBaomingshenpiDao {
 	@Override
 	public boolean deletebaoming(Baomingshenpi b) throws Exception {
 		// TODO Auto-generated method stub
-		return false;
+		String sql="delete from baomingshenpi where 1=1 kehuid=?";
+		int num = this.update(sql,b.getKehuid());
+		return num>0;
 	}
 
 }

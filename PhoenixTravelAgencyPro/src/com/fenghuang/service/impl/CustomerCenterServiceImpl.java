@@ -41,12 +41,23 @@ public class CustomerCenterServiceImpl implements ICustomerCenterService {
 	
 	@Override
 	public boolean addCustom(CustomerInfo customInfo) {
-		return iCustomerCenterDao.addCustom(customInfo);
+		Integer custom = iCustomerCenterDao.addCustom(customInfo);
+		
+		return custom>0; 
 	}
 	@Override
 	public boolean deleteCustomById(String id) {
 		// TODO Auto-generated method stub
+		Baomingshenpi b = new Baomingshenpi();
+		b.setKehuid(Long.parseLong(id));
+		try {
+			ibaoming.deletebaoming(b);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return iCustomerCenterDao.deleteCustomById(id);
+		
 	}
 	@Override
 	public List<Map<String, Object>> findCustomerInfoById(String updateId) {
@@ -81,11 +92,15 @@ public class CustomerCenterServiceImpl implements ICustomerCenterService {
          for(Iterator iterator=customerInfo.iterator();iterator.hasNext();){
         	 CustomerInfo customer=(CustomerInfo) iterator.next();
         	 if(customer.getId()==0){
-        		 b = iCustomerCenterDao.addCustom(customer);
+        		 int a = iCustomerCenterDao.addCustom(customer);
+        		 if(a>0){
+        			 b=true;
+        		 }
         		 if(b){
+        				Integer selectmaxid = iCustomerCenterDao.selectmaxid();
         			 Baomingshenpi baoming = new Baomingshenpi();
-        			 if(customer.getId()!=0){
-        			 baoming.setKehuid(customer.getId());
+        			 if(a!=0){
+        			 baoming.setKehuid(a);
         			 }
         			 if(customer.getName()!=null && !"".equals(customer.getName())){
         			 baoming.setKehuname(customer.getName());
@@ -109,6 +124,13 @@ public class CustomerCenterServiceImpl implements ICustomerCenterService {
          }
 		return b;
 		
+	}
+
+
+	@Override
+	public Integer selectmaxid() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

@@ -259,6 +259,7 @@ var url = "fenghuang/Sanpinliebiao.do?tuanNo="+'<%=request.getParameter("tuanNo"
 						if (data.success) {
 							$.messager.alert("保存成功", "保存成功！", "info");
 							$("#dg").datagrid('reload');
+							$("#caozuodg").datagrid('reload');
 							editIndex = undefined;
 						} else {
 							$.messager.alert("保存失败", "保存失败!", "error");
@@ -285,6 +286,7 @@ var url = "fenghuang/Sanpinliebiao.do?tuanNo="+'<%=request.getParameter("tuanNo"
 					success : function(data) {
 					$.messager.alert("删除成功", "删除成功", "info");
 					$("#dg").datagrid("reload");
+					$("#caozuodg").datagrid('reload');
 
 					},
 					error : function() {
