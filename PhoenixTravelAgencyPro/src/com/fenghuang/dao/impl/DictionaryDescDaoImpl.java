@@ -46,10 +46,9 @@ public class DictionaryDescDaoImpl extends BaseDao implements
 	 */
 	@Override
 	public boolean insertDictionaryDesc(DictionaryDesc ddesc) throws Exception {
-		String sql = "insert into dictionarydesc (dicNo,dicName,dicHelp,dicSortNo,dicDesc,dicType) values(?,?,?,?,?,?)";
-		int rs = this.update(sql, ddesc.getDicNo(), ddesc.getDicName(),
-				ddesc.getDicHelp(), ddesc.getDicSortNo(), ddesc.getDicDesc(),
-				ddesc.getDicType());
+		String sql = "insert into dictionarydesc (dicName,dicHelp,dicSortNo,dicDesc,dicType) values(?,?,?,?,?)";
+		int rs = this.update(sql, ddesc.getDicName(),
+				ddesc.getDicHelp(), ddesc.getDicSortNo(), ddesc.getDicDesc(),ddesc.getDicType());
 		return rs > 0;
 	}
 
@@ -60,10 +59,9 @@ public class DictionaryDescDaoImpl extends BaseDao implements
 	 * com.fenghuang.dao.IDictionaryDescDao#getDictionaryDesc(java.lang.String)
 	 */
 	@Override
-	public DictionaryDesc getDictionaryDesc(String dicNo) throws Exception {
+	public DictionaryDesc getDictionaryDesc(Integer dicNo) throws Exception {
 		String sql = "select * from dictionarydesc where dicNo=?";
-		DictionaryDesc ddesc = this.queryForObject(sql, DictionaryDesc.class,
-				dicNo);
+		DictionaryDesc ddesc = this.queryForObject(sql, DictionaryDesc.class,dicNo);
 		return ddesc;
 	}
 
@@ -110,7 +108,7 @@ public class DictionaryDescDaoImpl extends BaseDao implements
 	 * )
 	 */
 	@Override
-	public boolean deleteDictionaryDesc(String dicNo) throws Exception {
+	public boolean deleteDictionaryDesc(Integer dicNo) throws Exception {
 	   String sql = "delete from dictionarydesc where dicNo = ?";
 	   int  rs = this.update(sql, dicNo);
 		return rs >0;

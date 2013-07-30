@@ -45,16 +45,31 @@ public class DictionaryDescController {
 	private IDictionaryDescService iDictionaryDescService;
 	@RequestMapping("fenghuang/getDictionaryDescs.do")
 	@ResponseBody
-	public Map<String, Object> getDictionaryDescS(HttpServletRequest request,
+	public Map<String,Object> getDictionaryDescPaginations(HttpServletRequest request,
+			HttpServletResponse response, Integer page, Integer rows,String dicNo){
+		Map<String,Object> result=new HashMap<String,Object>();
+		try {
+			DictionaryDesc dic=iDictionaryDescService.getDictionaryDesc(Integer.getInteger(dicNo));
+			result.put("rows", dic);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return result;
+	}
+	@RequestMapping("fenghuang/getDictionaryDescsPaginations.do")
+	@ResponseBody
+	public Map<String, Object> getDictionaryDescPaginations(HttpServletRequest request,
 			HttpServletResponse response, Integer page, Integer rows,
-			String dicType,String dicNo,String dicName,String dicHelp,String dicSortNo,String dicDesc) {
+			String dicType,String dicName,String dicHelp,String dicSortNo,String dicDesc) {
 
 		int dicTypeCount = 0;
 		if (dicType != null && !"".equals(dicType)) {
 			dicTypeCount = Integer.valueOf(dicType);
 		}
 		DictionaryDesc ddDesc = new DictionaryDesc();
-		ddDesc.setDicNo(dicNo);
 		ddDesc.setDicName(dicName);
 		ddDesc.setDicDesc(dicDesc);
 		ddDesc.setDicHelp(dicHelp);
@@ -84,7 +99,7 @@ public class DictionaryDescController {
 	@ResponseBody
 	public Map<String,Object> updateDic(HttpServletRequest request,
 			HttpServletResponse response,String updateRows){
-	
+	System.out.print(updateRows);
 		Map<String,Object>  result = new HashMap<String, Object>();
 		JSONArray jsonArray =  JSONArray.fromObject(updateRows);
 		List<DictionaryDesc>  dics = JSONArray.toList(jsonArray, DictionaryDesc.class);	
@@ -105,16 +120,19 @@ public class DictionaryDescController {
 	
 	@RequestMapping("fenghuang/saveDic.do")
 	@ResponseBody
-	public Map<String,Object>  saveDic(HttpServletRequest request,HttpServletResponse response,String dicNo,String dicName,String dicHelp,Integer dicSortNo,Integer dicType,String dicDesc){
+	public Map<String,Object>  saveDic(HttpServletRequest request,HttpServletResponse response,String dicName,String dicHelp,String dicSortNo,String dicType,String dicDesc){
 		Map<String,Object>  result = new HashMap<String, Object>();
 		boolean  isSuccess = false;
 		DictionaryDesc ddDesc = new DictionaryDesc();
-		ddDesc.setDicNo(dicNo);
 		ddDesc.setDicName(dicName);
 		ddDesc.setDicDesc(dicDesc);
 		ddDesc.setDicHelp(dicHelp);
-		ddDesc.setDicSortNo(dicSortNo);
-		ddDesc.setDicType(dicType);
+		if(dicSortNo!=null&&!"".equals(dicSortNo)){
+		ddDesc.setDicSortNo(Integer.parseInt(dicSortNo));
+		}
+		if(dicType!=null && !"".equals(dicType)){
+		ddDesc.setDicType(Integer.parseInt(dicType));
+		}
 		try {
 			isSuccess = iDictionaryDescService.insertDictionaryDesc(ddDesc);
 		} catch (Exception e) {
@@ -129,14 +147,13 @@ public class DictionaryDescController {
 	@RequestMapping("fenghuang/deleteDics.do")
 	@ResponseBody
 	public Map<String,Object> deleteDics(HttpServletRequest request,
-			HttpServletResponse response,String deleteRows){
+			HttpServletResponse response,Integer dicNo){
 		Map<String,Object>  result = new HashMap<String, Object>();
-		JSONArray jsonArray =  JSONArray.fromObject(deleteRows);
-		List<DictionaryDesc>  dicDescs = JSONArray.toList(jsonArray, DictionaryDesc.class);	
+			
 		boolean isSuccess = false;
 		try {
-			iDictionaryDescService.deleteDictionaryDescs(dicDescs);
-			isSuccess = true;
+			iDictionaryDescService.deleteDictionaryDesc(dicNo);
+			
 		} catch (Exception e) {
 			isSuccess = false;
 			e.printStackTrace();
@@ -147,6 +164,7 @@ public class DictionaryDescController {
 	}
 	@RequestMapping("fenghuang/getDicByTypeComboboxs.do")
 	@ResponseBody
+	
 	/*1.团队操作类型 2.团队级别3.团队状态4.合作级别5.币种
 	 *6.旅游区域7.出访国家8.旅游城市9.是否10.性别
 	 *11.销售12.计调13.客户经理14.签证标准15.导游报价标准

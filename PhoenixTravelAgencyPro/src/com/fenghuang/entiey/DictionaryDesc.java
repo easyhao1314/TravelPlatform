@@ -18,7 +18,15 @@ public class DictionaryDesc {
 	 * 
 	 * @pdOid 6c888ec1-ac62-481f-87a6-0e32b8c117c1
 	 */
-	public String dicNo;
+	public Integer dicNo;
+	public Integer getDicNo() {
+		return dicNo;
+	}
+
+	public void setDicNo(Integer dicNo) {
+		this.dicNo = dicNo;
+	}
+
 	/**
 	 * 名称
 	 * 
@@ -48,21 +56,7 @@ public class DictionaryDesc {
 	 */
 	public Long dicId;
 
-	/**
-	 * @return the dicNo
-	 */
-	public String getDicNo() {
-		return dicNo;
-	}
-
-	/**
-	 * @param dicNo
-	 *            the dicNo to set
-	 */
-	public void setDicNo(String dicNo) {
-		this.dicNo = dicNo;
-	}
-
+	
 	/**
 	 * @return the dicName
 	 */

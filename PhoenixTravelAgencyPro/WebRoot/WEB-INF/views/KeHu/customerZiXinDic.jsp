@@ -35,19 +35,19 @@
 			<td><div class="fitem">
 						<label>名称:</label>
 				</td>
-				<td><input id="name" name="name" class="easyui-validatebox">
+				<td><input id="dicName" name="dicName" class="easyui-validatebox">
 					</div>
 				</td>
 				<td><div class="fitem">
 						<label>说明:</label>
 				</td>
-				<td><input id="shuoming" name="shuoming" class="easyui-validatebox">
+				<td><input id="dicDesc" name="dicDesc" class="easyui-validatebox">
 					</div>
 				</td>
 				<td><div class="fitem">
 						<label>帮助提示:</label>
 				</td>
-				<td><input id="tishi" name="tishi" class="easyui-validatebox">
+				<td><input id="dicHelp" name="dicHelp" class="easyui-validatebox">
 					</div>
 				</td>
 				<td>
@@ -57,6 +57,7 @@
 							iconCls="icon-undo" onclick="$('#zixinForm').form('clear')">重置</a>
 				</td>
 			</tr>
+			
 		</table>
 		</form>
 	</div>
@@ -64,17 +65,17 @@
     
 	  <div class="easyui-panel" title="客户资信字典列表"
 		style="height:480px;width: auto;">
-		<table id="dg" class="easyui-datagrid"
-			data-options="url:'fenghuang/KehuSelect.do?type=1',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
+		<table id="dgZiXin" class="easyui-datagrid"
+			data-options="url:'fenghuang/getDictionaryDescs.do?dicType=26',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 			  pagination="true" toolbar="#currencyDatagridtoolbar">
 		
 			<thead>
 				<tr>
 				    <th data-options="field:'ck',checkbox:true"></th>
-					<th data-options="field:'id',align:'right'" width="100">编号</th>
-					<th data-options="field:'name',align:'right'" width="100" editor="text">名称</th>
-					<th data-options="field:'shuoming',align:'right'" width="100" editor="text">说明</th>
-					<th data-options="field:'tishi',align:'right'" width="100" editor="text">帮助提示</th>
+					<th data-options="field:'dicNo',align:'right'" width="100">编号</th>
+					<th data-options="field:'dicName',align:'right'" width="100" editor="text">名称</th>
+					<th data-options="field:'dicDesc',align:'right'" width="100" editor="text">说明</th>
+					<th data-options="field:'dicHelp',align:'right'" width="100" editor="text">帮助提示</th>
 				</tr>
 		</thead>
 	</table>
@@ -82,7 +83,7 @@
 	<div id="currencyDatagridtoolbar">
 		     <a href="javascript:addZiXin();" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>  
 		     <a href="javascript:ZiXinSelectId();" class="easyui-linkbutton" iconCls="icon-save"  plain="true">修改</a>
-		     <a href="javascript:shanchue();" class="easyui-linkbutton" iconCls="icon-cut" plain="true">删除</a>  
+		     <a href="javascript:shanchueZiXin();" class="easyui-linkbutton" iconCls="icon-cut" plain="true">删除</a>  
 		</div>   
 	</div>
 	
@@ -90,7 +91,7 @@
 	<div id="addZiXin" class="easyui-dialog" title="新增客户资信字典"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:600px;height:200px;padding:10px;">
-		<form id="addForm" method="post">
+		<form id="addZiXinForm" method="post">
 			<table align="center">
 				<tr>
 					<td><div class="fitem">
@@ -100,7 +101,7 @@
 						<td><div class="fitem">
 							<label>名称:</label>
 					</td>
-					<td><input  name="name" class="easyui-validatebox" required="true">
+					<td><input  name="dicName" class="easyui-validatebox" required="true">
 						</input>
 						</div></td>
 				</tr>
@@ -108,12 +109,12 @@
 					<td><div class="fitem">
 							<label>说明:</label>
 					</td>
-					<td><input name="shuoming" class="easyui-validatebox" required="true">
+					<td><input name="sdicDesc" class="easyui-validatebox" required="true">
 						</div></td>
 					<td><div class="fitem">
 							<label>帮助提示:</label>
 					</td>
-					<td><input name="tishi" class="easyui-numberbox easyui-validatebox" required="true" missingMessage="请输入数字." invalidMessage="请输入数字.">
+					<td><input name="dicHelp" class="easyui-numberbox easyui-validatebox" required="true" missingMessage="请输入数字." invalidMessage="请输入数字.">
 						</div></td>
 				</tr>
 				<tr>
@@ -132,7 +133,7 @@
 	<div id="updateZiXin" class="easyui-dialog" title="修改客户资信字典"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:600px;height:200px;padding:10px;">
-		<form id="updateForm" method="post">
+		<form id="updateZiXinForm" method="post">
 			<table align="center">
 				<tr>
 						<td>
@@ -140,20 +141,21 @@
 						<div class="fitem">
 							<label>名称:</label>
 					</td>
-					<td><input  name="name" class="easyui-validatebox" required="true">
+					<td><input  name="dicName" class="easyui-validatebox" required="true">
 						</input>
-						</div></td><td></td><td></td>
+						</div></td>
+						<td></td><td></td>
 				</tr>
 				<tr>
 					<td><div class="fitem">
-							<label>帮助提示:</label>
+							<label>说明:</label>
 					</td>
-					<td><input name="shuoming" class="easyui-validatebox" required="true">
+					<td><input name="sdicDesc" class="easyui-validatebox" required="true">
 						</div></td>
 					<td><div class="fitem">
-							<label>显示顺序:</label>
+							<label>帮助提示:</label>
 					</td>
-					<td><input name="tishi" class="easyui-numberbox easyui-validatebox" required="true" missingMessage="请输入数字." invalidMessage="请输入数字.">
+					<td><input name="dicHelp" class="easyui-numberbox easyui-validatebox" required="true" missingMessage="请输入数字." invalidMessage="请输入数字.">
 						</div></td>
 				</tr>
 				<tr>
@@ -173,12 +175,12 @@
  * 查询按钮
  */
 		function zixinSelectLike(){
-		var opts = $('#dg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
+		var opts = $('#dgZiXin').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
 			var param = {
-				name: $("#name").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
-				shuoming: $("#shuoming").val() ,
-				tishi : $("#tishi").val(),
-				page:  opts.pageNumber ,
+				dicName: $("#dicName").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
+				sdicDesc: $("#sdicDesc").val(),
+				dicHelp : $("#dicHelp").val(),
+				page:  opts.pageNumber,
 				rows:  opts.pageSize
 			};
 		
@@ -188,21 +190,20 @@
 					type : 'POST' ,
 					dataType : 'json' ,
 					success : function(data){
-						$('#dg').datagrid('loadData',data);
+						$('#dgZiXin').datagrid('loadData',data);
 					}
 				});
 		}
 		
-
 	   //新增
 		function addZiXin() {
 			$("#addZiXin").dialog("open");
-			$("#addForm").form("clear");
+			$("#addZiXinForm").form("clear");
 		}
          
 		function SaveZiXin() {
-			$('#addForm').form('submit', {
-				url : 'fenghuang/KehuAdd.do?type=1',
+			$('#addZiXinForm').form('submit', {
+				url : 'fenghuang/saveDic.do?dicType=26',
 				onSubmit : function() {
 					return $(this).form('validate');
 				},
@@ -211,10 +212,10 @@
 					if (result.success) {
 					$('#addZiXin').dialog('close');
 						$.messager.alert("保存成功", "保存成功！", "info");
-						 $('#dg').datagrid('reload'); 
+						 $('#dgZiXin').datagrid('reload'); 
 					} else {
 						$.messager.alert("保存失败", "保存失败!", "error");
-						$('#dg').datagrid('reload');
+						$('#dgZiXin').datagrid('reload');
 					}
 				}
 			});
@@ -224,21 +225,21 @@
 			$('#addZiXin').dialog('close');
 		} 
 	//删除操作要执行的方法
-	function shanchu(){
-	  var row = $("#dg").datagrid("getSelected");
+	function shanchuZiXin(){
+	  var row = $("#dgZiXin").datagrid("getSelected");
 			if (row) {
 				var param = {
 					"id" :  row.id
 				};
 				if(confirm("确认要删除名称为 “ "+row.name+" ”的客户资信字典吗？")){
 				$.ajax({
-					url : "fenghuang/kehuDelete.do",
+					url : "fenghuang/deleteDics.do?deleteRows=id",
 					data : param,
 					dataType : "json",
 					success : function(data) {
 						if (data.success) {
 							$.messager.alert("删除成功", "删除成功！", "info");
-							$("#dg").datagrid('reload');
+							$("#dgZiXin").datagrid('reload');
 						} else {
 							$.messager.alert("删除失败", "删除失败!", "error");
 						}
@@ -255,7 +256,7 @@
           //通过主键，查询该操作，并处于编辑状态。 是否打开tab，还是直接弹出window 
 			$("#updateZiXin").dialog("open");
 			//准备回显的数据
-			var row = $("#dg").datagrid("getSelected");
+			var row = $("#dgZiXin").datagrid("getSelected");
 			//alert(row.tuanNO);
 		
 			if(row){
@@ -264,12 +265,12 @@
 				};
 				
 				$.ajax({
-					url : "fenghuang/kehuSelectId.do",
+					url : "fenghuang/getDictionaryDescs.do?dicNo=id",
 					data : param,
 					dataType : "json",
 					success : function(data) {
 		
-					   $('#updateForm').form('load',data.rows[0]);
+					   $('#updateZiXinForm').form('load',data.rows[0]);
 				
 					},
 					error : function() {
@@ -280,7 +281,7 @@
 		}
 		 //修改
 		function ZiXinUpdate() {
-			$("#updateForm").form('submit', {
+			$("#updateZiXinForm").form('submit', {
 				url : 'fenghuang/kehuUpdate.do',
 				onSubmit : function() {
 					return $(this).form('validate');
@@ -293,10 +294,10 @@
 					if (result.success) {
 					  $("#updateZiXin").dialog('close');
 						$.messager.alert("修改成功", "修改成功！", "info"); 
-						$("#dg").datagrid('reload');
+						$("#dgZiXin").datagrid('reload');
 					} else {
 						$.messager.alert("修改失败", "修改失败!", "error");
-						$("#dg").datagrid('reload');
+						$("#dgZiXin").datagrid('reload');
 					}
 				}
 			});

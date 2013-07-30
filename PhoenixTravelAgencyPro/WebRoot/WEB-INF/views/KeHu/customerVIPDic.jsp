@@ -28,7 +28,7 @@
 <div class="easyui-panel" title="客户VIP字典查询"
 		style="height:80px;padding:10px;width:auto;"
 		data-options="closable:false,tools:'#searchpanel'" align="center">
-		<form id="zixinForm">
+		<form id="VIPForm">
 		<table>
 	
 			<tr>
@@ -51,10 +51,10 @@
 					</div>
 				</td>
 				<td>
-					<a href="javascript:zixinSelectLike();" 
+					<a href="javascript:VIPSelectLike();" 
 								class="easyui-linkbutton" iconCls="icon-ok">查询</a>
 						<a href="javascript:void(0)" class="easyui-linkbutton"
-							iconCls="icon-undo" onclick="$('#zixinForm').form('clear')">重置</a>
+							iconCls="icon-undo" onclick="$('#VIPForm').form('clear')">重置</a>
 				</td>
 			</tr>
 		</table>
@@ -64,8 +64,8 @@
     
 	  <div class="easyui-panel" title="客户VIP字典列表"
 		style="height:480px;width: auto;">
-		<table id="dg" class="easyui-datagrid"
-			data-options="url:'fenghuang/getDictionaryDescs.do?dicType=4',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
+		<table id="dgVIP" class="easyui-datagrid"
+			data-options="url:'fenghuang/getDictionaryDescsPaginations.do?dicType=4',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 			  pagination="true" toolbar="#currencyDatagridtoolbar">
 		
 			<thead>
@@ -80,21 +80,21 @@
 	</table>
 	<!-- 查询结果展示 -->
 	<div id="currencyDatagridtoolbar">
-		     <a href="javascript:addZiXin();" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>  
-		     <a href="javascript:ZiXinSelectId();" class="easyui-linkbutton" iconCls="icon-save"  plain="true">修改</a>
-		     <a href="javascript:shanchue();" class="easyui-linkbutton" iconCls="icon-cut" plain="true">删除</a>  
+		     <a href="javascript:addVIP();" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>  
+		     <a href="javascript:VIPselectId();" class="easyui-linkbutton" iconCls="icon-save"  plain="true">修改</a>
+		     <a href="javascript:shanchuVIP();" class="easyui-linkbutton" iconCls="icon-cut" plain="true">删除</a>  
 		</div>   
 	</div>
 	
 	<!-- 新增客户资信字典 -->
-	<div id="addZiXin" class="easyui-dialog" title="新增客户VIP字典"
+	<div id="addVIP" class="easyui-dialog" title="新增客户VIP字典"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:600px;height:200px;padding:10px;">
-		<form id="addForm" method="post">
+		<form id="addVIPForm" method="post">
 			<table align="center">
 				<tr>
 					<td><div class="fitem">
-							<label>编号:</label>
+							<label>编号:</label> 
 					</td>
 					<td>--系统自动生成--</div></td>
 						<td><div class="fitem">
@@ -113,12 +113,12 @@
 					<td><div class="fitem">
 							<label>帮助提示:</label>
 					</td>
-					<td><input name="dicHelp" class="easyui-numberbox easyui-validatebox" required="true" missingMessage="请输入数字." invalidMessage="请输入数字.">
+					<td><input name="dicHelp" class="easyui-validatebox" required="true" >
 						</div></td>
 				</tr>
 				<tr>
-					<td colspan="4s" align="center">
-					<a href="javascript:SaveZiXin();" class="easyui-linkbutton"
+					<td colspan="4" align="center">
+					<a href="javascript:SaveVIP();" class="easyui-linkbutton"
 						iconCls="icon-ok">保存</a> <a href="javascript:closeaddMianBan();"
 						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
 				</tr>
@@ -129,10 +129,10 @@
 	
 	
 		<!-- 修改客户资信字典 -->
-	<div id="updateZiXin" class="easyui-dialog" title="修改客户VIP字典"
+	<div id="updateVIP" class="easyui-dialog" title="修改客户VIP字典"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:600px;height:200px;padding:10px;">
-		<form id="updateForm" method="post">
+		<form id="updateVIPForm" method="post">
 			<table align="center">
 				<tr>
 						<td>
@@ -140,25 +140,26 @@
 						<div class="fitem">
 							<label>名称:</label>
 					</td>
-					<td><input  name="name" class="easyui-validatebox" required="true">
+					<td><input  name="dicName" class="easyui-validatebox" required="true">
 						</input>
 						</div></td><td></td><td></td>
 				</tr>
 				<tr>
 					<td><div class="fitem">
-							<label>帮助提示:</label>
-					</td>
-					<td><input name="dicHelp" class="easyui-validatebox" required="true">
-						</div></td>
-					<td><div class="fitem">
 							<label>说明:</label>
 					</td>
-					<td><input name="dicDesc" class="easyui-numberbox" missingMessage="请输入数字." invalidMessage="请输入数字.">
+					<td><input name="dicDesc" class="easyui-validatebox" required="true">
+						</div></td>
+					<td><div class="fitem">
+							<label>帮助提示:</label>
+					</td>
+					<td><input name="dicHelp" class="easyui-validatebox">
+					<!-- required="true" missingMessage="请输入数字." invalidMessage="请输入数字." -->
 						</div></td>
 				</tr>
 				<tr>
-					<td colspan="4s" align="center"><a
-						href="javascript:ZiXinUpdate();" class="easyui-linkbutton"
+					<td colspan="4" align="center"><a
+						href="javascript:VIPUpdate();" class="easyui-linkbutton"
 						iconCls="icon-ok">保存</a> <a href="javascript:closeaddMianBan();"
 						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
 				</tr>
@@ -172,12 +173,12 @@
    	/**
  * 查询按钮
  */
-		function zixinSelectLike(){
-		var opts = $('#dg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
+		function VIPSelectLike(){
+		var opts = $('#dgVIP').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
 			var param = {
-				name: $("#name").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
-				shuoming: $("#shuoming").val() ,
-				tishi : $("#tishi").val(),
+				dicName: $("#dicName").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
+				dicDesc: $("#dicDesc").val() ,
+				dicHelp : $("#dicHelp").val(),
 				page:  opts.pageNumber ,
 				rows:  opts.pageSize
 			};
@@ -188,57 +189,58 @@
 					type : 'POST' ,
 					dataType : 'json' ,
 					success : function(data){
-						$('#dg').datagrid('loadData',data);
+						$('#dgVIP').datagrid('loadData',data);
 					}
 				});
 		}
 		
 
 	   //新增
-		function addZiXin() {
-			$("#addZiXin").dialog("open");
-			$("#addForm").form("clear");
+		function addVIP() {
+			$("#addVIP").dialog("open");
+			$("#addVIPForm").form("clear");
 		}
          
-		function SaveZiXin() {
-			$('#addForm').form('submit', {
-				url : 'fenghuang/saveDic.do?type=4',
+		function SaveVIP() {
+			$('#addVIPForm').form('submit', {
+				url : 'fenghuang/saveDic.do?dicType=4',
 				onSubmit : function() {
 					return $(this).form('validate');
 				},
 				success : function(result) {
 					var result = eval('(' + result + ')');
 					if (result.success) {
-					$('#addZiXin').dialog('close');
+					$('#addVIP').dialog('close');
 						$.messager.alert("保存成功", "保存成功！", "info");
-						 $('#dg').datagrid('reload'); 
+						 $('#dgVIP').datagrid('reload'); 
 					} else {
 						$.messager.alert("保存失败", "保存失败!", "error");
-						$('#dg').datagrid('reload');
+						$('#dgVIP').datagrid('reload');
 					}
 				}
 			});
 		}
 			//关闭
 		function closeEditDic() {
-			$('#addZiXin').dialog('close');
+			$('#addVIP').dialog('close');
 		} 
 	//删除操作要执行的方法
-	function shanchu(){
-	  var row = $("#dg").datagrid("getSelected");
+	function shanchuVIP(){
+	  var row = $("#dgVIP").datagrid("getSelected");
 			if (row) {
 				var param = {
-					"deleteRows" :  row.id
+					"dicNo" :  row.dicNo
 				};
-				if(confirm("确认要删除名称为 “ "+row.name+" ”的客户资信字典吗？")){
+				if(confirm("确认要删除名称为 “ "+row.dicName+" ”的客户资信字典吗？")){
 				$.ajax({
-					url : "fenghuang/deleteDics.do",
+
+					url : "fenghuang/deleteDics.do?",
 					data : param,
 					dataType : "json",
 					success : function(data) {
 						if (data.success) {
 							$.messager.alert("删除成功", "删除成功！", "info");
-							$("#dg").datagrid('reload');
+							$("#dgVIP").datagrid('reload');
 						} else {
 							$.messager.alert("删除失败", "删除失败!", "error");
 						}
@@ -251,11 +253,11 @@
 			}
 	}
 	//按id查询
-		function ZiXinSelectId() {
+		function VIPselectId() {
           //通过主键，查询该操作，并处于编辑状态。 是否打开tab，还是直接弹出window 
-			$("#updateZiXin").dialog("open");
+			$("#updateVIP").dialog("open");
 			//准备回显的数据
-			var row = $("#dg").datagrid("getSelected");
+			var row = $("#dgVIP").datagrid("getSelected");
 			//alert(row.tuanNO);
 		
 			if(row){
@@ -264,12 +266,12 @@
 				};
 				
 				$.ajax({
-					url : "fenghuang/getDictionaryDescs.do",
+					url : "fenghuang/getDictionaryDescs.do?dicNo=dicNo",
 					data : param,
 					dataType : "json",
 					success : function(data) {
 		
-					   $('#updateForm').form('load',data.rows[0]);
+					   $('#updateVIPForm').form('load',data.rows[0]);
 				
 					},
 					error : function() {
@@ -280,7 +282,7 @@
 		}
 		 //修改
 		function ZiXinUpdate() {
-			$("#updateForm").form('submit', {
+			$("#updateVIPForm").form('submit', {
 				url : 'fenghuang/updateDic.do',
 				onSubmit : function() {
 					return $(this).form('validate');
@@ -291,12 +293,12 @@
 					var result = $.parseJSON(data) ;
 
 					if (result.success) {
-					  $("#updateZiXin").dialog('close');
+					  $("#updateVIP").dialog('close');
 						$.messager.alert("修改成功", "修改成功！", "info"); 
-						$("#dg").datagrid('reload');
+						$("#dgVIP").datagrid('reload');
 					} else {
 						$.messager.alert("修改失败", "修改失败!", "error");
-						$("#dg").datagrid('reload');
+						$("#dgVIP").datagrid('reload');
 					}
 				}
 			});
@@ -304,7 +306,7 @@
 		
 		//关闭
 		function closedSearch() {
-			$('#updateZiXin').dialog('close');
+			$('#updateVIP').dialog('close');
 		}
 	
    </script>
