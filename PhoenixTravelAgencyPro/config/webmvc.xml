@@ -97,6 +97,9 @@
     <mvc:view-controller path="fkfssz.do" view-name="F.A.D/fkfssz"/>
     <mvc:view-controller path="shoukuan.do" view-name="F.A.D/shoukuan"/>
     <mvc:view-controller path="querenfukuan.do" view-name="F.A.D/querenfukuan"/>
+    <mvc:view-controller path="tuandui.do" view-name="F.A.D/tuandui"/>
+    <mvc:view-controller path="fukuanshenhe.do" view-name="F.A.D/fukuanshenhe"/>
+    <mvc:view-controller path="yfktj.do" view-name="F.A.D/yfktj"/>
 	<!-- 赵杨的配置 -->
 	<mvc:view-controller path="SanPin_caozuo.do" view-name="SanPin/SanPin_CaoZuo"/>
 	 <!-- 单团中心-->
@@ -185,11 +188,21 @@
 	<!-- 客户中心 -->
 	<mvc:view-controller path="customerInfoList.do" view-name="KeHu/customerInfoList" />
 	<mvc:view-controller path="contactInfoList.do" view-name="KeHu/contactInfoList" />
+	<mvc:view-controller path="customerQuyu.do" view-name="KeHu/customerQuyuKehu" />
+	<mvc:view-controller path="customerXiaoshou.do" view-name="KeHu/customerXiaoshou" />
+	<mvc:view-controller path="customerTuandui.do" view-name="KeHu/customerTuandui" />
+	<mvc:view-controller path="customerDay.do" view-name="KeHu/customerDay" />
+	
+	<mvc:view-controller path="customerGoutong.do" view-name="KeHu/customerGoutong" />
+	<mvc:view-controller path="customerKehuGongxiang.do" view-name="KeHu/customerKehuGongxiang" />
+	<mvc:view-controller path="customerLxrGongXiang.do" view-name="KeHu/customerLxrGongXiang" />	
+	
+	<mvc:view-controller path="customerXiaoshouDaqu.do" view-name="KeHu/customerXiaoshouDaqu" />
 	<mvc:view-controller path="customerVIPDic.do" view-name="KeHu/customerVIPDic" />
 	<mvc:view-controller path="customerZiXinDic.do" view-name="KeHu/customerZiXinDic" />
 	<mvc:view-controller path="customerValueDic.do" view-name="KeHu/customerValueDic" />
-	<mvc:view-controller path="customerCoperLevel.do" view-name="KeHu/customerCoperLevel" />
 	<mvc:view-controller path="customerAreaWeihu.do" view-name="KeHu/customerAreaWeihu" />
+	<mvc:view-controller path="customerCoperLevel.do" view-name="KeHu/customerCoperLevel" />
 	<!-- 客户中心结束 -->
 	<!-- 陈家海的配置结束 -->
 </beans>
