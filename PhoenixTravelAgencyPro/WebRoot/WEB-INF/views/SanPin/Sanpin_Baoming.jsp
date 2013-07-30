@@ -95,28 +95,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </form>
 </div>
 <!-- ----------------------------------------------------基本信息END----------------------------------------------------------------- -->
- <div class="easyui-tabs" style="width:auto;height:auto">
-<div title="团队资料维护" style="padding:10px">
-<table id="dg" class="easyui-datagrid"
-		data-options="url:'fenghuang/getDictionaryDescs.do',border:false,singleSelect:false,fitColumns:true, onClickRow: onClickRow,pageSize:20"
-		pagination="true" toolbar="#tb">
-		<thead>
-			<tr>
-				<th data-options="field:'ck',checkbox:true"></th>
-				<th data-options="field:'dicNo',editor:'text'" width="80">编号</th>
-				<th data-options="field:'dicName',editor:'text'" width="80">名称</th>
-				<th data-options="field:'dicDesc',editor:'text'" width="80">说明</th>
-				<th data-options="field:'dicHelp',editor:'text'" width="80">帮助提示</th>
-				<th data-options="field:'dicSortNo',editor:'numberbox'" width="80">显示顺序</th>
-				<th data-options="field:'dicType',hidden:true"></th>
-				<th data-options="field:'dicId',hidden:true"></th>
-			</tr>
-		</thead>
-	</table>
-	<div id="tb">
-		<a href="javascript:addHangMoshi();" class="easyui-linkbutton"
+	<div id="jibentb">
+		<a href="javascript:addsanpinkehu();" class="easyui-linkbutton"
 			iconCls="icon-add" plain="true">新增</a>&nbsp;&nbsp;|  <a
-			href="javascript:shanchu();" class="easyui-linkbutton"
+			href="javascript:deletesanpinkehu();" class="easyui-linkbutton"
 			iconCls="icon-cut" plain="true">删除</a>&nbsp;&nbsp;|
 		<a href="javascript:getChanges();" class="easyui-linkbutton"
 			iconCls="icon-save" plain="true">保存修改</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -127,103 +109,68 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<a href="javascript:Select();" class="easyui-linkbutton"
 			iconCls="icon-remove" plain="true">报名审批</a>
 	</div>
+	<div id="caozuotb">
+	<a href="javascript:Select();" class="easyui-linkbutton"
+			iconCls="icon-remove" plain="true">转团审批</a>&nbsp;&nbsp;|
+	<a href="javascript:Select();" class="easyui-linkbutton"
+			iconCls="icon-remove" plain="true">退团审批</a>
+	</div>
+	
+<div class="easyui-tabs" style="width:auto;height:auto">
+<div title="团队资料维护" style="padding:10px">
+<table id="dg" class="easyui-datagrid"
+		data-options="url:'fenghuang/customInfoList.do?type=33&tuanNo=${param.tuanNo}',singleSelect:false,fitColumns:true, onClickRow: onClickRow,pageSize:10"
+		pagination="true" toolbar="#jibentb">
+		<thead>
+			<tr>
+				<th data-options="field:'ck',checkbox:true"></th>
+				<th data-options="field:'id'" width="80">编号</th>
+				<th data-options="field:'name',editor:'text'" width="80">姓名</th>
+				<th data-options="field:'sex',editor:'text'">性别</th>
+				<th data-options="field:'sfzn',editor:'text'" width="80">身份证号</th>
+				<th data-options="field:'lxr',editor:'text'" width="80">联系人</th>
+				<th data-options="field:'post',editor:'text'" width="80">职位</th>
+				
+				<th data-options="field:'moblePhone'">电话</th>
+			</tr>
+		</thead>
+	</table>
+
 </div>
-<div title="操作进展" style="padding:10px">
-<ul class="easyui-tree" data-options="url:'../tabs/tree_data1.json',animate:true"></ul>
+<div title="操作进展" style="padding:10px" onclick="shuaxincaozuodg()">
+<table id="caozuodg" class="easyui-datagrid"
+		data-options="url:'fenghuang/baomingshenpiinfo.do?type=33&tuanNo=${param.tuanNo}',singleSelect:false,fitColumns:true,pageSize:10"
+		pagination="true" toolbar="#caozuotb">
+		<thead>
+			<tr>
+				<th data-options="field:'ck',checkbox:true"></th>
+				<th data-options="field:'bmid'" width="20">序号</th>
+				<th data-options="field:'kehuname'" width="20">姓名</th>
+				<th data-options="field:'sex'" width="20">性别</th>
+				<th data-options="field:'zhengjianhao'" width="20">证件号</th>
+				<th data-options="field:'baomingsp'" width="20">报名审批</th>
+				<th data-options="field:'baomingsl'" width="20">报名受理</th>
+				<th data-options="field:'yajinqueren'" width="20">押金确认</th>
+				<th data-options="field:'chupiaoqueren'" width="20">出票确认</th>
+				<th data-options="field:'chutuanqueren'" width="20">出团确认</th>
+				<th data-options="field:'beizhu'" width="20">备注</th>
+				
+
+
+		</thead>
+	</table>
+
 </div>
 <div title="财务情况" style="padding:10px">
-<ul class="easyui-tree" data-options="url:'../tabs/tree_data1.json',animate:true"></ul>
+<ul class="easyui-tree" data-options=""></ul>
 </div>
 </div>
 
 <!-- ----------------------------------------------------TABS 选项卡 END----------------------------------------------------------------- --> 
 
 	
-	<div id="editDic" class="easyui-dialog" title="新增业务字段"
-		data-options="modal:true,closed:true,iconCls:'icon-save'"
-		style="width:500px;height:200px;padding:10px;">
-		<form id="dicFrome" method="post">
-			<table align="left">
-				<tr>
-					<td><div class="fitem">
-							<label>编号:</label>
-					</td>
-					<td><input name="dicNo" class="easyui-validatebox"
-						required="true">
-						</div></td>
-					<td><div class="fitem">
-							<label>名称:</label>
-					</td>
-					<td><input name="dicName" class="easyui-validatebox"
-						required="true">
-						</div></td>
-				</tr>
-				<tr>
-					<td><div class="fitem">
-							<label>帮助提示:</label>
-					</td>
-					<td><input name="dicHelp" class="easyui-validatebox">
-						</div></td>
-					<td><div class="fitem">
-							<label>显示顺序:</label>
-					</td>
-					<td><input name="dicSortNo" class="easyui-numberbox"
-						required="true">
-						</div></td>
-				</tr>
-				<tr>
-					<td colspan="4s" align="center"><a
-						href="javascript:mainBanMoshiSave();" class="easyui-linkbutton"
-						iconCls="icon-ok">保存</a> <a href="javascript:closeEditDic();"
-						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
-				</tr>
-			</table>
-			<input id="dicType" name="dicType" type="hidden">
-		</form>
-	</div>
-	<div id="searchDic" class="easyui-dialog" title="查询业务字段"
-		data-options="modal:true,closed:true,iconCls:'icon-save'"
-		style="width:500px;height:200px;padding:10px;">
-		<form id="searchForm" action="">
-			<table align="left">
-				<tr>
-					<td><div class="fitem">
-							<label>编号:</label>
-					</td>
-					<td><input id="searchDicNo" name="dicNo"
-						class="easyui-validatebox">
-						</div></td>
-					<td><div class="fitem">
-							<label>名称:</label>
-					</td>
-					<td><input id="searchDicName" name="dicName"
-						class="easyui-validatebox">
-						</div></td>
-				</tr>
-				<tr>
-					<td><div class="fitem">
-							<label>帮助提示:</label>
-					</td>
-					<td><input id="searchDicHelp" name="dicHelp"
-						class="easyui-validatebox">
-						</div></td>
-					<td><div class="fitem">
-							<label>显示顺序:</label>
-					</td>
-					<td><input id="searchDicSortNo" name="dicSortNo"
-						class="easyui-numberbox">
-						</div></td>
-				</tr>
-				<tr>
-					<td colspan="4s" align="center"><a
-						href="javascript:searchFormSubmit();" class="easyui-linkbutton"
-						iconCls="icon-ok">查询</a> <a href="javascript:closedSearch();"
-						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
-				</tr>
-			</table>
-			<input id="searchDicType" name="dicType" type="hidden">
-		</form>
-	</div>
+	
+	
 	<script type="text/javascript">
 $(document).ready(function() {
 	load();
@@ -245,6 +192,9 @@ var url = "fenghuang/Sanpinliebiao.do?tuanNo="+'<%=request.getParameter("tuanNo"
 }
 	</script>
 	<script type="text/javascript">
+	function shuaxincaozuodg(){
+		$("#caozuodg").datagrid('reload');
+	}
 		var editIndex = undefined;
 		function endEditing() {
 			if (editIndex == undefined) {
@@ -259,11 +209,12 @@ var url = "fenghuang/Sanpinliebiao.do?tuanNo="+'<%=request.getParameter("tuanNo"
 				return false;
 			}
 		}
-		function addHangMoshi() {
+		function addsanpinkehu() {
 			$("#dg").datagrid("insertRow", {
 				index : 0,
 				row : {
-					dicType : '${param.dicType}'
+					tuanNo : '${param.tuanNo}',
+					type:33
 				}
 			});
 			editIndex = undefined;
@@ -279,21 +230,36 @@ var url = "fenghuang/Sanpinliebiao.do?tuanNo="+'<%=request.getParameter("tuanNo"
 				}
 			}
 		}
+		
+		//时间格式化转换
+		function ChangeDateFormat(cellval) {
+    try {
+        var date = new Date(parseInt(cellval.replace("/Date(", "").replace(")/", ""), 10));
+        var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+        var currentDate = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+        return date.getFullYear() + "-" + month + "-" + currentDate;
+    } catch (e) {
+        return "";
+    }
+}
 		function getChanges() {
 			$('#dg').datagrid('endEdit', editIndex);
 			var rows = $("#dg").datagrid("getChanges");
 			if (rows.length > 0) {
+			
+				
 				var param = {
 					"updateRows" : $.toJSON(rows)
 				};
 				$.ajax({
-					url : "fenghuang/updateDic.do",
+					url : "fenghuang/updateCustom.do",
 					data : param,
 					dataType : "json",
 					success : function(data) {
 						if (data.success) {
 							$.messager.alert("保存成功", "保存成功！", "info");
 							$("#dg").datagrid('reload');
+							$("#caozuodg").datagrid('reload');
 							editIndex = undefined;
 						} else {
 							$.messager.alert("保存失败", "保存失败!", "error");
@@ -307,54 +273,26 @@ var url = "fenghuang/Sanpinliebiao.do?tuanNo="+'<%=request.getParameter("tuanNo"
 
 		}
 
-		function addMianBanMoshi() {
-			$("#editDic").dialog("open");
-			$("#dicFrome").form("clear");
-		}
 
-		function mainBanMoshiSave() {
-			$('#dicFrome').form('submit', {
-				url : 'fenghuang/saveDic.do?dicType=${param.dicType}',
-				onSubmit : function() {
-					return $(this).form('validate');
-				},
-				success : function(result) {
-					var result = eval('(' + result + ')');
-					if (result.success) {
-						$.messager.alert("保存成功", "保存成功！", "info");
-						$('#editDic').dialog('close');
-						$('#dg').datagrid('reload');
-					} else {
-						$.messager.alert("保存失败", "保存失败!", "error");
-						$('#dg').datagrid('reload');
-					}
-				}
-			});
-		}
+		
 
-		function shanchu() {
-			var rows = $("#dg").datagrid("getSelections");
-			if (rows.length > 0) {
-				var param = {
-					"deleteRows" : $.toJSON(rows)
-				};
-				$.ajax({
-					url : "fenghuang/deleteDics.do",
-					data : param,
+		function deletesanpinkehu() {
+		var row = $("#dg").datagrid("getSelected");
+		var url="fenghuang/deleteCustomInfo.do?deleteRow="+row.id;
+		$.ajax({
+					url :url ,
+					data : row.id,
 					dataType : "json",
 					success : function(data) {
-						if (data.success) {
-							$.messager.alert("删除成功", "删除成功！", "info");
-							$("#dg").datagrid('reload');
-						} else {
-							$.messager.alert("删除失败", "删除失败!", "error");
-						}
+					$.messager.alert("删除成功", "删除成功", "info");
+					$("#dg").datagrid("reload");
+					$("#caozuodg").datagrid('reload');
+
 					},
 					error : function() {
-						$.messager.alert("删除失败", "服务器请求失败!", "error");
+						$.messager.alert("查询失败", "服务器请求失败!", "error");
 					}
 				});
-			}
 		}
 		function closeEditDic() {
 			$('#editDic').dialog('close');
@@ -365,16 +303,7 @@ var url = "fenghuang/Sanpinliebiao.do?tuanNo="+'<%=request.getParameter("tuanNo"
 			$("#searchDic").dialog("open");
 			$("#searchForm").form("clear");
 		}
-		function searchFormSubmit() {
-			$("#searchDic").dialog("close");
-			$("#dg").datagrid("load", {
-				dicNo : $("#searchDicNo").val(),
-				dicName : $("#searchDicName").val(),
-				dicHelp : $("#searchDicHelp").val(),
-				dicSortNo : $("#searchDicSortNo").val()
-			});
 
-		}
 
 		function closedSearch() {
 			$('#searchDic').dialog('close');

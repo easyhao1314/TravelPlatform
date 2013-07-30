@@ -41,10 +41,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		pagination="true" toolbar="#tb">
 		<thead>
 			<tr>
-				<th data-options="field:'riid'" width="auto">编号</th>
-				<th data-options="field:'richenganpai'" width="auto">日程安排</th>
-				<th data-options="field:'chengshiid'" width="auto">途径城市ID</th>
-				<th data-options="field:'riid',formatter:onOperateSanpinList" width="10px">操作</th>
+				<th data-options="field:'riid'" width="50px">编号</th>
+				<th data-options="field:'richenganpai'" width="50">日程安排</th>
+				<th data-options="field:'chengshiid'" width="50">途径城市ID</th>
+				<th data-options="field:'riid',formatter:onOperateSanpinList" width="50">操作</th>
 			</tr>
 		</thead>
 	</table>

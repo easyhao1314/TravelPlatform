@@ -21,8 +21,7 @@ public interface ICustomerCenterDao{
 	 * @param kw 关键字
 	 * @return
 	 */
-	public Pagination<CustomerInfo>  getCustomInfoListPaginations(int currentPage,int numPerPage,String kw);
-	
+	public Pagination<CustomerInfo>  getCustomInfoListPaginations(int currentPage,int numPerPage,String tuanNo,String name, String type, String lxr,String moblePhone,String telePhone,String qq,String msn, String daqu, String city, String hzjb, String xiaoshou,String zhtime,String jituan);
 	/**
 	 * 根据城市Id查询城市名称
 	 * @param value
@@ -42,7 +41,7 @@ public interface ICustomerCenterDao{
 	 * @param customInfo
 	 * @return
 	 */
-	public boolean addCustom(CustomerInfo customInfo);
+	public Integer addCustom(CustomerInfo customInfo);
 	
 	/**
 	 * 查询所有客户名称
@@ -82,7 +81,9 @@ public interface ICustomerCenterDao{
 	 * @return
 	 */
 	public boolean updateCustom(CustomerInfo customerInfo);
-
+	// TOD修改销售
+	public boolean updateXiaoshou(CustomerInfo Customer);
+		
 	/**
 	 * 修改联系人信息
 	 * @param contactInfo
@@ -146,4 +147,7 @@ public interface ICustomerCenterDao{
 	public boolean deleteCustomerArea(Integer id);
 
 	public boolean updateCustomerArea(Integer updateRow,String name);
+	
+	public Integer selectmaxid();
+	
 }

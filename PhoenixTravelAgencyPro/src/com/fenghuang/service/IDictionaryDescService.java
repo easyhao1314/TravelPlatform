@@ -34,7 +34,7 @@ public interface IDictionaryDescService {
 	 * @return
 	 * @throws Exception
 	 */
-	public DictionaryDesc getDictionaryDesc(String dicNo) throws Exception;
+	public DictionaryDesc getDictionaryDesc(Integer dicNo) throws Exception;
 	
 	/**
 	 * 根据dicType 查询不同类型字典的条目
@@ -61,7 +61,7 @@ public interface IDictionaryDescService {
 	 * @return
 	 * @throws Exception
 	 */
-     public boolean deleteDictionaryDesc(String dicNo)throws Exception;
+     public boolean deleteDictionaryDesc(Integer dicNo)throws Exception;
 	
      
      public void updateDictionaryDescs(List<DictionaryDesc> dicDescs)throws Exception;

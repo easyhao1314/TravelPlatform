@@ -15,9 +15,12 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.sf.ezmorph.object.DateMorpher;
+import net.sf.json.JSON;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import net.sf.json.JsonConfig;
+import net.sf.json.util.JSONUtils;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -54,8 +57,9 @@ public class CustomerCenterController {
 	 * @param rows
 	 */
 	@RequestMapping("fenghuang/customInfoList.do")
-	public void customInfoList(HttpServletRequest request,HttpServletResponse response,String kw,Integer page,Integer rows){
-		Pagination<CustomerInfo> teams = iCustomerCenterService.getCustomInfoListPaginations(page==null?1:page, rows==null?10:rows,kw);
+	public void customInfoList(HttpServletRequest request,HttpServletResponse response,Integer page,Integer rows,
+			String tuanNo,String name, String type, String lxr,String moblePhone,String telePhone,String qq,String msn, String daqu, String city, String hzjb, String xiaoshou,String zhtime,String jituan){
+		Pagination<CustomerInfo> teams = iCustomerCenterService.getCustomInfoListPaginations(page==null?1:page, rows==null?10:rows,tuanNo,name,type,lxr,moblePhone,telePhone,qq,msn,daqu,city,hzjb,xiaoshou,zhtime,jituan);
 		List<Map<String, Object>> teamsRows = teams.getResultList();
 		Map<String, Object> returnValue = new HashMap<String, Object>();
 		
@@ -77,6 +81,7 @@ public class CustomerCenterController {
 		config.registerJsonValueProcessor(Timestamp.class,new DateJsonValueProcessor("yyyy-MM-dd HH:mm:ss"));
 		//把MAP转换成JSON，返回到前台
 		JSONObject fromObject = JSONObject.fromObject(returnValue,config);
+		System.out.println(fromObject);
 		PrintWriter out =null ;
 		try {
 			out = response.getWriter();
@@ -98,7 +103,7 @@ public class CustomerCenterController {
 		Map<String, Object> result = new HashMap<String, Object>();
 		boolean isSuccess = false;
 		try {
-			isSuccess = iCustomerCenterService.deleteCustom(deleteRow);
+			isSuccess = iCustomerCenterService.deleteCustomById(deleteRow);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}	
@@ -124,51 +129,7 @@ public class CustomerCenterController {
 		result.put("success", isSuccess);
 		return result ; 
 	}
-	
-	/**
-	 * 准备数据：客户名称和城市名， 用于下拉框显示
-	 * @return
-	 */
-	@RequestMapping("/fenghuang/findCustomAndCityName.do")
-	@ResponseBody
-	public Map<String ,Object> selectCustomNameAndCity(){
-		Map<String, Object> result = new HashMap<String, Object>();
-		//所有客户名称
-		List<Map<String,Object>> nameList = iCustomerCenterService.findAllCustomName();
-		//所有城市名称
-		List<Map<String,Object>> cityList = iCustomerCenterService.findAllCityName();
-		//所有省份名称
-		List<Map<String,Object>> provinceList = iCustomerCenterService.findAllProvionceName();
-		result.put("customNames", nameList);
-		result.put("cityNames", cityList);
-		result.put("provinceNames", provinceList);
-		//把MAP转换成JSON，返回到前台
-		JSONObject fromObject = JSONObject.fromObject(result);
-		return fromObject ; 
-	}
-	
-	/**
-	 * 新增联系人信息
-	 * @param contactInfo
-	 * @param nameId
-	 * @return
-	 */
-	@RequestMapping("/fenghuang/addContact.do")
-	@ResponseBody
-	public Map<String ,Object> addContact(CustomerInfo contactInfo){
-		Map<String, Object> result = new HashMap<String, Object>();
-		boolean isSuccess = false ; 
-		try{
-			//根据城市Id查询省份
-			long provinceId = iCustomerCenterService.findProvinceByCityId(contactInfo.getCity());
-			contactInfo.setProvince(provinceId);
-			isSuccess = iCustomerCenterService.addCustom(contactInfo);
-		}catch(Exception e) {
-			e.printStackTrace();
-		}	
-		result.put("success", isSuccess);
-		return result ; 
-	}
+		
 	
 	/**
 	 * 将JSON中NULL数据转换成空字符串
@@ -203,43 +164,44 @@ public class CustomerCenterController {
 		JSONObject fromObject = JSONObject.fromObject(result);
 		return fromObject ; 
 	}
-	
-	
-	
+
 	/**
 	 * 修改客户信息
 	 * @param customerInfo
 	 * @return
 	 */
-	@RequestMapping("/fenghuang/updateCustom.do")
+	@RequestMapping("fenghuang/updateCustom.do")
 	@ResponseBody
-	public Map<String , Object> updateCostom(CustomerInfo customerInfo){
-		Map<String , Object> result = new HashMap<String ,Object>();
+	public Map<String , Object> updateCostom(HttpServletRequest request,
+			HttpServletResponse response,String updateRows){
+		Map<String,Object>  result = new HashMap<String, Object>();
+		 JSONUtils.getMorpherRegistry().registerMorpher( new  DateMorpher( new String[]{
+                 "yyyy-MM-dd HH:mm:ss" ,
+                 "yyyy-MM-dd"
+        })); 
+		JSONArray jsonArray = JSONArray.fromObject(updateRows);
+		List<CustomerInfo> Cust = JSONArray.toList(jsonArray,CustomerInfo.class);
 		boolean isSuccess = false ;
 		try {
-			isSuccess = iCustomerCenterService.updateCustom(customerInfo);
+			isSuccess = iCustomerCenterService.updatekehuzhongxin(Cust);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		result.put("success", isSuccess);
 		return result  ;
 	}
-	
-	
-	/**
-	 * 修改联系人信息
+	/**转移销售
+	 * 
 	 * @param customerInfo
 	 * @return
 	 */
-	@RequestMapping("/fenghuang/updateContact.do")
+	@RequestMapping("fenghuang/updateXiaoshou.do")
 	@ResponseBody
-	public Map<String , Object> updateContact(CustomerInfo contactInfo){
+	public Map<String , Object> updateXiaoshou(CustomerInfo Customer){
 		Map<String , Object> result = new HashMap<String ,Object>();
 		boolean isSuccess = false ;
 		try {
-			long provinceId = iCustomerCenterService.findProvinceByCityId(contactInfo.getCity());
-			contactInfo.setProvince(provinceId);
-			isSuccess = iCustomerCenterService.updateContact(contactInfo);
+			isSuccess = iCustomerCenterService.updateXiaoshou(Customer);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -247,181 +209,6 @@ public class CustomerCenterController {
 		return result  ;
 	}
 	
-	/**
-	 * 客户VIP字典列表
-	 * @param page
-	 * @param rows
-	 * @return
-	 */
-	@RequestMapping("/fenghuang/customerVIPDic.do")
-	@ResponseBody
-	public Map<String,Object> CustomerVIPList(Integer page,Integer rows,String wordprefix){
-		Pagination<TeamProgressStateDictionary> teams = iCustomerCenterService.getCustomVIPListPaginations(wordprefix,page,rows);
-		List<Map<String, Object>> teamsRows = teams.getResultList();
-		
-		Map<String, Object> returnValue = new HashMap<String, Object>();
-		setJsonValueToEmptyString(teamsRows);
-		returnValue.put("total", teams.getTotalRows());
-		returnValue.put("rows", teamsRows);
-		
-		JSONObject fromObject = JSONObject.fromObject(returnValue);
-		
-		return fromObject ;
-	}
 	
-	/**
-	 * 新增客户VIP
-	 */
-	@RequestMapping("/fenghuang/addCustomerVIP.do")
-	@ResponseBody
-	public Map<String , Object> addCustomVIP(@RequestBody TeamProgressStateDictionary team){
-		Map<String ,Object> result = new HashMap<String ,Object>();
-		boolean isSuccess = false ; 
-		try {
-			isSuccess = iCustomerCenterService.addCustomVIP(team);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		result.put("success", isSuccess);
-		return result ;
-	}
 	
-	/**
-	 * 删除客户VIP
-	 * @param deleteRow
-	 * @return
-	 */
-	@RequestMapping("/fenghuang/deleteCustomVIP.do")
-	@ResponseBody
-	public Map<String ,Object> deleteCustomVIP(String deleteRow){
-		Map<String ,Object> result = new HashMap<String, Object>();
-		boolean isSuccess = false ;
-		try {
-			isSuccess = iCustomerCenterService.deleteCustomVIP(deleteRow);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		result.put("success", isSuccess);
-		return result ;
-	}
-	
-	/**
-	 * 修改客户VIP
-	 * @param updateRow
-	 * @param originalTdspNo
-	 * @return
-	 */
-	@RequestMapping("/fenghuang/updateCustomVIP.do")
-	@ResponseBody
-	public Map<String ,Object> updateCustomVIP(String updateRow) {
-		
-		//解决JSON传递到Controller中文乱码问题
-		try {
-			updateRow = URLDecoder.decode(updateRow,"UTF-8");
-		} catch (UnsupportedEncodingException e1) {
-			e1.printStackTrace();
-		}
-		Map<String ,Object> result = new HashMap<String, Object>();
-		JSONArray jsonArray =  JSONArray.fromObject(updateRow);
-		List<TeamProgressStateDictionary>  teamProList = JSONArray.toList(jsonArray, TeamProgressStateDictionary.class);
-		boolean isSuccess = false ;
-		try {
-			iCustomerCenterService.updateCustomVIPs(teamProList);
-			isSuccess =  true ;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		result.put("success", isSuccess);
-		return result ;
-	}
-	
-	/**
-	 * 查询客户VIP
-	 * @param tpsdNo
-	 * @param tpsdName
-	 * @param tpsdHelp
-	 * @param tpsdSort
-	 * @return
-	 */
-	@RequestMapping("fenghuang/searchCustomVIP.do")
-	@ResponseBody
-	public Map<String ,Object> searchCustomVIP(HttpServletRequest request ,String tpsdNo,String tpsdName,String tpsdHelp,String tpsdSort,String wordprefix){
-		List<Map<String, Object>> customVIPs = iCustomerCenterService.searchCustomVIP(tpsdNo,tpsdName,tpsdHelp,tpsdSort,wordprefix);
-		Map<String, Object> returnValue = new HashMap<String, Object>();
-		setJsonValueToEmptyString(customVIPs);
-		returnValue.put("rows", customVIPs);
-		returnValue.put("total",customVIPs.size());
-		
-		JSONObject fromObject = JSONObject.fromObject(returnValue);
-		return fromObject;
-		
-	}
-	
-	/**
-	 * 客户区域维护列表
-	 * @return
-	 */
-	@RequestMapping("fenghuang/customerAreaWeihu")
-	@ResponseBody
-	public Map<String ,Object> customerAreaWeihu(Integer page,Integer rows){
-		Map<String, Object> returnValue = new HashMap<String, Object>();
-		Pagination<CustomerAreaWeihu> customerAreaList = iCustomerCenterService.findAllCustomerAreaWeihu(page,rows);
-		returnValue.put("rows", customerAreaList.getResultList());
-		returnValue.put("total",customerAreaList.getTotalRows());
-		
-		JSONObject fromObject = JSONObject.fromObject(returnValue);
-		return fromObject;
-	}
-	
-	/**
-	 * 新增客户区域维护
-	 * @param ca
-	 * @return
-	 */
-	@RequestMapping("/fenghuang/addCustomerArea")
-	@ResponseBody
-	public Map<String ,Object> addCustomerArea(@RequestBody CustomerAreaWeihu ca){
-		Map<String ,Object> result = new HashMap<String ,Object>() ;
-		boolean isSuccess = false ; 
-		try{
-			isSuccess = iCustomerCenterService.addCustomerArea(ca.getId(),ca.getName());
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		result.put("success", isSuccess);
-		return result ; 
-	}
-	
-	/**
-	 * 删除客户区域维护
-	 * @param deleteRow
-	 * @return
-	 */
-	@RequestMapping("/fenghuang/deleteCustomerArea")
-	@ResponseBody
-	public Map<String ,Object> deleteCustomerArea(Integer deleteRow){
-		Map<String ,Object> result = new HashMap<String ,Object>() ;
-		boolean isSuccess = false ; 
-		try{
-			isSuccess = iCustomerCenterService.deleteCustomerArea(deleteRow);
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		result.put("success", isSuccess);
-		return result ; 
-	}
-	
-	@RequestMapping("/fenghuang/updateCustomerArea")
-	@ResponseBody
-	public Map<String ,Object> updateCustomerArea(@RequestBody CustomerAreaWeihu ca){
-		Map<String ,Object> result = new HashMap<String ,Object>() ;
-		boolean isSuccess = false ; 
-		try{
-			isSuccess = iCustomerCenterService.updateCustomerArea(ca.getId(),ca.getName());
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		result.put("success", isSuccess);
-		return result ; 
-	}
 }

@@ -100,15 +100,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		
 	</div>
-		<div id="mm" class="easyui-menu" style="width:120px;">
-    <div onClick="view(this)" data-options="iconCls:'icon-search'">查看</div>
-    <div onClick="add()" data-options="iconCls:'icon-add'">新增</div>
-    <div onClick="edit()" data-options="iconCls:'icon-edit'">编辑</div>
-    <div onClick="del()" data-options="iconCls:'icon-remove'">删除</div>
-    <div class="menu-sep"></div>
-    <div onClick="print()" data-options="iconCls:'icon-print'">打印</div>
-    <div onClick="reload()" data-options="iconCls:'icon-reload'">刷新</div>
-		</div>
+
 		
 		
 		

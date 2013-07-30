@@ -1,6 +1,7 @@
 package com.fenghuang.dao;
 
 import com.fenghuang.entiey.Richeng;
+import com.fenghuang.entiey.Rixingcheng;
 import com.fenghuang.util.Pagination;
 
 public interface IRichengDao {

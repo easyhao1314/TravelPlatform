@@ -25,7 +25,7 @@
 </head>
 
 <body>
-<div class="easyui-panel" title="客户资信字典查询"
+<div class="easyui-panel" title="销售大区查询"
 		style="height:80px;padding:10px;width:auto;"
 		data-options="closable:false,tools:'#searchpanel'" align="center">
 		<form id="zixinForm">
@@ -35,21 +35,16 @@
 			<td><div class="fitem">
 						<label>名称:</label>
 				</td>
-				<td><input id="dicName" name="dicName" class="easyui-validatebox">
+				<td><input id="name" name="name" class="easyui-validatebox">
 					</div>
 				</td>
 				<td><div class="fitem">
-						<label>说明:</label>
+						<label>大区经理:</label>
 				</td>
-				<td><input id="dicDesc" name="dicDesc" class="easyui-validatebox">
+				<td><input id="shuoming" name="shuoming" class="easyui-validatebox">
 					</div>
 				</td>
-				<td><div class="fitem">
-						<label>帮助提示:</label>
-				</td>
-				<td><input id="dicHelp" name="dicHelp" class="easyui-validatebox">
-					</div>
-				</td>
+				
 				<td>
 					<a href="javascript:zixinSelectLike();" 
 								class="easyui-linkbutton" iconCls="icon-ok">查询</a>
@@ -57,25 +52,24 @@
 							iconCls="icon-undo" onclick="$('#zixinForm').form('clear')">重置</a>
 				</td>
 			</tr>
-			
 		</table>
 		</form>
 	</div>
     <!-- 查询结果展示 -->
     
-	  <div class="easyui-panel" title="客户资信字典列表"
+	  <div class="easyui-panel" title="销售大区列表"
 		style="height:480px;width: auto;">
-		<table id="dgZiXin" class="easyui-datagrid"
-			data-options="url:'fenghuang/getDictionaryDescs.do?dicType=26',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
+		<table id="dg" class="easyui-datagrid"
+			data-options="url:'fenghuang/KehuSelect.do?type=1',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 			  pagination="true" toolbar="#currencyDatagridtoolbar">
 		
 			<thead>
 				<tr>
 				    <th data-options="field:'ck',checkbox:true"></th>
-					<th data-options="field:'dicNo',align:'right'" width="100">编号</th>
-					<th data-options="field:'dicName',align:'right'" width="100" editor="text">名称</th>
-					<th data-options="field:'dicDesc',align:'right'" width="100" editor="text">说明</th>
-					<th data-options="field:'dicHelp',align:'right'" width="100" editor="text">帮助提示</th>
+					<th data-options="field:'id',align:'right'" width="100">编号</th>
+					<th data-options="field:'name',align:'right'" width="100" editor="text">名称</th>
+					<th data-options="field:'shuoming',align:'right'" width="100" editor="text">说明</th>
+					<th data-options="field:'tishi',align:'right'" width="100" editor="text">帮助提示</th>
 				</tr>
 		</thead>
 	</table>
@@ -83,15 +77,15 @@
 	<div id="currencyDatagridtoolbar">
 		     <a href="javascript:addZiXin();" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>  
 		     <a href="javascript:ZiXinSelectId();" class="easyui-linkbutton" iconCls="icon-save"  plain="true">修改</a>
-		     <a href="javascript:shanchueZiXin();" class="easyui-linkbutton" iconCls="icon-cut" plain="true">删除</a>  
+		     <a href="javascript:shanchue();" class="easyui-linkbutton" iconCls="icon-cut" plain="true">删除</a>  
 		</div>   
 	</div>
 	
 	<!-- 新增客户资信字典 -->
-	<div id="addZiXin" class="easyui-dialog" title="新增客户资信字典"
+	<div id="addZiXin" class="easyui-dialog" title="新增销售大区"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:600px;height:200px;padding:10px;">
-		<form id="addZiXinForm" method="post">
+		<form id="addForm" method="post">
 			<table align="center">
 				<tr>
 					<td><div class="fitem">
@@ -101,21 +95,17 @@
 						<td><div class="fitem">
 							<label>名称:</label>
 					</td>
-					<td><input  name="dicName" class="easyui-validatebox" required="true">
+					<td><input  name="name" class="easyui-validatebox" required="true">
 						</input>
 						</div></td>
 				</tr>
 				<tr>
 					<td><div class="fitem">
-							<label>说明:</label>
+							<label>大区经理:</label>
 					</td>
-					<td><input name="sdicDesc" class="easyui-validatebox" required="true">
+					<td><input name="shuoming" class="easyui-validatebox" required="true">
 						</div></td>
-					<td><div class="fitem">
-							<label>帮助提示:</label>
-					</td>
-					<td><input name="dicHelp" class="easyui-numberbox easyui-validatebox" required="true" missingMessage="请输入数字." invalidMessage="请输入数字.">
-						</div></td>
+					
 				</tr>
 				<tr>
 					<td colspan="4s" align="center">
@@ -130,10 +120,10 @@
 	
 	
 		<!-- 修改客户资信字典 -->
-	<div id="updateZiXin" class="easyui-dialog" title="修改客户资信字典"
+	<div id="updateZiXin" class="easyui-dialog" title="修改销售大区字典"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:600px;height:200px;padding:10px;">
-		<form id="updateZiXinForm" method="post">
+		<form id="updateForm" method="post">
 			<table align="center">
 				<tr>
 						<td>
@@ -141,25 +131,20 @@
 						<div class="fitem">
 							<label>名称:</label>
 					</td>
-					<td><input  name="dicName" class="easyui-validatebox" required="true">
+					<td><input  name="name" class="easyui-validatebox" required="true">
 						</input>
-						</div></td>
-						<td></td><td></td>
+						</div></td><td></td><td></td>
 				</tr>
 				<tr>
 					<td><div class="fitem">
-							<label>说明:</label>
+							<label>销售大区:</label>
 					</td>
-					<td><input name="sdicDesc" class="easyui-validatebox" required="true">
+					<td><input name="shuoming" class="easyui-validatebox" required="true">
 						</div></td>
-					<td><div class="fitem">
-							<label>帮助提示:</label>
-					</td>
-					<td><input name="dicHelp" class="easyui-numberbox easyui-validatebox" required="true" missingMessage="请输入数字." invalidMessage="请输入数字.">
-						</div></td>
+					
 				</tr>
 				<tr>
-					<td colspan="4s" align="center"><a
+					<td colspan="4" align="center"><a
 						href="javascript:ZiXinUpdate();" class="easyui-linkbutton"
 						iconCls="icon-ok">保存</a> <a href="javascript:closeaddMianBan();"
 						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
@@ -175,12 +160,11 @@
  * 查询按钮
  */
 		function zixinSelectLike(){
-		var opts = $('#dgZiXin').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
+		var opts = $('#dg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
 			var param = {
-				dicName: $("#dicName").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
-				sdicDesc: $("#sdicDesc").val(),
-				dicHelp : $("#dicHelp").val(),
-				page:  opts.pageNumber,
+				name: $("#name").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
+				shuoming: $("#shuoming").val() ,
+				page:  opts.pageNumber ,
 				rows:  opts.pageSize
 			};
 		
@@ -190,20 +174,21 @@
 					type : 'POST' ,
 					dataType : 'json' ,
 					success : function(data){
-						$('#dgZiXin').datagrid('loadData',data);
+						$('#dg').datagrid('loadData',data);
 					}
 				});
 		}
 		
+
 	   //新增
 		function addZiXin() {
 			$("#addZiXin").dialog("open");
-			$("#addZiXinForm").form("clear");
+			$("#addForm").form("clear");
 		}
          
 		function SaveZiXin() {
-			$('#addZiXinForm').form('submit', {
-				url : 'fenghuang/saveDic.do?dicType=26',
+			$('#addForm').form('submit', {
+				url : 'fenghuang/KehuAdd.do?type=1',
 				onSubmit : function() {
 					return $(this).form('validate');
 				},
@@ -212,10 +197,10 @@
 					if (result.success) {
 					$('#addZiXin').dialog('close');
 						$.messager.alert("保存成功", "保存成功！", "info");
-						 $('#dgZiXin').datagrid('reload'); 
+						 $('#dg').datagrid('reload'); 
 					} else {
 						$.messager.alert("保存失败", "保存失败!", "error");
-						$('#dgZiXin').datagrid('reload');
+						$('#dg').datagrid('reload');
 					}
 				}
 			});
@@ -225,21 +210,21 @@
 			$('#addZiXin').dialog('close');
 		} 
 	//删除操作要执行的方法
-	function shanchuZiXin(){
-	  var row = $("#dgZiXin").datagrid("getSelected");
+	function shanchu(){
+	  var row = $("#dg").datagrid("getSelected");
 			if (row) {
 				var param = {
 					"id" :  row.id
 				};
-				if(confirm("确认要删除名称为 “ "+row.name+" ”的客户资信字典吗？")){
+				if(confirm("确认要删除名称为 “ "+row.name+" ”的销售大区经理吗？")){
 				$.ajax({
-					url : "fenghuang/deleteDics.do?deleteRows=id",
+					url : "fenghuang/kehuDelete.do",
 					data : param,
 					dataType : "json",
 					success : function(data) {
 						if (data.success) {
 							$.messager.alert("删除成功", "删除成功！", "info");
-							$("#dgZiXin").datagrid('reload');
+							$("#dg").datagrid('reload');
 						} else {
 							$.messager.alert("删除失败", "删除失败!", "error");
 						}
@@ -248,7 +233,7 @@
 						$.messager.alert("删除失败", "服务器请求失败!", "error");
 					}
 				});
-				}
+				}s
 			}
 	}
 	//按id查询
@@ -256,7 +241,7 @@
           //通过主键，查询该操作，并处于编辑状态。 是否打开tab，还是直接弹出window 
 			$("#updateZiXin").dialog("open");
 			//准备回显的数据
-			var row = $("#dgZiXin").datagrid("getSelected");
+			var row = $("#dg").datagrid("getSelected");
 			//alert(row.tuanNO);
 		
 			if(row){
@@ -265,12 +250,12 @@
 				};
 				
 				$.ajax({
-					url : "fenghuang/getDictionaryDescs.do?dicNo=id",
+					url : "fenghuang/kehuSelectId.do",
 					data : param,
 					dataType : "json",
 					success : function(data) {
 		
-					   $('#updateZiXinForm').form('load',data.rows[0]);
+					   $('#updateForm').form('load',data.rows[0]);
 				
 					},
 					error : function() {
@@ -281,7 +266,7 @@
 		}
 		 //修改
 		function ZiXinUpdate() {
-			$("#updateZiXinForm").form('submit', {
+			$("#updateForm").form('submit', {
 				url : 'fenghuang/kehuUpdate.do',
 				onSubmit : function() {
 					return $(this).form('validate');
@@ -294,10 +279,10 @@
 					if (result.success) {
 					  $("#updateZiXin").dialog('close');
 						$.messager.alert("修改成功", "修改成功！", "info"); 
-						$("#dgZiXin").datagrid('reload');
+						$("#dg").datagrid('reload');
 					} else {
 						$.messager.alert("修改失败", "修改失败!", "error");
-						$("#dgZiXin").datagrid('reload');
+						$("#dg").datagrid('reload');
 					}
 				}
 			});

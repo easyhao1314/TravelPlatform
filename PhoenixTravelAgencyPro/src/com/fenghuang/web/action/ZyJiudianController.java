@@ -92,15 +92,19 @@ public class ZyJiudianController {
 	@RequestMapping("fenghuang/ZiyuanJiudianAdd.do")
 	@ResponseBody
 	public Map<String,Object> jiudianAdd(HttpServletRequest request,HttpServletResponse response,
-			String chengshi,String name,Long fangjian,String hzjb,String whr,String xjbz,String dianhua,
+			String chengshi,String name,String fangjian,String hzjb,String whr,String xjbz,String dianhua,
 		   String chuanzhen,String email,String guanwang,String dizhi,String pingjia,String tishi,
 		   String danjijia,String wangjijia,String jgsm,String bz){
 		
 		  Jiudian jd=new Jiudian();
 		
+		  if(chengshi !=null &&!"".equals(chengshi)){
 		  jd.setChengshi(Long.parseLong(chengshi));
+		  }
 		  jd.setName(name);
-		  jd.setFangjian(fangjian);
+		  if(fangjian !=null && !"".equals(fangjian)){
+		  jd.setFangjian(Long.parseLong(fangjian));
+		  }
 		  jd.setHzjb(hzjb);
 		  jd.setWhr(whr);
 		  jd.setXjbz(xjbz);
@@ -111,8 +115,12 @@ public class ZyJiudianController {
 		  jd.setDizhi(dizhi);
 		  jd.setPingjia(pingjia);
 		  jd.setTishi(tishi);
+		  if(danjijia!=null && !"".equals(danjijia)){
 		  jd.setDanjijia(Integer.parseInt(danjijia));
+		  }
+		  if(wangjijia!=null && !"".equals(wangjijia)){
 		  jd.setWangjijia(Integer.parseInt(wangjijia));
+		  }
 		  jd.setJgsm(jgsm);
 		  jd.setBz(bz);
 		  

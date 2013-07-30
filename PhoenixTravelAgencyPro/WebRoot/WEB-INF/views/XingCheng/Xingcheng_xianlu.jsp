@@ -62,7 +62,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				         });
    	      }
    	      else{
-   	      	alert("请选择一行要修改的数据");
+   	      	$.messager.alert('信息', '请选择一行要修改的数据', 'info'); 
    	      }
 	}
 	

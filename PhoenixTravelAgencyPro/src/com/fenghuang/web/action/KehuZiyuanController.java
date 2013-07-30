@@ -70,7 +70,7 @@ public class KehuZiyuanController {
 			KuhuZiyuan khzy=new KuhuZiyuan();
 			khzy.setName(name);
 			khzy.setShuoming(shuoming);
-			khzy.setTishi(Integer.parseInt(tishi));
+			khzy.setTishi(tishi);
 			khzy.setType(Integer.parseInt(type));
 			
 			  
@@ -134,7 +134,7 @@ public class KehuZiyuanController {
 			KuhuZiyuan khzy=new KuhuZiyuan();
 			khzy.setName(name);
 			khzy.setShuoming(shuoming);
-			khzy.setTishi(Integer.parseInt(tishi));
+			khzy.setTishi(tishi);
 			
 			  Map<String,Object> result=new HashMap<String,Object>();
 			  boolean bl=false;

@@ -19,8 +19,7 @@ public class RichengDaoImpl extends BaseDao implements IRichengDao  {
 	public RichengDaoImpl(@Qualifier("dataSource") DataSource dataSource){
 		super(dataSource);
 	}
-	@Override
-	public boolean insert(Richeng r) throws Exception {
+	@Override  	public boolean insert(Richeng r) throws Exception {
 		// TODO Auto-generated method stub
 		String sql = "insert into richeng(richenganpai,huodong,jiudian,chengshiid,jiaotong,zao,zhong,wan) values(?,?,?,?,?,?,?,?)";
 		int num = this.update(sql,r.getRichenganpai(),r.getHuodong(),r.getJiudian(),r.getChengshiid(),r.getJiaotong(),r.getZao(),r.getZhong(),r.getWan());
