@@ -49,17 +49,18 @@
 
 				</ul></li>
 				<li iconCls="icon-base" state="closed"><span>财务中心</span>
+					<ul>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('付款审核','fukuanshenhe.do');">付款 审核</a>
+					</li>
+				</ul>
 				<ul>
 					<li iconCls="icon-gears"><a
 						href="javascript:open1('付款审批','a.do');">付款审批</a>
 					</li>
 				</ul>
 				
-				<ul>
-					<li iconCls="icon-gears"><a
-						href="javascript:open1('付款审核','fukuanshenhe.do');">付款 审核</a>
-					</li>
-				</ul>
+			
 				
 				<ul>
 					<li iconCls="icon-gears"><a
@@ -100,7 +101,7 @@
 				</ul>
 				<ul>
 					<li iconCls="icon-gears"><a
-						href="javascript:open1('团队费用列表','sanpin.do');">团队费用列表</a>
+						href="javascript:open1('团队费用列表','tuandui.do');">团队费用列表</a>
 					</li>
 				</ul>
 				<ul>
