@@ -28,27 +28,27 @@
 <div class="easyui-panel" title="客户类别查询"
 		style="height:80px;padding:10px;width:auto;"
 		data-options="closable:false,tools:'#searchpanel'" align="center">
-		<form id="zixinForm">
+		<form id="CoperLevelForm">
 		<table>
 	
 			<tr>
 			<td><div class="fitem">
 						<label>名称:</label>
 				</td>
-				<td><input id="name" name="name" class="easyui-validatebox">
+				<td><input id="dicName" name="dicName" class="easyui-validatebox">
 					</div>
 				</td>
 				<td><div class="fitem">
 						<label>说明:</label>
 				</td>
-				<td><input id="shuoming" name="shuoming" class="easyui-validatebox">
+				<td><input id="dicDesc" name="dicDesc" class="easyui-validatebox">
 					</div>
 				</td>
 				<td><div class="fitem">
 						<label>帮助提示:</label>
 				</td>
-				<td><input id="tishi" name="tishi" class="easyui-validatebox">
-					</div>
+				<td><input id="dicHelp" name="dicHelp" class="easyui-validatebox">
+				</div>				
 				</td>
 				<td>
 					<a href="javascript:zixinSelectLike();" 
@@ -64,43 +64,43 @@
     
 	  <div class="easyui-panel" title="客户类别列表"
 		style="height:480px;width: auto;">
-		<table id="dg" class="easyui-datagrid"
-			data-options="url:'fenghuang/KehuSelect.do?type=4',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
+		<table id="dgCoperLevel" class="easyui-datagrid"
+			data-options="url:'fenghuang/getDictionaryDescsPaginations.do?dicType=28',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 			  pagination="true" toolbar="#currencyDatagridtoolbar">
 		
 			<thead>
 				<tr>
 				    <th data-options="field:'ck',checkbox:true"></th>
-					<th data-options="field:'id',align:'right'" width="100">编号</th>
-					<th data-options="field:'name',align:'right'" width="100" editor="text">名称</th>
-					<th data-options="field:'shuoming',align:'right'" width="100" editor="text">说明</th>
-					<th data-options="field:'tishi',align:'right'" width="100" editor="text">帮助提示</th>
+					<th data-options="field:'dicNo',align:'right'" width="100">编号</th>
+					<th data-options="field:'dicName',align:'right'" width="100" editor="text">名称</th>
+					<th data-options="field:'dicDesc',align:'right'" width="100" editor="text">说明</th>
+					<th data-options="field:'dicHelp',align:'right'" width="100" editor="text">帮助提示</th>
 				</tr>
 		</thead>
 	</table>
 	<!-- 查询结果展示 -->
 	<div id="currencyDatagridtoolbar">
-		     <a href="javascript:addZiXin();" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>  
-		     <a href="javascript:ZiXinSelectId();" class="easyui-linkbutton" iconCls="icon-save"  plain="true">修改</a>
-		     <a href="javascript:shanchue();" class="easyui-linkbutton" iconCls="icon-cut" plain="true">删除</a>  
+		     <a href="javascript:addCoperLevel();" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>  
+		     <a href="javascript:CoperLevelSelectId();" class="easyui-linkbutton" iconCls="icon-save"  plain="true">修改</a>
+		     <a href="javascript:shanchuCoperLevel();" class="easyui-linkbutton" iconCls="icon-cut" plain="true">删除</a>  
 		</div>   
 	</div>
 	
-	<!-- 新增客户资信字典 -->
-	<div id="addZiXin" class="easyui-dialog" title="新增客户类别"
+	<!-- 新增 -->
+	<div id="addCoperLevel" class="easyui-dialog" title="新增客户类别"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:600px;height:200px;padding:10px;">
-		<form id="addForm" method="post">
+		<form id="addCoperLevelForm" method="post">
 			<table align="center">
 				<tr>
 					<td><div class="fitem">
-							<label>编号:</label>
+							<label>编号:</label> 
 					</td>
 					<td>--系统自动生成--</div></td>
 						<td><div class="fitem">
 							<label>名称:</label>
 					</td>
-					<td><input  name="name" class="easyui-validatebox" required="true">
+					<td><input  name="dicName" class="easyui-validatebox" required="true">
 						</input>
 						</div></td>
 				</tr>
@@ -108,137 +108,137 @@
 					<td><div class="fitem">
 							<label>说明:</label>
 					</td>
-					<td><input name="shuoming" class="easyui-validatebox" required="true">
+					<td><input name="dicDesc" class="easyui-validatebox" required="true">
 						</div></td>
 					<td><div class="fitem">
 							<label>帮助提示:</label>
 					</td>
-					<td><input name="tishi" class="easyui-numberbox easyui-validatebox" required="true" missingMessage="请输入数字." invalidMessage="请输入数字.">
+					<td><input name="dicHelp" class="easyui-validatebox" required="true" >
 						</div></td>
 				</tr>
 				<tr>
-					<td colspan="4s" align="center">
-					<a href="javascript:SaveZiXin();" class="easyui-linkbutton"
+					<td colspan="4" align="center">
+					<a href="javascript:SaveCoperLevel();" class="easyui-linkbutton"
 						iconCls="icon-ok">保存</a> <a href="javascript:closeaddMianBan();"
 						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
 				</tr>
 			</table>
 		</form>
 	</div>
-	<!-- 新增客户资信字典结束 -->
+	<!-- 新增结束 -->
 	
-	
-		<!-- 修改客户资信字典 -->
-	<div id="updateZiXin" class="easyui-dialog" title="修改客户类别"
+		<!-- 修改-->
+	<div id="updateCoperLevel" class="easyui-dialog" title="修改客户类别"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:600px;height:200px;padding:10px;">
-		<form id="updateForm" method="post">
+		<form id="updateCoperLevelForm" method="post">
 			<table align="center">
 				<tr>
 						<td>
-						<input id="id" name="id" class="easyui-validatebox" hidden="true">
+						<input id="dicNo" name="dicNo" class="easyui-validatebox" hidden="true">
 						<div class="fitem">
 							<label>名称:</label>
 					</td>
-					<td><input  name="name" class="easyui-validatebox" required="true">
+					<td><input  name="dicName" class="easyui-validatebox" required="true">
 						</input>
-						</div></td><td></td><td></td>
+						</div></td>
+						<td></td><td></td>
 				</tr>
 				<tr>
+					<td><div class="fitem">
+							<label>说明:</label>
+					</td>
+					<td><input name="dicDesc" class="easyui-validatebox" required="true">
+						</div></td>
 					<td><div class="fitem">
 							<label>帮助提示:</label>
 					</td>
-					<td><input name="shuoming" class="easyui-validatebox" required="true">
-						</div></td>
-					<td><div class="fitem">
-							<label>显示顺序:</label>
-					</td>
-					<td><input name="tishi" class="easyui-numberbox easyui-validatebox" required="true" missingMessage="请输入数字." invalidMessage="请输入数字.">
+					<td><input name="dicHelp" class="easyui-validatebox" required="true" missingMessage="请输入数字." invalidMessage="请输入数字.">
 						</div></td>
 				</tr>
 				<tr>
-					<td colspan="4s" align="center"><a
-						href="javascript:ZiXinUpdate();" class="easyui-linkbutton"
+					<td colspan="4" align="center"><a
+						href="javascript:CoperLevelUpdate();" class="easyui-linkbutton"
 						iconCls="icon-ok">保存</a> <a href="javascript:closeaddMianBan();"
 						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
 				</tr>
 			</table>
 		</form>
 	</div>
-	<!-- 修改客户资信字典结束 -->
+	<!-- 修改结束 -->
 	
    <script type="text/javascript">
  
    	/**
  * 查询按钮
  */
-		function zixinSelectLike(){
-		var opts = $('#dg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
+		function CoperLevelSelectLike(){
+		var opts = $('#dgCoperLevel').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
 			var param = {
-				name: $("#name").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
-				shuoming: $("#shuoming").val() ,
-				tishi : $("#tishi").val(),
-				page:  opts.pageNumber ,
+				dicName: $("#dicName").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
+				dicDesc: $("#dicDesc").val(),
+				dicHelp: $("#dicHelp").val(),
+				page:  opts.pageNumber,
 				rows:  opts.pageSize
 			};
 		
 				$.ajax({
-					url : 'fenghuang/kehuSelect.do' ,
+					url : 'fenghuang/getDictionaryDescsPaginations.do?dicType=28' ,
 					data :  param,
 					type : 'POST' ,
 					dataType : 'json' ,
 					success : function(data){
-						$('#dg').datagrid('loadData',data);
+						$('#dgCoperLevel').datagrid('loadData',data);
 					}
 				});
 		}
 		
 
 	   //新增
-		function addZiXin() {
-			$("#addZiXin").dialog("open");
-			$("#addForm").form("clear");
+		function addCoperLevel() {
+			$("#addCoperLevel").dialog("open");
+			$("#addCoperLevelForm").form("clear");
 		}
          
-		function SaveZiXin() {
-			$('#addForm').form('submit', {
-				url : 'fenghuang/KehuAdd.do?type=4',
+		function SaveCoperLevel() {
+			$('#addCoperLevelForm').form('submit', {
+				url : 'fenghuang/saveDic.do?dicType=28',
 				onSubmit : function() {
 					return $(this).form('validate');
 				},
 				success : function(result) {
 					var result = eval('(' + result + ')');
 					if (result.success) {
-					$('#addZiXin').dialog('close');
+					$('#addCoperLevel').dialog('close');
 						$.messager.alert("保存成功", "保存成功！", "info");
-						 $('#dg').datagrid('reload'); 
+						 $('#dgCoperLevel').datagrid('reload'); 
 					} else {
 						$.messager.alert("保存失败", "保存失败!", "error");
-						$('#dg').datagrid('reload');
+						$('#dgCoperLevel').datagrid('reload');
 					}
 				}
 			});
 		}
 			//关闭
 		function closeEditDic() {
-			$('#addZiXin').dialog('close');
+			$('#addCoperLevel').dialog('close');
 		} 
 	//删除操作要执行的方法
-	function shanchu(){
-	  var row = $("#dg").datagrid("getSelected");
+	function shanchuCoperLevel(){
+	  var row = $("#dgCoperLevel").datagrid("getSelected");
 			if (row) {
 				var param = {
-					"id" :  row.id
+					"dicNo" :  row.dicNo
 				};
-				if(confirm("确认要删除名称为 “ "+row.name+" ”的客户类别吗？")){
+				if(confirm("确认要删除名称为 “ "+row.dicName+" ”的客户类别吗？")){
 				$.ajax({
-					url : "fenghuang/kehuDelete.do",
+					url : "fenghuang/deleteDics.do?",
 					data : param,
 					dataType : "json",
 					success : function(data) {
 						if (data.success) {
 							$.messager.alert("删除成功", "删除成功！", "info");
-							$("#dg").datagrid('reload');
+							$("#dgCoperLevel").datagrid('reload');
 						} else {
 							$.messager.alert("删除失败", "删除失败!", "error");
 						}
@@ -247,41 +247,21 @@
 						$.messager.alert("删除失败", "服务器请求失败!", "error");
 					}
 				});
-				}s
+				}
 			}
 	}
 	//按id查询
-		function ZiXinSelectId() {
-          //通过主键，查询该操作，并处于编辑状态。 是否打开tab，还是直接弹出window 
-			$("#updateZiXin").dialog("open");
-			//准备回显的数据
-			var row = $("#dg").datagrid("getSelected");
-			//alert(row.tuanNO);
+		function CoperLevelSelectId() {
 		
-			if(row){
-				var param = {
-					"id" : row.id
-				};
-				
-				$.ajax({
-					url : "fenghuang/kehuSelectId.do",
-					data : param,
-					dataType : "json",
-					success : function(data) {
-		
-					   $('#updateForm').form('load',data.rows[0]);
-				
-					},
-					error : function() {
-						$.messager.alert("查询失败", "服务器请求失败!", "error");
-					}
-				});
-		}
+			var row = $("#dgCoperLevel").datagrid("getSelected");
+			$('#updateCoperLevelForm').form('load',row);
+			$("#updateCoperLevel").dialog("open");
+			
 		}
 		 //修改
-		function ZiXinUpdate() {
-			$("#updateForm").form('submit', {
-				url : 'fenghuang/kehuUpdate.do',
+		function CoperLevelUpdate() {
+			$("#updateCoperLevelForm").form('submit', {
+				url : 'fenghuang/updatedictionary.do?',
 				onSubmit : function() {
 					return $(this).form('validate');
 				},
@@ -291,12 +271,12 @@
 					var result = $.parseJSON(data) ;
 
 					if (result.success) {
-					  $("#updateZiXin").dialog('close');
+					  $("#updateCoperLevel").dialog('close');
 						$.messager.alert("修改成功", "修改成功！", "info"); 
-						$("#dg").datagrid('reload');
+						$("#dgCoperLevel").datagrid('reload');
 					} else {
 						$.messager.alert("修改失败", "修改失败!", "error");
-						$("#dg").datagrid('reload');
+						$("#dgCoperLevel").datagrid('reload');
 					}
 				}
 			});
@@ -304,7 +284,7 @@
 		
 		//关闭
 		function closedSearch() {
-			$('#updateZiXin').dialog('close');
+			$('#updateCoperLevel').dialog('close');
 		}
 	
    </script>

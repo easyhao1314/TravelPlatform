@@ -200,6 +200,7 @@
 	<mvc:view-controller path="customerValueDic.do" view-name="KeHu/customerValueDic" />
 	<mvc:view-controller path="customerAreaWeihu.do" view-name="KeHu/customerAreaWeihu" />
 	<mvc:view-controller path="customerCoperLevel.do" view-name="KeHu/customerCoperLevel" />
+	<mvc:view-controller path="customerHezuojibie.do" view-name="KeHu/customerHezuojibie" />
 	<!-- 客户中心结束 -->
 	<!-- 陈家海的配置结束 -->
 </beans>
