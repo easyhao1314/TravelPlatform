@@ -1,5 +1,6 @@
 package com.fenghuang.web.action;
 
+import java.io.UnsupportedEncodingException;
 import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
@@ -27,11 +28,12 @@ public class approvalAction {
 	@Autowired
 	private IApprovalService is;
 	
-	@RequestMapping("fenghuang/tuituan.do")
+	@RequestMapping("fenghuang/Approvalinfo.do")
 	@ResponseBody
 	public Map<String,Object> DantuanXunjia(HttpServletRequest request,
 			HttpServletResponse response, Integer page,Integer rows
 			) {
+		
 		try {
 			Approval a= new Approval();
 			Pagination<Approval> pagination=(Pagination<Approval>)is.getByQueryConditionPagination(page, rows, a);
@@ -58,5 +60,55 @@ public class approvalAction {
 		
 		return null;
 
+	}
+	
+	@RequestMapping("fenghuang/addApproval.do")
+	@ResponseBody
+	public Map<String,Object> DantuanXunjia(HttpServletRequest request,
+			HttpServletResponse response,String shiwu,String shenqingren,String shenpiren,String beizhu,String approvaltype
+			,String tuanNo){
+		Approval a = new Approval();
+		//中文转码
+		try {
+			if(tuanNo!=null && !"".equals(tuanNo)){
+				String t = new String(tuanNo.getBytes("ISO-8859-1"),"UTF-8");
+				a.setApprovaltuanNo(t);
+			}
+			if(shiwu!=null && !"".equals(shiwu)){
+			String sw = new String(shiwu.getBytes("ISO-8859-1"),"UTF-8");
+			a.setShiwu(sw);
+			}
+			if(approvaltype!=null && !"".equals(approvaltype)){
+				a.setShenpitype(Integer.parseInt(approvaltype));
+			}
+			if(beizhu!=null && !"".equals(beizhu)){
+				String bz = new String(beizhu.getBytes("ISO-8859-1"),"UTF-8");
+				a.setBeizhu(bz);
+			}
+			if(shenqingren!=null && !"".equals(shenqingren)){
+				a.setShenqingren(Long.parseLong(shenqingren));
+			}
+			if(shenpiren!=null && !"".equals(shenpiren)){
+				a.setShenheren(Long.parseLong(shenpiren));
+			}
+			
+			
+			
+		} catch (UnsupportedEncodingException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		boolean isSuccess = false;
+		Map<String,Object> result = new HashMap<String, Object>();
+		try {
+			is.ApprovalAdd(a);
+			isSuccess=true;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			isSuccess=false;
+			e.printStackTrace();
+		}
+		result.put("success", isSuccess);
+		return result;
 	}
 }

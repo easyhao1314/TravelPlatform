@@ -8,7 +8,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">
-    
     <title>报名确认受理 </title>
     
 	<meta http-equiv="pragma" content="no-cache">
@@ -112,7 +111,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div id="caozuotb">
 	<a href="javascript:Select();" class="easyui-linkbutton"
 			iconCls="icon-remove" plain="true">转团审批</a>&nbsp;&nbsp;|
-	<a href="javascript:Select();" class="easyui-linkbutton"
+	<a href="javascript:sanpintuituan(4);" class="easyui-linkbutton"
 			iconCls="icon-remove" plain="true">退团审批</a>
 	</div>
 	
@@ -170,7 +169,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 	
 	
-	
+	<!-- 填充fromLoad -->
 	<script type="text/javascript">
 $(document).ready(function() {
 	load();
@@ -308,6 +307,41 @@ var url = "fenghuang/Sanpinliebiao.do?tuanNo="+'<%=request.getParameter("tuanNo"
 		function closedSearch() {
 			$('#searchDic').dialog('close');
 		}
+		
+		
 	</script>
+  	<script type="text/javascript">
+  	function sanpintuituan(approvaltype){
+			var row = $("#caozuodg").datagrid("getSelected");
+			alert(row.kehuname);
+			var param = {
+					"shiwu" : "用户角色"+"提交",
+					"shenqingren" : 1,
+					"shenpiren" : 1,
+					"beizhu" : "测试",
+					"approvaltype" : approvaltype,
+					"tuanNo" : '${param.tuanNo}'
+				};
+			$.ajax({
+					url : "fenghuang/addApproval.do",
+					data : param,
+					dataType : "json",
+					success : function(data) {
+						if (data.success) {
+							$.messager.alert("保存成功", "保存成功！", "info");
+							$("#dg").datagrid('reload');
+							$("#caozuodg").datagrid('reload');
+							editIndex = undefined;
+						} else {
+							$.messager.alert("保存失败", "保存失败!", "error");
+						}
+					},
+					error : function() {
+						$.messager.alert("保存失败", "服务器请求失败!", "error");
+					}
+				});
+			
+		}
+  	</script>
   </body>
 </html>

@@ -1,5 +1,8 @@
 package com.fenghuang.dao.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,13 +25,19 @@ public class ApprovalDaoImpl extends BaseDao implements IapprovalDao {
 	@Override
 	public boolean ApprovalAdd(Approval a) throws Exception {
 		// TODO Auto-generated method stub
-		
-		return false;
+		a.setShenqingDate(new java.util.Date());
+		String sql="insert into Approval(shenqingDate,shiwu,shenqingren,shenheren,approvalStatus,shenpiDate,beizhu,shenpitype,approvaltuanNo) values(?,?,?,?,?,?,?,?,?)";
+		int num =this.update(sql,a.getShenqingDate(),a.getShiwu(),a.getShenqingren(),a.getShenheren(),a.getApprovalStatus(),a.getShenpiDate(),a.getBeizhu(),a.getShenpitype(),a.getApprovaltuanNo());
+		return num>0;
 	}
 
 	@Override
 	public boolean ApprovalUpdate(Approval a) throws Exception {
 		// TODO Auto-generated method stub
+		String sql="";
+		StringBuffer sb = new StringBuffer(sql);
+		List l = new ArrayList();
+		
 		return false;
 	}
 

@@ -8,49 +8,48 @@ import java.util.*;
 
 /** 单团散拼审批表
  * 
- * @pdOid 28fb2cb2-7956-441a-8781-46e792b48f17 */
+ * @pdOid f2232751-995f-4890-a04a-39937e09dde3 */
 public class Approval {
-   /** @pdOid 2e2d49ae-8a29-403c-8ca6-6113f20d4e2f */
-   private int attribute8;
-   
    /** 审批自增列
     * 
-    * @pdOid 524b2645-7e84-4987-85d2-a2d7b97abd85 */
+    * @pdOid 4122af54-f1c5-4e2b-9384-29c1b881039f */
    public long approvalNo;
    /** 申请日期
     * 
-    * @pdOid 8ccb348f-f79c-463a-ad14-19c9b68b34ce */
+    * @pdOid e4f6c72a-c155-4ae8-8c31-6a18d3242649 */
    public java.util.Date shenqingDate;
    /** 事物说明
     * 
-    * @pdOid 84dcfe90-20a3-4ea0-90e0-210261544566 */
+    * @pdOid 8dd3dd58-2079-49dd-9d0b-43fe1f18866a */
    public java.lang.String shiwu;
    /** 申请人
     * 
-    * @pdOid 1c067f5e-a0ca-4d9b-a0cd-fc0d1161cc74 */
+    * @pdOid 318bb592-6f36-44a7-aca4-8dc26d7f8a62 */
    public long shenqingren;
    /** 审核人
     * 
-    * @pdOid 12c1ddb8-c5e1-4a02-8859-a960cac1a373 */
+    * @pdOid ae35205f-3d23-439e-a3a4-ccd1c758a5cb */
    public long shenheren;
    /** 审批状态
     * 
-    * @pdOid 5d0f0611-7f6b-4ebb-9e28-99caaf6e5320 */
+    * @pdOid 5068fba2-f3b9-4579-b74c-64238762d72d */
    public int approvalStatus;
    /** 审批日期
     * 
-    * @pdOid 48aa3081-2415-41af-9646-89fd93a61e97 */
+    * @pdOid a94c3836-5fae-45d6-bbf8-55f481380df9 */
    public java.util.Date shenpiDate;
    /** 备注
     * 
-    * @pdOid ea938324-ddcb-440e-997c-854de4f820d2 */
+    * @pdOid 90d3af61-4ce0-4438-84e8-bff4bc9d163a */
    public java.lang.String beizhu;
-public int getAttribute8() {
-	return attribute8;
-}
-public void setAttribute8(int attribute8) {
-	this.attribute8 = attribute8;
-}
+   /** 审批类型 1、退团审批    2、转团审批    3、报名审批
+    * 
+    * @pdOid 3c2fa4e4-197b-45ef-a04a-aae03f29a2db */
+   public int shenpitype;
+   /** 申请的团
+    * 
+    * @pdOid e441579d-7c67-4a7c-83f3-f190050419f3 */
+   public java.lang.String approvaltuanNo;
 public long getApprovalNo() {
 	return approvalNo;
 }
@@ -99,5 +98,17 @@ public java.lang.String getBeizhu() {
 public void setBeizhu(java.lang.String beizhu) {
 	this.beizhu = beizhu;
 }
-
+public int getShenpitype() {
+	return shenpitype;
+}
+public void setShenpitype(int shenpitype) {
+	this.shenpitype = shenpitype;
+}
+public java.lang.String getApprovaltuanNo() {
+	return approvaltuanNo;
+}
+public void setApprovaltuanNo(java.lang.String approvaltuanNo) {
+	this.approvaltuanNo = approvaltuanNo;
+}
+   
 }

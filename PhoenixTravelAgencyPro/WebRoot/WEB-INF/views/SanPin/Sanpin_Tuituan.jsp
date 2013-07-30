@@ -25,7 +25,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
   
 	
-
 	
 	 <div id="tb">
 		<a href="" class="easyui-linkbutton"
@@ -35,34 +34,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
   
 <table id="dg" class="easyui-datagrid"
-		data-options="url:'fenghuang/tuituan.do',border:false,singleSelect:false,fit:true,fitColumns:true, onClickRow: onClickRow"
+		data-options="url:'fenghuang/Approvalinfo.do',border:false,singleSelect:true,fit:true,fitColumns:true"
 		pagination="true" toolbar="#tb">
 		<thead>
 			<tr>
-				<th data-options="field:'ck',checkbox:true">选中</th>
+				<th data-options="field:'ck',checkbox:true"></th>
 				<th data-options="field:'shenqingDate'" width="50">申请日期</th>
 				<th data-options="field:'shiwu'" width="50">事务</th>
 				<th data-options="field:'shenqingren'" width="50">申请人</th>
 				<th data-options="field:'shenpiDate'" width="50">审批日期</th>
 				<th data-options="field:'shenheren'" width="50">审核人</th>
+				<th data-options="field:'approvalStatus'" width="50">审批状态</th>
+				<th data-options="field:'shenpitype'" width="50">审批类型</th>
+				<th data-options="field:'approvaltuanNo'" width="50">申请团号</th>
 				<th data-options="field:'beizhu'" width="50">备注</th>
-				<th data-options="field:'shenqingDate',hidden:true" width="50">审批号</th>
 			</tr>
 		</thead>
 	</table>
 	
 	<script type="text/javascript">
-		function onClickRow(index) {
-			if (editIndex != index) {
-				if (endEditing()) {
-					$('#dg').datagrid('selectRow', index).datagrid('beginEdit',
-							index);
-					editIndex = index;
-				} else {
-					$('#dg').datagrid('selectRow', editIndex);
-				}
-			}
-		}
+
 	</script>
   
   
