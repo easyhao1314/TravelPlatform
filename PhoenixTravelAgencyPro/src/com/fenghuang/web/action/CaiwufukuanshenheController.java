@@ -24,28 +24,33 @@ import com.fenghuang.util.DateJsonValueProcessor;
 import com.fenghuang.util.Pagination;
 
 @Controller
-public class CaiwuqrfkController {
+public class CaiwufukuanshenheController {
 	@Autowired 
 	private IcaiwuskqrSerice icaiwuskqrSerice;
-	@RequestMapping("fenghuang/caiwuqrfkselect.do")
+	@RequestMapping("fenghuang/fukuanshenhe.do")
 	@ResponseBody
 	public Map<String, Object> getCurrencyList(HttpServletRequest request,
 			HttpServletResponse response,HttpSession session,Integer page, Integer rows,String team,String caozuo,String caiwuid,
             String id) {
-		   Tuanbiao tuanbiao = new Tuanbiao();
+		 Tuanbiao tuanbiao = new Tuanbiao();
+		 
 		    try {
+		    	 if(id!=null && !"".equals(id)){
+			    	 tuanbiao.setId(Long.parseLong(id));
+			     }
+				 
 		    	if(team!=null&&!"".equals(team)){
 		    		tuanbiao.setTeam(Integer.parseInt(team));
 		    	}
 		    	if(caiwuid!=null&&!"".equals(caiwuid)){
 		    		tuanbiao.setCaiwuid(Integer.parseInt(caiwuid));
+		    	}else{
+		    		tuanbiao.setCaiwuid(1);
 		    	}
 		    	if(caozuo!=null&&!"".equals(caozuo)){
 		    		tuanbiao.setCaozuo(caozuo);
 		    	}
-			 if(id!=null && !"".equals(id)){
-		    	 tuanbiao.setId(Long.parseLong(id));
-		     }
+			
 			if(page==null){
 		    	 page=1;
 		     }
@@ -77,16 +82,18 @@ public class CaiwuqrfkController {
 	        return null;
 	}
 	
-	@RequestMapping("fenghuang/updateqrfk.do")
+	@RequestMapping("fenghuang/updatefksh.do")
 	@ResponseBody
 	public Map<String,Object> xiugai(HttpServletRequest request,
 			HttpServletResponse response,String caiwuid,String id){
 		Map<String, Object> result = new HashMap<String, Object>();
+	
 		boolean isSuccess = false;
 		Tuanbiao tuanbiao = new Tuanbiao();
 		
 		tuanbiao.setCaiwuid(Integer.parseInt(caiwuid));
 		tuanbiao.setId(Integer.parseInt(id));
+		
 		try {
 			isSuccess = icaiwuskqrSerice.updateskqr(tuanbiao);
 			isSuccess=true;
