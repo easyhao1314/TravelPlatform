@@ -103,73 +103,10 @@
 			<input id="dicType" name="dicType" type="hidden">
 		</form>
 	</div>
-	<div id="searchDic" class="easyui-dialog" title="查询业务字段"
-		data-options="modal:true,closed:true,iconCls:'icon-save'"
-		style="width:500px;height:200px;padding:10px;">
-		<form id="searchForm" action="">
-			<table align="left">
-				<tr>
-					<td><div class="fitem">
-							<label>编号:</label>
-					</td>
-					<td><input id="searchDicNo" name="dicNo"
-						class="easyui-validatebox">
-						</div></td>
-					<td><div class="fitem">
-							<label>名称:</label>
-					</td>
-					<td><input id="searchDicName" name="dicName"
-						class="easyui-validatebox">
-						</div></td>
-				</tr>
-				<tr>
-					<td><div class="fitem">
-							<label>帮助提示:</label>
-					</td>
-					<td><input id="searchDicHelp" name="dicHelp"
-						class="easyui-validatebox">
-						</div></td>
-					<td><div class="fitem">
-							<label>显示顺序:</label>
-					</td>
-					<td><input id="searchDicSortNo" name="dicSortNo"
-						class="easyui-numberbox">
-						</div></td>
-				</tr>
-				<tr>
-					<td colspan="4s" align="center"><a
-						href="javascript:searchFormSubmit();" class="easyui-linkbutton"
-						iconCls="icon-ok">查询</a> <a href="javascript:closedSearch();"
-						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
-				</tr>
-			</table>
-			<input id="searchDicType" name="dicType" type="hidden">
-		</form>
-	</div>
+	
 	<script type="text/javascript">
-		var editIndex = undefined;
-		function endEditing() {
-			if (editIndex == undefined) {
-				return true
-			}
-			if ($('#dg').datagrid('validateRow', editIndex)) {
-				$('#dg').datagrid('endEdit', editIndex);
-				$('#dg').datagrid('unselectRow', editIndex);
-				editIndex = undefined;
-				return true;
-			} else {
-				return false;
-			}
-		}
-		function addHangMoshi() {
-			$("#dg").datagrid("insertRow", {
-				index : 0,
-				row : {
-					dicType : '${param.dicType}'
-				}
-			});
-			editIndex = undefined;
-		}
+		
+		
 		function onClickRow(index) {
 			if (editIndex != index) {
 				if (endEditing()) {
@@ -181,106 +118,10 @@
 				}
 			}
 		}
-		function getChanges() {
-			$('#dg').datagrid('endEdit', editIndex);
-			var rows = $("#dg").datagrid("getChanges");
-			if (rows.length > 0) {
-				var param = {
-					"updateRows" : $.toJSON(rows)
-				};
-				$.ajax({
-					url : "fenghuang/updateDic.do",
-					data : param,
-					dataType : "json",
-					success : function(data) {
-						if (data.success) {
-							$.messager.alert("保存成功", "保存成功！", "info");
-							$("#dg").datagrid('reload');
-							editIndex = undefined;
-						} else {
-							$.messager.alert("保存失败", "保存失败!", "error");
-						}
-					},
-					error : function() {
-						$.messager.alert("保存失败", "服务器请求失败!", "error");
-					}
-				});
-			}
+	
 
-		}
-
-		function addMianBanMoshi() {
-			$("#editDic").dialog("open");
-			$("#dicFrome").form("clear");
-		}
-
-		function mainBanMoshiSave() {
-			$('#dicFrome').form('submit', {
-				url : 'fenghuang/saveDic.do?dicType=${param.dicType}',
-				onSubmit : function() {
-					return $(this).form('validate');
-				},
-				success : function(result) {
-					var result = eval('(' + result + ')');
-					if (result.success) {
-						$.messager.alert("保存成功", "保存成功！", "info");
-						$('#editDic').dialog('close');
-						$('#dg').datagrid('reload');
-					} else {
-						$.messager.alert("保存失败", "保存失败!", "error");
-						$('#dg').datagrid('reload');
-					}
-				}
-			});
-		}
-
-		function shanchu() {
-			var rows = $("#dg").datagrid("getSelections");
-			if (rows.length > 0) {
-				var param = {
-					"deleteRows" : $.toJSON(rows)
-				};
-				$.ajax({
-					url : "fenghuang/deleteDics.do",
-					data : param,
-					dataType : "json",
-					success : function(data) {
-						if (data.success) {
-							$.messager.alert("删除成功", "删除成功！", "info");
-							$("#dg").datagrid('reload');
-						} else {
-							$.messager.alert("删除失败", "删除失败!", "error");
-						}
-					},
-					error : function() {
-						$.messager.alert("删除失败", "服务器请求失败!", "error");
-					}
-				});
-			}
-		}
-		function closeEditDic() {
-			$('#editDic').dialog('close');
-		} 
-
-		//
-		function searchDiJi() {
-			$("#searchDic").dialog("open");
-			$("#searchForm").form("clear");
-		}
-		function searchFormSubmit() {
-			$("#searchDic").dialog("close");
-			$("#dg").datagrid("load", {
-				dicNo : $("#searchDicNo").val(),
-				dicName : $("#searchDicName").val(),
-				dicHelp : $("#searchDicHelp").val(),
-				dicSortNo : $("#searchDicSortNo").val()
-			});
-
-		}
-
-		function closedSearch() {
-			$('#searchDic').dialog('close');
-		}
+		
+	
 	</script>
 </body>
 </html>

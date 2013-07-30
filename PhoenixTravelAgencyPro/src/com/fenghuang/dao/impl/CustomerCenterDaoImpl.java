@@ -16,7 +16,11 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.PreparedStatementSetter;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import com.fenghuang.dao.BaseDao;
@@ -27,6 +31,8 @@ import com.fenghuang.entiey.DictionaryDesc;
 import com.fenghuang.entiey.ProvinceSettingDictionary;
 import com.fenghuang.entiey.TeamProgressStateDictionary;
 import com.fenghuang.util.Pagination;
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.Statement;
 
 /**
  * @author 陈家海
@@ -131,14 +137,22 @@ public class CustomerCenterDaoImpl extends BaseDao implements
 	}
 
 	@Override
-	public boolean addCustom(final CustomerInfo customerInfo) {
-		String sql = "INSERT INTO customerinfo(tuanNo,name,city,daqu,lxr,post,age,sex,address,moblePhone,telePhone,qq,msn,email,chuanzhen,sfzn,jituan,hzjb,cjtime,zhtime,lxrs,bz,type) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+	public Integer addCustom(final CustomerInfo customerInfo) {
 		
-		int count = this.update(sql, new PreparedStatementSetter() {
-			SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:MM:SS");
-			String str=sdf.format(new Date());
-			@Override			
-			public void setValues(PreparedStatement ps) throws SQLException {
+		 KeyHolder keyHolder = new GeneratedKeyHolder();
+		 //JdbcTemplate 
+		  //这个Dao 本身就继承子 JdbcTemplate CustomerCenterDaoImpl extends BaseDao
+		 //BaseDao extends JdbcTemplate
+		 //所以this就是  JdbcTemplate。   哈哈！ 行了  下面的自己按照论坛上的操作吧
+		 this.update(new PreparedStatementCreator(){
+			 SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+				String str=sdf.format(new Date());
+			@Override
+			public PreparedStatement createPreparedStatement(
+					java.sql.Connection con) throws SQLException {
+				// TODO Auto-generated method stub
+				 String sql = "INSERT INTO customerinfo(tuanNo,name,city,daqu,lxr,post,age,sex,address,moblePhone,telePhone,qq,msn,email,chuanzhen,sfzn,jituan,hzjb,cjtime,zhtime,lxrs,bz,type) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				PreparedStatement ps = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);  
 				ps.setString(1, customerInfo.getTuanNo());
 				ps.setString(2, customerInfo.getName());
 				ps.setLong(3, customerInfo.getCity());
@@ -162,14 +176,49 @@ public class CustomerCenterDaoImpl extends BaseDao implements
 				ps.setInt(21, customerInfo.getLxrs());
 				ps.setString(22, customerInfo.getBz());
 				ps.setInt(23, customerInfo.getType());
+				return ps;
 			}
+		 }, keyHolder);
+		 System.out.println(keyHolder.getKey().intValue());
+		 return keyHolder.getKey().intValue();
+		
+		
+		
+		
+//		 String sql = "INSERT INTO customerinfo(tuanNo,name,city,daqu,lxr,post,age,sex,address,moblePhone,telePhone,qq,msn,email,chuanzhen,sfzn,jituan,hzjb,cjtime,zhtime,lxrs,bz,type) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+//		int count = this.update(sql, new PreparedStatementSetter() {
+//			SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+//			String str=sdf.format(new Date());
+//			@Override			
+//			public void setValues(PreparedStatement ps) throws SQLException {
+//				ps.setString(1, customerInfo.getTuanNo());
+//				ps.setString(2, customerInfo.getName());
+//				ps.setLong(3, customerInfo.getCity());
+//				ps.setLong(4, customerInfo.getDaqu());
+//				ps.setString(5, customerInfo.getLxr());
+//				ps.setString(6, customerInfo.getPost());
+//				ps.setString(7, customerInfo.getAge());
+//				ps.setLong(8, customerInfo.getSex());
+//				ps.setString(9, customerInfo.getAddress());
+//				ps.setString(10, customerInfo.getMoblePhone());
+//				ps.setString(11, customerInfo.getTelePhone());
+//				ps.setString(12, customerInfo.getQq());
+//				ps.setString(13, customerInfo.getMsn());
+//				ps.setString(14, customerInfo.getEmail());
+//				ps.setString(15, customerInfo.getChuanzhen());
+//				ps.setString(16, customerInfo.getSfzn());
+//				ps.setString(17, customerInfo.getJituan());
+//				ps.setInt(18, customerInfo.getHzjb());
+//				ps.setString(19, str);
+//				ps.setString(20, str);
+//				ps.setInt(21, customerInfo.getLxrs());
+//				ps.setString(22, customerInfo.getBz());
+//				ps.setInt(23, customerInfo.getType());
+//			}
 
-			private Date Timestamp(long time) {
-				// TODO Auto-generated method stub
-				return null;
-			}
-		});
-		return count>0;
+
+
+		
 	}
 
 	@Override
@@ -295,6 +344,15 @@ public class CustomerCenterDaoImpl extends BaseDao implements
 	public boolean updateCustomerArea(Integer updateRow, String name) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public Integer selectmaxid() {
+		// TODO Auto-generated method stub
+		String sql="select id from customerinfo where id =(select max(id) from customerinfo)";
+		int int1 = this.queryForInt(sql);
+		
+		return int1;
 	}	
 	
 }

@@ -25,9 +25,14 @@ public class BaomingshenpiDaoimpl extends BaseDao implements IBaomingshenpiDao {
 	public Pagination<Baomingshenpi> baominginfo(int page,int rows,Baomingshenpi b,String tuanNo,Integer type)
 			throws Exception {
 		// TODO Auto-generated method stub
-		String sql="select * from baomingshenpi as b INNER JOIN customerinfo as c on b.kehuid=c.id WHERE 1=1";
+		String sql="select bmid,kehuid,baomingsp,baomingsl,yajinqueren,chupiaoqueren,chutuanqueren,beizhu,kehuname,b.sex,zhengjianhao from baomingshenpi as b INNER JOIN customerinfo as c on b.kehuid=c.id WHERE 1=1 ";
 		StringBuffer sb = new StringBuffer(sql);
-		
+		if(tuanNo!=null && !"".equals(tuanNo)){
+			sb.append(" AND c.tuanNo='"+tuanNo+"'");
+		}
+		if(type!=0){
+			sb.append(" AND c.type='"+type+"'");
+		}
 		return this.getPagination(page, rows, sb.toString());
 	}
 
@@ -52,7 +57,9 @@ public class BaomingshenpiDaoimpl extends BaseDao implements IBaomingshenpiDao {
 	@Override
 	public boolean deletebaoming(Baomingshenpi b) throws Exception {
 		// TODO Auto-generated method stub
-		return false;
+		String sql="delete from baomingshenpi where 1=1 kehuid=?";
+		int num = this.update(sql,b.getKehuid());
+		return num>0;
 	}
 
 }

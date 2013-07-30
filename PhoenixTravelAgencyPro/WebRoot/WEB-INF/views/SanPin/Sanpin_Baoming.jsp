@@ -95,27 +95,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </form>
 </div>
 <!-- ----------------------------------------------------基本信息END----------------------------------------------------------------- -->
- <div class="easyui-tabs" style="width:auto;height:auto">
-<div title="团队资料维护" style="padding:10px">
-<table id="dg" class="easyui-datagrid"
-		data-options="url:'fenghuang/customInfoList.do?type=33&tuanNo=${param.tuanNo}',border:false,singleSelect:false,fitColumns:true, onClickRow: onClickRow,pageSize:20"
-		pagination="true" toolbar="#tb">
-		<thead>
-			<tr>
-				<th data-options="field:'ck',checkbox:true"></th>
-				<th data-options="field:'id'" width="80">编号</th>
-				<th data-options="field:'name',editor:'text'" width="80">姓名</th>
-				<th data-options="field:'sex',editor:'text'">性别</th>
-				<th data-options="field:'sfzn',editor:'text'" width="80">身份证号</th>
-				
-				<th data-options="field:'lxr',editor:'text'" width="80">联系人</th>
-				<th data-options="field:'post',editor:'text'" width="80">职位</th>
-				
-				<th data-options="field:'moblePhone'">电话</th>
-			</tr>
-		</thead>
-	</table>
-	<div id="tb">
+	<div id="jibentb">
 		<a href="javascript:addsanpinkehu();" class="easyui-linkbutton"
 			iconCls="icon-add" plain="true">新增</a>&nbsp;&nbsp;|  <a
 			href="javascript:deletesanpinkehu();" class="easyui-linkbutton"
@@ -129,9 +109,57 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<a href="javascript:Select();" class="easyui-linkbutton"
 			iconCls="icon-remove" plain="true">报名审批</a>
 	</div>
+	<div id="caozuotb">
+	<a href="javascript:Select();" class="easyui-linkbutton"
+			iconCls="icon-remove" plain="true">转团审批</a>&nbsp;&nbsp;|
+	<a href="javascript:Select();" class="easyui-linkbutton"
+			iconCls="icon-remove" plain="true">退团审批</a>
+	</div>
+	
+<div class="easyui-tabs" style="width:auto;height:auto">
+<div title="团队资料维护" style="padding:10px">
+<table id="dg" class="easyui-datagrid"
+		data-options="url:'fenghuang/customInfoList.do?type=33&tuanNo=${param.tuanNo}',singleSelect:false,fitColumns:true, onClickRow: onClickRow,pageSize:10"
+		pagination="true" toolbar="#jibentb">
+		<thead>
+			<tr>
+				<th data-options="field:'ck',checkbox:true"></th>
+				<th data-options="field:'id'" width="80">编号</th>
+				<th data-options="field:'name',editor:'text'" width="80">姓名</th>
+				<th data-options="field:'sex',editor:'text'">性别</th>
+				<th data-options="field:'sfzn',editor:'text'" width="80">身份证号</th>
+				<th data-options="field:'lxr',editor:'text'" width="80">联系人</th>
+				<th data-options="field:'post',editor:'text'" width="80">职位</th>
+				
+				<th data-options="field:'moblePhone'">电话</th>
+			</tr>
+		</thead>
+	</table>
+
 </div>
-<div title="操作进展" style="padding:10px">
-<ul class="easyui-tree" data-options=""></ul>
+<div title="操作进展" style="padding:10px" onclick="shuaxincaozuodg()">
+<table id="caozuodg" class="easyui-datagrid"
+		data-options="url:'fenghuang/baomingshenpiinfo.do?type=33&tuanNo=${param.tuanNo}',singleSelect:false,fitColumns:true,pageSize:10"
+		pagination="true" toolbar="#caozuotb">
+		<thead>
+			<tr>
+				<th data-options="field:'ck',checkbox:true"></th>
+				<th data-options="field:'bmid'" width="20">序号</th>
+				<th data-options="field:'kehuname'" width="20">姓名</th>
+				<th data-options="field:'sex'" width="20">性别</th>
+				<th data-options="field:'zhengjianhao'" width="20">证件号</th>
+				<th data-options="field:'baomingsp'" width="20">报名审批</th>
+				<th data-options="field:'baomingsl'" width="20">报名受理</th>
+				<th data-options="field:'yajinqueren'" width="20">押金确认</th>
+				<th data-options="field:'chupiaoqueren'" width="20">出票确认</th>
+				<th data-options="field:'chutuanqueren'" width="20">出团确认</th>
+				<th data-options="field:'beizhu'" width="20">备注</th>
+				
+
+
+		</thead>
+	</table>
+
 </div>
 <div title="财务情况" style="padding:10px">
 <ul class="easyui-tree" data-options=""></ul>
@@ -164,6 +192,9 @@ var url = "fenghuang/Sanpinliebiao.do?tuanNo="+'<%=request.getParameter("tuanNo"
 }
 	</script>
 	<script type="text/javascript">
+	function shuaxincaozuodg(){
+		$("#caozuodg").datagrid('reload');
+	}
 		var editIndex = undefined;
 		function endEditing() {
 			if (editIndex == undefined) {
@@ -228,6 +259,7 @@ var url = "fenghuang/Sanpinliebiao.do?tuanNo="+'<%=request.getParameter("tuanNo"
 						if (data.success) {
 							$.messager.alert("保存成功", "保存成功！", "info");
 							$("#dg").datagrid('reload');
+							$("#caozuodg").datagrid('reload');
 							editIndex = undefined;
 						} else {
 							$.messager.alert("保存失败", "保存失败!", "error");
@@ -246,7 +278,6 @@ var url = "fenghuang/Sanpinliebiao.do?tuanNo="+'<%=request.getParameter("tuanNo"
 
 		function deletesanpinkehu() {
 		var row = $("#dg").datagrid("getSelected");
-		alert(row.id);
 		var url="fenghuang/deleteCustomInfo.do?deleteRow="+row.id;
 		$.ajax({
 					url :url ,
@@ -255,6 +286,7 @@ var url = "fenghuang/Sanpinliebiao.do?tuanNo="+'<%=request.getParameter("tuanNo"
 					success : function(data) {
 					$.messager.alert("删除成功", "删除成功", "info");
 					$("#dg").datagrid("reload");
+					$("#caozuodg").datagrid('reload');
 
 					},
 					error : function() {

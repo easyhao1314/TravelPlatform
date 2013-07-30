@@ -32,7 +32,7 @@
 	    		   	<td>团号:<input class="easyui-validatebox" type="text" name="team" id="team" ></input></td>
 	    			<td>操作<input class="easyui-validatebox" type="text" name="caozuo" id="caozuo" ></input></td>
 	    			<td>
-	    		<div style="padding:5px;border:1px solid #ddd;">
+	    		<div style="padding:5px;border:px solid #ddd;">
 		<a href="javascript:dijieSelectLike()" class="easyui-linkbutton" data-options="toggle:true,group:'g1'">搜索</a>
 	             </div>
 	    			
@@ -44,9 +44,7 @@
 	    	<table>
 	    		<tr>
 	    		<td>状态：[<a href="javascript:dijieSelectLike(1)"  >待确认收款</a>][<a href="javascript:dijieSelectLike(2)" >已确认收款</a>]</td>
-	    		</tr>    		
-
-	    	
+	    		</tr>    			    	
 	    	</table>
 	    	
 	    	<div id="currencyDatagridtoolbar">
@@ -60,10 +58,10 @@
 		
 	</div>
 	    <div class="easyui-panel" title="付款确认"
-		style="height:450px;width: auto;">	
+		style="height:450px;width: auto;" toolbar="#currencyDatagridtoolbar">	
 	<table id="dg" class="easyui-datagrid"
 		data-options="url:'fenghuang/caiwuqrfkselect.do',border:false,singleSelect:true,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
-		pagination="true" toolbar="#tb">
+		pagination="true"  >
 		<thead>
 			<tr>
 				 
@@ -143,9 +141,11 @@
 	</div>
 	
 	<script type="text/javascript">
+	//关闭
 		function closedialog(){
 			$("#xiugai").dialog("close");
 		}
+		//关闭
 		function closedialog2(){
 			$("#xiugai2").dialog("close");
 		}
@@ -187,7 +187,7 @@
 		}
 		
 		
-			//按id查询
+		//按id查询
 		function werhuSelectId(id) {
           //通过主键，查询该操作，并处于编辑状态。 是否打开tab，还是直接弹出window 
 			$("#xiugai").dialog("open");
@@ -218,34 +218,7 @@
 		
 		
 		
-		//按id查询
-		function werhuSelectId2(id) {
-          //通过主键，查询该操作，并处于编辑状态。 是否打开tab，还是直接弹出window 
-			$("#xiugai2").dialog("open");
-			//准备回显的数据
-			var row = $("#dg").datagrid("getSelected");
-			//alert(row.id);
-		
-			if(row){
-				var param = {
-					"id" : row.id
-				};
-				
-				$.ajax({
-					url : "fenghuang/caiwuqrfkselect.do",
-					data : param,
-					dataType : "json",
-					success : function(data) {
-		
-					   $('#weihuxiugai2').form('load',data.rows[0]);
-				
-					},
-					error : function() {
-						$.messager.alert("查询失败", "服务器请求失败!", "error");
-					}
-				});
-		}
-		}
+	
 		  //修改
 			function caiwuxiugai() {
 			var caiwuid = $("#caiwu").val();
@@ -327,8 +300,8 @@
 		
 		function openshouke(val,row){
 		   var shouke=null;
-		   	 if(row.caiwuid==1){shouke="未付款";}
-		   	 if(row.caiwuid==2){shouke="已付款";}
+		   	 if(row.cashier==1){shouke="未付款";}
+		   	 if(row.cashier==2){shouke="已付款";}
 		     return '<div onclick="shoukeclick(event,'+row.tuanNo+')" style="width: auto;">'+shouke+'</div>';
 		   }
 	</script>

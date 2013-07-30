@@ -97,6 +97,9 @@
     <mvc:view-controller path="fkfssz.do" view-name="F.A.D/fkfssz"/>
     <mvc:view-controller path="shoukuan.do" view-name="F.A.D/shoukuan"/>
     <mvc:view-controller path="querenfukuan.do" view-name="F.A.D/querenfukuan"/>
+    <mvc:view-controller path="tuandui.do" view-name="F.A.D/tuandui"/>
+    <mvc:view-controller path="fukuanshenhe.do" view-name="F.A.D/fukuanshenhe"/>
+    <mvc:view-controller path="yfktj.do" view-name="F.A.D/yfktj"/>
 	<!-- 赵杨的配置 -->
 	<mvc:view-controller path="SanPin_caozuo.do" view-name="SanPin/SanPin_CaoZuo"/>
 	 <!-- 单团中心-->
