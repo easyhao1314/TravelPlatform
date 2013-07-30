@@ -400,7 +400,7 @@
 			   </ul>
 			     <ul>
 			      <li iconCls="icon-gears">
-			        <a href="javascript:open1('客户价值字典','customerZiXinDic.do');">客户价值字典</a>
+			        <a href="javascript:open1('客户价值字典','customerValueDic.do');">客户价值字典</a>
 			      </li>
 			   </ul>
 			    <ul>
@@ -413,6 +413,12 @@
 			        <a href="javascript:open1('客户类别维护','customerCoperLevel.do');">客户类别维护</a>
 			      </li>
 			   </ul>
+			   <ul>
+			      <li iconCls="icon-gears">
+			        <a href="javascript:open1('客户合作级别','customerHezuojibie.do');">客户合作级别</a>
+			      </li>
+			   </ul>
+			   
 			   
 		</li>
 		</ul>
