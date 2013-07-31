@@ -109,9 +109,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			iconCls="icon-remove" plain="true">报名审批</a>
 	</div>
 	<div id="caozuotb">
-	<a href="javascript:Select();" class="easyui-linkbutton"
+	<a href="javascript:sanpintuituan(2);" class="easyui-linkbutton"
 			iconCls="icon-remove" plain="true">转团审批</a>&nbsp;&nbsp;|
-	<a href="javascript:sanpintuituan(4);" class="easyui-linkbutton"
+	<a href="javascript:sanpintuituan(1);" class="easyui-linkbutton"
 			iconCls="icon-remove" plain="true">退团审批</a>
 	</div>
 	
@@ -313,14 +313,16 @@ var url = "fenghuang/Sanpinliebiao.do?tuanNo="+'<%=request.getParameter("tuanNo"
   	<script type="text/javascript">
   	function sanpintuituan(approvaltype){
 			var row = $("#caozuodg").datagrid("getSelected");
-			alert(row.kehuname);
 			var param = {
 					"shiwu" : "用户角色"+"提交",
 					"shenqingren" : 1,
 					"shenpiren" : 1,
 					"beizhu" : "测试",
 					"approvaltype" : approvaltype,
-					"tuanNo" : '${param.tuanNo}'
+					"tuanNo" : '${param.tuanNo}',
+					"approvalStatus" : 1
+					
+					
 				};
 			$.ajax({
 					url : "fenghuang/addApproval.do",

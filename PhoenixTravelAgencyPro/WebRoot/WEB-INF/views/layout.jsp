@@ -144,7 +144,13 @@
 						href="javascript:open1('散拼团列表','SanPin_liebiao.do');">散拼团列表</a>
 					</li>
 					<li iconCls="icon-gears"><a
-						href="javascript:open1('我的退团申请','SanPin_tuituan.do?shenpitype=1');">我的退团申请</a>
+						href="javascript:open1('退团申请','SanPin_tuituan.do?shenpitype=1');">退团申请</a>
+					</li>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('转团申请','SanPin_tuituan.do?shenpitype=2');">转团申请</a>
+					</li>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('报名申请','SanPin_tuituan.do?shenpitype=3');">报名申请</a>
 					</li>
 				</ul>
 				<ul>
