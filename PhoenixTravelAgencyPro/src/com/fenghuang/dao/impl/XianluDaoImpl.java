@@ -32,7 +32,9 @@ public class XianluDaoImpl extends BaseDao implements IXianluDao {
 	@Override
 	public boolean updateXianlu(Xianlu x) throws Exception {
 		// TODO Auto-generated method stub
-		return false;
+		String sql="";
+		int count=this.update(sql);
+		return count>0;
 	}
 
 	@Override

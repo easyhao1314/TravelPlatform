@@ -17,19 +17,19 @@ public class RixingchengServiceImpl implements IRixingchengService {
 	@Override
 	public boolean insert(Richeng ri) throws Exception {
 		// TODO Auto-generated method stub
-		return false;
+		return ir.insert(ri);
 	}
 
 	@Override
 	public boolean delete(Richeng ri) throws Exception {
 		// TODO Auto-generated method stub
-		return false;
+		return ir.delete(ri);
 	}
 
 	@Override
 	public boolean Update(Richeng ri) throws Exception {
 		// TODO Auto-generated method stub
-		return false;
+		return ir.update(ri);
 	}
 
 	@Override
