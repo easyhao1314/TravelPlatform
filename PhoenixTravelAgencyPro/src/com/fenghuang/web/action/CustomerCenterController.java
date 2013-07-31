@@ -164,7 +164,21 @@ public class CustomerCenterController {
 		JSONObject fromObject = JSONObject.fromObject(result);
 		return fromObject ; 
 	}
-
+	//修改客户信息面板模式
+	@RequestMapping("fenghuang/updateCustomer.do")
+	@ResponseBody
+	public Map<String,Object> updateCustomer(HttpServletRequest request,
+			HttpServletResponse response,CustomerInfo customer){
+		Map<String,Object> result=new HashMap<String,Object>();
+		boolean isSuccess=false;
+		try{
+			isSuccess=iCustomerCenterService.updateCustom(customer);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		result.put("success", isSuccess);
+		return result;
+	}
 	/**
 	 * 修改客户信息
 	 * @param customerInfo
