@@ -34,13 +34,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
   
 <table id="dg" class="easyui-datagrid"
-		data-options="url:'fenghuang/Approvalinfo.do',border:false,singleSelect:true,fit:true,fitColumns:true"
+		data-options="url:'fenghuang/Approvalinfo.do?shenpitype=${param.shenpitype} ',border:false,singleSelect:true,fit:true,fitColumns:true"
 		pagination="true" toolbar="#tb">
 		<thead>
 			<tr>
 				<th data-options="field:'ck',checkbox:true"></th>
 				<th data-options="field:'shenqingDate'" width="50">申请日期</th>
-				<th data-options="field:'shiwu'" width="50">事务</th>
+				<th data-options="field:'shiwu',formatter:tuituanshiwu" width="50">事务</th>
 				<th data-options="field:'shenqingren'" width="50">申请人</th>
 				<th data-options="field:'shenpiDate'" width="50">审批日期</th>
 				<th data-options="field:'shenheren'" width="50">审核人</th>
@@ -53,7 +53,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</table>
 	
 	<script type="text/javascript">
-
+	function tuituanshiwu(val,row){
+	return '<a href="javascript:openShenpimingxi('+row.approvalNo+','+row.approvaltuanNo+')">'+row.shiwu+'</a>';
+	}
+	function openShenpimingxi(aNo,atuanNo){
+	var url = "Sanpin_shenpimingxi.do?aNo="+aNo+"&atuanNo="+atuanNo;
+		 var tab = $('#tt').tabs('getSelected'); 
+		if (tab){  
+	                 var index = $('#tt').tabs('getTabIndex', tab); 
+	                 $('#tt').tabs('close', index);  
+	       } 
+	       
+	       $('#tt').tabs('add', {
+				         title : "退团详细信息",
+				         href : url,
+				      //  closable : true,
+				         });  
+	}
 	</script>
   
   
