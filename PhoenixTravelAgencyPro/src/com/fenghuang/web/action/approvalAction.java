@@ -83,7 +83,7 @@ public class approvalAction {
 	@ResponseBody
 	public Map<String,Object> DantuanXunjia(HttpServletRequest request,
 			HttpServletResponse response,String shiwu,String shenqingren,String shenpiren,String beizhu,String approvaltype
-			,String tuanNo){
+			,String tuanNo,String approvalStatus){
 		Approval a = new Approval();
 		//中文转码
 		try {
@@ -108,7 +108,9 @@ public class approvalAction {
 			if(shenpiren!=null && !"".equals(shenpiren)){
 				a.setShenheren(Long.parseLong(shenpiren));
 			}
-			
+			if(approvalStatus!=null && !"".equals(approvalStatus)){
+				a.setApprovalStatus(Integer.parseInt(approvalStatus));
+			}
 			
 			
 		} catch (UnsupportedEncodingException e1) {
