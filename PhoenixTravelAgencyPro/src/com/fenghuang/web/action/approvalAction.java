@@ -30,12 +30,31 @@ public class approvalAction {
 	
 	@RequestMapping("fenghuang/Approvalinfo.do")
 	@ResponseBody
-	public Map<String,Object> DantuanXunjia(HttpServletRequest request,
-			HttpServletResponse response, Integer page,Integer rows
+	public Map<String,Object> approvalinfo(HttpServletRequest request,
+			HttpServletResponse response, Integer page,Integer rows,
+			String approvalNo,String tuanNo,String approvalStauts,
+			String shenpitype
 			) {
-		
 		try {
 			Approval a= new Approval();
+			if(approvalNo!=null && !"".equals(approvalNo)){
+				a.setApprovalNo(Long.parseLong(approvalNo));
+			}
+			if(shenpitype!=null && !"".equals(shenpitype)){
+				a.setShenpitype(Integer.parseInt(shenpitype));
+			}
+			if(tuanNo!=null && !"".equals(tuanNo)){
+				a.setApprovaltuanNo(tuanNo);
+			}
+			if(approvalStauts!=null && !"".equals(approvalStauts)){
+				a.setApprovalStatus(Integer.parseInt(approvalStauts));
+			}
+			if(page==null){
+				page=1;
+			}
+			if(rows==null){
+				rows=1;
+			}
 			Pagination<Approval> pagination=(Pagination<Approval>)is.getByQueryConditionPagination(page, rows, a);
 			List<Map<String, Object>> testUsers = pagination.getResultList();
 			Map<String,Object> returnValue  = new HashMap<String, Object>();
@@ -56,10 +75,8 @@ public class approvalAction {
 			return fromObject;
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
-		
+		}	
 		return null;
-
 	}
 	
 	@RequestMapping("fenghuang/addApproval.do")

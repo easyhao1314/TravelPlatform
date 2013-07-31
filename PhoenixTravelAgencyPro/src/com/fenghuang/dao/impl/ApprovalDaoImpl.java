@@ -15,7 +15,6 @@ import com.fenghuang.entiey.Approval;
 import com.fenghuang.util.Pagination;
 @Repository
 public class ApprovalDaoImpl extends BaseDao implements IapprovalDao {
-	//wenjian
 	@Autowired
 	public ApprovalDaoImpl(@Qualifier("dataSource")DataSource dataSource) {
 		super(dataSource);
@@ -52,6 +51,18 @@ public class ApprovalDaoImpl extends BaseDao implements IapprovalDao {
 		// TODO Auto-generated method stub
 		String sql = "select *  from approval where 1=1";
 		StringBuffer sb = new StringBuffer(sql);
+		if(a.getApprovalStatus()!=0){
+			sb.append(" AND approvalStatus = '"+a.getApprovalStatus()+"'");
+		}
+		if(a.getApprovaltuanNo()!=null && !"".equals(a.getApprovaltuanNo())){
+			sb.append(" AND approvaltuanNo = '"+a.getApprovaltuanNo()+"'");
+		}
+		if(a.getApprovalNo()!=0){
+			sb.append(" AND approvalNo = '"+a.getApprovalNo()+"'");
+		}
+		if(a.getShenpitype()!=0){
+			sb.append(" AND shenpiType = '"+a.getShenpitype()+"'");
+		}
 		return this.getPagination(currentPage, numPerPage, sb.toString());
 	}
 
