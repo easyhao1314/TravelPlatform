@@ -39,7 +39,7 @@ public class BaomingshenpiDaoimpl extends BaseDao implements IBaomingshenpiDao {
 	@Override
 	public boolean updatebaoming(Baomingshenpi b) throws Exception {
 		// TODO Auto-generated method stub
-		String sql = "update Baomingshenpi SET sex=sex+1-1";
+		String sql = "update Baomingshenpi SET sex=sex+1-1 ";
 		StringBuffer sb = new StringBuffer(sql);
 		List l = new ArrayList();
 		if(b.getTuituanshenpi()!=0){
@@ -54,9 +54,26 @@ public class BaomingshenpiDaoimpl extends BaseDao implements IBaomingshenpiDao {
 			sb.append(",baomingsp=?");
 			l.add(b.getBaomingsp());
 		}
-		sb.append(" where bmid=?");
-		l.add(b.getBmid());
-		
+		if(b.getSex()!=0){
+			sb.append(",sex=?");
+			l.add(b.getSex());
+		}
+		if(b.getKehuname()!=null && !"".equals(b.getKehuname())){
+			sb.append(",kehuname=?");
+			l.add(b.getKehuname());
+		}
+		if(b.getZhengjianhao()!=null && !"".equals(b.getZhengjianhao())){
+			sb.append(",zhengjianhao=?");
+			l.add(b.getZhengjianhao());
+		}
+		if(b.getBmid()!=0){
+			sb.append(" where bmid=?");
+			l.add(b.getBmid());
+		}
+		if(b.getKehuid()!=0){
+			sb.append(" where kehuid=?");
+			l.add(b.getKehuid());
+		}
 		
 		int num = this.update(sb.toString(),l.toArray());
 		return num>0;

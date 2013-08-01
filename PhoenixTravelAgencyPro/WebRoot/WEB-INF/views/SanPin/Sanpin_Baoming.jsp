@@ -128,11 +128,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<th data-options="field:'id'" width="80">客户编号</th>
 				<th data-options="field:'name',editor:'text'" width="80">姓名</th>
 				<th data-options="field:'sex',editor:'text'">性别</th>
-				<th data-options="field:'sfzn',editor:'text'" width="80">身份证号</th>
-				<th data-options="field:'lxr',editor:'text'" width="80">联系人</th>
-				<th data-options="field:'post',editor:'text'" width="80">职位</th>
-				
-				<th data-options="field:'moblePhone'">电话</th>
+				<th data-options="field:'sfzn',editor:'text'" width="80">证件号</th>
+				<th data-options="field:'telePhone',editor:'text'" width="80">联系电话</th>
+				<th data-options="field:'bz',editor:'text'" width="80">备注</th>
 			</tr>
 		</thead>
 	</table>
@@ -175,6 +173,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	<!-- 填充fromLoad -->
 	<script type="text/javascript">
+	contentType:"application/x-www-form-urlencoded; charset=UTF-8"
 $(document).ready(function() {
 	load();
 }); 
@@ -248,7 +247,6 @@ var url = "fenghuang/Sanpinliebiao.do?tuanNo="+'<%=request.getParameter("tuanNo"
 		function getChanges() {
 			$('#dg').datagrid('endEdit', editIndex);
 			var rows = $("#dg").datagrid("getChanges");
-			if (rows.length > 0) {
 			
 				var param = {
 					"updateRows" : $.toJSON(rows)
@@ -273,7 +271,7 @@ var url = "fenghuang/Sanpinliebiao.do?tuanNo="+'<%=request.getParameter("tuanNo"
 				});
 			}
 
-		}
+		
 
 
 		

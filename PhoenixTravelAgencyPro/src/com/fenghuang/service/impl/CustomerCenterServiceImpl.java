@@ -120,6 +120,26 @@ public class CustomerCenterServiceImpl implements ICustomerCenterService {
         		 }        		 
         	 }else{
         		 b =iCustomerCenterDao.updateCustom(customer);
+        		 if(b){
+        			 Baomingshenpi baoming = new Baomingshenpi();
+        			 baoming.setKehuid(customer.getId());
+        			 if(customer.getName()!=null && !"".equals(customer.getName())){
+        				 baoming.setKehuname(customer.getName());
+        			 }
+        			 if(customer.getSex()!=0){
+        				 baoming.setSex(customer.getSex());
+        			 }
+        			 if(customer.getSfzn()!=null && !"".equals(customer.getSfzn())){
+        				 baoming.setZhengjianhao(customer.getSfzn());
+        			 }
+        			 
+        			 try {
+						ibaoming.updatebaoming(baoming);
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+        		 }
         	 }
          }
 		return b;

@@ -49,7 +49,7 @@ public class CustomerCenterDaoImpl extends BaseDao implements
 
 	@Override
 	public Pagination<CustomerInfo> getCustomInfoListPaginations(int currentPage,int numPerPage,String tuanNo,String name, String type, String lxr,String moblePhone,String telePhone,String qq,String msn, String daqu, String city, String hzjb, String xiaoshou,String zhtime,String jituan) {
-		StringBuffer sql = new StringBuffer("select c.id,c.tuanNo,c.name, c.moblePhone,c.telePhone,c.chuanzhen,c.cjtime,c.lxrs,c.lxr,c.xiaoshou,c.type,c.sex from customerinfo as c left JOIN dictionarydesc as d ON c.city=d.dicNo  where 1=1 ") ;
+		StringBuffer sql = new StringBuffer("select c.id,c.tuanNo,c.name, c.moblePhone,c.telePhone,c.chuanzhen,c.cjtime,c.lxrs,c.lxr,c.xiaoshou,c.type,c.sex,c.sfzn,c.bz from customerinfo as c left JOIN dictionarydesc as d ON c.city=d.dicNo  where 1=1 ") ;
 		if(tuanNo != null && !"".equals(tuanNo)){
 			sql.append(" AND c.tuanNo LIKE '%");
 			sql.append(tuanNo);
