@@ -83,7 +83,7 @@ public class approvalAction {
 	@ResponseBody
 	public Map<String,Object> DantuanXunjia(HttpServletRequest request,
 			HttpServletResponse response,String shiwu,String shenqingren,String shenpiren,String beizhu,String approvaltype
-			,String tuanNo,String approvalStatus){
+			,String tuanNo,String approvalStatus,String bmid){
 		Approval a = new Approval();
 		//中文转码
 		try {
@@ -110,6 +110,9 @@ public class approvalAction {
 			}
 			if(approvalStatus!=null && !"".equals(approvalStatus)){
 				a.setApprovalStatus(Integer.parseInt(approvalStatus));
+			}
+			if(bmid!=null && !"".equals(bmid)){
+				a.setBmid(Long.parseLong(bmid));
 			}
 			
 			

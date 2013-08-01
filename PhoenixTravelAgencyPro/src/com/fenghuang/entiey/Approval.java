@@ -50,6 +50,19 @@ public class Approval {
     * 
     * @pdOid e441579d-7c67-4a7c-83f3-f190050419f3 */
    public java.lang.String approvaltuanNo;
+   /** 报名ID
+    * 
+    * @pdOid 65c20a95-9124-480b-9608-c945b77e7716 */
+   public long bmid;
+   
+   
+   
+public long getBmid() {
+	return bmid;
+}
+public void setBmid(long bmid) {
+	this.bmid = bmid;
+}
 public long getApprovalNo() {
 	return approvalNo;
 }

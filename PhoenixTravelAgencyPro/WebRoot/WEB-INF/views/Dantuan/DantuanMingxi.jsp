@@ -427,8 +427,7 @@
 		 for(var i=0;i<obj.length;i++){
 		 	alert($(obj.get(i)).val()+$(obj.get(i+1)).val());
 		}
-		 
-		}
+}
 		
 	
 		

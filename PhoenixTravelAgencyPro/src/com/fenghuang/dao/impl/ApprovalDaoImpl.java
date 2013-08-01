@@ -63,6 +63,7 @@ public class ApprovalDaoImpl extends BaseDao implements IapprovalDao {
 		if(a.getShenpitype()!=0){
 			sb.append(" AND shenpiType = '"+a.getShenpitype()+"'");
 		}
+		
 		return this.getPagination(currentPage, numPerPage, sb.toString());
 	}
 

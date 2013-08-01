@@ -19,11 +19,11 @@ public class BaomingshenpiServiceImpl implements IBaomingshenpiService {
 		// TODO Auto-generated method stub
 		return ib.baominginfo(page, rows, b, tuanNo, type);
 	}
-
 	@Override
 	public boolean updatebaoming(Baomingshenpi b) throws Exception {
 		// TODO Auto-generated method stub
-		return false;
+		
+		return ib.updatebaoming(b);
 	}
 
 	@Override
