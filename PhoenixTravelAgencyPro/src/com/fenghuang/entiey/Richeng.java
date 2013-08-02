@@ -46,6 +46,16 @@ public class Richeng {
     * 
     * @pdOid 0af04793-416f-448f-9b2c-e1839164b5c6 */
    public long wan;
+   /** 线路id
+    * 
+    * @pdOid 0af04793-416f-448f-9b2c-e1839164b5c6 */
+   public long xianluid;
+public long getXianluid() {
+	return xianluid;
+}
+public void setXianluid(long xianluid) {
+	this.xianluid = xianluid;
+}
 public long getRiid() {
 	return riid;
 }
