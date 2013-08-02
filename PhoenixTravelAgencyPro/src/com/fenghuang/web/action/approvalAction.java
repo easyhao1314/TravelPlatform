@@ -86,21 +86,17 @@ public class approvalAction {
 			,String tuanNo,String approvalStatus,String bmid){
 		Approval a = new Approval();
 		//中文转码
-		try {
 			if(tuanNo!=null && !"".equals(tuanNo)){
-				String t = new String(tuanNo.getBytes("ISO-8859-1"),"UTF-8");
-				a.setApprovaltuanNo(t);
+				a.setApprovaltuanNo(tuanNo);
 			}
 			if(shiwu!=null && !"".equals(shiwu)){
-			String sw = new String(shiwu.getBytes("ISO-8859-1"),"UTF-8");
-			a.setShiwu(sw);
+			a.setShiwu(shiwu);
 			}
 			if(approvaltype!=null && !"".equals(approvaltype)){
 				a.setShenpitype(Integer.parseInt(approvaltype));
 			}
 			if(beizhu!=null && !"".equals(beizhu)){
-				String bz = new String(beizhu.getBytes("ISO-8859-1"),"UTF-8");
-				a.setBeizhu(bz);
+				a.setBeizhu(beizhu);
 			}
 			if(shenqingren!=null && !"".equals(shenqingren)){
 				a.setShenqingren(Long.parseLong(shenqingren));
@@ -114,12 +110,7 @@ public class approvalAction {
 			if(bmid!=null && !"".equals(bmid)){
 				a.setBmid(Long.parseLong(bmid));
 			}
-			
-			
-		} catch (UnsupportedEncodingException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+
 		boolean isSuccess = false;
 		Map<String,Object> result = new HashMap<String, Object>();
 		try {

@@ -25,8 +25,8 @@ public class ApprovalDaoImpl extends BaseDao implements IapprovalDao {
 	public boolean ApprovalAdd(Approval a) throws Exception {
 		// TODO Auto-generated method stub
 		a.setShenqingDate(new java.util.Date());
-		String sql="insert into Approval(shenqingDate,shiwu,shenqingren,shenheren,approvalStatus,shenpiDate,beizhu,shenpitype,approvaltuanNo) values(?,?,?,?,?,?,?,?,?)";
-		int num =this.update(sql,a.getShenqingDate(),a.getShiwu(),a.getShenqingren(),a.getShenheren(),a.getApprovalStatus(),a.getShenpiDate(),a.getBeizhu(),a.getShenpitype(),a.getApprovaltuanNo());
+		String sql="insert into Approval(shenqingDate,shiwu,shenqingren,shenheren,approvalStatus,shenpiDate,beizhu,shenpitype,approvaltuanNo,bmid) values(?,?,?,?,?,?,?,?,?,?)";
+		int num =this.update(sql,a.getShenqingDate(),a.getShiwu(),a.getShenqingren(),a.getShenheren(),a.getApprovalStatus(),a.getShenpiDate(),a.getBeizhu(),a.getShenpitype(),a.getApprovaltuanNo(),a.getBmid());
 		return num>0;
 	}
 

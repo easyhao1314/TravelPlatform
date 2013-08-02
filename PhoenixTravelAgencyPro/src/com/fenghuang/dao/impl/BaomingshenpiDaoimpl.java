@@ -90,9 +90,18 @@ public class BaomingshenpiDaoimpl extends BaseDao implements IBaomingshenpiDao {
 	@Override
 	public boolean deletebaoming(Baomingshenpi b) throws Exception {
 		// TODO Auto-generated method stub
-		String sql="delete from baomingshenpi where 1=1 kehuid=?";
+		String sql="delete from baomingshenpi where 1=1 and kehuid=?";
 		int num = this.update(sql,b.getKehuid());
 		return num>0;
+	}
+
+	@Override
+	public Pagination<Baomingshenpi> bmingandapproval(Baomingshenpi b,
+			String shenpitype, String approvalNo) throws Exception {
+		// TODO Auto-generated method stub 
+		//
+		String sql = "SELECT * FROM baomingshenpi AS b INNER JOIN approval AS a ON b.bmid=a.bmid WHERE 1=1 AND a.shenpitype=2 AND a.approvalNo=8";
+		return null;
 	}
 
 }

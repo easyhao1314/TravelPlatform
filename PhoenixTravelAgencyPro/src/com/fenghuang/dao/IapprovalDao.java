@@ -13,5 +13,4 @@ public interface IapprovalDao {
 	public boolean ApprovalDelete(Approval a)throws Exception;
 	//查询审批事务
 	public Pagination<Approval> getByQueryConditionPagination(int currentPage, int numPerPage,Approval a)throws Exception;
-	
 }

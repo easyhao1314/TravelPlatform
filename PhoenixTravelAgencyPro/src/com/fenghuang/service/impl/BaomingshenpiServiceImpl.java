@@ -35,7 +35,7 @@ public class BaomingshenpiServiceImpl implements IBaomingshenpiService {
 	@Override
 	public boolean deletebaoming(Baomingshenpi b) throws Exception {
 		// TODO Auto-generated method stub
-		return false;
+		return ib.deletebaoming(b);
 	}
 
 }

@@ -127,7 +127,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<th data-options="field:'ck',checkbox:true"></th>
 				<th data-options="field:'id'" width="80">客户编号</th>
 				<th data-options="field:'name',editor:'text'" width="80">姓名</th>
-				<th data-options="field:'sex',editor:'text'">性别</th>
+				<th data-options="field:'sex',editor:'text', formatter:function(value,row){
+	var sexinfo = '女';
+	if(row.sex=15){
+		sexinfo='男';
+	}
+return sexinfo;
+},
+editor:{
+type:'combobox',
+editable:false,
+options:{
+valueField:'value',
+textField:'label',
+data: [{
+			label: '男',
+			value: '15'
+		},
+		{
+			label: '女',
+			value: '16'
+		}],
+		panelHeight:'auto'
+}
+}">性别</th>
 				<th data-options="field:'sfzn',editor:'text'" width="80">证件号</th>
 				<th data-options="field:'telePhone',editor:'text'" width="80">联系电话</th>
 				<th data-options="field:'bz',editor:'text'" width="80">备注</th>
@@ -142,22 +165,60 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		pagination="true" toolbar="#caozuotb">
 		<thead>
 			<tr>
-	
 				<th data-options="field:'kehuid'" width="20">客户编号</th>
 				<th data-options="field:'kehuname'" width="20">姓名</th>
-				<th data-options="field:'sex'" width="20">性别</th>
+				<th data-options="field:'sex', formatter:function(value,row){
+	var sexinfo = '女';
+	if(row.sex=15){
+		sexinfo='男';
+	}
+return sexinfo;
+}" width="20">性别</th>
 				<th data-options="field:'zhengjianhao'" width="20">证件号</th>
-				<th data-options="field:'baomingsp'" width="20">报名审批</th>
+				<th data-options="field:'baomingsp',formatter:function(value,row){
+	var baomingsp = '未提交';
+	if(row.baomingsp==1){
+		baomingsp='等待审核';
+	}
+	if(row.baomingsp==2){
+		baomingsp='审核通过';
+	}
+	if(row.baomingsp==3){
+		baomingsp='审核失败';
+	}
+return baomingsp;
+}" width="20">报名审批</th>
 				<th data-options="field:'baomingsl'" width="20">报名受理</th>
 				<th data-options="field:'yajinqueren'" width="20">押金确认</th>
 				<th data-options="field:'chupiaoqueren'" width="20">出票确认</th>
 				<th data-options="field:'chutuanqueren'" width="20">出团确认</th>
-				<th data-options="field:'tuituanshenpi'" width="20">退团审批</th>
-				<th data-options="field:'zhuantuanshenpi'" width="20">转团审批</th>
+				<th data-options="field:'tuituanshenpi',formatter:function(value,row){
+	var tuituanshenpi = '未提交';
+	if(row.tuituanshenpi==1){
+		tuituanshenpi='等待审核';
+	}
+	if(row.tuituanshenpi==2){
+		tuituanshenpi='审核通过';
+	}
+	if(row.tuituanshenpi==3){
+		tuituanshenpi='审核失败';
+	}
+return tuituanshenpi;
+}" width="20">退团审批</th>
+				<th data-options="field:'zhuantuanshenpi',formatter:function(value,row){
+	var zhuantuanshenpi = '未提交';
+	if(row.zhuantuanshenpi==1){
+		zhuantuanshenpi='等待审核';
+	}
+	if(row.zhuantuanshenpi==2){
+		zhuantuanshenpi='审核通过';
+	}
+	if(row.zhuantuanshenpi==3){
+		zhuantuanshenpi='审核失败';
+	}
+return zhuantuanshenpi;
+}" width="20">转团审批</th>
 				<th data-options="field:'beizhu'" width="20">备注</th>
-				
-
-
 		</thead>
 	</table>
 
@@ -173,7 +234,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	<!-- 填充fromLoad -->
 	<script type="text/javascript">
-	contentType:"application/x-www-form-urlencoded; charset=UTF-8"
+	contentType:"application/x-www-form-urlencoded; charset=UTF-8";
 $(document).ready(function() {
 	load();
 }); 
@@ -341,7 +402,6 @@ var url = "fenghuang/Sanpinliebiao.do?tuanNo="+'<%=request.getParameter("tuanNo"
 				}
 			}
 			
-			
 			var param = {
 					"shiwu" : "用户角色"+"提交",
 					"shenqingren" : 1,
@@ -350,7 +410,7 @@ var url = "fenghuang/Sanpinliebiao.do?tuanNo="+'<%=request.getParameter("tuanNo"
 					"approvaltype" : approvaltype,
 					"tuanNo" : '${param.tuanNo}',
 					"approvalStatus" : 1,
-					"bmid": row.bmid
+					"bmid" : row.bmid
 					
 				};
 			$.ajax({

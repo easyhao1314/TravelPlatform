@@ -131,7 +131,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</table>
 </form>
 </div>
-    	
+    <div id="p" class="easyui-panel" title="需要审批的客户信息" style="width:auto;height:auto;padding:10px;">
+		<table id="dg" class="easyui-datagrid"
+		data-options="url:'fenghuang/Approvalinfo.do?shenpitype=${param.shenpitype} ',border:false,singleSelect:true,fit:true,fitColumns:true"
+		pagination="true" toolbar="#tb">
+		<thead>
+			<tr>
+				<th data-options="field:'ck',checkbox:true"></th>
+				<th data-options="field:'shenqingDate'" width="50">申请日期</th>
+				<th data-options="field:'shiwu',formatter:tuituanshiwu" width="50">事务说明</th>
+				<th data-options="field:'shenqingren'" width="50">申请人</th>
+			</tr>
+		</thead>
+	</table>
+	</div>	
   <script type="text/javascript">
   $(document).ready(function() {
 	shenpituanload();
