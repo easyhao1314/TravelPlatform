@@ -23,6 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
+
   <div id="p" class="easyui-panel" title="提请审批情况" style="width:auto;height:auto;padding:10px;">
 <form id="tiqingshenpiFrom" action="">
 	<table>
@@ -132,16 +133,66 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </form>
 </div>
     <div id="p" class="easyui-panel" title="需要审批的客户信息" style="width:auto;height:auto;padding:10px;">
-		<table id="dg" class="easyui-datagrid"
-		data-options="url:'fenghuang/Approvalinfo.do?shenpitype=${param.shenpitype} ',border:false,singleSelect:true,fit:true,fitColumns:true"
-		pagination="true" toolbar="#tb">
+		<table id="caozuodg" class="easyui-datagrid"
+		data-options="url:'fenghuang/shenpikehu.do?shenpitype=${param.shenpitype}&tuanNo=${param.atuanNo}&abmid=${param.abmid}',singleSelect:true,fitColumns:true,pageSize:10"
+		 toolbar="#caozuotb">
 		<thead>
 			<tr>
-				<th data-options="field:'ck',checkbox:true"></th>
-				<th data-options="field:'shenqingDate'" width="50">申请日期</th>
-				<th data-options="field:'shiwu',formatter:tuituanshiwu" width="50">事务说明</th>
-				<th data-options="field:'shenqingren'" width="50">申请人</th>
-			</tr>
+				<th data-options="field:'kehuid'" width="20">客户编号</th>
+				<th data-options="field:'kehuname'" width="20">姓名</th>
+				<th data-options="field:'beizhu'" width="20">备注</th>
+				<th data-options="field:'sex', formatter:function(value,row){
+	var sexinfo = '女';
+	if(row.sex=15){
+		sexinfo='男';
+	}
+return sexinfo;
+}" width="20">性别</th>
+				<th data-options="field:'zhengjianhao'" width="20">证件号</th>
+				<th data-options="field:'baomingsp',formatter:function(value,row){
+	var baomingsp = '未提交';
+	if(row.baomingsp==1){
+		baomingsp='等待审核';
+	}
+	if(row.baomingsp==2){
+		baomingsp='审核通过';
+	}
+	if(row.baomingsp==3){
+		baomingsp='审核失败';
+	}
+return baomingsp;
+}" width="20">报名审批</th>
+				<th data-options="field:'baomingsl'" width="20">报名受理</th>
+				<th data-options="field:'yajinqueren'" width="20">押金确认</th>
+				<th data-options="field:'chupiaoqueren'" width="20">出票确认</th>
+				<th data-options="field:'chutuanqueren'" width="20">出团确认</th>
+				<th data-options="field:'tuituanshenpi',formatter:function(value,row){
+	var tuituanshenpi = '未提交';
+	if(row.tuituanshenpi==1){
+		tuituanshenpi='等待审核';
+	}
+	if(row.tuituanshenpi==2){
+		tuituanshenpi='审核通过';
+	}
+	if(row.tuituanshenpi==3){
+		tuituanshenpi='审核失败';
+	}
+return tuituanshenpi;
+}" width="20">退团审批</th>
+				<th data-options="field:'zhuantuanshenpi',formatter:function(value,row){
+	var zhuantuanshenpi = '未提交';
+	if(row.zhuantuanshenpi==1){
+		zhuantuanshenpi='等待审核';
+	}
+	if(row.zhuantuanshenpi==2){
+		zhuantuanshenpi='审核通过';
+	}
+	if(row.zhuantuanshenpi==3){
+		zhuantuanshenpi='审核失败';
+	}
+return zhuantuanshenpi;
+}" width="20">转团审批</th>
+				<th data-options="field:'beizhu'" width="20">备注</th>
 		</thead>
 	</table>
 	</div>	
@@ -152,6 +203,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 		}); 
   	function shenpituanload(){
+  	//请求审批明细Ajax
   		$.ajax({
 					url : "fenghuang/Approvalinfo.do?approvalNo="+'${param.aNo}',
 					data : '${param.aNo}',
@@ -165,9 +217,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						$.messager.alert("查询失败", "服务器请求失败!", "error");
 					}
 				});
+				//请求团明细Ajax
+				var datakehu = {
+					"shenpitype" : '${param.shenpitype}',
+					"approvalNo" : '${param.atuanNo}'
+				};
 		$.ajax({
-					url : "fenghuang/Sanpinliebiao.do?tuanNo="+'${param.atuanNo}',
-					data : '${param.atuanNo}',
+			
+					url : "fenghuang/Sanpinliebiao.do?",
+					data : datakehu,
 					dataType : "json",
 					success : function(data) {
 					$('#tuanduituituanjiben').form('load',data.rows[0]);
@@ -177,6 +235,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						$.messager.alert("查询失败", "服务器请求失败!", "error");
 					}
 				});
+
 				
   	}
   </script>

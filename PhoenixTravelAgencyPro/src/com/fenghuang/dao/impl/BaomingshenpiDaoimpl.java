@@ -97,11 +97,22 @@ public class BaomingshenpiDaoimpl extends BaseDao implements IBaomingshenpiDao {
 
 	@Override
 	public Pagination<Baomingshenpi> bmingandapproval(Baomingshenpi b,
-			String shenpitype, String approvalNo) throws Exception {
+			Integer shenpitype, String tuanNo,Integer abmid) throws Exception {
 		// TODO Auto-generated method stub 
 		//
-		String sql = "SELECT * FROM baomingshenpi AS b INNER JOIN approval AS a ON b.bmid=a.bmid WHERE 1=1 AND a.shenpitype=2 AND a.approvalNo=8";
-		return null;
+		String sql = "SELECT b.* FROM baomingshenpi AS b INNER JOIN approval as a ON a.bmid=b.bmid WHERE 1=1  ";   
+		
+		StringBuffer sb = new StringBuffer(sql);
+		if(shenpitype!=0){
+			sb.append(" AND a.shenpitype='"+shenpitype+"'");
+		}
+		if(tuanNo!=null && !"".equals(tuanNo)){
+			sb.append(" AND a.approvaltuanNo='"+tuanNo+"'");
+		}
+		if(abmid!=0){
+			sb.append(" AND a.bmid='"+abmid+"'");
+		}
+		return this.getPagination(1, 1, sb.toString());
 	}
 
 }

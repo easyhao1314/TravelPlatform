@@ -37,5 +37,11 @@ public class BaomingshenpiServiceImpl implements IBaomingshenpiService {
 		// TODO Auto-generated method stub
 		return ib.deletebaoming(b);
 	}
+	@Override
+	public Pagination<Baomingshenpi> bmingandapproval(Baomingshenpi b,
+			Integer shenpitype, String tuanNo,Integer abmid) throws Exception {
+		// TODO Auto-generated method stub
+		return ib.bmingandapproval(b, shenpitype, tuanNo, abmid);
+	}
 
 }
