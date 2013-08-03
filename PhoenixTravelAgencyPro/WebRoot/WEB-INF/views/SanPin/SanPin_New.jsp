@@ -33,7 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
    <div style="background:#fafafa;padding:10px;width:10	00px;height:300px;">
-  <form id="addform" method="post">
+  <form id="addsanpinform" method="post">
   <div >
   <h4><p>基础信息</p></h4> 
   <table style="" >
@@ -212,7 +212,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 <script type="text/javascript">
 			function sanpinSave() {
-			$('#addform').form('submit', {
+			$('#addsanpinform').form('submit', {
 				url : 'fenghuang/addsanpin.do',
 				onSubmit : function() {
 					return $(this).form('validate');

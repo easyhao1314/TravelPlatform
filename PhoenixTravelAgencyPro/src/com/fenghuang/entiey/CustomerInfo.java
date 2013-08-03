@@ -13,23 +13,11 @@ public class CustomerInfo {
    /** 主键，自动增长
     * 
     * @pdOid 2b8fe5c7-cc34-485c-9448-9d80bbf14d79 */
-   public long id;
+   public int id;
    /** 团号
     * 
     * @pdOid 58e4655a-604f-44cc-9823-7cee616e7840 */
    public String tuanNo;
-   public String getTuanNo() {
-	return tuanNo;
-}
-public void setTuanNo(String tuanNo) {
-	this.tuanNo = tuanNo;
-}
-public java.util.Date getZhtime() {
-	return zhtime;
-}
-public void setZhtime(java.util.Date zhtime) {
-	this.zhtime = zhtime;
-}
 /** 客户公司名称
     * 
     * @pdOid 58e4655a-604f-44cc-9823-7cee616e7840 */
@@ -45,11 +33,11 @@ public void setZhtime(java.util.Date zhtime) {
    /** 年龄
     * 
     * @pdOid 6709731f-54db-4f95-9c61-454acd14c1f6 */
-   public String age;
+   public int age;
    /** 性别
     * 
     * @pdOid 6709731f-54db-4f95-9c61-454acd14c1f6 */
-   public String sex;
+   public long sex;
    /** 手机
     * 
     * @pdOid 16ec1587-ef2c-4d4a-be9b-2eb372dd4842 */
@@ -87,9 +75,9 @@ public void setZhtime(java.util.Date zhtime) {
    public String address;
   
    /** 合作级别*/
-   public int hzjb;
+   public long hzjb;
    /** 销售/维护人 */
-   public String xiaoshou;
+   public long xiaoshou;
    /** 创建时间 */
   public java.util.Date cjtime;
   /** 最后联系时间 */
@@ -99,12 +87,18 @@ public void setZhtime(java.util.Date zhtime) {
   /** 备注 */
   public String bz;
   /** 团队类型*/
-  public int type;
-public long getId() {
+  public long type;
+public int getId() {
 	return id;
 }
-public void setId(long id) {
+public void setId(int id) {
 	this.id = id;
+}
+public String getTuanNo() {
+	return tuanNo;
+}
+public void setTuanNo(String tuanNo) {
+	this.tuanNo = tuanNo;
 }
 public String getName() {
 	return name;
@@ -124,16 +118,16 @@ public String getPost() {
 public void setPost(String post) {
 	this.post = post;
 }
-public String getAge() {
+public int getAge() {
 	return age;
 }
-public void setAge(String age) {
+public void setAge(int age) {
 	this.age = age;
 }
-public String getSex() {
+public long getSex() {
 	return sex;
 }
-public void setSex(String sex) {
+public void setSex(long sex) {
 	this.sex = sex;
 }
 public String getMoblePhone() {
@@ -178,7 +172,6 @@ public String getSfzn() {
 public void setSfzn(String sfzn) {
 	this.sfzn = sfzn;
 }
-
 public String getJituan() {
 	return jituan;
 }
@@ -203,16 +196,16 @@ public String getAddress() {
 public void setAddress(String address) {
 	this.address = address;
 }
-public int getHzjb() {
+public long getHzjb() {
 	return hzjb;
 }
-public void setHzjb(int hzjb) {
+public void setHzjb(long hzjb) {
 	this.hzjb = hzjb;
 }
-public String getXiaoshou() {
+public long getXiaoshou() {
 	return xiaoshou;
 }
-public void setXiaoshou(String xiaoshou) {
+public void setXiaoshou(long xiaoshou) {
 	this.xiaoshou = xiaoshou;
 }
 public java.util.Date getCjtime() {
@@ -220,6 +213,12 @@ public java.util.Date getCjtime() {
 }
 public void setCjtime(java.util.Date cjtime) {
 	this.cjtime = cjtime;
+}
+public java.util.Date getZhtime() {
+	return zhtime;
+}
+public void setZhtime(java.util.Date zhtime) {
+	this.zhtime = zhtime;
 }
 public int getLxrs() {
 	return lxrs;
@@ -233,14 +232,12 @@ public String getBz() {
 public void setBz(String bz) {
 	this.bz = bz;
 }
-public int getType() {
+public long getType() {
 	return type;
 }
-public void setType(int type) {
+public void setType(long type) {
 	this.type = type;
 }
-
-  
 
 
 

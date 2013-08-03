@@ -1,5 +1,6 @@
 package com.fenghuang.web.action;
 
+import java.io.UnsupportedEncodingException;
 import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
@@ -27,13 +28,33 @@ public class approvalAction {
 	@Autowired
 	private IApprovalService is;
 	
-	@RequestMapping("fenghuang/tuituan.do")
+	@RequestMapping("fenghuang/Approvalinfo.do")
 	@ResponseBody
-	public Map<String,Object> DantuanXunjia(HttpServletRequest request,
-			HttpServletResponse response, Integer page,Integer rows
+	public Map<String,Object> approvalinfo(HttpServletRequest request,
+			HttpServletResponse response, Integer page,Integer rows,
+			String approvalNo,String tuanNo,String approvalStauts,
+			String shenpitype
 			) {
 		try {
 			Approval a= new Approval();
+			if(approvalNo!=null && !"".equals(approvalNo)){
+				a.setApprovalNo(Long.parseLong(approvalNo));
+			}
+			if(shenpitype!=null && !"".equals(shenpitype)){
+				a.setShenpitype(Integer.parseInt(shenpitype));
+			}
+			if(tuanNo!=null && !"".equals(tuanNo)){
+				a.setApprovaltuanNo(tuanNo);
+			}
+			if(approvalStauts!=null && !"".equals(approvalStauts)){
+				a.setApprovalStatus(Integer.parseInt(approvalStauts));
+			}
+			if(page==null){
+				page=1;
+			}
+			if(rows==null){
+				rows=1;
+			}
 			Pagination<Approval> pagination=(Pagination<Approval>)is.getByQueryConditionPagination(page, rows, a);
 			List<Map<String, Object>> testUsers = pagination.getResultList();
 			Map<String,Object> returnValue  = new HashMap<String, Object>();
@@ -54,9 +75,53 @@ public class approvalAction {
 			return fromObject;
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
-		
+		}	
 		return null;
+	}
+	
+	@RequestMapping("fenghuang/addApproval.do")
+	@ResponseBody
+	public Map<String,Object> DantuanXunjia(HttpServletRequest request,
+			HttpServletResponse response,String shiwu,String shenqingren,String shenpiren,String beizhu,String approvaltype
+			,String tuanNo,String approvalStatus,String bmid){
+		Approval a = new Approval();
+		//中文转码
+			if(tuanNo!=null && !"".equals(tuanNo)){
+				a.setApprovaltuanNo(tuanNo);
+			}
+			if(shiwu!=null && !"".equals(shiwu)){
+			a.setShiwu(shiwu);
+			}
+			if(approvaltype!=null && !"".equals(approvaltype)){
+				a.setShenpitype(Integer.parseInt(approvaltype));
+			}
+			if(beizhu!=null && !"".equals(beizhu)){
+				a.setBeizhu(beizhu);
+			}
+			if(shenqingren!=null && !"".equals(shenqingren)){
+				a.setShenqingren(Long.parseLong(shenqingren));
+			}
+			if(shenpiren!=null && !"".equals(shenpiren)){
+				a.setShenheren(Long.parseLong(shenpiren));
+			}
+			if(approvalStatus!=null && !"".equals(approvalStatus)){
+				a.setApprovalStatus(Integer.parseInt(approvalStatus));
+			}
+			if(bmid!=null && !"".equals(bmid)){
+				a.setBmid(Long.parseLong(bmid));
+			}
 
+		boolean isSuccess = false;
+		Map<String,Object> result = new HashMap<String, Object>();
+		try {
+			is.ApprovalAdd(a);
+			isSuccess=true;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			isSuccess=false;
+			e.printStackTrace();
+		}
+		result.put("success", isSuccess);
+		return result;
 	}
 }

@@ -52,7 +52,7 @@ public class DictionaryDescServiceImpl implements IDictionaryDescService {
 	 * .String)
 	 */
 	@Override
-	public DictionaryDesc getDictionaryDesc(String dicNo) throws Exception {
+	public DictionaryDesc getDictionaryDesc(Integer dicNo) throws Exception {
 		return iDictionaryDescDao.getDictionaryDesc(dicNo);
 	}
 
@@ -90,7 +90,7 @@ public class DictionaryDescServiceImpl implements IDictionaryDescService {
 	 * .lang.String)
 	 */
 	@Override
-	public boolean deleteDictionaryDesc(String dicNo) throws Exception {
+	public boolean deleteDictionaryDesc(Integer dicNo) throws Exception {
 		return iDictionaryDescDao.deleteDictionaryDesc(dicNo);
 	}
 
@@ -106,7 +106,7 @@ public class DictionaryDescServiceImpl implements IDictionaryDescService {
 			throws Exception {
 		for (Iterator iterator = dicDescs.iterator(); iterator.hasNext();) {
 			DictionaryDesc dictionaryDesc = (DictionaryDesc) iterator.next();
-			if (dictionaryDesc.getDicId() == null) {
+			if (dictionaryDesc.getDicNo() == null) {
 				iDictionaryDescDao.insertDictionaryDesc(dictionaryDesc);
 			} else {
 				iDictionaryDescDao.updateDictionaryDesc(dictionaryDesc);

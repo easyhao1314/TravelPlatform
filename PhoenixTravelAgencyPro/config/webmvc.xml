@@ -97,6 +97,9 @@
     <mvc:view-controller path="fkfssz.do" view-name="F.A.D/fkfssz"/>
     <mvc:view-controller path="shoukuan.do" view-name="F.A.D/shoukuan"/>
     <mvc:view-controller path="querenfukuan.do" view-name="F.A.D/querenfukuan"/>
+    <mvc:view-controller path="tuandui.do" view-name="F.A.D/tuandui"/>
+    <mvc:view-controller path="fukuanshenhe.do" view-name="F.A.D/fukuanshenhe"/>
+    <mvc:view-controller path="yfktj.do" view-name="F.A.D/yfktj"/>
 	<!-- 赵杨的配置 -->
 	<mvc:view-controller path="SanPin_caozuo.do" view-name="SanPin/SanPin_CaoZuo"/>
 	 <!-- 单团中心-->
@@ -151,6 +154,7 @@
 	<mvc:view-controller path="SanPin_wodebaomingsp.do" view-name="SanPin/Sanpin_WodeBaomingsp"/>
 	<mvc:view-controller path="Sanpin_zhuantuan.do" view-name="SanPin/Sanpin_Zhuantuan"/>
 	<mvc:view-controller path="Sanpin_mingxi.do" view-name="SanPin/Sanpin_Mingxi"/>
+	<mvc:view-controller path="Sanpin_shenpimingxi.do" view-name="SanPin/Sanpin_ShenpiMingxi"/>
 	<!-- 赵杨_______行程库管理 -->
 	<mvc:view-controller path="Xingcheng_xianlu.do" view-name="XingCheng/Xingcheng_xianlu"/>
 	<mvc:view-controller path="Xingcheng_ri.do" view-name="XingCheng/Xingcheng_ri"/>
@@ -200,6 +204,7 @@
 	<mvc:view-controller path="customerValueDic.do" view-name="KeHu/customerValueDic" />
 	<mvc:view-controller path="customerAreaWeihu.do" view-name="KeHu/customerAreaWeihu" />
 	<mvc:view-controller path="customerCoperLevel.do" view-name="KeHu/customerCoperLevel" />
+	<mvc:view-controller path="customerHezuojibie.do" view-name="KeHu/customerHezuojibie" />
 	<!-- 客户中心结束 -->
 	<!-- 陈家海的配置结束 -->
 </beans>

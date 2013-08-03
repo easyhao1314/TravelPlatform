@@ -41,7 +41,7 @@ public interface ICustomerCenterDao{
 	 * @param customInfo
 	 * @return
 	 */
-	public boolean addCustom(CustomerInfo customInfo);
+	public Integer addCustom(CustomerInfo customInfo);
 	
 	/**
 	 * 查询所有客户名称
@@ -147,5 +147,7 @@ public interface ICustomerCenterDao{
 	public boolean deleteCustomerArea(Integer id);
 
 	public boolean updateCustomerArea(Integer updateRow,String name);
+	
+	public Integer selectmaxid();
 	
 }

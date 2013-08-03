@@ -76,4 +76,12 @@ public interface ICustomerCenterService{
 	 */
 	public boolean updateContact(CustomerInfo contactInfo);
 	
+	/**
+	 * 
+	 * 
+	 */
+	public boolean updatekehuzhongxin(List<CustomerInfo> contactInfo);
+	
+	public Integer selectmaxid();
+	
 }

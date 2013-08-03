@@ -49,17 +49,18 @@
 
 				</ul></li>
 				<li iconCls="icon-base" state="closed"><span>财务中心</span>
+					<ul>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('付款审核','fukuanshenhe.do');">付款 审核</a>
+					</li>
+				</ul>
 				<ul>
 					<li iconCls="icon-gears"><a
 						href="javascript:open1('付款审批','a.do');">付款审批</a>
 					</li>
 				</ul>
 				
-				<ul>
-					<li iconCls="icon-gears"><a
-						href="javascript:open1('付款审核','fukuanshenhe.do');">付款 审核</a>
-					</li>
-				</ul>
+			
 				
 				<ul>
 					<li iconCls="icon-gears"><a
@@ -100,7 +101,7 @@
 				</ul>
 				<ul>
 					<li iconCls="icon-gears"><a
-						href="javascript:open1('团队费用列表','sanpin.do');">团队费用列表</a>
+						href="javascript:open1('团队费用列表','tuandui.do');">团队费用列表</a>
 					</li>
 				</ul>
 				<ul>
@@ -140,13 +141,16 @@
 						href="javascript:open1('散拼操作','SanPin_caozuo.do');">散拼操作</a>
 					</li>
 					<li iconCls="icon-gears"><a
-						href="javascript:open1('报名确认受理','SanPin_baoming.do');">报名确认受理</a>
-					</li>
-					<li iconCls="icon-gears"><a
 						href="javascript:open1('散拼团列表','SanPin_liebiao.do');">散拼团列表</a>
 					</li>
 					<li iconCls="icon-gears"><a
-						href="javascript:open1('我的退团申请','SanPin_tuituan.do');">我的退团申请</a>
+						href="javascript:open1('退团申请','SanPin_tuituan.do?shenpitype=1');">退团申请</a>
+					</li>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('转团申请','SanPin_tuituan.do?shenpitype=2');">转团申请</a>
+					</li>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('报名申请','SanPin_tuituan.do?shenpitype=3');">报名申请</a>
 					</li>
 				</ul>
 				<ul>
@@ -400,7 +404,7 @@
 			   </ul>
 			     <ul>
 			      <li iconCls="icon-gears">
-			        <a href="javascript:open1('客户价值字典','customerZiXinDic.do');">客户价值字典</a>
+			        <a href="javascript:open1('客户价值字典','customerValueDic.do');">客户价值字典</a>
 			      </li>
 			   </ul>
 			    <ul>
@@ -413,6 +417,12 @@
 			        <a href="javascript:open1('客户类别维护','customerCoperLevel.do');">客户类别维护</a>
 			      </li>
 			   </ul>
+			   <ul>
+			      <li iconCls="icon-gears">
+			        <a href="javascript:open1('客户合作级别','customerHezuojibie.do');">客户合作级别</a>
+			      </li>
+			   </ul>
+			   
 			   
 		</li>
 		</ul>
