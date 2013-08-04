@@ -1,0 +1,47 @@
+drop table if exists Sanpinzhongxin;
+
+/*==============================================================*/
+/* Table: Sanpinzhongxin                                        */
+/*==============================================================*/
+create table Sanpinzhongxin
+(
+   tuanNo               varchar(20) not null comment '团号',
+   tuanName             varchar(50) comment '团名 ',
+   Areatype             bigint comment '地域类型',
+   targetpopulation     bigint comment '目标人群',
+   Departurecity        bigint comment '出发城市',
+   TerminalCity         bigint comment '终点城市',
+   Producttypes         bigint comment '产品类型',
+   productbrand         bigint comment '产品品牌',
+   hotel                bigint comment '酒店标准',
+   numbercountry        int comment '旅游国家数量',
+   numbermaster         int comment '人数',
+   airways              varchar(20) comment '航空公司',
+   groupflight          varchar(20) comment '去程航班',
+   Tourflight           varchar(20) comment '回程航班',
+   predict              int comment '预警人数（出境）',
+   report               int comment '报警人数（出境）',
+   teamexplains         varchar(200) comment '团队特色说明',
+   Servicesinclude      varchar(200) comment '服务包含',
+   servicenoinclude     varchar(200) comment '服务不含',
+   notes                varchar(200) comment '参团须知',
+   Reviewstatus         int comment '审核状态',
+   Shenpijia            float comment '审批价',
+   dakehujia            float comment '大客户价',
+   zhikejia             float comment '直客价',
+   tonghang             float comment '同行价',
+   ertongzhanchuang     float comment '儿童站床价',
+   ertongbuzhanchuang   float comment '儿童不占床价',
+   zibeiqianjia         float comment '自备签价',
+   numberday            int comment '全程天数',
+   groupdate            datetime comment '出团日期',
+   Tourdate             datetime comment '回团日期',
+   zao                  bigint comment '早餐',
+   zhong                bigint comment '中餐',
+   wan                  bigint comment '晚餐',
+   fabustate            int comment '发布状态',
+   shoukestate          int comment '收客状态',
+   primary key (tuanNo)
+);
+
+alter table Sanpinzhongxin comment '散拼中心';

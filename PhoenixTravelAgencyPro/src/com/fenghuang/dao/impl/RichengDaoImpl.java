@@ -81,11 +81,17 @@ public class RichengDaoImpl extends BaseDao implements IRichengDao  {
 	public Pagination<Richeng> select(int currentPage, int numPerPage, Richeng r)
 			throws Exception {
 		// TODO Auto-generated method stub
-		String sql = "SELECT * FROM richeng WHERE 1=1 ";
+		String sql = "SELECT * FROM richeng WHERE  1=1 ";
 		StringBuffer sb = new StringBuffer(sql);
-		if(r.getRiid()!=0){
+		if(r.getRiid()!=0 && !"".equals(r.getRiid())){
 		sb.append("and riid='"+r.getRiid()+"' ");
 		}	
+		if(r.getXianluid()!=0 && !"".equals(r.getXianluid())){
+			sb.append(" and  xianluid='");
+			sb.append(r.getXianluid());
+			sb.append("' ORDER BY xianluid DESC");
+			
+		}
 		return this.getPagination(currentPage, numPerPage, sb.toString());
 	}
 

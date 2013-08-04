@@ -23,34 +23,30 @@ import com.fenghuang.service.IcaiwuskqrSerice;
 import com.fenghuang.util.DateJsonValueProcessor;
 import com.fenghuang.util.Pagination;
 
+
 @Controller
-public class CaiwufukuanshenpiController {
+public class CaiwutuanfeiController {
 	@Autowired 
 	private IcaiwuskqrSerice icaiwuskqrSerice;
-	@RequestMapping("fenghuang/fkspselect.do")
+	@RequestMapping("fenghuang/caiwutuanduifeiyong.do")
 	@ResponseBody
 	public Map<String, Object> getCurrencyList(HttpServletRequest request,
 			HttpServletResponse response,HttpSession session,Integer page, Integer rows,String team,String caozuo,String caiwuid,
             String id) {
-		 Tuanbiao tuanbiao = new Tuanbiao();
-		 
+		   Tuanbiao tuanbiao = new Tuanbiao();
 		    try {
-		    	 if(id!=null && !"".equals(id)){
-			    	 tuanbiao.setId(Long.parseLong(id));
-			     }
-				 
 		    	if(team!=null&&!"".equals(team)){
 		    		tuanbiao.setTeam(team);
 		    	}
 		    	if(caiwuid!=null&&!"".equals(caiwuid)){
 		    		tuanbiao.setCaiwuid(Integer.parseInt(caiwuid));
-		    	}else{
-		    		tuanbiao.setCaiwuid(2);
 		    	}
 		    	if(caozuo!=null&&!"".equals(caozuo)){
 		    		tuanbiao.setCaozuo(caozuo);
 		    	}
-			
+			 if(id!=null && !"".equals(id)){
+		    	 tuanbiao.setId(Long.parseLong(id));
+		     }
 			if(page==null){
 		    	 page=1;
 		     }
@@ -82,17 +78,16 @@ public class CaiwufukuanshenpiController {
 	        return null;
 	}
 	
-	@RequestMapping("fenghuang/updatefksp.do")
+	@RequestMapping("fenghuang/updateqrfk1.do")
 	@ResponseBody
 	public Map<String,Object> xiugai(HttpServletRequest request,
 			HttpServletResponse response,String caiwuid,String id){
 		Map<String, Object> result = new HashMap<String, Object>();
-	
 		boolean isSuccess = false;
 		Tuanbiao tuanbiao = new Tuanbiao();
+		
 		tuanbiao.setCaiwuid(Integer.parseInt(caiwuid));
 		tuanbiao.setId(Integer.parseInt(id));
-		
 		try {
 			isSuccess = icaiwuskqrSerice.updateskqr(tuanbiao);
 			isSuccess=true;
@@ -102,5 +97,4 @@ public class CaiwufukuanshenpiController {
 		result.put("success", isSuccess);
 		return result ; 
 	}
-	
 }

@@ -26,6 +26,7 @@
 </head>
 
 <body>
+
 	<!-- 如果在正式开发环境下 url可以为后台的请求，地址 -->
 	<table id="dg" class="easyui-datagrid"
 		data-options="url:'',border:false,singleSelect:false,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
