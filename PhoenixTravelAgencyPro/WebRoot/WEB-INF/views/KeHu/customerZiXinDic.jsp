@@ -48,7 +48,7 @@
 						<label>帮助提示:</label>
 				</td>
 				<td><input id="dicHelp" name="dicHelp" class="easyui-validatebox">
-					</div>
+				</div>				
 				</td>
 				<td>
 					<a href="javascript:zixinSelectLike();" 
@@ -66,7 +66,7 @@
 	  <div class="easyui-panel" title="客户资信字典列表"
 		style="height:480px;width: auto;">
 		<table id="dgZiXin" class="easyui-datagrid"
-			data-options="url:'fenghuang/getDictionaryDescs.do?dicType=26',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
+			data-options="url:'fenghuang/getDictionaryDescsPaginations.do?dicType=26',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 			  pagination="true" toolbar="#currencyDatagridtoolbar">
 		
 			<thead>
@@ -83,7 +83,7 @@
 	<div id="currencyDatagridtoolbar">
 		     <a href="javascript:addZiXin();" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>  
 		     <a href="javascript:ZiXinSelectId();" class="easyui-linkbutton" iconCls="icon-save"  plain="true">修改</a>
-		     <a href="javascript:shanchueZiXin();" class="easyui-linkbutton" iconCls="icon-cut" plain="true">删除</a>  
+		     <a href="javascript:shanchuZiXin();" class="easyui-linkbutton" iconCls="icon-cut" plain="true">删除</a>  
 		</div>   
 	</div>
 	
@@ -95,7 +95,7 @@
 			<table align="center">
 				<tr>
 					<td><div class="fitem">
-							<label>编号:</label>
+							<label>编号:</label> 
 					</td>
 					<td>--系统自动生成--</div></td>
 						<td><div class="fitem">
@@ -109,16 +109,16 @@
 					<td><div class="fitem">
 							<label>说明:</label>
 					</td>
-					<td><input name="sdicDesc" class="easyui-validatebox" required="true">
+					<td><input name="dicDesc" class="easyui-validatebox" required="true">
 						</div></td>
 					<td><div class="fitem">
 							<label>帮助提示:</label>
 					</td>
-					<td><input name="dicHelp" class="easyui-numberbox easyui-validatebox" required="true" missingMessage="请输入数字." invalidMessage="请输入数字.">
+					<td><input name="dicHelp" class="easyui-validatebox" required="true" >
 						</div></td>
 				</tr>
 				<tr>
-					<td colspan="4s" align="center">
+					<td colspan="4" align="center">
 					<a href="javascript:SaveZiXin();" class="easyui-linkbutton"
 						iconCls="icon-ok">保存</a> <a href="javascript:closeaddMianBan();"
 						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
@@ -137,7 +137,7 @@
 			<table align="center">
 				<tr>
 						<td>
-						<input id="id" name="id" class="easyui-validatebox" hidden="true">
+						<input id="dicNo" name="dicNo" class="easyui-validatebox" hidden="true">
 						<div class="fitem">
 							<label>名称:</label>
 					</td>
@@ -150,7 +150,7 @@
 					<td><div class="fitem">
 							<label>说明:</label>
 					</td>
-					<td><input name="sdicDesc" class="easyui-validatebox" required="true">
+					<td><input name="dicDesc" class="easyui-validatebox" required="true">
 						</div></td>
 					<td><div class="fitem">
 							<label>帮助提示:</label>
@@ -159,8 +159,8 @@
 						</div></td>
 				</tr>
 				<tr>
-					<td colspan="4s" align="center"><a
-						href="javascript:ZiXinUpdate();" class="easyui-linkbutton"
+					<td colspan="4" align="center"><a
+						href="javascript:ZiXindUpdate();" class="easyui-linkbutton"
 						iconCls="icon-ok">保存</a> <a href="javascript:closeaddMianBan();"
 						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
 				</tr>
@@ -178,14 +178,14 @@
 		var opts = $('#dgZiXin').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
 			var param = {
 				dicName: $("#dicName").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
-				sdicDesc: $("#sdicDesc").val(),
+				dicDesc: $("#dicDesc").val(),
 				dicHelp : $("#dicHelp").val(),
 				page:  opts.pageNumber,
 				rows:  opts.pageSize
 			};
 		
 				$.ajax({
-					url : 'fenghuang/kehuSelect.do' ,
+					url : 'fenghuang/getDictionaryDescsPaginations.do?dicType=26' ,
 					data :  param,
 					type : 'POST' ,
 					dataType : 'json' ,
@@ -229,11 +229,11 @@
 	  var row = $("#dgZiXin").datagrid("getSelected");
 			if (row) {
 				var param = {
-					"id" :  row.id
+					"dicNo" :  row.dicNo
 				};
-				if(confirm("确认要删除名称为 “ "+row.name+" ”的客户资信字典吗？")){
+				if(confirm("确认要删除名称为 “ "+row.dicName+" ”的客户资信字典吗？")){
 				$.ajax({
-					url : "fenghuang/deleteDics.do?deleteRows=id",
+					url : "fenghuang/deleteDics.do?",
 					data : param,
 					dataType : "json",
 					success : function(data) {
@@ -253,36 +253,17 @@
 	}
 	//按id查询
 		function ZiXinSelectId() {
-          //通过主键，查询该操作，并处于编辑状态。 是否打开tab，还是直接弹出window 
-			$("#updateZiXin").dialog("open");
-			//准备回显的数据
-			var row = $("#dgZiXin").datagrid("getSelected");
-			//alert(row.tuanNO);
-		
-			if(row){
-				var param = {
-					"id" : row.id
-				};
-				
-				$.ajax({
-					url : "fenghuang/getDictionaryDescs.do?dicNo=id",
-					data : param,
-					dataType : "json",
-					success : function(data) {
-		
-					   $('#updateZiXinForm').form('load',data.rows[0]);
-				
-					},
-					error : function() {
-						$.messager.alert("查询失败", "服务器请求失败!", "error");
-					}
-				});
-		}
+         //获取整行数据
+          var row=$("#dgZiXin").datagrid("getSelected");
+          //把获取到的数据填充到from
+          $("#updateZiXinForm").form('load',row);
+          // 打开div
+			 $("#updateZiXin").dialog("open");
 		}
 		 //修改
-		function ZiXinUpdate() {
+		function ZiXindUpdate() {
 			$("#updateZiXinForm").form('submit', {
-				url : 'fenghuang/kehuUpdate.do',
+				url : 'fenghuang/updatedictionary.do',
 				onSubmit : function() {
 					return $(this).form('validate');
 				},

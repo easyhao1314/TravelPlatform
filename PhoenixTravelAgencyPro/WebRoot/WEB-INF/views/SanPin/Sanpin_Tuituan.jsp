@@ -25,47 +25,68 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
   
 	
-
 	
-	 <div id="tb">
-		<a href="" class="easyui-linkbutton"
-			iconCls="icon-save" plain="true">待审批</a>
-		<a href="" class="easyui-linkbutton"
-			iconCls="icon-save" plain="true">已审批</a>
-	</div>
+	 
   
 <table id="dg" class="easyui-datagrid"
-		data-options="url:'fenghuang/tuituan.do',border:false,singleSelect:false,fit:true,fitColumns:true, onClickRow: onClickRow"
+		data-options="url:'fenghuang/Approvalinfo.do?shenpitype=${param.shenpitype} ',border:false,singleSelect:true,fit:true,fitColumns:true"
 		pagination="true" toolbar="#tb">
 		<thead>
 			<tr>
-				<th data-options="field:'ck',checkbox:true">选中</th>
+				<th data-options="field:'ck',checkbox:true"></th>
 				<th data-options="field:'shenqingDate'" width="50">申请日期</th>
-				<th data-options="field:'shiwu'" width="50">事务</th>
+				<th data-options="field:'shiwu',formatter:tuituanshiwu" width="50">事务说明</th>
 				<th data-options="field:'shenqingren'" width="50">申请人</th>
 				<th data-options="field:'shenpiDate'" width="50">审批日期</th>
 				<th data-options="field:'shenheren'" width="50">审核人</th>
+				<th data-options="field:'approvalStatus',formatter:shenpiStatus" width="50">审批状态</th>
+				<th data-options="field:'shenpitype'" width="50">审批类型</th>
+				<th data-options="field:'approvaltuanNo'" width="50">申请团号</th>
 				<th data-options="field:'beizhu'" width="50">备注</th>
-				<th data-options="field:'shenqingDate',hidden:true" width="50">审批号</th>
 			</tr>
 		</thead>
 	</table>
-	
+	<div id="tb">
+		<a href="javascript:shenpiStatusclick(1);" class="easyui-linkbutton"
+			iconCls="icon-save" plain="true">待审批</a>
+		<a href="javascript:shenpiStatusclick(2);" class="easyui-linkbutton"
+			iconCls="icon-save" plain="true">已审批</a>
+	</div>
 	<script type="text/javascript">
-		function onClickRow(index) {
-			if (editIndex != index) {
-				if (endEditing()) {
-					$('#dg').datagrid('selectRow', index).datagrid('beginEdit',
-							index);
-					editIndex = index;
-				} else {
-					$('#dg').datagrid('selectRow', editIndex);
-				}
-			}
-		}
+	function tuituanshiwu(val,row){
+	return '<a href="javascript:openShenpimingxi('+row.approvalNo+','+row.approvaltuanNo+','+row.bmid+')">'+row.shiwu+'</a>';
+	}
+	function openShenpimingxi(aNo,atuanNo,abmid){
+	var url = "Sanpin_shenpimingxi.do?aNo="+aNo+"&atuanNo="+atuanNo+"&shenpitype="+'${param.shenpitype}'+"&abmid="+abmid;
+		 var tab = $('#tt').tabs('getSelected'); 
+		if (tab){  
+	                 var index = $('#tt').tabs('getTabIndex', tab); 
+	                 $('#tt').tabs('close', index);  
+	       } 
+	       
+	       $('#tt').tabs('add', {
+				         title : "退团详细信息",
+				         href : url,
+				      //  closable : true,
+				         });  
+	}
 	</script>
-  
-  
+  	<script type="text/javascript">
+  	function shenpiStatus(val,row){
+  		var astatus="已审批";
+  		if(row.approvalStatus==1){
+  			astatus="未审批";
+  		}
+  		return '<div style="width: auto;">'+astatus+'</div>';
+  	}
+  	function shenpiStatusclick(status){
+  	
+  	$("#dg").datagrid("load", {
+				approvalStauts : status
+			});
+  	}
+  	</script>
+  	
   
   
   

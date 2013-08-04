@@ -100,21 +100,34 @@ public class RichengController {
 	}
 	@RequestMapping("fenghuang/updatericheng.do")
 	@ResponseBody
-	public Map<String, Object> updatericheng(HttpServletRequest request,
-			HttpServletResponse response,String riid,String richenganpai,String chengshiid){
+	public Map<String, Object> updatericheng(HttpServletRequest request,HttpServletResponse response,
+			String riid,String richenganpai,String huodong,String chengshiid,String jiudian,String jiaotong,String zao,String zhong,String wan){
 		boolean isSuccess = false;
 		Map<String,Object> result = new HashMap<String, Object>();	
 		Richeng r = new Richeng();
 			if(riid!=null && !"".equals(riid)){
 				r.setRiid(Long.parseLong(riid));
 			}
-			if(richenganpai!=null && !"".equals(richenganpai)){
-				r.setRichenganpai(richenganpai);
-			}
+			r.setHuodong(huodong);
+			r.setRichenganpai(richenganpai);
 			if(chengshiid!=null && !"".equals(chengshiid)){
 				r.setChengshiid(Long.parseLong(chengshiid));
 			}
-			
+			if(jiudian !=null && !"".equals(jiudian)){
+				r.setJiudian(Long.parseLong(jiudian));
+			}
+			if(jiaotong!=null && !"".equals(jiaotong)){
+				r.setJiaotong(Long.parseLong(jiaotong));
+			}
+			if(zao !=null && !"".equals(zao)){
+				r.setZao(Long.parseLong(zao));		
+			}
+			if(zhong !=null && !"".equals(zhong)){
+				r.setZhong(Long.parseLong(zhong));		
+			}
+			if(wan !=null && !"".equals(wan)){
+				r.setWan(Long.parseLong(wan));		
+			}
 		try {
 			is.update(r);
 			isSuccess=true;

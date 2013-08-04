@@ -164,7 +164,21 @@ public class CustomerCenterController {
 		JSONObject fromObject = JSONObject.fromObject(result);
 		return fromObject ; 
 	}
-
+	//修改客户信息面板模式
+	@RequestMapping("fenghuang/updateCustomer.do")
+	@ResponseBody
+	public Map<String,Object> updateCustomer(HttpServletRequest request,
+			HttpServletResponse response,CustomerInfo customer){
+		Map<String,Object> result=new HashMap<String,Object>();
+		boolean isSuccess=false;
+		try{
+			isSuccess=iCustomerCenterService.updateCustom(customer);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		result.put("success", isSuccess);
+		return result;
+	}
 	/**
 	 * 修改客户信息
 	 * @param customerInfo
@@ -174,11 +188,15 @@ public class CustomerCenterController {
 	@ResponseBody
 	public Map<String , Object> updateCostom(HttpServletRequest request,
 			HttpServletResponse response,String updateRows){
+		response.setContentType("application/json;charset=UTF-8");
+		response.setCharacterEncoding("utf-8");
+
 		Map<String,Object>  result = new HashMap<String, Object>();
 		 JSONUtils.getMorpherRegistry().registerMorpher( new  DateMorpher( new String[]{
                  "yyyy-MM-dd HH:mm:ss" ,
                  "yyyy-MM-dd"
         })); 
+		
 		JSONArray jsonArray = JSONArray.fromObject(updateRows);
 		List<CustomerInfo> Cust = JSONArray.toList(jsonArray,CustomerInfo.class);
 		boolean isSuccess = false ;

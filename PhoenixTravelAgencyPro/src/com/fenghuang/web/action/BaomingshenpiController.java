@@ -25,6 +25,54 @@ import com.fenghuang.util.Pagination;
 public class BaomingshenpiController {
 	@Autowired
 	private IBaomingshenpiService is;
+	@RequestMapping("fenghuang/shenpikehu.do")
+	@ResponseBody
+	public Map<String,Object> selectshenpiCustomerCenter(HttpServletRequest request,
+			HttpServletResponse response, Integer page,Integer rows,String shenpitype,String abmid,String tuanNo
+			) {
+		Baomingshenpi b = new Baomingshenpi();
+		Integer bmid=0;
+		Integer type=0;
+		String tuanNof=null;
+		if(tuanNo!=null && !"".equals(tuanNo)){
+			tuanNof = tuanNo;
+		}
+		if(shenpitype!=null && !"".equals(shenpitype)){
+			type=Integer.parseInt(shenpitype);
+		}
+		if(abmid!=null && !"".equals(abmid)){
+				bmid=Integer.parseInt(abmid);
+		}
+		if(!"".equals(tuanNo) && tuanNo!=null){
+			tuanNof=tuanNo;
+		}
+		try {
+			Pagination<Baomingshenpi> pagination = is.bmingandapproval(b, type, tuanNof, bmid);
+			List<Map<String, Object>> testUsers = pagination.getResultList();
+			Map<String,Object> returnValue  = new HashMap<String, Object>();
+			for(int i = 0 ;i<testUsers.size();i++){
+				for(Entry<String, Object> entry : testUsers.get(i).entrySet()){
+					if(entry.getValue() == null){
+						entry.setValue("") ;
+					}
+				}
+			}
+			returnValue.put("total",  pagination.getTotalRows());
+			returnValue.put("rows", testUsers);	
+			JsonConfig config = new JsonConfig();
+	     	config.registerJsonValueProcessor(Timestamp.class,new DateJsonValueProcessor("yyyy-MM-dd"));
+	     			//把MAP转换成JSON，返回到前台
+	     	JSONObject fromObject = JSONObject.fromObject(returnValue,config);
+	     	System.out.println(fromObject+"执行");
+			return fromObject;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	
 	@RequestMapping("fenghuang/baomingshenpiinfo.do")
 	@ResponseBody
 	public Map<String,Object> DantuanXunjia(HttpServletRequest request,
@@ -32,15 +80,12 @@ public class BaomingshenpiController {
 			) {
 		Baomingshenpi b = new Baomingshenpi();
 		Integer ftype=0;
-		String ftuanNo="";
 		if(type!=null && !"".equals(type)){
 			 ftype = Integer.parseInt(type);
 		}
-		if(!"".equals(tuanNo) && tuanNo!=null){
-			ftuanNo=tuanNo;
-		}
+		
 		try {
-			Pagination<Baomingshenpi> pagination = is.baominginfo(page, rows, b, ftuanNo, ftype);
+			Pagination<Baomingshenpi> pagination = is.baominginfo(page, rows, b, tuanNo, ftype);
 			List<Map<String, Object>> testUsers = pagination.getResultList();
 			Map<String,Object> returnValue  = new HashMap<String, Object>();
 			for(int i = 0 ;i<testUsers.size();i++){

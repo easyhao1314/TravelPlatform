@@ -54,6 +54,28 @@ public class Baomingshenpi {
     * 
     * @pdOid 49cade96-5cfe-46fb-801e-db69264f53b8 */
    public java.lang.String zhengjianhao;
+   /** 退团审批
+    * 
+    * @pdOid 0f25130a-5f39-4861-beef-82e1c80f60be */
+   public int tuituanshenpi;
+   /** 转团审批
+    * 
+    * @pdOid 8835d3ed-358b-4532-83f1-d0b87caf4c1a */
+   public int zhuantuanshenpi;
+   
+   
+public int getTuituanshenpi() {
+	return tuituanshenpi;
+}
+public void setTuituanshenpi(int tuituanshenpi) {
+	this.tuituanshenpi = tuituanshenpi;
+}
+public int getZhuantuanshenpi() {
+	return zhuantuanshenpi;
+}
+public void setZhuantuanshenpi(int zhuantuanshenpi) {
+	this.zhuantuanshenpi = zhuantuanshenpi;
+}
 public java.lang.String getKehuname() {
 	return kehuname;
 }

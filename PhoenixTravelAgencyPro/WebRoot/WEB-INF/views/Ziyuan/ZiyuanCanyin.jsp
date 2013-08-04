@@ -167,7 +167,7 @@
 
 </tr>
 <tr>
-<tr><td colspan="4s" align="center"><a href="javascript:SaveCanyin();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> 
+<tr><td colspan="4" align="center"><a href="javascript:SaveCanyin();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> 
 <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-undo" onclick="$('#addForm').form('clear')">重置</a></td>
 </tr>
 			</table>
@@ -252,7 +252,7 @@
 <td><div class="fitem"><label>备注：</label></td><td colspan="3"><input name="beizhu" class="easyui-validatebox" size="70" ></div></td>
 </tr>
 <tr>
-<tr><td colspan="4s" align="center"><a href="javascript:canyinUpdate();" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
+<tr><td colspan="4" align="center"><a href="javascript:canyinUpdate();" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
 <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-undo" onclick="$('#updateForm').form('clear')">重置</a></td>
 </tr>
 			</table>

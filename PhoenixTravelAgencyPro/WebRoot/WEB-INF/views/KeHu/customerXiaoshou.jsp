@@ -167,7 +167,7 @@
 						</div></td>
 				</tr>
 				<tr>
-					<td colspan="4s" align="center"><a
+					<td colspan="4" align="center"><a
 						href="javascript:mainBanMoshiSave();" class="easyui-linkbutton"
 						iconCls="icon-ok">保存</a> <a href="javascript:closeaddMianBan();"
 						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
@@ -277,7 +277,7 @@
 						</div></td>
 				</tr>
 				<tr>
-					<td colspan="4s" align="center"><a
+					<td colspan="4" align="center"><a
 						href="javascript:mainBanMoshiUpdate();" class="easyui-linkbutton"
 						iconCls="icon-ok">保存</a> <a href="javascript:closeupdateMianBan();"
 						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>

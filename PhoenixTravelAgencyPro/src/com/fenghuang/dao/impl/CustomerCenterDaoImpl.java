@@ -49,7 +49,7 @@ public class CustomerCenterDaoImpl extends BaseDao implements
 
 	@Override
 	public Pagination<CustomerInfo> getCustomInfoListPaginations(int currentPage,int numPerPage,String tuanNo,String name, String type, String lxr,String moblePhone,String telePhone,String qq,String msn, String daqu, String city, String hzjb, String xiaoshou,String zhtime,String jituan) {
-		StringBuffer sql = new StringBuffer("select c.id,c.tuanNo,c.name, c.moblePhone,c.telePhone,c.chuanzhen,c.cjtime,c.lxrs,c.lxr,c.xiaoshou,c.type,c.sex from customerinfo as c left JOIN dictionarydesc as d ON c.city=d.dicNo  where 1=1 ") ;
+		StringBuffer sql = new StringBuffer("select c.id,c.tuanNo,c.name, c.moblePhone,c.telePhone,c.chuanzhen,c.cjtime,c.lxrs,c.lxr,c.xiaoshou,c.type,c.sex,c.sfzn,c.bz from customerinfo as c left JOIN dictionarydesc as d ON c.city=d.dicNo  where 1=1 ") ;
 		if(tuanNo != null && !"".equals(tuanNo)){
 			sql.append(" AND c.tuanNo LIKE '%");
 			sql.append(tuanNo);
@@ -92,9 +92,9 @@ public class CustomerCenterDaoImpl extends BaseDao implements
 			sql.append("%'");
 		}
 		if(daqu != null && !"".equals(daqu)){
-			sql.append(" AND c.daqu LIKE '%");
+			sql.append(" AND c.daqu = '");
 			sql.append(daqu);
-			sql.append("%'");
+			sql.append("'");
 		}	
 		if(city != null && !"".equals(city)){
 			sql.append(" AND c.city = '");
@@ -107,9 +107,9 @@ public class CustomerCenterDaoImpl extends BaseDao implements
 			sql.append("'");
 		}
 		if(xiaoshou != null && !"".equals(xiaoshou)){
-			sql.append(" AND c.xiaoshou LIKE '%");
+			sql.append(" AND c.xiaoshou = '");
 			sql.append(xiaoshou);
-			sql.append("%'");
+			sql.append("'");
 		}
 		if(zhtime != null && !"".equals(zhtime)){
 			sql.append(" AND c.zhtime = '");
@@ -159,7 +159,7 @@ public class CustomerCenterDaoImpl extends BaseDao implements
 				ps.setLong(4, customerInfo.getDaqu());
 				ps.setString(5, customerInfo.getLxr());
 				ps.setString(6, customerInfo.getPost());
-				ps.setString(7, customerInfo.getAge());
+				ps.setLong(7, customerInfo.getAge());
 				ps.setLong(8, customerInfo.getSex());
 				ps.setString(9, customerInfo.getAddress());
 				ps.setString(10, customerInfo.getMoblePhone());
@@ -170,12 +170,12 @@ public class CustomerCenterDaoImpl extends BaseDao implements
 				ps.setString(15, customerInfo.getChuanzhen());
 				ps.setString(16, customerInfo.getSfzn());
 				ps.setString(17, customerInfo.getJituan());
-				ps.setInt(18, customerInfo.getHzjb());
+				ps.setLong(18, customerInfo.getHzjb());
 				ps.setString(19, str);
 				ps.setString(20, str);
 				ps.setInt(21, customerInfo.getLxrs());
 				ps.setString(22, customerInfo.getBz());
-				ps.setInt(23, customerInfo.getType());
+				ps.setLong(23, customerInfo.getType());
 				return ps;
 			}
 		 }, keyHolder);

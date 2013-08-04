@@ -119,7 +119,7 @@
 							<label>菜单父级编号:</label></div>
 					</td>
 					<td><div><input class="easyui-combobox" 
-			name="parentId"
+			name="parentId" id="editParentId"
 			data-options="
 					url:'fenghuang/getFunctionMenuComboboxs.do',
 					valueField:'id',

@@ -168,10 +168,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					dataType : "json",
 					success : function(data) {
 					$('#jibenForm').form('load',{"tuanNo":data.rows[0].tuanNo});
-					//$('#mingxiForm').form('load',data.rows[0]);
-					//alert(data.rows[0].tuanNo);
-					
-					   //$('#mingxiForm').form('load',rows[0]);
 
 					},
 					error : function() {

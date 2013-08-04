@@ -25,6 +25,11 @@ public class CommonUtil {
 		return uuid.toString().replace("-", "");
 		
 	}
+	
+	public static String getTuanHao(){
+		return "";
+	}
+	
 
 
 }

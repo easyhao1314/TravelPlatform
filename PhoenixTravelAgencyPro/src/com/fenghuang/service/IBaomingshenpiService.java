@@ -8,4 +8,5 @@ public interface IBaomingshenpiService {
 	public boolean updatebaoming(Baomingshenpi b)throws Exception;
 	public boolean addbaoming(Baomingshenpi b)throws Exception;
 	public boolean deletebaoming(Baomingshenpi b)throws Exception;
+	public Pagination<Baomingshenpi> bmingandapproval(Baomingshenpi b,Integer shenpitype,String tuanNo,Integer abmid)throws Exception;
 }

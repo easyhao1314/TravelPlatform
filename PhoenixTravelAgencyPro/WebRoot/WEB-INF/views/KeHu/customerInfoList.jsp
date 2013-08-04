@@ -899,7 +899,7 @@
 		//点击面板修改
 		function updateCustomer() {
 			$("#updateCustomerForm").form('submit', {
-				url : 'fenghuang/updateCustom.do',
+				url : 'fenghuang/updateCustomer.do',
 				onSubmit : function() {
 					return $(this).form('validate');
 				},

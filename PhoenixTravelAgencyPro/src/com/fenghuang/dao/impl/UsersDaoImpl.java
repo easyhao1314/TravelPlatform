@@ -8,12 +8,14 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.simple.ParameterizedBeanPropertyRowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.fenghuang.dao.BaseDao;
 import com.fenghuang.dao.IUserDao;
 import com.fenghuang.entiey.Users;
 import com.fenghuang.entiey.Usersrr;
+import com.fenghuang.util.FengHuangMd5Util;
 import com.fenghuang.util.Pagination;
 
 /**
@@ -59,7 +61,7 @@ public class UsersDaoImpl extends BaseDao implements IUserDao {
 				users.getMsn3(), users.getQq(), users.getCompanyId(),
 				users.getDepartmentId(),users.getJobDescription(), users.getSortNumber(),
 				users.getAddress(), users.getZip(), users.getRemark(),
-				users.getImagePath(), users.getPassword());
+				users.getImagePath(), FengHuangMd5Util.getMD5("111111"));
 		return rs > 0;
 	}
 
@@ -251,17 +253,17 @@ public class UsersDaoImpl extends BaseDao implements IUserDao {
 
 	@Override
 	public boolean isExistUserLoginName(String LoginName) throws Exception {
-		String sql = "selec count(1) from users where loginName=?";
-		int rs = this.queryForInt(sql);
+		String sql = "select count(1) from users where loginName=?";
+		int rs = this.queryForInt(sql,LoginName);
 		return rs > 0;
 	}
 
 	@Override
 	public Users getUsersByLoginName(String loginName) throws Exception {
 		String sql = "select * from users where loginName = ?";
-		Users users = this.queryForObject(sql, Users.class, loginName);
+		Users users = this.queryForObject(sql, ParameterizedBeanPropertyRowMapper.newInstance(Users.class), loginName);
 
-		return null;
+		return users;
 	}
 
 }

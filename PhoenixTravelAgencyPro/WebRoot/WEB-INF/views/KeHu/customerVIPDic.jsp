@@ -65,7 +65,7 @@
 	  <div class="easyui-panel" title="客户VIP字典列表"
 		style="height:480px;width: auto;">
 		<table id="dgVIP" class="easyui-datagrid"
-			data-options="url:'fenghuang/getDictionaryDescsPaginations.do?dicType=4',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
+			data-options="url:'fenghuang/getDictionaryDescsPaginations.do?dicType=29',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 			  pagination="true" toolbar="#currencyDatagridtoolbar">
 		
 			<thead>
@@ -184,7 +184,7 @@
 			};
 		
 				$.ajax({
-					url : 'fenghuang/kehuSelect.do' ,
+					url : 'fenghuang/getDictionaryDescsPaginations.do?dicType=29' ,
 					data :  param,
 					type : 'POST' ,
 					dataType : 'json' ,
@@ -203,7 +203,7 @@
          
 		function SaveVIP() {
 			$('#addVIPForm').form('submit', {
-				url : 'fenghuang/saveDic.do?dicType=4',
+				url : 'fenghuang/saveDic.do?dicType=29',
 				onSubmit : function() {
 					return $(this).form('validate');
 				},
