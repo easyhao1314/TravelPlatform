@@ -59,7 +59,7 @@
 	 <div class="easyui-panel" title="付款审批"
 		style="height:450px;width: auto;" toolbar="#currencyDatagridtoolbar">	
 	<table id="dg" class="easyui-datagrid"
-		data-options="url:'fenghuang/fkspselect.do',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
+		data-options="url:'fenghuang/fukuanshenhe.do',border:false,singleSelect:true,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
 		pagination="true" toolbar="#tb">
 		<thead>
 			<tr>	 

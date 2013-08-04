@@ -70,16 +70,20 @@
 		<property name="suffix" value=".jsp" />
 	</bean> 
 	<!-- 登录和权限拦截器 -->
-	<!--  
+	<!--  -->
 	<mvc:interceptors>
 	  <bean class="com.fenghuang.web.interceptor.LoginInterceptor"></bean>
+	  <!-- 
 	  <bean class="com.fenghuang.web.interceptor.PurviewInterceptor"></bean>
+	   -->
 	</mvc:interceptors>
-	-->
+	
 	
 	<!-- 这是配置静态页面已*.do 的方式访问 -->
 	<!--path 代表已layout.do的方式来方位 jsp页面， view-name 代表的就是/WEB-INF/views/layout.jsp -->
+	<mvc:view-controller path="index.do" view-name="index"/>
 	<mvc:view-controller path="layout.do" view-name="layout" />
+	<mvc:view-controller path="layouttest.do" view-name="layouttest.jsp"/>
 	<mvc:view-controller path="dictionaryDesc.do" view-name="dictionaryDesc"/>
 	<mvc:view-controller path="currencyList.do" view-name="currencyList"/>
 	<mvc:view-controller path="functionMenu.do" view-name="functionmenu/functionMenu"/>
@@ -100,6 +104,7 @@
     <mvc:view-controller path="tuandui.do" view-name="F.A.D/tuandui"/>
     <mvc:view-controller path="fukuanshenhe.do" view-name="F.A.D/fukuanshenhe"/>
     <mvc:view-controller path="yfktj.do" view-name="F.A.D/yfktj"/>
+    <mvc:view-controller path="tuanduixinxi.do" view-name="F.A.D/tuanduixinxi"/>
 	<!-- 赵杨的配置 -->
 	<mvc:view-controller path="SanPin_caozuo.do" view-name="SanPin/SanPin_CaoZuo"/>
 	 <!-- 单团中心-->
@@ -154,6 +159,7 @@
 	<mvc:view-controller path="SanPin_wodebaomingsp.do" view-name="SanPin/Sanpin_WodeBaomingsp"/>
 	<mvc:view-controller path="Sanpin_zhuantuan.do" view-name="SanPin/Sanpin_Zhuantuan"/>
 	<mvc:view-controller path="Sanpin_mingxi.do" view-name="SanPin/Sanpin_Mingxi"/>
+	<mvc:view-controller path="Sanpin_shenpimingxi.do" view-name="SanPin/Sanpin_ShenpiMingxi"/>
 	<!-- 赵杨_______行程库管理 -->
 	<mvc:view-controller path="Xingcheng_xianlu.do" view-name="XingCheng/Xingcheng_xianlu"/>
 	<mvc:view-controller path="Xingcheng_ri.do" view-name="XingCheng/Xingcheng_ri"/>
@@ -203,6 +209,7 @@
 	<mvc:view-controller path="customerValueDic.do" view-name="KeHu/customerValueDic" />
 	<mvc:view-controller path="customerAreaWeihu.do" view-name="KeHu/customerAreaWeihu" />
 	<mvc:view-controller path="customerCoperLevel.do" view-name="KeHu/customerCoperLevel" />
+	<mvc:view-controller path="customerHezuojibie.do" view-name="KeHu/customerHezuojibie" />
 	<!-- 客户中心结束 -->
 	<!-- 陈家海的配置结束 -->
 </beans>

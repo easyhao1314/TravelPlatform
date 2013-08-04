@@ -40,7 +40,7 @@ public class CaiwufukuanshenheController {
 			     }
 				 
 		    	if(team!=null&&!"".equals(team)){
-		    		tuanbiao.setTeam(Integer.parseInt(team));
+		    		tuanbiao.setTeam(team);
 		    	}
 		    	if(caiwuid!=null&&!"".equals(caiwuid)){
 		    		tuanbiao.setCaiwuid(Integer.parseInt(caiwuid));
