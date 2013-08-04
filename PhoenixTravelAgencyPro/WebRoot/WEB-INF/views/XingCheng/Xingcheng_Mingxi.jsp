@@ -109,7 +109,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <table>
           <tr>
           <td>id</td>
-        <td><input name="riid" class="easyui-validatebox"/></td>
+        <td><input id="riid" name="riid" class="easyui-validatebox"/></td>
              <td>日程</td>
             <td> <input name="richenganpai" class="easyui-validatebox"/></td>
              </tr>
@@ -151,10 +151,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 //页面加载时填充xianlumingxiForm
   $(document).ready(function() {
  	var param = {
-					"xianid" :  '<%=request.getParameter("xianid") %>'
+					"xianid" :  '${param.xianid}'
 				};
 		$.ajax({
-					url :'fenghuang/xianluinfo.do?',
+					url :'fenghuang/xianluinfo.do',
 					data :param,
 					dataType : "json",
 					success : function(data) {
@@ -185,11 +185,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					dataType : "json",
 					success : function(data) {
 					//循环添加天数
-						alert(data.rows.length);		
+		
 					for(var i=0;i<data.rows.length;i++){
-						 var d = parseInt(i+1);
-
-						$("#mdiv").append('<form id="d'+d+'"><table border="1" width="800px" ><tr><td width="100px;"><strong>日期</strong></td><td><strong><a href="javascript:richenganpai()" class="easyui-linkbutton" iconCls="icon-add" plain="true"> 日程修改</a></strong></tr><tr><td><strong><a href="javascript:richenganpai()" class="easyui-linkbutton" iconCls="icon-add" plain="true">第'+d+'天</strong></td><td><input name="riid" class="easyui-validatebox">日程:<input name="richenganpai" class="easyui-validatebox"><hr />活动:<input name="jiudian" class="easyui-validatebox"><hr />酒店:<input name="riid" class="easyui-validatebox"><hr />餐饮：<input name="zao" class="easyui-validatebox"></td></tr><table></form>');
+						 var d = parseInt(i+1);				
+						$("#mdiv").append('<div id="rixingchengdiv"><form id="d'+d+'"><table border="1" width="800px" ><tr><td width="100px;"><strong>日期</strong></td><td><strong><a href="javascript:richenganpai1('+data.rows[i].riid+')" class="easyui-linkbutton" iconCls="icon-add" plain="true"> 日程修改</a></strong></tr><tr><td><strong><a href="javascript:void()" class="easyui-linkbutton" iconCls="icon-add" plain="true">第'+d+'天</strong></td><td><input name="riid" class="easyui-validatebox">日程:<input name="richenganpai" class="easyui-validatebox"><hr />活动:<input name="huodong" class="easyui-validatebox"><hr />酒店:<input name="jiudian" class="easyui-validatebox"><hr />餐饮：早：<input name="zao" class="easyui-validatebox">中：<input name="zhong" class="easyui-validatebox">晚：<input name="wan" class="easyui-validatebox"></td></tr><table></form></div>');
 						 $('#d'+d).form('load',data.rows[i]);
 					} 
 					//pares方法是 渲染JqueryEasyUi 插件的 解决不显示EasyUi的样式问题
@@ -204,9 +203,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   }
   
   //修改日程开始
-  function richenganpai(){ 
+  function richenganpai1(riid){ 
+  
   $("#richeng").dialog("open");
+  //把对象放到from里面
+
+  $("#riid").val(riid);
   }
+  
   function  richenUpdate2(){
      $("#richengFrom").form('submit', {
 				url : 'fenghuang/updatericheng.do',
@@ -220,6 +224,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					if (result.success) {
 					  $("#richeng").dialog('close');
 						$.messager.alert("修改成功", "修改成功！", "info"); 
+						  $("#rixingchengdiv").datagrid('reload'); 
 					} else {
 						$.messager.alert("修改失败", "修改失败!", "error");
 					}

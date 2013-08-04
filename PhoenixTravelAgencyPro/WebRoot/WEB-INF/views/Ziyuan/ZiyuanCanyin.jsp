@@ -291,7 +291,7 @@
 				$.ajax({
 					url : 'fenghuang/canyinSelect.do' ,
 					data :  param,
-					type : 'POST' ,
+					type : 'POST',
 					dataType : 'json' ,
 					success : function(data){
 						$('#dg').datagrid('loadData',data);

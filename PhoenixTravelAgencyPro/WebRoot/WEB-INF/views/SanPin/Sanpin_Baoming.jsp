@@ -127,31 +127,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<th data-options="field:'ck',checkbox:true"></th>
 				<th data-options="field:'id'" width="80">客户编号</th>
 				<th data-options="field:'name',editor:'text'" width="80">姓名</th>
-				<th data-options="field:'sex',formatter:function(value,row){
-
-return row.sexName;
+				<th data-options="field:'sex',editor:'text', formatter:function(value,row){
+	var sexinfo = '女';
+	if(row.sex=15){
+		sexinfo='男';
+	}
+return sexinfo;
 },
 editor:{
-type:'combobox',     
+type:'combobox',
+editable:false,
 options:{
-valueField: 'sex',                             
-textField: 'sexName', 
+valueField:'value',
+textField:'label',
 data: [{
-			sexName: '男',
-			sex: '15'
+			label: '男',
+			value: '15'
 		},
 		{
-			sexName: '女',
-			sex: '16'
+			label: '女',
+			value: '16'
 		}],
-		panelHeight:'auto',
-		required:true,
-		editable:false,
-		onChange:function(newValue, oldValue){
-			
-		}
+		panelHeight:'auto'
 }
-}" width="20" >性别</th>
+}">性别</th>
 				<th data-options="field:'sfzn',editor:'text'" width="80">证件号</th>
 				<th data-options="field:'telePhone',editor:'text'" width="80">联系电话</th>
 				<th data-options="field:'bz',editor:'text'" width="80">备注</th>
@@ -265,12 +264,8 @@ var url = "fenghuang/Sanpinliebiao.do?tuanNo="+'<%=request.getParameter("tuanNo"
 				return true;
 			}
 			if ($('#dg').datagrid('validateRow', editIndex)) {
-			    var ed = $('#dg').datagrid('getEditor', {index:editIndex,field:'sex'});
-				var sexName = $(ed.target).combobox('getText');
-				$('#dg').datagrid('getRows')[editIndex]['sexName'] = sexName;
 				$('#dg').datagrid('endEdit', editIndex);
 				$('#dg').datagrid('unselectRow', editIndex);
-				//alert($('#dg').datagrid('getRows')[editIndex]['sex']);
 				editIndex = undefined;
 				return true;
 			} else {
