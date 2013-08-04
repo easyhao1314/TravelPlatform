@@ -20,7 +20,20 @@ public class LoginInterceptor extends HandlerInterceptorAdapter   {
 	@Override
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
-		return super.preHandle(request, response, handler);
+		// /要拦截的处理
+		String requestUri = request.getRequestURI();
+		System.out.println(requestUri);
+		if(requestUri.indexOf(".do")>0){
+			
+			System.out.println(requestUri);
+			
+		}		
+		
+		
+		
+		
+		
+		return true;
 	}
 
 }

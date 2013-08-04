@@ -129,3 +129,16 @@ var editIndex = undefined;
 		function closedSearch() {
 			$('#searchRole').dialog('close');
 		}
+		
+		$('#dgRole').datagrid({
+			onRowContextMenu : onRowContextMenu,
+		});
+		function onRowContextMenu(e, rowIndex, rowData) {
+			e.preventDefault();
+			var selected = $("#dgRole").datagrid('getRows'); //获取所有行集合对象
+			selected[rowIndex].id; //index为当前右键行的索引，指向当前行对象
+			$('#dgRoleMm').menu('show', {
+				left : e.pageX,
+				top : e.pageY
+			});
+		}
