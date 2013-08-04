@@ -88,6 +88,8 @@ public class CustomerInfo {
   public String bz;
   /** 团队类型*/
   public long type;
+  
+  public String sexName;
 public int getId() {
 	return id;
 }
@@ -237,6 +239,12 @@ public long getType() {
 }
 public void setType(long type) {
 	this.type = type;
+}
+public String getSexName() {
+	return sexName;
+}
+public void setSexName(String sexName) {
+	this.sexName = sexName;
 }
 
 
