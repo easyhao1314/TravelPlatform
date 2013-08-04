@@ -116,6 +116,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
              <tr>
               <td>活动</td> <td><input name="huodong" class="easyui-validatebox"/></td>
                <td>酒店</td> <td><input name="jiudian" class="easyui-validatebox"/></td>
+                </tr>
+                <tr>
+             <td>早餐</td><td><input name="zao" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=22',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false"></div></td>
+					<td>午餐</td><td><input name="zhong" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=23',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false"></div></td>
+					</tr>
+					 <tr>             
+					<td>午餐</td><td><input name="wan" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=24',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false"></div></td>
+					<td></td>
+					</tr>
+					<tr>
                 <td colspan="4">
                 <a href="javascript:richenUpdate2();" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
                 <a href="javascript:closedSearch();" class="easyui-linkbutton" iconCls="icon-cancel">取消</a>
@@ -128,47 +150,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <script type="text/javascript">
 
   $(document).ready(function() {
-  var url = "fenghuang/xingchengkushituinfo.do?xianid="+'<%=request.getParameter("xianid") %>';
+
+
+ 	var param = {
+					"xianid" :  '<%=request.getParameter("xianid") %>'
+				};
 		$.ajax({
-					url :url ,
-					data : '<%=request.getParameter("xianid") %>',
+					url :'fenghuang/xianluinfo.do?',
+					data :param,
 					dataType : "json",
 					success : function(data) {
 					//循环添加天数
-					//alert(data.rows[0].riid+data.rows[0].richenganpai);
+						alert(data);
+				
+				
 					$('#xianlumingxiForm').form('load',data.rows[0]);
-					for(var i=0;i<data.rows.length;i++){
+					for(var i=0;i<data.rows[0].tianshu;i++){
 						 var d = parseInt(i+1);
-						$("#mdiv").append('<form id="d'+d+'"><table border="1" width="800px" ><tr><td width="100px;"><strong>日期</strong></td><td><strong>日程</strong><a href="#" class=\"easyui-linkbutton\" iconcls=\"icon-add\" plain=\"true\">活动</a><a href="#" class=\"easyui-linkbutton\" iconcls=\"icon-add\" plain=\"true\">酒店</a></td></tr><tr><td><strong style="background-color:red;">第'+d+'天</strong></td><td><hr /></td></tr><table></form>');
+						$("#mdiv").append('<form id="d'+d+'"><table border="1" width="800px" ><tr><td width="100px;"><strong>日期</strong></td><td><strong><a href="javascript:richenganpai()" class="easyui-linkbutton" iconCls="icon-add" plain="true"> 日程修改</a></strong></tr><tr><td><strong style="background-color:red;">第'+d+'天</strong></td><td>日程<hr />活动<hr />酒店<hr />餐饮：<input name="zao" class="easyui-validatebox"></td></tr><table></form>');
 
 					} 
 					//pares方法是 渲染JqueryEasyUi 插件的 解决不显示EasyUi的样式问题
 					$.parser.parse();
 					//循环结束
-					alert(data.rows[i].richenganpai);
-					
 					},
 					error : function() {
 						$.messager.alert("查询失败", "服务器请求失败!", "error");
 					}
 				});
   }); 
-  function richenganpai(){
-  
-   var url = "fenghuang/xingchengkushituinfo.do?xianid="+'<%=request.getParameter("xianid") %>';
-		$.ajax({
-					url :url ,
-					data : '<%=request.getParameter("xianid") %>',
-					dataType : "json",
-					success : function(data) {
-					//循环添加天数
-					$('#richengFrom').form('load',data.rows[0]);
-					},
-				
-					error : function() {
-						$.messager.alert("查询失败", "服务器请求失败!", "error");
-					}
-				});
+  function richenganpai(){ 
   $("#richeng").dialog("open");
   }
   function  richenUpdate2(){

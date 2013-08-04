@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fenghuang.dao.IxingchengkushituDao;
+import com.fenghuang.entiey.Xianlu;
 import com.fenghuang.entiey.xingchengkushitu;
 import com.fenghuang.service.IxingchengkushituService;
 import com.fenghuang.util.Pagination;
@@ -16,6 +17,11 @@ public class xingchengkushituServiceImpl implements IxingchengkushituService {
 			throws Exception {
 		// TODO Auto-generated method stub
 		return ix.xingchengkushituinfo(xc);
+	}
+	@Override
+	public Pagination<Xianlu> xianlu(int currentPage,int numPerPage,Xianlu xl) throws Exception {
+		// TODO Auto-generated method stub
+		return ix.xianlu(currentPage,numPerPage,xl);
 	}
 
 }
