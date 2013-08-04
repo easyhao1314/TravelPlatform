@@ -103,9 +103,9 @@
 				<tr>
 <td><div class="fitem"><label>编号:</label></td><td>--系统自动生成--</div></td>
 <td><div class="fitem"><label>国籍：</label></td><td><input name="guojiaId" class="easyui-combobox"
-data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=7',
-					valueField:'dicNo',
-					textField:'dicName',
+data-options="url:'fenghuang/daoyouSelect.do',
+					valueField:'id',
+					textField:'guojia',
 					panelHeight:'auto',
 					editable:false"></div></div></td>
 </tr>

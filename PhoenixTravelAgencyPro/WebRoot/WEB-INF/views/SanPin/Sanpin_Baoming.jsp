@@ -300,13 +300,13 @@ var url = "fenghuang/Sanpinliebiao.do?tuanNo="+'<%=request.getParameter("tuanNo"
 		}
 		
 		//时间格式化转换
-		function ChangeDateFormat(cellval) {
-    try {
+	function ChangeDateFormat(cellval) {
+        try {
         var date = new Date(parseInt(cellval.replace("/Date(", "").replace(")/", ""), 10));
         var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
         var currentDate = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
         return date.getFullYear() + "-" + month + "-" + currentDate;
-    } catch (e) {
+       } catch (e) {
         return "";
     }
 }

@@ -142,7 +142,7 @@
 		<div>
 	       <span>用户权限</span>
 	       <div>
-		   <div data-options="iconCls:'icon-edit'">1</div>
+		   <div data-options="iconCls:'icon-edit'">设置用户</div>
 		   <div data-options="iconCls:'icon-edit'">2</div>
 		   </div>
 		</div>

@@ -148,10 +148,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    </div>
   <!-- 此页面查询的是视图 -->
   <script type="text/javascript">
-
+//页面加载时填充xianlumingxiForm
   $(document).ready(function() {
-
-
  	var param = {
 					"xianid" :  '<%=request.getParameter("xianid") %>'
 				};
@@ -161,15 +159,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					dataType : "json",
 					success : function(data) {
 					//循环添加天数
-						alert(data);
-				
-				
-					$('#xianlumingxiForm').form('load',data.rows[0]);
-					for(var i=0;i<data.rows[0].tianshu;i++){
-						 var d = parseInt(i+1);
-						$("#mdiv").append('<form id="d'+d+'"><table border="1" width="800px" ><tr><td width="100px;"><strong>日期</strong></td><td><strong><a href="javascript:richenganpai()" class="easyui-linkbutton" iconCls="icon-add" plain="true"> 日程修改</a></strong></tr><tr><td><strong style="background-color:red;">第'+d+'天</strong></td><td>日程<hr />活动<hr />酒店<hr />餐饮：<input name="zao" class="easyui-validatebox"></td></tr><table></form>');
 
-					} 
+					$('#xianlumingxiForm').form('load',data.rows[0]);
+					
+					xunhuanRicheng(data.rows[0].xianid);
 					//pares方法是 渲染JqueryEasyUi 插件的 解决不显示EasyUi的样式问题
 					$.parser.parse();
 					//循环结束
@@ -178,7 +171,39 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						$.messager.alert("查询失败", "服务器请求失败!", "error");
 					}
 				});
-  }); 
+  });
+  
+  //页面加载时填充xianlumingxiForm结束
+  
+  function xunhuanRicheng(xianluid){
+     var param = {
+					"xianluid" : xianluid
+				};
+           $.ajax({
+                    url :'fenghuang/selectricheng.do',
+					data :param,
+					dataType : "json",
+					success : function(data) {
+					//循环添加天数
+						alert(data.rows.length);		
+					for(var i=0;i<data.rows.length;i++){
+						 var d = parseInt(i+1);
+
+						$("#mdiv").append('<form id="d'+d+'"><table border="1" width="800px" ><tr><td width="100px;"><strong>日期</strong></td><td><strong><a href="javascript:richenganpai()" class="easyui-linkbutton" iconCls="icon-add" plain="true"> 日程修改</a></strong></tr><tr><td><strong><a href="javascript:richenganpai()" class="easyui-linkbutton" iconCls="icon-add" plain="true">第'+d+'天</strong></td><td><input name="riid" class="easyui-validatebox">日程:<input name="richenganpai" class="easyui-validatebox"><hr />活动:<input name="jiudian" class="easyui-validatebox"><hr />酒店:<input name="riid" class="easyui-validatebox"><hr />餐饮：<input name="zao" class="easyui-validatebox"></td></tr><table></form>');
+						 $('#d'+d).form('load',data.rows[i]);
+					} 
+					//pares方法是 渲染JqueryEasyUi 插件的 解决不显示EasyUi的样式问题
+					$.parser.parse();
+					//循环结束
+					},
+					error : function() {
+						$.messager.alert("查询失败", "服务器请求失败!", "error");
+					}
+      
+      });
+  }
+  
+  //修改日程开始
   function richenganpai(){ 
   $("#richeng").dialog("open");
   }
@@ -197,12 +222,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						$.messager.alert("修改成功", "修改成功！", "info"); 
 					} else {
 						$.messager.alert("修改失败", "修改失败!", "error");
-						//$("#dg").datagrid('reload');
 					}
 				}
 			});
   }
- 
+  //修改日程结束
   </script>
   </body>
 </html>

@@ -31,21 +31,26 @@ import com.fenghuang.util.Pagination;
 public class RichengController {
 	@Autowired
 	private IRichengService is;
+
+	
 	@RequestMapping("fenghuang/selectricheng.do")
 	@ResponseBody
 	public Map<String,Object> selectricheng(HttpServletRequest request,
 			HttpServletResponse response, Integer page,Integer rows,
-			String riid
+			String riid,String xianluid
 			){
 		Richeng r = new Richeng();
 		if(riid!=null && !"".equals(riid)){
 			r.setRiid(Long.parseLong(riid));
 		}
+		if(xianluid!=null && !"".equals(xianluid)){
+			r.setXianluid(Long.parseLong(xianluid));
+		}
 		if(page==null){
 			page=1;
 		}
 		if(rows==null){
-			rows=1;
+			rows=100;
 		}
 		
 		try {

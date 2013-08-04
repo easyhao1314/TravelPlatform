@@ -36,7 +36,7 @@ public class RixingchengServiceImpl implements IRixingchengService {
 	public Pagination<Richeng> getByQueryConditionPagination(
 			int currentPage, int numPerPage, Richeng r) throws Exception {
 		// TODO Auto-generated method stub
-		return ir.select(currentPage, numPerPage, r);
+		return null;
 	}
 
 }

@@ -40,7 +40,7 @@
 					Price</th>
 				<th data-options="field:'unitcost',align:'right'" width="80">Unit
 					Cost</th>
-				<th data-options="field:'attr'" width="150">Attribute</th>
+				<th data-options="field:'attr',editor:'text'" width="150">Attribute</th>
 				<th data-options="field:'status',align:'center'" width="50">Status</th>
 			</tr>
 		</thead>

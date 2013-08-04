@@ -24,7 +24,7 @@ public class CaiwuskqrSericeImpl implements IcaiwuskqrSerice {
 	@Override
 	public boolean saveskqr(Tuanbiao tuanbiao) throws Exception {
 		// TODO Auto-generated method stub
-		return false;
+		return dao.savefkqr(tuanbiao);
 	}
 
 	@Override
@@ -37,7 +37,7 @@ public class CaiwuskqrSericeImpl implements IcaiwuskqrSerice {
 	@Override
 	public boolean deleteskqr(Long id) throws Exception {
 		// TODO Auto-generated method stub
-		return false;
+		return dao.deletefkqr(id);
 	}
 
 	@Override
