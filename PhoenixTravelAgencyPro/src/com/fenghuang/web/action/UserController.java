@@ -288,8 +288,6 @@ public class UserController {
 		result.put("success", isSuccess);
 		return result;
 	}
-	
-	
-	
+
 
 }

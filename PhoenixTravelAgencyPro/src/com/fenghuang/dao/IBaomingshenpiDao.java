@@ -9,5 +9,5 @@ public interface IBaomingshenpiDao {
 	public boolean addbaoming(Baomingshenpi b)throws Exception;
 	public boolean deletebaoming(Baomingshenpi b)throws Exception;	
 	//特殊查询，查询审批表对应的审批事件表查询事件表的审批人。
-	public Pagination<Baomingshenpi> bmingandapproval(Baomingshenpi b,String shenpitype,String approvalNo)throws Exception;
+	public Pagination<Baomingshenpi> bmingandapproval(Baomingshenpi b,Integer shenpitype,String tuanNo,Integer abmid )throws Exception;
 }
