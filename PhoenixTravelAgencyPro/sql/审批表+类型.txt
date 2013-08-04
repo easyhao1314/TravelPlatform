@@ -1,0 +1,22 @@
+drop table if exists approval;
+
+/*==============================================================*/
+/* Table: approval                                              */
+/*==============================================================*/
+create table approval
+(
+   approvalNo           int not null auto_increment comment '审批自增列',
+   shenqingDate         datetime comment '申请日期',
+   shiwu                varchar(20) comment '事物说明',
+   shenqingren          bigint comment '申请人',
+   shenheren            bigint comment '审核人',
+   approvalStatus       int comment '审批状态',
+   shenpiDate           datetime comment '审批日期',
+   beizhu               varchar(100) comment '备注',
+   shenpitype           int comment '审批类型 1、退团审批    2、转团审批    3、报名审批',
+   approvaltuanNo       varchar(20) comment '申请的团',
+   bmid                 bigint comment '报名ID',
+   primary key (approvalNo)
+);
+
+alter table approval comment '单团散拼审批表';

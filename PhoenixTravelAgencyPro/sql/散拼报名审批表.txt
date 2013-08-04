@@ -1,0 +1,24 @@
+drop table if exists baomingshenpi;
+
+/*==============================================================*/
+/* Table: baomingshenpi                                         */
+/*==============================================================*/
+create table baomingshenpi
+(
+   bmid                 int not null auto_increment comment '自增ID',
+   kehuid               bigint comment '客户信息ID',
+   baomingsp            int default 1 comment '报名审批 是否、1是、2否',
+   baomingsl            int default 1 comment '报名受理 是否、1是、2否',
+   yajinqueren          int default 1 comment '押金确认1是2否',
+   chupiaoqueren        int default 1 comment '出票确认 1是2否',
+   chutuanqueren        int default 1 comment '出团确认 1是2否',
+   beizhu               varchar(20) comment '备注',
+   kehuname             varchar(20) comment '客户名称',
+   sex                  bigint comment '性别',
+   zhengjianhao         varchar(20) comment '证件号',
+   tuituanshenpi        int comment '退团审批',
+   zhuantuanshenpi      int comment '转团审批',
+   primary key (bmid)
+);
+
+alter table baomingshenpi comment '散拼报名审批、专团申请、退团申请';
