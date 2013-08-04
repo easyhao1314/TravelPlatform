@@ -48,7 +48,7 @@
 			<tr> 
 			    <th data-options="field:'id',editor:'text'" width="5">ID</th>
 				<th data-options="field:'team',editor:'text'" width="10">团号</th>
-				<th data-options="field:'dicName',editor:'text'" width="10">团队名称</th>
+				<th data-options="field:'tuanduimc',editor:'text'" width="10">团队名称</th>
 				<th data-options="field:'chutuantime',editor:'text'" width="10">出团日期</th>
 				<th data-options="field:'huituantime',editor:'text'" width="10">回团日期</th>
 				<th data-options="field:'yingshou',editor:'text'" width="10">应收</th>

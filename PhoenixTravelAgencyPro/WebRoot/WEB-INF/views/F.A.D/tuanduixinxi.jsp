@@ -66,8 +66,8 @@
 				<th data-options="field:'kxsm',editor:'text'" width="50">款项说明</th>
 				<th data-options="field:'khmc',editor:'text'" width="50">客户名称</th>
 				<th data-options="field:'yushoutime',editor:'text'" width="80">预收日期</th>
-				<th data-options="field:'huilvID',editor:'text'" width="50">汇率</th>
-				<th data-options="field:'bizongid',editor:'text'" width="50">币种</th>
+				<th data-options="field:'huilv',editor:'text'" width="50">汇率</th>
+				<th data-options="field:'bizhong',editor:'text'" width="50">币种</th>
 				<th data-options="field:'yingshou',editor:'text'" width="50">应收</th>
 				<th data-options="field:'yishou',editor:'text'" width="50">已收</th>
 				<th data-options="field:'weifu',editor:'text'" width="50">未付</th>		
@@ -94,8 +94,8 @@
 				<th data-options="field:'kxsm',editor:'text'" width="50">款项说明</th>
 				<th data-options="field:'khmc',editor:'text'" width="50">供应商名称</th>
 				<th data-options="field:'yushoutime',editor:'text'" width="80">预付日期</th>
-				<th data-options="field:'huilvID',editor:'text'" width="50">汇率</th>
-				<th data-options="field:'bizongid',editor:'text'" width="50">币种</th>
+				<th data-options="field:'huilv',editor:'text'" width="50">汇率</th>
+				<th data-options="field:'bizhong',editor:'text'" width="50">币种</th>
 				<th data-options="field:'yingshou',editor:'text'" width="50">应收</th>
 				<th data-options="field:'yishou',editor:'text'" width="50">已收</th>
 				<th data-options="field:'weifu',editor:'text'" width="50">未付</th>		
@@ -118,13 +118,13 @@
 			<table align="left">
 				<tr>
 					<td><div class="fitem">
-							<label>编号:</label>
+							<label>应收款项:</label>
 					</td>
 					<td><input id="id" name="id"
 						class="easyui-validatebox">
 						</div></td>
 					<td><div class="fitem">
-							<label>名称:</label>
+							<label>收款账号:</label>
 					</td>
 					<td><input id="caiwuid" name="caiwuid" value="2"
 						class="easyui-validatebox">
@@ -133,13 +133,15 @@
 				
 				<tr>
 					<td><div class="fitem">
-							<label>编号:</label>
+							<label>首款单位:</label>
 					</td>
-					<td><input id="id" name="id"
+					<td>  	
+					<input id="caiwuid" name="caiwuid" value="2"
 						class="easyui-validatebox">
-						</div></td>
+					</div></td>
+
 					<td><div class="fitem">
-							<label>名称:</label>
+							<label>应收日期:</label>
 					</td>
 					<td><input id="caiwuid" name="caiwuid" value="2"
 						class="easyui-validatebox">
@@ -147,21 +149,29 @@
 				</tr>
 				<tr>
 					<td><div class="fitem">
-							<label>编号:</label>
+							<label>金额:</label>
 					</td>
 					<td><input id="id" name="id"
 						class="easyui-validatebox">
 						</div></td>
 					<td><div class="fitem">
-							<label>名称:</label>
+							<label>单位</label>
 					</td>
-					<td><input id="caiwuid" name="caiwuid" value="2"
-						class="easyui-validatebox">
+					<td>
+				    <input class="easyui-combobox" 
+			name="Areatype"
+			data-options="url:'fenghuang/caiwuhuilvxiala.do',
+					valueField:'id',
+					textField:'bizhong',
+					panelHeight:'auto'
+	"></div></td>
+					
+					
 						</div></td>
 				</tr>
 				
 				<tr>
-					<td colspan="4s" align="center"><a
+					<td colspan="4" align="center"><a
 						href="javascript:fkspupdateb();" class="easyui-linkbutton"
 						iconCls="icon-ok">确认</a> <a href="javascript:closedSearch();"
 						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
