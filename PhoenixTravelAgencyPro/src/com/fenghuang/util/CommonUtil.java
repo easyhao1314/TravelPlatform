@@ -27,6 +27,7 @@ public class CommonUtil {
 	}
 	
 	public static String getTuanHao(){
+		//团号格式。
 		return "";
 	}
 	

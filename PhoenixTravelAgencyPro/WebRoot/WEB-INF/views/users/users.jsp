@@ -15,6 +15,7 @@
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
+<!--  
 <link rel="stylesheet" type="text/css"
 	href="js/themes/default/easyui.css">
 <link rel="stylesheet" type="text/css" href="js/themes/icon.css">
@@ -24,6 +25,7 @@
 <script type="text/javascript" src="js/locale/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript" src="js/jquery.json.js"></script>
 <script type="text/javascript" src="js/datagrid-groupview.js"></script>
+-->
 </head>
 
 <body>
