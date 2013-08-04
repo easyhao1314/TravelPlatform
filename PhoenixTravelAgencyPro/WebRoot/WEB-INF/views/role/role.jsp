@@ -137,6 +137,17 @@
 			</table>
 		</form>
 	</div>
+	   	<div id="dgRoleMm" class="easyui-menu" style="width:120px;">
+		<div onClick="editRoleRightMenu()" data-options="iconCls:'icon-edit'">修改</div>
+		<div>
+	       <span>用户权限</span>
+	       <div>
+		   <div data-options="iconCls:'icon-edit'">1</div>
+		   <div data-options="iconCls:'icon-edit'">2</div>
+		   </div>
+		</div>
+		
+	</div>
 	<script type="text/javascript" src="js/role/role.js">	
 	</script>
 </body>

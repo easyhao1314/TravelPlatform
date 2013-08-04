@@ -458,7 +458,7 @@
 		</form>
     </div>
    	<div id="dgUserMm" class="easyui-menu" style="width:120px;">
-		<div onClick="edit()" data-options="iconCls:'icon-edit'">修改</div>
+		<div onClick="editUsers()" data-options="iconCls:'icon-edit'">修改</div>
 		<div>
 	       <span>用户权限</span>
 	       <div>

@@ -70,16 +70,20 @@
 		<property name="suffix" value=".jsp" />
 	</bean> 
 	<!-- 登录和权限拦截器 -->
-	<!--  
+	<!--  -->
 	<mvc:interceptors>
 	  <bean class="com.fenghuang.web.interceptor.LoginInterceptor"></bean>
+	  <!-- 
 	  <bean class="com.fenghuang.web.interceptor.PurviewInterceptor"></bean>
+	   -->
 	</mvc:interceptors>
-	-->
+	
 	
 	<!-- 这是配置静态页面已*.do 的方式访问 -->
 	<!--path 代表已layout.do的方式来方位 jsp页面， view-name 代表的就是/WEB-INF/views/layout.jsp -->
+	<mvc:view-controller path="index.do" view-name="index"/>
 	<mvc:view-controller path="layout.do" view-name="layout" />
+	<mvc:view-controller path="layouttest.do" view-name="layouttest.jsp"/>
 	<mvc:view-controller path="dictionaryDesc.do" view-name="dictionaryDesc"/>
 	<mvc:view-controller path="currencyList.do" view-name="currencyList"/>
 	<mvc:view-controller path="functionMenu.do" view-name="functionmenu/functionMenu"/>

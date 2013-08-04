@@ -18,9 +18,6 @@
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery.easyui.min.js"></script>
 <script type="text/javascript">
-        function submitForm(){
-            $('#loginFrom').form('submit');  
-        }  
         function clearForm(){  
             $('#loginFrom').form('clear');  
         }  
@@ -30,12 +27,12 @@
 <body>
 	<div class="easyui-panel" title="登录" style="width:400px">
 		<div style="padding:10px 0 10px 60px">
-			<form action="" id="loginFrom" method="post">
+			<form action="fenghuang/login.do" id="loginFrom" method="post">
 				<table>
 					<tr>
 						<td>用户名:</td>
 						<td><input class="easyui-validatebox" type="text"
-							name="userName" data-options="required:true" value="${loginName }"></input></td>
+							name="loginName" data-options="required:true" value="${loginName }"></input></td>
 					</tr>
 					<tr>
 						<td>密码：</td>
@@ -44,15 +41,17 @@
 						</td>
 					</tr>
 					<tr>
-					  <td colspan="2">${login.error}</td>
+					  <td colspan="2">${loginError}</td>
+					</tr>
+					<tr>
+					   <td colspan="2">
+					   	 <input type="submit" value="提交"> <a href="javascript:void(0)"
+					class="easyui-linkbutton" onclick="clearForm()">Clear</a>
+					   
+					   </td>
 					</tr>
 				</table>
 			</form>
-			<div style="text-align:center;padding:5px">
-				<a href="javascript:void(0)" class="easyui-linkbutton"
-					onclick="submitForm()">Submit</a> <a href="javascript:void(0)"
-					class="easyui-linkbutton" onclick="clearForm()">Clear</a>
-			</div>
 		</div>
 	</div>
 </body>

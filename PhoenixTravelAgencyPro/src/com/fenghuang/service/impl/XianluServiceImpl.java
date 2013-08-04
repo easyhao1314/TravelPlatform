@@ -29,18 +29,8 @@ public class XianluServiceImpl implements IXianluService{
 		if(count>0){
 			Richeng r=new Richeng();
 			for(int i=0;i<x.getTianshu();i++){
-			 //没能插入对象的属性值
-			 //List<Map<String, Object>> xianluList=xldao.selectXianlu();				
-				//for (int j=0;i<xianluList.size();j++){
-				  //     Map  map=(Map)xianluList.get(j);
-				   //     Iterator iterator = map.keySet().iterator();
-				   //         while (iterator.hasNext())
-				   //         {
-				  //              String key = (String) iterator.next();
-				 //               Object o = map.get(key);
-				  //              long l = Long.valueOf(String.valueOf(o)).longValue();
-				
-				                r.setXianluid(count);
+			
+				r.setXianluid(count);
 			
 			richengs.insert(r);
 			}

@@ -80,7 +80,7 @@
 					var result = eval('(' + result + ')');
 					if (result.success) {
 						$.messager.alert("保存成功", "保存成功！", "info");
-					   
+					   $("#xianluAdd").dialog('close');
 					} else {
 						$.messager.alert("保存失败", "保存失败!", "error");
 					

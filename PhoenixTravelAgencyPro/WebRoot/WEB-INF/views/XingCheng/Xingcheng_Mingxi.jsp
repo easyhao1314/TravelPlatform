@@ -161,7 +161,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					dataType : "json",
 					success : function(data) {
 					//循环添加天数
-				 alert(11);
 						alert(data);
 				
 				
