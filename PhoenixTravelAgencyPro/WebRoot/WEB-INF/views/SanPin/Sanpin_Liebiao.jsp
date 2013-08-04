@@ -23,9 +23,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-  <!-- 下拉列表 -->
-		
-
 	
 	
    <div id="tb">
@@ -187,7 +184,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		   	 if(row.shoukestate==3){shouke="已下单";}
 		   	 if(row.shoukestate==4){shouke="已出团";}
 		   	 if(row.shoukestate==5){shouke="已回团";}
-		     return '<div onclick="shoukeclick(event,'+row.tuanNo+')" style="width: auto;">'+shouke+'</div>';
+		     return '<div onclick="shoukeclick(event,\''+row.tuanNo+'\')" style="width: auto;">'+shouke+'</div>';
 		   }
 		   //收客状态列表
 		   function shoukeclick(e,tuan){
