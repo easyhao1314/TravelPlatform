@@ -321,22 +321,22 @@
 				</ul>
 				 <ul>
 			      <li iconCls="icon-gears">
-			        <a href="javascript:open1('我派的订房任务','dingfangrenwu.do');">我派的订房任务</a>
+			        <a href="javascript:open1('我的订房任务','Caozuo_liebiao.do');">我的订房任务</a>
 			      </li>
 			   </ul>
 			   <ul>
 			      <li iconCls="icon-gears">
-			        <a href="javascript:open1('我派的订车任务','dingcherenwu.do');">我派的订车任务</a>
+			        <a href="javascript:open1('我的订车任务','Caozuo_liebiao.do');">我的订车任务</a>
 			      </li>
 			   </ul>
 			    <ul>
 			      <li iconCls="icon-gears">
-			        <a href="javascript:open1('我派的导游任务','daoyourenwu.do');">我派的导游任务</a>
+			        <a href="javascript:open1('我的导游任务','Caozuo_liebiao.do');">我的导游任务</a>
 			      </li>
 			   </ul>
 			    <ul>
 			      <li iconCls="icon-gears">
-			        <a href="javascript:open1('我派的购物店任务单','gouwudianrenwu.do');">我派的购物店任务单</a>
+			        <a href="javascript:open1('我的购物店任务','Caozuo_liebiao.do');">我的购物店任务</a>
 			      </li>
 			   </ul>
 		</li>
