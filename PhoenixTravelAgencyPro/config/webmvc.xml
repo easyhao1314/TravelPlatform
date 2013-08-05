@@ -183,13 +183,9 @@
      <mvc:view-controller path="ZiyuanGouwu.do" view-name="Ziyuan/ZiyuanGouwu"/>
      <mvc:view-controller path="ZiyuanYaoqing.do" view-name="Ziyuan/ZiyuanYaoqing"/>
      <mvc:view-controller path="ZiyuanZifei.do" view-name="Ziyuan/ZiyuanZifei"/>
-      <!-- 陈家海的配置 -->
+      <!-- 赵杨的配置 -->
     <!-- 操作中心 -->
-	<mvc:view-controller path="operTeamQuery.do" view-name="CaoZuo/operTeamQuery" />
-	<mvc:view-controller path="dingfangrenwu.do" view-name="CaoZuo/dingfangrenwu" />
-	<mvc:view-controller path="dingcherenwu.do" view-name="CaoZuo/dingcherenwu" />   
-	<mvc:view-controller path="daoyourenwu.do" view-name="CaoZuo/daoyourenwu" />
-	<mvc:view-controller path="gouwudianrenwu.do" view-name="CaoZuo/gouwudianrenwu" />
+	 <mvc:view-controller path="Caozuo_liebiao.do" view-name="CaoZuo/Caozuo_Liebiao"/>
 	<!-- 操作中心结束 -->
 	<!-- 客户中心 -->
 	<mvc:view-controller path="customerInfoList.do" view-name="KeHu/customerInfoList" />
