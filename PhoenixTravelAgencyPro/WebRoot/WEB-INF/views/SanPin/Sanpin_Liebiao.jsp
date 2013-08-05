@@ -81,8 +81,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					valueField:'dicId',
 					textField:'dicName',
 					panelHeight:'auto',
-					editable:false 
-	">
+					editable:false">
 						</div></td>
 				</tr>
 				<tr>

@@ -21,8 +21,9 @@ public class Zifei {
    /** 费用
     * 
     * @pdOid a0d6660d-187f-4a05-a24a-172e352b61a0 */
-   public int feiyong;
-   /** 币种
+   public Float feiyong;
+  
+/** 币种
     * 
     * @pdOid afc95faf-ccec-4f41-ab85-da5f43337a2f */
    public int bizhongId;
@@ -62,10 +63,10 @@ public java.lang.String getName() {
 public void setName(java.lang.String name) {
 	this.name = name;
 }
-public int getFeiyong() {
+public Float getFeiyong() {
 	return feiyong;
 }
-public void setFeiyong(int feiyong) {
+public void setFeiyong(Float feiyong) {
 	this.feiyong = feiyong;
 }
 public int getBizhongId() {

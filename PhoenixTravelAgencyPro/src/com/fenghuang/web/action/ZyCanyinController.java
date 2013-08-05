@@ -63,8 +63,10 @@ public class ZyCanyinController {
 				String chengshiId,String name,String dizhi,String lianxiren,String dianhua,String shouji,
 				String chuanzhen,String Email,String fkfsId,String hzjbId,String cbwu,String cbliu,String cbqi,String cbba,String yecf,
 				String yenlsm,String etcf,String etcfsm,String cgczs,String rnrs,String mfzdsm,String sfxydw,String sffxdw,String beizhu){
-			Canyin cy=new Canyin();			
+			Canyin cy=new Canyin();	
+			if(chengshiId != null && !"".equals(chengshiId)){
 			cy.setChengshiId(Integer.parseInt(chengshiId));
+			}
 			cy.setName(name);
 			cy.setDizhi(dizhi);
 			cy.setLianxiren(lianxiren);
@@ -72,22 +74,47 @@ public class ZyCanyinController {
 			cy.setShouji(shouji);
 			cy.setChuanzhen(chuanzhen);
 			cy.setEmail(Email);
+			if(fkfsId != null && !"".equals(fkfsId)){
 			cy.setFkfsId(Integer.parseInt(fkfsId));
+			}
+			if(hzjbId != null && !"".equals(hzjbId)){
 			cy.setHzjbId(Integer.parseInt(hzjbId));
+			}
+			if(cbwu != null && !"".equals(cbwu)){
 			cy.setCbwu(Integer.parseInt(cbwu));
+			}
+			if(cbliu != null && !"".equals(cbliu)){
             cy.setCbliu(Integer.parseInt(cbliu));
+			}
+			if(cbqi != null && !"".equals(cbqi)){
             cy.setCbqi(Integer.parseInt(cbqi));
+			}
+			if(cbba != null && !"".equals(cbba)){
             cy.setCbba(Integer.parseInt(cbba));
+			}
+			if(yecf != null && !"".equals(yecf)){
             cy.setYecf(Integer.parseInt(yecf));
+			}
             cy.setYenlsm(yenlsm);
             cy.setYenlsm(yenlsm);
+            if(etcf != null && !"".equals(etcf)){
             cy.setEtcf(Integer.parseInt(etcf));
+            }
             cy.setEtcfsm(etcfsm);
+            if(cgczs != null && !"".equals(cgczs)){
             cy.setCgczs(Integer.parseInt(cgczs));
+            }
+            if(rnrs != null && !"".equals(rnrs)){
             cy.setRnrs(Integer.parseInt(rnrs));
+            }
             cy.setMfzdsm(mfzdsm);
+            if(sfxydw != null && !"".equals(sfxydw)){
             cy.setSfxydw(Integer.parseInt(sfxydw));
+            }
+            if(sffxdw != null && !"".equals(sffxdw)){
             cy.setSffxdw(Integer.parseInt(sffxdw));
+            }
+
             cy.setBeizhu(beizhu);
 
 			  Map<String,Object> result=new HashMap<String,Object>();
@@ -145,35 +172,64 @@ public class ZyCanyinController {
 		@RequestMapping("fenghuang/canyinUpdate.do")
 		@ResponseBody
 		public Map<String,Object> canyinUpdate(HttpServletRequest request,HttpServletResponse response,
-				int chengshiId,String name,String dizhi,String lianxiren,String dianhua,String shouji,
-				String chuanzhen,String Email,int fkfsId,int hzjbId,int cbwu,int cbliu,int cbqi,int cbba,int yecf,
-				String yenlsm,int etcf,String etcfsm,int cgczs,int rnrs,String mfzdsm,int sfxydw,int sffxdw,String beizhu,long id){
-			Canyin cy=new Canyin();
+				String chengshiId,String name,String dizhi,String lianxiren,String dianhua,String shouji,
+				String chuanzhen,String Email,String fkfsId,String hzjbId,String cbwu,String cbliu,String cbqi,String cbba,String yecf,
+				String yenlsm,String etcf,String etcfsm,String cgczs,String rnrs,String mfzdsm,String sfxydw,String sffxdw,String beizhu,long id){
+			   Canyin cy=new Canyin();
 
-			cy.setChengshiId(chengshiId);
-			cy.setName(name);
-			cy.setDizhi(dizhi);
-			cy.setLianxiren(lianxiren);
-			cy.setDianhua(dianhua);
-			cy.setShouji(shouji);
-			cy.setChuanzhen(chuanzhen);
-			cy.setEmail(Email);
-			cy.setFkfsId(fkfsId);
-			cy.setHzjbId(hzjbId);
-			cy.setCbwu(cbwu);
-            cy.setCbliu(cbliu);
-            cy.setCbqi(cbqi);
-            cy.setCbba(cbba);
-            cy.setYecf(yecf);
-            cy.setYenlsm(yenlsm);
-            cy.setEtcf(etcf);
-            cy.setEtcfsm(etcfsm);
-            cy.setCgczs(cgczs);
-            cy.setRnrs(rnrs);
-            cy.setMfzdsm(mfzdsm);
-            cy.setSfxydw(sfxydw);
-            cy.setSffxdw(sffxdw);
-            cy.setBeizhu(beizhu);
+			  if(chengshiId != null && !"".equals(chengshiId)){
+				cy.setChengshiId(Integer.parseInt(chengshiId));
+				}
+				cy.setName(name);
+				cy.setDizhi(dizhi);
+				cy.setLianxiren(lianxiren);
+				cy.setDianhua(dianhua);
+				cy.setShouji(shouji);
+				cy.setChuanzhen(chuanzhen);
+				cy.setEmail(Email);
+				if(fkfsId != null && !"".equals(fkfsId)){
+				cy.setFkfsId(Integer.parseInt(fkfsId));
+				}
+				if(hzjbId != null && !"".equals(hzjbId)){
+				cy.setHzjbId(Integer.parseInt(hzjbId));
+				}
+				if(cbwu != null && !"".equals(cbwu)){
+				cy.setCbwu(Integer.parseInt(cbwu));
+				}
+				if(cbliu != null && !"".equals(cbliu)){
+	            cy.setCbliu(Integer.parseInt(cbliu));
+				}
+				if(cbqi != null && !"".equals(cbqi)){
+	            cy.setCbqi(Integer.parseInt(cbqi));
+				}
+				if(cbba != null && !"".equals(cbba)){
+	            cy.setCbba(Integer.parseInt(cbba));
+				}
+				if(yecf != null && !"".equals(yecf)){
+	            cy.setYecf(Integer.parseInt(yecf));
+				}
+	            cy.setYenlsm(yenlsm);
+	            cy.setYenlsm(yenlsm);
+	            if(etcf != null && !"".equals(etcf)){
+	            cy.setEtcf(Integer.parseInt(etcf));
+	            }
+	            cy.setEtcfsm(etcfsm);
+	            if(cgczs != null && !"".equals(cgczs)){
+	            cy.setCgczs(Integer.parseInt(cgczs));
+	            }
+	            if(rnrs != null && !"".equals(rnrs)){
+	            cy.setRnrs(Integer.parseInt(rnrs));
+	            }
+	            cy.setMfzdsm(mfzdsm);
+	            if(sfxydw != null && !"".equals(sfxydw)){
+	            cy.setSfxydw(Integer.parseInt(sfxydw));
+	            }
+	            if(sffxdw != null && !"".equals(sffxdw)){
+	            cy.setSffxdw(Integer.parseInt(sffxdw));
+	            }
+
+	            cy.setBeizhu(beizhu);
+
 			cy.setId(id);
 
 			 

@@ -57,7 +57,7 @@
 
 		<div class="easyui-panel" title="邀请函成本信息列表"
 		style="height:480px;width: auto;">
-		<table id="dg" class="easyui-datagrid"
+		<table id="dgYaoqing" class="easyui-datagrid"
 			data-options="url:'fenghuang/yaoqinghanSelect.do',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 			pagination="true" toolbar="#currencyDatagridtoolbar">
 			<thead>
@@ -81,7 +81,7 @@
 <div id="addYaoqinghan" class="easyui-dialog" title="邀请函成本信息新增"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:600px;height:180px;padding:10px;">
-		<form id="addForm" method="post">
+		<form id="addYaoqingForm" method="post">
 			<table align="center">
 				<tr>
 <td><div class="fitem"><label>编号:</label></td><td>--系统自动生成--</div></td>
@@ -108,12 +108,12 @@
 					editable:false "></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>国度描述：</label></td><td colspan="3"><input name="miaoshu" class="easyui-validatebox" required="true" size="70"></div></td>
+<td><div class="fitem"><label>国度描述：</label></td><td colspan="3"><input name="miaoshu" class="easyui-validatebox"  size="70"></div></td>
 
 </tr>
 
 <tr><td colspan="4" align="center"><a href="javascript:SaveYaoqinghan();" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
- <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-undo" onclick="$('#addForm').form('clear')">重置</a></td>
+ <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-undo" onclick="$('#addYaoqingForm').form('clear')">重置</a></td>
 </tr>
 			</table>
 			<input id="dicType" name="dicType" type="hidden">
@@ -123,7 +123,7 @@
 <div id="updateYaoqinghan" class="easyui-dialog" title="邀请函成本信息修改"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:600px;height:180px;padding:10px;">
-		<form id="updateForm" method="post">
+		<form id="updateYaoqingForm" method="post">
 			<table align="center">
 			
 <tr>
@@ -149,12 +149,12 @@
 					editable:false "></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>国度描述：</label></td><td colspan="3"><input name="miaoshu" class="easyui-validatebox" required="true" size="70"></div></td>
+<td><div class="fitem"><label>国度描述：</label></td><td colspan="3"><input name="miaoshu" class="easyui-validatebox"  size="70"></div></td>
 
 </tr>
 <tr>
 <tr><td colspan="4" align="center"><a href="javascript:YaoqingUpdate();" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
-<a  class="easyui-linkbutton" iconCls="icon-undo" onclick="$('#updateForm').form('clear')">重置</a></td>
+<a href="javascript:closedupdateYaoqinghan();" class="easyui-linkbutton" iconCls="icon-undo" >取消</a></td>
 </tr>
 
 			</table>
@@ -179,7 +179,7 @@
       * 查询按钮
     */
 		function YaoqingSelectLike(){
-		var opts = $('#dg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
+		var opts = $('#dgYaoqing').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
 			var param = {
 				guoduid: $("#guoduid").combobox('getValue'),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
 				miaoshu: $("#miaoshu").val() ,
@@ -193,7 +193,7 @@
 					type : 'POST' ,
 					dataType : 'json' ,
 					success : function(data){
-						$('#dg').datagrid('loadData',data);
+						$('#dgYaoqing').datagrid('loadData',data);
 					}
 				});
 		}
@@ -204,11 +204,11 @@
 	 //新增
 		function addYaoqinghan() {
 			$("#addYaoqinghan").dialog("open");
-			$("#addForm").form("clear");
+			$("#addYaoqingForm").form("clear");
 		}
          
 		function SaveYaoqinghan() {
-			$('#addForm').form('submit', {
+			$('#addYaoqingForm').form('submit', {
 				url : 'fenghuang/yaoqingAdd.do',
 				onSubmit : function() {
 					return $(this).form('validate');
@@ -218,10 +218,10 @@
 					if (result.success) {
 					$('#addYaoqinghan').dialog('close');
 						$.messager.alert("保存成功", "保存成功！", "info");
-						 $('#dg').datagrid('reload'); 
+						 $('#dgYaoqing').datagrid('reload'); 
 					} else {
 						$.messager.alert("保存失败", "保存失败!", "error");
-						$('#dg').datagrid('reload');
+						$('#dgYaoqing').datagrid('reload');
 					}
 				}
 			});
@@ -232,7 +232,7 @@
 		} 
 	//删除操作要执行的方法
 	function YaoqingDelete(){
-	  var row = $("#dg").datagrid("getSelected");
+	  var row = $("#dgYaoqing").datagrid("getSelected");
 			if (row) {
 				var param = {
 					"id" :  row.id
@@ -245,7 +245,7 @@
 					success : function(data) {
 						if (data.success) {
 							$.messager.alert("删除成功", "删除成功！", "info");
-							$("#dg").datagrid('reload');
+							$("#dgYaoqing").datagrid('reload');
 						} else {
 							$.messager.alert("删除失败", "删除失败!", "error");
 						}
@@ -262,7 +262,7 @@
           //通过主键，查询该操作，并处于编辑状态。 是否打开tab，还是直接弹出window 
 			$("#updateYaoqinghan").dialog("open");
 			//准备回显的数据
-			var row = $("#dg").datagrid("getSelected");
+			var row = $("#dgYaoqing").datagrid("getSelected");
 			//alert(row.tuanNO);
 		
 			if(row){
@@ -276,7 +276,7 @@
 					dataType : "json",
 					success : function(data) {
 		
-					   $('#updateForm').form('load',data.rows[0]);
+					   $('#updateYaoqingForm').form('load',data.rows[0]);
 				
 					},
 					error : function() {
@@ -287,7 +287,7 @@
 		}
 		 //修改
 		function YaoqingUpdate() {
-			$("#updateForm").form('submit', {
+			$("#updateYaoqingForm").form('submit', {
 				url : 'fenghuang/yaoqingUpdate.do',
 				onSubmit : function() {
 					return $(this).form('validate');
@@ -300,17 +300,17 @@
 					if (result.success) {
 					  $("#updateYaoqinghan").dialog('close');
 						$.messager.alert("修改成功", "修改成功！", "info"); 
-						$("#dg").datagrid('reload');
+						$("#dgYaoqing").datagrid('reload');
 					} else {
 						$.messager.alert("修改失败", "修改失败!", "error");
-						$("#dg").datagrid('reload');
+						$("#dgYaoqing").datagrid('reload');
 					}
 				}
 			});
 		}
 		
 		//关闭
-		function closedSearch() {
+		function closedupdateYaoqinghan() {
 			$('#updateYaoqinghan').dialog('close');
 		}
 	

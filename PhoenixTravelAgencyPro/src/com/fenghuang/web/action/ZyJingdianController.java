@@ -61,24 +61,34 @@ public class ZyJingdianController {
 	@RequestMapping("fenghuang/jingdanAdd.do")
 	@ResponseBody
 	public Map<String,Object> jingdianAdd(HttpServletRequest request,HttpServletResponse response,
-			String name,String name2,int chengsiId,int jiage,int bizongId,String kftimeqi,
-			String kftimezhi,int timekb,String lianxiren,String dianhua,String chuanzhen,String email,
-			int dcmr,String dizhi,String ywdz,String jdms){
+			String name,String name2,String chengsiId,String jiage,String bizongId,String kftimeqi,
+			String kftimezhi,String timekb,String lianxiren,String dianhua,String chuanzhen,String email,
+			String dcmr,String dizhi,String ywdz,String jdms){
 		Jingdian jd=new Jingdian();
 		
 		jd.setName(name);
 		jd.setName2(name2);
-		jd.setChengsiId(chengsiId);
-		jd.setJiage(jiage);
-		jd.setBizongId(bizongId);
+		if(chengsiId !=null && !"".equals(chengsiId)){
+		jd.setChengsiId(Integer.parseInt(chengsiId));
+		}
+		if(jiage !=null && !"".equals(jiage)){
+		jd.setJiage(Integer.parseInt(jiage));
+		}
+		 if(bizongId !=null && !"".equals(bizongId)){
+		jd.setBizongId(Integer.parseInt(bizongId));
+		 }
 		jd.setKftimeqi(kftimeqi);
 		jd.setKftimezhi(kftimezhi);
-		jd.setTimekb(timekb);
+		 if(timekb !=null && !"".equals(timekb)){
+		jd.setTimekb(Integer.parseInt(timekb));
+		 }
 		jd.setLianxiren(lianxiren);
 		jd.setDianhua(dianhua);
 		jd.setChuanzhen(chuanzhen);
 		jd.setEmail(email);
-		jd.setDcmr(dcmr);
+		 if(dcmr !=null && !"".equals(dcmr)){
+		jd.setDcmr(Integer.parseInt(dcmr));
+		 }
 		jd.setDizhi(dizhi);
 		jd.setYwdz(ywdz);
 		jd.setJdms(jdms);
@@ -110,24 +120,34 @@ public class ZyJingdianController {
 	@RequestMapping("fenghuang/jingdianUpdate.do")
 	@ResponseBody
 	public Map<String,Object> jingdianUpdate(HttpServletRequest request,HttpServletResponse response,
-			String name,String name2,int chengsiId,int jiage,int bizongId,String kftimeqi,
-			String kftimezhi,int timekb,String lianxiren,String dianhua,String chuanzhen,String email,
-			int dcmr,String dizhi,String ywdz,String jdms,long id){
+			String name,String name2,String chengsiId,String jiage,String bizongId,String kftimeqi,
+			String kftimezhi,String timekb,String lianxiren,String dianhua,String chuanzhen,String email,
+			String dcmr,String dizhi,String ywdz,String jdms,long id){
 		Jingdian jd=new Jingdian();
 
 		jd.setName(name);
 		jd.setName2(name2);
-		jd.setChengsiId(chengsiId);
-		jd.setJiage(jiage);
-		jd.setBizongId(bizongId);
+		if(chengsiId !=null && !"".equals(chengsiId)){
+		jd.setChengsiId(Integer.parseInt(chengsiId));
+		}
+		if(jiage !=null && !"".equals(jiage)){
+		jd.setJiage(Integer.parseInt(jiage));
+		}
+		 if(bizongId !=null && !"".equals(bizongId)){
+		jd.setBizongId(Integer.parseInt(bizongId));
+		 }
 		jd.setKftimeqi(kftimeqi);
 		jd.setKftimezhi(kftimezhi);
-		jd.setTimekb(timekb);
+		 if(timekb !=null && !"".equals(timekb)){
+		jd.setTimekb(Integer.parseInt(timekb));
+		 }
 		jd.setLianxiren(lianxiren);
 		jd.setDianhua(dianhua);
 		jd.setChuanzhen(chuanzhen);
 		jd.setEmail(email);
-		jd.setDcmr(dcmr);
+		if(timekb !=null && !"".equals(timekb)){
+		jd.setDcmr(Integer.parseInt(dcmr));
+		}
 		jd.setDizhi(dizhi);
 		jd.setYwdz(ywdz);
 		jd.setJdms(jdms);

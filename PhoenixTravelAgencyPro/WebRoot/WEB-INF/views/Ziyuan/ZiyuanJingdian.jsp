@@ -61,7 +61,7 @@
 
 		<div class="easyui-panel" title="景点列表"
 		style="height:480px;width: auto;">
-		<table id="dg" class="easyui-datagrid"
+		<table id="dgJingdian" class="easyui-datagrid"
 			data-options="url:'fenghuang/JingdianSelect.do',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 			pagination="true" toolbar="#currencyDatagridtoolbar">
 			<thead>
@@ -87,7 +87,7 @@
 <div id="addJingdian" class="easyui-dialog" title="景点新增"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:800px;height:300px;padding:10px;">
-		<form id="addForm" method="post">
+		<form id="addJingdianForm" method="post">
 			<table align="center">
 				<tr>
 <td><div class="fitem"><label>景点编号:</label></td><td>--系统自动生成--</div></td>
@@ -141,7 +141,7 @@
 </tr>
 <tr>
 <tr><td colspan="6" align="center"><a href="javascript:SaveJingdian();" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
-<a class="easyui-linkbutton" iconCls="icon-undo" onclick="$('#addForm').form('clear')">重置</a></td>
+<a class="easyui-linkbutton" iconCls="icon-undo" onclick="$('#addJingdianForm').form('clear')">重置</a></td>
 </tr>
 			</table>
 			<input id="dicType" name="dicType" type="hidden">
@@ -151,7 +151,7 @@
 <div id="jingdianUpdate" class="easyui-dialog" title="景点修改"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:800px;height:300px;padding:10px;">
-		<form id="updateForm" method="post">
+		<form id="updateJingdianForm" method="post">
 			<table align="center">
 				<tr>
 <td><div class="fitem"><label>景点编号:</label></td><td><input name="id"  class="easyui-validatebox" readonly="true" style="width:40px;">--不可修改</div></td>
@@ -205,7 +205,7 @@
 </tr>
 <tr>
 <tr><td colspan="6" align="center"><a href="javascript:jingdianUpdate();" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
-<a class="easyui-linkbutton" iconCls="icon-undo" onclick="$('#updateForm').form('clear')">重置</a></td>
+<a class="easyui-linkbutton" iconCls="icon-undo" onclick="$('#updateJingdianForm').form('clear')">重置</a></td>
 </tr>
 			</table>
 			<input id="dicType" name="dicType" type="hidden">
@@ -228,7 +228,7 @@
  * 查询按钮
  */
 		function jingdianSelectLike(){
-		var opts = $('#dg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
+		var opts = $('#dgJingdian').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
 			var param = {
 				name: $("#name").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
 				chengsiId: $("#chengsiId").combobox('getValue') ,
@@ -243,7 +243,7 @@
 					type : 'POST' ,
 					dataType : 'json' ,
 					success : function(data){
-						$('#dg').datagrid('loadData',data);
+						$('#dgJingdian').datagrid('loadData',data);
 					}
 				});
 		}
@@ -254,11 +254,11 @@
 	  //新增
 		function addJingdian() {
 			$("#addJingdian").dialog("open");
-			$("#addForm").form("clear");
+			$("#addJingdianForm").form("clear");
 		}
          
 		function SaveJingdian() {
-			$('#addForm').form('submit', {
+			$('#addJingdianForm').form('submit', {
 				url : 'fenghuang/jingdanAdd.do',
 				onSubmit : function() {
 					return $(this).form('validate');
@@ -268,10 +268,10 @@
 					if (result.success) {
 					$('#addJingdian').dialog('close');
 						$.messager.alert("保存成功", "保存成功！", "info");
-						 $('#dg').datagrid('reload'); 
+						 $('#dgJingdian').datagrid('reload'); 
 					} else {
 						$.messager.alert("保存失败", "保存失败!", "error");
-						$('#dg').datagrid('reload');
+						$('#dgJingdian').datagrid('reload');
 					}
 				}
 			});
@@ -282,7 +282,7 @@
 		} 
 	//删除操作要执行的方法
 	function jingdianDelete(){
-	  var row = $("#dg").datagrid("getSelected");
+	  var row = $("#dgJingdian").datagrid("getSelected");
 			if (row) {
 				var param = {
 					"id" :  row.id
@@ -295,7 +295,7 @@
 					success : function(data) {
 						if (data.success) {
 							$.messager.alert("删除成功", "删除成功！", "info");
-							$("#dg").datagrid('reload');
+							$("#dgJingdian").datagrid('reload');
 						} else {
 							$.messager.alert("删除失败", "删除失败!", "error");
 						}
@@ -312,7 +312,7 @@
           //通过主键，查询该操作，并处于编辑状态。 是否打开tab，还是直接弹出window 
 			$("#jingdianUpdate").dialog("open");
 			//准备回显的数据
-			var row = $("#dg").datagrid("getSelected");
+			var row = $("#dgJingdian").datagrid("getSelected");
 			//alert(row.tuanNO);
 		
 			if(row){
@@ -326,7 +326,7 @@
 					dataType : "json",
 					success : function(data) {
 		
-					   $('#updateForm').form('load',data.rows[0]);
+					   $('#updateJingdianForm').form('load',data.rows[0]);
 				
 					},
 					error : function() {
@@ -337,7 +337,7 @@
 		}
 		 //修改
 		function jingdianUpdate() {
-			$("#updateForm").form('submit', {
+			$("#updateJingdianForm").form('submit', {
 				url : 'fenghuang/jingdianUpdate.do',
 				onSubmit : function() {
 					return $(this).form('validate');
@@ -350,10 +350,10 @@
 					if (result.success) {
 					  $("#jingdianUpdate").dialog('close');
 						$.messager.alert("修改成功", "修改成功！", "info"); 
-						$("#dg").datagrid('reload');
+						$("#dgJingdian").datagrid('reload');
 					} else {
 						$.messager.alert("修改失败", "修改失败!", "error");
-						$("#dg").datagrid('reload');
+						$("#dgJingdian").datagrid('reload');
 					}
 				}
 			});

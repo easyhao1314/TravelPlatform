@@ -60,19 +60,23 @@ public class ZyGouwuController{
 	@RequestMapping("fenghuang/gouwuAdd.do")
 	@ResponseBody
 	public Map<String,Object> gouwuAdd(HttpServletRequest request,HttpServletResponse response,
-			String lianxiren,String name,String chuanzhen,int chengshiId,String dizhi,
-			String dianhua,String shouji,String email,int hzjbId,String bz){
+			String lianxiren,String name,String chuanzhen,String chengshiId,String dizhi,
+			String dianhua,String shouji,String email,String hzjbId,String bz){
 		Gouwu gw=new Gouwu();
 	
 		gw.setLianxiren(lianxiren);
 		gw.setName(name);
 		gw.setChuanzhen(chuanzhen);
-		gw.setChengshiId(chengshiId);
+		if(chengshiId !=null && !"".equals(chengshiId)){
+		gw.setChengshiId(Integer.parseInt(chengshiId));
+		}
 		gw.setDizhi(dizhi);
 		gw.setDianhua(dianhua);
 		gw.setShouji(shouji);
 		gw.setEmail(email);
-		gw.setHzjbId(hzjbId);
+		if(hzjbId !=null && !"".equals(hzjbId)){
+		gw.setHzjbId(Integer.parseInt(hzjbId));
+		}
 		gw.setBz(bz);
          Map<String,Object> result=new HashMap<String,Object>();
          boolean bl=false;
@@ -100,19 +104,23 @@ public class ZyGouwuController{
 	@RequestMapping("fenghuang/gouwuUpdate.do")
 	@ResponseBody
 	public Map<String,Object> gouwuUpdate(HttpServletRequest request,HttpServletResponse response,
-			String lianxiren,String name,String chuanzhen,int chengshiId,String dizhi,
-			String dianhua,String shouji,String email,int hzjbId,String bz,long id){
+			String lianxiren,String name,String chuanzhen,String chengshiId,String dizhi,
+			String dianhua,String shouji,String email,String hzjbId,String bz,long id){
 		Gouwu gw=new Gouwu();
 		
 		gw.setLianxiren(lianxiren);
 		gw.setName(name);
 		gw.setChuanzhen(chuanzhen);
-		gw.setChengshiId(chengshiId);
+		if(chengshiId !=null && !"".equals(chengshiId)){
+		gw.setChengshiId(Integer.parseInt(chengshiId));
+		}
 		gw.setDizhi(dizhi);
 		gw.setDianhua(dianhua);
 		gw.setShouji(shouji);
 		gw.setEmail(email);
-		gw.setHzjbId(hzjbId);
+		if(hzjbId !=null && !"".equals(hzjbId)){
+		gw.setHzjbId(Integer.parseInt(hzjbId));
+		}
 		gw.setBz(bz);
 		gw.setId(id);
 		Map<String,Object> result=new HashMap<String,Object>();

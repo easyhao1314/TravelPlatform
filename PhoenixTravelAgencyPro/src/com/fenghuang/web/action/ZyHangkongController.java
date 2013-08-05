@@ -62,12 +62,16 @@ public class ZyHangkongController {
 	@RequestMapping("fenghuang/hangkongAdd.do")
 	@ResponseBody
 	public Map<String,Object> jiaotongAdd(HttpServletRequest request,HttpServletResponse response,
-			String daima,String name,float shui,int bizongId){
+			String daima,String name,String shui,String bizongId){
 		Hangkong hk=new Hangkong();
 		hk.setDaima(daima);
 		hk.setName(name);
-		hk.setShui(shui);
-		hk.setBizongId(bizongId);
+		if(shui !=null && !"".equals(shui)){
+		hk.setShui(Float.parseFloat(shui));
+		}
+		if(bizongId !=null && !"".equals(bizongId)){
+		hk.setBizongId(Integer.parseInt(bizongId));
+		}
          Map<String,Object> result=new HashMap<String,Object>();
          boolean bl=false;
 		try{
@@ -95,13 +99,17 @@ public class ZyHangkongController {
 	@RequestMapping("fenghuang/hangkongUpdate.do")
 	@ResponseBody
 	public Map<String,Object> hangkongUpdate(HttpServletRequest request,HttpServletResponse response,
-			String daima,String name,float shui,int bizongId,long id){
+			String daima,String name,String shui,String bizongId,long id){
 		Hangkong hk=new Hangkong();
 
 		hk.setDaima(daima);
 		hk.setName(name);
-		hk.setShui(shui);
-		hk.setBizongId(bizongId);
+		if(shui !=null && !"".equals(shui)){
+		hk.setShui(Float.parseFloat(shui));
+		}
+		if(bizongId !=null && !"".equals(bizongId)){
+		hk.setBizongId(Integer.parseInt(bizongId));
+		}
 		hk.setId(id);
 		Map<String,Object> result=new HashMap<String,Object>();
 		boolean bl=false;

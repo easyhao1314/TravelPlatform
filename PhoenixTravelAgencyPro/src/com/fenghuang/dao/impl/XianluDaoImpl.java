@@ -63,8 +63,8 @@ public class XianluDaoImpl extends BaseDao implements IXianluDao {
 	@Override
 	public boolean updateXianlu(Xianlu x) throws Exception {
 		// TODO Auto-generated method stub
-		String sql="";
-		int count=this.update(sql);
+		String sql="update xianlu set xianluname=?,tianshu=?,guojia=?,weihuren=? where xianid=?";
+		int count=this.update(sql,x.getXianluname(),x.getTianshu(),x.getGuojia(),x.getWeihuren(),x.getXianid());
 		return count>0;
 	}
 

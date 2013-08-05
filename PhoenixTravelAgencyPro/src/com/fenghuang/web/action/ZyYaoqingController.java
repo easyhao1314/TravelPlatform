@@ -64,13 +64,23 @@ public class ZyYaoqingController {
 		@RequestMapping("fenghuang/yaoqingAdd.do")
 		@ResponseBody
 		public Map<String,Object> yaoqingAdd(HttpServletRequest request,HttpServletResponse response,
-				int guoduid,String miaoshu,String chengben,int bizhongId,int shiyongid){
+				String guoduid,String miaoshu,String chengben,String bizhongId,String shiyongid){
 			Yaoqinghan yq=new Yaoqinghan();
-			yq.setGuoduid(guoduid);
+		    if(guoduid !=null &&!"".equals(guoduid)){			
+			yq.setGuoduid(Integer.parseInt(guoduid));
+		    }
+		    if(miaoshu !=null &&!"".equals(miaoshu)){
 			yq.setMiaoshu(miaoshu);
+		    }
+		    if(chengben !=null &&!"".equals(chengben)){
 			 yq.setChengben(chengben);
-			 yq.setBizhongId(bizhongId);
-			 yq.setShiyongid(shiyongid);
+		    }
+			 if(bizhongId !=null &&!"".equals(bizhongId)){
+			 yq.setBizhongId(Integer.parseInt(bizhongId));
+			 }
+			 if(shiyongid !=null &&!"".equals(shiyongid)){
+			 yq.setShiyongid(Integer.parseInt(shiyongid));
+			 }
 			  Map<String,Object> result=new HashMap<String,Object>();
 			  boolean bl=false;
 				try{
@@ -126,15 +136,21 @@ public class ZyYaoqingController {
 		@RequestMapping("fenghuang/yaoqingUpdate.do")
 		@ResponseBody
 		public Map<String,Object> yaoqingUpdate(HttpServletRequest request,HttpServletResponse response,
-				int guoduid,String miaoshu,String chengben,int bizhongId,int shiyongid,long id){
+				String guoduid,String miaoshu,String chengben,String bizhongId,String shiyongid,long id){
 			Yaoqinghan yq=new Yaoqinghan();
 
-			yq.setGuoduid(guoduid);
+			if(guoduid !=null &&!"".equals(guoduid)){			
+				yq.setGuoduid(Integer.parseInt(guoduid));
+			    }
 			yq.setMiaoshu(miaoshu);
 			yq.setChengben(chengben);
-			yq.setBizhongId(bizhongId);
-			yq.setShiyongid(shiyongid);
-			yq.setId(id);
+		   if(guoduid !=null &&!"".equals(guoduid)){
+				 yq.setBizhongId(Integer.parseInt(bizhongId));
+				 }
+			if(shiyongid !=null &&!"".equals(shiyongid)){
+				 yq.setShiyongid(Integer.parseInt(shiyongid));
+				 }
+			  yq.setId(id);
 			
 			  Map<String,Object> result=new HashMap<String,Object>();
 			  boolean bl=false;

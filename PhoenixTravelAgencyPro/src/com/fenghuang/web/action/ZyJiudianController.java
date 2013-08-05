@@ -184,24 +184,34 @@ public class ZyJiudianController {
 			   String danjijia,String wangjijia,String jgsm,String bz,String id){
 
 		  Jiudian jd=new Jiudian();
-		  jd.setChengshi(Long.parseLong(chengshi));
-		  jd.setName(name);
-		  jd.setFangjian(Long.parseLong(fangjian));
-		  jd.setHzjb(hzjb);
-		  jd.setWhr(whr);
-		  jd.setXjbz(xjbz);
-		  jd.setDianhua(dianhua);
-		  jd.setChuanzhen(chuanzhen);
-		  jd.setEmail(email);
-		  jd.setGuanwang(guanwang);
-		  jd.setDizhi(dizhi);
-		  jd.setPingjia(pingjia);
-		  jd.setTishi(tishi);
-		  jd.setDanjijia(Integer.parseInt(danjijia));
-		  jd.setWangjijia(Integer.parseInt(wangjijia));
-		  jd.setJgsm(jgsm);
-		  jd.setBz(bz);
-		  jd.setId(Long.parseLong(id));
+		      if(chengshi !=null &&!"".equals(chengshi)){
+			  jd.setChengshi(Long.parseLong(chengshi));
+			  }
+			  jd.setName(name);
+			  if(fangjian !=null && !"".equals(fangjian)){
+			  jd.setFangjian(Long.parseLong(fangjian));
+			  }
+			  jd.setHzjb(hzjb);
+			  jd.setWhr(whr);
+			  jd.setXjbz(xjbz);
+			  jd.setDianhua(dianhua);
+			  jd.setChuanzhen(chuanzhen);
+			  jd.setEmail(email);
+			  jd.setGuanwang(guanwang);
+			  jd.setDizhi(dizhi);
+			  jd.setPingjia(pingjia);
+			  jd.setTishi(tishi);
+			  if(danjijia!=null && !"".equals(danjijia)){
+			  jd.setDanjijia(Integer.parseInt(danjijia));
+			  }
+			  if(wangjijia!=null && !"".equals(wangjijia)){
+			  jd.setWangjijia(Integer.parseInt(wangjijia));
+			  }
+			  jd.setJgsm(jgsm);
+			  jd.setBz(bz);
+			  if(id!=null && !"".equals(id)){
+		     jd.setId(Long.parseLong(id));
+			  }
 		  Map<String,Object> result=new HashMap<String,Object>();
 		  boolean bl=false;
 			try{

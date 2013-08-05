@@ -62,16 +62,20 @@ public class ZyDaoyouController {
 	@RequestMapping("fenghuang/daoyouAdd.do")
 	@ResponseBody
 	public Map<String,Object> daoyouAdd(HttpServletRequest request,HttpServletResponse response,
-			long guojiaId,String name,String name2,String name3,String zjlx,String zjhm,int chengshiId,String dinhua,String lxfs1,String lxfs2,
-			String lxfs3,String email,String shouji,String fax,int dyfy,int hzjbId,String bz){
+			String guojiaId,String name,String name2,String name3,String zjlx,String zjhm,String chengshiId,String dinhua,String lxfs1,String lxfs2,
+			String lxfs3,String email,String shouji,String fax,String dyfy,String hzjbId,String bz){
 		Daoyou dy=new Daoyou();
-		dy.setGuojiaId(guojiaId);
+		if(guojiaId !=null && !"".equals(guojiaId)){
+		dy.setGuojiaId(Long.parseLong(guojiaId));
+		}
 		dy.setName(name);
 		dy.setName2(name2);
 		dy.setName3(name3);
 		dy.setZjlx(zjlx);
 		dy.setZjhm(zjhm);
-		dy.setChengshiId(chengshiId);
+		if(chengshiId !=null && !"".equals(chengshiId)){
+		dy.setChengshiId(Integer.parseInt(chengshiId));
+		}
 		dy.setDinhua(dinhua);
 		dy.setLxfs1(lxfs1);
 		dy.setLxfs2(lxfs2);
@@ -79,8 +83,12 @@ public class ZyDaoyouController {
         dy.setEmail(email);
         dy.setShouji(shouji);
         dy.setFax(fax);
-        dy.setDyfy(dyfy);
-        dy.setHzjbId(hzjbId);
+    	if(dyfy !=null && !"".equals(dyfy)){
+        dy.setDyfy(Integer.parseInt(dyfy));
+    	}
+    	if(hzjbId !=null && !"".equals(hzjbId)){
+        dy.setHzjbId(Integer.parseInt(hzjbId));
+    	}
         dy.setBz(bz);
          Map<String,Object> result=new HashMap<String,Object>();
          boolean bl=false;
@@ -109,28 +117,36 @@ public class ZyDaoyouController {
 	@RequestMapping("fenghuang/daoyouUpdate.do")
 	@ResponseBody
 	public Map<String,Object> daoyouUpdate(HttpServletRequest request,HttpServletResponse response,
-			long guojiaId,String name,String name2,String name3,String zjlx,String zjhm,int chengshiId,String dinhua,String lxfs1,String lxfs2,
-			String lxfs3,String email,String shouji,String fax,int dyfy,int hzjbId,String bz,long id){
+			String guojiaId,String name,String name2,String name3,String zjlx,String zjhm,String chengshiId,String dinhua,String lxfs1,String lxfs2,
+			String lxfs3,String email,String shouji,String fax,String dyfy,String hzjbId,String bz,long id){
 		Daoyou dy=new Daoyou();
 
-		dy.setGuojiaId(guojiaId);
-		dy.setName(name);
-		dy.setName2(name2);
-		dy.setName3(name3);
-		dy.setZjlx(zjlx);
-		dy.setZjhm(zjhm);
-		dy.setChengshiId(chengshiId);
-		dy.setDinhua(dinhua);
-		dy.setLxfs1(lxfs1);
-		dy.setLxfs2(lxfs2);
-		dy.setLxfs3(lxfs3);
-        dy.setEmail(email);
-        dy.setShouji(shouji);
-        dy.setFax(fax);
-        dy.setDyfy(dyfy);
-        dy.setHzjbId(hzjbId);
-        dy.setBz(bz);
-		dy.setId(id);
+		if(guojiaId !=null && !"".equals(guojiaId)){
+			dy.setGuojiaId(Long.parseLong(guojiaId));
+			}
+			dy.setName(name);
+			dy.setName2(name2);
+			dy.setName3(name3);
+			dy.setZjlx(zjlx);
+			dy.setZjhm(zjhm);
+			if(chengshiId !=null && !"".equals(chengshiId)){
+			dy.setChengshiId(Integer.parseInt(chengshiId));
+			}
+			dy.setDinhua(dinhua);
+			dy.setLxfs1(lxfs1);
+			dy.setLxfs2(lxfs2);
+			dy.setLxfs3(lxfs3);
+	        dy.setEmail(email);
+	        dy.setShouji(shouji);
+	        dy.setFax(fax);
+	    	if(dyfy !=null && !"".equals(dyfy)){
+	        dy.setDyfy(Integer.parseInt(dyfy));
+	    	}
+	    	if(hzjbId !=null && !"".equals(hzjbId)){
+	        dy.setHzjbId(Integer.parseInt(hzjbId));
+	    	}
+	        dy.setBz(bz);
+		    dy.setId(id);
 		Map<String,Object> result=new HashMap<String,Object>();
 		boolean bl=false;
        try{

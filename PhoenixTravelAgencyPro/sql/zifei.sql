@@ -22,7 +22,7 @@ DROP TABLE IF EXISTS `zifei`;
 CREATE TABLE `zifei` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
   `name` varchar(50) DEFAULT NULL COMMENT '自费节目名称',
-  `feiyong` int(11) DEFAULT NULL COMMENT '费用',
+  `feiyong` float(11,2) DEFAULT NULL COMMENT '费用',
   `bizhongId` int(11) DEFAULT NULL COMMENT '币种',
   `chengshiId` int(11) DEFAULT NULL COMMENT '所属城市',
   `kftimeqi` varchar(50) DEFAULT NULL COMMENT '开放时间起',

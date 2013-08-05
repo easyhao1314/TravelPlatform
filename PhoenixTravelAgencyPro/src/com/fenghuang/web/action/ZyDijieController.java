@@ -61,16 +61,20 @@ public class ZyDijieController {
 	@RequestMapping("fenghuang/dijieAdd.do")
 	@ResponseBody
 	public Map<String,Object> dijieAdd(HttpServletRequest request,HttpServletResponse response,
-			String name,String ywname,int chengshiId,String dizhi,int hzjbId,String lianxiren,String dianhua,String shouji,String chuanzhen,
+			String name,String ywname,String chengshiId,String dizhi,String hzjbId,String lianxiren,String dianhua,String shouji,String chuanzhen,
 			String email,String skype,String msn,String yahoo,String wangzhi,String kaihu,String dlrzh,String yhdz,String skrzh,String skrxm,
-			String skrdz,int ywqyId,String djsms,String xjb,String youshi,String bz){
+			String skrdz,String ywqyId,String djsms,String xjb,String youshi,String bz){
 		Dijie dj=new Dijie();
 
 		dj.setName(name);
 		dj.setYwname(ywname);
-		dj.setChengshiId(chengshiId);
+		if(chengshiId !=null &&!"".equals(chengshiId)){
+		dj.setChengshiId(Integer.parseInt(chengshiId));
+		}
 		dj.setDizhi(dizhi);
-		dj.setHzjbId(hzjbId);
+		if(hzjbId !=null &&!"".equals(hzjbId)){
+		dj.setHzjbId(Integer.parseInt(hzjbId));
+		}
 		dj.setLianxiren(lianxiren);
 		dj.setDianhua(dianhua);
 		dj.setShouji(shouji);
@@ -86,7 +90,9 @@ public class ZyDijieController {
 		dj.setSkrzh(skrzh);
 		dj.setSkrxm(skrxm);
 		dj.setSkrdz(skrdz);
-		dj.setYwqyId(ywqyId);
+		if(ywqyId !=null &&!"".equals(ywqyId)){
+		dj.setYwqyId(Integer.parseInt(ywqyId));
+		}
 		dj.setDjsms(djsms);
 		dj.setXjb(xjb);
 		dj.setYoushi(youshi);
@@ -118,16 +124,20 @@ public class ZyDijieController {
 	@RequestMapping("fenghuang/dijieUpdate.do")
 	@ResponseBody
 	public Map<String,Object> dijieUpdate(HttpServletRequest request,HttpServletResponse response,
-			String name,String ywname,int chengshiId,String dizhi,int hzjbId,String lianxiren,String dianhua,String shouji,String chuanzhen,
+			String name,String ywname,String chengshiId,String dizhi,String hzjbId,String lianxiren,String dianhua,String shouji,String chuanzhen,
 			String email,String skype,String msn,String yahoo,String wangzhi,String kaihu,String dlrzh,String yhdz,String skrzh,String skrxm,
-			String skrdz,int ywqyId,String djsms,String xjb,String youshi,String bz,long id){
+			String skrdz,String ywqyId,String djsms,String xjb,String youshi,String bz,long id){
 		Dijie dj=new Dijie();
 
 		dj.setName(name);
 		dj.setYwname(ywname);
-		dj.setChengshiId(chengshiId);
+		if(chengshiId !=null &&!"".equals(chengshiId)){
+		dj.setChengshiId(Integer.parseInt(chengshiId));
+		}
 		dj.setDizhi(dizhi);
-		dj.setHzjbId(hzjbId);
+		if(hzjbId !=null &&!"".equals(hzjbId)){
+		dj.setHzjbId(Integer.parseInt(hzjbId));
+		}
 		dj.setLianxiren(lianxiren);
 		dj.setDianhua(dianhua);
 		dj.setShouji(shouji);
@@ -143,7 +153,9 @@ public class ZyDijieController {
 		dj.setSkrzh(skrzh);
 		dj.setSkrxm(skrxm);
 		dj.setSkrdz(skrdz);
-		dj.setYwqyId(ywqyId);
+		if(ywqyId !=null &&!"".equals(ywqyId)){
+		dj.setYwqyId(Integer.parseInt(ywqyId));
+		}
 		dj.setDjsms(djsms);
 		dj.setXjb(xjb);
 		dj.setYoushi(youshi);

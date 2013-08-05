@@ -40,7 +40,7 @@ public class ZyZifeiController {
 			for(int i = 0 ;i<zifeiList.size();i++){
 				for(Entry<String, Object> entry : zifeiList.get(i).entrySet()){
 					if(entry.getValue() == null){
-						entry.setValue("") ;
+						entry.setValue("");
 					}
 				}
 			}
@@ -65,26 +65,33 @@ public class ZyZifeiController {
 				String name,String feiyong,String bizhongId,String chengshiId,String kftimeqi,
 				String kftimezhi,String timekb,String djaptime,String miaoshu){
 			Zifei zf=new Zifei();
-		
+			if(name !=null && !"".equals(name)){
 			zf.setName(name);
-			if(feiyong !=null &&!"".equals(feiyong)){
-			zf.setFeiyong(Integer.getInteger(feiyong));
 			}
-			if(bizhongId !=null &&!"".equals(bizhongId)){
-			zf.setBizhongId(Integer.getInteger(bizhongId));
+			if(feiyong !=null && !"".equals(feiyong)){
+			zf.setFeiyong(Float.parseFloat(feiyong));
+			}
+			if(bizhongId !=null && !"".equals(bizhongId)){
+				zf.setBizhongId(Integer.parseInt(bizhongId));
 			}
 			if(chengshiId !=null && !"".equals(chengshiId)){
-			zf.setChengshiId(Integer.getInteger(chengshiId));
+			zf.setChengshiId(Integer.parseInt(chengshiId));
 			}
+			if(kftimeqi !=null && !"".equals(kftimeqi)){
 			zf.setKftimeqi(kftimeqi);
+			}
+			if(kftimezhi !=null && !"".equals(kftimezhi)){
 			zf.setKftimezhi(kftimezhi);
+			}
 			if(timekb !=null && !"".equals(timekb)){
-			zf.setTimekb(Integer.getInteger(timekb));
+			zf.setTimekb(Integer.parseInt(timekb));
 			}
 			if(djaptime !=null && !"".equals(djaptime)){
-			zf.setDjaptime(Integer.getInteger(djaptime));
+			zf.setDjaptime(Integer.parseInt(djaptime));
 			}
+			if(miaoshu !=null && !"".equals(miaoshu)){
 			zf.setMiaoshu(miaoshu);
+			}
 			  Map<String,Object> result=new HashMap<String,Object>();
 			  boolean bl=false;
 				try{
@@ -139,19 +146,37 @@ public class ZyZifeiController {
 		@RequestMapping("fenghuang/zifeiUpdate.do")
 		@ResponseBody
 		public Map<String,Object> zifeiUpdate(HttpServletRequest request,HttpServletResponse response,
-				String name,int feiyong,int bizhongId,int chengshiId,String kftimeqi,
-				String kftimezhi,int timekb,int djaptime,String miaoshu,long id){
+				String name,String feiyong,String bizhongId,String chengshiId,String kftimeqi,
+				String kftimezhi,String timekb,String djaptime,String miaoshu,long id){
 			Zifei zf=new Zifei();
 
-			zf.setName(name);
-			zf.setFeiyong(feiyong);
-			zf.setBizhongId(bizhongId);
-			zf.setChengshiId(chengshiId);
-			zf.setKftimeqi(kftimeqi);
-			zf.setKftimezhi(kftimezhi);
-			zf.setTimekb(timekb);
-			zf.setDjaptime(djaptime);
-			zf.setMiaoshu(miaoshu);
+			if(name !=null && !"".equals(name)){
+				zf.setName(name);
+				}
+				if(feiyong !=null && !"".equals(feiyong)){
+				zf.setFeiyong(Float.parseFloat(feiyong));
+				}
+				if(bizhongId !=null && !"".equals(bizhongId)){
+					zf.setBizhongId(Integer.parseInt(bizhongId));
+				}
+				if(chengshiId !=null && !"".equals(chengshiId)){
+				zf.setChengshiId(Integer.parseInt(chengshiId));
+				}
+				if(kftimeqi !=null && !"".equals(kftimeqi)){
+				zf.setKftimeqi(kftimeqi);
+				}
+				if(kftimezhi !=null && !"".equals(kftimezhi)){
+				zf.setKftimezhi(kftimezhi);
+				}
+				if(timekb !=null && !"".equals(timekb)){
+				zf.setTimekb(Integer.parseInt(timekb));
+				}
+				if(djaptime !=null && !"".equals(djaptime)){
+				zf.setDjaptime(Integer.parseInt(djaptime));
+				}
+				if(miaoshu !=null && !"".equals(miaoshu)){
+				zf.setMiaoshu(miaoshu);
+				}
 			zf.setId(id);
 			  
 			  Map<String,Object> result=new HashMap<String,Object>();

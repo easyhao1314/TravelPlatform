@@ -71,7 +71,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</td>
 			</tr>
 			<tr>
-			<td colspan="9" align="center" ><a href="#" class="easyui-linkbutton">保存当前改动</a></td>
+			<td colspan="9" align="center" ><a href="javascript:saveUpdateXianlu();" class="easyui-linkbutton">保存当前改动</a></td>
 			</tr>
 			
 		</table>
@@ -81,26 +81,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <div id="mdiv" class="easyui-panel" title="日程信息"
 		style="height:auto;padding:10px;width:auto;"
 		data-options="closable:false,tools:'#searchpanel'" align="center">
-		
-		<form action="">
-		<table border="1" width="800px">
-			<tr>
-			<td><strong>日期</strong></td><td><strong>行程   <a href="javascript:();" class="easyui-linkbutton" iconcls="icon-add" plain="true">日行程</a> <a href="javascript:xingcheng();" class="easyui-linkbutton" iconcls="icon-add" plain="true">酒店</a><a href="javascript:xingcheng();" class="easyui-linkbutton" iconcls="icon-add" plain="true">活动</a></strong> </td>
-			</tr>
-			<strong></strong>
-			<tr>
-			<td rolspan="4"><strong><a href="javascript:richenganpai()" class="easyui-linkbutton" iconCls="icon-add" plain="true"> 第1天</a></strong>  
-    </td><td><strong>交通工具:<a href="javascript:a()" id="mb2" class="easyui-menubutton" data-options="menu:'#mm2',iconCls:'icon-edit'"> 城市</a></strong>  
-     <strong><a href="javascript:void(0)" id="mb3" class="easyui-menubutton" data-options="menu:'#mm3',iconCls:'icon-edit'">交通</a></strong>  
-     <hr/><strong>活动 :</strong><hr/><strong>酒店: </strong><hr/><strong>餐:&nbsp;&nbsp;
-     <a href="javascript:void(0)" id="mb4" class="easyui-menubutton" data-options="menu:'#mm4',iconCls:'icon-edit'">早餐：</a></strong>  
-     <strong>&nbsp;&nbsp;<a href="javascript:void(0)" id="mb5" class="easyui-menubutton" data-options="menu:'#mm5',iconCls:'icon-edit'">午餐：</a></strong>  
-     <strong>&nbsp;&nbsp;<a href="javascript:void(0)" id="mb6" class="easyui-menubutton" data-options="menu:'#mm6',iconCls:'icon-edit'">晚餐</a></strong>  
-     </td>
-			</tr>
-			<strong></strong>
-		</table>
-		</form>
+	
 	</div>
 	<div id="richeng" class="easyui-dialog" title="日程"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
@@ -139,13 +120,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</tr>
 					<tr>
                 <td colspan="4">
-                <a href="javascript:richenUpdate2();" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
+                <a href="javascript:richenUpdateSave();" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
                 <a href="javascript:closedSearch();" class="easyui-linkbutton" iconCls="icon-cancel">取消</a>
                 </td>
           </tr>
         </table>
        </form>
    </div>
+   
+    <div class="easyui-panel" title="工具"
+		style="height:300px;padding:10px;width:auto;"
+		data-options="closable:false,tools:'#searchpanel'" align="left">
+		<table>
+		
+			<tr>
+				<td><div class="fitem">
+						<label> 行程:</label>
+				</td>
+				<td>
+				 <a href="javascript:XingchengkuSave();" class="easyui-linkbutton" iconCls="icon-ok">保存到行程库</a>
+				</td>
+			</tr>
+		</table>
+	</div>	  
+	      
   <!-- 此页面查询的是视图 -->
   <script type="text/javascript">
 //页面加载时填充xianlumingxiForm
@@ -172,8 +170,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					}
 				});
   });
-  
+ 
   //页面加载时填充xianlumingxiForm结束
+  //保存当前改动方法开始
+  function saveUpdateXianlu(){
+     $('#xianlumingxiForm').form('submit',{
+        url:'fenghuang/updateXianluSave.do',
+         onSubmit : function() {
+					return $(this).form('validate');
+				},
+         success : function(data) {
+					var result = $.parseJSON(data) ;
+           if(result.success){      
+             $.messager.alert("保存修改成功","保存成功","info");
+           }else{
+              $.messager.alert("保存修改失败","保存失败","error");
+           }
+        }
+     });
+     
+  }
+  //保存当前改动方法结束
   
   function xunhuanRicheng(xianluid){
      var param = {
@@ -188,7 +205,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 					for(var i=0;i<data.rows.length;i++){
 						 var d = parseInt(i+1);				
-						$("#mdiv").append('<div id="rixingchengdiv"><form id="d'+d+'"><table border="1" width="800px" ><tr><td width="100px;"><strong>日期</strong></td><td><strong><a href="javascript:richenganpai1('+data.rows[i].riid+')" class="easyui-linkbutton" iconCls="icon-add" plain="true"> 日程修改</a></strong></tr><tr><td><strong><a href="javascript:void()" class="easyui-linkbutton" iconCls="icon-add" plain="true">第'+d+'天</strong></td><td><input name="riid" class="easyui-validatebox">日程:<input name="richenganpai" class="easyui-validatebox"><hr />活动:<input name="huodong" class="easyui-validatebox"><hr />酒店:<input name="jiudian" class="easyui-validatebox"><hr />餐饮：早：<input name="zao" class="easyui-validatebox">中：<input name="zhong" class="easyui-validatebox">晚：<input name="wan" class="easyui-validatebox"></td></tr><table></form></div>');
+						$("#mdiv").append('<form id="d'+d+'"><table border="1" width="800px" ><tr><td width="100px;"><strong>日期</strong></td><td><strong><a href="javascript:richenganpaiOpen('+data.rows[i].riid+')"  class="easyui-linkbutton" iconCls="icon-add" plain="true"> 日程修改</a></strong><input name="riid" class="easyui-validatebox"></td></tr><tr><td><strong><a href="javascript:void()" class="easyui-linkbutton" iconCls="icon-add" plain="true">第'+d+'天</strong></td><td>日程:<input name="richenganpai" class="easyui-validatebox"><hr />活动:<input name="huodong" class="easyui-validatebox"><hr />酒店:<input name="jiudian" class="easyui-validatebox"><hr />餐饮：早：<input name="zao" class="easyui-validatebox">中：<input name="zhong" class="easyui-validatebox">晚：<input name="wan" class="easyui-validatebox"></td></tr><table></form>');
 						 $('#d'+d).form('load',data.rows[i]);
 					} 
 					//pares方法是 渲染JqueryEasyUi 插件的 解决不显示EasyUi的样式问题
@@ -203,28 +220,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   }
   
   //修改日程开始
-  function richenganpai1(riid){ 
-  
+  function richenganpaiOpen(riid){ 
+
   $("#richeng").dialog("open");
   //把对象放到from里面
+  var param={
+      "riid":riid
+     }
+  $.ajax({
+      url:'fenghuang/selectricheng.do',
+      data:param,
+      dataType:"json",
+      success:function(data){
+       $('#richengFrom').form('load',data.rows[0]);
+      }
+   });
 
-  $("#riid").val(riid);
   }
-  
-  function  richenUpdate2(){
+ 
+function closedSearch(){
+  $("#richeng").dialog("close");
+}
+ 
+  function  richenUpdateSave(){
      $("#richengFrom").form('submit', {
 				url : 'fenghuang/updatericheng.do',
 				onSubmit : function() {
 					return $(this).form('validate');
 				},
-				success : function(data) {//data 是一个字符串  $.ajax(success:function(data):是一个对象)
-					console.info(data);
-					//var result = val('(' + data + ')');//吧字符串转换为对象
+				success : function(data) {
 					var result = $.parseJSON(data) ;
 					if (result.success) {
 					  $("#richeng").dialog('close');
 						$.messager.alert("修改成功", "修改成功！", "info"); 
-						  $("#rixingchengdiv").datagrid('reload'); 
+						  $("#mdiv").reload(); 
 					} else {
 						$.messager.alert("修改失败", "修改失败!", "error");
 					}
@@ -232,6 +261,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			});
   }
   //修改日程结束
+  //保存到行程库开始
+  function XingchengkuSave(){
+       
+  }
+  //保存到行程库结束
   </script>
   </body>
 </html>

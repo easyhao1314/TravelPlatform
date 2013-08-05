@@ -87,4 +87,18 @@ public class XianluController {
 		result.put("success", isSuccess);
 		return result;
 	}
+	
+	@RequestMapping("fenghuang/updateXianluSave.do")
+	@ResponseBody
+	public Map<String,Object> updateXianlu(HttpServletRequest request,HttpServletResponse response,Xianlu x){
+		Map<String,Object> result=new HashMap<String,Object>();
+		boolean isSuccess=false;
+		try{
+			isSuccess=xlservice.updateXianlu(x);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		result.put("success", isSuccess);
+	    return result;	
+	}
 }

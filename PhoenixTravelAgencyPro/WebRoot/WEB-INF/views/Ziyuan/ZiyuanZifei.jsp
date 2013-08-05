@@ -64,8 +64,8 @@
 	</div>
 		<div class="easyui-panel" title="自费节目列表"
 		style="height:480px;width: auto;">
-		<table id="dg" class="easyui-datagrid"
-			data-options="url:'fenghuang/zifeiSelect.do',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
+		<table id="dgZifei" class="easyui-datagrid"
+			data-options="url:'fenghuang/zifeiSelect.do',border:false,singleSelect:true,fit:true,fitColumns:true"
 			pagination="true" toolbar="#currencyDatagridtoolbar">
 			<thead>
 				<tr>
@@ -90,7 +90,7 @@
 	<div id="addZifei" class="easyui-dialog" title="自费节目新增"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:600px;height:340px;padding:10px;">
-		<form id="addForm" method="post">
+		<form id="addZifeiForm" method="post">
 			<table align="center">
 				<tr>
 <td><div class="fitem"><label>自费节目编号:</label></td><td>--系统自动生成--</div></td>
@@ -113,8 +113,8 @@
 					editable:false"></div></td>			
 </tr>
 <tr>
-<td><div class="fitem"><label>开放时间起：</label></td><td><input name="kftimeqi" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>开放时间止：</label></td><td><input  name="kftimezhi" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>开放时间起：</label></td><td><input name="kftimeqi" class="easyui-validatebox"></div></td>
+<td><div class="fitem"><label>开放时间止：</label></td><td><input  name="kftimezhi" class="easyui-validatebox"></div></td>
 </tr>
 <tr>
 <td><div class="fitem"><label>时间是否可变：</label></td><td><input name="timekb" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=9',
@@ -132,8 +132,8 @@
 <td><div class="fitem"><label>自费节目描述：</label></td><td colspan="3"> <input name="miaoshu" class="easyui-validatebox" size="70"></div></td>
 </tr>
 <tr>
-<tr><td colspan="4s" align="center"><a href="javascript:SaveZifei();" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
-<a  class="easyui-linkbutton" iconCls="icon-undo" onclick="$('#addForm').form('clear')">重置</a></td>
+<tr><td colspan="4" align="center"><a href="javascript:SaveZifei();" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
+<a  class="easyui-linkbutton" iconCls="icon-undo" onclick="$('#addZifeiForm').form('clear')">重置</a></td>
 </tr>
 			</table>
 			<input id="dicType" name="dicType" type="hidden">
@@ -142,7 +142,7 @@
 	<div id="updateZifei" class="easyui-dialog" title="自费节目修改"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:600px;height:340px;padding:10px;">
-		<form id="updateForm" method="post">
+		<form id="updateZifeiForm" method="post">
 			<table align="center">
 				
 <tr>
@@ -184,8 +184,8 @@
 <td></td>
 </tr>
 <tr>
-<tr><td colspan="4s" align="center"><a href="javascript:zifeiUpdate();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> 
-<a  class="easyui-linkbutton" iconCls="icon-undo" onclick="$('#updateForm').form('clear')">重置</a></td>
+<tr><td colspan="4" align="center"><a href="javascript:zifeiUpdate();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> 
+<a href="javascript:closedupdateZifei()"  class="easyui-linkbutton" iconCls="icon-undo" >取消</a></td>
 </tr>
 			</table>
 			<input id="dicType" name="dicType" type="hidden">
@@ -209,7 +209,7 @@
  * 查询按钮
  */
 		function zifeiSelectLike(){
-		var opts = $('#dg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
+		var opts = $('#dgZifei').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
 			var param = {
 				name: $("#name").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
 				chengshiId: $("#chengshiId").combobox('getValue'),
@@ -224,7 +224,7 @@
 					type : 'POST' ,
 					dataType : 'json' ,
 					success : function(data){
-						$('#dg').datagrid('loadData',data);
+						$('#dgZifei').datagrid('loadData',data);
 					}
 				});
 		}
@@ -233,11 +233,11 @@
 	   //新增
 		function addZifei() {
 			$("#addZifei").dialog("open");
-			$("#addForm").form("clear");
+			$("#addZifeiForm").form("clear");
 		}
          
 		function SaveZifei() {
-			$('#addForm').form('submit', {
+			$('#addZifeiForm').form('submit', {
 				url : 'fenghuang/zifeiAdd.do',
 				onSubmit : function() {
 					return $(this).form('validate');
@@ -247,10 +247,10 @@
 					if (result.success) {
 					$('#addZifei').dialog('close');
 						$.messager.alert("保存成功", "保存成功！", "info");
-						 $('#dg').datagrid('reload'); 
+						 $('#dgZifei').datagrid('reload'); 
 					} else {
 						$.messager.alert("保存失败", "保存失败!", "error");
-						$('#dg').datagrid('reload');
+						$('#dgZifei').datagrid('reload');
 					}
 				}
 			});
@@ -261,7 +261,7 @@
 		} 
 	//删除操作要执行的方法
 	function zifeiDelete(){
-	  var row = $("#dg").datagrid("getSelected");
+	  var row = $("#dgZifei").datagrid("getSelected");
 			if (row) {
 				var param = {
 					"id" :  row.id
@@ -274,7 +274,7 @@
 					success : function(data) {
 						if (data.success) {
 							$.messager.alert("删除成功", "删除成功！", "info");
-							$("#dg").datagrid('reload');
+							$("#dgZifei").datagrid('reload');
 						} else {
 							$.messager.alert("删除失败", "删除失败!", "error");
 						}
@@ -291,7 +291,7 @@
           //通过主键，查询该操作，并处于编辑状态。 是否打开tab，还是直接弹出window 
 			$("#updateZifei").dialog("open");
 			//准备回显的数据
-			var row = $("#dg").datagrid("getSelected");
+			var row = $("#dgZifei").datagrid("getSelected");
 			//alert(row.tuanNO);
 		
 			if(row){
@@ -305,7 +305,7 @@
 					dataType : "json",
 					success : function(data) {
 		
-					   $('#updateForm').form('load',data.rows[0]);
+					   $('#updateZifeiForm').form('load',data.rows[0]);
 				
 					},
 					error : function() {
@@ -316,7 +316,7 @@
 		}
 		 //修改
 		function zifeiUpdate() {
-			$("#updateForm").form('submit', {
+			$("#updateZifeiForm").form('submit', {
 				url : 'fenghuang/zifeiUpdate.do',
 				onSubmit : function() {
 					return $(this).form('validate');
@@ -329,17 +329,17 @@
 					if (result.success) {
 					  $("#updateZifei").dialog('close');
 						$.messager.alert("修改成功", "修改成功！", "info"); 
-						$("#dg").datagrid('reload');
+						$("#dgZifei").datagrid('reload');
 					} else {
 						$.messager.alert("修改失败", "修改失败!", "error");
-						$("#dg").datagrid('reload');
+						$("#dgZifei").datagrid('reload');
 					}
 				}
 			});
 		}
 		
 		//关闭
-		function closedSearch() {
+		function closedupdateZifei() {
 			$('#updateZifei').dialog('close');
 		}
 	

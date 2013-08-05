@@ -400,6 +400,7 @@
 					if (result.success) {
 					  $("#updateCanyin").dialog('close');
 						$.messager.alert("修改成功", "修改成功！", "info"); 
+	
 						$("#dg").datagrid('reload');
 					} else {
 						$.messager.alert("修改失败", "修改失败!", "error");

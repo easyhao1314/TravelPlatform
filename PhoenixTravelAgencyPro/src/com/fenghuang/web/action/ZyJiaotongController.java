@@ -62,21 +62,33 @@ public class ZyJiaotongController {
 	@RequestMapping("fenghuang/jiaotongAdd.do")
 	@ResponseBody
 	public Map<String,Object> jiaotongAdd(HttpServletRequest request,HttpServletResponse response,
-			String name,String lianxiren,int chengshiId,String dizhi,int dianhua,int shouji,String email,
-			String chuanzhen,String wangzhi,int jiage,int hzjbId,int whfsid,String beizhu){
+			String name,String lianxiren,String chengshiId,String dizhi,String dianhua,String shouji,String email,
+			String chuanzhen,String wangzhi,String jiage,String hzjbId,String whfsid,String beizhu){
 		 Jiaotong jt=new Jiaotong();
 		 jt.setName(name);
 		 jt.setLianxiren(lianxiren);
-		 jt.setChengshiId(chengshiId);
+		 if(chengshiId !=null && !"".equals(chengshiId)){
+		 jt.setChengshiId(Integer.parseInt(chengshiId));
+		 }
 		 jt.setDizhi(dizhi);
-		 jt.setDianhua(dianhua);
-		 jt.setShouji(shouji);
+		 if(dianhua !=null && !"".equals(dianhua)){		 
+		 jt.setDianhua(Integer.parseInt(dianhua));
+		 }
+		 if(shouji !=null && !"".equals(shouji)){
+		 jt.setShouji(Integer.parseInt(shouji));
+		 }
 		 jt.setEmail(email);
 		 jt.setChuanzhen(chuanzhen);
 		 jt.setWangzhi(wangzhi);
-         jt.setJiage(jiage);
-         jt.setHzjbId(hzjbId);
-         jt.setWhfsid(whfsid);
+		 if(jiage !=null && !"".equals(jiage)){
+         jt.setJiage(Integer.parseInt(jiage));
+		 }
+		 if(hzjbId !=null && !"".equals(hzjbId)){
+         jt.setHzjbId(Integer.parseInt(hzjbId));
+		 }
+		 if(whfsid !=null && !"".equals(whfsid)){
+         jt.setWhfsid(Integer.parseInt(whfsid));
+		 }
          jt.setBeizhu(beizhu);
          Map<String,Object> result=new HashMap<String,Object>();
          boolean bl=false;
@@ -105,21 +117,34 @@ public class ZyJiaotongController {
 	@RequestMapping("fenghuang/jiaotongUpdate.do")
 	@ResponseBody
 	public Map<String,Object> jiaotongUpdate(HttpServletRequest request,HttpServletResponse response,
-			String name,String lianxiren,int chengshiId,String dizhi,int dianhua,int shouji,String email,
-			String chuanzhen,String wangzhi,int jiage,int hzjbId,int whfsid,String beizhu,long id){
+			String name,String lianxiren,String chengshiId,String dizhi,String dianhua,String shouji,String email,
+			String chuanzhen,String wangzhi,String jiage,String hzjbId,String whfsid,String beizhu,long id){
 		 Jiaotong jt=new Jiaotong();
 		 jt.setName(name);
 		 jt.setLianxiren(lianxiren);
-		 jt.setChengshiId(chengshiId);
+		 if(chengshiId !=null && !"".equals(chengshiId)){
+		 jt.setChengshiId(Integer.parseInt(chengshiId));
+		 }
+		 
 		 jt.setDizhi(dizhi);
-		 jt.setDianhua(dianhua);
-		 jt.setShouji(shouji);
+		 if(dianhua !=null && !"".equals(dianhua)){		 
+		 jt.setDianhua(Integer.parseInt(dianhua));
+		 }
+		 if(shouji !=null && !"".equals(shouji)){
+		 jt.setShouji(Integer.parseInt(shouji));
+		 }
 		 jt.setEmail(email);
 		 jt.setChuanzhen(chuanzhen);
 		 jt.setWangzhi(wangzhi);
-         jt.setJiage(jiage);
-         jt.setHzjbId(hzjbId);
-         jt.setWhfsid(whfsid);
+		 if(jiage !=null && !"".equals(jiage)){
+         jt.setJiage(Integer.parseInt(jiage));
+		 }
+		 if(hzjbId !=null && !"".equals(hzjbId)){
+         jt.setHzjbId(Integer.parseInt(hzjbId));
+		 }
+		 if(whfsid !=null && !"".equals(whfsid)){
+         jt.setWhfsid(Integer.parseInt(whfsid));
+		 }
          jt.setBeizhu(beizhu);
 		 jt.setId(id);
 		Map<String,Object> result=new HashMap<String,Object>();
