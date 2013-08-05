@@ -42,7 +42,7 @@
 	<div class="easyui-panel" title="团队费用"
 		style="height:480px;width: auto;" toolbar="#currencyDatagridtoolbar">	
 	<table id="dg" class="easyui-datagrid"
-		data-options="url:'fenghuang/caiwutuanduifeiyong.do',border:false,singleSelect:true,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
+		data-options="url:'fenghuang/caiwutuanduifeiyong.do',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 		pagination="true" toolbar="#tb">
 		<thead>
 			<tr> 

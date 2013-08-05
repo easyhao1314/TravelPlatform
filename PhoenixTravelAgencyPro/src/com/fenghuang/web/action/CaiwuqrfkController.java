@@ -1,6 +1,9 @@
 package com.fenghuang.web.action;
 
 import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -89,6 +92,55 @@ public class CaiwuqrfkController {
 		tuanbiao.setId(Integer.parseInt(id));
 		try {
 			isSuccess = icaiwuskqrSerice.updateskqr(tuanbiao);
+			isSuccess=true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}	
+		result.put("success", isSuccess);
+		return result ; 
+	}
+	
+	@RequestMapping("fenghuang/inserttuanbiao.do")
+	@ResponseBody
+	public Map<String,Object> addCustom(HttpServletRequest request,HttpServletResponse response,
+		   String team,String kxsm,String zhanghaoid,String khmc,String yushoutime,String yingshou,String huilvid,String beizhu,String ysyfid,String shanchu){
+		Map<String, Object> result = new HashMap<String, Object>();
+		boolean isSuccess = false;
+		try {
+		Tuanbiao tuanbiao = new Tuanbiao();
+		if(team!=null&&!"".equals(team)){
+		tuanbiao.setTeam(team);
+		}
+		if(kxsm!=null&&!"".equals(kxsm)){
+		tuanbiao.setKxsm(Integer.parseInt(kxsm));
+		tuanbiao.setYsyfID(1);
+		
+		}
+		if(shanchu!=null&&!"".equals(shanchu)){
+			tuanbiao.setShanchu(Integer.parseInt(shanchu));
+		}
+		if(zhanghaoid!=null&&!"".equals(zhanghaoid)){
+		tuanbiao.setZhanghaoid(Integer.parseInt(zhanghaoid));
+		}
+		if(khmc!=null&&!"".equals(khmc)){
+		tuanbiao.setKhmc(khmc);
+		}
+		if(yushoutime!=null&&!"".equals(yushoutime)){
+		DateFormat format1 = new SimpleDateFormat("yyyy-MM-dd"); 
+			Date dategroupdate = format1.parse(yushoutime);
+			tuanbiao.setYushoutime(dategroupdate);
+		}
+		if(yingshou!=null&&!"".equals(yingshou)){
+		    tuanbiao.setYingshou(Double.parseDouble(yingshou));
+		}
+		if(huilvid!=null&&!"".equals(huilvid)){
+		    tuanbiao.setHuilvID(Integer.parseInt(huilvid));
+		}
+		if(beizhu!=null&&!"".equals(beizhu)){
+		    tuanbiao.setBeizhu(beizhu);
+		}
+		    
+			isSuccess = icaiwuskqrSerice.saveskqr(tuanbiao);
 			isSuccess=true;
 		} catch (Exception e) {
 			e.printStackTrace();

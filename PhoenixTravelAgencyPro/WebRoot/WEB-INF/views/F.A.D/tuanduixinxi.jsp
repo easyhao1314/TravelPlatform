@@ -34,7 +34,7 @@
   
   <div id="tb">
            <a
-			href="javascript:caiwutuanduisave();" class="easyui-linkbutton"
+			href="javascript:caiwutuanduiselect();" class="easyui-linkbutton"
 			iconCls="icon-add" plain="true">新增(面板模式)</a>&nbsp;&nbsp;| <a
 			href="javascript:shanchu();" class="easyui-linkbutton"
 			iconCls="icon-cut" plain="true">删除</a>&nbsp;&nbsp;|&nbsp;
@@ -75,8 +75,8 @@
 				<th data-options="field:'fpxk',editor:'numberbox'" width="50">发票许可</th>
 				<th data-options="field:'a',editor:'numberbox'" width="50">销售确认</th>
 				<th data-options="field:'yujilirun',editor:'numberbox'" width="50">财务确认</th>
-			    <th data-options="field:'shijilirun',editor:'numberbox'" width="50">备注</th>
-			    <th data-options="field:'shijilirun',editor:'numberbox'" width="50">责任人</th>
+			    <th data-options="field:'beizhu',editor:'numberbox'" width="50">备注</th>
+			    <th data-options="field:'fuzeren',editor:'numberbox'" width="50">责任人</th>
 			</tr>
 		</thead>
 	</table>
@@ -85,8 +85,8 @@
 	
    <div class="easyui-panel" title="团队付款" style="height:240px;width: auto;">
 	
-	<table id="dg" class="easyui-datagrid"
-		data-options="url:'fenghuang/caiwutuanduifeiyong.do?team=${param.team}',border:false,singleSelect:true,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
+	<table id="dgysk" class="easyui-datagrid"
+		data-options="url:'fenghuang/caiwutuanduifeiyong.do?team=${param.team}',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 		pagination="true" toolbar="#tb">
 		<thead>
 			<tr> 
@@ -103,7 +103,7 @@
 				<th data-options="field:'fpxk',editor:'numberbox'" width="50">发票许可</th>
 				<th data-options="field:'a',editor:'numberbox'" width="50">销售确认</th>
 				<th data-options="field:'yujilirun',editor:'numberbox'" width="50">财务确认</th>
-			    <th data-options="field:'shijilirun',editor:'numberbox'" width="50">备注</th>
+			    <th data-options="field:'beizhu',editor:'numberbox'" width="50">备注</th>
 			    <th data-options="field:'shijilirun',editor:'numberbox'" width="50">责任人</th>
 			</tr>
 		</thead>
@@ -111,47 +111,73 @@
 	</div>
 	
 	
-	<div id="caiwutdxxsave" class="easyui-dialog" title="应收款"
+	<div id="caiwuxinxiid" class="easyui-dialog" title="应收款"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:500px;height:200px;padding:10px;">
-		<form id="tdxxform" action="">
+		<form id="caiwuxinxiform" action="">
 			<table align="left">
 				<tr>
+				<!-- String team,String kxsm,String zhanghaoid,String khmc,String yushoutime,String yingshou,String huilvid,String beizhu,String ysyfid -->
 					<td><div class="fitem">
 							<label>应收款项:</label>
 					</td>
-					<td><input id="id" name="id"
-						class="easyui-validatebox">
+					<td>
+                       <input class="easyui-combobox" 
+			name="kxsm"
+			data-options="url:'fenghuang/caiwushoukuanxiangxiala.do',
+					valueField:'id',
+					textField:'name',
+					panelHeight:'auto',
+					required:true
+					
+	">
 						</div></td>
 					<td><div class="fitem">
 							<label>收款账号:</label>
 					</td>
-					<td><input id="caiwuid" name="caiwuid" value="2"
-						class="easyui-validatebox">
+					<td> <input class="easyui-combobox" 
+			name="zhanghaoid"
+			data-options="url:'fenghuang/caiwusfkzhwhselect.do',
+					valueField:'id',
+					textField:'zhanghaoming',
+					panelHeight:'auto',
+					required:true
+	">
 						</div></td>
 				</tr>
-				
+				<tr>
+					<td>
+			
+					<div class="fitem">
+					
+					</td>
+					<td><input id="teamname" name="team"  class="easyui-validatebox" hidden="true">
+						</div></td>
+					
+						
+				</tr>
 				<tr>
 					<td><div class="fitem">
 							<label>首款单位:</label>
 					</td>
 					<td>  	
-					<input id="caiwuid" name="caiwuid" value="2"
+					<input id="caiwuid" name="khmc" 
 						class="easyui-validatebox">
 					</div></td>
 
 					<td><div class="fitem">
 							<label>应收日期:</label>
 					</td>
-					<td><input id="caiwuid" name="caiwuid" value="2"
-						class="easyui-validatebox">
+										<td>
+<input id="htsj" name="yushoutime" type="text" class="easyui-datebox" required="required">
+						
 						</div></td>
 				</tr>
 				<tr>
 					<td><div class="fitem">
 							<label>金额:</label>
 					</td>
-					<td><input id="id" name="id"
+					<td><input id="id" name="yingshou"
 						class="easyui-validatebox">
 						</div></td>
 					<td><div class="fitem">
@@ -159,20 +185,33 @@
 					</td>
 					<td>
 				    <input class="easyui-combobox" 
-			name="Areatype"
+			name="huilvid"
 			data-options="url:'fenghuang/caiwuhuilvxiala.do',
 					valueField:'id',
 					textField:'bizhong',
-					panelHeight:'auto'
+					panelHeight:'auto',
+					required:true
 	"></div></td>
 					
 					
 						</div></td>
 				</tr>
+				<tr>
+					<td><div class="fitem">
+							<label>备注:</label>
+					</td>
+					<td><input id="id" name="beizhu"
+						class="easyui-validatebox">
+						</div></td>
+					<td><div class="fitem">
+							<label>单位</label>
+					</td>
+					
+				</tr>
 				
 				<tr>
 					<td colspan="4" align="center"><a
-						href="javascript:fkspupdateb();" class="easyui-linkbutton"
+						href="javascript:caiwutuanduisave();" class="easyui-linkbutton"
 						iconCls="icon-ok">确认</a> <a href="javascript:closedSearch();"
 						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
 				</tr>
@@ -197,16 +236,20 @@
 	}
 	
 	//添加	
-		function caiwutuanduisave() {
-			$("#caiwutdxxsave").dialog("open");
-			$("#tdxxform").form("clear");
+		function caiwutuanduiselect() {
+			$("#caiwuxinxiid").dialog("open");
+			var team=${param.team}; 
+			
+		
+			$("#caiwuxinxiform").form("clear");
+				$("#teamname").val(team);
 		}
         function closeEditDic() {
-			$("#addweihu").dialog("close");
+			$("#caiwuxinxiid").dialog("close");
 		} 
-		function Saveweihu() {
-			$('#dicFrome').form('submit', {
-				url : 'fenghuang/weihutianjia.do',
+		function caiwutuanduisave() {
+			$('#caiwuxinxiform').form('submit', {
+				url : 'fenghuang/inserttuanbiao.do',
 				onSubmit : function() {
 					return $(this).form('validate');
 				},
@@ -214,7 +257,7 @@
 					var result = eval('(' + result + ')');
 					if (result.success) {
 						$.messager.alert("保存成功", "保存成功！", "info");
-						$('#addweihu').dialog('close');
+						$('#caiwuxinxiid').dialog('close');
 						$('#dg').datagrid('reload');
 					} else {
 						$.messager.alert("保存失败", "保存失败!", "error");
