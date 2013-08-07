@@ -2,13 +2,14 @@ package com.fenghuang.dao.impl;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.fenghuang.dao.BaseDao;
 import com.fenghuang.dao.ItuanXianluDao;
 @Repository
 public class TuanXianluDaoImpl extends BaseDao implements ItuanXianluDao{
-
+	@Autowired
 	public TuanXianluDaoImpl(DataSource dataSource) {
 		super(dataSource);
 		// TODO Auto-generated constructor stub

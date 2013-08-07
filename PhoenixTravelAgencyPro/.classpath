@@ -8,6 +8,6 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jbpm.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Administrator/Documents/Tencent Files/909482221/FileRecv/lib/jbpm.jar"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>
