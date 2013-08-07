@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.fenghuang.dao.BaseDao;
 import com.fenghuang.dao.ItuanXianluDao;
+import com.fenghuang.entiey.TuanXianlu;
 @Repository
 public class TuanXianluDaoImpl extends BaseDao implements ItuanXianluDao{
 	@Autowired
@@ -16,10 +17,10 @@ public class TuanXianluDaoImpl extends BaseDao implements ItuanXianluDao{
 	}
 
 	@Override
-	public boolean addTuanXianlu() throws Exception {
+	public boolean addTuanXianlu(TuanXianlu txl) throws Exception {
 		// TODO Auto-generated method stub
-		String sql="insert into tuanXianlu (tuanNo,xlid) values (?,?)";
-		int count=this.update(sql);				
+		String sql="insert into tuanXianlu(tuanNo,xlid) values(?,?)";
+		int count=this.update(sql,txl.getTuanNo(),txl.getXlid());			
 		return count>0;
 	}
 

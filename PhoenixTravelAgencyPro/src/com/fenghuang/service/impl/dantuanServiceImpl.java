@@ -43,7 +43,14 @@ public class dantuanServiceImpl implements IdantuanService{
 	            
 	            TuanXianlu txl=new TuanXianlu();
 	            txl.setTuanNo(dt.getTuanNO());
+	            
+	            System.out.println(1);	            
+	            System.out.println(dt.getTuanNO());
+	            System.out.println(ixls.AddXianlu(x));
+	            System.out.println(2);
+	            
 	            txl.setXlid(ixls.AddXianlu(x));
+	            itxls.addTuanXianlu(txl);
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -51,28 +58,7 @@ public class dantuanServiceImpl implements IdantuanService{
 			}
 		return count;
 	}
-	//添加时返回主键
-	public String addKey(DantuanXinXi dt) throws Exception{
-		String tuanno=idt.addKey(dt);
-		if(tuanno!=null){
-		try {
-			Xianlu x=new Xianlu();
-			x.setGuojia((int)(dt.getCfgj()));
-			x.setTianshu(dt.getCfts());
-			x.setXianluname(dt.getTuanName());
-            ixls.AddXianlu(x);
-            
-            TuanXianlu txl=new TuanXianlu();
-            txl.setTuanNo(tuanno);
-            txl.setXlid(ixls.AddXianlu(x));
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		return tuanno;
-		
-	}	
+	
 	@Override
 	public Pagination<DantuanXinXi> getByQueryConditionPagination(int currentPage,
 			int numPerPage) throws Exception {
@@ -136,6 +122,8 @@ public class dantuanServiceImpl implements IdantuanService{
 		public List<Map<String,Object>> getDate(String ctsj, String cfts) {
 			return idt.getDate(ctsj,cfts);
 		}
+
+	
 	
 
 }

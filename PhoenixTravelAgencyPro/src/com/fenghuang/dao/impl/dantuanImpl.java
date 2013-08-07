@@ -158,57 +158,5 @@ public class dantuanImpl extends BaseDao implements Idantuan{
 		return this.queryForList(sql);
 	}
 
-	@Override
-	public String addKey( final DantuanXinXi dt) throws Exception{
-		// TODO 添加返回主键
-		KeyHolder keyholder=new GeneratedKeyHolder();
-		this.update(new PreparedStatementCreator(){
-			//SimpleDateFormat sdf=new SimpleDateFormat();
-			//String str=sdf.format(new Date());
-			@Override
-			public PreparedStatement createPreparedStatement(Connection con)
-					throws SQLException {
-				// TODO Auto-generated method stub
-				String sql="insert into dantuanxinxi (tuanNO,tuanName,khId,tdczlx,tdjb,tdzt,cfrs,cfts,cfgj,lyqy,ctsj,htsj,xsNo,jdNo,khjlNo,qzlx,xbqz,xbyq,jdbzNo,zcNo,zhongcNo,wcNo,bssdNo,cheXingNo,jdbjNo,bsbjNo,ycbjNo,dybjNo,qtdjDesc,tsDesc) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-				PreparedStatement ps=con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-		
-				ps.setString(1,dt.getTuanNO());
-				ps.setString(2,dt.getTuanName());
-				ps.setLong(3,dt.getKhId());
-				ps.setLong(4,dt.getTdczlx());
-				ps.setLong(5,dt.getTdjb());
-				ps.setLong(6,dt.getTdzt());
-				ps.setLong(7,dt.getCfrs());
-				ps.setLong(8,dt.getCfts());
-				ps.setLong(9,dt.getCfgj());
-				ps.setLong(10,dt.getLyqy());
-				
-				ps.setDate(11,(Date) dt.getCtsj());
-				ps.setDate(12,(Date) dt.getHtsj());
-				ps.setLong(13,dt.getXsNo());
-				ps.setLong(14,dt.getJdNo());
-				ps.setLong(15,dt.getKhjlNo());
-				ps.setLong(16,dt.getQzlx());
-				ps.setLong(17,dt.getXbqz());
-				ps.setLong(18,dt.getXbyq());
-				ps.setLong(19,dt.getJdbzNo());
-				ps.setLong(20,dt.getZcNo());
-				ps.setLong(21,dt.getZhongcNo());
-				ps.setLong(22,dt.getWcNo());
-				ps.setLong(23,dt.getBssdNo());
-				ps.setLong(24,dt.getCheXingNo());
-				ps.setLong(25,dt.getJdbjNo());
-				ps.setLong(26,dt.getBsbjNo());
-				ps.setLong(27,dt.getYcbjNo());
-				ps.setLong(28,dt.getDybjNo());
-				ps.setString(29,dt.getQtdjDesc());
-				ps.setString(30,dt.getTsDesc());
-				return ps;
-			}
-		},keyholder);
 	
-		return keyholder.getKey().toString();
-	}
-
-
 }
