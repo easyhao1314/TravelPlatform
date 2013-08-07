@@ -14,7 +14,9 @@ import com.fenghuang.util.Pagination;
 
 public interface Idantuan {
 	//添加
-	public int add(DantuanXinXi dt);
+	public int add(DantuanXinXi dt) ;
+	//添加时返回主键
+	public String addKey(DantuanXinXi dt) throws Exception;	
 	//分页查询全部
 	public Pagination<DantuanXinXi> getByQueryConditionPagination(int currentPage,int numPerPage) throws Exception;
 	//模糊查询

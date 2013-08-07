@@ -1,6 +1,11 @@
 package com.fenghuang.dao.impl;
 
+import java.sql.Connection;
 import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Map;
 
@@ -8,6 +13,9 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import com.fenghuang.dao.BaseDao;
@@ -32,8 +40,8 @@ public class dantuanImpl extends BaseDao implements Idantuan{
 	public int add(DantuanXinXi dt) {
 		String sql="insert into dantuanxinxi (tuanNO,tuanName,khId,tdczlx,tdjb,tdzt,cfrs,cfts,cfgj,lyqy,ctsj,htsj,xsNo,jdNo,khjlNo,qzlx,xbqz,xbyq,jdbzNo,zcNo,zhongcNo,wcNo,bssdNo,cheXingNo,jdbjNo,bsbjNo,ycbjNo,dybjNo,qtdjDesc,tsDesc) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
        int i=this.update(sql,dt.getTuanNO(),dt.getTuanName(),dt.getKhId(),dt.getTdczlx(),dt.getTdjb(),dt.getTdzt(),dt.getCfrs(),dt.getCfts(),dt.getCfgj(),dt.getLyqy(),
-    		                 dt.getCtsj(),dt.getHtsj(),dt.getXsNo(),dt.getJdNo(),dt.getKhjlNo(),dt.getQzlx(),dt.getXbqz(),dt.getXbyq(),dt.getJdbzNo(),dt.getZcNo(),
-    		                  dt.getZhongcNo(),dt.getWcNo(),dt.getBssdNo(),dt.getCheXingNo(),dt.getJdbjNo(),dt.getBsbjNo(),dt.getYcbjNo(),dt.getDybjNo(),dt.getQtdjDesc(),dt.getTsDesc());
+               dt.getCtsj(),dt.getHtsj(),dt.getXsNo(),dt.getJdNo(),dt.getKhjlNo(),dt.getQzlx(),dt.getXbqz(),dt.getXbyq(),dt.getJdbzNo(),dt.getZcNo(),
+               dt.getZhongcNo(),dt.getWcNo(),dt.getBssdNo(),dt.getCheXingNo(),dt.getJdbjNo(),dt.getBsbjNo(),dt.getYcbjNo(),dt.getDybjNo(),dt.getQtdjDesc(),dt.getTsDesc());
 		return i;
 	}
 
@@ -148,6 +156,58 @@ public class dantuanImpl extends BaseDao implements Idantuan{
 	public List<Map<String,Object>> getDate(String ctsj, String cfts) {
 		String sql = "SELECT DATE_ADD('"+ ctsj +"',INTERVAL " + cfts + " DAY) AS htsj";
 		return this.queryForList(sql);
+	}
+
+	@Override
+	public String addKey( final DantuanXinXi dt) throws Exception{
+		// TODO 添加返回主键
+		KeyHolder keyholder=new GeneratedKeyHolder();
+		this.update(new PreparedStatementCreator(){
+			//SimpleDateFormat sdf=new SimpleDateFormat();
+			//String str=sdf.format(new Date());
+			@Override
+			public PreparedStatement createPreparedStatement(Connection con)
+					throws SQLException {
+				// TODO Auto-generated method stub
+				String sql="insert into dantuanxinxi (tuanNO,tuanName,khId,tdczlx,tdjb,tdzt,cfrs,cfts,cfgj,lyqy,ctsj,htsj,xsNo,jdNo,khjlNo,qzlx,xbqz,xbyq,jdbzNo,zcNo,zhongcNo,wcNo,bssdNo,cheXingNo,jdbjNo,bsbjNo,ycbjNo,dybjNo,qtdjDesc,tsDesc) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				PreparedStatement ps=con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+		
+				ps.setString(1,dt.getTuanNO());
+				ps.setString(2,dt.getTuanName());
+				ps.setLong(3,dt.getKhId());
+				ps.setLong(4,dt.getTdczlx());
+				ps.setLong(5,dt.getTdjb());
+				ps.setLong(6,dt.getTdzt());
+				ps.setLong(7,dt.getCfrs());
+				ps.setLong(8,dt.getCfts());
+				ps.setLong(9,dt.getCfgj());
+				ps.setLong(10,dt.getLyqy());
+				
+				ps.setDate(11,(Date) dt.getCtsj());
+				ps.setDate(12,(Date) dt.getHtsj());
+				ps.setLong(13,dt.getXsNo());
+				ps.setLong(14,dt.getJdNo());
+				ps.setLong(15,dt.getKhjlNo());
+				ps.setLong(16,dt.getQzlx());
+				ps.setLong(17,dt.getXbqz());
+				ps.setLong(18,dt.getXbyq());
+				ps.setLong(19,dt.getJdbzNo());
+				ps.setLong(20,dt.getZcNo());
+				ps.setLong(21,dt.getZhongcNo());
+				ps.setLong(22,dt.getWcNo());
+				ps.setLong(23,dt.getBssdNo());
+				ps.setLong(24,dt.getCheXingNo());
+				ps.setLong(25,dt.getJdbjNo());
+				ps.setLong(26,dt.getBsbjNo());
+				ps.setLong(27,dt.getYcbjNo());
+				ps.setLong(28,dt.getDybjNo());
+				ps.setString(29,dt.getQtdjDesc());
+				ps.setString(30,dt.getTsDesc());
+				return ps;
+			}
+		},keyholder);
+	
+		return keyholder.getKey().toString();
 	}
 
 

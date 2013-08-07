@@ -13,9 +13,11 @@ import com.fenghuang.entiey.CountrySettingDictionary;
 import com.fenghuang.entiey.DantuanXinXi;
 import com.fenghuang.entiey.FunctionMenu;
 import com.fenghuang.entiey.TestUser;
+import com.fenghuang.entiey.TuanXianlu;
 import com.fenghuang.entiey.Xianlu;
 import com.fenghuang.service.IXianluService;
 import com.fenghuang.service.IdantuanService;
+import com.fenghuang.service.ItuanXianluService;
 import com.fenghuang.util.Pagination;
 
 @Service
@@ -25,25 +27,52 @@ public class dantuanServiceImpl implements IdantuanService{
 	public Idantuan idt;
 	@Autowired
 	 IXianluService ixls;
+	@Autowired
+	 ItuanXianluService itxls;
 	@Override
 	public int add(DantuanXinXi dt) {
 		// TODO 添加
 		int count=idt.add(dt);
 		if(count>0){
+			try {
+				Xianlu x=new Xianlu();
+				x.setGuojia((int)(dt.getCfgj()));
+				x.setTianshu(dt.getCfts());
+				x.setXianluname(dt.getTuanName());
+	            ixls.AddXianlu(x);
+	            
+	            TuanXianlu txl=new TuanXianlu();
+	            txl.setTuanNo(dt.getTuanNO());
+	            txl.setXlid(ixls.AddXianlu(x));
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		return count;
+	}
+	//添加时返回主键
+	public String addKey(DantuanXinXi dt) throws Exception{
+		String tuanno=idt.addKey(dt);
+		if(tuanno!=null){
+		try {
 			Xianlu x=new Xianlu();
 			x.setGuojia((int)(dt.getCfgj()));
 			x.setTianshu(dt.getCfts());
 			x.setXianluname(dt.getTuanName());
-			try {
-				ixls.AddXianlu(x);
+            ixls.AddXianlu(x);
+            
+            TuanXianlu txl=new TuanXianlu();
+            txl.setTuanNo(tuanno);
+            txl.setXlid(ixls.AddXianlu(x));
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		return count;
-	}
-
+		return tuanno;
+		
+	}	
 	@Override
 	public Pagination<DantuanXinXi> getByQueryConditionPagination(int currentPage,
 			int numPerPage) throws Exception {
