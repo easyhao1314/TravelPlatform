@@ -13,6 +13,8 @@ import com.fenghuang.entiey.CountrySettingDictionary;
 import com.fenghuang.entiey.DantuanXinXi;
 import com.fenghuang.entiey.FunctionMenu;
 import com.fenghuang.entiey.TestUser;
+import com.fenghuang.entiey.Xianlu;
+import com.fenghuang.service.IXianluService;
 import com.fenghuang.service.IdantuanService;
 import com.fenghuang.util.Pagination;
 
@@ -21,11 +23,25 @@ public class dantuanServiceImpl implements IdantuanService{
 	
 	@Autowired
 	public Idantuan idt;
-
+	@Autowired
+	 IXianluService ixls;
 	@Override
 	public int add(DantuanXinXi dt) {
 		// TODO 添加
-		return idt.add(dt);
+		int count=idt.add(dt);
+		if(count>0){
+			Xianlu x=new Xianlu();
+			x.setGuojia((int)(dt.getCfgj()));
+			x.setTianshu(dt.getCfts());
+			x.setXianluname(dt.getTuanName());
+			try {
+				ixls.AddXianlu(x);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return count;
 	}
 
 	@Override

@@ -66,7 +66,7 @@
 	</div>
 	
 		<div class="easyui-panel" title="酒店列表" style="height:480px;width: auto;">
-		<table id="dg" class="easyui-datagrid"
+		<table id="dgCanyin" class="easyui-datagrid"
 			data-options="url:'fenghuang/canyinSelect.do',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 			pagination="true" toolbar="#currencyDatagridtoolbar">
 			<thead>
@@ -92,7 +92,7 @@
 <div id="addCanyin" class="easyui-dialog" title="餐饮新增"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:600px;height:500px;padding:10px;">
-		<form id="addForm" method="post">
+		<form id="addCanyinForm" method="post">
 			<table align="center">
 				<tr>
 <td><div class="fitem"><label>餐馆编号:</label></td><td>--系统自动生成--</td>
@@ -168,7 +168,7 @@
 </tr>
 <tr>
 <tr><td colspan="4" align="center"><a href="javascript:SaveCanyin();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> 
-<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-undo" onclick="$('#addForm').form('clear')">重置</a></td>
+<a class="easyui-linkbutton" iconCls="icon-undo" onclick="$('#addCanyinForm').form('clear')">重置</a></td>
 </tr>
 			</table>
 			<input id="dicType" name="dicType" type="hidden">
@@ -178,7 +178,7 @@
 	<div id="updateCanyin" class="easyui-dialog" title="餐饮修改"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:600px;height:500px;padding:10px;">
-		<form id="updateForm" method="post">
+		<form id="updateCanyinForm" method="post">
 			<table align="center">
 				<tr>
 <td><div class="fitem"><label>餐馆编号:</label></td><td><input name="id" class="easyui-validatebox"></div></td>
@@ -253,7 +253,7 @@
 </tr>
 <tr>
 <tr><td colspan="4" align="center"><a href="javascript:canyinUpdate();" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
-<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-undo" onclick="$('#updateForm').form('clear')">重置</a></td>
+<a href="javascript:closedupdateCanyin()" class="easyui-linkbutton" iconCls="icon-undo">取消</a></td>
 </tr>
 			</table>
 			<input id="dicType" name="dicType" type="hidden">
@@ -278,8 +278,8 @@
  * 查询按钮
  */
 		function canyinSelectLike(){
-		console.info($('#dg').datagrid('options'));
-		var opts = $('#dg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
+		console.info($('#dgCanyin').datagrid('options'));
+		var opts = $('#dgCanyin').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
 			var param = {
 				name: $("#name").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
 				chengshiId: $("#chengshiId").combobox('getValue'),
@@ -294,7 +294,7 @@
 					type : 'POST',
 					dataType : 'json' ,
 					success : function(data){
-						$('#dg').datagrid('loadData',data);
+						$('#dgCanyin').datagrid('loadData',data);
 					}
 				});
 		}
@@ -304,11 +304,11 @@
 	 //新增
 		function addCanyin() {
 			$("#addCanyin").dialog("open");
-			$("#addFrome").form("clear");
+			$("#addCanyinForm").form("clear");
 		}
          
-		function SaveCanyin() {
-			$('#addForm').form('submit', {
+		function SaveCanyin(){
+			$('#addCanyinForm').form('submit', {
 				url : 'fenghuang/canyinAdd.do',
 				onSubmit : function() {
 					return $(this).form('validate');
@@ -318,10 +318,10 @@
 					if (result.success) {
 					$('#addCanyin').dialog('close');
 						$.messager.alert("保存成功", "保存成功！", "info");
-						 $('#dg').datagrid('reload'); 
+						 $('#dgCanyin').datagrid('reload'); 
 					} else {
 						$.messager.alert("保存失败", "保存失败!", "error");
-						$('#dg').datagrid('reload');
+						$('#dgCanyin').datagrid('reload');
 					}
 				}
 			});
@@ -332,7 +332,7 @@
 		} 
 	//删除操作要执行的方法
 	function canyinDelete(){
-	  var row = $("#dg").datagrid("getSelected");
+	  var row = $("#dgCanyin").datagrid("getSelected");
 			if (row) {
 				var param = {
 					"id" :  row.id
@@ -345,7 +345,7 @@
 					success : function(data) {
 						if (data.success) {
 							$.messager.alert("删除成功", "删除成功！", "info");
-							$("#dg").datagrid('reload');
+							$("#dgCanyin").datagrid('reload');
 						} else {
 							$.messager.alert("删除失败", "删除失败!", "error");
 						}
@@ -362,7 +362,7 @@
           //通过主键，查询该操作，并处于编辑状态。 是否打开tab，还是直接弹出window 
 			$("#updateCanyin").dialog("open");
 			//准备回显的数据
-			var row = $("#dg").datagrid("getSelected");
+			var row = $("#dgCanyin").datagrid("getSelected");
 			//alert(row.tuanNO);
 		
 			if(row){
@@ -376,7 +376,7 @@
 					dataType : "json",
 					success : function(data) {
 		
-					   $('#updateForm').form('load',data.rows[0]);
+					   $('#updateCanyinForm').form('load',data.rows[0]);
 				
 					},
 					error : function() {
@@ -387,7 +387,7 @@
 		}
 		 //修改
 		function canyinUpdate() {
-			$("#updateForm").form('submit', {
+			$("#updateCanyinForm").form('submit', {
 				url : 'fenghuang/canyinUpdate.do',
 				onSubmit : function() {
 					return $(this).form('validate');
@@ -401,17 +401,17 @@
 					  $("#updateCanyin").dialog('close');
 						$.messager.alert("修改成功", "修改成功！", "info"); 
 	
-						$("#dg").datagrid('reload');
+						$("#dgCanyin").datagrid('reload');
 					} else {
 						$.messager.alert("修改失败", "修改失败!", "error");
-						$("#dg").datagrid('reload');
+						$("#dgCanyin").datagrid('reload');
 					}
 				}
 			});
 		}
 		
 		//关闭
-		function closedSearch() {
+		function closedupdateCanyin() {
 			$('#updateCanyin').dialog('close');
 		}
 	

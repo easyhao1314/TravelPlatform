@@ -50,7 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>团名：</label></td><td><input name="tdm" class="easyui-validatebox"></div></td>
+<td><div class="fitem"><label>团名：</label></td><td><input name="tuanName" class="easyui-validatebox"></div></td>
 <td><div class="fitem"><label>团对状态：</label></td><td><input name="tdzt" class="easyui-combobox" data-options="
 					url:'fenghuang/getDicByTypeComboboxs.do?dicType=3',
 					valueField:'dicNo',
@@ -185,7 +185,7 @@ data-options="
 	"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>车型：</label></td><td><input name="bssdNo" class="easyui-combobox" data-options="
+<td><div class="fitem"><label>车型：</label></td><td><input name="cheXingNo" class="easyui-combobox" data-options="
 					url:'fenghuang/getDicByTypeComboboxs.do?dicType=18',
 					valueField:'dicNo',
 					textField:'dicName',
@@ -207,7 +207,7 @@ data-options="
 <td><div class="fitem"><label>特殊要求：</label></td><td colspan="3"><input name="tsDesc" class="easyui-validatebox" size="80"></div></td>
 </tr>
 <tr>
-<tr><td colspan="4s" align="center"><a href="javascript:dantuanSave();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> <input  type="reset" value="重置"></td>
+<tr><td colspan="4" align="center"><a href="javascript:dantuanSave();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> <input  type="reset" value="重置"></td>
 </tr>
 			</table>
 	

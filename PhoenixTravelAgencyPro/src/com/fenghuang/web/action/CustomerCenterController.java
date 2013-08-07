@@ -118,7 +118,7 @@ public class CustomerCenterController {
 	 */
 	@RequestMapping("/fenghuang/addCustom.do")
 	@ResponseBody
-	public Map<String,Object> addCustom(CustomerInfo customInfo){
+	public Map<String,Object> addCustom( HttpServletRequest request,HttpServletResponse response,CustomerInfo customInfo){
 		Map<String, Object> result = new HashMap<String, Object>();
 		boolean isSuccess = false;
 		try {

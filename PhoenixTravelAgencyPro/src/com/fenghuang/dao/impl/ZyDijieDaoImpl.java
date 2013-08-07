@@ -24,7 +24,7 @@ public class ZyDijieDaoImpl extends BaseDao implements IZyDijieDao{
 	public Pagination<Dijie> dijieSelect(int currentPage, int numPerPage,String name,String chengshiId,String lianxiren,String hzjbId)
 			throws Exception {
 		// TODO Auto-generated method stub
-		StringBuffer sql=new StringBuffer("select d.id,d.name,d.lianxiren,d.dianhua,d.chuanzhen,d.shouji,d.bz,dd.dicName as chengshi,dd1.dicName as hzjb from dijie as d,dictionarydesc as dd,dictionarydesc as dd1 where d.chengshiId=dd.dicNo and d.hzjbId=dd1.dicNo and 1=1 ");
+		StringBuffer sql=new StringBuffer("select d.id,d.name,d.lianxiren,d.dianhua,d.chuanzhen,d.shouji,d.bz,dd.dicName as chengshi,dd1.dicName as hzjb from dijie as d left join dictionarydesc as dd  on d.chengshiId=dd.dicNo left join dictionarydesc as dd1 on d.hzjbId=dd1.dicNo where 1=1 ");
 		if(!"".equals(name) && name != null){
 			sql.append(" and name like '%");
 			sql.append(name);

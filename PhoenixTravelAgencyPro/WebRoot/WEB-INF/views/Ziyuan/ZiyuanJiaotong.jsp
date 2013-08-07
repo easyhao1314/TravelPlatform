@@ -80,7 +80,7 @@
 	</div>
 		<div class="easyui-panel" title="交通供应商列表"
 		style="height:480px;width: auto;">
-		<table id="dg" class="easyui-datagrid"
+		<table id="dgJiaotong" class="easyui-datagrid"
 			data-options="url:'fenghuang/jiaotongSelect.do',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 			pagination="true" toolbar="#currencyDatagridtoolbar">
 			<thead>
@@ -107,7 +107,7 @@
 <div id="addJiaotong" class="easyui-dialog" title="交通供应商新增"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:600px;height:440px;padding:10px;">
-		<form id="addForm" method="post">
+		<form id="addJiaotongForm" method="post">
 			<table align="center">
 				<tr>
 <td><div class="fitem"><label>编号:</label></td><td>--系统自动生成--</div></td>
@@ -154,8 +154,8 @@
 <td></td>
 </tr>
 <tr>
-<tr><td colspan="4s" align="center"><a href="javascript:SaveJiaotong();" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
-<a class="easyui-linkbutton" iconCls="icon-undo" onclick="$('#addForm').form('clear')">重置</a></td>
+<tr><td colspan="4" align="center"><a href="javascript:SaveJiaotong();" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
+<a class="easyui-linkbutton" iconCls="icon-undo" onclick="$('#addJiaotongForm').form('clear')">重置</a></td>
 </tr>
 			</table>
 			<input id="dicType" name="dicType" type="hidden">
@@ -166,7 +166,7 @@
 <div id="jiaotongUpdate" class="easyui-dialog" title="交通供应商修改"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:600px;height:440px;padding:10px;">
-		<form id="updateForm" method="post">
+		<form id="updateJiaotongForm" method="post">
 			<table align="center">
 				<tr>
 <td><div class="fitem"><label>编号:</label></td><td><input name="id" class="easyui-validatebox" readonly="true" style="width:40px;">--不可修改--</div></td>
@@ -213,8 +213,8 @@
 <td></td>
 </tr>
 <tr>
-<tr><td colspan="4s" align="center"><a href="javascript:jiaotongUpdate();" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
-<a class="easyui-linkbutton" iconCls="icon-undo" onclick="$('#updateForm').form('clear')">重置</a></td>
+<tr><td colspan="4" align="center"><a href="javascript:jiaotongUpdate();" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
+<a href="javascript:closedjiaotongUpdate()" class="easyui-linkbutton" iconCls="icon-undo">取消</a></td>
 </tr>
 			</table>
 			<input id="dicType" name="dicType" type="hidden">
@@ -237,7 +237,7 @@
       * 查询按钮
     */
 		function jiaotongSelectLike(){
-		var opts = $('#dg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
+		var opts = $('#dgJiaotong').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
 			var param = {
 				name: $("#name").val(),				
 				chengshiId: $("#chengshiId").combobox('getValue'),
@@ -252,7 +252,7 @@
 					type : 'POST' ,
 					dataType : 'json' ,
 					success : function(data){
-						$('#dg').datagrid('loadData',data);
+						$('#dgJiaotong').datagrid('loadData',data);
 					}
 				});
 		}
@@ -261,7 +261,7 @@
 
 	//删除操作要执行的方法
 	function jiaotongDelete(){
-	  var row = $("#dg").datagrid("getSelected");
+	  var row = $("#dgJiaotong").datagrid("getSelected");
 			if (row) {
 				var param = {
 					"id" :  row.id
@@ -274,7 +274,7 @@
 					success : function(data) {
 						if (data.success) {
 							$.messager.alert("删除成功", "删除成功！", "info");
-							$("#dg").datagrid('reload');
+							$("#dgJiaotong").datagrid('reload');
 						} else {
 							$.messager.alert("删除失败", "删除失败!", "error");
 						}
@@ -289,11 +289,11 @@
 	 //新增
 		function addJiaotong() {
 			$("#addJiaotong").dialog("open");
-			$("#addFrome").form("clear");
+			$("#addJiaotongFrome").form("clear");
 		}
          
 		function SaveJiaotong() {
-			$('#addForm').form('submit', {
+			$('#addJiaotongForm').form('submit', {
 				url : 'fenghuang/jiaotongAdd.do',
 				onSubmit : function() {
 					return $(this).form('validate');
@@ -303,10 +303,10 @@
 					if (result.success) {
 					$('#addJiaotong').dialog('close');
 						$.messager.alert("保存成功", "保存成功！", "info");
-						 $('#dg').datagrid('reload'); 
+						 $('#dgJiaotong').datagrid('reload'); 
 					} else {
 						$.messager.alert("保存失败", "保存失败!", "error");
-						$('#dg').datagrid('reload');
+						$('#dgJiaotong').datagrid('reload');
 					}
 				}
 			});
@@ -321,7 +321,7 @@
           //通过主键，查询该操作，并处于编辑状态。 是否打开tab，还是直接弹出window 
 			$("#jiaotongUpdate").dialog("open");
 			//准备回显的数据
-			var row = $("#dg").datagrid("getSelected");
+			var row = $("#dgJiaotong").datagrid("getSelected");
 			//alert(row.tuanNO);
 		
 			if(row){
@@ -335,7 +335,7 @@
 					dataType : "json",
 					success : function(data) {
 		
-					   $('#updateForm').form('load',data.rows[0]);
+					   $('#updateJiaotongForm').form('load',data.rows[0]);
 				
 					},
 					error : function() {
@@ -346,7 +346,7 @@
 		}
 		 //修改
 		function jiaotongUpdate() {
-			$("#updateForm").form('submit', {
+			$("#updateJiaotongForm").form('submit', {
 				url : 'fenghuang/jiaotongUpdate.do',
 				onSubmit : function() {
 					return $(this).form('validate');
@@ -359,17 +359,17 @@
 					if (result.success) {
 					  $("#jiaotongUpdate").dialog('close');
 						$.messager.alert("修改成功", "修改成功！", "info"); 
-						$("#dg").datagrid('reload');
+						$("#dgJiaotong").datagrid('reload');
 					} else {
 						$.messager.alert("修改失败", "修改失败!", "error");
-						$("#dg").datagrid('reload');
+						$("#dgJiaotong").datagrid('reload');
 					}
 				}
 			});
 		}
 		
 		//关闭
-		function closedSearch() {
+		function closedjiaotongUpdate() {
 			$('#jiaotongUpdate').dialog('close');
 		}
 

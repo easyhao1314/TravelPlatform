@@ -27,7 +27,7 @@ public class ZyJiudainDaoImpl extends BaseDao implements IZyJiudian{
 	public Pagination<Jiudian> jiudianSelect(int currentPage, int numPerPage)
 			throws Exception {
 		// 查询
-		String sql="SELECT j.id,j.chengshi,j.name,j.fangjian,j.hzjb,j.whr,j.xjbz,j.dianhua,j.chuanzhen,j.email,j.guanwang,j.dizhi,j.pingjia,j.tishi,j.danjijia,j.wangjijia,j.jgsm,j.bz,dd.dicName as chengshiName,dd1.dicName as hezuojibie,dd2.dicName as xingjibaozhun FROM jiudian as j,dictionarydesc as dd,dictionarydesc as dd1,dictionarydesc as dd2 where j.chengshi = dd.dicno and j.hzjb= dd1.dicno and j.xjbz = dd2.dicno";
+		String sql="SELECT j.id,j.chengshi,j.name,j.fangjian,j.hzjb,j.whr,j.xjbz,j.dianhua,j.chuanzhen,j.email,j.guanwang,j.dizhi,j.pingjia,j.tishi,j.danjijia,j.wangjijia,j.jgsm,j.bz,dd.dicName as chengshiName,dd1.dicName as hezuojibie,dd2.dicName as xingjibaozhun FROM jiudian as j left join dictionarydesc as dd on j.chengshi = dd.dicno left join dictionarydesc as dd1 on j.hzjb= dd1.dicno left join dictionarydesc as dd2 on j.xjbz = dd2.dicno where  1=1 ";
 		return this.getPagination(currentPage, numPerPage, sql);
 	}
 

@@ -67,7 +67,7 @@
 	
 		<div class="easyui-panel" title="导游列表"
 		style="height:480px;width: auto;">
-		<table id="dg" class="easyui-datagrid"
+		<table id="dgDaoyou" class="easyui-datagrid"
 			data-options="url:'fenghuang/daoyouSelect.do',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 			pagination="true" toolbar="#currencyDatagridtoolbar">
 			<thead>
@@ -98,7 +98,7 @@
 <div id="addDaoyou" class="easyui-dialog" title="导游新增"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:600px;height:500px;padding:10px;">
-		<form id="addForm" method="post">
+		<form id="addDaoyouForm" method="post">
 			<table align="center">
 				<tr>
 <td><div class="fitem"><label>编号:</label></td><td>--系统自动生成--</div></td>
@@ -154,7 +154,7 @@ data-options="url:'fenghuang/daoyouSelect.do',
 <td></td>
 </tr>
 <tr>
-<tr><td colspan="4s" align="center"><a href="javascript:SaveDaoyou();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> 
+<tr><td colspan="4" align="center"><a href="javascript:SaveDaoyou();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> 
 <a class="easyui-linkbutton" iconCls="icon-undo" onclick="$('#addForm').form('clear')">重置</a></td>
 </tr>
 			</table>
@@ -166,7 +166,7 @@ data-options="url:'fenghuang/daoyouSelect.do',
 <div id="updateDaoyou" class="easyui-dialog" title="导游修改"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:600px;height:500px;padding:10px;">
-		<form id="updateForm" method="post">
+		<form id="updateDaoyouForm" method="post">
 			<table align="center">
 				<tr>
 <td><div class="fitem"><label>编号:</label></td><td><input name="id" class="easyui-validatebox" readonly="true" style="width:40px;">--不可修改</div></td>
@@ -221,8 +221,8 @@ data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=7',
 <td><div class="fitem"><label>备注：</label></td><td colspan="3"><input name="bz" class="easyui-validatebox" required="true" size="70"></div></td>
 <td></td>
 </tr>
-<tr><td colspan="4s" align="center"><a href="javascript:daoyouUpdate();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> 
-<a class="easyui-linkbutton" iconCls="icon-undo" onclick="$('#updateForm').form('clear')">重置</a></td>
+<tr><td colspan="4" align="center"><a href="javascript:daoyouUpdate();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> 
+<a href="javascript:closedupdateDaoyou();" class="easyui-linkbutton" iconCls="icon-undo">取消</a></td>
 </tr>
 			</table>
 			<input id="dicType" name="dicType" type="hidden">
@@ -245,8 +245,8 @@ data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=7',
  * 查询按钮
  */
 		function daoyouSelectLike(){
-		console.info($('#dg').datagrid('options'));
-		var opts = $('#dg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
+
+		var opts = $('#dgDaoyou').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
 			var param = {
 				name: $("#name").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
 				guojiaId: $("#guojiaId").combobox('getValue') ,
@@ -254,14 +254,14 @@ data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=7',
 				page:  opts.pageNumber ,
 				rows:  opts.pageSize
 			};
-		console.info(param);
+
 				$.ajax({
 					url : 'fenghuang/daoyouSelect.do' ,
 					data :  param,
 					type : 'POST' ,
 					dataType : 'json' ,
 					success : function(data){
-						$('#dg').datagrid('loadData',data);
+						$('#dgDaoyou').datagrid('loadData',data);
 					}
 				});
 		}
@@ -271,11 +271,11 @@ data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=7',
 	  //新增
 		function addDaoyou() {
 			$("#addDaoyou").dialog("open");
-			$("#addFrome").form("clear");
+			$("#addDaoyouForm").form("clear");
 		}
          
 		function SaveDaoyou() {
-			$('#addForm').form('submit', {
+			$('#addDaoyouForm').form('submit', {
 				url : 'fenghuang/daoyouAdd.do',
 				onSubmit : function() {
 					return $(this).form('validate');
@@ -285,10 +285,10 @@ data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=7',
 					if (result.success) {
 					$('#addDaoyou').dialog('close');
 						$.messager.alert("保存成功", "保存成功！", "info");
-						 $('#dg').datagrid('reload'); 
+						 $('#dgDaoyou').datagrid('reload'); 
 					} else {
 						$.messager.alert("保存失败", "保存失败!", "error");
-						$('#dg').datagrid('reload');
+						$('#dgDaoyou').datagrid('reload');
 					}
 				}
 			});
@@ -300,7 +300,7 @@ data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=7',
 	
 	//删除操作要执行的方法
 	function daoyouDelete(){
-	  var row = $("#dg").datagrid("getSelected");
+	  var row = $("#dgDaoyou").datagrid("getSelected");
 			if (row) {
 				var param = {
 					"id" :  row.id
@@ -313,7 +313,7 @@ data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=7',
 					success : function(data) {
 						if (data.success) {
 							$.messager.alert("删除成功", "删除成功！", "info");
-							$("#dg").datagrid('reload');
+							$("#dgDaoyou").datagrid('reload');
 						} else {
 							$.messager.alert("删除失败", "删除失败!", "error");
 						}
@@ -330,7 +330,7 @@ data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=7',
           //通过主键，查询该操作，并处于编辑状态。 是否打开tab，还是直接弹出window 
 			$("#updateDaoyou").dialog("open");
 			//准备回显的数据
-			var row = $("#dg").datagrid("getSelected");
+			var row = $("#dgDaoyou").datagrid("getSelected");
 			//alert(row.tuanNO);
 		
 			if(row){
@@ -344,7 +344,7 @@ data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=7',
 					dataType : "json",
 					success : function(data) {
 		
-					   $('#updateForm').form('load',data.rows[0]);
+					   $('#updateDaoyouForm').form('load',data.rows[0]);
 				
 					},
 					error : function() {
@@ -355,7 +355,7 @@ data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=7',
 		}
 		 //修改
 		function daoyouUpdate() {
-			$("#updateForm").form('submit', {
+			$("#updateDaoyouForm").form('submit', {
 				url : 'fenghuang/daoyouUpdate.do',
 				onSubmit : function() {
 					return $(this).form('validate');
@@ -368,17 +368,17 @@ data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=7',
 					if (result.success) {
 					  $("#updateDaoyou").dialog('close');
 						$.messager.alert("修改成功", "修改成功！", "info"); 
-						$("#dg").datagrid('reload');
+						$("#dgDaoyou").datagrid('reload');
 					} else {
 						$.messager.alert("修改失败", "修改失败!", "error");
-						$("#dg").datagrid('reload');
+						$("#dgDaoyou").datagrid('reload');
 					}
 				}
 			});
 		}
 		
 		//关闭
-		function closedSearch() {
+		function closedupdateDaoyou() {
 			$('#updateDaoyou').dialog('close');
 		}
 	

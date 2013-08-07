@@ -22,7 +22,7 @@ public class ZyGouwuDaoImpl extends BaseDao implements IZyGouwuDao{
 	@Override
 	public Pagination<Gouwu> gouwuSelect(int currentPage, int numPerPage,String name,String chengshiId,String hzjbId)
 			throws Exception {
-		StringBuffer sql=new StringBuffer("select g.id,g.lianxiren,g.name,g.chuanzhen,d.dicName as chengshi,g.dizhi,g.dianhua,g.shouji,g.email,d1.dicName as hzjb,g.bz from gouwu as g,dictionarydesc as d,dictionarydesc as d1 where g.chengshiId=d.dicNo and g.hzjbId=d1.dicNo and 1=1 ");
+		StringBuffer sql=new StringBuffer("select g.id,g.lianxiren,g.name,g.chuanzhen,d.dicName as chengshi,g.dizhi,g.dianhua,g.shouji,g.email,d1.dicName as hzjb,g.bz from gouwu as g left join dictionarydesc as d on g.chengshiId=d.dicNo  left join dictionarydesc as d1 on g.hzjbId=d1.dicNo where 1=1 ");
 		if(name !=null && !"".equals(name)){
 			sql.append(" and name like '%");
 			sql.append(name);

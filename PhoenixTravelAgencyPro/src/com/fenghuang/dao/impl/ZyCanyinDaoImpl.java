@@ -24,7 +24,7 @@ public class ZyCanyinDaoImpl extends BaseDao implements IZyCanyinDao{
 	public Pagination<Canyin> canyinSelect(int currentPage, int numPerPage,String name,String chengshiId,String hzjbId)
 			throws Exception {
 		// TODO Auto-generated method stub
-		StringBuffer sql=new StringBuffer("select c.id,d.dicName as chengshi,c.name,c.dianhua,c.chuanzhen,c.shouji,d1.dicName as hzjb from canyin as c,dictionarydesc as d,dictionarydesc as d1 where c.chengshiId=d.dicNo and c.hzjbId=d1.dicNo and 1=1 ");
+		StringBuffer sql=new StringBuffer("select c.id,d.dicName as chengshi,c.name,c.dianhua,c.chuanzhen,c.shouji,d1.dicName as hzjb from canyin as c left join dictionarydesc as d on c.chengshiId=d.dicNo left join dictionarydesc as d1 on c.hzjbId=d1.dicNo where 1=1 ");
 		if(name !=null && !"".equals(name)){
 			sql.append(" and name like '%");
 			sql.append(name);
@@ -47,8 +47,8 @@ public class ZyCanyinDaoImpl extends BaseDao implements IZyCanyinDao{
 	public boolean canyinAdd(Canyin cy) throws Exception {
 		// TODO Auto-generated method stub
 		String sql="insert into canyin(chengshiId,name,dizhi,lianxiren,dianhua,shouji,chuanzhen,email,fkfsId,hzjbId,cbwu,cbliu,cbqi,cbba,yecf,yenlsm,etcf,etcfsm,cgczs,rnrs,mfzdsm,sfxydw,sffxdw,beizhu) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-		int count=this.update(sql,cy.getChengshiId(),cy.getName(),cy.getDizhi(),cy.getLianxiren(),cy.getDianhua(),cy.getShouji(),cy.getChuanzhen(),cy.getEmail(),cy.getFkfsId(),cy.getCbwu(),
-				              cy.getCbliu(),cy.getCbqi(),cy.getCbba(),cy.getYecf(),cy.getYenlsm(),cy.getYenlsm(),cy.getEtcf(),cy.getEtcfsm(),cy.getCgczs(),cy.getRnrs(),cy.getMfzdsm(),cy.getSfxydw(),cy.getSffxdw(),cy.getBeizhu());
+		int count=this.update(sql,cy.getChengshiId(),cy.getName(),cy.getDizhi(),cy.getLianxiren(),cy.getDianhua(),cy.getShouji(),cy.getChuanzhen(),cy.getEmail(),cy.getFkfsId(),cy.getHzjbId(),cy.getCbwu(),
+	              cy.getCbliu(),cy.getCbqi(),cy.getCbba(),cy.getYecf(),cy.getYenlsm(),cy.getEtcf(),cy.getEtcfsm(),cy.getCgczs(),cy.getRnrs(),cy.getMfzdsm(),cy.getSfxydw(),cy.getSffxdw(),cy.getBeizhu());
 		return count>0;
 	}
 

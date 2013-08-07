@@ -30,8 +30,8 @@ public class dantuanImpl extends BaseDao implements Idantuan{
 	// 单团添加
 	@Override
 	public int add(DantuanXinXi dt) {
-		String sql="insert into dantuanxinxi (tuanNO,khId,tdczlx,tdm,tdjb,tdzt,cfrs,cfts,cfgj,lyqy,ctsj,htsj,xsNo,jdNo,khjlNo,qzlx,xbqz,xbyq,jdbzNo,zcNo,zhongcNo,wcNo,bssdNo,cheXingNo,jdbjNo,bsbjNo,ycbjNo,dybjNo,qtdjDesc,tsDesc) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-       int i=this.update(sql,dt.getTuanNO(),dt.getKhId(),dt.getTdczlx(),dt.getTdm(),dt.getTdjb(),dt.getTdzt(),dt.getCfrs(),dt.getCfts(),dt.getCfgj(),dt.getLyqy(),
+		String sql="insert into dantuanxinxi (tuanNO,tuanName,khId,tdczlx,tdjb,tdzt,cfrs,cfts,cfgj,lyqy,ctsj,htsj,xsNo,jdNo,khjlNo,qzlx,xbqz,xbyq,jdbzNo,zcNo,zhongcNo,wcNo,bssdNo,cheXingNo,jdbjNo,bsbjNo,ycbjNo,dybjNo,qtdjDesc,tsDesc) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+       int i=this.update(sql,dt.getTuanNO(),dt.getTuanName(),dt.getKhId(),dt.getTdczlx(),dt.getTdjb(),dt.getTdzt(),dt.getCfrs(),dt.getCfts(),dt.getCfgj(),dt.getLyqy(),
     		                 dt.getCtsj(),dt.getHtsj(),dt.getXsNo(),dt.getJdNo(),dt.getKhjlNo(),dt.getQzlx(),dt.getXbqz(),dt.getXbyq(),dt.getJdbzNo(),dt.getZcNo(),
     		                  dt.getZhongcNo(),dt.getWcNo(),dt.getBssdNo(),dt.getCheXingNo(),dt.getJdbjNo(),dt.getBsbjNo(),dt.getYcbjNo(),dt.getDybjNo(),dt.getQtdjDesc(),dt.getTsDesc());
 		return i;
@@ -96,8 +96,8 @@ public class dantuanImpl extends BaseDao implements Idantuan{
 	@Override
 	public boolean updateDantuan(DantuanXinXi dt){
 		//  修改
-		String sql="update DantuanXinXi set khId=?,tdczlx=?,tdm=?,tdjb=?,tdzt=?,cfrs=?,cfts=?,cfgj=?,lyqy=?,ctsj=?,htsj=?,xsNo=?,jdNo=?,khjlNo=?,qzlx=?,xbqz=?,xbyq=?,jdbzNo=?,zcNo=?,zhongcNo=?,wcNo=?,bssdNo=?,cheXingNo=?,jdbjNo=?,bsbjNo=?,ycbjNo=?,dybjNo=?,qtdjDesc=?,tsDesc=? where tuanNO=?";
-		int count=this.update(sql,dt.getKhId(),dt.getTdczlx(),dt.getTdm(),dt.getTdjb(),dt.getTdzt(),dt.getCfrs(),dt.getCfts(),dt.getCfgj(),dt.getLyqy(),
+		String sql="update DantuanXinXi set khId=?,tdczlx=?,tuanName=?,tdjb=?,tdzt=?,cfrs=?,cfts=?,cfgj=?,lyqy=?,ctsj=?,htsj=?,xsNo=?,jdNo=?,khjlNo=?,qzlx=?,xbqz=?,xbyq=?,jdbzNo=?,zcNo=?,zhongcNo=?,wcNo=?,bssdNo=?,cheXingNo=?,jdbjNo=?,bsbjNo=?,ycbjNo=?,dybjNo=?,qtdjDesc=?,tsDesc=? where tuanNO=?";
+		int count=this.update(sql,dt.getKhId(),dt.getTdczlx(),dt.getTuanName(),dt.getTdjb(),dt.getTdzt(),dt.getCfrs(),dt.getCfts(),dt.getCfgj(),dt.getLyqy(),
                 dt.getCtsj(),dt.getHtsj(),dt.getXsNo(),dt.getJdNo(),dt.getKhjlNo(),dt.getQzlx(),dt.getXbqz(),dt.getXbyq(),dt.getJdbzNo(),dt.getZcNo(),
                 dt.getZhongcNo(),dt.getWcNo(),dt.getBssdNo(),dt.getCheXingNo(),dt.getJdbjNo(),dt.getBsbjNo(),dt.getYcbjNo(),dt.getDybjNo(),dt.getQtdjDesc(),dt.getTsDesc(),dt.getTuanNO());
 		return count>0;

@@ -814,6 +814,7 @@ data-options="
    }
    function openDanTuanDetail(tuanNo){
    	var row = $("#dg").datagrid("getSelected");
+   	alert("tuanNo="+tuanNo);
       var url= "DantuanMingxi.do?";
        var tab = $('#tt').tabs('getSelected'); 
 		if (tab){  
@@ -827,29 +828,7 @@ data-options="
 				      //  closable : true,
 				         });
 				        			         
-	
-			if(row){
-				var param = {
-					"updateTuanNO" : row.tuanNO
-				};
-				
-				$.ajax({
-					url : "fenghuang/DantuanSelectId.do",
-					data : param,
-					dataType : "json",
-					success : function(data) {
-		
-					   $('#mingxiForm').form('load',data.rows[0]);
-			
-					},
-					error : function() {
-						$.messager.alert("查询失败", "服务器请求失败!", "error");
-					}
-				});
-		
-				}
-				}
-			
+	}
 		function	onOperate(val,row){
         return '<a href="javascript:void(0)" id="sb1" icon="icon-edit" onclick="">Edit</a>';
         }	

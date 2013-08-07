@@ -35,39 +35,88 @@ public class dantuanAction {
 	@ResponseBody
     //如果不是json格式的话 就去掉 不加	@ResponseBody(用到ajax提交的 就加上	@ResponseBody不用ajax 就不要加了啊)
 	public Map<String,Object> dantuanAdd(HttpServletRequest request,HttpServletResponse response,
-			String tuanNO,Long khId,String tdczlx,String tdm,String tdjb,String tdzt,Long cfrs,Long cfts,String cfgj,Long lyqy,
+			String tuanNO,String tuanName,String khId,String tdczlx,String tdjb,String tdzt,String cfrs,String cfts,String cfgj,String lyqy,
 			Date ctsj,Date htsj,String xsNo,String jdNo,String khjlNo,String qzlx,String xbqz,String xbyq,String jdbzNo,
 			String zcNo,String zhongcNo,String wcNo,String bssdNo,
 			String cheXingNo,String jdbjNo,String bsbjNo,String ycbjNo,String dybjNo,String qtdjDesc,String tsDesc) {
 		 DantuanXinXi dt=new DantuanXinXi();
         dt.setTuanNO(tuanNO);
-        dt.setKhId(khId);
-        dt.setTdczlx(tdczlx);
-        dt.setTdm(tdm);
-        dt.setTdjb(tdjb);
-        dt.setTdzt(tdzt);
-        dt.setCfrs(cfrs);
-        dt.setCfts(cfts);
-        dt.setCfgj(cfgj);
-        dt.setLyqy(lyqy);
+        dt.setTuanName(tuanName);
+        if(khId != null && !"".equals(khId)){
+        dt.setKhId(Long.parseLong(khId));
+        }
+        if(tdczlx != null && !"".equals(tdczlx)){
+        dt.setTdczlx(Long.parseLong(tdczlx));
+        }
+        if(tdjb != null && !"".equals(tdjb)){
+        dt.setTdjb(Long.parseLong(tdjb));
+        }
+        if(tdzt != null && !"".equals(tdzt)){
+        dt.setTdzt(Long.parseLong(tdzt));
+        }
+        if(cfrs != null && !"".equals(cfrs)){
+        dt.setCfrs(Integer.parseInt(cfrs));
+        }
+        if(cfts != null && !"".equals(cfts)){
+        dt.setCfts(Integer.parseInt(cfts));
+        }
+        if(cfgj != null && !"".equals(cfgj)){
+        dt.setCfgj(Long.parseLong(cfgj));
+        }
+        if(lyqy != null && !"".equals(lyqy)){
+        dt.setLyqy(Long.parseLong(lyqy));
+        }
         dt.setCtsj(ctsj);
         dt.setHtsj(htsj);
-        dt.setXsNo(xsNo);
-        dt.setJdNo(jdNo);
-        dt.setKhjlNo(khjlNo);
-        dt.setQzlx(qzlx);
-        dt.setXbqz(xbqz);
-        dt.setXbyq(xbyq);
-        dt.setJdbzNo(jdbzNo);
-        dt.setZcNo(zcNo);
-        dt.setZhongcNo(zhongcNo);
-        dt.setWcNo(wcNo);
-        dt.setBssdNo(bssdNo);
-        dt.setCheXingNo(cheXingNo);
-        dt.setJdbjNo(jdbjNo);
-        dt.setBsbjNo(bsbjNo);
-        dt.setYcbjNo(ycbjNo);
-        dt.setDybjNo(dybjNo);
+        
+        if(xsNo != null && !"".equals(xsNo)){
+        dt.setXsNo(Long.parseLong(xsNo));
+        }
+        if(jdNo != null && !"".equals(jdNo)){
+        dt.setJdNo(Long.parseLong(jdNo));
+        }
+        if(khjlNo != null && !"".equals(khjlNo)){
+        dt.setKhjlNo(Long.parseLong(khjlNo));
+        }
+        if(qzlx != null && !"".equals(qzlx)){
+        dt.setQzlx(Long.parseLong(qzlx));
+        }
+        if(xbqz != null && !"".equals(xbqz)){
+        dt.setXbqz(Long.parseLong(xbqz));
+        }
+        if(xbyq != null && !"".equals(xbyq)){
+        dt.setXbyq(Long.parseLong(xbyq));
+        }
+        if(jdbzNo != null && !"".equals(jdbzNo)){
+        dt.setJdbzNo(Long.parseLong(jdbzNo));
+        }
+        if(zcNo != null && !"".equals(zcNo)){
+        dt.setZcNo(Long.parseLong(zcNo));
+        }
+        if(zhongcNo != null && !"".equals(zhongcNo)){
+        dt.setZhongcNo(Long.parseLong(zhongcNo));
+        }
+        if(wcNo != null && !"".equals(wcNo)){
+        dt.setWcNo(Long.parseLong(wcNo));
+        }
+        if(bssdNo != null && !"".equals(bssdNo)){
+        dt.setBssdNo(Long.parseLong(bssdNo));
+        }
+        if(cheXingNo != null && !"".equals(cheXingNo)){
+        dt.setCheXingNo(Long.parseLong(cheXingNo));
+        }
+        if(jdbjNo != null && !"".equals(jdbjNo)){
+        dt.setJdbjNo(Long.parseLong(jdbjNo));
+        }
+        if(bsbjNo != null && !"".equals(bsbjNo)){
+        dt.setBsbjNo(Long.parseLong(bsbjNo));
+        }
+        if(ycbjNo != null && !"".equals(ycbjNo)){
+        dt.setYcbjNo(Long.parseLong(ycbjNo));
+        }
+        if(dybjNo != null && !"".equals(dybjNo)){
+        dt.setDybjNo(Long.parseLong(dybjNo));
+        }
         dt.setQtdjDesc(qtdjDesc);
         dt.setTsDesc(tsDesc);
         
@@ -321,42 +370,90 @@ public class dantuanAction {
 	@RequestMapping("fenghuang/DantuanUpdate.do")
 	@ResponseBody
 	public Map<String,Object> updateDt(HttpServletRequest request,
-			HttpServletResponse response,String tuanNO,Long khId,String tdczlx,String tdm,String tdjb,
-			String tdzt,Long cfrs,Long cfts,String cfgj,Long lyqy,Date ctsj,Date htsj,String xsNo,String jdNo,
-			String khjlNo,String qzlx,String xbqz,String xbyq,String jdbzNo,String zcNo,String zhongcNo,String wcNo,String bssdNo,
+			HttpServletResponse response,String tuanNO,String tuanName,String khId,String tdczlx,String tdjb,String tdzt,String cfrs,String cfts,String cfgj,String lyqy,
+			Date ctsj,Date htsj,String xsNo,String jdNo,String khjlNo,String qzlx,String xbqz,String xbyq,String jdbzNo,
+			String zcNo,String zhongcNo,String wcNo,String bssdNo,
 			String cheXingNo,String jdbjNo,String bsbjNo,String ycbjNo,String dybjNo,String qtdjDesc,String tsDesc){
 		DantuanXinXi dt=new DantuanXinXi();
-		  dt.setTuanNO(tuanNO);
-	        dt.setKhId(khId);
-	        dt.setTdczlx(tdczlx);
-	        dt.setTdm(tdm);
-	        dt.setTdjb(tdjb);
-	        dt.setTdzt(tdzt);
-	        dt.setCfrs(cfrs);
-	        dt.setCfts(cfts);
-	        dt.setCfgj(cfgj);
-	        dt.setLyqy(lyqy);
-	        dt.setCtsj(ctsj);
-	        dt.setHtsj(htsj);
-	        dt.setXsNo(xsNo);
-	        dt.setJdNo(jdNo);
-	        dt.setKhjlNo(khjlNo);
-	        dt.setQzlx(qzlx);
-	        dt.setXbqz(xbqz);
-	        dt.setXbyq(xbyq);
-	        dt.setJdbzNo(jdbzNo);
-	        dt.setZcNo(zcNo);
-	        dt.setZhongcNo(zhongcNo);
-	        dt.setWcNo(wcNo);
-	        dt.setBssdNo(bssdNo);
-	        dt.setCheXingNo(cheXingNo);
-	        dt.setJdbjNo(jdbjNo);
-	        dt.setBsbjNo(bsbjNo);
-	        dt.setYcbjNo(ycbjNo);
-	        dt.setDybjNo(dybjNo);
-	        dt.setQtdjDesc(qtdjDesc);
-	        dt.setTsDesc(tsDesc);
-
+		dt.setTuanNO(tuanNO);
+        dt.setTuanName(tuanName);
+        if(khId != null && !"".equals(khId)){
+        dt.setKhId(Long.parseLong(khId));
+        }
+        if(tdczlx != null && !"".equals(tdczlx)){
+        dt.setTdczlx(Long.parseLong(tdczlx));
+        }
+        if(tdjb != null && !"".equals(tdjb)){
+        dt.setTdjb(Long.parseLong(tdjb));
+        }
+        if(tdzt != null && !"".equals(tdzt)){
+        dt.setTdzt(Long.parseLong(tdzt));
+        }
+        if(cfrs != null && !"".equals(cfrs)){
+        dt.setCfrs(Integer.parseInt(cfrs));
+        }
+        if(cfts != null && !"".equals(cfts)){
+        dt.setCfts(Integer.parseInt(cfts));
+        }
+        if(cfgj != null && !"".equals(cfgj)){
+        dt.setCfgj(Long.parseLong(cfgj));
+        }
+        if(lyqy != null && !"".equals(lyqy)){
+        dt.setLyqy(Long.parseLong(lyqy));
+        }
+        dt.setCtsj(ctsj);
+        dt.setHtsj(htsj);
+        
+        if(xsNo != null && !"".equals(xsNo)){
+        dt.setXsNo(Long.parseLong(xsNo));
+        }
+        if(jdNo != null && !"".equals(jdNo)){
+        dt.setJdNo(Long.parseLong(jdNo));
+        }
+        if(khjlNo != null && !"".equals(khjlNo)){
+        dt.setKhjlNo(Long.parseLong(khjlNo));
+        }
+        if(qzlx != null && !"".equals(qzlx)){
+        dt.setQzlx(Long.parseLong(qzlx));
+        }
+        if(xbqz != null && !"".equals(xbqz)){
+        dt.setXbqz(Long.parseLong(xbqz));
+        }
+        if(xbyq != null && !"".equals(xbyq)){
+        dt.setXbyq(Long.parseLong(xbyq));
+        }
+        if(jdbzNo != null && !"".equals(jdbzNo)){
+        dt.setJdbzNo(Long.parseLong(jdbzNo));
+        }
+        if(zcNo != null && !"".equals(zcNo)){
+        dt.setZcNo(Long.parseLong(zcNo));
+        }
+        if(zhongcNo != null && !"".equals(zhongcNo)){
+        dt.setZhongcNo(Long.parseLong(zhongcNo));
+        }
+        if(wcNo != null && !"".equals(wcNo)){
+        dt.setWcNo(Long.parseLong(wcNo));
+        }
+        if(bssdNo != null && !"".equals(bssdNo)){
+        dt.setBssdNo(Long.parseLong(bssdNo));
+        }
+        if(cheXingNo != null && !"".equals(cheXingNo)){
+        dt.setCheXingNo(Long.parseLong(cheXingNo));
+        }
+        if(jdbjNo != null && !"".equals(jdbjNo)){
+        dt.setJdbjNo(Long.parseLong(jdbjNo));
+        }
+        if(bsbjNo != null && !"".equals(bsbjNo)){
+        dt.setBsbjNo(Long.parseLong(bsbjNo));
+        }
+        if(ycbjNo != null && !"".equals(ycbjNo)){
+        dt.setYcbjNo(Long.parseLong(ycbjNo));
+        }
+        if(dybjNo != null && !"".equals(dybjNo)){
+        dt.setDybjNo(Long.parseLong(dybjNo));
+        }
+        dt.setQtdjDesc(qtdjDesc);
+        dt.setTsDesc(tsDesc);
 		Map<String,Object>  result = new HashMap<String, Object>();
 		boolean isSuccess = false;
 	try {
