@@ -59,6 +59,19 @@ public class Operate {
     * 
     * @pdOid 8fa2e367-4ec4-4204-a3a4-445f5e9f4529 */
    public int operateType;
+   /** 操作状态  1、已下预订单 2、财务确认 3、核算完毕4、已派卡打款
+    * 
+    * @pdOid 90013b42-7003-4011-9966-d8aa5c93d3c3 */
+   public int operatestate;
+
+   
+   
+public int getOperatestate() {
+	return operatestate;
+}
+public void setOperatestate(int operatestate) {
+	this.operatestate = operatestate;
+}
 public int getOid() {
 	return oid;
 }

@@ -315,30 +315,14 @@
 			</li>
 			<!--陈家海的配置 -->
 		<li iconCls="icon-base"  state="closed"><span>操作中心</span>
-				<ul>
-					<li iconCls="icon-gears">
-					<a href="javascript:open1('操作团队查询','operTeamQuery.do');">操作团队查询</a></li>
-				</ul>
 				 <ul>
 			      <li iconCls="icon-gears">
-			        <a href="javascript:open1('我的订房任务','Caozuo_liebiao.do');">我的订房任务</a>
+			        <a href="javascript:open1('我的订房任务','Caozuo_liebiao.do');">我的操作任务单</a>
 			      </li>
 			   </ul>
-			   <ul>
-			      <li iconCls="icon-gears">
-			        <a href="javascript:open1('我的订车任务','Caozuo_liebiao.do');">我的订车任务</a>
-			      </li>
-			   </ul>
-			    <ul>
-			      <li iconCls="icon-gears">
-			        <a href="javascript:open1('我的导游任务','Caozuo_liebiao.do');">我的导游任务</a>
-			      </li>
-			   </ul>
-			    <ul>
-			      <li iconCls="icon-gears">
-			        <a href="javascript:open1('我的购物店任务','Caozuo_liebiao.do');">我的购物店任务</a>
-			      </li>
-			   </ul>
+
+
+
 		</li>
 		<li iconCls="icon-base"  state="closed"><span>客户中心</span>
 			    <ul>
