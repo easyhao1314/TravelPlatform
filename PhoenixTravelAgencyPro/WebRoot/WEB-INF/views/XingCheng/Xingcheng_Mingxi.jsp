@@ -169,9 +169,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
     <a href="#" class="easyui-splitbutton" data-options="menu:'#daymm',iconCls:'icon-ok'">Ok</a>
     <div id="daymm" style="width:100px;">
-        <div data-options="iconCls:'icon-ok'">Ok</div>
-        <div data-options="iconCls:'icon-cancel'">Cancel</div>
+        <div data-options="iconCls:'icon-edit'" onclick="openjiaotongdlg();">设定城市</div>
     </div>
+
+<!-- 设定城市 交通 dlg！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！ -->
+<div id="jiaotongdlg" class="easyui-dialog" title="设定城市和交通工具" style="width:400px;height:200px;padding:10px"
+            data-options="
+                iconCls: 'icon-save',
+                toolbar: '#dlg-toolbar',
+                buttons: '#dlg-buttons',
+                closed:	  true
+            ">
+        The dialog content.
+    </div>
+    <div id="dlg-toolbar" style="padding:2px 0">
+        <table cellpadding="0" cellspacing="0" style="width:100%">
+            <tr>
+                <td style="padding-left:2px">
+                    <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true">飞机</a>
+                    <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-help',plain:true">游轮</a>
+                </td>
+                <td style="text-align:right;padding-right:2px">
+                    <input class="easyui-searchbox" data-options="prompt:'Please input somthing'" style="width:150px"></input>
+                </td>
+            </tr>
+        </table>
+        </div>
+
+
 
   <script type="text/javascript">
 //页面加载时填充xianlumingxiForm
@@ -239,9 +264,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						 var app='<form id="d'+d+'">'
 						 +'<table border="1" width="800px" >'
 						 	+'<tr><td width="100px;"><strong>日期</strong></td>'
-						 		+'<td><strong><a href="javascript:richenganpaiOpen('+data.rows[i].riid+')"  class="easyui-linkbutton" iconCls="icon-add" plain="true"> 日程修改</a></strong><input name="riid" class="easyui-validatebox"><a href="javascript:richenganpaiOpen()"  class="easyui-linkbutton" style="float: right;" iconCls="icon-add" plain="true">酒店</a><a href="javascript:openhuodongDialog(\''+data.rows[i].huodong+'\','+data.rows[i].riid+')"  class="easyui-linkbutton" style="float: right;" iconCls="icon-add" plain="true">活动</a><a  href="javascript:openrichengDialog(\''+data.rows[i].richenganpai+'\','+data.rows[i].riid+')"   class="easyui-linkbutton"   style="float: right;" iconCls="icon-add" plain="true">日程</a></td>'
+						 		+'<td><a href="javascript:richenganpaiOpen()"  class="easyui-linkbutton" style="float: right;" iconCls="icon-add" plain="true">酒店</a><a href="javascript:openhuodongDialog(\''+data.rows[i].huodong+'\','+data.rows[i].riid+')"  class="easyui-linkbutton" style="float: right;" iconCls="icon-add" plain="true">活动</a><a  href="javascript:openrichengDialog(\''+data.rows[i].richenganpai+'\','+data.rows[i].riid+')"   class="easyui-linkbutton"   style="float: right;" iconCls="icon-add" plain="true">日程</a></td>'
 						 	+'</tr>'
-						 	+'<tr><td><a href="#" class="easyui-splitbutton" iconCls="icon-add" data-options="menu:\''+menu+'\'">第'+d+'天</a></td><td><h4>日程:</h4> <span>'+data.rows[i].richenganpai+'</span><hr /><h4>活动:</h4> <span>'+data.rows[i].huodong+'</span><hr /><h4>酒店:</h4> <span>'+data.rows[i]+'</span><hr />餐饮：<input name="zao" class="easyui-combobox" data-options="url:\''+aaa+'\'" > 中：<input name="zhong" class="easyui-validatebox">晚：<input name="wan" class="easyui-validatebox"></td></tr>'
+						 	+'<tr><td><a href="javascript:void(0)" class="easyui-splitbutton" iconCls="icon-add" data-options="menu:\''+menu+'\'">第'+d+'天</a></td><td><h4>日程:</h4> <span>'+data.rows[i].richenganpai+'</span><hr /><h4>活动:</h4> <span>'+data.rows[i].huodong+'</span><hr /><h4>酒店:</h4> <span>'+data.rows[i]+'</span><hr />餐饮：<input name="zao" class="easyui-combobox" data-options="url:\''+aaa+'\'" > 中：<input name="zhong" class="easyui-validatebox">晚：<input name="wan" class="easyui-validatebox"></td></tr>'
 						 +'<table></form>';			
 						$("#mdiv").append(app);
 						$('#d'+d).form('load',data.rows[i]);
@@ -302,6 +327,8 @@ function closedSearch(){
 						$.messager.alert("保存成功","保存成功","info");
 						document.getElementById("mdiv").innerHTML="";
 						xunhuanRicheng('${param.xianid}');
+						$('#richengtext').val("");
+						$('#huodongtext').val("");
 					},
 					error : function() {
 						$.messager.alert("保存失败", "服务器请求失败!", "error");
@@ -325,13 +352,17 @@ function closedSearch(){
   	function closeDialog() {
 	$('#richengdlg').dialog('close');
 	$('#huodongdlg').dialog('close');
+	$('#richengtext').val("");
+	$('#huodongtext').val("");
 	}
 	function openhuodongDialog(huodong,riid){
 	$('#riid').attr('value',riid);
 	var huo=document.getElementById("huodongtext");
   	huo.value=huodong;
 	$('#huodongdlg').dialog('open');
-	
+	}
+	function openjiaotongdlg(){
+	$('#jiaotongdlg').dialog('open');
 	}
   </script>
   </body>
