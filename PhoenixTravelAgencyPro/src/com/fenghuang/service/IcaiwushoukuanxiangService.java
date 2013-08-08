@@ -8,7 +8,7 @@ import com.fenghuang.entiey.Shoukuanxiang;
 import com.fenghuang.util.Pagination;
 
 public interface IcaiwushoukuanxiangService {
-public boolean saveCitySettingDictionary(CitySettingDictionary citySd) throws Exception;
+   public boolean saveCitySettingDictionary(CitySettingDictionary citySd) throws Exception;
 	
 	public boolean saveshoukuan(Shoukuanxiang shoukuanxiang) throws Exception;
 

@@ -105,6 +105,9 @@
     <mvc:view-controller path="fukuanshenhe.do" view-name="F.A.D/fukuanshenhe"/>
     <mvc:view-controller path="yfktj.do" view-name="F.A.D/yfktj"/>
     <mvc:view-controller path="tuanduixinxi.do" view-name="F.A.D/tuanduixinxi"/>
+    <mvc:view-controller path="ysktj.do" view-name="F.A.D/ysktj"/>
+     <mvc:view-controller path="yfktj.do" view-name="F.A.D/yfktj"/>
+     <mvc:view-controller path="wswfcx.do" view-name="F.A.D/wswfcx"/>
 	<!-- 赵杨的配置 -->
 	<mvc:view-controller path="SanPin_caozuo.do" view-name="SanPin/SanPin_CaoZuo"/>
 	 <!-- 单团中心-->

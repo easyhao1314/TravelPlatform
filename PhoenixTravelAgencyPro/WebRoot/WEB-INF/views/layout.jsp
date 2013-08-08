@@ -120,7 +120,11 @@
 						href="javascript:open1('未收未付款查询','wswfcx.do');">未收未付款查询</a>
 					</li>
 				</ul>
-				
+				<ul>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('收付款账号维护','wswfcx.do');">未收未付款查询</a>
+					</li>
+				</ul>
 				
 					
 				<ul>
