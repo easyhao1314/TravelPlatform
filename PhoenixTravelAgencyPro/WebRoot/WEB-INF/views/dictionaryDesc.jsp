@@ -28,7 +28,7 @@
 <body>
 	<!-- 如果在正式开发环境下 url可以为后台的请求，地址 -->
 	<table id="dg" class="easyui-datagrid"
-		data-options="url:'fenghuang/getDictionaryDescs.do?dicType=${param.dicType}',border:false,singleSelect:false,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
+		data-options="url:'fenghuang/getDictionaryDescs2.do?dicType=${param.dicType}',border:false,singleSelect:false,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
 		pagination="true" toolbar="#tb">
 		<thead>
 			<tr>

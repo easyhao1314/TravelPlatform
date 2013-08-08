@@ -59,7 +59,7 @@ public class DictionaryDescController {
 		
 		return result;
 	}
-	@RequestMapping("fenghuang/getDictionaryDescsPaginations.do")
+	@RequestMapping("fenghuang/getDictionaryDescs2.do")
 	@ResponseBody
 	public Map<String, Object> getDictionaryDescPaginations(HttpServletRequest request,
 			HttpServletResponse response, Integer page, Integer rows,
