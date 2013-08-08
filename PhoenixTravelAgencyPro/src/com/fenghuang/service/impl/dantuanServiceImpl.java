@@ -43,12 +43,7 @@ public class dantuanServiceImpl implements IdantuanService{
 	            
 	            TuanXianlu txl=new TuanXianlu();
 	            txl.setTuanNo(dt.getTuanNO());
-	            
-	            System.out.println(1);	            
-	            System.out.println(dt.getTuanNO());
-	            System.out.println(ixls.AddXianlu(x));
-	            System.out.println(2);
-	            
+	         
 	            txl.setXlid(ixls.AddXianlu(x));
 	            itxls.addTuanXianlu(txl);
 				} catch (Exception e) {

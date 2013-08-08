@@ -29,7 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<form id="addForm" method="post">
 			<table align="left">
 				<tr>
-<td><div class="fitem"><label>客户名称:</label></td><td><input name="khId" class="easyui-validatebox"></div>
+<td><div class="fitem"><label>客户名称:</label></td><td><input id="khId" name="khId" class="easyui-validatebox"  readonly="readonly" ></div>
      <a href="javascript:addKehu();" class="easyui-linkbutton" iconCls="icon-ok">新增客户</a></td>
 <td><div class="fitem"><label>团号:</label></td><td><input name="tuanNO" class="easyui-validatebox"></div></td>
 </tr>
@@ -109,6 +109,17 @@ data-options="
 					panelHeight:'auto',
 					editable:false 
 	"></div></td>
+	<td><div class="fitem"><label>需办邀请：</label></td><td><input name="xbyq" class="easyui-combobox" data-options="
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=9',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false 
+	"></div></td>
+</tr>
+<!-- 
+<tr>
+<td><div class="fitem"><label>需办签证：</label></td><td><input name="xbqz" class="easyui-validatebox"></div></td>
 <td><div class="fitem"><label>签证类型：</label></td><td><input name="qzlx" class="easyui-combobox" data-options="
 					url:'fenghuang/getDicByTypeComboboxs.do?dicType=14',
 					valueField:'dicNo',
@@ -116,11 +127,7 @@ data-options="
 					panelHeight:'auto',
 					editable:false 
 	"></div></td>
-</tr>
-<tr>
-<td><div class="fitem"><label>需办签证：</label></td><td><input name="xbqz" class="easyui-validatebox"></div></td>
-<td><div class="fitem"><label>需办邀请：</label></td><td><input name="xbyq" class="easyui-validatebox"></div></td>
-</tr>
+</tr> --> 
 <tr>
 <!-- HotleStardictionary 酒店-星级字典维护 --> 
 <td><div class="fitem"><label>酒店标准：</label></td><td><input name="jdbzNo" class="easyui-combobox"
@@ -221,9 +228,9 @@ data-options="
 			<table align="center">
 				<tr>
 					<td><div class="fitem">
-							<label>客户公司名称:</label>
+							<label>客户名称:</label>
 					</td>
-					<td><input name="name" class="easyui-validatebox" size="70">
+					<td><input id="kehuname"  name="name" class="easyui-validatebox" size="70">
 						</div></td>
 				</tr>
 				<tr>
@@ -267,7 +274,7 @@ data-options="
 					<td><div class="fitem">
 							<label>手机:</label>
 					</td>
-					<td><input name="moblePhone"  class="easyui-numberbox">
+					<td><input name="moblePhone"  class="easyui-numberbox" validType="minLength[11]">
 						</div></td>
 					<td><div class="fitem">
 							<label>电话:</label>
@@ -415,10 +422,13 @@ data-options="
 					if (result.success) {
 					$('#addKehu').dialog('close');
 						$.messager.alert("保存成功", "保存成功！", "info");
-						 $('#dg').datagrid('reload'); 
+						 var  kehuname=$("#kehuname").val();
+						 alert("kehuname"+kehuname);
+						 $("#khId").val(kehuname);
+					
 					} else {
 						$.messager.alert("保存失败", "保存失败!", "error");
-						$('#dg').datagrid('reload');
+					
 					}
 				}
 			});
@@ -427,6 +437,9 @@ data-options="
 		function closeEditDic() {
 			$('#addKehu').dialog('close');
 		} 
+		
+		
+		
 		
 	</script>
 </body>

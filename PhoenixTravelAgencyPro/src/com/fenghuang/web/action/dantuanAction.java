@@ -2,6 +2,7 @@ package com.fenghuang.web.action;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,7 +40,8 @@ public class dantuanAction {
 			Date ctsj,Date htsj,String xsNo,String jdNo,String khjlNo,String qzlx,String xbqz,String xbyq,String jdbzNo,
 			String zcNo,String zhongcNo,String wcNo,String bssdNo,
 			String cheXingNo,String jdbjNo,String bsbjNo,String ycbjNo,String dybjNo,String qtdjDesc,String tsDesc) {
-		 DantuanXinXi dt=new DantuanXinXi();
+
+		DantuanXinXi dt=new DantuanXinXi();
         dt.setTuanNO(tuanNO);
         dt.setTuanName(tuanName);
         if(khId != null && !"".equals(khId)){

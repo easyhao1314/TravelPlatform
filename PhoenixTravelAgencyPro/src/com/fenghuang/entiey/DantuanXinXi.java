@@ -123,6 +123,10 @@ public class DantuanXinXi {
     * 
     * @pdOid 11478424-24d0-4e06-a67f-23e8c0fdf5da */
    public long dybjNo;
+   /** 登记日
+    * 
+    * @pdOid 1f695c9c-d956-4813-aa08-8782e75bdbcc */
+   public Date djrtime;
    /** 其他地接要求
     * 
     * @pdOid 1f695c9c-d956-4813-aa08-8782e75bdbcc */
@@ -131,7 +135,13 @@ public class DantuanXinXi {
     * 
     * @pdOid 69d03899-9779-487e-9b0c-94d6c40ab15e */
    public String tsDesc;
-   /** 审批状态
+   public Date getDjrtime() {
+	return djrtime;
+}
+public void setDjrtime(Date djrtime) {
+	this.djrtime = djrtime;
+}
+/** 审批状态
     * 
     * @pdOid 69d03899-9779-487e-9b0c-94d6c40ab15e */
    public long shenpi;
