@@ -68,6 +68,10 @@ public class RichengDaoImpl extends BaseDao implements IRichengDao  {
 			sb.append(",wan=?");
 			list.add(r.getWan());
 		}
+		if(r.getJiaotongchengshi()!=null && !"".equals(r.getJiaotongchengshi())){
+			sb.append(",jiaotongchengshi=?");
+			list.add(r.getJiaotongchengshi());
+		}
 		if(r.getRiid()!=0){
 			sb.append(" where riid=?");
 			list.add(r.getRiid());

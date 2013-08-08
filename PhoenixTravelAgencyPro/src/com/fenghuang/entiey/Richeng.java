@@ -50,6 +50,19 @@ public class Richeng {
     * 
     * @pdOid 0af04793-416f-448f-9b2c-e1839164b5c6 */
    public long xianluid;
+   /** 交通城市
+    * 
+    * @pdOid 7dcf0cd9-ff93-4c27-8014-de4a278b58b1 */
+   public java.lang.String jiaotongchengshi;
+   
+   
+   
+public java.lang.String getJiaotongchengshi() {
+	return jiaotongchengshi;
+}
+public void setJiaotongchengshi(java.lang.String jiaotongchengshi) {
+	this.jiaotongchengshi = jiaotongchengshi;
+}
 public long getXianluid() {
 	return xianluid;
 }

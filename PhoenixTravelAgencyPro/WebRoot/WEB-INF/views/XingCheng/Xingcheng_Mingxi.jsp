@@ -167,35 +167,58 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <input id="riid" style="display: none;">
         <textarea id="huodongtext" name="message"  style="height:200px; width: 300px;"></textarea>
     </div>
-    <a href="#" class="easyui-splitbutton" data-options="menu:'#daymm',iconCls:'icon-ok'">Ok</a>
-    <div id="daymm" style="width:100px;">
-        <div data-options="iconCls:'icon-edit'" onclick="openjiaotongdlg();">设定城市</div>
-    </div>
+    
+   
 
 <!-- 设定城市 交通 dlg！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！ -->
-<div id="jiaotongdlg" class="easyui-dialog" title="设定城市和交通工具" style="width:400px;height:200px;padding:10px"
+<div id="jiaotongdlg" class="easyui-dialog" title="设定城市和交通工具" style="width:560px;height:360px;padding:10px"
             data-options="
                 iconCls: 'icon-save',
                 toolbar: '#dlg-toolbar',
                 buttons: '#dlg-buttons',
-                closed:	  true
+                closed:	  true,
+                modal:true,buttons: 
+	 			[{
+                    text:'保存',
+                    iconCls:'icon-ok',
+                    handler:function(){
+                    alert('保存');
+                    }
+                },{
+                    text:'关闭',
+                    iconCls:'icon-cancel',
+                    handler:function(){
+                    closeDialog();
+                    }
+                }]
             ">
-        The dialog content.
+            <input id="chengshijiaotongriid" style="display: none;" />
+        <span>The dialog content.</span>
     </div>
     <div id="dlg-toolbar" style="padding:2px 0">
         <table cellpadding="0" cellspacing="0" style="width:100%">
             <tr>
-                <td style="padding-left:2px">
-                    <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true">飞机</a>
-                    <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-help',plain:true">游轮</a>
+                <td style="padding-left:2px;">
+                    <a href="javascript:Addjiaotong('j1')" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true">飞机</a>
+                    <a href="javascript:Addjiaotong('j2')" class="easyui-linkbutton" data-options="iconCls:'icon-help',plain:true">游轮</a>
                 </td>
                 <td style="text-align:right;padding-right:2px">
-                    <input class="easyui-searchbox" data-options="prompt:'Please input somthing'" style="width:150px"></input>
+                    <input class="easyui-searchbox" data-options="prompt:'在此处搜索城市'" style="width:150px"></input>
                 </td>
             </tr>
         </table>
         </div>
-
+<script type="text/javascript">
+	function chengshijiaotongdlgOpen(riid){
+	openjiaotongdlg();
+	$('#chengshijiaotongriid').val(riid);
+	
+	}
+	function Addjiaotong(jt){
+	alert(jt);
+	}
+	
+</script>
 
 
   <script type="text/javascript">
@@ -254,19 +277,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					data :param,
 					dataType : "json",
 					success : function(data) {
-					//循环添加天数
 					for(var i=0;i<data.rows.length;i++){
-				
+					//循环修改交通城市在数据库里面读取出来的代码显示到JSP
+						 var xianshijiaotongchengshi="";
+						 var jt = new Array();
+						 var jj = data.rows[i].jiaotongchengshi;
+						 jt=jj.split(":");
+						 for(var j=0;j<jt.length;j++){
+						 if(jt[j]=="^1"){
+						 xianshijiaotongchengshi+="飞机";
+						 }
+						 if(jt[j]=="^2"){
+						  xianshijiaotongchengshi+="游轮";
+						 }
+
+						 }
 						 var d = parseInt(i+1);	
 						 var aaa = "fenghuang/getDicByTypeComboboxs.do?dicType=24";
-						 //菜单的ID
-						 var menu = '#daymm';
 						 var app='<form id="d'+d+'">'
 						 +'<table border="1" width="800px" >'
 						 	+'<tr><td width="100px;"><strong>日期</strong></td>'
-						 		+'<td><a href="javascript:richenganpaiOpen()"  class="easyui-linkbutton" style="float: right;" iconCls="icon-add" plain="true">酒店</a><a href="javascript:openhuodongDialog(\''+data.rows[i].huodong+'\','+data.rows[i].riid+')"  class="easyui-linkbutton" style="float: right;" iconCls="icon-add" plain="true">活动</a><a  href="javascript:openrichengDialog(\''+data.rows[i].richenganpai+'\','+data.rows[i].riid+')"   class="easyui-linkbutton"   style="float: right;" iconCls="icon-add" plain="true">日程</a></td>'
+						 		+'<td><span>'+xianshijiaotongchengshi+'</span><a href="javascript:richenganpaiOpen()"  class="easyui-linkbutton" style="float: right;" iconCls="icon-add" plain="true">酒店</a><a href="javascript:openhuodongDialog(\''+data.rows[i].huodong+'\','+data.rows[i].riid+')"  class="easyui-linkbutton" style="float: right;" iconCls="icon-add" plain="true">活动</a><a  href="javascript:openrichengDialog(\''+data.rows[i].richenganpai+'\','+data.rows[i].riid+')"   class="easyui-linkbutton"   style="float: right;" iconCls="icon-add" plain="true">日程</a></td>'
 						 	+'</tr>'
-						 	+'<tr><td><a href="javascript:void(0)" class="easyui-splitbutton" iconCls="icon-add" data-options="menu:\''+menu+'\'">第'+d+'天</a></td><td><h4>日程:</h4> <span>'+data.rows[i].richenganpai+'</span><hr /><h4>活动:</h4> <span>'+data.rows[i].huodong+'</span><hr /><h4>酒店:</h4> <span>'+data.rows[i]+'</span><hr />餐饮：<input name="zao" class="easyui-combobox" data-options="url:\''+aaa+'\'" > 中：<input name="zhong" class="easyui-validatebox">晚：<input name="wan" class="easyui-validatebox"></td></tr>'
+						 	+'<tr><td> <a href="javascript:chengshijiaotongdlgOpen('+data.rows[i].riid+')" title="设定当天的交通工具和城市" class="easyui-linkbutton" plain="true" iconCls="icon-reload">第'+d+'天</a></td><td><h4>日程:</h4> <span>'+data.rows[i].richenganpai+'</span><hr /><h4>活动:</h4> <span>'+data.rows[i].huodong+'</span><hr /><h4>酒店:</h4> <span>'+data.rows[i]+'</span><hr />餐饮：<input name="zao" class="easyui-combobox" data-options="url:\''+aaa+'\'" > 中：<input name="zhong" class="easyui-validatebox">晚：<input name="wan" class="easyui-validatebox"></td></tr>'
 						 +'<table></form>';			
 						$("#mdiv").append(app);
 						$('#d'+d).form('load',data.rows[i]);
@@ -354,6 +387,7 @@ function closedSearch(){
 	$('#huodongdlg').dialog('close');
 	$('#richengtext').val("");
 	$('#huodongtext').val("");
+	$('#jiaotongdlg').dialog('close');
 	}
 	function openhuodongDialog(huodong,riid){
 	$('#riid').attr('value',riid);
