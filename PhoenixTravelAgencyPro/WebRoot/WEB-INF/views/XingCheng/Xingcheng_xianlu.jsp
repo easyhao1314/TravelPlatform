@@ -81,6 +81,7 @@
 					if (result.success) {
 						$.messager.alert("保存成功", "保存成功！", "info");
 					   $("#xianluAdd").dialog('close');
+					   $("#dg").datagrid("reload");
 					} else {
 						$.messager.alert("保存失败", "保存失败!", "error");
 					
