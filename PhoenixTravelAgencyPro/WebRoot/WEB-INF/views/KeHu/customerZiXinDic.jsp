@@ -66,7 +66,7 @@
 	  <div class="easyui-panel" title="客户资信字典列表"
 		style="height:480px;width: auto;">
 		<table id="dgZiXin" class="easyui-datagrid"
-			data-options="url:'fenghuang/getDictionaryDescsPaginations.do?dicType=26',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
+			data-options="url:'fenghuang/getDictionaryDescs2.do?dicType=26',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 			  pagination="true" toolbar="#currencyDatagridtoolbar">
 		
 			<thead>

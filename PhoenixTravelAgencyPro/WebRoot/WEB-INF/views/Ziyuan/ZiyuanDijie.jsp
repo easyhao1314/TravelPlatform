@@ -116,7 +116,11 @@
 					textField:'dicName',
 					panelHeight:'auto',
 					editable:false"></div></td>			
-<td><div class="fitem"><label>具体地址：</label></td><td><input name="dizhi" class="easyui-validatebox"></div></td>
+<td><div class="fitem"><label>业务区域：</label></td><td><input name="ywqyId"class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=7',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false"></div></td>			
 <td><div class="fitem"><label>合作级别:</label></td><td><input name="hzjbId" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=4',
 					valueField:'dicNo',
 					textField:'dicName',
@@ -149,7 +153,7 @@
 <td><div class="fitem"><label>收款人地址:</label></td><td><input name="skrdz" class="easyui-validatebox"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>业务覆盖区域：</label></td><td colspan="5"><input name="ywqyId" class="easyui-validatebox"  size="80"></div></td>
+<td><div class="fitem"><label>具体地址：</label></td><td colspan="5"><input name="dizhi" class="easyui-validatebox"  size="80"></div></td>
 
 </tr>
 <tr>
@@ -195,7 +199,11 @@
 					textField:'dicName',
 					panelHeight:'auto',
 					editable:false"></div></td>			
-<td><div class="fitem"><label>具体地址：</label></td><td><input name="dizhi" class="easyui-validatebox"></div></td>
+<td><div class="fitem"><label>业务区域：</label></td><td><input name="ywqyId" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=7',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false"></div></td>			
 <td><div class="fitem"><label>合作级别:</label></td><td><input name="hzjbId" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=4',
 					valueField:'dicNo',
 					textField:'dicName',
@@ -228,7 +236,7 @@
 <td><div class="fitem"><label>收款人地址:</label></td><td><input name="skrdz" class="easyui-validatebox"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>业务覆盖区域：</label></td><td colspan="5"><input name="ywqyId" class="easyui-validatebox"  size="80"></div></td>
+<td><div class="fitem"><label>具体地址：</label></td><td colspan="5"><input name="dizhi" class="easyui-validatebox"  size="80"></div></td>
 
 </tr>
 <tr>
@@ -360,7 +368,7 @@
 			$("#updateDijie").dialog("open");
 			//准备回显的数据
 			var row = $("#dgDijie").datagrid("getSelected");
-			//alert(row.tuanNO);
+			alert(row.id);
 		
 			if(row){
 				var param = {

@@ -223,7 +223,7 @@ public class CustomerCenterDaoImpl extends BaseDao implements
 
 	@Override
 	public List<Map<String,Object>> findAllCustomName() {
-		String sql = "SELECT c.id , c.name FROM customerinfo c";
+		String sql = "SELECT id , name FROM customerinfo";
 		return this.queryForList(sql);
 	}
 

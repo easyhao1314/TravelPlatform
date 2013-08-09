@@ -60,7 +60,7 @@
 	  <div class="easyui-panel" title="销售大区列表"
 		style="height:480px;width: auto;">
 		<table id="dgXiaoshouDaqu" class="easyui-datagrid"
-			data-options="url:'fenghuang/getDictionaryDescsPaginations.do?dicType=13',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
+			data-options="url:'fenghuang/getDictionaryDescs2.do?dicType=13',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 			  pagination="true" toolbar="#currencyDatagridtoolbar">
 		
 			<thead>

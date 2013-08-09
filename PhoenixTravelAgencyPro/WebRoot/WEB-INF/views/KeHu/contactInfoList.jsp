@@ -83,7 +83,7 @@
 			<thead>
 				<tr>
 				   <th data-options="field:'ck',checkbox:true"></th>
-					<th data-options="field:'dicName',align:'right'" width="80">城市</th>
+					<!--<th data-options="field:'dicName',align:'right'" width="80">城市</th>-->
 					<th data-options="field:'tuanNo',formatter:onOperateKehu" width="100">团号</th>
 					<th data-options="field:'name',formatter:onOperateKehu" width="100">对应客户</th>
 					<th data-options="field:'lxr',formatter:onOperateKehulxr" width="100">联系人</th>

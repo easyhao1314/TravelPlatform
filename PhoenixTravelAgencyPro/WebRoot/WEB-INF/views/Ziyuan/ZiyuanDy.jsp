@@ -102,12 +102,11 @@
 			<table align="center">
 				<tr>
 <td><div class="fitem"><label>编号:</label></td><td>--系统自动生成--</div></td>
-<td><div class="fitem"><label>国籍：</label></td><td><input name="guojiaId" class="easyui-combobox"
-data-options="url:'fenghuang/daoyouSelect.do',
-					valueField:'id',
-					textField:'guojia',
+<td><div class="fitem"><label>国籍：</label></td><td><input name="guojiaId" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=7',
+					valueField:'dicNo',
+					textField:'dicName',
 					panelHeight:'auto',
-					editable:false"></div></div></td>
+					editable:false"></div></td>
 </tr>
 <tr>
 <td><div class="fitem"><label>姓名：</label></td><td><input name="name" class="easyui-validatebox" ></div></td>
@@ -150,12 +149,12 @@ data-options="url:'fenghuang/daoyouSelect.do',
 <td></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>备注：</label></td><td colspan="3"><input name="bz" class="easyui-validatebox" required="true" size="70"></div></td>
+<td><div class="fitem"><label>备注：</label></td><td colspan="3"><input name="bz" class="easyui-validatebox" size="70"></div></td>
 <td></td>
 </tr>
 <tr>
 <tr><td colspan="4" align="center"><a href="javascript:SaveDaoyou();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> 
-<a class="easyui-linkbutton" iconCls="icon-undo" onclick="$('#addForm').form('clear')">重置</a></td>
+<a class="easyui-linkbutton" iconCls="icon-undo" onclick="$('#addDaoyouForm').form('clear')">重置</a></td>
 </tr>
 			</table>
 			<input id="dicType" name="dicType" type="hidden">
@@ -170,23 +169,22 @@ data-options="url:'fenghuang/daoyouSelect.do',
 			<table align="center">
 				<tr>
 <td><div class="fitem"><label>编号:</label></td><td><input name="id" class="easyui-validatebox" readonly="true" style="width:40px;">--不可修改</div></td>
-<td><div class="fitem"><label>国籍：</label></td><td><input name="guojiaId" class="easyui-combobox"
-data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=7',
+<td><div class="fitem"><label>国籍：</label></td><td><input name="guojiaId" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=7',
 					valueField:'dicNo',
 					textField:'dicName',
 					panelHeight:'auto',
-					editable:false "></div></div></td>
+					editable:false"></div></td>
 </tr>
 <tr>
 <td><div class="fitem"><label>姓名：</label></td><td><input name="name" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>姓名拼音：</label></td><td><input name="name2" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>姓名拼音：</label></td><td><input name="name2" class="easyui-validatebox" ></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>英文名称：</label></td><td><input name="name3"  class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>证件类型：</label></td><td><input name="zjlx"  class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>英文名称：</label></td><td><input name="name3"  class="easyui-validatebox" ></div></td>
+<td><div class="fitem"><label>证件类型：</label></td><td><input name="zjlx"  class="easyui-validatebox" ></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>证件号码：</label></td><td><input name="zjhm" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>证件号码：</label></td><td><input name="zjhm" class="easyui-validatebox"></div></td>
 <td><div class="fitem"><label>常驻地：</label></td><td><input  name="chengshiId" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=8',
 					valueField:'dicNo',
 					textField:'dicName',
@@ -194,19 +192,19 @@ data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=7',
 					editable:false"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>电话：</label></td><td><input name="dinhua" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>联系方式1：</label></td><td><input name="lxfs1" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>电话：</label></td><td><input name="dinhua" class="easyui-validatebox" ></div></td>
+<td><div class="fitem"><label>联系方式1：</label></td><td><input name="lxfs1" class="easyui-validatebox" ></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>手机：</label></td><td><input name="shouji" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>联系2：</label></td><td><input name="lxfs2" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>手机：</label></td><td><input name="shouji" class="easyui-validatebox" ></div></td>
+<td><div class="fitem"><label>联系2：</label></td><td><input name="lxfs2" class="easyui-validatebox" ></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>传真：</label></td><td><input name="fax" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>联系3：</label></td><td><input name="lxfs3" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>传真：</label></td><td><input name="fax" class="easyui-validatebox" ></div></td>
+<td><div class="fitem"><label>联系3：</label></td><td><input name="lxfs3" class="easyui-validatebox" ></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>EMAIL：</label></td><td><input name="email" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>EMAIL：</label></td><td><input name="email" class="easyui-validatebox" ></div></td>
 <td><div class="fitem"><label>合作级别：</label></td><td><input name="hzjbId" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=4',
 					valueField:'dicNo',
 					textField:'dicName',
@@ -218,7 +216,7 @@ data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=7',
 <td></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>备注：</label></td><td colspan="3"><input name="bz" class="easyui-validatebox" required="true" size="70"></div></td>
+<td><div class="fitem"><label>备注：</label></td><td colspan="3"><input name="bz" class="easyui-validatebox" size="70"></div></td>
 <td></td>
 </tr>
 <tr><td colspan="4" align="center"><a href="javascript:daoyouUpdate();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> 
@@ -331,7 +329,7 @@ data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=7',
 			$("#updateDaoyou").dialog("open");
 			//准备回显的数据
 			var row = $("#dgDaoyou").datagrid("getSelected");
-			//alert(row.tuanNO);
+			alert(row.id);
 		
 			if(row){
 				var param = {

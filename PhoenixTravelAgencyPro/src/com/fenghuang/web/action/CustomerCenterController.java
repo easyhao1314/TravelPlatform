@@ -227,6 +227,23 @@ public class CustomerCenterController {
 		return result  ;
 	}
 	
-	
+	/**客户下拉
+	 * 
+	 * @param customerInfo
+	 * @return
+	 */
+	@RequestMapping("fenghuang/findAllCustomName.do")
+	@ResponseBody
+	public List<Map<String, Object>> findAllCustomName(HttpServletRequest request,
+			HttpServletResponse response){
+
+		try {
+			return  iCustomerCenterService.findAllCustomName();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	   return  null;
+	}
+		
 	
 }

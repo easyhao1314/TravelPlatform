@@ -17,19 +17,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
+	<link rel="stylesheet" type="text/css" href="styles.css"   readonly="readonly">
 	-->
+	
+
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="js/locale/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript" src="js/jquery.json.js"></script>
 
   <body> 
+ 
 	<div id="addDt" >
 		<form id="addForm" method="post">
 			<table align="left">
 				<tr>
-<td><div class="fitem"><label>客户名称:</label></td><td><input id="khId" name="khId" class="easyui-validatebox"  readonly="readonly" ></div>
+<td><div class="fitem"><label>客户名称:</label></td><td><input id="khId" name="khId" class="easyui-combobox" data-options="
+					url:'fenghuang/findAllCustomName.do',
+					valueField:'id',
+					textField:'name',
+					panelHeight:'auto',
+					editable:false 
+	"></div>
      <a href="javascript:addKehu();" class="easyui-linkbutton" iconCls="icon-ok">新增客户</a></td>
 <td><div class="fitem"><label>团号:</label></td><td><input name="tuanNO" class="easyui-validatebox"></div></td>
 </tr>
@@ -423,8 +432,8 @@ data-options="
 					$('#addKehu').dialog('close');
 						$.messager.alert("保存成功", "保存成功！", "info");
 						 var  kehuname=$("#kehuname").val();
-						 alert("kehuname"+kehuname);
-						 $("#khId").val(kehuname);
+					
+						 $("#khId").value(kehuname);
 					
 					} else {
 						$.messager.alert("保存失败", "保存失败!", "error");
@@ -438,9 +447,7 @@ data-options="
 			$('#addKehu').dialog('close');
 		} 
 		
-		
-		
-		
+
 	</script>
 </body>
 </html>

@@ -93,7 +93,7 @@
 	var row = $("#dg").datagrid("getSelected");
 
 	if(row!=null){
-		 	var url= "Xingcheng_mx.do?xianid="+row.xianid;//在框架中的方法：Xingcheng_mx.do打开明细页面传xianid的值
+		 	var url= "Xingcheng_mx.do?xianid="+row.xlid;//在框架中的方法：Xingcheng_mx.do打开明细页面传xianid的值
 		 	
        var tab = $('#tt').tabs('getSelected'); 
 		if (tab){  

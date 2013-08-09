@@ -282,7 +282,7 @@
 				</ul>
 				<ul>
 				   <li iconCls="icon-gears">
-				     <a href="javascript:open1('餐饮供应商','ZiyuanCanyin.do);">餐饮供应商</a></li>
+				     <a href="javascript:open1('餐饮供应商','ZiyuanCanyin.do');">餐饮供应商</a></li>
 				</ul>
 				<ul>
 				   <li iconCls="icon-gears">
@@ -341,7 +341,7 @@
 			        <a href="javascript:open1('销售负责客户','customerXiaoshou.do');">销售负责客户</a>
 			      </li>
 			   </ul>
-			   <ul>
+			   <!--<ul>
 			      <li iconCls="icon-gears">
 			        <a href="javascript:open1('团队客人查询','customerTuandui.do');">团队客人查询</a>
 			      </li>
@@ -355,7 +355,7 @@
 			      <li iconCls="icon-gears">
 			        <a href="javascript:open1('客户沟通情况','customerGoutong.do');">客户沟通情况</a>
 			      </li>
-			   </ul>
+			   </ul>-->
 			    <ul>
 			      <li iconCls="icon-gears">
 			        <a href="javascript:open1('客户共享/转移','customerKehuGongxiang.do');">客户共享/转移</a>

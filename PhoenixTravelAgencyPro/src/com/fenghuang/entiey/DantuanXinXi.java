@@ -135,16 +135,20 @@ public class DantuanXinXi {
     * 
     * @pdOid 69d03899-9779-487e-9b0c-94d6c40ab15e */
    public String tsDesc;
+   /** 审批状态
+    * 
+    * @pdOid 69d03899-9779-487e-9b0c-94d6c40ab15e */
+   public long shenpi;
+   
+   
+   
    public Date getDjrtime() {
 	return djrtime;
 }
 public void setDjrtime(Date djrtime) {
 	this.djrtime = djrtime;
 }
-/** 审批状态
-    * 
-    * @pdOid 69d03899-9779-487e-9b0c-94d6c40ab15e */
-   public long shenpi;
+
 public String getTuanNO() {
 	return tuanNO;
 }
