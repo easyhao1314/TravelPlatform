@@ -122,7 +122,7 @@
 				</ul>
 				<ul>
 					<li iconCls="icon-gears"><a
-						href="javascript:open1('收付款账号维护','wswfcx.do');">未收未付款查询</a>
+						href="javascript:open1('收付款账号维护','sfkzhwh.do');">收付款账号维护</a>
 					</li>
 				</ul>
 				
@@ -202,49 +202,45 @@
 			<li iconCls="icon-base" state="closed"><span>系统基础设置管理</span>
 				<ul>
 					<li iconCls="icon-gears"><a
-						href="javascript:open1('团队进展状态字典','dictionaryDesc.do?dicType=8');">团队进展状态字典</a>
+						href="javascript:open1('团队进展状态字典','dictionaryDesc.do?dicType=2');">团队进展状态字典</a>
 					</li>
 				</ul>
 				<ul>
 					<li iconCls="icon-gears"><a
-						href="javascript:open1('酒店-星级字典维护','dictionaryDesc.do?dicType=9');">酒店-星级字典维护</a>
+						href="javascript:open1('酒店-星级字典维护','dictionaryDesc.do?dicType=16');">酒店-星级字典维护</a>
 					</li>
 				</ul>
 				<ul>
 					<li iconCls="icon-gears"><a
-						href="javascript:open1('巴士-用车性质字典','dictionaryDesc.do?dicType=1');">巴士-用车性质字典</a>
+						href="javascript:open1('巴士-用车性质字典','dictionaryDesc.do?dicType=19');">巴士-用车性质字典</a>
 					</li>
 				</ul>
 				<ul>
 					<li iconCls="icon-gears"><a
-						href="javascript:open1('交通-乘车类型字典','dictionaryDesc.do?dicType=2');">交通-乘车类型字典</a>
+						href="javascript:open1('交通-乘车类型字典','dictionaryDesc.do?dicType=18');">交通-乘车类型字典</a>
 					</li>
 				</ul>
 				<ul>
 					<li iconCls="icon-gears"><a
-						href="javascript:open1('早餐-餐标字典维护','dictionaryDesc.do?dicType=3');">早餐-餐标字典维护</a>
+						href="javascript:open1('早餐-餐标字典维护','dictionaryDesc.do?dicType=22');">早餐-餐标字典维护</a>
 					</li>
 				</ul>
 				<ul>
 					<li iconCls="icon-gears"><a
-						href="javascript:open1('午餐-餐标字典维护','dictionaryDesc.do?dicType=4');">午餐-餐标字典维护</a>
+						href="javascript:open1('午餐-餐标字典维护','dictionaryDesc.do?dicType=23');">午餐-餐标字典维护</a>
 					</li>
 				</ul>
 				<ul>
 					<li iconCls="icon-gears"><a
-						href="javascript:open1('晚餐-餐标字典维护','dictionaryDesc.do?dicType=5');">晚餐-餐标字典维护</a>
+						href="javascript:open1('晚餐-餐标字典维护','dictionaryDesc.do?dicType=24');">晚餐-餐标字典维护</a>
 					</li>
 				</ul>
 				<ul>
 					<li iconCls="icon-gears"><a
-						href="javascript:open1('导游-服务类型字典','dictionaryDesc.do?dicType=6');">导游-服务类型字典</a>
+						href="javascript:open1('导游-导游类型字典','dictionaryDesc.do?dicType=15');">导游-导游类型字典</a>
 					</li>
 				</ul>
-				<ul>
-					<li iconCls="icon-gears"><a
-						href="javascript:open1('导游-导游类型字典','dictionaryDesc.do?dicType=7');">导游-导游类型字典</a>
-					</li>
-				</ul>
+			
 				<ul>
 					<li iconCls="icon-gears"><a
 						href="javascript:open1('币种使用维护','currencyList.do');">币种使用维护</a></li>
@@ -278,71 +274,55 @@
 			<li iconCls="icon-base"  state="closed"><span>资源中心 </span>
 				<ul>
 					<li iconCls="icon-gears"><a
-						href="javascript:open1('酒店供应商','ZiyuanJiudian.do?dicType=1');">酒店供应商</a></li>
+						href="javascript:open1('酒店供应商','ZiyuanJiudian.do');">酒店供应商</a></li>
 				</ul>
 				<ul>
 				   <li iconCls="icon-gears">
-				     <a href="javascript:open1('交通供应商','ZiyuanJiaotong.do?dicType=2');">交通供应商</a></li>
+				     <a href="javascript:open1('交通供应商','ZiyuanJiaotong.do');">交通供应商</a></li>
 				</ul>
 				<ul>
 				   <li iconCls="icon-gears">
-				     <a href="javascript:open1('航空公司','ZiyuanHangkong.do?dicType=3');">航空公司</a></li>
+				     <a href="javascript:open1('航空公司','ZiyuanHangkong.do');">航空公司</a></li>
 				</ul>
 				<ul>
 				   <li iconCls="icon-gears">
-				     <a href="javascript:open1('餐饮供应商','ZiyuanCanyin.do?dicType=4');">餐饮供应商</a></li>
+				     <a href="javascript:open1('餐饮供应商','ZiyuanCanyin.do');">餐饮供应商</a></li>
 				</ul>
 				<ul>
 				   <li iconCls="icon-gears">
-				     <a href="javascript:open1('导游供应商','ZiyuanDy.do?dicType=5');">导游供应商</a></li>
+				     <a href="javascript:open1('导游供应商','ZiyuanDy.do');">导游供应商</a></li>
 				</ul>
 				<ul>
 				   <li iconCls="icon-gears">
-				     <a href="javascript:open1('景点供应商','ZiyuanJingdian.do?dicType=6');">景点供应商</a></li>
+				     <a href="javascript:open1('景点供应商','ZiyuanJingdian.do');">景点供应商</a></li>
 				</ul>
 				<ul>
 				   <li iconCls="icon-gears">
-				     <a href="javascript:open1('地接社供应商','ZiyuanDijie.do?dicType=7');">地接社供应商</a></li>
+				     <a href="javascript:open1('地接社供应商','ZiyuanDijie.do');">地接社供应商</a></li>
 				</ul>
 				<ul>
 				   <li iconCls="icon-gears">
-				     <a href="javascript:open1('购物点','ZiyuanGouwu.do?dicType=8');">购物点</a></li>
+				     <a href="javascript:open1('购物点','ZiyuanGouwu.do');">购物点</a></li>
 				</ul>
 				<ul>
 				   <li iconCls="icon-gears">
-				     <a href="javascript:open1('邀请函成本维护','ZiyuanYaoqing.do?dicType=9');">邀请函成本维护</a></li>
+				     <a href="javascript:open1('邀请函成本维护','ZiyuanYaoqing.do');">邀请函成本维护</a></li>
 				</ul>
 				<ul>
 				   <li iconCls="icon-gears">
-				     <a href="javascript:open1('自费节目维护','ZiyuanZifei.do?dicType=10');">自费节目维护</a></li>
+				     <a href="javascript:open1('自费节目维护','ZiyuanZifei.do');">自费节目维护</a></li>
 				</ul>
 			</li>
 			<!--陈家海的配置 -->
 		<li iconCls="icon-base"  state="closed"><span>操作中心</span>
-				<ul>
-					<li iconCls="icon-gears">
-					<a href="javascript:open1('操作团队查询','operTeamQuery.do');">操作团队查询</a></li>
-				</ul>
 				 <ul>
 			      <li iconCls="icon-gears">
-			        <a href="javascript:open1('我的订房任务','Caozuo_liebiao.do');">我的订房任务</a>
+			        <a href="javascript:open1('我的订房任务','Caozuo_liebiao.do');">我的操作任务单</a>
 			      </li>
 			   </ul>
-			   <ul>
-			      <li iconCls="icon-gears">
-			        <a href="javascript:open1('我的订车任务','Caozuo_liebiao.do');">我的订车任务</a>
-			      </li>
-			   </ul>
-			    <ul>
-			      <li iconCls="icon-gears">
-			        <a href="javascript:open1('我的导游任务','Caozuo_liebiao.do');">我的导游任务</a>
-			      </li>
-			   </ul>
-			    <ul>
-			      <li iconCls="icon-gears">
-			        <a href="javascript:open1('我的购物店任务','Caozuo_liebiao.do');">我的购物店任务</a>
-			      </li>
-			   </ul>
+
+
+
 		</li>
 		<li iconCls="icon-base"  state="closed"><span>客户中心</span>
 			    <ul>
@@ -365,7 +345,7 @@
 			        <a href="javascript:open1('销售负责客户','customerXiaoshou.do');">销售负责客户</a>
 			      </li>
 			   </ul>
-			   <ul>
+			   <!--<ul>
 			      <li iconCls="icon-gears">
 			        <a href="javascript:open1('团队客人查询','customerTuandui.do');">团队客人查询</a>
 			      </li>
@@ -379,7 +359,7 @@
 			      <li iconCls="icon-gears">
 			        <a href="javascript:open1('客户沟通情况','customerGoutong.do');">客户沟通情况</a>
 			      </li>
-			   </ul>
+			   </ul>-->
 			    <ul>
 			      <li iconCls="icon-gears">
 			        <a href="javascript:open1('客户共享/转移','customerKehuGongxiang.do');">客户共享/转移</a>
