@@ -25,7 +25,7 @@ public class CaiwufkqrDaoImpl extends BaseDao implements IcaiwufkqrDao {
 		// TODO Auto-generated method stub                                                                                                                                
 		String sql="insert into tuanbiao (team,kxsm,zhanghaoid,khmc,yushoutime,yingshou,huilvid,beizhu,ysyfid) values(?,?,?,?,?,?,?,?,?)";
 		int a=this.update(sql,tuanbiao.getTeam(),tuanbiao.getKxsm(),tuanbiao.getZhanghaoid(),tuanbiao.getKhmc(),tuanbiao.getYushoutime(),tuanbiao.getYingshou(),tuanbiao.getHuilvID(),tuanbiao.getBeizhu(),tuanbiao.getYsyfID());
-		return false;
+		return a>0;
 	}
 
 	@Override

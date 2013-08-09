@@ -25,148 +25,113 @@
 </head>
 
 <body>
- <table>
-	    		<tr>
-	    		   	<td>团号:<input class="easyui-validatebox" type="text" name="team" id="team"></input></td>
-	    			<td>销售，客户<input class="easyui-validatebox" type="text" name="tuanduimc" id="tuanduimc"></input></td>
-	    			<td>
-	    		<div style="padding:5px;border:0px solid #ddd;">
-		<a href="javascript:cwtdfyselect()" class="easyui-linkbutton" data-options="toggle:true,group:'g1'">搜索</a>
-	             </div>
-	    			
-	    		</td>
-	    		</tr>	    		    		
-	    	</table>
-
 	<!-- 如果在正式开发环境下 url可以为后台的请求，地址 -->
 	<div class="easyui-panel" title="团队费用"
-		style="height:480px;width: auto;" toolbar="#currencyDatagridtoolbar">	
-	<table id="dg" class="easyui-datagrid"
-		data-options="url:'fenghuang/caiwutdfylbselect.do',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
+		style="height:530px;width: auto;" toolbar="#currencyDatagridtoolbar">	
+	<table id="sfkzhwhdg" class="easyui-datagrid"
+		data-options="url:'fenghuang/skzhanghaoselect.do',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 		pagination="true" toolbar="#tb">
 		<thead>
 			<tr> 
-			    <th data-options="field:'id',editor:'text'" width="5">ID</th>
-				<th data-options="field:'team',editor:'text'" width="10">团号</th>
-				<th data-options="field:'tuanduimc',editor:'text'" width="10">团队名称</th>
-				<th data-options="field:'chutuantime',editor:'text'" width="10">出团日期</th>
-				<th data-options="field:'huituantime',editor:'text'" width="10">回团日期</th>
-				<th data-options="field:'yingshou',editor:'text'" width="10">应收</th>
-				<th data-options="field:'yishou',editor:'text'" width="10">已收</th>
-				<th data-options="field:'yfk',editor:'text'" width="10">应付</th>		
-				<th data-options="field:'yifu',editor:'numberbox'" width="10">已付</th>
-				<th data-options="field:'tuikuan',editor:'numberbox'" width="10">退款</th>
-				<th data-options="field:'fanyong',editor:'numberbox'" width="10">返佣</th>
-				<th data-options="field:'yujilirun',editor:'numberbox'" width="10">预计利润</th>
-			    <th data-options="field:'shijilirun',editor:'numberbox'" width="10">实际利润</th>
+			    <th data-options="field:'id',editor:'text'" width="5">编号</th>
+				<th data-options="field:'zhanghaoming',editor:'text'" width="10">账号名称</th>
+				<th data-options="field:'yongtu',editor:'text'" width="10">用途</th>
+				<th data-options="field:'bizhong',editor:'text'" width="10">币种</th>
+				<th data-options="field:'huming',editor:'text'" width="10">户名</th>
+				<th data-options="field:'zhanghao',editor:'text'" width="10">账号</th>
+				<th data-options="field:'kaihuhang',editor:'text'" width="10">开户行</th>
+				<th data-options="field:'shiyongshuoming',editor:'text'" width="10">使用说明</th>
 			</tr>
 		</thead>
 	</table>
 	</div>
+	
 	<div id="tb">
-		<a href="javascript:caiwutdfyselect();" class="easyui-linkbutton"
-			iconCls="icon-add" plain="true">查看</a>&nbsp;&nbsp;| <a
-			href="javascript:addMianBanMoshi();" class="easyui-linkbutton"
-			iconCls="icon-add" plain="true">新增(面板模式)</a>&nbsp;&nbsp;| <a
+		<a
+			href="javascript:sfkzhwhopen();" class="easyui-linkbutton"
+			iconCls="icon-add" plain="true">新增</a>&nbsp;&nbsp;| <a
 			href="javascript:shanchu();" class="easyui-linkbutton"
-			iconCls="icon-cut" plain="true">删除</a>&nbsp;&nbsp;| <a
-			href="javascript:searchDiJi();" class="easyui-linkbutton"
-			iconCls="icon-save" plain="true">查询</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			iconCls="icon-cut" plain="true">删除</a>
 		<a href="javascript:getChanges();" class="easyui-linkbutton"
-			iconCls="icon-save" plain="true">保存修改</a>
+			iconCls="icon-save" plain="true">修改</a>
 	</div>
-	<div id="editDic" class="easyui-dialog" title="新增业务字段"
+	
+	
+	
+	
+	<div id="sfkzhwhid" class="easyui-dialog" title="财务审批确认"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:500px;height:200px;padding:10px;">
-		<form id="dicFrome" method="post">
+		<form id="sfkzhwhform" action="">
 			<table align="left">
 				<tr>
 					<td><div class="fitem">
-							<label>帮助提示:</label>
+							<label>编号:</label>
 					</td>
-					<td><input name="dicHelp" class="easyui-validatebox">
+					<td><input id="id" name="id"
+						class="easyui-validatebox">
 						</div></td>
 					<td><div class="fitem">
-							<label>显示顺序:</label>
+							<label>名称:</label>
 					</td>
-					<td><input name="dicSortNo" class="easyui-numberbox"
-						required="true">
+					<td><input id="zhanghaoming" name="zhanghaoming" 
+						class="easyui-validatebox">
 						</div></td>
 				</tr>
+				
 				<tr>
 					<td colspan="4s" align="center"><a
-						href="javascript:mainBanMoshiSave();" class="easyui-linkbutton"
-						iconCls="icon-ok">保存</a> <a href="javascript:closeEditDic();"
+						href="javascript:sfkzhwhsave();" class="easyui-linkbutton"
+						iconCls="icon-ok">确认</a> <a href="javascript:closedSearch();"
 						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
 				</tr>
 			</table>
-			<input id="dicType" name="dicType" type="hidden">
+			<input id="searchDicType" name="dicType" type="hidden">
 		</form>
 	</div>
-	
 	<script type="text/javascript">
 		
 		function onClickRow(index) {
 			if (editIndex != index) {
 				if (endEditing()) {
-					$('#dg').datagrid('selectRow', index).datagrid('beginEdit',
+					$('#sfkzhwhdg').datagrid('selectRow', index).datagrid('beginEdit',
 							index);
 					editIndex = index;
 				} else {
-					$('#dg').datagrid('selectRow', editIndex);
+					$('#sfkzhwhdg').datagrid('selectRow', editIndex);
 				}
 			}
 		}
 		
-			   //条件查询
-		function cwtdfyselect(id){
 		
-		console.info($('#dg').datagrid('options'));
-		var opts = $('#dg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
-			var param = {
-				team: $("#team").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
-				tuanduimc: $("#tuanduimc").val() ,
-				caiwuid: id,
-
-				page:  opts.pageNumber ,
-				rows:  opts.pageSize
-			};
-		console.info(param);
-				$.ajax({
-					url : 'fenghuang/caiwutdfylbselect.do' ,
-					data :  param,
-					type : 'POST' ,
-					dataType : 'json' ,
-					success : function(data){
-						$('#dg').datagrid('loadData',data);
+		//添加	
+		
+		function sfkzhwhopen() {
+			$("#sfkzhwhid").dialog("open");
+			$("#sfkzhwhform").form("clear");
+		}
+        function closeEditDic() {
+			$("#sfkzhwhid").dialog("close");
+		} 
+		function sfkzhwhsave() {
+			$('#sfkzhwhform').form('submit', {
+				url : 'fenghuang/skzhanghaoinsert.do',
+				onSubmit : function() {
+					return $(this).form('validate');
+				},
+				success : function(result) {
+					var result = eval('(' + result + ')');
+					if (result.success) {
+						$.messager.alert("保存成功", "保存成功！", "info");
+						$('#sfkzhwhid').dialog('close');
+						$('#sfkzhwhdg').datagrid('reload');
+					} else {
+						$.messager.alert("保存失败", "保存失败!", "error");
+						$('#sfkzhwhdg').datagrid('reload');
 					}
-				});
+				}
+			});
 		}
-		
-			//按id查询
-		function caiwutdfyselect(id) {
-          //通过主键，查询该操作，并处于编辑状态。 是否打开tab，还是直接弹出window 
-			
-			//获取选中 数据
-			var row = $("#dg").datagrid("getSelected");
-		if(row!=null){
-		 var url= "tuanduixinxi.do?team="+row.team;
-       var tab = $('#tt').tabs('getSelected'); 
-		if (tab){  
-	                 var index = $('#tt').tabs('getTabIndex', tab); 
-	                 $('#tt').tabs('close', index);  
-	       } 
-	       
-	       $('#tt').tabs('add', {
-				         title : "团队财务信息",
-				         href : url,
-				      //  closable : true,
-				         }); 
-		}
-		}
-		
-		
-	
 	</script>
 </body>
 </html>

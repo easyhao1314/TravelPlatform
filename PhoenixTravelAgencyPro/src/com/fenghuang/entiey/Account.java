@@ -42,5 +42,53 @@ public class Account {
     * 
     * @pdOid 4f04676d-1fbf-409f-a554-d896f14f8427 */
    public java.lang.String shiyongshuoming;
-
+public long getId() {
+	return id;
+}
+public void setId(long id) {
+	this.id = id;
+}
+public java.lang.String getZhanghaoming() {
+	return zhanghaoming;
+}
+public void setZhanghaoming(java.lang.String zhanghaoming) {
+	this.zhanghaoming = zhanghaoming;
+}
+public int getYongtu() {
+	return yongtu;
+}
+public void setYongtu(int yongtu) {
+	this.yongtu = yongtu;
+}
+public int getBizhongid() {
+	return bizhongid;
+}
+public void setBizhongid(int bizhongid) {
+	this.bizhongid = bizhongid;
+}
+public java.lang.String getHuming() {
+	return huming;
+}
+public void setHuming(java.lang.String huming) {
+	this.huming = huming;
+}
+public java.lang.String getZhanghao() {
+	return zhanghao;
+}
+public void setZhanghao(java.lang.String zhanghao) {
+	this.zhanghao = zhanghao;
+}
+public java.lang.String getKaihuhang() {
+	return kaihuhang;
+}
+public void setKaihuhang(java.lang.String kaihuhang) {
+	this.kaihuhang = kaihuhang;
+}
+public java.lang.String getShiyongshuoming() {
+	return shiyongshuoming;
+}
+public void setShiyongshuoming(java.lang.String shiyongshuoming) {
+	this.shiyongshuoming = shiyongshuoming;
+}
+   
 }
