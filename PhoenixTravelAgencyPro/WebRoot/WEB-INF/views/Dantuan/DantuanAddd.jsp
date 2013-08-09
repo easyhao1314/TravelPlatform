@@ -432,8 +432,9 @@ data-options="
 					$('#addKehu').dialog('close');
 						$.messager.alert("保存成功", "保存成功！", "info");
 						 var  kehuname=$("#kehuname").val();
-					
-						 $("#khId").value(kehuname);
+						 $("#khId").val(kehuname);
+						 $("#khId").attr("value",kehuname);
+					     $("#khId").combobox('setValue', kehuname); 
 					
 					} else {
 						$.messager.alert("保存失败", "保存失败!", "error");
