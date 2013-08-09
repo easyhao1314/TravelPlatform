@@ -70,7 +70,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	<input class="easyui-combobox" 
 			name="Areatype"
 			data-options="
-					url:'fenghuang/getDicByTypeComboboxs.do?dicType=12',
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=6',
 					valueField:'dicId',
 					textField:'dicName',
 					panelHeight:'auto'
@@ -83,7 +83,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	<td>目标人群：</td><td><input class="easyui-combobox" 
 			name="targetpopulation"
 			data-options="
-					url:'fenghuang/getDicByTypeComboboxs.do?dicType=12',
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=30',
 					valueField:'dicId',
 					textField:'dicName',
 					panelHeight:'auto'
@@ -96,7 +96,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	<td>出发城市：</td><td><input class="easyui-combobox" 
 			name="Departurecity"
 			data-options="
-					url:'fenghuang/getDicByTypeComboboxs.do?dicType=12',
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=8',
 					valueField:'dicId',
 					textField:'dicName',
 					panelHeight:'auto'
@@ -108,7 +108,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	<td>终点城市：</td><td><input class="easyui-combobox" 
 			name="TerminalCity"
 			data-options="
-					url:'fenghuang/getDicByTypeComboboxs.do?dicType=12',
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=8',
 					valueField:'dicId',
 					textField:'dicName',
 					panelHeight:'auto'
@@ -119,7 +119,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <input class="easyui-combobox" 
 			name="hotel"
 			data-options="
-					url:'fenghuang/getDicByTypeComboboxs.do?dicType=12',
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=16',
 					valueField:'dicId',
 					textField:'dicName',
 					panelHeight:'auto'
@@ -130,7 +130,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	 <input class="easyui-combobox" 
 			name="Producttypes"
 			data-options="
-					url:'fenghuang/getDicByTypeComboboxs.do?dicType=12',
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=31',
 					valueField:'dicId',
 					textField:'dicName',
 					panelHeight:'auto'
@@ -141,7 +141,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	<input class="easyui-combobox" 
 			name="zao"
 			data-options="
-					url:'fenghuang/getDicByTypeComboboxs.do?dicType=12',
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=22',
 					valueField:'dicId',
 					textField:'dicName',
 					panelHeight:'auto'
@@ -149,7 +149,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <input class="easyui-combobox" 
 			name="zhong"
 			data-options="
-					url:'fenghuang/getDicByTypeComboboxs.do?dicType=12',
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=23',
 					valueField:'dicId',
 					textField:'dicName',
 					panelHeight:'auto'
@@ -157,7 +157,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<input class="easyui-combobox" 
 			name="wan"
 			data-options="
-					url:'fenghuang/getDicByTypeComboboxs.do?dicType=12',
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=24',
 					valueField:'dicId',
 					textField:'dicName',
 					panelHeight:'auto'
@@ -169,7 +169,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	<input class="easyui-combobox" 
 			name="productbrand"
 			data-options="
-					url:'fenghuang/getDicByTypeComboboxs.do?dicType=12',
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=32',
 					valueField:'dicId',
 					textField:'dicName',
 					panelHeight:'auto'

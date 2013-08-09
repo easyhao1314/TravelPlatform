@@ -71,7 +71,7 @@
 	  -->
 		<div class="easyui-panel" title="酒店供应商列表"
 		style="height:480px;width: auto;">
-		<table id="dg" class="easyui-datagrid"
+		<table id="dgJiudian" class="easyui-datagrid"
 			data-options="url:'fenghuang/ZiyuanJiudian.do',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 			pagination="true" toolbar="#currencyDatagridtoolbar">
 			<thead>
@@ -98,7 +98,7 @@
 	<div id="addJiudian"  class="easyui-dialog" title="酒店新增"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:700px;height:450px;padding:10px;">
-		<form id="addForm" method="post">
+		<form id="addJiudianForm" method="post">
 			<table align="center">
 <tr>
 <td><div class="fitem"><label>酒店编号:</label></td><td>--系统自动生成--</div></td>
@@ -168,9 +168,9 @@
 </tr>
 
 <tr>
-<tr><td colspan="4s" align="center">
+<tr><td colspan="4" align="center">
 <a href="javascript:SaveJiudian();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> 
-<a class="easyui-linkbutton" iconCls="icon-undo" onclick="$('#addForm').form('clear')">重置</a></td>
+<a class="easyui-linkbutton" iconCls="icon-undo" onclick="$('#addJiudianForm').form('clear')">重置</a></td>
 </tr>
 			</table>
 			<input id="dicType" name="dicType" type="hidden">
@@ -180,7 +180,7 @@
 	<div id="updateJiudian"  class="easyui-dialog" title="酒店修改"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:700px;height:450px;padding:10px;">
-		<form id="updateForm" method="post">
+		<form id="updateJiudianForm" method="post">
 			<table align="center">
 <tr>
 <input id="id" name="id" class="easyui-validatebox" hidden="true">
@@ -250,8 +250,8 @@
 </tr>
 
 <tr>
-<tr><td colspan="4s" align="center"><a href="javascript:jiudianUpdate();" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
-<a class="easyui-linkbutton" iconCls="icon-undo" onclick="$('#updateForm').form('clear')">重置</a></td>
+<tr><td colspan="4" align="center"><a href="javascript:jiudianUpdate();" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
+<a href="javascript:closedupdateJiudian();" class="easyui-linkbutton" iconCls="icon-undo">取消</a></td>
 </tr>
 			</table>
 			<input id="dicType" name="dicType" type="hidden">
@@ -277,7 +277,7 @@
 	}
 		//模糊查询
 		function ZyjiudianSelectLike(){
-		var opts = $('#dg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
+		var opts = $('#dgJiudian').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
 			var param = {
 				name: $("#name").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
 				chengshi: $("#chengshi").combobox('getValue'),
@@ -295,7 +295,7 @@
 					type : 'POST' ,
 					dataType : 'json' ,
 					success : function(data){
-						$('#dg').datagrid('loadData',data);
+						$('#dgJiudian').datagrid('loadData',data);
 					}
 				});
 		}
@@ -303,7 +303,7 @@
 
 	//删除
 	function ZyjiudianDelete(){
-	 var row = $("#dg").datagrid("getSelected");
+	 var row = $("#dgJiudian").datagrid("getSelected");
 			if (row) {
 				var param = {
 					"id" :  row.id
@@ -317,7 +317,7 @@
 					success : function(data) {
 						if (data.success) {
 							$.messager.alert("删除成功", "删除成功！", "info");
-							$("#dg").datagrid('reload');
+							$("#dgJiudian").datagrid('reload');
 						} else {
 							$.messager.alert("删除失败", "删除失败!", "error");
 						}
@@ -333,11 +333,11 @@
 	  //新增
 		function addJiudian() {
 			$("#addJiudian").dialog("open");
-			$("#addForm").form("clear");
+			$("#addJiudianForm").form("clear");
 		}
          //新增保存
 		function SaveJiudian() {
-			$('#addForm').form('submit', {
+			$('#addJiudianForm').form('submit', {
 				url : 'fenghuang/ZiyuanJiudianAdd.do',
 				onSubmit : function() {
 					return $(this).form('validate');
@@ -347,10 +347,10 @@
 					if (result.success) {
 					$('#addJiudian').dialog('close');
 						$.messager.alert("保存成功", "保存成功！", "info");
-						 $('#dg').datagrid('reload'); 
+						 $('#dgJiudian').datagrid('reload'); 
 					} else {
 						$.messager.alert("保存失败", "保存失败!", "error");
-						$('#dg').datagrid('reload');
+						$('#dgJiudian').datagrid('reload');
 					}
 				}
 			});
@@ -365,7 +365,7 @@
           //通过主键，查询该操作，并处于编辑状态。 是否打开tab，还是直接弹出window 
 			$("#updateJiudian").dialog("open");
 			//准备回显的数据
-			var row = $("#dg").datagrid("getSelected");
+			var row = $("#dgJiudian").datagrid("getSelected");
 			//alert(row.tuanNO);
 		
 			if(row){
@@ -379,7 +379,7 @@
 					dataType : "json",
 					success : function(data) {
 		
-					   $('#updateForm').form('load',data.rows[0]);
+					   $('#updateJiudianForm').form('load',data.rows[0]);
 				
 					},
 					error : function() {
@@ -390,7 +390,7 @@
 		}
 		 //修改
 		function jiudianUpdate() {
-			$("#updateForm").form('submit', {
+			$("#updateJiudianForm").form('submit', {
 				url : 'fenghuang/ZiyuanJiudianUpdate.do',
 				onSubmit : function() {
 					return $(this).form('validate');
@@ -403,17 +403,17 @@
 					if (result.success) {
 					  $("#updateJiudian").dialog('close');
 						$.messager.alert("修改成功", "修改成功！", "info"); 
-						$("#dg").datagrid('reload');
+						$("#dgJiudian").datagrid('reload');
 					} else {
 						$.messager.alert("修改失败", "修改失败!", "error");
-						$("#dg").datagrid('reload');
+						$("#dgJiudian").datagrid('reload');
 					}
 				}
 			});
 		}
 		
 		//关闭
-		function closedSearch() {
+		function closedupdateJiudian() {
 			$('#updateJiudian').dialog('close');
 		}
 	

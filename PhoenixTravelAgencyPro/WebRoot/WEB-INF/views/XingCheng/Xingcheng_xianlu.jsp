@@ -51,10 +51,10 @@
 	  <form id="xianluAddForm" method="post">
 	     <table>
 	       <tr>
-	         <td>线路名称：</td><td><input name="xianluname" class="easyui-validatebox"></td><td>天数：</td><td><input name="tianshu" class="easyui-validatebox"></td>
+	         <td>线路名称：</td><td><input name="xianluname" class="easyui-validatebox"  required="true"></td><td>天数：</td><td><input name="tianshu" class="easyui-validatebox"  required="true"></td>
 	       </tr>
 	        <tr>
-	         <td>国家：</td><td><input name="guojia" class="easyui-validatebox"></td><td>维护人：</td><td><input name="weihuren" class="easyui-validatebox"></td>
+	         <td>国家：</td><td><input name="guojia" class="easyui-validatebox"  required="true"></td><td>维护人：</td><td><input name="weihuren" class="easyui-validatebox"  required="true"></td>
 	       </tr>
 	        <tr>
 	        <td colspan="4" align="center"><a href="javascript:addXianlu();" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
@@ -81,6 +81,7 @@
 					if (result.success) {
 						$.messager.alert("保存成功", "保存成功！", "info");
 					   $("#xianluAdd").dialog('close');
+					   $("#dg").datagrid("reload");
 					} else {
 						$.messager.alert("保存失败", "保存失败!", "error");
 					
@@ -92,7 +93,7 @@
 	var row = $("#dg").datagrid("getSelected");
 
 	if(row!=null){
-		 	var url= "Xingcheng_mx.do?xianid="+row.xianid;//在框架中的方法：Xingcheng_mx.do打开明细页面传xianid的值
+		 	var url= "Xingcheng_mx.do?xianid="+row.xlid;//在框架中的方法：Xingcheng_mx.do打开明细页面传xianid的值
 		 	
        var tab = $('#tt').tabs('getSelected'); 
 		if (tab){  

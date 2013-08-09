@@ -205,7 +205,7 @@
 </tr>
 <tr>
 <tr><td colspan="6" align="center"><a href="javascript:jingdianUpdate();" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
-<a class="easyui-linkbutton" iconCls="icon-undo" onclick="$('#updateJingdianForm').form('clear')">重置</a></td>
+<a href="javascript:closedjingdianUpdate()" class="easyui-linkbutton" iconCls="icon-undo">取消</a></td>
 </tr>
 			</table>
 			<input id="dicType" name="dicType" type="hidden">
@@ -360,7 +360,7 @@
 		}
 		
 		//关闭
-		function closedSearch() {
+		function closedjingdianUpdate() {
 			$('#jingdianUpdate').dialog('close');
 		}
 	

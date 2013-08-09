@@ -13,7 +13,11 @@ import com.fenghuang.entiey.CountrySettingDictionary;
 import com.fenghuang.entiey.DantuanXinXi;
 import com.fenghuang.entiey.FunctionMenu;
 import com.fenghuang.entiey.TestUser;
+import com.fenghuang.entiey.TuanXianlu;
+import com.fenghuang.entiey.Xianlu;
+import com.fenghuang.service.IXianluService;
 import com.fenghuang.service.IdantuanService;
+import com.fenghuang.service.ItuanXianluService;
 import com.fenghuang.util.Pagination;
 
 @Service
@@ -21,13 +25,35 @@ public class dantuanServiceImpl implements IdantuanService{
 	
 	@Autowired
 	public Idantuan idt;
-
+	@Autowired
+	 IXianluService ixls;
+	@Autowired
+	 ItuanXianluService itxls;
 	@Override
 	public int add(DantuanXinXi dt) {
 		// TODO 添加
-		return idt.add(dt);
+		int count=idt.add(dt);
+		if(count>0){
+			try {
+				Xianlu x=new Xianlu();
+				x.setGuojia((int)(dt.getCfgj()));
+				x.setTianshu(dt.getCfts());
+				x.setXianluname(dt.getTuanName());
+	            ixls.AddXianlu(x);
+	            
+	            TuanXianlu txl=new TuanXianlu();
+	            txl.setTuanNo(dt.getTuanNO());
+	         
+	            txl.setXlid(ixls.AddXianlu(x));
+	            itxls.addTuanXianlu(txl);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		return count;
 	}
-
+	
 	@Override
 	public Pagination<DantuanXinXi> getByQueryConditionPagination(int currentPage,
 			int numPerPage) throws Exception {
@@ -91,6 +117,8 @@ public class dantuanServiceImpl implements IdantuanService{
 		public List<Map<String,Object>> getDate(String ctsj, String cfts) {
 			return idt.getDate(ctsj,cfts);
 		}
+
+	
 	
 
 }

@@ -75,7 +75,7 @@
 	
 		<div class="easyui-panel" title="地接社供应商列表"
 		style="height:480px;width: auto;">
-		<table id="dg" class="easyui-datagrid"
+		<table id="dgDijie" class="easyui-datagrid"
 			data-options="url:'fenghuang/DijieSelect.do',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 			pagination="true" toolbar="#currencyDatagridtoolbar">
 			<thead>
@@ -103,20 +103,24 @@
      <div id="addDijie" class="easyui-dialog" title="地接新增"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:800px;height:500px;padding:10px;">
-		<form id="addForm" method="post">
+		<form id="addDijieForm" method="post">
 			<table align="center">
 				<tr>
 <td><div class="fitem"><label>供应商编号:</label></td><td>--系统自动生成--</div></td>
-<td><div class="fitem"><label>供应商名称:</label></td><td><input name="name" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>供应商英文名称:</label></td><td><input name="ywname" class="easyui-validatebox" required="true"></div></td>
-</tr>>
+<td><div class="fitem"><label>供应商名称:</label></td><td><input name="name" class="easyui-validatebox"></div></td>
+<td><div class="fitem"><label>供应商英文名称:</label></td><td><input name="ywname" class="easyui-validatebox"></div></td>
+</tr>
 <tr>
 <td><div class="fitem"><label>所属城市：</label></td><td><input name="chengshiId" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=8',
 					valueField:'dicNo',
 					textField:'dicName',
 					panelHeight:'auto',
 					editable:false"></div></td>			
-<td><div class="fitem"><label>具体地址：</label></td><td><input name="dizhi" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>业务区域：</label></td><td><input name="ywqyId"class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=7',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false"></div></td>			
 <td><div class="fitem"><label>合作级别:</label></td><td><input name="hzjbId" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=4',
 					valueField:'dicNo',
 					textField:'dicName',
@@ -124,32 +128,32 @@
 					editable:false"></div></td>			
 </tr>
 <tr>
-<td><div class="fitem"><label>联系人：</label></td><td><input name="lianxiren" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>电话：</label></td><td><input name="dianhua" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>手机:</label></td><td><input name="shouji" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>联系人：</label></td><td><input name="lianxiren" class="easyui-validatebox"></div></td>
+<td><div class="fitem"><label>电话：</label></td><td><input name="dianhua" class="easyui-validatebox"></div></td>
+<td><div class="fitem"><label>手机:</label></td><td><input name="shouji" class="easyui-validatebox"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>传真：</label></td><td><input name="chuanzhen" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>Email：</label></td><td><input name="email" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>SKYPE:</label></td><td><input name="skype" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>传真：</label></td><td><input name="chuanzhen" class="easyui-validatebox"></div></td>
+<td><div class="fitem"><label>Email：</label></td><td><input name="email" class="easyui-validatebox"></div></td>
+<td><div class="fitem"><label>SKYPE:</label></td><td><input name="skype" class="easyui-validatebox"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>MSN：</label></td><td><input name="msn" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>YAHOO：</label></td><td><input name="yahoo" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>网址:</label></td><td><input name="wangzhi" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>MSN：</label></td><td><input name="msn" class="easyui-validatebox"></div></td>
+<td><div class="fitem"><label>YAHOO：</label></td><td><input name="yahoo" class="easyui-validatebox"></div></td>
+<td><div class="fitem"><label>网址:</label></td><td><input name="wangzhi" class="easyui-validatebox"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>代理人开户银：</label></td><td><input name="kaihu" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>代理人账号：</label></td><td><input name="dlrzh" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>银行地址:</label></td><td><input name="yhdz" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>代理人开户银：</label></td><td><input name="kaihu" class="easyui-validatebox"></div></td>
+<td><div class="fitem"><label>代理人账号：</label></td><td><input name="dlrzh" class="easyui-validatebox"></div></td>
+<td><div class="fitem"><label>银行地址:</label></td><td><input name="yhdz" class="easyui-validatebox"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>收款人账号：</label></td><td><input name="skrzh" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>收款人名称：</label></td><td><input name="skrxm" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>收款人地址:</label></td><td><input name="skrdz" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>收款人账号：</label></td><td><input name="skrzh" class="easyui-validatebox"></div></td>
+<td><div class="fitem"><label>收款人名称：</label></td><td><input name="skrxm" class="easyui-validatebox"></div></td>
+<td><div class="fitem"><label>收款人地址:</label></td><td><input name="skrdz" class="easyui-validatebox"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>业务覆盖区域：</label></td><td colspan="5"><input name="ywqyId" class="easyui-validatebox"  size="80"></div></td>
+<td><div class="fitem"><label>具体地址：</label></td><td colspan="5"><input name="dizhi" class="easyui-validatebox"  size="80"></div></td>
 
 </tr>
 <tr>
@@ -169,8 +173,8 @@
 
 </tr>
 <tr>
-<tr><td colspan="4s" align="center"><a href="javascript:dijieSave();" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
-<a class="easyui-linkbutton" iconCls="icon-undo" onclick="$('#addForm').form('clear')">重置</a></td>
+<tr><td colspan="4" align="center"><a href="javascript:dijieSave();" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
+<a class="easyui-linkbutton" iconCls="icon-undo" onclick="$('#addDijieForm').form('clear')">重置</a></td>
 </tr>
 			</table>
 			<input id="dicType" name="dicType" type="hidden">
@@ -180,7 +184,7 @@
      <div id="updateDijie" class="easyui-dialog" title="地接修改"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:800px;height:500px;padding:10px;">
-		<form id="updateForm" method="post">
+		<form id="updateDijieForm" method="post">
 			<table align="center">
 				<tr>
 
@@ -195,7 +199,11 @@
 					textField:'dicName',
 					panelHeight:'auto',
 					editable:false"></div></td>			
-<td><div class="fitem"><label>具体地址：</label></td><td><input name="dizhi" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>业务区域：</label></td><td><input name="ywqyId" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=7',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false"></div></td>			
 <td><div class="fitem"><label>合作级别:</label></td><td><input name="hzjbId" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=4',
 					valueField:'dicNo',
 					textField:'dicName',
@@ -203,32 +211,32 @@
 					editable:false"></div></td>			
 </tr>
 <tr>
-<td><div class="fitem"><label>联系人：</label></td><td><input name="lianxiren" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>电话：</label></td><td><input name="dianhua" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>手机:</label></td><td><input name="shouji" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>联系人：</label></td><td><input name="lianxiren" class="easyui-validatebox"></div></td>
+<td><div class="fitem"><label>电话：</label></td><td><input name="dianhua" class="easyui-validatebox"></div></td>
+<td><div class="fitem"><label>手机:</label></td><td><input name="shouji" class="easyui-validatebox"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>传真：</label></td><td><input name="chuanzhen" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>Email：</label></td><td><input name="email" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>SKYPE:</label></td><td><input name="skype" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>传真：</label></td><td><input name="chuanzhen" class="easyui-validatebox"></div></td>
+<td><div class="fitem"><label>Email：</label></td><td><input name="email" class="easyui-validatebox"></div></td>
+<td><div class="fitem"><label>SKYPE:</label></td><td><input name="skype" class="easyui-validatebox"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>MSN：</label></td><td><input name="msn" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>YAHOO：</label></td><td><input name="yahoo" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>网址:</label></td><td><input name="wangzhi" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>MSN：</label></td><td><input name="msn" class="easyui-validatebox"></div></td>
+<td><div class="fitem"><label>YAHOO：</label></td><td><input name="yahoo" class="easyui-validatebox"></div></td>
+<td><div class="fitem"><label>网址:</label></td><td><input name="wangzhi" class="easyui-validatebox"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>代理人开户银：</label></td><td><input name="kaihu" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>代理人账号：</label></td><td><input name="dlrzh" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>银行地址:</label></td><td><input name="yhdz" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>代理人开户银：</label></td><td><input name="kaihu" class="easyui-validatebox"></div></td>
+<td><div class="fitem"><label>代理人账号：</label></td><td><input name="dlrzh" class="easyui-validatebox"></div></td>
+<td><div class="fitem"><label>银行地址:</label></td><td><input name="yhdz" class="easyui-validatebox"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>收款人账号：</label></td><td><input name="skrzh" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>收款人名称：</label></td><td><input name="skrxm" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>收款人地址:</label></td><td><input name="skrdz" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>收款人账号：</label></td><td><input name="skrzh" class="easyui-validatebox"></div></td>
+<td><div class="fitem"><label>收款人名称：</label></td><td><input name="skrxm" class="easyui-validatebox"></div></td>
+<td><div class="fitem"><label>收款人地址:</label></td><td><input name="skrdz" class="easyui-validatebox"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>业务覆盖区域：</label></td><td colspan="5"><input name="ywqyId" class="easyui-validatebox"  size="80"></div></td>
+<td><div class="fitem"><label>具体地址：</label></td><td colspan="5"><input name="dizhi" class="easyui-validatebox"  size="80"></div></td>
 
 </tr>
 <tr>
@@ -240,16 +248,16 @@
 
 </tr>
 <tr>
-<td><div class="fitem"><label>优势：</label></td><td colspan="5"><input name="youshi" class="easyui-validatebox" size="80"></div></td>
+<td><div class="fitem"><label>优势：</label></td><td colspan="5"><input name="youshi" class="easyui-validatebox"  size="80"></div></td>
 
 </tr>
 <tr>
-<td><div class="fitem"><label>备注：</label></td><td colspan="5"><input name="bz" class="easyui-validatebox"   size="80"></div></td>
+<td><div class="fitem"><label>备注：</label></td><td colspan="5"><input name=" bz" class="easyui-validatebox"  size="80"></div></td>
 
 </tr>
 <tr>
-<tr><td colspan="4s" align="center"><a href="javascript:dijieUpdate();" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
-<a class="easyui-linkbutton" iconCls="icon-undo" onclick="$('#updateForm').form('clear')">重置</a></td>
+<tr><td colspan="4" align="center"><a href="javascript:dijieUpdate();" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
+<a href="javascript:closedupdateDijie()" class="easyui-linkbutton" iconCls="icon-undo">取消</a></td>
 </tr>
 			</table>
 			<input id="dicType" name="dicType" type="hidden">
@@ -271,8 +279,8 @@
  * 查询按钮
  */
 		function dijieSelectLike(){
-		console.info($('#dg').datagrid('options'));
-		var opts = $('#dg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
+		console.info($('#dgDijie').datagrid('options'));
+		var opts = $('#dgDijie').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
 			var param = {
 				name: $("#name").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
 				chengshiId: $("#chengshiId").combobox('getValue') ,
@@ -288,7 +296,7 @@
 					type : 'POST' ,
 					dataType : 'json' ,
 					success : function(data){
-						$('#dg').datagrid('loadData',data);
+						$('#dgDijie').datagrid('loadData',data);
 					}
 				});
 		}
@@ -299,11 +307,11 @@
 	  //新增
 		function addDijie() {
 			$("#addDijie").dialog("open");
-			$("#addForm").form("clear");
+			$("#addDijieForm").form("clear");
 		}
          
 		function dijieSave() {
-			$('#addForm').form('submit', {
+			$('#addDijieForm').form('submit', {
 				url : 'fenghuang/dijieAdd.do',
 				onSubmit : function() {
 					return $(this).form('validate');
@@ -313,10 +321,10 @@
 					if (result.success) {
 					$('#addDijie').dialog('close');
 						$.messager.alert("保存成功", "保存成功！", "info");
-						 $('#dg').datagrid('reload'); 
+						 $('#dgDijie').datagrid('reload'); 
 					} else {
 						$.messager.alert("保存失败", "保存失败!", "error");
-						$('#dg').datagrid('reload');
+						$('#dgDijie').datagrid('reload');
 					}
 				}
 			});
@@ -329,7 +337,7 @@
 	
 		//删除操作要执行的方法
 	function dijieDelete(){
-	  var row = $("#dg").datagrid("getSelected");
+	  var row = $("#dgDijie").datagrid("getSelected");
 			if (row) {
 				var param = {
 					"id" :  row.id
@@ -342,7 +350,7 @@
 					success : function(data) {
 						if (data.success) {
 							$.messager.alert("删除成功", "删除成功！", "info");
-							$("#dg").datagrid('reload');
+							$("#dgDijie").datagrid('reload');
 						} else {
 							$.messager.alert("删除失败", "删除失败!", "error");
 						}
@@ -359,8 +367,8 @@
           //通过主键，查询该操作，并处于编辑状态。 是否打开tab，还是直接弹出window 
 			$("#updateDijie").dialog("open");
 			//准备回显的数据
-			var row = $("#dg").datagrid("getSelected");
-			//alert(row.tuanNO);
+			var row = $("#dgDijie").datagrid("getSelected");
+			alert(row.id);
 		
 			if(row){
 				var param = {
@@ -373,7 +381,7 @@
 					dataType : "json",
 					success : function(data) {
 		
-					   $('#updateForm').form('load',data.rows[0]);
+					   $('#updateDijieForm').form('load',data.rows[0]);
 				
 					},
 					error : function() {
@@ -384,7 +392,7 @@
 		}
 		 //修改
 		function dijieUpdate() {
-			$("#updateForm").form('submit', {
+			$("#updateDijieForm").form('submit', {
 				url : 'fenghuang/dijieUpdate.do',
 				onSubmit : function() {
 					return $(this).form('validate');
@@ -397,17 +405,17 @@
 					if (result.success) {
 					  $("#updateDijie").dialog('close');
 						$.messager.alert("修改成功", "修改成功！", "info"); 
-						$("#dg").datagrid('reload');
+						$("#dgDijie").datagrid('reload');
 					} else {
 						$.messager.alert("修改失败", "修改失败!", "error");
-						$("#dg").datagrid('reload');
+						$("#dgDijie").datagrid('reload');
 					}
 				}
 			});
 		}
 		
 		//关闭
-		function closedSearch() {
+		function closedupdateDijie() {
 			$('#updateDijie').dialog('close');
 		}
 	

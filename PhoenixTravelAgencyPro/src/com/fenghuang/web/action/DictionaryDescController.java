@@ -59,7 +59,7 @@ public class DictionaryDescController {
 		
 		return result;
 	}
-	@RequestMapping("fenghuang/getDictionaryDescsPaginations.do")
+	@RequestMapping("fenghuang/getDictionaryDescs2.do")
 	@ResponseBody
 	public Map<String, Object> getDictionaryDescPaginations(HttpServletRequest request,
 			HttpServletResponse response, Integer page, Integer rows,
@@ -183,7 +183,8 @@ public class DictionaryDescController {
 	 *11.销售12.计调13.客户经理14.签证标准15.导游报价标准
 	 *16.酒店标准17.酒店报价标准18.车型19.巴士司导20.巴士报价标准
 	 *21.用餐标准22.早餐标准23.午餐标准24.晚餐标准25.团队类型
-	 *26.客户资信 27.客户价值  28.客户类别  29.客户VIP
+	 *26.客户资信 27.客户价值  28.客户类别  29.客户VIP 30.目标人群
+	 *31.产品类型 32.产品品牌
 	 **/
 	public List<Map<String, Object>> getComboxs(HttpServletRequest request,
 			HttpServletResponse response,String dicType){

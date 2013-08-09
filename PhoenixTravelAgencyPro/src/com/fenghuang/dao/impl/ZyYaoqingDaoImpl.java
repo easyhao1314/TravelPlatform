@@ -24,7 +24,7 @@ public class ZyYaoqingDaoImpl extends BaseDao implements IZyYaoqingDao{
 	public Pagination<Yaoqinghan> yaoqingSelect(int currentPage, int numPerPage,String guoduid,String miaoshu)
 			throws Exception {
 		// TODO Auto-generated method stub
-		StringBuffer sql=new StringBuffer("select y.id,y.chengben,d.dicName as bizhong,d1.dicName as guodu,d2.dicName as shifou,y.miaoshu from yaoqinghan as y,dictionarydesc as d,dictionarydesc as d1,dictionarydesc as d2 where y.bizhongId = d.dicNo and y.guoduid=d1.dicNo and y.shiyongid=d2.dicNo and 1=1");
+		StringBuffer sql=new StringBuffer("select y.id,y.chengben,d.dicName as bizhong,d1.dicName as guodu,d2.dicName as shifou,y.miaoshu from yaoqinghan as y left join dictionarydesc as d on y.bizhongId = d.dicNo left join dictionarydesc as d1 on y.guoduid=d1.dicNo left join dictionarydesc as d2 on y.shiyongid=d2.dicNo  where  1=1");
 		if(guoduid != null && !"".equals(guoduid)){
 			sql.append(" and guoduid ='");
 			sql.append(guoduid);

@@ -21,7 +21,9 @@ public class OperateDaoImpl extends BaseDao implements IOperateDao {
 	@Override
 	public boolean AddOperate(Operate o) {
 		// TODO Auto-generated method stub
-		return false;
+		String sql ="insert into Operate (tuanNo,tuanName,kehuID,kehuName,chutuantime,huituantime,paidanren,jiedanren,jinzhan,paidantime,operateType,operatestate) values(?,?,?,?,?,?,?,?,?,?,?,?)";
+		int sum = this.update(sql,o.getTuanNo(),o.getTuanName(),o.getKehuID(),o.getKehuName(),o.chutuantime,o.huituantime,o.getPaidanren(),o.getJiedanren(),o.getJinzhan(),o.getPaidantime(),o.getOperateType(),o.getOperatestate());
+		return sum>0;
 	}
 
 

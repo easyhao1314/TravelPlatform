@@ -68,7 +68,7 @@
 
 		<div class="easyui-panel" title="购物列表"
 		style="height:480px;width: auto;">
-		<table id="dg" class="easyui-datagrid"
+		<table id="dgGouwu" class="easyui-datagrid"
 			data-options="url:'fenghuang/gouwuSelect.do',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 			pagination="true" toolbar="#currencyDatagridtoolbar">
 			<thead>
@@ -96,7 +96,7 @@
 <div id="addGouwu" class="easyui-dialog" title="购物店新增"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:600px;height:300px;padding:10px;">
-		<form id="addForm" method="post">
+		<form id="addGouwuForm" method="post">
 			<table align="center">
 				<tr>
 <td><div class="fitem"><label>编号:</label></td><td>--系统自动生成--</div></td>
@@ -134,8 +134,8 @@
 <td><div class="fitem"><label>备注：</label></td><td colspan="3"><input name="bz" class="easyui-validatebox" size="70"></div></td>
 </tr>
 <tr>
-<tr><td colspan="4s" align="center"><a href="javascript:SaveGouwu();" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
-<a  class="easyui-linkbutton" iconCls="icon-undo" onclick="$('#addForm').form('clear')">重置</a></td>
+<tr><td colspan="4" align="center"><a href="javascript:SaveGouwu();" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
+<a  class="easyui-linkbutton" iconCls="icon-undo" onclick="$('#addGouwuForm').form('clear')">重置</a></td>
 </tr>
 			</table>
 			<input id="dicType" name="dicType" type="hidden">
@@ -145,7 +145,7 @@
 <div id="updateGouwu" class="easyui-dialog" title="购物店修改"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:600px;height:300px;padding:10px;">
-		<form id="updateForm" method="post">
+		<form id="updateGouwuForm" method="post">
 			<table align="center">
 				
 <tr>
@@ -182,8 +182,8 @@
 <td><div class="fitem"><label>备注：</label></td><td colspan="3"><input name="bz" class="easyui-validatebox" size="70"></div></td>
 </tr>
 <tr>
-<tr><td colspan="4s" align="center"><a href="javascript:gouwuUpdate();" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
-<a  class="easyui-linkbutton" iconCls="icon-undo" onclick="$('#updateForm').form('clear')">重置</a></td>
+<tr><td colspan="4" align="center"><a href="javascript:gouwuUpdate();" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
+<a href="javascript:closedupdateGouwu()" class="easyui-linkbutton" iconCls="icon-undo">取消</a></td>
 </tr>
 			</table>
 			<input id="dicType" name="dicType" type="hidden">
@@ -206,8 +206,8 @@
  * 查询按钮
  */
 		function gouwuSelectLike(){
-		console.info($('#dg').datagrid('options'));
-		var opts = $('#dg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
+		console.info($('#dgGouwu').datagrid('options'));
+		var opts = $('#dgGouwu').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
 			var param = {
 				name: $("#name").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
 				chengshiId: $("#chengshiId").combobox('getValue') ,
@@ -222,7 +222,7 @@
 					type : 'POST' ,
 					dataType : 'json' ,
 					success : function(data){
-						$('#dg').datagrid('loadData',data);
+						$('#dgGouwu').datagrid('loadData',data);
 					}
 				});
 		}
@@ -232,11 +232,11 @@
 	  //新增
 		function addGouwu() {
 			$("#addGouwu").dialog("open");
-			$("#addForm").form("clear");
+			$("#addGouwuForm").form("clear");
 		}
          
 		function SaveGouwu() {
-			$('#addForm').form('submit', {
+			$('#addGouwuForm').form('submit', {
 				url : 'fenghuang/gouwuAdd.do',
 				onSubmit : function() {
 					return $(this).form('validate');
@@ -246,10 +246,10 @@
 					if (result.success) {
 					$('#addGouwu').dialog('close');
 						$.messager.alert("保存成功", "保存成功！", "info");
-						 $('#dg').datagrid('reload'); 
+						 $('#dgGouwu').datagrid('reload'); 
 					} else {
 						$.messager.alert("保存失败", "保存失败!", "error");
-						$('#dg').datagrid('reload');
+						$('#dgGouwu').datagrid('reload');
 					}
 				}
 			});
@@ -260,7 +260,7 @@
 		} 
 	//删除操作要执行的方法
 	function gouwuDelete(){
-	  var row = $("#dg").datagrid("getSelected");
+	  var row = $("#dgGouwu").datagrid("getSelected");
 			if (row) {
 				var param = {
 					"id" :  row.id
@@ -273,7 +273,7 @@
 					success : function(data) {
 						if (data.success) {
 							$.messager.alert("删除成功", "删除成功！", "info");
-							$("#dg").datagrid('reload');
+							$("#dgGouwu").datagrid('reload');
 						} else {
 							$.messager.alert("删除失败", "删除失败!", "error");
 						}
@@ -290,7 +290,7 @@
           //通过主键，查询该操作，并处于编辑状态。 是否打开tab，还是直接弹出window 
 			$("#updateGouwu").dialog("open");
 			//准备回显的数据
-			var row = $("#dg").datagrid("getSelected");
+			var row = $("#dgGouwu").datagrid("getSelected");
 			//alert(row.tuanNO);
 		
 			if(row){
@@ -304,7 +304,7 @@
 					dataType : "json",
 					success : function(data) {
 		
-					   $('#updateForm').form('load',data.rows[0]);
+					   $('#updateGouwuForm').form('load',data.rows[0]);
 				
 					},
 					error : function() {
@@ -315,7 +315,7 @@
 		}
 		 //修改
 		function gouwuUpdate() {
-			$("#updateForm").form('submit', {
+			$("#updateGouwuForm").form('submit', {
 				url : 'fenghuang/gouwuUpdate.do',
 				onSubmit : function() {
 					return $(this).form('validate');
@@ -328,17 +328,17 @@
 					if (result.success) {
 					  $("#updateGouwu").dialog('close');
 						$.messager.alert("修改成功", "修改成功！", "info"); 
-						$("#dg").datagrid('reload');
+						$("#dgGouwu").datagrid('reload');
 					} else {
 						$.messager.alert("修改失败", "修改失败!", "error");
-						$("#dg").datagrid('reload');
+						$("#dgGouwu").datagrid('reload');
 					}
 				}
 			});
 		}
 		
 		//关闭
-		function closedSearch() {
+		function closedupdateGouwu() {
 			$('#updateGouwu').dialog('close');
 		}
 	

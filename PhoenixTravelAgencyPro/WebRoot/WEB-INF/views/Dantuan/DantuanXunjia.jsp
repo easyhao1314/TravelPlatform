@@ -115,17 +115,17 @@ data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=3',
                      </th>  
                      <th data-options="field:'tdzt'" width="60"> 团队状态</th>  
                      <!--点击团队名称进入团队详情（新增页面） -->                     
-                    <th data-options="field:'tdm'" width="60">团队名称</th> 
+                    <th data-options="field:'tuanName'" width="60">团队名称</th> 
                       <!--点击报价数进入客户信息  -->
-                      <th data-options="field:'05'" width="40">报价数</th>                                                               
+                       <!--<th data-options="field:'05'" width="40">报价数</th>    -->                                                            
                       <th data-options="field:'ctsj'" width="60">出团时间</th> 
                      <th data-options="field:'htsj'" width="60">回团时间</th>  
                     <th data-options="field:'xsNo'" width="60"> 销售编号</th>  
                      <th data-options="field:'jdNo'" width="60">计调编号</th> 
-                     <th data-options="field:'01'" width="40">登记人</th>
+                     <th data-options="field:'lxr'" width="40">登记人</th>
                       <!--点击客户名称进入客户沟通列表 -->
                       <th id="khId" data-options="field:'khId',formatter:onOperateDantuanListKehu" width="60"> 客户名称</th>  
-                        <th data-options="field:'02'" width="40">登记日</th> 
+                        <th data-options="field:'djrtime'" width="40">登记日</th> 
                           <th data-options="field:'03'" width="40">报价</th>
                             <th data-options="field:'04'" width="80">预计毛利（万）</th> 
                     </tr>  
@@ -765,7 +765,7 @@ data-options="
 					//var result = val('(' + data + ')');//吧字符串转换为对象
 					var result = $.parseJSON(data) ;
 					console.info(result);
-					alert(result.success);
+
 					if (result.success) {
 					  $("#updateDt").dialog('close');
 						$.messager.alert("修改成功", "修改成功！", "info"); 
@@ -814,7 +814,8 @@ data-options="
    }
    function openDanTuanDetail(tuanNo){
    	var row = $("#dg").datagrid("getSelected");
-      var url= "DantuanMingxi.do?";
+   	alert("tuanNo="+tuanNo);
+      var url= "Xingcheng_mx.do?xianid="+row.xlid;
        var tab = $('#tt').tabs('getSelected'); 
 		if (tab){  
 	                 var index = $('#tt').tabs('getTabIndex', tab); 
@@ -827,29 +828,7 @@ data-options="
 				      //  closable : true,
 				         });
 				        			         
-	
-			if(row){
-				var param = {
-					"updateTuanNO" : row.tuanNO
-				};
-				
-				$.ajax({
-					url : "fenghuang/DantuanSelectId.do",
-					data : param,
-					dataType : "json",
-					success : function(data) {
-		
-					   $('#mingxiForm').form('load',data.rows[0]);
-			
-					},
-					error : function() {
-						$.messager.alert("查询失败", "服务器请求失败!", "error");
-					}
-				});
-		
-				}
-				}
-			
+	}
 		function	onOperate(val,row){
         return '<a href="javascript:void(0)" id="sb1" icon="icon-edit" onclick="">Edit</a>';
         }	

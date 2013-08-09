@@ -23,8 +23,8 @@ public class ZyJiaotongDaoIMpl extends BaseDao implements IZyJiaotongDao{
 	@Override
 	public boolean jiaotongAdd(Jiaotong jt) throws Exception {
 		// TODO 增
-		String sql="insert into jiaotong (id,name,lianxiren,chengshiId,dizhi,dianhua,shouji,email,chuanzhen,wangzhi,jiage,hzjbId,whfsid,beizhu) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-		int count=this.update(sql,jt.getId(),jt.getName(),jt.getLianxiren(),jt.getChengshiId(),jt.getDizhi(),jt.getDianhua(),jt.getShouji(),jt.getEmail(),jt.getChuanzhen(),jt.getWangzhi(),
+		String sql="insert into jiaotong (name,lianxiren,chengshiId,dizhi,dianhua,shouji,email,chuanzhen,wangzhi,jiage,hzjbId,whfsid,beizhu) values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		int count=this.update(sql,jt.getName(),jt.getLianxiren(),jt.getChengshiId(),jt.getDizhi(),jt.getDianhua(),jt.getShouji(),jt.getEmail(),jt.getChuanzhen(),jt.getWangzhi(),
 				              jt.getJiage(),jt.getHzjbId(),jt.getWhfsid(),jt.getBeizhu());
 		return count>0;
 	}
@@ -58,7 +58,7 @@ public class ZyJiaotongDaoIMpl extends BaseDao implements IZyJiaotongDao{
 	public Pagination<Jiaotong> jiaotongSelect(int currentPage, int numPerPage,String name,String chengshiId,String lianxiren,String hzjbId)
 			throws Exception {
 		// TODO Auto-generated method stub
-		StringBuffer sql=new StringBuffer("select j.id,j.name,j.dianhua,j.chuanzhen,j.shouji,j.lianxiren,d.dicName as chengsi,d1.dicName as hzjb from jiaotong as j,dictionarydesc as d,dictionarydesc as d1 where j.chengshiId=d.dicNo and j.hzjbId=d1.dicNo and 1=1 ");
+		StringBuffer sql=new StringBuffer("select j.id,j.name,j.dianhua,j.chuanzhen,j.shouji,j.lianxiren,d.dicName as chengsi,d1.dicName as hzjb from jiaotong as j left join dictionarydesc as d on j.chengshiId=d.dicNo left join dictionarydesc as d1 on j.hzjbId=d1.dicNo where 1=1 ");
 		if(name !=null && !"".equals(name)){
 			sql.append(" and name like '%");
 			sql.append(name);

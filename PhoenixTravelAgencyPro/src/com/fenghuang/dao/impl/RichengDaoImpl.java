@@ -40,7 +40,7 @@ public class RichengDaoImpl extends BaseDao implements IRichengDao  {
 		String sql="UPDATE richeng SET jiudian=+1-1";
 		List list = new ArrayList();
 		StringBuffer sb = new StringBuffer(sql);
-		if(r.getRichenganpai()!=null && !"".equals(r.richenganpai)){
+		if(r.getRichenganpai()!=null && !"".equals(r.getRichenganpai())){
 			sb.append(",richenganpai=?");
 			list.add(r.getRichenganpai());
 		}
@@ -67,6 +67,10 @@ public class RichengDaoImpl extends BaseDao implements IRichengDao  {
 		if(r.getWan()!=0){
 			sb.append(",wan=?");
 			list.add(r.getWan());
+		}
+		if(r.getJiaotongchengshi()!=null && !"".equals(r.getJiaotongchengshi())){
+			sb.append(",jiaotongchengshi=?");
+			list.add(r.getJiaotongchengshi());
 		}
 		if(r.getRiid()!=0){
 			sb.append(" where riid=?");

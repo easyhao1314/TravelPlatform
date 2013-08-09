@@ -1,6 +1,12 @@
 package com.fenghuang.dao.impl;
 
-import java.sql.Date;
+import java.sql.Connection;
+
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
@@ -8,6 +14,9 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import com.fenghuang.dao.BaseDao;
@@ -30,10 +39,11 @@ public class dantuanImpl extends BaseDao implements Idantuan{
 	// 单团添加
 	@Override
 	public int add(DantuanXinXi dt) {
-		String sql="insert into dantuanxinxi (tuanNO,khId,tdczlx,tdm,tdjb,tdzt,cfrs,cfts,cfgj,lyqy,ctsj,htsj,xsNo,jdNo,khjlNo,qzlx,xbqz,xbyq,jdbzNo,zcNo,zhongcNo,wcNo,bssdNo,cheXingNo,jdbjNo,bsbjNo,ycbjNo,dybjNo,qtdjDesc,tsDesc) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-       int i=this.update(sql,dt.getTuanNO(),dt.getKhId(),dt.getTdczlx(),dt.getTdm(),dt.getTdjb(),dt.getTdzt(),dt.getCfrs(),dt.getCfts(),dt.getCfgj(),dt.getLyqy(),
-    		                 dt.getCtsj(),dt.getHtsj(),dt.getXsNo(),dt.getJdNo(),dt.getKhjlNo(),dt.getQzlx(),dt.getXbqz(),dt.getXbyq(),dt.getJdbzNo(),dt.getZcNo(),
-    		                  dt.getZhongcNo(),dt.getWcNo(),dt.getBssdNo(),dt.getCheXingNo(),dt.getJdbjNo(),dt.getBsbjNo(),dt.getYcbjNo(),dt.getDybjNo(),dt.getQtdjDesc(),dt.getTsDesc());
+		dt.setDjrtime(new java.util.Date());
+		String sql="insert into dantuanxinxi (tuanNO,tuanName,khId,tdczlx,tdjb,tdzt,cfrs,cfts,cfgj,lyqy,ctsj,htsj,xsNo,jdNo,khjlNo,qzlx,xbqz,xbyq,jdbzNo,zcNo,zhongcNo,wcNo,bssdNo,cheXingNo,jdbjNo,bsbjNo,ycbjNo,dybjNo,djrtime,qtdjDesc,tsDesc) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+       int i=this.update(sql,dt.getTuanNO(),dt.getTuanName(),dt.getKhId(),dt.getTdczlx(),dt.getTdjb(),dt.getTdzt(),dt.getCfrs(),dt.getCfts(),dt.getCfgj(),dt.getLyqy(),
+               dt.getCtsj(),dt.getHtsj(),dt.getXsNo(),dt.getJdNo(),dt.getKhjlNo(),dt.getQzlx(),dt.getXbqz(),dt.getXbyq(),dt.getJdbzNo(),dt.getZcNo(),
+               dt.getZhongcNo(),dt.getWcNo(),dt.getBssdNo(),dt.getCheXingNo(),dt.getJdbjNo(),dt.getBsbjNo(),dt.getYcbjNo(),dt.getDybjNo(),dt.getDjrtime(),dt.getQtdjDesc(),dt.getTsDesc());
 		return i;
 	}
 
@@ -41,14 +51,14 @@ public class dantuanImpl extends BaseDao implements Idantuan{
 	@Override
 	public Pagination<DantuanXinXi> getByQueryConditionPagination(int currentPage,int numPerPage) throws Exception{
 	
-		String sql = "select * from dantuanxinxi";
+		String sql = "select d.tuanNO,d.tuanName,d.tdzt,d.ctsj,d.htsj,d.xsNo,d.jdNo,d.khId,d.djrtime,t.xlid,c.lxr from dantuanxinxi as d  left join tuanXianlu as t on d.tuanNO=t.tuanNo left join customerinfo as c on d.khId=c.id";
 		return this.getPagination(currentPage, numPerPage, sql);
 		
 	}
 	//模糊查询
 	public Pagination<DantuanXinXi>  getDantuanLike(int currentPage,
 	int numPerPage,String ctsj,String lyqy,String tdzt,Long tdjb)throws Exception{
-		StringBuffer sql = new StringBuffer("SELECT * from dantuanxinxi  where 1=1 ");
+		StringBuffer sql = new StringBuffer("select d.tuanNO,d.tuanName,d.tdzt,d.ctsj,d.htsj,d.xsNo,d.jdNo,d.khId,d.djrtime,t.xlid,c.lxr from dantuanxinxi as d  left join tuanXianlu as t on d.tuanNO=t.tuanNo left join customerinfo as c on d.khId=c.id ELECT * from dantuanxinxi  where 1=1 ");
 		if(ctsj != null && !"".equals(ctsj)){
 			sql.append(" and  ctsj ='");
 			sql.append(ctsj);
@@ -96,8 +106,8 @@ public class dantuanImpl extends BaseDao implements Idantuan{
 	@Override
 	public boolean updateDantuan(DantuanXinXi dt){
 		//  修改
-		String sql="update DantuanXinXi set khId=?,tdczlx=?,tdm=?,tdjb=?,tdzt=?,cfrs=?,cfts=?,cfgj=?,lyqy=?,ctsj=?,htsj=?,xsNo=?,jdNo=?,khjlNo=?,qzlx=?,xbqz=?,xbyq=?,jdbzNo=?,zcNo=?,zhongcNo=?,wcNo=?,bssdNo=?,cheXingNo=?,jdbjNo=?,bsbjNo=?,ycbjNo=?,dybjNo=?,qtdjDesc=?,tsDesc=? where tuanNO=?";
-		int count=this.update(sql,dt.getKhId(),dt.getTdczlx(),dt.getTdm(),dt.getTdjb(),dt.getTdzt(),dt.getCfrs(),dt.getCfts(),dt.getCfgj(),dt.getLyqy(),
+		String sql="update DantuanXinXi set khId=?,tdczlx=?,tuanName=?,tdjb=?,tdzt=?,cfrs=?,cfts=?,cfgj=?,lyqy=?,ctsj=?,htsj=?,xsNo=?,jdNo=?,khjlNo=?,qzlx=?,xbqz=?,xbyq=?,jdbzNo=?,zcNo=?,zhongcNo=?,wcNo=?,bssdNo=?,cheXingNo=?,jdbjNo=?,bsbjNo=?,ycbjNo=?,dybjNo=?,qtdjDesc=?,tsDesc=? where tuanNO=?";
+		int count=this.update(sql,dt.getKhId(),dt.getTdczlx(),dt.getTuanName(),dt.getTdjb(),dt.getTdzt(),dt.getCfrs(),dt.getCfts(),dt.getCfgj(),dt.getLyqy(),
                 dt.getCtsj(),dt.getHtsj(),dt.getXsNo(),dt.getJdNo(),dt.getKhjlNo(),dt.getQzlx(),dt.getXbqz(),dt.getXbyq(),dt.getJdbzNo(),dt.getZcNo(),
                 dt.getZhongcNo(),dt.getWcNo(),dt.getBssdNo(),dt.getCheXingNo(),dt.getJdbjNo(),dt.getBsbjNo(),dt.getYcbjNo(),dt.getDybjNo(),dt.getQtdjDesc(),dt.getTsDesc(),dt.getTuanNO());
 		return count>0;
@@ -109,7 +119,7 @@ public class dantuanImpl extends BaseDao implements Idantuan{
 	public Pagination<DantuanXinXi> getDantuanDaishen(int currentPage,
 			int numPerPage) throws Exception {
 		// TODO 待审
-		String sql = "select tuanNO,tdm,xsNo,shenpi from dantuanxinxi where shenpi='0'";
+		String sql = "select tuanNO,tuanName,xsNo,shenpi from dantuanxinxi where shenpi=0";
 		return this.getPagination(currentPage, numPerPage, sql);
 	}
 	@Override
@@ -124,7 +134,7 @@ public class dantuanImpl extends BaseDao implements Idantuan{
 	public Pagination<DantuanXinXi> getDantuanYiqueren(int currentPage,
 			int numPerPage) throws Exception {
 		// TODO已确认
-		String sql = "select * from dantuanxinxi where shenpi='1'";
+		String sql = "select * from dantuanxinxi where shenpi=1";
 		return this.getPagination(currentPage, numPerPage, sql);
 	}
 
@@ -150,5 +160,5 @@ public class dantuanImpl extends BaseDao implements Idantuan{
 		return this.queryForList(sql);
 	}
 
-
+	
 }

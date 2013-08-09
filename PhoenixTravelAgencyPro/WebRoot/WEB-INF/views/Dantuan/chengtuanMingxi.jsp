@@ -223,7 +223,7 @@ data-options="
 	 $(document).ready(function() { 
        
 				var param = {
-				"updateTuanNO" :  '<%=request.getParameter("tuanNO") %>'
+				"updateTuanNO" : '${param.tuanNo}' 
 				};
 				
 				$.ajax({
@@ -231,7 +231,6 @@ data-options="
 					data : param,
 					dataType : "json",
 					success : function(data) {
-		
 					   $('#chengtuanMingxi').form('load',data.rows[0]);
 				
 					},

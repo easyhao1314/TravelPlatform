@@ -56,7 +56,7 @@ public class ZyHangkongDaoImpl extends BaseDao implements IZyHangkongDao{
 	public Pagination<Hangkong> hangkongSelect(int currentPage, int numPerPage)
 			throws Exception {
 		// TODO 查询全部
-		String sql="select id,daima,name,shui,dicName from hangkong as h,dictionarydesc as d where h.bizongId=d.dicNo";
+		String sql="select id,daima,name,shui,dicName from hangkong as h left join dictionarydesc as d on  h.bizongId=d.dicNo";
 		Pagination<Hangkong> hkSelect=this.getPagination(currentPage, numPerPage, sql);
 		return hkSelect;
 	}
@@ -65,7 +65,7 @@ public class ZyHangkongDaoImpl extends BaseDao implements IZyHangkongDao{
 	public Pagination<Hangkong> hangkongSelectLike(int currentPage,
 			int numPerPage, String daima, String name) throws Exception {
 		// TODO 模糊查询
-		StringBuffer sql=new StringBuffer("select * from hangkong where 1=1 ");
+		StringBuffer sql=new StringBuffer("select id,daima,name,shui,dicName from hangkong as h left join dictionarydesc as d on  h.bizongId=d.dicNo where 1=1 ");
 		if(daima!=null && !"".equals(daima)){
 			sql.append(" and daima like '%");
 			sql.append(daima);

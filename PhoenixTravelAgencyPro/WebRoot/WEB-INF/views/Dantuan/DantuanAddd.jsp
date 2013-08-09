@@ -17,19 +17,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
+	<link rel="stylesheet" type="text/css" href="styles.css"   readonly="readonly">
 	-->
+	
+
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="js/locale/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript" src="js/jquery.json.js"></script>
 
   <body> 
+ 
 	<div id="addDt" >
 		<form id="addForm" method="post">
 			<table align="left">
 				<tr>
-<td><div class="fitem"><label>客户名称:</label></td><td><input name="khId" class="easyui-validatebox"></div>
+<td><div class="fitem"><label>客户名称:</label></td><td><input id="khId" name="khId" class="easyui-combobox" data-options="
+					url:'fenghuang/findAllCustomName.do',
+					valueField:'id',
+					textField:'name',
+					panelHeight:'auto',
+					editable:false 
+	"></div>
      <a href="javascript:addKehu();" class="easyui-linkbutton" iconCls="icon-ok">新增客户</a></td>
 <td><div class="fitem"><label>团号:</label></td><td><input name="tuanNO" class="easyui-validatebox"></div></td>
 </tr>
@@ -50,7 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>团名：</label></td><td><input name="tdm" class="easyui-validatebox"></div></td>
+<td><div class="fitem"><label>团名：</label></td><td><input name="tuanName" class="easyui-validatebox"></div></td>
 <td><div class="fitem"><label>团对状态：</label></td><td><input name="tdzt" class="easyui-combobox" data-options="
 					url:'fenghuang/getDicByTypeComboboxs.do?dicType=3',
 					valueField:'dicNo',
@@ -109,6 +118,17 @@ data-options="
 					panelHeight:'auto',
 					editable:false 
 	"></div></td>
+	<td><div class="fitem"><label>需办邀请：</label></td><td><input name="xbyq" class="easyui-combobox" data-options="
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=9',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false 
+	"></div></td>
+</tr>
+<!-- 
+<tr>
+<td><div class="fitem"><label>需办签证：</label></td><td><input name="xbqz" class="easyui-validatebox"></div></td>
 <td><div class="fitem"><label>签证类型：</label></td><td><input name="qzlx" class="easyui-combobox" data-options="
 					url:'fenghuang/getDicByTypeComboboxs.do?dicType=14',
 					valueField:'dicNo',
@@ -116,11 +136,7 @@ data-options="
 					panelHeight:'auto',
 					editable:false 
 	"></div></td>
-</tr>
-<tr>
-<td><div class="fitem"><label>需办签证：</label></td><td><input name="xbqz" class="easyui-validatebox"></div></td>
-<td><div class="fitem"><label>需办邀请：</label></td><td><input name="xbyq" class="easyui-validatebox"></div></td>
-</tr>
+</tr> --> 
 <tr>
 <!-- HotleStardictionary 酒店-星级字典维护 --> 
 <td><div class="fitem"><label>酒店标准：</label></td><td><input name="jdbzNo" class="easyui-combobox"
@@ -185,7 +201,7 @@ data-options="
 	"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>车型：</label></td><td><input name="bssdNo" class="easyui-combobox" data-options="
+<td><div class="fitem"><label>车型：</label></td><td><input name="cheXingNo" class="easyui-combobox" data-options="
 					url:'fenghuang/getDicByTypeComboboxs.do?dicType=18',
 					valueField:'dicNo',
 					textField:'dicName',
@@ -207,7 +223,7 @@ data-options="
 <td><div class="fitem"><label>特殊要求：</label></td><td colspan="3"><input name="tsDesc" class="easyui-validatebox" size="80"></div></td>
 </tr>
 <tr>
-<tr><td colspan="4s" align="center"><a href="javascript:dantuanSave();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> <input  type="reset" value="重置"></td>
+<tr><td colspan="4" align="center"><a href="javascript:dantuanSave();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> <input  type="reset" value="重置"></td>
 </tr>
 			</table>
 	
@@ -221,9 +237,9 @@ data-options="
 			<table align="center">
 				<tr>
 					<td><div class="fitem">
-							<label>客户公司名称:</label>
+							<label>客户名称:</label>
 					</td>
-					<td><input name="name" class="easyui-validatebox" size="70">
+					<td><input id="kehuname"  name="name" class="easyui-validatebox" size="70">
 						</div></td>
 				</tr>
 				<tr>
@@ -267,7 +283,7 @@ data-options="
 					<td><div class="fitem">
 							<label>手机:</label>
 					</td>
-					<td><input name="moblePhone"  class="easyui-numberbox">
+					<td><input name="moblePhone"  class="easyui-numberbox" validType="minLength[11]">
 						</div></td>
 					<td><div class="fitem">
 							<label>电话:</label>
@@ -415,10 +431,14 @@ data-options="
 					if (result.success) {
 					$('#addKehu').dialog('close');
 						$.messager.alert("保存成功", "保存成功！", "info");
-						 $('#dg').datagrid('reload'); 
+						 var  kehuname=$("#kehuname").val();
+						 $("#khId").val(kehuname);
+						 $("#khId").attr("value",kehuname);
+					     $("#khId").combobox('setValue', kehuname); 
+					
 					} else {
 						$.messager.alert("保存失败", "保存失败!", "error");
-						$('#dg').datagrid('reload');
+					
 					}
 				}
 			});
@@ -428,6 +448,7 @@ data-options="
 			$('#addKehu').dialog('close');
 		} 
 		
+
 	</script>
 </body>
 </html>

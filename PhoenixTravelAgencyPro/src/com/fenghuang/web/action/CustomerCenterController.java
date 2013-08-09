@@ -118,7 +118,7 @@ public class CustomerCenterController {
 	 */
 	@RequestMapping("/fenghuang/addCustom.do")
 	@ResponseBody
-	public Map<String,Object> addCustom(CustomerInfo customInfo){
+	public Map<String,Object> addCustom( HttpServletRequest request,HttpServletResponse response,CustomerInfo customInfo){
 		Map<String, Object> result = new HashMap<String, Object>();
 		boolean isSuccess = false;
 		try {
@@ -227,6 +227,23 @@ public class CustomerCenterController {
 		return result  ;
 	}
 	
-	
+	/**客户下拉
+	 * 
+	 * @param customerInfo
+	 * @return
+	 */
+	@RequestMapping("fenghuang/findAllCustomName.do")
+	@ResponseBody
+	public List<Map<String, Object>> findAllCustomName(HttpServletRequest request,
+			HttpServletResponse response){
+
+		try {
+			return  iCustomerCenterService.findAllCustomName();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	   return  null;
+	}
+		
 	
 }
