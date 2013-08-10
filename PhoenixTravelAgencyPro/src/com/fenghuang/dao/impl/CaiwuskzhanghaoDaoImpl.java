@@ -31,7 +31,9 @@ public class CaiwuskzhanghaoDaoImpl extends BaseDao implements IcaiwuskzhanghaoD
 	@Override
 	public boolean updateaccount(Account account) throws Exception {
 		// TODO Auto-generated method stub
-		return false;
+		String sql = "update Account set zhanghaoming=?,yongtu=?,bizhongid=?,huming=?,zhanghao=?,kaihuhang=?,shiyongshuoming=?  where id=?";
+		int rs=this.update(sql,account.getZhanghaoming(),account.getYongtu(),account.getBizhongid(),account.getHuming(),account.getZhanghao(),account.getKaihuhang(),account.getShiyongshuoming(),account.getId());
+		return rs>0;
 	}
 
 	@Override

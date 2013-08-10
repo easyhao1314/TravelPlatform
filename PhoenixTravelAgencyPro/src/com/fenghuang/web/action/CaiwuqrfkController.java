@@ -34,7 +34,7 @@ public class CaiwuqrfkController {
 	@ResponseBody
 	public Map<String, Object> getCurrencyList(HttpServletRequest request,
 			HttpServletResponse response,HttpSession session,Integer page, Integer rows,String team,String caozuo,String caiwuid,
-            String id,String ysyfid,String khmc,String shenfenid) {
+            String id) {
 		   Tuanbiao tuanbiao = new Tuanbiao();
 		    try {
 		    	if(team!=null&&!"".equals(team)){
@@ -45,15 +45,6 @@ public class CaiwuqrfkController {
 		    	}
 		    	if(caozuo!=null&&!"".equals(caozuo)){
 		    		tuanbiao.setCaozuo(caozuo);
-		    	}
-		    	if(ysyfid!=null&&!"".equals(ysyfid)){
-		    		tuanbiao.setYsyfID(Integer.parseInt(ysyfid));
-		    	}
-		    	if(khmc!=null&&!"".equals(khmc)){
-		    		tuanbiao.setKhmc(khmc);
-		    	}
-		    	if(shenfenid!=null&&!"".equals(shenfenid)){
-		    		tuanbiao.setShenfenid(Integer.parseInt(shenfenid));
 		    	}
 			 if(id!=null && !"".equals(id)){
 		    	 tuanbiao.setId(Long.parseLong(id));
@@ -92,23 +83,14 @@ public class CaiwuqrfkController {
 	@RequestMapping("fenghuang/updateqrfk.do")
 	@ResponseBody
 	public Map<String,Object> xiugai(HttpServletRequest request,
-			HttpServletResponse response,String caiwuid,String id,String shanchu,String yingshou,String yishou){
+			HttpServletResponse response,String caiwuid,String id){
 		Map<String, Object> result = new HashMap<String, Object>();
 		boolean isSuccess = false;
 		Tuanbiao tuanbiao = new Tuanbiao();
 		
-		
+		tuanbiao.setCaiwuid(Integer.parseInt(caiwuid));
+		tuanbiao.setId(Integer.parseInt(id));
 		try {
-			if(caiwuid!=null&&!"".equals(caiwuid)){
-			tuanbiao.setCaiwuid(Integer.parseInt(caiwuid));
-			}
-			if(shanchu!=null&&!"".equals(shanchu)){
-				tuanbiao.setShanchu(Integer.parseInt(shanchu));
-			}
-			if(yingshou!=null&&!"".equals(yingshou)){
-				tuanbiao.setYingshou(Double.parseDouble(yingshou));
-			}
-			tuanbiao.setId(Integer.parseInt(id));
 			isSuccess = icaiwuskqrSerice.updateskqr(tuanbiao);
 			isSuccess=true;
 		} catch (Exception e) {
@@ -130,10 +112,9 @@ public class CaiwuqrfkController {
 		tuanbiao.setTeam(team);
 		}
 		if(kxsm!=null&&!"".equals(kxsm)){
-		tuanbiao.setKxsm(Integer.parseInt(kxsm));	
-		}
-		if(ysyfid!=null&&!"".equals(ysyfid)){
-			tuanbiao.setYsyfID(Integer.parseInt(ysyfid));
+		tuanbiao.setKxsm(Integer.parseInt(kxsm));
+		tuanbiao.setYsyfID(1);
+		
 		}
 		if(shanchu!=null&&!"".equals(shanchu)){
 			tuanbiao.setShanchu(Integer.parseInt(shanchu));
@@ -145,7 +126,7 @@ public class CaiwuqrfkController {
 		tuanbiao.setKhmc(khmc);
 		}
 		if(yushoutime!=null&&!"".equals(yushoutime)){
-		DateFormat format1 = new SimpleDateFormat("yyyy-MM-dd"); 
+		    DateFormat format1 = new SimpleDateFormat("yyyy-MM-dd"); 
 			Date dategroupdate = format1.parse(yushoutime);
 			tuanbiao.setYushoutime(dategroupdate);
 		}

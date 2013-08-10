@@ -10,46 +10,50 @@ import java.util.*;
 
 /** 汇率
  * 
- * @pdOid 0d5b618b-4d58-4aed-b8af-0f8aa2cffcdf */
+ * @pdOid 6bee1b28-2244-4984-8c32-3f00e28d8c6f */
 public class Bizhonghuilv {
-   /** @pdOid f54dc3dd-6fa0-47f5-b0db-a84dbc8372f7 */
+   /** @pdOid 4788b8c2-62ce-40b8-9940-dcd77952e30d */
    public long id;
    /** 币种ID
     * 
-    * @pdOid 26629f54-cdc7-4a7f-8b33-3c1167ae291d */
+    * @pdOid dfc2b683-f22b-4d8f-9288-9cb39325703c */
    public java.lang.String bizhong;
    /** 日期
     * 
-    * @pdOid bcaac160-32a7-4568-9ea5-2d14c3983b9c */
+    * @pdOid 99a1ab9a-73e0-4da8-bfc4-40a21569ab5b */
    public java.util.Date riqi;
    /** 现金汇率
     * 
-    * @pdOid fafad420-85cb-4052-afd5-2edcaec9d236 */
+    * @pdOid 9b84900e-16c5-4a30-8de7-ef7e3778a35a */
    public double xianjinhuilv;
    /** 对公收款/换汇汇率
     * 
-    * @pdOid 878161c9-2911-43fd-8564-1ad1fd08dfcf */
+    * @pdOid b6c38cf1-e56f-4747-afaa-82826610d2bf */
    public double gongshou;
    /** 中行折算价/基准价
     * 
-    * @pdOid 7e760b88-8fa1-475e-b23a-c06df9f8ef69 */
+    * @pdOid d2445907-fa38-402b-9939-78d8eb9a29e1 */
    public double zhonghang;
    /** 公司最低汇率标准
     * 
-    * @pdOid ac17f87a-d24f-48e2-97a4-1f9335989799 */
+    * @pdOid 4cbcfdba-a760-4cca-a6cc-c720cc309a50 */
    public double zuidihuilv;
    /** 汇率
     * 
-    * @pdOid 6d86ac5b-c242-41de-9bab-b9fba3888fda */
+    * @pdOid d54cbb8d-4e21-4807-b5fe-f918f42b5c61 */
    public double huilv;
    /** 简写
     * 
-    * @pdOid 04e4ba81-5508-4682-a26f-65e752833d31 */
+    * @pdOid c96aeaaa-9db8-4b7e-bed6-fb446d3ad626 */
    public java.lang.String jianxie;
    /** 简写+全名
     * 
-    * @pdOid 98935a81-4927-48f8-8bbe-ee22391fe32e */
+    * @pdOid 71ba900a-3272-4440-a7f7-0581e46b94f8 */
    public java.lang.String jianxiemingchen;
+   /** 单位
+    * 
+    * @pdOid e9830caf-5791-4c9a-8ec3-3b9324cf46a1 */
+   public double danwei;
 public long getId() {
 	return id;
 }
@@ -110,6 +114,11 @@ public java.lang.String getJianxiemingchen() {
 public void setJianxiemingchen(java.lang.String jianxiemingchen) {
 	this.jianxiemingchen = jianxiemingchen;
 }
+public double getDanwei() {
+	return danwei;
+}
+public void setDanwei(double danwei) {
+	this.danwei = danwei;
+}
    
-
 }

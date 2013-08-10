@@ -32,13 +32,13 @@ public  class CaiwuskzhanghaoServiceImpl  implements IcaiwuskzhanghaoService{
 	@Override
 	public boolean updateaccount(Account account) throws Exception {
 		// TODO Auto-generated method stub
-		return false;
+		return dao.updateaccount(account);
 	}
 
 	@Override
 	public boolean deleteaccount(Long id) throws Exception {
 		// TODO Auto-generated method stub
-		return false;
+		return dao.deleteaccount(id);
 	}
 
 	@Override

@@ -26,26 +26,26 @@ public class CaiwuhuilvServiceImpl implements IcaiwuhuilvService {
 	@Override
 	public boolean savehuilv(Bizhonghuilv bizhonghuilv) throws Exception {
 		// TODO Auto-generated method stub
-		return false;
+		return dao.savehuilv(bizhonghuilv);
 	}
 
 	@Override
 	public boolean updatehuilv(Bizhonghuilv bizhonghuilv) throws Exception {
 		// TODO Auto-generated method stub
-		return false;
+		return dao.updatehuilv(bizhonghuilv);
 	}
 
 	@Override
 	public boolean deletehuilv(Long id) throws Exception {
 		// TODO Auto-generated method stub
-		return false;
+		return dao.deletehuilv(id);
 	}
 
 	@Override
 	public Pagination<Bizhonghuilv> getPaginationfkqr(int currentPage,
 			int numPerPage, Bizhonghuilv bizhonghuilv) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return dao.getPaginationfkqr(currentPage, numPerPage, bizhonghuilv);
 	}
 
 	@Override
