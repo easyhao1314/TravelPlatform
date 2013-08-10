@@ -23,7 +23,7 @@ public class CaiwuskzhanghaoDaoImpl extends BaseDao implements IcaiwuskzhanghaoD
 	@Override
 	public boolean saveaccount(Account account) throws Exception {
 		// TODO Auto-generated method stub
-		String sql="insert into tuanbiao (zhanghaoming,yongtu,bizhongid,huming,zhanghao,kaihuhang,shiyongshuoming) values(?,?,?,?,?,?,?)";
+		String sql="insert into Account (zhanghaoming,yongtu,bizhongid,huming,zhanghao,kaihuhang,shiyongshuoming) values(?,?,?,?,?,?,?)";
 		int a=this.update(sql,account.getZhanghaoming(),account.getYongtu(),account.getBizhongid(),account.getHuming(),account.getZhanghao(),account.getKaihuhang(),account.getShiyongshuoming());
 		return a>0;
 	}
@@ -37,7 +37,11 @@ public class CaiwuskzhanghaoDaoImpl extends BaseDao implements IcaiwuskzhanghaoD
 	@Override
 	public boolean deleteaccount(Long id) throws Exception {
 		// TODO Auto-generated method stub
-		return false;
+		
+        String sql="delete from Account where id=?";
+		
+		int rs=this.update(sql,id);
+		return rs>0;
 	}
 
 	@Override
