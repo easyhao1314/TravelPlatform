@@ -20,7 +20,11 @@ public class MenuPermissionServiceImpl implements IMenuPermissionService {
 	@Override
 	public boolean saveMenuPermission(MenuPermission meunPermission)
 			throws Exception {
-		return iMenuPermissionDao.saveMenuPermission(meunPermission);
+		if(meunPermission.getId() != null && meunPermission.getId() != 0 ){
+			return iMenuPermissionDao.updateMenuPermission(meunPermission);
+		}else{
+			return iMenuPermissionDao.saveMenuPermission(meunPermission);
+		}
 	}
 
 	@Override

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fenghuang.entiey.MenuPermission;
 import com.fenghuang.service.IMenuPermissionService;
+import com.fenghuang.service.IRoleService;
 import com.fenghuang.util.Pagination;
 
 /**
@@ -35,6 +36,8 @@ public class MenuPermissionController {
 
 	@Autowired
 	private IMenuPermissionService iMenuPermissionService;
+	@Autowired
+	private IRoleService iRoleService;
 	@RequestMapping("fenghuang/getMenuPermissions.do")
 	@ResponseBody
 	public Map<String,Object> getMenuPermissions(HttpServletRequest request,HttpServletResponse response,Integer page,Integer rows,String id,String mpNo,String mpName,String mpDesc,String functionNo){
@@ -86,6 +89,10 @@ public class MenuPermissionController {
 		mp.setMpName(mpName);
 		mp.setFunctionNo(functionNo);
 		mp.setMpDesc(mpDesc);
+		if(id != null && !"".equals(id)){
+			mp.setId(Long.valueOf(id));
+		}
+		
 		
 		try {
 			iMenuPermissionService.saveMenuPermission(mp);
@@ -118,7 +125,17 @@ public class MenuPermissionController {
 		return result;
 	}
 	
+	public Map<String, Object> getMenuPerssionsByRoleId(HttpServletRequest request,
+			HttpServletResponse response, Integer page, Integer rows,
+			String roleId) {
+		return null;
+	}
 	
+	public Map<String, Object> getMenuPerssionsNotIncludeByRoleId(HttpServletRequest request,
+			HttpServletResponse response, Integer page, Integer rows,
+			String roleId) {
+		return null;
+	}
 	
 	
 }

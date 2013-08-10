@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.fenghuang.entiey.FunctionMenu;
+import com.fenghuang.entiey.MenuPermission;
 import com.fenghuang.entiey.Role;
 import com.fenghuang.entiey.RoleAndMenuPermission;
 import com.fenghuang.entiey.RoleAndPagePermission;
@@ -41,5 +42,7 @@ public interface IRoleDao {
 
 	public boolean deleteRoleAndPagePermission(Long id) throws Exception;
 
-
+	public Pagination<MenuPermission> getMenuPermissionsByRoleId(int currentPage, int numPerPage,Long roleId) throws Exception;
+	
+	public Pagination<MenuPermission> getMenuPermissionsNotIncludeByRoleId(int currentPage, int numPerPage,Long roleId) throws Exception;
 }

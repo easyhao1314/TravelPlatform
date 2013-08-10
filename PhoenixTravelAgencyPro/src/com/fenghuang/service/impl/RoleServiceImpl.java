@@ -32,7 +32,12 @@ public class RoleServiceImpl implements IRoleService {
 	private IFunctionMenuDao iFunctionMenuDao;
 	@Override
 	public boolean saveRole(Role role) throws Exception {
-		return iRoleDao.saveRole(role);
+		if(role.getId()!=null&&role.getId()!=0){
+			return iRoleDao.updateRole(role);
+		}else{
+			return iRoleDao.saveRole(role);
+		}
+		
 	}
 
 	@Override
@@ -178,5 +183,19 @@ public class RoleServiceImpl implements IRoleService {
 
 		return fms;
 	}
+
+	@Override
+	public Pagination<MenuPermission> getMenuPermissionsByRoleId(
+			int currentPage, int numPerPage, Long roleId) throws Exception {
+		return iRoleDao.getMenuPermissionsByRoleId(currentPage, numPerPage, roleId);
+	}
+
+	@Override
+	public Pagination<MenuPermission> getMenuPermissionsNotIncludeByRoleId(
+			int currentPage, int numPerPage, Long roleId) throws Exception {
+		return iRoleDao.getMenuPermissionsNotIncludeByRoleId(currentPage, numPerPage, roleId);
+	}
+
+
 
 }

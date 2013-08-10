@@ -3,9 +3,9 @@ var editIndex = undefined;
 			if (editIndex == undefined) {
 				return true
 			}
-			if ($('#dgRole').datagrid('validateRow', editIndex)) {
-				$('#dgRole').datagrid('endEdit', editIndex);
-				$('#dgRole').datagrid('unselectRow', editIndex);
+			if ($('#dgMenuPermission').datagrid('validateRow', editIndex)) {
+				$('#dgMenuPermission').datagrid('endEdit', editIndex);
+				$('#dgMenuPermission').datagrid('unselectRow', editIndex);
 				editIndex = undefined;
 				return true;
 			} else {
@@ -13,7 +13,7 @@ var editIndex = undefined;
 			}
 		}
 		function addHangMoshi() {
-			$("#dgRole").datagrid("insertRow", {
+			$("#dgMenuPermission").datagrid("insertRow", {
 				index : 0,
 				row:{}
 			});
@@ -22,29 +22,29 @@ var editIndex = undefined;
 		function onClickRow(index) {
 			if (editIndex != index) {
 				if (endEditing()) {
-					$('#dgRole').datagrid('selectRow', index).datagrid('beginEdit',
+					$('#dgMenuPermission').datagrid('selectRow', index).datagrid('beginEdit',
 							index);
 					editIndex = index;
 				} else {
-					$('#dgRole').datagrid('selectRow', editIndex);
+					$('#dgMenuPermission').datagrid('selectRow', editIndex);
 				}
 			}
 		}
 		function getChanges() {
-			$('#dgRole').datagrid('endEdit', editIndex);
-			var rows = $("#dgRole").datagrid("getChanges");
+			$('#dgMenuPermission').datagrid('endEdit', editIndex);
+			var rows = $("#dgMenuPermission").datagrid("getChanges");
 			if (rows.length > 0) {
 				var param = {
 					"updateRows" : $.toJSON(rows)
 				};
 				$.ajax({
-					url : "fenghuang/updateRoleInfo.do",
+					url : "fenghuang/updateMenuPermissionInfo.do",
 					data : param,
 					dataType : "json",
 					success : function(data) {
 						if (data.success) {
 							$.messager.alert("保存成功", "保存成功！", "info");
-							$("#dgRole").datagrid('reload');
+							$("#dgMenuPermission").datagrid('reload');
 							editIndex = undefined;
 						} else {
 							$.messager.alert("保存失败", "保存失败!", "error");
@@ -59,13 +59,13 @@ var editIndex = undefined;
 		}
 
 		function addMianBanMoshi() {
-			$("#editRole").dialog("open");
-			$("#roleFrome").form("clear");
+			$("#editMenuPermission").dialog("open");
+			$("#menuPermissionFrome").form("clear");
 		}
 
 		function mainBanMoshiSave() {
-			$('#roleFrome').form('submit', {
-				url : 'fenghuang/saveRole.do',
+			$('#menuPermissionFrome').form('submit', {
+				url : 'fenghuang/saveMenuPermissionInfo.do',
 				onSubmit : function() {
 					return $(this).form('validate');
 				},
@@ -73,30 +73,30 @@ var editIndex = undefined;
 					var result = eval('(' + result + ')');
 					if (result.success) {
 						$.messager.alert("保存成功", "保存成功！", "info");
-						$('#editRole').dialog('close');
-						$('#dgRole').datagrid('reload');
+						$('#editMenuPermission').dialog('close');
+						$('#dgMenuPermission').datagrid('reload');
 					} else {
 						$.messager.alert("保存失败", "保存失败!", "error");
-						$('#dgRole').datagrid('reload');
+						$('#dgMenuPermission').datagrid('reload');
 					}
 				}
 			});
 		}
 
 		function shanchu() {
-			var rows = $("#dgRole").datagrid("getSelections");
+			var rows = $("#dgMenuPermission").datagrid("getSelections");
 			if (rows.length > 0) {
 				var param = {
 					"deleteRows" : $.toJSON(rows)
 				};
 				$.ajax({
-					url : "fenghuang/deleteRoles.do",
+					url : "fenghuang/deleteMenuPermissions.do",
 					data : param,
 					dataType : "json",
 					success : function(data) {
 						if (data.success) {
 							$.messager.alert("删除成功", "删除成功！", "info");
-							$("#dgRole").datagrid('reload');
+							$("#dgMenuPermission").datagrid('reload');
 						} else {
 							$.messager.alert("删除失败", "删除失败!", "error");
 						}
@@ -108,48 +108,49 @@ var editIndex = undefined;
 			}
 		}
 		function closeEditRole() {
-			$('#editRole').dialog('close');
+			$('#editMenuPermission').dialog('close');
 		} 
 
 		//
 		function searchDiJi() {
-			$("#searchRole").dialog("open");
-			$("#searchRoleForm").form("clear");
+			$("#searchMenuPermission").dialog("open");
+			$("#searchMenuPermissionForm").form("clear");
 		}
 		function searchFormSubmit() {
-			$("#searchRole").dialog("close");
-			$("#dgRole").datagrid("load", {
-				roleNo : $("#searchRoleNo").val(),
-				roleName : $("#searchRoleName").val(),
-				roleDesc : $("#searchRoleDesc").val()
+			$("#searchMenuPermission").dialog("close");
+			$("#dgMenuPermission").datagrid("load", {
+				mpNo : $("#searchMpNo").val(),
+				mpName : $("#searchMpName").val(),
+				mpDesc : $("#searchMpDesc").val(),
+				functionNo:$('#searchFunctionNo').combobox('getValue')==""?0:$('#searchFunctionNo').combobox('getValue')
 			});
 
 		}
 
 		function closedSearch() {
-			$('#searchRole').dialog('close');
+			$('#searchMenuPermission').dialog('close');
 		}
 		
-		$('#dgRole').datagrid({
+		$('#dgMenuPermission').datagrid({
 			onRowContextMenu : onRowContextMenu,
 		});
 		function onRowContextMenu(e, rowIndex, rowData) {
 			e.preventDefault();
-			var selected = $("#dgRole").datagrid('getRows'); //获取所有行集合对象
+			var selected = $("#dgMenuPermission").datagrid('getRows'); //获取所有行集合对象
 			selected[rowIndex].id; //index为当前右键行的索引，指向当前行对象
-			$('#dgRole').datagrid('selectRow', rowIndex);
-			$('#dgRoleMm').menu('show', {
+			$('#dgMenuPermission').datagrid('selectRow', rowIndex);
+			$('#dgMenuPermissionMm').menu('show', {
 				left : e.pageX,
 				top : e.pageY
 			});
 		}
 		
 		function  editRoleRightMenu(){
-			var row = $("#dgRole").datagrid("getSelected");
-			var index = $('#dgRole').datagrid('getRowIndex', row);
-			$("#dgRole").datagrid("unselectRow",index);
-			$("#editRole").dialog("open");
-			$("#roleFrome").form("load",row);	
+			var row = $("#dgMenuPermission").datagrid("getSelected");
+			var index = $('#dgMenuPermission').datagrid('getRowIndex', row);
+			$("#dgMenuPermission").datagrid("unselectRow",index);
+			$("#editMenuPermission").dialog("open");
+			$("#menuPermissionFrome").form("load",row);	
 			
 			
 		}

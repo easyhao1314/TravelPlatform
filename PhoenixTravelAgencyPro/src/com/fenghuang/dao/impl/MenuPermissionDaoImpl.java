@@ -49,7 +49,7 @@ public class MenuPermissionDaoImpl extends BaseDao implements
 	public Pagination<MenuPermission> getPaginationMenuPermissions(
 			int currentPage, int numPerPage, Long id, String mpNo,
 			String mpName, String mpDesc, String functionNo) throws Exception {
-		StringBuffer sql = new StringBuffer("SELECT menupermission.id,menupermission.mpNo,menupermission.mpName,menupermission.mpDesc,menupermission.functionNo FROM menupermission where 1=1");
+		StringBuffer sql = new StringBuffer("SELECT menupermission.id,menupermission.mpNo,menupermission.mpName,menupermission.mpDesc,menupermission.functionNo,functionmenu.meunName FROM menupermission,functionmenu where 1=1 and menupermission.functionNo=functionmenu.id ");
 		if(id != null && id !=0){
 			sql.append(" and menupermission.id ='");
 			sql.append(id);
@@ -70,7 +70,7 @@ public class MenuPermissionDaoImpl extends BaseDao implements
 			sql.append(mpDesc);
 			sql.append("%'");
 		}
-		if (functionNo != null && !"".equals(functionNo)) {
+		if (functionNo != null && !"".equals(functionNo)&&!functionNo.equals("0")) {
 			sql.append(" and  menupermission.functionNo like '");
 			sql.append(functionNo);
 			sql.append("%'");

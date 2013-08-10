@@ -92,6 +92,7 @@
 	<mvc:view-controller path="SanPin_new.do" view-name="SanPin/SanPin_New"/>
 	<mvc:view-controller path="role.do" view-name="role/role"/>
 	<mvc:view-controller path="users.do" view-name="users/users"/>
+	<mvc:view-controller path="menuPermission.do" view-name="permission/menuPermission"/>
 	<!-- 财务模块  -->
 	<mvc:view-controller path="a.do" view-name="F.A.D/a"/>
 	<mvc:view-controller path="sanpin.do" view-name="F.A.D/sanpin"/>
