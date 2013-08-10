@@ -28,7 +28,7 @@
  <table>
 	    		<tr>
 	    		   	<td>团号:<input class="easyui-validatebox" type="text" name="team" id="team"></input></td>
-	    			<td>销售，客户<input class="easyui-validatebox" type="text" name="caozuo" id="caozuo"></input></td>
+	    			<td>销售，客户<input class="easyui-validatebox" type="text" name="tuanduimc" id="tuanduimc"></input></td>
 	    			<td>
 	    		<div style="padding:5px;border:0px solid #ddd;">
 		<a href="javascript:cwtdfyselect()" class="easyui-linkbutton" data-options="toggle:true,group:'g1'">搜索</a>
@@ -42,7 +42,7 @@
 	<div class="easyui-panel" title="团队费用"
 		style="height:480px;width: auto;" toolbar="#currencyDatagridtoolbar">	
 	<table id="dg" class="easyui-datagrid"
-		data-options="url:'fenghuang/caiwutuanduifeiyong.do',border:false,singleSelect:true,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
+		data-options="url:'fenghuang/caiwutdfylbselect.do',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 		pagination="true" toolbar="#tb">
 		<thead>
 			<tr> 
@@ -125,7 +125,7 @@
 		var opts = $('#dg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
 			var param = {
 				team: $("#team").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
-				caozuo: $("#caozuo").val() ,
+				tuanduimc: $("#tuanduimc").val() ,
 				caiwuid: id,
 
 				page:  opts.pageNumber ,
@@ -133,7 +133,7 @@
 			};
 		console.info(param);
 				$.ajax({
-					url : 'fenghuang/caiwutuanduifeiyong.do' ,
+					url : 'fenghuang/caiwutdfylbselect.do' ,
 					data :  param,
 					type : 'POST' ,
 					dataType : 'json' ,

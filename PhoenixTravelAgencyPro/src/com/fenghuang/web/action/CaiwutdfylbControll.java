@@ -20,43 +20,37 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fenghuang.entiey.Tuanbiao;
 import com.fenghuang.service.IcaiwuskqrSerice;
+import com.fenghuang.service.IcaiwutdfylbService;
 import com.fenghuang.util.DateJsonValueProcessor;
 import com.fenghuang.util.Pagination;
 
-
 @Controller
-public class CaiwutuanfeiController {
+public class CaiwutdfylbControll {
 	@Autowired 
-	private IcaiwuskqrSerice icaiwuskqrSerice;
-	@RequestMapping("fenghuang/caiwutuanduifeiyong.do")
+	private IcaiwutdfylbService icaiwutdfylbService;
+	@RequestMapping("fenghuang/caiwutdfylbselect.do")
 	@ResponseBody
 	public Map<String, Object> getCurrencyList(HttpServletRequest request,
-			HttpServletResponse response,HttpSession session,Integer page, Integer rows,String team,String caozuo,String caiwuid,
-            String id,String ysyfid) {
+			HttpServletResponse response,HttpSession session,Integer page, Integer rows,String team,String caiwuid,
+            String id,String tuanduimc) {
 		   Tuanbiao tuanbiao = new Tuanbiao();
 		    try {
 		    	if(team!=null&&!"".equals(team)){
 		    		tuanbiao.setTeam(team);
 		    	}
-		    	if(caiwuid!=null&&!"".equals(caiwuid)){
-		    		tuanbiao.setCaiwuid(Integer.parseInt(caiwuid));
-		    	}
-		    	if(caozuo!=null&&!"".equals(caozuo)){
-		    		tuanbiao.setCaozuo(caozuo);
+		    	if(tuanduimc!=null&&!"".equals(tuanduimc)){
+		    		tuanbiao.setTuanduimc(tuanduimc);
 		    	}
 			 if(id!=null && !"".equals(id)){
 		    	 tuanbiao.setId(Long.parseLong(id));
 		     }
-			 if(ysyfid!=null&&!"".equals(ysyfid)){
-				 tuanbiao.setYsyfID(Integer.parseInt(ysyfid));
-			 }
 			if(page==null){
 		    	 page=1;
 		     }
 		     if(rows==null){
 		    	 rows=1;
 		     }
-			Pagination<Tuanbiao> pagination = icaiwuskqrSerice.getPaginationfkqr(page, rows, tuanbiao);	
+			Pagination<Tuanbiao> pagination = icaiwutdfylbService.getPaginationfkqr(page, rows, tuanbiao);	
 			List<Map<String, Object>> testUsers = pagination.getResultList();
 			Map<String,Object> returnValue  = new HashMap<String, Object>();
 			for(int i = 0 ;i<testUsers.size();i++){
@@ -80,24 +74,5 @@ public class CaiwutuanfeiController {
 		}
 	        return null;
 	}
-	
-	@RequestMapping("fenghuang/updateqrfk1.do")
-	@ResponseBody
-	public Map<String,Object> xiugai(HttpServletRequest request,
-			HttpServletResponse response,String caiwuid,String id){
-		Map<String, Object> result = new HashMap<String, Object>();
-		boolean isSuccess = false;
-		Tuanbiao tuanbiao = new Tuanbiao();
-		
-		tuanbiao.setCaiwuid(Integer.parseInt(caiwuid));
-		tuanbiao.setId(Integer.parseInt(id));
-		try {
-			isSuccess = icaiwuskqrSerice.updateskqr(tuanbiao);
-			isSuccess=true;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}	
-		result.put("success", isSuccess);
-		return result ; 
-	}
+
 }

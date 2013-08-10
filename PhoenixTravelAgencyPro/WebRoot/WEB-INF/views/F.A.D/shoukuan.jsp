@@ -29,155 +29,89 @@
 	<!-- 如果在正式开发环境下 url可以为后台的请求，地址 -->
    <table>
 	    		<tr>
-	    		   	<td>团号:<input class="easyui-validatebox" type="text" name="name" ></input></td>
-	    			<td>销售，客户<input class="easyui-validatebox" type="text" name="name" ></input></td>
+	    		   	<td>团号:<input class="easyui-validatebox" type="text" name="team" id="team"></input></td>
+	    			<td>销售<input class="easyui-validatebox" type="text" name="caozuo" id="caozuo"></input></td>
+	    			<td><input class="easyui-validatebox" type="text" name="caozuo" id="zhi" hidden="true ></input></td>
 	    			<td>
-	    		<div style="padding:5px;border:1px solid #ddd;">
-		<a href="#" class="easyui-linkbutton" data-options="toggle:true,group:'g1'">Button 1</a>
+	    			<!-- hidden="true" -->
+	    		<div style="padding:5px;">
+		<a href="javascript:shoukuanselect()" class="easyui-linkbutton" data-options="toggle:true,group:'g1'">搜索</a>
 	             </div>
 	    			
 	    		</td>
-	    		</tr>
-	    	
-	    		
+	    		</tr>    		
 	    	</table>
 	    	<table>
 	    		<tr>
-	    		<td>账号：[<a href="">待确认收款</a>][<a href="">已确认收款</a>]</td>
-	    		</tr>
-	    		<tr>
-	    		<td>状态：[<a href="">待确认收款</a>][<a href="">已确认收款</a> ]</td>
-	    		</tr>
-	    		<tr>
-	    		<td>币种：  <input class="easyui-combobox"
-              name="" 
-              data-options="url:'',
-              valueField:'dicId',
-              textFiedld:'dicName',
-              panelHeight:'auto'
-              ">
-              </td>
-	    		</tr>
-	    		
-	    		<tr>
-	    		<td>日期：[全部] [未收到][已收到] </td>
-	    		</tr>
-	    		<tr>
-	    		<td>
-	    		日期:
-              <input class="easyui-combobox"
-              name="" 
-              data-options="url:'',
-              valueField:'dicId',
-              textFiedld:'dicName',
-              panelHeight:'auto'
-              ">
-              
-               [全部] [1月] [2月] [3月] [4月] [5月] [6月] [7月] [8月] [9月] [10月] [11月] [12月]
-               
-                 </td> 
-	    		
-	    		</tr>
-	    	
+	    		<td>状态：[<a href="javascript:shoukuanselect(6)">待确认收款</a>][<a href="javascript:shoukuanselect(7)">已确认收款</a> ]</td>
+	    		</tr>    			    	
 	    	</table>
-	<table id="dg" class="easyui-datagrid"
-		data-options="url:'fenghuang/caiwuqrfkselect.do',border:false,singleSelect:false,fit:true,fitColumns:true,pageSize:20"
+	    	
+	    	
+	    	
+	    	
+	    	
+	    	<a href="javascript:shoukuanopen(7);" class="easyui-linkbutton" iconCls="icon-add" plain="true">审批确认</a>  
+		    <a href="javascript:shoukuanopen(6);" class="easyui-linkbutton" iconCls="icon-add" plain="true">取消付款</a>
+	    	
+	 <div class="easyui-panel" title="付款审批"
+		style="height:450px;width: auto;" toolbar="#currencyDatagridtoolbar">	
+	<table id="shoukuandg" class="easyui-datagrid"
+		data-options="url:'fenghuang/caiwuqrfkselect.do?ysyfid=1&&caiwuid=6',border:false,singleSelect:true,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
 		pagination="true" toolbar="#tb">
 		<thead>
 			<tr>	 
-			 <th data-options="field:'ck',checkbox:true"></th>
-				<th data-options="field:'id'">ID</th>
+			    <th data-options="field:'yushoutime',editor:'text'" width="10px">收款日期</th>
+				<th data-options="field:'zhanghaoid',editor:'text'" width="10px">收款账号</th>
+				<th data-options="field:'team',editor:'text'" width="10px">团号</th>
+				<th data-options="field:'tuanduimc',editor:'text'" width="10px">团队名称</th>
+				<th data-options="field:'khmc',editor:'text'" width="10px">客户名称</th>
+				<th data-options="field:'name',editor:'text'" width="10px">款项</th>
+				<th data-options="field:'yingshou',editor:'text'" width="10px">金额</th>
+			
+				<th data-options="field:'caozuo',editor:'numberbox'" width="10px">销售</th>
+				<th data-options="field:'confirmed',editor:'numberbox'" width="10px">财务确认</th>
+			
 			</tr>
 		</thead>
 	</table>
-	
-	<div id="editDic" class="easyui-dialog" title="新增业务字段"
-		data-options="modal:true,closed:true,iconCls:'icon-save'"
-		style="width:500px;height:200px;padding:10px;">
-		<form id="dicFrome" method="post">
-			<table align="left">
-				<tr>
-					<td><div class="fitem">
-							<label>编号:</label>
-					</td>
-					<td><input name="dicNo" class="easyui-validatebox"
-						required="true">
-						</div></td>
-					<td><div class="fitem">
-							<label>名称:</label>
-					</td>
-					<td><input name="dicName" class="easyui-validatebox"
-						required="true">
-						</div></td>
-				</tr>
-				<tr>
-					<td><div class="fitem">
-							<label>帮助提示:</label>
-					</td>
-					<td><input name="dicHelp" class="easyui-validatebox">
-						</div></td>
-					<td><div class="fitem">
-							<label>显示顺序:</label>
-					</td>
-					<td><input name="dicSortNo" class="easyui-numberbox"
-						required="true">
-						</div></td>
-				</tr>
-				<tr>
-					<td colspan="4s" align="center"><a
-						href="javascript:mainBanMoshiSave();" class="easyui-linkbutton"
-						iconCls="icon-ok">保存</a> <a href="javascript:closeEditDic();"
-						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
-				</tr>
-			</table>
-			<input id="dicType" name="dicType" type="hidden">
-		</form>
 	</div>
-	<div id="searchDic" class="easyui-dialog" title="查询业务字段"
+	
+	
+	
+		<div id="shoukuanxiugai" class="easyui-dialog" title="财务收款"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:500px;height:200px;padding:10px;">
-		<form id="searchForm" action="">
+		<form id="shoukuanxiugaiform" action="">
 			<table align="left">
 				<tr>
 					<td><div class="fitem">
 							<label>编号:</label>
 					</td>
-					<td><input id="searchDicNo" name="dicNo"
+					<td><input id="id" name="id"
 						class="easyui-validatebox">
 						</div></td>
 					<td><div class="fitem">
 							<label>名称:</label>
 					</td>
-					<td><input id="searchDicName" name="dicName"
+					<td><input id="caiwuid" name="caiwuid" 
 						class="easyui-validatebox">
 						</div></td>
 				</tr>
-				<tr>
-					<td><div class="fitem">
-							<label>帮助提示:</label>
-					</td>
-					<td><input id="searchDicHelp" name="dicHelp"
-						class="easyui-validatebox">
-						</div></td>
-					<td><div class="fitem">
-							<label>显示顺序:</label>
-					</td>
-					<td><input id="searchDicSortNo" name="dicSortNo"
-						class="easyui-numberbox">
-						</div></td>
-				</tr>
+				
 				<tr>
 					<td colspan="4s" align="center"><a
-						href="javascript:searchFormSubmit();" class="easyui-linkbutton"
-						iconCls="icon-ok">查询</a> <a href="javascript:closedSearch();"
+						href="javascript:shoukuanupdate();" class="easyui-linkbutton"
+						iconCls="icon-ok">确认</a> <a href="javascript:closedSearch();"
 						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
 				</tr>
 			</table>
 			<input id="searchDicType" name="dicType" type="hidden">
 		</form>
 	</div>
+	
+	
 	<script type="text/javascript">
-		
 		
 		function onClickRow(index) {
 			if (editIndex != index) {
@@ -190,10 +124,107 @@
 				}
 			}
 		}
+	
+        //首款查询    
+	    function shoukuanselect(id){
+	     var z = $("#zhi").val();
+	   
+	     if(id==6){
+	      z=6;
+	   
+	     }
+	     if(z==7){
+	       id=7;
+	     
+	     }
+	  
+	    if(id==null||id==6){
+	     id=6;
+	     var a=id;
+	      $("#zhi").val(a);
+	      var caiwuid = $("#zhi").val();
+	   
+         
+	    }
+	     if(id==7){
+	      id=7;
+          var a=id;
+          $("#zhi").val(a);
+           var c = $("#zhi").val();
+         
+            
+	    }
+	   
+		console.info($('#shoukuandg').datagrid('options'));
+		var opts = $('#shoukuandg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
+			var param = {
+				team: $("#team").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
+				caozuo: $("#caozuo").val(),
+				ysyfid:1,
+				
+				caiwuid:id,
+				page:  opts.pageNumber ,
+				rows:  opts.pageSize
+			};
+		console.info(param);
+				$.ajax({
+					url : 'fenghuang/caiwuqrfkselect.do' ,
+					data :  param,
+					type : 'POST' ,
+					dataType : 'json' ,
+					success : function(data){
+						$('#shoukuandg').datagrid('loadData',data);
+					}
+				});
+		}
 		
 		
+		
+		
+			//按id查询
+		function shoukuanopen(id) {
+          //通过主键，查询该操作，并处于编辑状态。 是否打开tab，还是直接弹出window 
+			
+			//获取选中 数据
+			var row = $("#shoukuandg").datagrid("getSelected");
+			//alert(row.id);
+		if(row!=null){
+		$("#shoukuanxiugai").dialog("open");
+		//清空ID
+		$('#id').attr('value','');
+		//填充
+		row.caiwuid=id;
+		 $('#shoukuanxiugaiform').form('load', {"id":row.id,"caiwuid":row.caiwuid});
+		}
+		}
+		
+		
+		//修改
+			function shoukuanupdate() {
+			var caiwuid = $("#caiwuid").val();
+			$("#shoukuanxiugaiform").form('submit', {
+				url : 'fenghuang/updateqrfk.do?caiwuid='+caiwuid,
+				onSubmit : function() {
+					return $(this).form('validate');
+				},
+				success : function(data) {//data 是一个字符串  $.ajax(success:function(data):是一个对象)
+					console.info(data);
+					//var result = val('(' + data + ')');//吧字符串转换为对象
+					var result = $.parseJSON(data) ;
 
+					if (result.success) {
+					  $("#shoukuanxiugai").dialog('close');
+						$.messager.alert("修改成功", "修改成功！", "info"); 
+						$("#shoukuandg").datagrid('reload');
+					} else {
+						$.messager.alert("修改失败", "修改失败!", "error");
+						$("#shoukuandg").datagrid('reload');
+					}
+				}
+			});
+		}
 		
+	
 	</script>
 </body>
 </html>

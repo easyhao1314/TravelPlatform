@@ -1,11 +1,15 @@
 package com.fenghuang.web.action;
 
 import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import javax.persistence.criteria.CriteriaBuilder.In;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -18,45 +22,32 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fenghuang.entiey.Account;
 import com.fenghuang.entiey.Tuanbiao;
-import com.fenghuang.service.IcaiwuskqrSerice;
+import com.fenghuang.service.IcaiwuskzhanghaoService;
 import com.fenghuang.util.DateJsonValueProcessor;
 import com.fenghuang.util.Pagination;
-
-
 @Controller
-public class CaiwutuanfeiController {
+public class CaiwuskzhanghaoControll {
 	@Autowired 
-	private IcaiwuskqrSerice icaiwuskqrSerice;
-	@RequestMapping("fenghuang/caiwutuanduifeiyong.do")
+	IcaiwuskzhanghaoService icaiwuskzhanghaoService;
+	@RequestMapping("fenghuang/skzhanghaoselect.do")
 	@ResponseBody
 	public Map<String, Object> getCurrencyList(HttpServletRequest request,
-			HttpServletResponse response,HttpSession session,Integer page, Integer rows,String team,String caozuo,String caiwuid,
-            String id,String ysyfid) {
-		   Tuanbiao tuanbiao = new Tuanbiao();
+			HttpServletResponse response,HttpSession session,Integer page, Integer rows,String id) {
 		    try {
-		    	if(team!=null&&!"".equals(team)){
-		    		tuanbiao.setTeam(team);
+		    	Account account = new Account();
+		    	if(id!=null&&!"".equals(id)){
+		    		account.setId(Integer.parseInt(id));
 		    	}
-		    	if(caiwuid!=null&&!"".equals(caiwuid)){
-		    		tuanbiao.setCaiwuid(Integer.parseInt(caiwuid));
-		    	}
-		    	if(caozuo!=null&&!"".equals(caozuo)){
-		    		tuanbiao.setCaozuo(caozuo);
-		    	}
-			 if(id!=null && !"".equals(id)){
-		    	 tuanbiao.setId(Long.parseLong(id));
-		     }
-			 if(ysyfid!=null&&!"".equals(ysyfid)){
-				 tuanbiao.setYsyfID(Integer.parseInt(ysyfid));
-			 }
+			
 			if(page==null){
 		    	 page=1;
 		     }
 		     if(rows==null){
 		    	 rows=1;
 		     }
-			Pagination<Tuanbiao> pagination = icaiwuskqrSerice.getPaginationfkqr(page, rows, tuanbiao);	
+			Pagination<Account> pagination = icaiwuskzhanghaoService.getPaginationfkqr(page, rows, account);
 			List<Map<String, Object>> testUsers = pagination.getResultList();
 			Map<String,Object> returnValue  = new HashMap<String, Object>();
 			for(int i = 0 ;i<testUsers.size();i++){
@@ -80,19 +71,40 @@ public class CaiwutuanfeiController {
 		}
 	        return null;
 	}
+   
 	
-	@RequestMapping("fenghuang/updateqrfk1.do")
+	
+	@RequestMapping("fenghuang/skzhanghaoinsert.do")
 	@ResponseBody
-	public Map<String,Object> xiugai(HttpServletRequest request,
-			HttpServletResponse response,String caiwuid,String id){
+	public Map<String,Object> addCustom(HttpServletRequest request,HttpServletResponse response,
+			String zhanghaoming,String yongtu,String bizhongid,String huming,
+			String zhanghao,String kaihuhang,String shiyongshuoming){
 		Map<String, Object> result = new HashMap<String, Object>();
 		boolean isSuccess = false;
-		Tuanbiao tuanbiao = new Tuanbiao();
-		
-		tuanbiao.setCaiwuid(Integer.parseInt(caiwuid));
-		tuanbiao.setId(Integer.parseInt(id));
+		Account account = new Account();
 		try {
-			isSuccess = icaiwuskqrSerice.updateskqr(tuanbiao);
+	      if(zhanghaoming!=null&&!"".equals(zhanghaoming)){
+	    	  account.setZhanghaoming(zhanghaoming);
+	      }
+	      if(yongtu!=null&&!"".equals(yongtu)){
+	    	  account.setYongtu(Integer.parseInt(yongtu));
+	      }
+	      if(bizhongid!=null&&!"".equals(bizhongid)){
+	    	  account.setBizhongid(Integer.parseInt(bizhongid));
+	      }
+	      if(huming!=null&&!"".equals(huming)){
+	    	  account.setHuming(huming);
+	      }
+	      if(zhanghao!=null&&!"".equals(zhanghao)){
+	    	  account.setZhanghao(zhanghao);
+	      }
+	      if(kaihuhang!=null&&!"".equals(kaihuhang)){
+	    	  account.setKaihuhang(kaihuhang);
+	      }
+	      if(shiyongshuoming!=null&&!"".equals(shiyongshuoming)){
+	    	  account.setShiyongshuoming(shiyongshuoming);
+	      }
+	        isSuccess = icaiwuskzhanghaoService.saveaccount(account);
 			isSuccess=true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -100,4 +112,5 @@ public class CaiwutuanfeiController {
 		result.put("success", isSuccess);
 		return result ; 
 	}
+
 }

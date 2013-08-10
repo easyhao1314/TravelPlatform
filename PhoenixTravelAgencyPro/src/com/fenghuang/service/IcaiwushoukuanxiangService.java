@@ -1,0 +1,25 @@
+package com.fenghuang.service;
+
+import java.util.List;
+import java.util.Map;
+
+import com.fenghuang.entiey.CitySettingDictionary;
+import com.fenghuang.entiey.Shoukuanxiang;
+import com.fenghuang.util.Pagination;
+
+public interface IcaiwushoukuanxiangService {
+   public boolean saveCitySettingDictionary(CitySettingDictionary citySd) throws Exception;
+	
+	public boolean saveshoukuan(Shoukuanxiang shoukuanxiang) throws Exception;
+
+	public boolean updateshoukuan(Shoukuanxiang shoukuanxiang) throws Exception;
+
+	public boolean deleteshoukuan(Long id) throws Exception;
+
+
+	public Pagination<Shoukuanxiang> getPaginationfkqr(int currentPage,
+			int numPerPage,Shoukuanxiang shoukuanxiang)throws Exception;
+	 public List<Map<String,Object>>  getDictionaryComboboxs() throws Exception;
+
+
+}

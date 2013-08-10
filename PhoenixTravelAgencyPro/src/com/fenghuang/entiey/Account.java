@@ -8,17 +8,87 @@ package com.fenghuang.entiey;
 
 import java.util.*;
 
-/** @pdOid 48f6cd2e-3a6d-4c7b-a3c8-8c6daeb1b303 */
+/** 首付款账号维护
+ * 
+ * @pdOid 8e0d5403-78b5-40f1-b81e-f693ea8533a8 */
 public class Account {
-   /** @pdOid 48279570-7d94-4e65-8806-4e6d60357e77 */
+   /** @pdOid 90af1cce-3371-4dfe-99b5-781b3a250602 */
    public long id;
-   /** 收款账号
+   /** 账号名称
     * 
-    * @pdOid 9a30dd59-fd98-4dac-9da1-0413e9233e4d */
-   public java.lang.String receivables;
-   /** 付款账号
+    * @pdOid 640b6943-7c4f-41c0-8a67-d0ffc6ad878c */
+   public java.lang.String zhanghaoming;
+   /** 用途
     * 
-    * @pdOid 743d3dda-2d46-43cb-b9e5-3651a6b49d4a */
-   public java.lang.String payments;
-
+    * @pdOid 1096e1b9-556e-4f8b-b020-d2297d2e7d45 */
+   public int yongtu;
+   /** 币种
+    * 
+    * @pdOid 46370888-d05e-4f0b-8f9c-b9fdc2d0b474 */
+   public int bizhongid;
+   /** 帐号名
+    * 
+    * @pdOid 34614703-d672-4ade-b1f4-a001ec9eb21d */
+   public java.lang.String huming;
+   /** 账号
+    * 
+    * @pdOid 25558797-2721-4f99-bd45-763fc424aee1 */
+   public java.lang.String zhanghao;
+   /** 开户地址
+    * 
+    * @pdOid 4282666c-c805-4ae5-b535-5021fb7e9726 */
+   public java.lang.String kaihuhang;
+   /** 使用说明
+    * 
+    * @pdOid 4f04676d-1fbf-409f-a554-d896f14f8427 */
+   public java.lang.String shiyongshuoming;
+public long getId() {
+	return id;
+}
+public void setId(long id) {
+	this.id = id;
+}
+public java.lang.String getZhanghaoming() {
+	return zhanghaoming;
+}
+public void setZhanghaoming(java.lang.String zhanghaoming) {
+	this.zhanghaoming = zhanghaoming;
+}
+public int getYongtu() {
+	return yongtu;
+}
+public void setYongtu(int yongtu) {
+	this.yongtu = yongtu;
+}
+public int getBizhongid() {
+	return bizhongid;
+}
+public void setBizhongid(int bizhongid) {
+	this.bizhongid = bizhongid;
+}
+public java.lang.String getHuming() {
+	return huming;
+}
+public void setHuming(java.lang.String huming) {
+	this.huming = huming;
+}
+public java.lang.String getZhanghao() {
+	return zhanghao;
+}
+public void setZhanghao(java.lang.String zhanghao) {
+	this.zhanghao = zhanghao;
+}
+public java.lang.String getKaihuhang() {
+	return kaihuhang;
+}
+public void setKaihuhang(java.lang.String kaihuhang) {
+	this.kaihuhang = kaihuhang;
+}
+public java.lang.String getShiyongshuoming() {
+	return shiyongshuoming;
+}
+public void setShiyongshuoming(java.lang.String shiyongshuoming) {
+	this.shiyongshuoming = shiyongshuoming;
+}
+   
 }

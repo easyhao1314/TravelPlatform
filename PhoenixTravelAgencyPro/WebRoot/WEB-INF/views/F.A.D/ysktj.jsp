@@ -29,15 +29,11 @@
 	<!-- 如果在正式开发环境下 url可以为后台的请求，地址 -->
    <table>
 	    		<tr>
-
-	    			<td>预售日期:<input class="easyui-validatebox" type="text" name="name" ></input></td>
-	    			<td>到<input class="easyui-validatebox" type="text" name="name" ></input></td>
-	    		   	<td>团号:<input class="easyui-validatebox" type="text" name="name" ></input></td>
-	    			<td>客户:<input class="easyui-validatebox" type="text" name="name" ></input></td>
-	    			<td>销售:<input class="easyui-validatebox" type="text" name="name" ></input></td>
+	    		   	<td>团号:<input class="easyui-validatebox" type="text" name="team" id="team"></input></td>
+	    			<td>客户:<input class="easyui-validatebox" type="text" name="khmc" id="khmc"></input></td>
 	    			<td>
-	    		<div style="padding:5px;border:1px solid #ddd;">
-		<a href="#" class="easyui-linkbutton" data-options="toggle:true,group:'g1'">Button 1</a>
+	    		<div style="padding:5px;">
+		<a href="javascript:ysktjselect()" class="easyui-linkbutton" data-options="toggle:true,group:'g1'">搜索</a>
 	             </div>
 	    			
 	    		</td>
@@ -45,157 +41,38 @@
 	    	
 	    		
 	    	</table>
-	
-	    		<tr>
-	    		<td>
-	    		日期:
-              <input class="easyui-combobox"
-              name="" 
-              data-options="url:'',
-              valueField:'dicId',
-              textFiedld:'dicName',
-              panelHeight:'auto'
-              ">
-              
-               [全部] [1月] [2月] [3月] [4月] [5月] [6月] [7月] [8月] [9月] [10月] [11月] [12月]
-               
-                 </td> 
-	    		
-	    		</tr>
-	    	
-	    	</table>
-	<table id="dg" class="easyui-datagrid"
-		data-options="url:'',border:false,singleSelect:false,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
+	    	 <div class="easyui-panel" title="付款审批"
+		style="height:450px;width: auto;" toolbar="#currencyDatagridtoolbar">	
+	<table id="dgysktjselect" class="easyui-datagrid"
+		data-options="url:'fenghuang/caiwuqrfkselect.do?ysyfid=1',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 		pagination="true" toolbar="#tb">
 		<thead>
-			<tr>
-				<th data-options="field:'ck',checkbox:true"></th>	 
-				<th data-options="field:'dicNo',editor:'text'" width="">付款日期</th>
-				<th data-options="field:'dicName',editor:'text'" width="">团号</th>
-				<th data-options="field:'dicDesc',editor:'text'" width="">团队名称</th>
-				<th data-options="field:'dicHelp',editor:'text'" width="">供应商名称</th>
-				<th data-options="field:'dicDesc',editor:'text'" width="">款项</th>
-				<th data-options="field:'08',editor:'text'" width="">金额</th>
+			<tr> 
 			
-				<th data-options="field:'09',editor:'numberbox'" width="">提交人</th>
-				<th data-options="field:'09',editor:'numberbox'" width="">审批状态</th>
-				<th data-options="field:'09',editor:'numberbox'" width="">财务审核</th>
-				<th data-options="field:'09',editor:'numberbox'" width="">财务确认</th>
-				<th data-options="field:'09',editor:'numberbox'" width="">操作</th>
+				<th data-options="field:'team',editor:'text'" width="50">团号</th>
+				<th data-options="field:'tuanduimc',editor:'text'" width="50">团队名称</th>
+				
+				<th data-options="field:'name',editor:'text'" width="50">款项说明</th>
+				<th data-options="field:'khmc',editor:'text'" width="50">客户名称</th>
+				<th data-options="field:'yushoutime',editor:'text'" width="50">预售日期</th>
+				<th data-options="field:'huilv',editor:'text'" width="50">汇率</th>
+				<th data-options="field:'bizhong',editor:'text'" width="50">币种</th>
+				<th data-options="field:'yingshou',editor:'text'" width="50">应收</th>
+			    <th data-options="field:'yishou',editor:'text'" width="30">已收</th>
+			    <th data-options="field:'aaaa',editor:'text'" width="30">未收</th>
+				<th data-options="field:'ykfp'"width="50">已开发票</th>
+				<th data-options="field:'fpxk'" width="50">发票许可</th>
+				<th data-options="field:'xiaoshou',editor:'numberbox'" width="20">销售确认</th>
+				<th data-options="field:'review',editor:'numberbox'" width="20">财务确认</th>
+				<th data-options="field:'zenrenren',editor:'numberbox'" width="50">责任人</th>
+				<th data-options="field:'yingshou',editor:'text'" width="50">状态</th>
 			
 			</tr>
 		</thead>
 	</table>
+	</div>
 	
-	<div id="editDic" class="easyui-dialog" title="新增业务字段"
-		data-options="modal:true,closed:true,iconCls:'icon-save'"
-		style="width:500px;height:200px;padding:10px;">
-		<form id="dicFrome" method="post">
-			<table align="left">
-				<tr>
-					<td><div class="fitem">
-							<label>编号:</label>
-					</td>
-					<td><input name="dicNo" class="easyui-validatebox"
-						required="true">
-						</div></td>
-					<td><div class="fitem">
-							<label>名称:</label>
-					</td>
-					<td><input name="dicName" class="easyui-validatebox"
-						required="true">
-						</div></td>
-				</tr>
-				<tr>
-					<td><div class="fitem">
-							<label>帮助提示:</label>
-					</td>
-					<td><input name="dicHelp" class="easyui-validatebox">
-						</div></td>
-					<td><div class="fitem">
-							<label>显示顺序:</label>
-					</td>
-					<td><input name="dicSortNo" class="easyui-numberbox"
-						required="true">
-						</div></td>
-				</tr>
-				<tr>
-					<td colspan="4s" align="center"><a
-						href="javascript:mainBanMoshiSave();" class="easyui-linkbutton"
-						iconCls="icon-ok">保存</a> <a href="javascript:closeEditDic();"
-						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
-				</tr>
-			</table>
-			<input id="dicType" name="dicType" type="hidden">
-		</form>
-	</div>
-	<div id="searchDic" class="easyui-dialog" title="查询业务字段"
-		data-options="modal:true,closed:true,iconCls:'icon-save'"
-		style="width:500px;height:200px;padding:10px;">
-		<form id="searchForm" action="">
-			<table align="left">
-				<tr>
-					<td><div class="fitem">
-							<label>编号:</label>
-					</td>
-					<td><input id="searchDicNo" name="dicNo"
-						class="easyui-validatebox">
-						</div></td>
-					<td><div class="fitem">
-							<label>名称:</label>
-					</td>
-					<td><input id="searchDicName" name="dicName"
-						class="easyui-validatebox">
-						</div></td>
-				</tr>
-				<tr>
-					<td><div class="fitem">
-							<label>帮助提示:</label>
-					</td>
-					<td><input id="searchDicHelp" name="dicHelp"
-						class="easyui-validatebox">
-						</div></td>
-					<td><div class="fitem">
-							<label>显示顺序:</label>
-					</td>
-					<td><input id="searchDicSortNo" name="dicSortNo"
-						class="easyui-numberbox">
-						</div></td>
-				</tr>
-				<tr>
-					<td colspan="4s" align="center"><a
-						href="javascript:searchFormSubmit();" class="easyui-linkbutton"
-						iconCls="icon-ok">查询</a> <a href="javascript:closedSearch();"
-						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
-				</tr>
-			</table>
-			<input id="searchDicType" name="dicType" type="hidden">
-		</form>
-	</div>
 	<script type="text/javascript">
-		var editIndex = undefined;
-		function endEditing() {
-			if (editIndex == undefined) {
-				return true
-			}
-			if ($('#dg').datagrid('validateRow', editIndex)) {
-				$('#dg').datagrid('endEdit', editIndex);
-				$('#dg').datagrid('unselectRow', editIndex);
-				editIndex = undefined;
-				return true;
-			} else {
-				return false;
-			}
-		}
-		function addHangMoshi() {
-			$("#dg").datagrid("insertRow", {
-				index : 0,
-				row : {
-					dicType : '${param.dicType}'
-				}
-			});
-			editIndex = undefined;
-		}
 		function onClickRow(index) {
 			if (editIndex != index) {
 				if (endEditing()) {
@@ -207,106 +84,34 @@
 				}
 			}
 		}
-		function getChanges() {
-			$('#dg').datagrid('endEdit', editIndex);
-			var rows = $("#dg").datagrid("getChanges");
-			if (rows.length > 0) {
-				var param = {
-					"updateRows" : $.toJSON(rows)
-				};
+	
+     	function ysktjselect(id){
+		
+		console.info($('#dgysktjselect').datagrid('options'));
+		var opts = $('#dgysktjselect').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
+			var param = {
+				team: $("#team").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
+				khmc: $("#khmc").val() ,
+			
+				ysyfid:1,
+				caiwuid: id,
+                   	
+				page:  opts.pageNumber ,
+				rows:  opts.pageSize
+			};
+		console.info(param);
 				$.ajax({
-					url : "fenghuang/updateDic.do",
-					data : param,
-					dataType : "json",
-					success : function(data) {
-						if (data.success) {
-							$.messager.alert("保存成功", "保存成功！", "info");
-							$("#dg").datagrid('reload');
-							editIndex = undefined;
-						} else {
-							$.messager.alert("保存失败", "保存失败!", "error");
-						}
-					},
-					error : function() {
-						$.messager.alert("保存失败", "服务器请求失败!", "error");
+					url : 'fenghuang/caiwuqrfkselect.do' ,
+					data :  param,
+					type : 'POST' ,
+					dataType : 'json' ,
+					success : function(data){
+						$('#dgysktjselect').datagrid('loadData',data);
 					}
 				});
-			}
-
 		}
-
-		function addMianBanMoshi() {
-			$("#editDic").dialog("open");
-			$("#dicFrome").form("clear");
-		}
-
-		function mainBanMoshiSave() {
-			$('#dicFrome').form('submit', {
-				url : 'fenghuang/saveDic.do?dicType=${param.dicType}',
-				onSubmit : function() {
-					return $(this).form('validate');
-				},
-				success : function(result) {
-					var result = eval('(' + result + ')');
-					if (result.success) {
-						$.messager.alert("保存成功", "保存成功！", "info");
-						$('#editDic').dialog('close');
-						$('#dg').datagrid('reload');
-					} else {
-						$.messager.alert("保存失败", "保存失败!", "error");
-						$('#dg').datagrid('reload');
-					}
-				}
-			});
-		}
-
-		function shanchu() {
-			var rows = $("#dg").datagrid("getSelections");
-			if (rows.length > 0) {
-				var param = {
-					"deleteRows" : $.toJSON(rows)
-				};
-				$.ajax({
-					url : "fenghuang/deleteDics.do",
-					data : param,
-					dataType : "json",
-					success : function(data) {
-						if (data.success) {
-							$.messager.alert("删除成功", "删除成功！", "info");
-							$("#dg").datagrid('reload');
-						} else {
-							$.messager.alert("删除失败", "删除失败!", "error");
-						}
-					},
-					error : function() {
-						$.messager.alert("删除失败", "服务器请求失败!", "error");
-					}
-				});
-			}
-		}
-		function closeEditDic() {
-			$('#editDic').dialog('close');
-		} 
-
-		//
-		function searchDiJi() {
-			$("#searchDic").dialog("open");
-			$("#searchForm").form("clear");
-		}
-		function searchFormSubmit() {
-			$("#searchDic").dialog("close");
-			$("#dg").datagrid("load", {
-				dicNo : $("#searchDicNo").val(),
-				dicName : $("#searchDicName").val(),
-				dicHelp : $("#searchDicHelp").val(),
-				dicSortNo : $("#searchDicSortNo").val()
-			});
-
-		}
-
-		function closedSearch() {
-			$('#searchDic').dialog('close');
-		}
+		
+	
 	</script>
 </body>
 </html>

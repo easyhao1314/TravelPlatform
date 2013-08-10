@@ -6,7 +6,7 @@ import com.fenghuang.entiey.Shoukuanxiang;
 import com.fenghuang.util.Pagination;
 
 public interface Icaiwushoukuanxiang {
-	 public boolean saveshoukuan(Shoukuanxiang shoukuanxiang) throws Exception;
+	   public boolean saveshoukuan(Shoukuanxiang shoukuanxiang) throws Exception;
 		
 		public boolean updateshoukuan(Shoukuanxiang shoukuanxiang) throws Exception;
 		
