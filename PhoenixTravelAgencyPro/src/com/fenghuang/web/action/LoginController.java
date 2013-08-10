@@ -48,7 +48,7 @@ public class LoginController {
 				{
 					map.put("userId",users.getId());
 					//验证成功
-					return "layouttest";
+					return "layout";
 				}else{
 					map.put("loginError", "密码不正确！");
 					map.put("loginName", loginName);

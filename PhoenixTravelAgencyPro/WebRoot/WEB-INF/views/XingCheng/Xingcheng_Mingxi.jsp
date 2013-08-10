@@ -284,11 +284,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						 var jj = data.rows[i].jiaotongchengshi;
 						 jt=jj.split(":");
 						 for(var j=0;j<jt.length;j++){
-						 if(jt[j]=="^1"){
-						 xianshijiaotongchengshi+="飞机";
+						 	if(jt[j]=="^1"){
+						 	xianshijiaotongchengshi+="飞机";
 						 }
-						 if(jt[j]=="^2"){
-						  xianshijiaotongchengshi+="游轮";
+						 	if(jt[j]=="^2"){
+						  	xianshijiaotongchengshi+="游轮";
 						 }
 
 						 }
