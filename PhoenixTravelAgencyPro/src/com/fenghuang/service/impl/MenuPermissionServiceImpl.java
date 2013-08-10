@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fenghuang.dao.IMenuPermissionDao;
+import com.fenghuang.dao.IRoleAndMenuPermissionDao;
 import com.fenghuang.entiey.MenuPermission;
 import com.fenghuang.service.IMenuPermissionService;
 import com.fenghuang.util.Pagination;
@@ -16,6 +17,8 @@ public class MenuPermissionServiceImpl implements IMenuPermissionService {
 
 	@Autowired
 	private IMenuPermissionDao iMenuPermissionDao;
+	@Autowired
+	private IRoleAndMenuPermissionDao iRoleAndMenuPermissionDao;
 	
 	@Override
 	public boolean saveMenuPermission(MenuPermission meunPermission)
@@ -72,6 +75,29 @@ public class MenuPermissionServiceImpl implements IMenuPermissionService {
 				iMenuPermissionDao.deleteMenuPermissionById(menuPermission.getId());
 			}
 		}
+	}
+
+	@Override
+	public void saveMenuPerissionChange(
+			List<MenuPermission> insertMenuPerssions,
+			List<MenuPermission> deleteMenuPerssions, Long roleId)
+			throws Exception {
+		if(deleteMenuPerssions != null){
+			for (Iterator iterator = deleteMenuPerssions.iterator(); iterator
+					.hasNext();) {
+				MenuPermission menuPermission = (MenuPermission) iterator.next();
+				iRoleAndMenuPermissionDao.deleteRoleAndMenuPermission(roleId, menuPermission.getId());	
+			}
+		}
+		if(insertMenuPerssions != null){
+			for (Iterator iterator = insertMenuPerssions.iterator(); iterator
+					.hasNext();) {
+				MenuPermission menuPermission = (MenuPermission) iterator.next();
+				iRoleAndMenuPermissionDao.insertRoleAndMenuPermisson(roleId, menuPermission.getId());	
+			}
+		}
+		
+		
 	}
 
 }

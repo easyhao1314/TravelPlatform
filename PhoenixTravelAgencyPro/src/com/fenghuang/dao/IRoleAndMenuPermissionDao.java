@@ -26,6 +26,10 @@ public interface IRoleAndMenuPermissionDao {
 	 * @throws Exception
 	 */
 	public List<RoleAndMenuPermission> getRoleAndMenuPermissionsByRoleId(Long roleId) throws Exception;
+	
+	public boolean insertRoleAndMenuPermisson(Long roleId,Long mpid)throws Exception;
+	
+	public boolean deleteRoleAndMenuPermission(Long roleId,Long mpid) throws Exception;
 
 }
 

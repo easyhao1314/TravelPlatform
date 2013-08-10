@@ -124,18 +124,85 @@ public class MenuPermissionController {
 		result.put("success", isSuccess);
 		return result;
 	}
-	
+	@RequestMapping("fenghuang/getMenuPerssionsByRoleId.do")
+	@ResponseBody
 	public Map<String, Object> getMenuPerssionsByRoleId(HttpServletRequest request,
 			HttpServletResponse response, Integer page, Integer rows,
 			String roleId) {
+		Long roleIdLong = 0l;
+		if(roleId != null &&!"".endsWith(roleId)){
+			roleIdLong = Long.valueOf(roleId);
+			
+			
+		}
+		try {
+		 	Pagination<MenuPermission>  menuLists = iRoleService.getMenuPermissionsByRoleId(page.intValue(), rows.intValue(), roleIdLong);
+			List<Map<String, Object>> menuPermissionRows = menuLists.getResultList();
+			Map<String, Object> returnValue = new HashMap<String, Object>();
+			returnValue.put("total", menuLists.getTotalRows());
+			returnValue.put("rows", menuPermissionRows);
+			return returnValue;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		return null;
 	}
-	
+	@RequestMapping("fenghuang/getMenuPerssionsNotIncludeByRoleId.do")
+	@ResponseBody
 	public Map<String, Object> getMenuPerssionsNotIncludeByRoleId(HttpServletRequest request,
 			HttpServletResponse response, Integer page, Integer rows,
 			String roleId) {
+		Long roleIdLong = 0l;
+		if(roleId != null &&!"".endsWith(roleId)){
+			roleIdLong = Long.valueOf(roleId);
+			
+			
+		}
+		try {
+		 	Pagination<MenuPermission>  menuLists = iRoleService.getMenuPermissionsNotIncludeByRoleId(page.intValue(), rows.intValue(), roleIdLong);
+			List<Map<String, Object>> menuPermissionRows = menuLists.getResultList();
+			Map<String, Object> returnValue = new HashMap<String, Object>();
+			returnValue.put("total", menuLists.getTotalRows());
+			returnValue.put("rows", menuPermissionRows);
+			return returnValue;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		return null;
 	}
 	
+	@RequestMapping("fenghuang/saveMenuPerissionChange.do")
+	@ResponseBody
+	public Map<String,Object> saveMenuPerissionChange(HttpServletRequest request,
+			HttpServletResponse response, String changesRows,String changesRowsdelete,String roleId){
+		boolean isSuccess = false;
+		Map<String, Object> result = new HashMap<String, Object>();
+		try{
+
+			JSONArray jsonArray = JSONArray.fromObject(changesRows);
+			JSONArray jsonArray2 = JSONArray.fromObject(changesRowsdelete);
+			List<MenuPermission>  mps = null;
+			List<MenuPermission>  mps2 = null;
+		
+			if(jsonArray.size()>0){
+				mps= JSONArray.toList(jsonArray,MenuPermission.class);
+			}
+			
+			if(jsonArray2.size()>0){
+				mps2 = JSONArray.toList(jsonArray2,MenuPermission.class);
+			}
+		if(roleId!=null && !"".equals(roleId)){
+			iMenuPermissionService.saveMenuPerissionChange(mps, mps2, Long.valueOf(roleId));
+		}
+		isSuccess = true;
+		}catch (Exception e) {
+			e.printStackTrace();
+			isSuccess = false;
+		}
+		result.put("success", isSuccess);
+		return result;
+	}
 	
 }

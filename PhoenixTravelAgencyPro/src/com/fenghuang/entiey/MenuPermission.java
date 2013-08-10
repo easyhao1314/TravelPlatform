@@ -35,6 +35,7 @@ public class MenuPermission {
 	
 	public String functionNo;
 	public String meunName;
+	public Integer roleid;
 	/**
 	 * @return the id
 	 */
@@ -116,5 +117,22 @@ public class MenuPermission {
 	public void setMeunName(String meunName) {
 		this.meunName = meunName;
 	}
+
+	/**
+	 * @return the roleid
+	 */
+	public Integer getRoleid() {
+		return roleid;
+	}
+
+	/**
+	 * @param roleid the roleid to set
+	 */
+	public void setRoleid(Integer roleid) {
+		this.roleid = roleid;
+	}
+
+
+
    
 }

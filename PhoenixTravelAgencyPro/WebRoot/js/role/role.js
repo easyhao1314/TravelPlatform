@@ -154,4 +154,22 @@ var editIndex = undefined;
 			
 		}
 		
+		function editAllocationMenuPerission(){
+			var row = $("#dgRole").datagrid("getSelected");
+			var rowHref = "menuPermissionAllocation.do?roleId="+row.id;
+			alert(rowHref);
+			   var tab = $('#tt').tabs('getSelected');
+			   
+				if (tab){  
+	                   var index = $('#tt').tabs('getTabIndex', tab);  
+	                   $('#tt').tabs('close', index);  
+	                } 
+					$('#tt').tabs('add', {
+						title : "分配菜单权限",
+						href : rowHref,
+						closable : true
+					});
+			
+		}
+		
 		

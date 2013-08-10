@@ -118,7 +118,7 @@ public class RoleDaoImpl extends BaseDao implements IRoleDao {
 			int currentPage, int numPerPage, Long roleId) throws Exception {
 	   StringBuffer sql = new StringBuffer("SELECT menupermission.id, menupermission.mpNo,menupermission.mpName,menupermission.mpDesc,menupermission.functionNo,role.id AS roleid FROM menupermission ,role ,roleandmenupermission WHERE role.id =  roleandmenupermission.roleId AND roleandmenupermission.mpid =  menupermission.id");
 	   if(roleId != null && roleId !=0){
-		   sql.append(" and and role.id='");
+		   sql.append(" and role.id='");
 			sql.append(roleId);
 			sql.append("'");
 		   
@@ -131,13 +131,7 @@ public class RoleDaoImpl extends BaseDao implements IRoleDao {
 	@Override
 	public Pagination<MenuPermission> getMenuPermissionsNotIncludeByRoleId(
 			int currentPage, int numPerPage, Long roleId) throws Exception {
-		   StringBuffer sql = new StringBuffer("SELECT menupermission.id, menupermission.mpNo,menupermission.mpName,menupermission.mpDesc,menupermission.functionNo,role.id AS roleid FROM menupermission ,role ,roleandmenupermission WHERE role.id =  roleandmenupermission.roleId AND roleandmenupermission.mpid =  menupermission.id");
-		   if(roleId != null && roleId !=0){
-			   sql.append(" and and role.id<>'");
-				sql.append(roleId);
-				sql.append("'");
-			   
-		   }	
+		   StringBuffer sql = new StringBuffer("SELECT menupermission.id, menupermission.mpNo,menupermission.mpName,menupermission.mpDesc,menupermission.functionNo FROM menupermission where menupermission.id not in (select mpid from roleandmenupermission where roleid='"+roleId+"' )");
 		   Pagination<MenuPermission> pMenuPermissions = this.getPagination(currentPage, numPerPage,
 					sql.toString());
 			return pMenuPermissions;

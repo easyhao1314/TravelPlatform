@@ -142,7 +142,7 @@
 		<div>
 	       <span>用户权限</span>
 	       <div>
-		   <div data-options="iconCls:'icon-edit'">分配角色菜单控制权限</div>
+		   <div data-options="iconCls:'icon-edit'" onclick="editAllocationMenuPerission();">分配角色菜单控制权限</div>
 		   <div data-options="iconCls:'icon-edit'">分配角色页面控制权限</div>
 		   <div data-options="iconCls:'icon-edit'">把该角色分配给用户</div>
 		   <div data-options="iconCls:'icon-edit'">分配角色管辖部门</div>

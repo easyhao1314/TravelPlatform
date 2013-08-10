@@ -93,6 +93,7 @@
 	<mvc:view-controller path="role.do" view-name="role/role"/>
 	<mvc:view-controller path="users.do" view-name="users/users"/>
 	<mvc:view-controller path="menuPermission.do" view-name="permission/menuPermission"/>
+	<mvc:view-controller path="menuPermissionAllocation.do" view-name="permission/menuPermissionAllocation"/>
 	<!-- 财务模块  -->
 	<mvc:view-controller path="a.do" view-name="F.A.D/a"/>
 	<mvc:view-controller path="sanpin.do" view-name="F.A.D/sanpin"/>

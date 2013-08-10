@@ -10,6 +10,7 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.jdbc.core.simple.ParameterizedBeanPropertyRowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.fenghuang.dao.BaseDao;
@@ -64,7 +65,7 @@ public class FunctionMenuDaoImpl extends BaseDao implements IFunctionMenuDao {
 	@Override
 	public FunctionMenu getFunctionMenuById(Long id) throws Exception {
 	  String sql = "select * from functionmenu where id =?";
-	  FunctionMenu fm = this.queryForObject(sql, FunctionMenu.class,id);
+	  FunctionMenu fm = this.queryForObject(sql, ParameterizedBeanPropertyRowMapper.newInstance(FunctionMenu.class),id);
        
 		return fm;
 	}

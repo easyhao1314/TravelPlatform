@@ -1,9 +1,12 @@
 package com.fenghuang.dao.impl;
 
+import java.util.List;
+
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.jdbc.core.simple.ParameterizedBeanPropertyRowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.fenghuang.dao.BaseDao;
@@ -84,7 +87,7 @@ public class MenuPermissionDaoImpl extends BaseDao implements
 	@Override
 	public MenuPermission getMenuPermissionById(Long id) throws Exception {
 		String sql = "SELECT menupermission.id,menupermission.mpNo,menupermission.mpName,menupermission.mpDesc,menupermission.functionNo FROM menupermission where menupermission.id=?";
-		MenuPermission mp  = this.queryForObject(sql, MenuPermission.class, id);
+		MenuPermission mp  = this.queryForObject(sql, ParameterizedBeanPropertyRowMapper.newInstance(MenuPermission.class), id);
 		return mp;
 	}
 
