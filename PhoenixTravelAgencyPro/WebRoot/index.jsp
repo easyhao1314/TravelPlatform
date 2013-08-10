@@ -28,6 +28,8 @@
 </head>
 
 <body>
+	<div style="width:1024px; height:1000px;  background-image: url('Image/loginBackground.jpg');">
+	<!-- 
 	<div class="easyui-panel" title="登录" style="width:400px">
 		<div style="padding:10px 0 10px 60px">
 			<form action="" id="loginFrom" method="post">
@@ -54,6 +56,8 @@
 					class="easyui-linkbutton" onclick="clearForm()">Clear</a>
 			</div>
 		</div>
+	</div>
+	 -->
 	</div>
 </body>
 </html>

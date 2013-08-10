@@ -125,6 +125,8 @@ public class UsersServiceImpl implements IUsersService {
 				mainMap.put("id", functionMenu.getId());
 				mainMap.put("text", functionMenu.getMeunName());
 				List<Map<String,Object>> subList = new ArrayList<Map<String,Object>>();
+				List<Map<String,Object>> attributesMap = null;
+				Map<String,Object> attriMap = null;
 			    for (Iterator<FunctionMenu> subIterator = subMenus.iterator(); subIterator
 						.hasNext();){
 			    	  FunctionMenu subMenu = (FunctionMenu) subIterator.next();
@@ -132,11 +134,16 @@ public class UsersServiceImpl implements IUsersService {
 			    	  if(subMenu.getParentId() == functionMenu.getId()){
 			    		  subMap.put("id", subMenu.getId());
 			    		  subMap.put("text", subMenu.getMeunName());
-			    		  subMap.put("path", subMenu.getMenuPath());
+			    		  attributesMap = new ArrayList<Map<String,Object>>();
+			    		  attriMap = new HashMap<String, Object>();
+			    		  attriMap.put("path", subMenu.getMenuPath()+"&userId="+userId);
+			    		  attributesMap.add(attriMap);
+			    		  subMap.put("attributes", attributesMap);
 			    		  subList.add(subMap);
 			    	  }
 			    }
 				mainMap.put("children", subList);
+			    returnValue.add(mainMap);
 			}
 
 		} else {

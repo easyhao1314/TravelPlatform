@@ -81,13 +81,16 @@ public class RoleController {
 	@ResponseBody
 	public Map<String, Object> saveRoleInfo(HttpServletRequest request,
 			HttpServletResponse response, String roleNo, String roleName,
-			String roleDesc) {
+			String roleDesc,String id) {
 		Map<String, Object> result = new HashMap<String, Object>();
 		boolean isSuccess = false;
 		Role role = new Role();
 		role.setRoleNo(roleNo);
 		role.setRoleName(roleName);
 		role.setRoleDesc(roleDesc);
+		if(id !=null&&!"".equals(id)){
+			role.setId(Long.valueOf(id));
+		}
 		try {
 			iRoleService.saveRole(role);
 			isSuccess = true;
@@ -117,5 +120,5 @@ public class RoleController {
 		result.put("success", isSuccess);
 		return result;
 	}
-
+	
 }

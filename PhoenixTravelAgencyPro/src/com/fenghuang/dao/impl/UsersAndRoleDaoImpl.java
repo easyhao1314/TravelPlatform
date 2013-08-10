@@ -3,7 +3,10 @@
  */
 package com.fenghuang.dao.impl;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.sql.DataSource;
 
@@ -56,7 +59,22 @@ public class UsersAndRoleDaoImpl extends BaseDao implements IUsersAndRoleDao {
 	@Override
 	public List<UsersAndRole> getUsersAndRoles(Long userId) throws Exception {
 		String sql = " select * from usersandrole where userId = ?";
-		List<UsersAndRole>  uars = this.queryForList(sql, UsersAndRole.class);
+		List<Map<String,Object>> resultList = this.queryForList(sql,userId);
+		List<UsersAndRole>  uars = new ArrayList<UsersAndRole>();
+		UsersAndRole  usersAndRole= null;
+		for (Iterator iterator = resultList.iterator(); iterator.hasNext();) {
+			Map<String,Object> row = (Map<String, Object>) iterator.next();
+			usersAndRole = new UsersAndRole();
+			usersAndRole.setId(Long.valueOf(row.get("id").toString()));
+			usersAndRole.setRoleId(Long.valueOf(row.get("roleId").toString()));
+			usersAndRole.setUserId(Long.valueOf(row.get("userId").toString()));
+			if(row.get("roleCode")!=null){
+				usersAndRole.setRoleCode(row.get("roleCode").toString());
+			}
+			uars.add(usersAndRole);
+		}
+		
+		
 		return uars;
 	}
 	

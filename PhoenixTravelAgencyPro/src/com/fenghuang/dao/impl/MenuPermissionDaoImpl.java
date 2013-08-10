@@ -1,9 +1,12 @@
 package com.fenghuang.dao.impl;
 
+import java.util.List;
+
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.jdbc.core.simple.ParameterizedBeanPropertyRowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.fenghuang.dao.BaseDao;
@@ -49,7 +52,7 @@ public class MenuPermissionDaoImpl extends BaseDao implements
 	public Pagination<MenuPermission> getPaginationMenuPermissions(
 			int currentPage, int numPerPage, Long id, String mpNo,
 			String mpName, String mpDesc, String functionNo) throws Exception {
-		StringBuffer sql = new StringBuffer("SELECT menupermission.id,menupermission.mpNo,menupermission.mpName,menupermission.mpDesc,menupermission.functionNo FROM menupermission where 1=1");
+		StringBuffer sql = new StringBuffer("SELECT menupermission.id,menupermission.mpNo,menupermission.mpName,menupermission.mpDesc,menupermission.functionNo,functionmenu.meunName FROM menupermission,functionmenu where 1=1 and menupermission.functionNo=functionmenu.id ");
 		if(id != null && id !=0){
 			sql.append(" and menupermission.id ='");
 			sql.append(id);
@@ -70,7 +73,7 @@ public class MenuPermissionDaoImpl extends BaseDao implements
 			sql.append(mpDesc);
 			sql.append("%'");
 		}
-		if (functionNo != null && !"".equals(functionNo)) {
+		if (functionNo != null && !"".equals(functionNo)&&!functionNo.equals("0")) {
 			sql.append(" and  menupermission.functionNo like '");
 			sql.append(functionNo);
 			sql.append("%'");
@@ -84,7 +87,7 @@ public class MenuPermissionDaoImpl extends BaseDao implements
 	@Override
 	public MenuPermission getMenuPermissionById(Long id) throws Exception {
 		String sql = "SELECT menupermission.id,menupermission.mpNo,menupermission.mpName,menupermission.mpDesc,menupermission.functionNo FROM menupermission where menupermission.id=?";
-		MenuPermission mp  = this.queryForObject(sql, MenuPermission.class, id);
+		MenuPermission mp  = this.queryForObject(sql, ParameterizedBeanPropertyRowMapper.newInstance(MenuPermission.class), id);
 		return mp;
 	}
 

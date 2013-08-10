@@ -27,20 +27,30 @@
 
 <body>
 	<!-- 如果在正式开发环境下 url可以为后台的请求，地址 -->
-	<table id="dgRole" class="easyui-datagrid"
-		data-options="url:'fenghuang/getRoles.do',border:false,singleSelect:false,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
-		pagination="true" toolbar="#tbRole">
+	<table id="dgMenuPermission" class="easyui-datagrid"
+		data-options="url:'fenghuang/getMenuPermissions.do',border:false,singleSelect:false,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
+		pagination="true" toolbar="#tbMenuPermission">
 		<thead>
 			<tr>
 				<th data-options="field:'ck',checkbox:true"></th>
-				<th data-options="field:'roleNo',editor:'text'" width="80">角色编号</th>
-				<th data-options="field:'roleName',editor:'text'" width="80">角色名称</th>
-				<th data-options="field:'roleDesc',editor:'text'" width="80">角色描述</th>
+				<th data-options="field:'mpNo',editor:'text'" width="80">编号</th>
+				<th data-options="field:'mpName',editor:'text'" width="80">名称</th>
+				<th data-options="field:'mpDesc',editor:'text'" width="80">描述</th>
+				<th data-options="field:'functionNo',editor:{
+				   type:'combobox',
+							options:{
+								url:'fenghuang/getFunctionMenuComboboxs.do',
+								valueField:'id',
+								textField:'meunName'
+							}
+				},formatter:function(value,row){
+				   return row.meunName;
+				}" width="80">功能编号</th>
 				<th data-options="field:'id',hidden:true"></th>
 			</tr>
 		</thead>
 	</table>
-	<div id="tbRole">
+	<div id="tbMenuPermission">
 		<a href="javascript:addHangMoshi();" class="easyui-linkbutton"
 			iconCls="icon-add" plain="true">新增(行模式)</a>&nbsp;&nbsp;| <a
 			href="javascript:addMianBanMoshi();" class="easyui-linkbutton"
@@ -52,36 +62,45 @@
 		<a href="javascript:getChanges();" class="easyui-linkbutton"
 			iconCls="icon-save" plain="true">保存修改</a>
 	</div>
-	<div id="editRole" class="easyui-dialog" title="新增业务字段"
+	<div id="editMenuPermission" class="easyui-dialog" title="新增业务字段"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:500px;height:200px;padding:10px;">
-		<form id="roleFrome" method="post">
+		<form id="menuPermissionFrome" method="post">
 			<table align="left">
 				<tr>
 					<td><div class="fitem">
-							<label>角色编号:</label>
+							<label>编号:</label>
 						</div></td>
 					<td><div>
-							<input name="roleNo" class="easyui-validatebox" required="true">
+							<input name="mpNo" class="easyui-validatebox" required="true">
 						</div>
 					</td>
 					<td><div class="fitem">
-							<label>角色名称:</label>
+							<label>名称:</label>
 						</div></td>
 					<td><div>
-							<input name="roleName" class="easyui-validatebox" required="true">
+							<input name="mpName" class="easyui-validatebox" required="true">
 						</div>
 					</td>
 				</tr>
 				<tr>
 					<td><div class="fitem">
-							<label>角色描述:</label>
+							<label>描述:</label>
 						</div></td>
-					<td><input name="roleDesc" class="easyui-validatebox">
+					<td><input name="mpDesc" class="easyui-validatebox">
 						</div>
 					</td>
-					<td></td>
-					<td></td>
+					<td><div class="fitem">
+							<label>功能编号:</label>
+						</div></td>
+					<td>
+					  <input name="functionNo" class="easyui-combobox"
+								data-options="
+					url:'fenghuang/getFunctionMenuComboboxs.do',
+					valueField:'id',
+					textField:'meunName'
+			">
+					</td>
 				</tr>
 				<tr>
 					<td colspan="4s" align="center"><a
@@ -94,38 +113,47 @@
 			<input id="id" name="id" type="hidden">
 		</form>
 	</div>
-	<div id="searchRole" class="easyui-dialog" title="查询业务字段"
+	<div id="searchMenuPermission" class="easyui-dialog" title="查询业务字段"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:500px;height:200px;padding:10px;">
-		<form id="searchRoleForm" action="">
+		<form id="searchMenuPermissionForm" action="">
 			<table align="left">
 				<tr>
 					<td><div class="fitem">
-							<label>角色编号:</label>
+							<label>编号:</label>
 						</div></td>
 					<td><div>
-							<input id="searchRoleNo" name="roleNo" class="easyui-validatebox">
+							<input id="searchMpNo" name="mpNo" class="easyui-validatebox">
 						</div>
 					</td>
 					<td><div class="fitem">
-							<label>角色名称:</label>
+							<label>名称:</label>
 						</div></td>
 					<td><div>
-							<input id="searchRoleName" name="roleName"
+							<input id="searchMpName" name="mpName"
 								class="easyui-validatebox">
 						</div>
 					</td>
 				</tr>
 				<tr>
 					<td><div class="fitem">
-							<label>角色描述:</label></div>
+							<label>描述:</label></div>
 					</td>
-					<td><div><input id="searchRoleDesc" name="roleDesc"
+					<td><div><input id="searchMpDesc" name="mpDesc"
 						class="easyui-validatebox">
 						</div>
 					</td>
-					<td></td>
-					<td></td>
+					<td><div class="fitem">
+							<label>功能编号:</label>
+						</div></td>
+					<td>
+					  <input id="searchFunctionNo" name="functionNo" class="easyui-combobox"
+								data-options="
+					url:'fenghuang/getFunctionMenuComboboxs.do',
+					valueField:'id',
+					textField:'meunName'
+			">
+					</td>
 				</tr>
 				<tr>
 					<td colspan="4s" align="center"><a
@@ -137,23 +165,11 @@
 			</table>
 		</form>
 	</div>
-	   	<div id="dgRoleMm" class="easyui-menu" style="width:120px;">
+	   	<div id="dgMenuPermissionMm" class="easyui-menu" style="width:120px;">
 		<div onClick="editRoleRightMenu()" data-options="iconCls:'icon-edit'">修改</div>
-		<div>
-	       <span>用户权限</span>
-	       <div>
-		   <div data-options="iconCls:'icon-edit'" onclick="editAllocationMenuPerission();">分配角色菜单控制权限</div>
-		   <div data-options="iconCls:'icon-edit'">分配角色页面控制权限</div>
-		   <div data-options="iconCls:'icon-edit'">把该角色分配给用户</div>
-		   <div data-options="iconCls:'icon-edit'">分配角色管辖部门</div>
-		   <div data-options="iconCls:'icon-edit'">分配角色管辖销售大区</div>
-		   <div data-options="iconCls:'icon-edit'">分配角色管辖人员</div>
-		   <div data-options="iconCls:'icon-edit'">分配角色制作线路可用城市</div>
-		   </div>
-		</div>
-		
+	    <div data-options="iconCls:'icon-edit'">权限分配给角色</div>
 	</div>
-	<script type="text/javascript" src="js/role/role.js">	
+	<script type="text/javascript" src="js/permission/menuPermission.js">	
 	</script>
 </body>
 </html>

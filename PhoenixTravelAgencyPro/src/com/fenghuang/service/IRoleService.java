@@ -3,6 +3,7 @@ package com.fenghuang.service;
 import java.util.List;
 
 import com.fenghuang.entiey.FunctionMenu;
+import com.fenghuang.entiey.MenuPermission;
 import com.fenghuang.entiey.Role;
 import com.fenghuang.entiey.RoleAndMenuPermission;
 import com.fenghuang.entiey.RoleAndPagePermission;
@@ -51,5 +52,10 @@ public interface IRoleService {
 	public void deleteRoleAndPagePermissions(List<RoleAndPagePermission> roleAndPagePermissions) throws Exception;
 	
 	public List<FunctionMenu> getFunctionMenuByRoleId(Long roleId) throws Exception;
+	
+	public Pagination<MenuPermission> getMenuPermissionsByRoleId(
+			int currentPage, int numPerPage, Long roleId) throws Exception;
+	
+	public Pagination<MenuPermission> getMenuPermissionsNotIncludeByRoleId(int currentPage, int numPerPage,Long roleId) throws Exception;
 	
 }
