@@ -15,7 +15,7 @@
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
-<!--  
+ 
 <link rel="stylesheet" type="text/css"
 	href="js/themes/default/easyui.css">
 <link rel="stylesheet" type="text/css" href="js/themes/icon.css">
@@ -25,7 +25,7 @@
 <script type="text/javascript" src="js/locale/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript" src="js/jquery.json.js"></script>
 <script type="text/javascript" src="js/datagrid-groupview.js"></script>
--->
+
 </head>
 
 <body>
@@ -53,7 +53,9 @@
 				<th data-options="field:'telephone',editor:'text'" width="80">电话</th>
 				<th data-options="field:'email',editor:'text'" width="80">MAIL</th>
 				<th
-					data-options="field:'departName',editor:{
+					data-options="field:'departmentId',formatter:function(value,row){
+							return row.departName;
+						},editor:{
 					type:'combobox',
 							options:{
 								valueField:'id',
@@ -65,7 +67,9 @@
 				<th data-options="field:'jobDescription',editor:'text'" width="80">岗位说明</th>
 				<th data-options="field:'sortNumber',editor:'text'" width="80">排序</th>
 				<th
-					data-options="field:'companyName',editor:{
+					data-options="field:'companyId',formatter:function(value,row){
+							return row.companyName;
+						},editor:{
 					type:'combobox',
 							options:{
 								valueField:'id',
@@ -460,7 +464,7 @@
 		</form>
     </div>
    	<div id="dgUserMm" class="easyui-menu" style="width:120px;">
-		<div onClick="editUsers()" data-options="iconCls:'icon-edit'">修改</div>
+		<div onClick="editUsersMenu()" data-options="iconCls:'icon-edit'">修改</div>
 		<div>
 	       <span>用户权限</span>
 	       <div>
