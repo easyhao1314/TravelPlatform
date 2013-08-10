@@ -208,7 +208,7 @@
 					<td><div class="fitem">
 							<label>公司:</label>
 						</div></td>
-					<td><input name="companyId" class="easyui-combobox"
+					<td><input id="companyIdCom" name="companyId" class="easyui-combobox"
 								data-options="
 					url:'fenghuang/getCompanyComboboxs.do',
 					valueField:'id',
@@ -218,7 +218,7 @@
 					<td><div class="fitem">
 							<label>部门:</label>
 						</div></td>
-					<td><input name="departmentId" class="easyui-combobox"
+					<td><input id="departmentIdCom" name="departmentId" class="easyui-combobox"
 								data-options="
 					url:'fenghuang/getDepartmentComboboxs.do',
 					valueField:'id',
