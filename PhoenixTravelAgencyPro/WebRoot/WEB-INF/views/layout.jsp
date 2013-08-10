@@ -198,6 +198,11 @@
 						href="javascript:open1('系统用户管理','users.do');">系统用户管理</a>
 					</li>
 				</ul>
+				<ul>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('系统菜单权限管理','menuPermission.do');">系统菜单权限管理</a>
+					</li>
+				</ul>
 			</li>
 			<li iconCls="icon-base" state="closed"><span>系统基础设置管理</span>
 				<ul>

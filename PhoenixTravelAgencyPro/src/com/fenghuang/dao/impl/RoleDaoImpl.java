@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.fenghuang.dao.BaseDao;
 import com.fenghuang.dao.IRoleDao;
 import com.fenghuang.entiey.FunctionMenu;
+import com.fenghuang.entiey.MenuPermission;
 import com.fenghuang.entiey.Role;
 import com.fenghuang.entiey.RoleAndMenuPermission;
 import com.fenghuang.entiey.RoleAndPagePermission;
@@ -110,6 +111,30 @@ public class RoleDaoImpl extends BaseDao implements IRoleDao {
 		String sql = "delete from roleandpagepermission where id =?";
 		int rs = this.update(sql, id);
 		return rs > 0;
+	}
+
+	@Override
+	public Pagination<MenuPermission> getMenuPermissionsByRoleId(
+			int currentPage, int numPerPage, Long roleId) throws Exception {
+	   StringBuffer sql = new StringBuffer("SELECT menupermission.id, menupermission.mpNo,menupermission.mpName,menupermission.mpDesc,menupermission.functionNo,role.id AS roleid FROM menupermission ,role ,roleandmenupermission WHERE role.id =  roleandmenupermission.roleId AND roleandmenupermission.mpid =  menupermission.id");
+	   if(roleId != null && roleId !=0){
+		   sql.append(" and role.id='");
+			sql.append(roleId);
+			sql.append("'");
+		   
+	   }	
+	   Pagination<MenuPermission> pMenuPermissions = this.getPagination(currentPage, numPerPage,
+				sql.toString());
+		return pMenuPermissions;
+	}
+
+	@Override
+	public Pagination<MenuPermission> getMenuPermissionsNotIncludeByRoleId(
+			int currentPage, int numPerPage, Long roleId) throws Exception {
+		   StringBuffer sql = new StringBuffer("SELECT menupermission.id, menupermission.mpNo,menupermission.mpName,menupermission.mpDesc,menupermission.functionNo FROM menupermission where menupermission.id not in (select mpid from roleandmenupermission where roleid='"+roleId+"' )");
+		   Pagination<MenuPermission> pMenuPermissions = this.getPagination(currentPage, numPerPage,
+					sql.toString());
+			return pMenuPermissions;
 	}
 
 

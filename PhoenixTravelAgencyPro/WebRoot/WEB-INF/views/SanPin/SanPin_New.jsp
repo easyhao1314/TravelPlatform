@@ -9,15 +9,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     <!-- 添加easyui样式 -->
+    <!--  
 <link rel="stylesheet" type="text/css"
 	href="js/themes/default/easyui.css">
 <link rel="stylesheet" type="text/css" href="js/themes/icon.css">
 <link rel="stylesheet" type="text/css" href="js/demo/demo.css">
+-->
 <!-- 这里主要是jquery的js文件  -->
+<!--
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="js/locale/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript" src="js/jquery.json.js"></script>
+  -->
     <title>新建散拼</title>
     
 	<meta http-equiv="pragma" content="no-cache">

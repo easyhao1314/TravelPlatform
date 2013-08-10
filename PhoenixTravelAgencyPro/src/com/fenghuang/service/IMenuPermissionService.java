@@ -22,4 +22,6 @@ public interface IMenuPermissionService {
 	public void updateMenuPermissions(List<MenuPermission> mps)throws Exception;
 	
 	public void deleteMenuPermissions(List<MenuPermission> mps)throws Exception;
+	
+	public void saveMenuPerissionChange(List<MenuPermission> insertMenuPerssions,List<MenuPermission> deleteMenuPerssions,Long roleId) throws Exception;
 }

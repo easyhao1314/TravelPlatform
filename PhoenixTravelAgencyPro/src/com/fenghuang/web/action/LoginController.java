@@ -3,6 +3,9 @@
  */
 package com.fenghuang.web.action;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fenghuang.entiey.Users;
 import com.fenghuang.service.IUsersService;
@@ -42,8 +46,9 @@ public class LoginController {
 				Users users = iUsersService.getUsersByLoginName(loginName);
 				if(users != null&&FengHuangMd5Util.getMD5(password).equals(users.getPassword()))
 				{
+					map.put("userId",users.getId());
 					//验证成功
-					return "layout";
+					return "layouttest";
 				}else{
 					map.put("loginError", "密码不正确！");
 					map.put("loginName", loginName);
@@ -59,5 +64,21 @@ public class LoginController {
 		}
 		return "index";
 	}
+	
+	@RequestMapping("fenghuang/getUserMenus.do")
+	@ResponseBody
+	public List<Map<String, Object>> getFunctions(HttpServletRequest request,HttpServletResponse response,Long userId){
+		
+		try {
+			List<Map<String, Object>> functions = iUsersService.getFunctionMenusByUserId(userId);
+		    return functions;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+		
+	}
+	
+	
 
 }

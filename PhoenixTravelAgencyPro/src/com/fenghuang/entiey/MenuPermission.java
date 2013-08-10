@@ -34,7 +34,8 @@ public class MenuPermission {
 	public String mpDesc;
 	
 	public String functionNo;
-
+	public String meunName;
+	public Integer roleid;
 	/**
 	 * @return the id
 	 */
@@ -102,5 +103,36 @@ public class MenuPermission {
 	public void setFunctionNo(String functionNo) {
 		this.functionNo = functionNo;
 	}
+
+	/**
+	 * @return the meunName
+	 */
+	public String getMeunName() {
+		return meunName;
+	}
+
+	/**
+	 * @param meunName the meunName to set
+	 */
+	public void setMeunName(String meunName) {
+		this.meunName = meunName;
+	}
+
+	/**
+	 * @return the roleid
+	 */
+	public Integer getRoleid() {
+		return roleid;
+	}
+
+	/**
+	 * @param roleid the roleid to set
+	 */
+	public void setRoleid(Integer roleid) {
+		this.roleid = roleid;
+	}
+
+
+
    
 }
