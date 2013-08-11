@@ -38,7 +38,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<thead>
 			<tr>
 				<th data-options="field:'tuanNo'" width="50">团号</th>
-				<th data-options="field:'tuanName'" width="50" onclick="select();">团名/路线</th>
+				<th id="tuanName" data-options="field:'tuanName',formatter:onOperateSanpinList" width="50" ">团名/路线</th>
 				<th data-options="field:'groupdate'" width="50">出团日期</th>
 				<th data-options="field:'Tourdate'" width="50">回团日期</th>
 				<th data-options="field:'targetpopulation'" width="50">出发城市</th>
@@ -100,10 +100,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 	</div>
 	<script type="text/javascript">
-		function Select() {
-			$("#searchDic").dialog("open");
-			$("#searchForm").form("clear");
+		function onOperateSanpinList(val,row) {
+      return '<a href="javascript:openSanpinDetai('+row.tuanNo+')">'+row.tuanNo+'</a>';
 		}
+		function openSanpinDetai(tuanNo){
+		 var row = $("#dg").datagrid("getSelected");
+      var url= "Xingcheng_mx.do?xianid="+row.tuanNo;
+       var tab = $('#tt').tabs('getSelected'); 
+		if (tab){  
+	                 var index = $('#tt').tabs('getTabIndex', tab); 
+	                 $('#tt').tabs('close', index);  
+	       } 
+	       
+	       $('#tt').tabs('add', {
+				         title : "散拼行程详细信息",
+				         href : url,
+				      //  closable : true,
+				         });
+				        			         
+	      }
 		function closedSearch() {
 			$('#searchDic').dialog('close');
 		}
