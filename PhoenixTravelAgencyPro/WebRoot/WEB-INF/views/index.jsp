@@ -23,13 +23,14 @@
         }  
 </script>
 
+
 </head>
 
-<body>
-<div style="width:100%; height:100%;  background-image: url('Image/background.jpg'); background-repeat:no-repeat;">
+<body style="width:100%; height:100%;  background-image: url('Image/background.jpg'); background-repeat:no-repeat;">
+
 	<div style="width:470px; height: 225px;  position:absolute; left:50%; top:50%; margin:-105px 0 0 -200px; background-image: url('Image/loginDiv.png');">
 		<div style="padding:10px 0 10px 60px">
-			<form action="fenghuang/login.do" id="loginFrom" method="post" style="margin-top: 70px;">
+			<form action="login.do" id="loginFrom" method="post" style="margin-top: 70px;">
 				<table>
 					<tr>	
 						<td>用户名：</td>
@@ -46,9 +47,9 @@
 					</tr>
 					<tr>
 						<td>验证码：</td>
-						<td><input class="easyui-validatebox" style="width:78px;  height: 18px; border-radius:3px; " data-options="required:true">
+						<td><input class="easyui-validatebox" name="code" style="width:78px;  height: 18px; border-radius:3px; " data-options="required:true">
 						&nbsp;&nbsp;&nbsp;&nbsp;
-						<input class="easyui-validatebox" value="23011" onfocus=this.blur() style="width:78px;   height: 18px; border-radius:3px; ">
+						<input class="easyui-validatebox"  value="${code }" onfocus=this.blur() style="width:78px;   height: 18px; border-radius:3px; ">
 						</td>
 						
 						
@@ -57,6 +58,7 @@
 					<tr>
 					  <td colspan="2">${loginError}</td>
 					</tr>
+					
 					<tr>
 					   <td colspan="2">
 					   	 <input type="submit" value="提交"> <a href="javascript:void(0)"
@@ -66,9 +68,9 @@
 					</tr>
 					 -->
 				</table>
+				<span>${loginError}</span>
 			</form>
 		</div>
-	</div>
 	</div>
 	<script type="text/javascript">
 		function onSubmit(){
