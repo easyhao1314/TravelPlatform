@@ -105,7 +105,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		}
 		function openSanpinDetai(tuanNo){
 		 var row = $("#dg").datagrid("getSelected");
-      var url= "Xingcheng_mx.do?xianid="+row.tuanNo;
+      var url= "Xingcheng_mx.do?xianid="+row.xlid;
        var tab = $('#tt').tabs('getSelected'); 
 		if (tab){  
 	                 var index = $('#tt').tabs('getTabIndex', tab); 
@@ -144,11 +144,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 		}
 	</script>
-  
-  
-  
-  
-  
-	
+
   </body>
 </html>
