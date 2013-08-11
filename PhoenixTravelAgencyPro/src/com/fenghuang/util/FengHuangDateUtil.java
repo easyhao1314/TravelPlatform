@@ -45,4 +45,15 @@ public class FengHuangDateUtil {
 		}
 		return date_str;
 	}
+	
+	public static String getTimeShow(){
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy年 MM月dd日 ");
+		
+		return sdf.format(new Date());
+		
+	}
+	public static void main(String[] args) {
+		System.out.println(getTimeShow());
+	}
+	
 }

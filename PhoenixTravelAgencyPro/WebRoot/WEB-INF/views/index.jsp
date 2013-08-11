@@ -29,7 +29,7 @@
 <div style="width:100%; height:100%;  background-image: url('Image/background.jpg'); background-repeat:no-repeat;">
 	<div style="width:470px; height: 225px;  position:absolute; left:50%; top:50%; margin:-105px 0 0 -200px; background-image: url('Image/loginDiv.png');">
 		<div style="padding:10px 0 10px 60px">
-			<form action="fenghuang/login.do" id="loginFrom" method="post" style="margin-top: 70px;">
+			<form action="login.do" id="loginFrom" method="post" style="margin-top: 70px;">
 				<table>
 					<tr>	
 						<td>用户名：</td>
