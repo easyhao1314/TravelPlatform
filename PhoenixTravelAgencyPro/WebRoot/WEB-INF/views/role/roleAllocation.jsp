@@ -30,15 +30,16 @@
 		<tr>
 			<td>
 			    <div id="dg5">
-				<table id="dg1" class="easyui-datagrid" title="已有权限"
+				<table id="dg1" class="easyui-datagrid" title="已有角色"
 					style="width:400px;height:400px"
-						data-options="singleSelect:false,collapsible:true,url:'fenghuang/getMenuPerssionsByRoleId.do?roleId=${param.roleId }'" pagination="true" >
+						data-options="singleSelect:false,collapsible:true,url:'fenghuang/getHaveRoles.do?userId=${ param.userId }'" pagination="true" >
 					<thead>
 						<tr>
-						    <th data-options="field:'ck',checkbox:true"></th>
-							<th data-options="field:'mpNo',width:80">编号</th>
-							<th data-options="field:'mpName',width:100">名称</th>
-							<th data-options="field:'mpDesc',width:80,align:'right'">描述</th>
+							<th data-options="field:'ck',checkbox:true"></th>
+							<th data-options="field:'roleNo'" width="80">角色编号</th>
+							<th data-options="field:'roleName'" width="80">角色名称</th>
+							<th data-options="field:'roleDesc'" width="80">角色描述</th>
+							<th data-options="field:'id',hidden:true"></th>
 						</tr>
 					</thead>
 				</table>
@@ -51,15 +52,16 @@
 			<td>
 				<div id="dg4"
 					style="width: 400px;height: 400px;">
-					<table id="dg2" class="easyui-datagrid" title="可分配的权限"
+					<table id="dg2" class="easyui-datagrid" title="可分配角色"
 						style="width:400px;height:400px"
-							data-options="singleSelect:false,collapsible:true,url:'fenghuang/getMenuPerssionsNotIncludeByRoleId.do?roleId=${param.roleId }'" pagination="true">
+							data-options="singleSelect:false,collapsible:true,url:'fenghuang/getNotHaveRoles.do?userId=${ param.userId }'" pagination="true">
 						<thead>
-												<tr>
+						<tr>
 						    <th data-options="field:'ck',checkbox:true"></th>
-							<th data-options="field:'mpNo',width:80">编号</th>
-							<th data-options="field:'mpName',width:100">名称</th>
-							<th data-options="field:'mpDesc',width:80,align:'right'">描述</th>
+							<th data-options="field:'roleNo'" width="80">角色编号</th>
+							<th data-options="field:'roleName'" width="80">角色名称</th>
+							<th data-options="field:'roleDesc'" width="80">角色描述</th>
+							<th data-options="field:'id',hidden:true"></th>
 						</tr>
 						</thead>
 					</table>
@@ -68,7 +70,6 @@
 		<tr>
 			<td colspan="2" align="center"><input type="button" onclick="test3();" value="保存" /></td>
 			<td colspan="2" align="center"><input type="button" onclick="test4();" value="返回" /></td>
-			<td></td>
 		</tr>
 	</table>
 	<script type="text/javascript">
@@ -92,15 +93,15 @@
 		function test3(){
 		var changesRows = $("#dg1").datagrid("getChanges","inserted");
 		var changesRowsdelete = $("#dg1").datagrid("getChanges","deleted");
-		var roleId = ${param.roleId};
+		var userId = ${param.userId};
       		if (changesRows.length > 0||changesRowsdelete.length) {
 				var param = {
 					"changesRows" : $.toJSON(changesRows),
 					"changesRowsdelete" : $.toJSON(changesRowsdelete),
-					"roleId":roleId
+					"userId":userId
 				};
 				$.ajax({
-					url : "fenghuang/saveMenuPerissionChange.do",
+					url : "fenghuang/roleAllocationChange.do",
 					data : param,
 					dataType : "json",
 					success : function(data) {
@@ -120,15 +121,15 @@
         
         
 		}
-	   function test4(){
+		function test4(){
 		   var tab = $('#tt').tabs('getSelected');
 				if (tab){  
 	                   var index = $('#tt').tabs('getTabIndex', tab);  
 	                   $('#tt').tabs('close', index);  
 	                } 
 					$('#tt').tabs('add', {
-						title : "角色管理",
-						href : "role.do",
+						title : "系统用户管理",
+						href : "users.do",
 						closable : true
 					});
 		}

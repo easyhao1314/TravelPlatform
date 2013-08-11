@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fenghuang.entiey.Account;
 import com.fenghuang.entiey.Tuanbiao;
+import com.fenghuang.entiey.Weihu;
 import com.fenghuang.service.IcaiwuskzhanghaoService;
 import com.fenghuang.util.DateJsonValueProcessor;
 import com.fenghuang.util.Pagination;
@@ -112,5 +113,46 @@ public class CaiwuskzhanghaoControll {
 		result.put("success", isSuccess);
 		return result ; 
 	}
+	
+	@RequestMapping("fenghuang/skzhanghaodelete.do")
+	@ResponseBody
+	public Map<String,Object> canyinDelete(HttpServletRequest request,HttpServletResponse response,long id){
 
+		Map<String,Object> result=new HashMap<String,Object>();
+		boolean bl=false;
+		try{
+		 bl=icaiwuskzhanghaoService.deleteaccount(id);
+		 bl=true;
+		}catch(Exception e){
+			e.printStackTrace();
+			bl=false;
+		}
+		result.put("success", bl);
+		return result;
+	}
+	@RequestMapping("fenghuang/skzhanghaoupdate.do")
+	@ResponseBody
+	public Map<String,Object> xiugai(HttpServletRequest request,
+			HttpServletResponse response,String zhanghaoming,String ida,String yongtu,String bizhongid,String huming,String zhanghao,String kaihuhang,String shiyongshuoming,long id){
+		Map<String, Object> result = new HashMap<String, Object>();
+		boolean isSuccess = false;
+		Account account = new Account();
+		
+		account.setZhanghaoming(zhanghaoming);
+		account.setYongtu(Integer.parseInt(yongtu));
+		account.setBizhongid(Integer.parseInt(bizhongid));
+		account.setHuming(huming);
+		account.setZhanghao(zhanghao);
+		account.setKaihuhang(kaihuhang);
+		account.setShiyongshuoming(shiyongshuoming);
+		account.setId(id);
+		try {
+			isSuccess = icaiwuskzhanghaoService.updateaccount(account);
+			isSuccess=true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}	
+		result.put("success", isSuccess);
+		return result ; 
+	}
 }

@@ -59,4 +59,10 @@ public class UsersAndRoleServiceImpl implements IUsersAndRoleService {
 		}
 	}
 
+	@Override
+	public boolean deleteUsersAndRole(Long userId, Long roleId)
+			throws Exception {
+		return iUsersAndRoleDao.deleteUsersAndRole(userId, roleId);
+	}
+
 }

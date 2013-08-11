@@ -208,7 +208,7 @@
 					<td><div class="fitem">
 							<label>公司:</label>
 						</div></td>
-					<td><input name="companyId" class="easyui-combobox"
+					<td><input id="companyIdCom" name="companyId" class="easyui-combobox"
 								data-options="
 					url:'fenghuang/getCompanyComboboxs.do',
 					valueField:'id',
@@ -218,7 +218,7 @@
 					<td><div class="fitem">
 							<label>部门:</label>
 						</div></td>
-					<td><input name="departmentId" class="easyui-combobox"
+					<td><input id="departmentIdCom" name="departmentId" class="easyui-combobox"
 								data-options="
 					url:'fenghuang/getDepartmentComboboxs.do',
 					valueField:'id',
@@ -276,6 +276,7 @@
 				   </td>
 				</tr>
 			</table>
+			<input id="id" type="hidden" name="id">
 		</form>
 	</div>
 	<div id="searchUsers" class="easyui-dialog" title="查询业务字段"
@@ -460,7 +461,6 @@
 				
 				</tr>
 		  </table>
-		
 		</form>
     </div>
    	<div id="dgUserMm" class="easyui-menu" style="width:120px;">
@@ -468,8 +468,9 @@
 		<div>
 	       <span>用户权限</span>
 	       <div>
-		   <div data-options="iconCls:'icon-edit'">恢复默认密码</div>
-		   <div data-options="iconCls:'icon-edit'">设为离职</div>
+			   <div data-options="iconCls:'icon-edit'">恢复默认密码</div>
+			   <div data-options="iconCls:'icon-edit'">设为离职</div>
+			   <div onclick="editAllocationRole()" data-options="iconCls:'icon-edit'">分配用户角色</div>
 		   </div>
 		</div>
 		

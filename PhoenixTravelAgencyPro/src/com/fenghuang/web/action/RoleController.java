@@ -17,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fenghuang.entiey.MenuPermission;
 import com.fenghuang.entiey.Role;
 import com.fenghuang.service.IRoleService;
 import com.fenghuang.util.Pagination;
@@ -120,5 +121,76 @@ public class RoleController {
 		result.put("success", isSuccess);
 		return result;
 	}
+	@RequestMapping("fenghuang/getHaveRoles.do")
+	@ResponseBody
+	public Map<String,Object> getHaveRoles(HttpServletRequest request,HttpServletResponse response,Integer page, Integer rows,String userId){
+		Long userIdLong = 0l;
+		if(userId != null &&!"".endsWith(userId)){
+			userIdLong = Long.valueOf(userId);
+		}
+		try {
+		 	Pagination<Role>  roleLists = iRoleService.getHaveRoles(page.intValue(), rows.intValue(), userIdLong);
+			List<Map<String, Object>> roleRows = roleLists.getResultList();
+			Map<String, Object> returnValue = new HashMap<String, Object>();
+			returnValue.put("total", roleLists.getTotalRows());
+			returnValue.put("rows", roleRows);
+			return returnValue;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	@RequestMapping("fenghuang/getNotHaveRoles.do")
+	@ResponseBody
+	public Map<String,Object> getNotHaveRoles(HttpServletRequest request,HttpServletResponse response,Integer page, Integer rows,String userId){
+		Long userIdLong = 0l;
+		if(userId != null &&!"".endsWith(userId)){
+			userIdLong = Long.valueOf(userId);
+		}
+		try {
+		 	Pagination<Role>  roleLists = iRoleService.getNotHaveRoles(page.intValue(), rows.intValue(), userIdLong);
+			List<Map<String, Object>> roleRows = roleLists.getResultList();
+			Map<String, Object> returnValue = new HashMap<String, Object>();
+			returnValue.put("total", roleLists.getTotalRows());
+			returnValue.put("rows", roleRows);
+			return returnValue;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	@RequestMapping("fenghuang/roleAllocationChange.do")
+	@ResponseBody
+	public Map<String,Object> roleAllocationChange(HttpServletRequest request,
+			HttpServletResponse response, String changesRows,String changesRowsdelete,String userId){
+		boolean isSuccess = false;
+		Map<String, Object> result = new HashMap<String, Object>();
+		try{
+
+			JSONArray jsonArray = JSONArray.fromObject(changesRows);
+			JSONArray jsonArray2 = JSONArray.fromObject(changesRowsdelete);
+			List<Role>  mps = null;
+			List<Role>  mps2 = null;
+		
+			if(jsonArray.size()>0){
+				mps= JSONArray.toList(jsonArray,Role.class);
+			}
+			
+			if(jsonArray2.size()>0){
+				mps2 = JSONArray.toList(jsonArray2,Role.class);
+			}
+		if(userId!=null && !"".equals(userId)){
+			iRoleService.saveRoleAllocationChange(mps, mps2, Long.valueOf(userId));
+		}
+		isSuccess = true;
+		}catch (Exception e) {
+			e.printStackTrace();
+			isSuccess = false;
+		}
+		result.put("success", isSuccess);
+		return result;
+	}
+	
 	
 }

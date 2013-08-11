@@ -58,4 +58,11 @@ public interface IRoleService {
 	
 	public Pagination<MenuPermission> getMenuPermissionsNotIncludeByRoleId(int currentPage, int numPerPage,Long roleId) throws Exception;
 	
+    public Pagination<Role> getHaveRoles(int currentPage, int numPerPage,Long userId)throws Exception;
+	
+	public Pagination<Role> getNotHaveRoles(int currentPage, int numPerPage,Long userId)throws Exception;
+	
+	public void saveRoleAllocationChange(List<Role> insertMenuPerssions,
+			List<Role> deleteMenuPerssions, Long userId)throws Exception;
+	
 }

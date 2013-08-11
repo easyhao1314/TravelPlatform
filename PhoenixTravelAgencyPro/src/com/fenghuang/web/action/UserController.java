@@ -241,7 +241,7 @@ public class UserController {
 			String telephoneExt, String email, String mobilePhone, String msn,
 			String fax, String msn2, String skype, String msn3, String qq,
 			String companyId, String departmentId, String jobDescription,
-			String sortNumber, String address, String zip,String imagePath){
+			String sortNumber, String address, String zip,String imagePath,String id){
 		Map<String, Object> result = new HashMap<String, Object>();
 		boolean isSuccess = false;
 		Users user = new Users();
@@ -278,8 +278,17 @@ public class UserController {
 		user.setAddress(address);
 		user.setZip(zip);
 		user.setImagePath(imagePath);
+		if(id !=null && !"".equals(id)){
+			user.setId(Long.valueOf(id));
+		}
 		try {
-			iUsersService.saveUsers(user);
+			if(user.getId() != null && user.getId()!=0)
+			{
+				iUsersService.updateUsers(user);
+			}else{
+				iUsersService.saveUsers(user);
+			}
+
 			isSuccess = true;
 		} catch (Exception e) {
 			isSuccess = false;
@@ -288,6 +297,19 @@ public class UserController {
 		result.put("success", isSuccess);
 		return result;
 	}
-
+    @RequestMapping("fenghuang/getPersondetails.do")
+    @ResponseBody
+	public Users getPersonDetails(HttpServletRequest request,HttpServletResponse response,String userId){
+    	try {
+			Users users = iUsersService.getUsersById(Long.valueOf(userId));
+			return users;
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
 
 }

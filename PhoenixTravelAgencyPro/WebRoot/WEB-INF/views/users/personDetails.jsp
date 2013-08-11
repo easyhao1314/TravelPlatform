@@ -26,9 +26,8 @@
 <script type="text/javascript" src="js/datagrid-groupview.js"></script>
 </head>
 <body>
-<div id="editUsers" class="easyui-dialog" title="修改用户信息"
-		data-options="modal:true,closed:true,iconCls:'icon-save'"
-		style="width:650px;height:500px;padding:10px;">
+<div class="easyui-panel" title="用户信息"
+		style="height:480px;width: auto;">
 		<form id="userForm" method="post" action="">
 			<table align="center">
 				<tr>
@@ -207,7 +206,27 @@
 				   </td>
 				</tr>
 			</table>
+			<input id="id" type="hidden" name="id">
 		</form>
 	</div>
+	<script type="text/javascript">
+            var userId = '${param.userId}';
+	    	var param = {
+					"userId" :userId 
+				};
+				$.ajax({
+					url : "fenghuang/getPersondetails.do",
+					data : param,
+					dataType : "json",
+					success : function(data) {
+				       $("#userForm").form("load",data);
+					},
+					error : function() {
+						$.messager.alert("失败", "服务器请求失败!", "error");
+					}
+				});
+	</script>
+	<script type="text/javascript" src="js/users/personDetails.js">
+	</script>
 </body>
 </html>

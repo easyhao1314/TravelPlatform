@@ -137,6 +137,29 @@ public class RoleDaoImpl extends BaseDao implements IRoleDao {
 			return pMenuPermissions;
 	}
 
+	@Override
+	public Pagination<Role> getHaveRoles(int currentPage, int numPerPage,
+			Long userId) throws Exception {
+		StringBuffer sb = new StringBuffer("SELECT role.roleNo,role.id,role.roleName,role.roleDesc FROM users ,usersandrole ,role WHERE users.id =  usersandrole.userId AND usersandrole.roleId =  role.id");
+		if(userId != null && userId !=0l){
+			sb.append(" and  users.id='");
+			sb.append(userId);
+			sb.append("'");
+			
+		}
+		Pagination<Role>  roles = this.getPagination(currentPage, numPerPage, sb.toString());
+		return roles;
+	}
+
+	@Override
+	public Pagination<Role> getNotHaveRoles(int currentPage, int numPerPage,
+			Long userId) throws Exception {
+		StringBuffer sb = new StringBuffer("SELECT role.roleNo,role.id,role.roleName,role.roleDesc FROM role WHERE role.id not in (select usersandrole.roleId from usersandrole where usersandrole.userId ='"+userId+"' )");
+		Pagination<Role>  roles = this.getPagination(currentPage, numPerPage, sb.toString());
+		return roles;
+		
+	}
+
 
 
 }

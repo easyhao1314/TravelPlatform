@@ -94,6 +94,8 @@
 	<mvc:view-controller path="users.do" view-name="users/users"/>
 	<mvc:view-controller path="menuPermission.do" view-name="permission/menuPermission"/>
 	<mvc:view-controller path="menuPermissionAllocation.do" view-name="permission/menuPermissionAllocation"/>
+	<mvc:view-controller path="personDetails.do" view-name="users/personDetails"/>
+	<mvc:view-controller path="roleAllocation.do" view-name="role/roleAllocation"/>
 	<!-- 财务模块  -->
 	<mvc:view-controller path="a.do" view-name="F.A.D/a"/>
 	<mvc:view-controller path="sanpin.do" view-name="F.A.D/sanpin"/>
@@ -111,6 +113,7 @@
      <mvc:view-controller path="yfktj.do" view-name="F.A.D/yfktj"/>
      <mvc:view-controller path="wswfcx.do" view-name="F.A.D/wswfcx"/>
      <mvc:view-controller path="sfkzhwh.do" view-name="F.A.D/sfkzhwh"/>
+     <mvc:view-controller path="bzhlsz.do" view-name="F.A.D/bzhlsz"/>
 	<!-- 赵杨的配置 -->
 	<mvc:view-controller path="SanPin_caozuo.do" view-name="SanPin/SanPin_CaoZuo"/>
 	 <!-- 单团中心-->
