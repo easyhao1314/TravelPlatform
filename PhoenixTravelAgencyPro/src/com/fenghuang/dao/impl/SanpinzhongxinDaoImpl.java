@@ -76,7 +76,7 @@ public class SanpinzhongxinDaoImpl extends BaseDao implements ISanpinzhongxinDao
 	public Pagination<Sanpinzhongxin> getByQueryConditionPagination(
 			int currentPage, int numPerPage,Sanpinzhongxin s) throws Exception {
 		// TODO Auto-generated method stub 
-		String sql = "select * from sanpinzhongxin left join xianlu on sanpinzhongxin.tuanNo=xianlu.xianid where 1=1";
+		String sql = "select s.tuanNo,s.tuanName,s.groupdate,s.Tourdate,s.targetpopulation,s.tonghang,s.zhikejia,s.numbermaster,s.productbrand,t.xlid from sanpinzhongxin as s left join tuanXianlu as t on s.tuanNO=t.tuanNo where 1=1";
 		StringBuffer sb = new StringBuffer(sql);
 		if(s.getTuanName()!=null && !"".equals(s.getTuanName())){
 			sb.append(" and tuanName LIKE '%"+s.getTuanName()+"%'");
