@@ -24,6 +24,9 @@ public interface IUsersAndRoleDao {
 	public boolean deleteUsersAndRole(Long id) throws Exception;
 	
 	public List<UsersAndRole>  getUsersAndRoles (Long userId) throws Exception;
+    
+	public boolean deleteUsersAndRole(Long userId,Long roleId)throws Exception;
 	
+	public boolean saveUsersAndRole(Long userId,Long roleId) throws Exception;
 
 }

@@ -59,8 +59,11 @@ var editIndex = undefined;
 		}
 
 		function addMianBanMoshi() {
+			$("companyIdCom").combobox("reload");
+			$("departmentIdCom").combobox("reload");
 			$("#editUsers").dialog("open");
 			$("#userForm").form("clear");
+		
 		}
 
 		function mainBanMoshiSave() {
@@ -174,10 +177,37 @@ var editIndex = undefined;
 			e.preventDefault();
 			var selected = $("#dgUsers").datagrid('getRows'); //获取所有行集合对象
 			selected[rowIndex].id; //index为当前右键行的索引，指向当前行对象
+			$('#dgUsers').datagrid('selectRow', rowIndex);
 			$('#dgUserMm').menu('show', {
 				left : e.pageX,
 				top : e.pageY
 			});
 		}
+		
+		function editUsersMenu(){
+			var row = $("#dgUsers").datagrid("getSelected");
+			var index = $('#dgUsers').datagrid('getRowIndex', row);
+			$("#dgUsers").datagrid("unselectRow",index);
+			$("#editUsers").dialog("open");
+			$("#userForm").form("load",row);	
+			
+		}
+		function editAllocationRole(){
+			var row = $("#dgUsers").datagrid("getSelected");
+			var rowHref = "roleAllocation.do?userId="+row.id;
+			   var tab = $('#tt').tabs('getSelected');
+			   
+				if (tab){  
+	                   var index = $('#tt').tabs('getTabIndex', tab);  
+	                   $('#tt').tabs('close', index);  
+	                } 
+					$('#tt').tabs('add', {
+						title : "用户角色分配",
+						href : rowHref,
+						closable : true
+					});
+			
+		}
+		
 		
 		

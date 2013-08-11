@@ -28,11 +28,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter   {
 			System.out.println(requestUri);
 			
 		}		
-		
-		
-		
-		
-		
+
 		return true;
 	}
 

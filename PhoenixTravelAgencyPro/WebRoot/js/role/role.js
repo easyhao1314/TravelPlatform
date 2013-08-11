@@ -157,7 +157,6 @@ var editIndex = undefined;
 		function editAllocationMenuPerission(){
 			var row = $("#dgRole").datagrid("getSelected");
 			var rowHref = "menuPermissionAllocation.do?roleId="+row.id;
-			alert(rowHref);
 			   var tab = $('#tt').tabs('getSelected');
 			   
 				if (tab){  

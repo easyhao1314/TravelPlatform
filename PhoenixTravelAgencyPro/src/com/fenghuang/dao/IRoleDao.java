@@ -8,6 +8,7 @@ import com.fenghuang.entiey.MenuPermission;
 import com.fenghuang.entiey.Role;
 import com.fenghuang.entiey.RoleAndMenuPermission;
 import com.fenghuang.entiey.RoleAndPagePermission;
+import com.fenghuang.entiey.UsersAndRole;
 import com.fenghuang.util.Pagination;
 
 /**
@@ -45,4 +46,8 @@ public interface IRoleDao {
 	public Pagination<MenuPermission> getMenuPermissionsByRoleId(int currentPage, int numPerPage,Long roleId) throws Exception;
 	
 	public Pagination<MenuPermission> getMenuPermissionsNotIncludeByRoleId(int currentPage, int numPerPage,Long roleId) throws Exception;
+	
+	public Pagination<Role> getHaveRoles(int currentPage, int numPerPage,Long userId)throws Exception;
+	
+	public Pagination<Role> getNotHaveRoles(int currentPage, int numPerPage,Long userId)throws Exception;
 }

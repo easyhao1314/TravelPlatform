@@ -59,6 +59,7 @@ public class FunctionMenuController {
 				returnValue.put("total", 0);
 				returnValue.put("rows", new ArrayList<Map<String, Object>>());
 			}
+			System.out.println(request.getSession().getAttribute("userId"));
 			return returnValue;
 		} catch (Exception e) {
 			e.printStackTrace();
