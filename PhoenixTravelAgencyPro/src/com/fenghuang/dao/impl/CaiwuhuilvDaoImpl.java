@@ -28,8 +28,8 @@ public class CaiwuhuilvDaoImpl extends BaseDao implements IcaiwuhuilvDao {
 	@Override
 	public boolean updatehuilv(Bizhonghuilv bizhonghuilv) throws Exception {
 		// TODO Auto-generated method stub
-		String sql = "update bizhonghuilv set bizhong,riqi,xianjinhuilv,gongshou,zhonghang,zuidihuilv,huilv,jianxie,jianxiemingchen,danwei where id=?";
-		int rs=this.update(sql,bizhonghuilv.getBizhong(),bizhonghuilv.getRiqi(),bizhonghuilv.getXianjinhuilv(),bizhonghuilv,bizhonghuilv.getGongshou(),bizhonghuilv.getZhonghang(),bizhonghuilv.getZuidihuilv(),bizhonghuilv.getHuilv(),bizhonghuilv.getJianxie(),bizhonghuilv.getJianxiemingchen(),bizhonghuilv.getDanwei(),bizhonghuilv.getId());
+		String sql = "update bizhonghuilv set bizhong=?,riqi=?,xianjinhuilv=?,gongshou=?,zhonghang=?,zuidihuilv=?,huilv=?,jianxie=?,jianxiemingchen=?,danwei=? where id=?";
+		int rs=this.update(sql,bizhonghuilv.getBizhong(),bizhonghuilv.getRiqi(),bizhonghuilv.getXianjinhuilv(),bizhonghuilv.getGongshou(),bizhonghuilv.getZhonghang(),bizhonghuilv.getZuidihuilv(),bizhonghuilv.getHuilv(),bizhonghuilv.getJianxie(),bizhonghuilv.getJianxiemingchen(),bizhonghuilv.getDanwei(),bizhonghuilv.getId());
 		return rs>0;
 		 
 	}
@@ -52,6 +52,12 @@ public class CaiwuhuilvDaoImpl extends BaseDao implements IcaiwuhuilvDao {
 			sql.append(" and id='");
 			sql.append(bizhonghuilv.getId());
 			sql.append("'");
+		
+	   }
+		if(bizhonghuilv.getBizhong()!=null && !"".equals(bizhonghuilv.getBizhong())){
+			sql.append(" and bizhong like'");
+			sql.append(bizhonghuilv.getBizhong());
+			sql.append("%'");
 		
 	   }
 		 return this.getPagination(currentPage, numPerPage, sql.toString());

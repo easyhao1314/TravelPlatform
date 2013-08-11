@@ -62,11 +62,14 @@ public class CaiwuhuilvControll {
 	@RequestMapping("fenghuang/bizhonghuilv.do")
 	@ResponseBody
 	public Map<String, Object> getCurrencyList(HttpServletRequest request,
-			HttpServletResponse response,HttpSession session,Integer page, Integer rows,String id) {
+			HttpServletResponse response,HttpSession session,Integer page, Integer rows,String id,String bizhong) {
 		    try {
 		    	Bizhonghuilv bizhonghuilv = new Bizhonghuilv();
 		    	if(id!=null&&!"".equals(id)){
 		    		bizhonghuilv.setId(Integer.parseInt(id));
+		    	}
+		    	if(bizhong!=null&&!"".equals(bizhong)){
+		    		bizhonghuilv.setBizhong(bizhong);
 		    	}
 			
 			if(page==null){
@@ -151,8 +154,7 @@ public class CaiwuhuilvControll {
 			bizhonghuilv.setJianxie(jianxie);
 			bizhonghuilv.setJianxiemingchen(jianxiemingchen);
 			bizhonghuilv.setDanwei(Integer.parseInt(danwei));
-			isSuccess = icaiwuhuilvService.updatehuilv(bizhonghuilv);
-	      isSuccess = icaiwuhuilvService.savehuilv(bizhonghuilv);
+	        isSuccess = icaiwuhuilvService.savehuilv(bizhonghuilv);
 			isSuccess=true;
 		} catch (Exception e) {
 			e.printStackTrace();

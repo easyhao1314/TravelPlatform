@@ -298,10 +298,10 @@
 
 					if (result.success) {
 					  $("#sfkzhwhdeleteid").dialog('close');
-						$.messager.alert("修改成功", "修改成功！", "info"); 
+						$.messager.alert("删除成功", "删除成功！", "info"); 
 						$("#sfkzhwhdg").datagrid('reload');
 					} else {
-						$.messager.alert("修改失败", "修改失败!", "error");
+						$.messager.alert("删除失败", "删除失败!", "error");
 						$("#sfkzhwhdg").datagrid('reload');
 					}
 				}
