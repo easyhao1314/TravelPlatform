@@ -42,7 +42,7 @@
 			<li iconCls="icon-base" state="closed"><span>自我管理</span>
 				<ul>
 					<li iconCls="icon-gears"><a
-						href="javascript:open1('个人基本信息','');">个人基本信息</a>
+						href="javascript:open1('个人基本信息','personDetails.do?userId=10');">个人基本信息</a>
 					</li>
 				</ul>
 				<ul>

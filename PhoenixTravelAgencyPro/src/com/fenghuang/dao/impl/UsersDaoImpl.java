@@ -232,7 +232,7 @@ public class UsersDaoImpl extends BaseDao implements IUserDao {
 	@Override
 	public Users getUsersById(Long id) throws Exception {
 		String sql = "select * from users where id=?";
-		Users user = this.queryForObject(sql, Users.class, id);
+		Users user = this.queryForObject(sql, ParameterizedBeanPropertyRowMapper.newInstance(Users.class), id);
 		return user;
 	}
 

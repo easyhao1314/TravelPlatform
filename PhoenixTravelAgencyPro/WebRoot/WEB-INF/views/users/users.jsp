@@ -276,6 +276,7 @@
 				   </td>
 				</tr>
 			</table>
+			<input id="id" type="hidden" name="id">
 		</form>
 	</div>
 	<div id="searchUsers" class="easyui-dialog" title="查询业务字段"
@@ -460,7 +461,6 @@
 				
 				</tr>
 		  </table>
-		
 		</form>
     </div>
    	<div id="dgUserMm" class="easyui-menu" style="width:120px;">

@@ -59,7 +59,6 @@ var editIndex = undefined;
 		}
 
 		function addMianBanMoshi() {
-			alert("ddddd");
 			$("companyIdCom").combobox("reload");
 			$("departmentIdCom").combobox("reload");
 			$("#editUsers").dialog("open");
