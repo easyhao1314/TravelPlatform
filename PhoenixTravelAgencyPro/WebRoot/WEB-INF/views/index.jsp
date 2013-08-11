@@ -46,9 +46,9 @@
 					</tr>
 					<tr>
 						<td>验证码：</td>
-						<td><input class="easyui-validatebox" style="width:78px;  height: 18px; border-radius:3px; " data-options="required:true">
+						<td><input class="easyui-validatebox" name="code" style="width:78px;  height: 18px; border-radius:3px; " data-options="required:true">
 						&nbsp;&nbsp;&nbsp;&nbsp;
-						<input class="easyui-validatebox" value="23011" onfocus=this.blur() style="width:78px;   height: 18px; border-radius:3px; ">
+						<input class="easyui-validatebox"  value="${code }" onfocus=this.blur() style="width:78px;   height: 18px; border-radius:3px; ">
 						</td>
 						
 						
@@ -57,6 +57,7 @@
 					<tr>
 					  <td colspan="2">${loginError}</td>
 					</tr>
+					
 					<tr>
 					   <td colspan="2">
 					   	 <input type="submit" value="提交"> <a href="javascript:void(0)"
@@ -66,6 +67,7 @@
 					</tr>
 					 -->
 				</table>
+				<span>${loginError}</span>
 			</form>
 		</div>
 	</div>

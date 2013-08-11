@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fenghuang.entiey.Users;
 import com.fenghuang.service.IUsersService;
+import com.fenghuang.util.CommonUtil;
 import com.fenghuang.util.FengHuangMd5Util;
 
 /**
@@ -38,9 +39,16 @@ public class LoginController {
 
 	@RequestMapping("fenghuang/login.do")
 	public String login(HttpServletRequest request,
-			HttpServletResponse response, String loginName, String password,ModelMap map) {
+			HttpServletResponse response, String loginName, String password,String code,ModelMap map) {
 
 		try {
+			String  yanzhengCode = (String)request.getSession().getAttribute("code");
+			if(!"".equals(yanzhengCode)){
+				if(!yanzhengCode.equals(code)){
+					map.put("loginError", "验证码不正确！");
+					return "index";
+				}
+			}
 			 boolean isExist = iUsersService.isExistUserLoginName(loginName);
 			if(isExist){
 				Users users = iUsersService.getUsersByLoginName(loginName);
@@ -79,6 +87,13 @@ public class LoginController {
 		
 	}
 	
+	@RequestMapping("index.do")
+	public String index(HttpServletRequest request,HttpServletResponse response,ModelMap map){
+		String code = CommonUtil.getCode();
+		map.put("code", code);
+		request.getSession().setAttribute("code", code);
+		return "index";
+	}
 	
 
 }

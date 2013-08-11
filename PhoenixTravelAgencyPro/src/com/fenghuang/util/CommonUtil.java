@@ -1,5 +1,6 @@
 package com.fenghuang.util;
 
+import java.util.Random;
 import java.util.UUID;
 
 /**
@@ -30,7 +31,27 @@ public class CommonUtil {
 		//团号格式。
 		return "";
 	}
-	
+	//产生5-6位 不一样的数字
+	public static String getCode(){
+		int[] array = {0,1,2,3,4,5,6,7,8,9};
+		Random rand = new Random();
+		for (int i = 10; i > 1; i--) {
+		    int index = rand.nextInt(i);
+		    int tmp = array[index];
+		    array[index] = array[i - 1];
+		    array[i - 1] = tmp;
+		}
+		int result = 0;
+		for(int i = 0; i < 6; i++)
+		    result = result * 10 + array[i];
+		
+		return String.valueOf(result);
+	}
+	public static void main(String[] args) {
+		for(int i=0;i<100;i++){
+		System.out.println(getCode());
+		}
+	}
 
 
 }
