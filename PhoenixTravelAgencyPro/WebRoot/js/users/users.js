@@ -192,5 +192,22 @@ var editIndex = undefined;
 			$("#userForm").form("load",row);	
 			
 		}
+		function editAllocationRole(){
+			var row = $("#dgUsers").datagrid("getSelected");
+			var rowHref = "roleAllocation.do?userId="+row.id;
+			   var tab = $('#tt').tabs('getSelected');
+			   
+				if (tab){  
+	                   var index = $('#tt').tabs('getTabIndex', tab);  
+	                   $('#tt').tabs('close', index);  
+	                } 
+					$('#tt').tabs('add', {
+						title : "用户角色分配",
+						href : rowHref,
+						closable : true
+					});
+			
+		}
+		
 		
 		

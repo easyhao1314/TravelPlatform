@@ -468,8 +468,9 @@
 		<div>
 	       <span>用户权限</span>
 	       <div>
-		   <div data-options="iconCls:'icon-edit'">恢复默认密码</div>
-		   <div data-options="iconCls:'icon-edit'">设为离职</div>
+			   <div data-options="iconCls:'icon-edit'">恢复默认密码</div>
+			   <div data-options="iconCls:'icon-edit'">设为离职</div>
+			   <div onclick="editAllocationRole()" data-options="iconCls:'icon-edit'">分配用户角色</div>
 		   </div>
 		</div>
 		

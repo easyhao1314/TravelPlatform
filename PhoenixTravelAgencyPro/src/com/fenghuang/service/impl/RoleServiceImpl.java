@@ -11,6 +11,7 @@ import com.fenghuang.dao.IFunctionMenuDao;
 import com.fenghuang.dao.IMenuPermissionDao;
 import com.fenghuang.dao.IRoleAndMenuPermissionDao;
 import com.fenghuang.dao.IRoleDao;
+import com.fenghuang.dao.IUsersAndRoleDao;
 import com.fenghuang.entiey.FunctionMenu;
 import com.fenghuang.entiey.MenuPermission;
 import com.fenghuang.entiey.Role;
@@ -30,6 +31,8 @@ public class RoleServiceImpl implements IRoleService {
 	private IMenuPermissionDao iMenuPermissionDao;
 	@Autowired
 	private IFunctionMenuDao iFunctionMenuDao;
+	@Autowired
+	private IUsersAndRoleDao iUsersAndRoleDao;
 	@Override
 	public boolean saveRole(Role role) throws Exception {
 		if(role.getId()!=null&&role.getId()!=0){
@@ -194,6 +197,35 @@ public class RoleServiceImpl implements IRoleService {
 	public Pagination<MenuPermission> getMenuPermissionsNotIncludeByRoleId(
 			int currentPage, int numPerPage, Long roleId) throws Exception {
 		return iRoleDao.getMenuPermissionsNotIncludeByRoleId(currentPage, numPerPage, roleId);
+	}
+
+	@Override
+	public Pagination<Role> getHaveRoles(int currentPage, int numPerPage,
+			Long userId) throws Exception {
+		return iRoleDao.getHaveRoles(currentPage, numPerPage, userId);
+	}
+
+	@Override
+	public Pagination<Role> getNotHaveRoles(int currentPage, int numPerPage,
+			Long userId) throws Exception {
+		return iRoleDao.getNotHaveRoles(currentPage, numPerPage, userId);
+	}
+
+	@Override
+	public void saveRoleAllocationChange(List<Role> insertRoles,
+			List<Role> deleteRoles, Long userId) throws Exception {
+	    if(deleteRoles != null){
+	    	for (Iterator iterator = deleteRoles.iterator(); iterator.hasNext();) {
+				Role role = (Role) iterator.next();
+				iUsersAndRoleDao.deleteUsersAndRole(userId,role.getId());
+			}
+	    }
+		if(insertRoles != null){
+			for (Iterator iterator = insertRoles.iterator(); iterator.hasNext();) {
+				Role role = (Role) iterator.next();
+				iUsersAndRoleDao.saveUsersAndRole(userId,role.getId());
+			}
+		}
 	}
 
 

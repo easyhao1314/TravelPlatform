@@ -25,5 +25,7 @@ public interface IUsersAndRoleService {
 	public void saveUsersAndRoles(List<UsersAndRole> usersAndRoles) throws Exception;
 
 	public void deleteUsersAndRoles(List<UsersAndRole> usersAndRoles) throws Exception;
+	public boolean deleteUsersAndRole(Long userId,Long roleId)throws Exception;
+
 
 }

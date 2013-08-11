@@ -77,6 +77,21 @@ public class UsersAndRoleDaoImpl extends BaseDao implements IUsersAndRoleDao {
 		
 		return uars;
 	}
+
+	@Override
+	public boolean deleteUsersAndRole(Long userId, Long roleId)
+			throws Exception {
+		StringBuffer sb = new StringBuffer("delete from usersandrole where userId='"+userId+"' and roleId='"+roleId+"'");
+		int rows = this.update(sb.toString());
+		return rows>0;
+	}
+
+	@Override
+	public boolean saveUsersAndRole(Long userId, Long roleId) throws Exception {
+		String sql = "insert into usersandrole (userId,roleId,roleCode) values(?,?,?)";
+		int rs = this.update(sql,userId,roleId,"4");
+		return rs>0;
+	}
 	
 	
 	
