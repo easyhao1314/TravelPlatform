@@ -136,7 +136,11 @@ public class UsersServiceImpl implements IUsersService {
 			    		  subMap.put("text", subMenu.getMeunName());
 			    		  attributesMap = new ArrayList<Map<String,Object>>();
 			    		  attriMap = new HashMap<String, Object>();
+			    		  if(subMenu.getMenuPath().indexOf("?")>0){
 			    		  attriMap.put("path", subMenu.getMenuPath()+"&userId="+userId);
+			    		  }else{
+			    		  attriMap.put("path", subMenu.getMenuPath()+"?userId="+userId);  
+			    		  }
 			    		  attributesMap.add(attriMap);
 			    		  subMap.put("attributes", attributesMap);
 			    		  subList.add(subMap);

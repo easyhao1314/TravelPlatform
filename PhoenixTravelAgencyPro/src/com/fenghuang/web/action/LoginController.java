@@ -62,7 +62,7 @@ public class LoginController {
 					map.put("dateTime", FengHuangDateUtil.getTimeShow());
 					map.put("userName", users.getLoginName());
 					//验证成功
-					return "layout";
+					return "layouttest";
 				}else{
 					map.put("loginError", "密码不正确！");
 					map.put("loginName", loginName);
