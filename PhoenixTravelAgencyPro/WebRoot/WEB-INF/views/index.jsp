@@ -35,19 +35,19 @@
 					<tr>	
 						<td>用户名：</td>
 						<td><input class="easyui-validatebox" type="text" style="height: 18px; width: 175px; border-radius:5px;"
-							name="loginName" data-options="required:true" value="${loginName }"></input></td>
+							name="loginName"  value="${loginName }"></input></td>
 					<td rowspan="4"><a href="javascript:onSubmit();"   style=" width: 85px; height: 75px; background-image: url('Image/logingif.gif');display:block; margin-top: -5px;"></a></td>
 					</tr>
 					<tr>
 						<td>密&nbsp;&nbsp;&nbsp;&nbsp;码：</td>
 						<td><input class="easyui-validatebox" type="password" style="height: 18px; width: 175px; border-radius:5px;" 
-							name="password" data-options="required:true">
+							name="password" >
 						</td>
 						
 					</tr>
 					<tr>
 						<td>验证码：</td>
-						<td><input class="easyui-validatebox" name="code" style="width:78px;  height: 18px; border-radius:3px; " data-options="required:true">
+						<td><input class="easyui-validatebox" name="code" style="width:78px;  height: 18px; border-radius:3px; " >
 						&nbsp;&nbsp;&nbsp;&nbsp;
 						<input class="easyui-validatebox"  value="${code }" onfocus=this.blur() style="width:78px;   height: 18px; border-radius:3px; ">
 						</td>

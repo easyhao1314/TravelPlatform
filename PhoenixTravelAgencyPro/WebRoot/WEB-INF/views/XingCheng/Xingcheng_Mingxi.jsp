@@ -220,7 +220,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 </script>
 
-
   <script type="text/javascript">
 //页面加载时填充xianlumingxiForm
   $(document).ready(function() {
@@ -245,6 +244,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						$.messager.alert("查询失败", "服务器请求失败!", "error");
 					}
 				});
+				
+				
   });
  
   //页面加载时填充xianlumingxiForm结束
@@ -293,13 +294,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 						 }
 						 var d = parseInt(i+1);	
-						 var aaa = "fenghuang/getDicByTypeComboboxs.do?dicType=24";
+						 var zao = "fenghuang/getDicByTypeComboboxs.do?dicType=22";
+						 var zhong = "fenghuang/getDicByTypeComboboxs.do?dicType=23";
+						 var wan = "fenghuang/getDicByTypeComboboxs.do?dicType=24";
 						 var app='<form id="d'+d+'">'
 						 +'<table border="1" width="800px" >'
 						 	+'<tr><td width="100px;"><strong>日期</strong></td>'
 						 		+'<td><span>'+xianshijiaotongchengshi+'</span><a href="javascript:richenganpaiOpen()"  class="easyui-linkbutton" style="float: right;" iconCls="icon-add" plain="true">酒店</a><a href="javascript:openhuodongDialog(\''+data.rows[i].huodong+'\','+data.rows[i].riid+')"  class="easyui-linkbutton" style="float: right;" iconCls="icon-add" plain="true">活动</a><a  href="javascript:openrichengDialog(\''+data.rows[i].richenganpai+'\','+data.rows[i].riid+')"   class="easyui-linkbutton"   style="float: right;" iconCls="icon-add" plain="true">日程</a></td>'
 						 	+'</tr>'
-						 	+'<tr><td> <a href="javascript:chengshijiaotongdlgOpen('+data.rows[i].riid+')" title="设定当天的交通工具和城市" class="easyui-linkbutton" plain="true" iconCls="icon-reload">第'+d+'天</a></td><td><h4>日程:</h4> <span>'+data.rows[i].richenganpai+'</span><hr /><h4>活动:</h4> <span>'+data.rows[i].huodong+'</span><hr /><h4>酒店:</h4> <span>'+data.rows[i]+'</span><hr />餐饮：<input name="zao" class="easyui-combobox" data-options="url:\''+aaa+'\'" > 中：<input name="zhong" class="easyui-validatebox">晚：<input name="wan" class="easyui-validatebox"></td></tr>'
+						 	+'<tr><td> <a href="javascript:chengshijiaotongdlgOpen('+data.rows[i].riid+')" title="设定当天的交通工具和城市" class="easyui-linkbutton" plain="true" iconCls="icon-reload">第'+d+'天</a></td><td><h4>日程:</h4> <span>'+data.rows[i].richenganpai+'</span><hr /><h4>活动:</h4> <span>'+data.rows[i].huodong+'</span><hr /><h4>酒店:</h4> <span>'+data.rows[i]+'</span><hr />餐饮：<input name="zao" class="easyui-combobox" data-options="url:\''+zao+'\',valueField:\'dicNo\',textField:\'dicName\',panelHeight:\'auto\',editable:false" > 中：<input name="zhong" class="easyui-combobox" data-options="url:\''+zhong+'\',valueField:\'dicNo\',textField:\'dicName\',panelHeight:\'auto\',editable:false" >晚：<input name="wan" class="easyui-combobox" data-options="url:\''+wan+'\',valueField:\'dicNo\',textField:\'dicName\',panelHeight:\'auto\',editable:false" ></td></tr>'
 						 +'<table></form>';			
 						$("#mdiv").append(app);
 						$('#d'+d).form('load',data.rows[i]);
@@ -314,6 +317,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       
       });
   }
+ 
 
   
   
