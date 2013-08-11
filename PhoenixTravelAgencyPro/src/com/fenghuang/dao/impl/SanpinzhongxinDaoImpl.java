@@ -76,7 +76,7 @@ public class SanpinzhongxinDaoImpl extends BaseDao implements ISanpinzhongxinDao
 	public Pagination<Sanpinzhongxin> getByQueryConditionPagination(
 			int currentPage, int numPerPage,Sanpinzhongxin s) throws Exception {
 		// TODO Auto-generated method stub 
-		String sql = "select * from sanpinzhongxin where 1=1";
+		String sql = "select * from sanpinzhongxin left join xianlu on sanpinzhongxin.tuanNo=xianlu.xianid where 1=1";
 		StringBuffer sb = new StringBuffer(sql);
 		if(s.getTuanName()!=null && !"".equals(s.getTuanName())){
 			sb.append(" and tuanName LIKE '%"+s.getTuanName()+"%'");
@@ -126,10 +126,7 @@ public class SanpinzhongxinDaoImpl extends BaseDao implements ISanpinzhongxinDao
 			list.add(sanpin.getTuanNo());
 		}
 		int num = this.update(sb.toString(),list.toArray());
-		
-		
-		
-		
+	
 		return num>0;
 	}
 
