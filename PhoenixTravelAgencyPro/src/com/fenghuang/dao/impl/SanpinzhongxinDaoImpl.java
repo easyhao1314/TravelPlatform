@@ -76,28 +76,28 @@ public class SanpinzhongxinDaoImpl extends BaseDao implements ISanpinzhongxinDao
 	public Pagination<Sanpinzhongxin> getByQueryConditionPagination(
 			int currentPage, int numPerPage,Sanpinzhongxin s) throws Exception {
 		// TODO Auto-generated method stub 
-		String sql = "select s.tuanNo,s.tuanName,s.groupdate,s.Tourdate,s.targetpopulation,s.tonghang,s.zhikejia,s.numbermaster,s.productbrand,t.xlid from sanpinzhongxin as s left join tuanXianlu as t on s.tuanNO=t.tuanNo where 1=1";
+		String sql = "select s.tuanNo,s.tuanName,s.groupdate,s.Tourdate,s.targetpopulation,s.tonghang,s.zhikejia,s.numbermaster,s.productbrand,t.xlid,s.shoukestate from sanpinzhongxin as s left join tuanXianlu as t on s.tuanNO=t.tuanNo where 1=1";
 		StringBuffer sb = new StringBuffer(sql);
 		if(s.getTuanName()!=null && !"".equals(s.getTuanName())){
-			sb.append(" and tuanName LIKE '%"+s.getTuanName()+"%'");
+			sb.append(" and s.tuanName LIKE '%"+s.getTuanName()+"%'");
 		}
 		if(s.getGroupdate()!=null && !"".equals(s.getGroupdate())){
 			String Groupdate = FengHuangDateUtil.getDateTOString(s.getGroupdate());
-			sb.append(" and groupdate >= '"+Groupdate+"'");
+			sb.append(" and s.groupdate >= '"+Groupdate+"'");
 		}
 		if(s.getTourdate()!=null && !"".equals(s.getTourdate())){
 			String Tourdate = FengHuangDateUtil.getDateTOString(s.getTourdate());
-			sb.append(" and Tourdate <= '"+Tourdate+"'");
+			sb.append(" and s.Tourdate <= '"+Tourdate+"'");
 		}
 		if(s.getProductbrand()!=0 && !"".equals(s.getProductbrand())){
-			sb.append(" and productbrand = '"+s.getProductbrand()+"'");
+			sb.append(" and s.productbrand = '"+s.getProductbrand()+"'");
 		}
 		if(s.getTuanNo()!=null && !"".equals(s.getTuanNo())){
-			sb.append(" and tuanNo = '"+s.getTuanNo()+"'");
+			sb.append(" and s.tuanNo = '"+s.getTuanNo()+"'");
 		}
 		//发布状态为必填
 		if(s.getFabustate()!=0){
-		sb.append(" and fabustate = '"+s.getFabustate()+"'");
+		sb.append(" and s.fabustate = '"+s.getFabustate()+"'");
 		}
 		return this.getPagination(currentPage, numPerPage, sb.toString());
 	}

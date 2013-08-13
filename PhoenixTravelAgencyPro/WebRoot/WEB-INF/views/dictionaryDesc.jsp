@@ -229,13 +229,14 @@
 		}
 
 		function shanchu() {
-			var rows = $("#dg").datagrid("getSelections");
-			if (rows.length > 0) {
+			var rows = $("#dg").datagrid("getSelected");
+			alert(rows.dicNo);
+			
 				var param = {
-					"deleteRows" : $.toJSON(rows)
+					"dicNo" : rows.dicNo
 				};
 				$.ajax({
-					url : "fenghuang/deleteDics.do",
+					url : "fenghuang/deleteDics.do?",
 					data : param,
 					dataType : "json",
 					success : function(data) {
@@ -250,7 +251,7 @@
 						$.messager.alert("删除失败", "服务器请求失败!", "error");
 					}
 				});
-			}
+			
 		}
 		function closeEditDic() {
 			$('#editDic').dialog('close');

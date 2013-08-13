@@ -101,7 +101,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 	<script type="text/javascript">
 		function onOperateSanpinList(val,row) {
-      return '<a href="javascript:openSanpinDetai('+row.tuanNo+')">'+row.tuanNo+'</a>';
+      return '<a href="javascript:openSanpinDetai(\''+row.tuanNo+'\')">'+row.tuanNo+'</a>';
 		}
 		function openSanpinDetai(tuanNo){
 		 var row = $("#dg").datagrid("getSelected");

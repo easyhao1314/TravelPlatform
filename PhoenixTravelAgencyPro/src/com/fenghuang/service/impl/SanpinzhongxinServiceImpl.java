@@ -36,7 +36,7 @@ public class SanpinzhongxinServiceImpl implements ISanpinzhongxinService {
          
             
             txl.setXlid(ixls.AddXianlu(x));
-            itxls.addTuanXianlu(txl);
+            bl=itxls.addTuanXianlu(txl);
 			
 		}
 		return bl;
