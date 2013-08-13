@@ -169,11 +169,12 @@ public class UserController {
 				String md5password = FengHuangMd5Util.getMD5(oldpassword);
 				String dbpassword = iUsersService.getUsersPasswordById(id);
 				if (md5password.equals(dbpassword)) {
-					iUsersService.updateUserPassword(id, newPassword);
+					iUsersService.updateUserPassword(id, FengHuangMd5Util.getMD5(newPassword));
 					isSuccess = true;
 				}
 			}
 		} catch (Exception e) {
+			e.printStackTrace();
 			isSuccess = false;
 		}
 		result.put("success", isSuccess);

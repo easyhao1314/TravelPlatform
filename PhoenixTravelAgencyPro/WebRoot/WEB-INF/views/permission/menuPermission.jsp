@@ -94,7 +94,7 @@
 							<label>功能编号:</label>
 						</div></td>
 					<td>
-					  <input name="functionNo" class="easyui-combobox"
+					  <input id="functionNo" name="functionNo" class="easyui-combobox"
 								data-options="
 					url:'fenghuang/getFunctionMenuComboboxs.do',
 					valueField:'id',

@@ -62,7 +62,9 @@ public class LoginController {
 				if(users != null&&FengHuangMd5Util.getMD5(password).equals(users.getPassword()))
 				{
 					map.put("userId",users.getId());
-					request.getSession().setAttribute("userId", users.getId());
+					HttpSession  session = request.getSession();
+					session.setAttribute("userId", users.getId());
+					session.setAttribute("userNumber", users.getUserNumber());
 					map.put("dateTime", FengHuangDateUtil.getTimeShow());
 					map.put("userName", users.getLoginName());
 					//验证成功

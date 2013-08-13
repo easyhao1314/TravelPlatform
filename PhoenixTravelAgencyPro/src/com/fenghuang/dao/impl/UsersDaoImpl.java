@@ -247,7 +247,7 @@ public class UsersDaoImpl extends BaseDao implements IUserDao {
 	@Override
 	public String getUsersPasswordById(Long id) throws Exception {
 		String sql = "select password from users where id=?";
-		String password = this.queryForObject(sql, String.class);
+		String password = this.queryForObject(sql, String.class,id);
 		return password;
 	}
 

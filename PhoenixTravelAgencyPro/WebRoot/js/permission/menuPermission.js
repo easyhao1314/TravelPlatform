@@ -61,6 +61,7 @@ var editIndex = undefined;
 		function addMianBanMoshi() {
 			$("#editMenuPermission").dialog("open");
 			$("#menuPermissionFrome").form("clear");
+			$("#functionNo").combobox("reload");
 		}
 
 		function mainBanMoshiSave() {
