@@ -263,18 +263,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						 var jt = new Array();
 						 var jj = data.rows[i].jiaotongchengshi;
 						 jt=jj.split(":");
+						 	var jtapp='';
 						 for(var j=0;j<jt.length;j++){
 						 	if(jt[j]=="^1"){
-						 	
 						 	xianshijiaotongchengshi+="飞机";
-						 	$('#jtcs+j').append('<img src="Image/feiji.png">');
-						 	
+						 	jtapp+='<img src="Image/feiji.png">';
 						 }
 						 	if(jt[j]=="^2"){
 						  	xianshijiaotongchengshi+="游轮";
+						  	jtapp+='<img src="Image/youlun.png">';
 						 }
-
+						 if(jt[j]!="^1"&&jt[j]!="^2"){
+						 	jtapp+=jt[j];
+						 }		 
 						 }
+						 
+						 
 						 var d = parseInt(i+1);	
 						 var zao = "fenghuang/getDicByTypeComboboxs.do?dicType=22";
 						 var zhong = "fenghuang/getDicByTypeComboboxs.do?dicType=23";
@@ -282,12 +286,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						 var app='<form id="d'+d+'">'
 						 +'<table border="1" width="800px" >'
 						 	+'<tr><td width="100px;"><strong>日期</strong></td>'
-						 		+'<td><div id="jtcs+i">'+xianshijiaotongchengshi+'</div><a href="javascript:richenganpaiOpen()"  class="easyui-linkbutton" style="float: right;" iconCls="icon-add" plain="true">酒店</a><a href="javascript:openhuodongDialog(\''+data.rows[i].huodong+'\','+data.rows[i].riid+')"  class="easyui-linkbutton" style="float: right;" iconCls="icon-add" plain="true">活动</a><a  href="javascript:openrichengDialog(\''+data.rows[i].richenganpai+'\','+data.rows[i].riid+')"   class="easyui-linkbutton"   style="float: right;" iconCls="icon-add" plain="true">日程</a></td>'
+						 		+'<td valign="middle"><div id="jtcs'+i+'" style="height:20px; backaground-color:yellow"></div><a href="javascript:richenganpaiOpen()"  class="easyui-linkbutton" style="float: right;" iconCls="icon-add" plain="true">酒店</a><a href="javascript:openhuodongDialog(\''+data.rows[i].huodong+'\','+data.rows[i].riid+')"  class="easyui-linkbutton" style="float: right;" iconCls="icon-add" plain="true">活动</a><a  href="javascript:openrichengDialog(\''+data.rows[i].richenganpai+'\','+data.rows[i].riid+')"   class="easyui-linkbutton"   style="float: right;" iconCls="icon-add" plain="true">日程</a></td>'
 						 	+'</tr>'
 						 	+'<tr><td> <a href="javascript:chengshijiaotongdlgOpen('+data.rows[i].riid+')" title="设定当天的交通工具和城市" class="easyui-linkbutton" plain="true" iconCls="icon-reload">第'+d+'天</a></td><td><h4>日程:</h4> <span>'+data.rows[i].richenganpai+'</span><hr /><h4>活动:</h4> <span>'+data.rows[i].huodong+'</span><hr /><h4>酒店:</h4> <span>'+data.rows[i]+'</span><hr />餐饮：<input name="zao" class="easyui-combobox" data-options="url:\''+zao+'\',valueField:\'dicNo\',textField:\'dicName\',panelHeight:\'auto\',editable:false,onSelect:function(rel){funcanyin(rel,'+data.rows[i].riid+',\'zao\');}" > 中：<input name="zhong" class="easyui-combobox" data-options="url:\''+zhong+'\',valueField:\'dicNo\',textField:\'dicName\',panelHeight:\'auto\',editable:false,onSelect:function(rel){funcanyin(rel,'+data.rows[i].riid+',\'zhong\');}" >晚：<input id="wan" name="wan"  class="easyui-combobox" data-options="url:\''+wan+'\',valueField:\'dicNo\',textField:\'dicName\',panelHeight:\'auto\',editable:false,onSelect:function(rel){funcanyin(rel,'+data.rows[i].riid+',\'wan\');}"></td></tr>'
 						 +'<table></form>';			
 						$("#mdiv").append(app);
 						$('#d'+d).form('load',data.rows[i]);
+						$('#jtcs'+i).append(jtapp);
 					} 
 					//pares方法是 渲染JqueryEasyUi 插件的 解决不显示EasyUi的样式问题
 					$.parser.parse();
