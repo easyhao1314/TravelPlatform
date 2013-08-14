@@ -224,12 +224,12 @@
 				</ul>
 				<ul>
 					<li iconCls="icon-gears"><a
-						href="javascript:open1('国家','dictionaryDesc.do?dicType=8');">国家字典</a>
+						href="javascript:open1('国家','dictionaryDesc.do?dicType=7');">国家字典</a>
 					</li>
 				</ul>
 				<ul>
 					<li iconCls="icon-gears"><a
-						href="javascript:open1('城市','dictionaryDesc.do?dicType=7');">城市字典</a>
+						href="javascript:open1('城市','dictionaryDesc.do?dicType=8');">城市字典</a>
 					</li>
 				</ul>
 				<ul>
