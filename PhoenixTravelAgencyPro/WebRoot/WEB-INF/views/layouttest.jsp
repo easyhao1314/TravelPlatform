@@ -27,7 +27,24 @@
 	<!-- north 是上面的，背景颜色有赵阳来处理-->
 	<div data-options="region:'north'" style="height:25px;background:#666;"
 		border="false">
-		<!-- 在这里可以添加相应的登录信息，比如用户信息 -->
+		<table>
+		    <tr>
+		       <td></td>
+		       <td>${dateTime}</td>
+		       <td></td>
+		       <td>
+		       <a href="javascript:void(0)" id="denglumb" class="easyui-menubutton"   
+            data-options="menu:'#denglumm'">${userName}</a>  
+		    <div id="denglumm" style="width:150px;">  
+		        <div><a href="logout.do">退出</a></div>  
+		    </div>  
+		       
+		       
+		       
+		       </td>
+		       <td></td>
+		    </tr>
+		</table>
 	</div>
 	<!-- south 是下面的，背景颜色有赵阳他们来确定 -->
 	<div data-options="region:'south'" style="height:20px;background:#666;"
@@ -75,7 +92,8 @@
 	    onClick:function(node){
 	    for(var x in node){
             if (node.attributes){
-              open1(node.text, 'DantuanAdd.do?dicType=1');
+             var  test = node.attributes[0].path;
+              open1(node.text,node.attributes[0].path);
             }
         }
 	    }

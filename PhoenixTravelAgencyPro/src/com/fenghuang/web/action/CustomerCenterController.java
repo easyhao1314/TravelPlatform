@@ -116,7 +116,7 @@ public class CustomerCenterController {
 	 * @param customInfo
 	 * @return
 	 */
-	@RequestMapping("/fenghuang/addCustom.do")
+	@RequestMapping("fenghuang/addCustom.do")
 	@ResponseBody
 	public Map<String,Object> addCustom( HttpServletRequest request,HttpServletResponse response,CustomerInfo customInfo){
 		Map<String, Object> result = new HashMap<String, Object>();

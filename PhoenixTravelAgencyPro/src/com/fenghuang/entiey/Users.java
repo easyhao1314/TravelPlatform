@@ -151,8 +151,10 @@ public class Users implements Serializable {
 	 */
 	public String departName;
 	
-	
-
+	/**
+	 * 是否离职。 0：在职。1:离职
+	 */
+	public String isWork;
 	public Long getId() {
 		return id;
 	}
@@ -394,6 +396,20 @@ public class Users implements Serializable {
 	 */
 	public void setSortNumber(Long sortNumber) {
 		this.sortNumber = sortNumber;
+	}
+
+	/**
+	 * @return the isWork
+	 */
+	public String getIsWork() {
+		return isWork;
+	}
+
+	/**
+	 * @param isWork the isWork to set
+	 */
+	public void setIsWork(String isWork) {
+		this.isWork = isWork;
 	}
 
 	

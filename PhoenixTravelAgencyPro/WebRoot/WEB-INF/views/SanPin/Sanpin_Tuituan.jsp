@@ -54,9 +54,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 	<script type="text/javascript">
 	function tuituanshiwu(val,row){
-	return '<a href="javascript:openShenpimingxi('+row.approvalNo+','+row.approvaltuanNo+','+row.bmid+')">'+row.shiwu+'</a>';
+	return '<a href="javascript:openShenpimingxi('+row.approvalNo+',\''+row.approvaltuanNo+'\','+row.bmid+')">'+row.shiwu+'</a>';
 	}
 	function openShenpimingxi(aNo,atuanNo,abmid){
+	alert(aNo);
 	var url = "Sanpin_shenpimingxi.do?aNo="+aNo+"&atuanNo="+atuanNo+"&shenpitype="+'${param.shenpitype}'+"&abmid="+abmid;
 		 var tab = $('#tt').tabs('getSelected'); 
 		if (tab){  

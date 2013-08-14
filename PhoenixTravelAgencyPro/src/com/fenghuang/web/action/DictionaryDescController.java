@@ -160,12 +160,12 @@ public class DictionaryDescController {
 	@RequestMapping("fenghuang/deleteDics.do")
 	@ResponseBody
 	public Map<String,Object> deleteDics(HttpServletRequest request,
-			HttpServletResponse response,Integer dicNo){
+			HttpServletResponse response,String dicNo){
 		Map<String,Object>  result = new HashMap<String, Object>();
 			
 		boolean isSuccess = false;
 		try {
-			isSuccess=iDictionaryDescService.deleteDictionaryDesc(dicNo);
+			isSuccess=iDictionaryDescService.deleteDictionaryDesc(Integer.parseInt(dicNo));
 			
 		} catch (Exception e) {
 			isSuccess = false;

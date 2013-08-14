@@ -175,7 +175,7 @@
 					<td><div class="fitem">
 							<label>年龄:</label>
 					</td>
-					<td><input name="age" class="easyui-numberbox" required="true" missingMessage="请输入数字." invalidMessage="请输入数字.">
+					<td><input name="age" class="easyui-numberbox"  missingMessage="请输入数字." invalidMessage="请输入数字.">
 						</div></td>
 					<td><div class="fitem">
 							<label>性别:</label>
@@ -263,7 +263,7 @@
 					panelHeight:'auto',
 					editable:false"></div></td>			
 				</tr>
-				<tr>
+				<!-- <tr>
 					<td><div class="fitem">
 							<label>联系人数:</label>
 					</td>
@@ -278,7 +278,7 @@
 					panelHeight:'auto',
 					editable:false"></div></td>			
 						</div></td>
-				</tr>
+				</tr> -->
 					<tr>
 					<td><div class="fitem">
 							<label>备注:</label>
@@ -449,7 +449,7 @@
 					panelHeight:'auto',
 					editable:false"></div></td>			
 				</tr>
-				<tr>
+				<!-- <tr>
 					<td><div class="fitem">
 							<label>联系人数:</label>
 					</td>
@@ -464,7 +464,7 @@
 					panelHeight:'auto',
 					editable:false"></div></td>			
 						</div></td>
-				</tr>
+				</tr>-->
 					<tr>
 					<td><div class="fitem">
 							<label>备注:</label>
