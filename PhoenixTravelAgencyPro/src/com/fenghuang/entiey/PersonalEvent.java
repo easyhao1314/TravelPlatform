@@ -27,9 +27,11 @@ public class PersonalEvent {
 	 * @pdOid 832ce55c-d42a-40ae-aa37-19f4dcd3096c
 	 */
 	public Date eventDate;
-	/** @pdOid 3173925f-90d7-4daa-bf87-a38597ed5f03 */
+	/** 主要是操作的动作，比如：登陆操作，修改操作，删除操作等等 */
 	public String eventType;
-
+    public Long userId;
+    //作为操作人的显示字段
+    public String loginName;
 	/**
 	 * @return the id
 	 */
@@ -90,4 +92,32 @@ public class PersonalEvent {
 		this.eventType = eventType;
 	}
 
+	/**
+	 * @return the userId
+	 */
+	public Long getUserId() {
+		return userId;
+	}
+
+	/**
+	 * @param userId the userId to set
+	 */
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
+
+	/**
+	 * @return the loginName
+	 */
+	public String getLoginName() {
+		return loginName;
+	}
+
+	/**
+	 * @param loginName the loginName to set
+	 */
+	public void setLoginName(String loginName) {
+		this.loginName = loginName;
+	}
+	
 }

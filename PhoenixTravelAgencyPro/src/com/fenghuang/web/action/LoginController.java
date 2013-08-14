@@ -3,6 +3,7 @@
  */
 package com.fenghuang.web.action;
 
+import java.util.Date;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.Map;
@@ -17,7 +18,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fenghuang.entiey.PersonalEvent;
 import com.fenghuang.entiey.Users;
+import com.fenghuang.service.IPersonalEventService;
 import com.fenghuang.service.IUsersService;
 import com.fenghuang.util.CommonUtil;
 import com.fenghuang.util.FengHuangDateUtil;
@@ -39,7 +42,8 @@ public class LoginController {
 
 	@Autowired
 	private IUsersService iUsersService;
-
+    @Autowired
+	private IPersonalEventService iPersonalEventService; 
 	@RequestMapping("login.do")
 	public String login(HttpServletRequest request,
 			HttpServletResponse response, String loginName, String password,String code,ModelMap map) {
@@ -68,6 +72,15 @@ public class LoginController {
 					map.put("dateTime", FengHuangDateUtil.getTimeShow());
 					map.put("userName", users.getLoginName());
 					//验证成功
+					//在这里还可以添加 用户的操作事件。 以后我还可以用spring的拦截器进行方法拦截，插入事件。
+					//这些就要他们总结操作的方法了，并在数据库中建立一张表。
+		            //目前先这样写。测试用的
+					PersonalEvent personalEvent = new PersonalEvent();
+					personalEvent.setEventDate(new Date());
+					personalEvent.setEventDesc("登陆操作，并且在这里还要记录ip");
+					personalEvent.setEventType("登陆操作");
+					personalEvent.setUserId(users.getId());
+					iPersonalEventService.insertPersonalEvent(personalEvent);
 					return "layouttest";
 				}else{
 					map.put("loginError", "密码不正确！");
