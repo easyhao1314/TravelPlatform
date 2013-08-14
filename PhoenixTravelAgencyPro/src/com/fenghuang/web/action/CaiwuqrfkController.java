@@ -128,6 +128,7 @@ public class CaiwuqrfkController {
 		Tuanbiao tuanbiao = new Tuanbiao();
 		if(team!=null&&!"".equals(team)){
 		tuanbiao.setTeam(team);
+		
 		}
 		if(kxsm!=null&&!"".equals(kxsm)){
 		tuanbiao.setKxsm(Integer.parseInt(kxsm));	
@@ -158,7 +159,7 @@ public class CaiwuqrfkController {
 		if(beizhu!=null&&!"".equals(beizhu)){
 		    tuanbiao.setBeizhu(beizhu);
 		}
-		    
+		    tuanbiao.setShanchu(1);
 			isSuccess = icaiwuskqrSerice.saveskqr(tuanbiao);
 			isSuccess=true;
 		} catch (Exception e) {
