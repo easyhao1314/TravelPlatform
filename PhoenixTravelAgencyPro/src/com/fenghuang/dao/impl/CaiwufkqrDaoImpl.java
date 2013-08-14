@@ -19,12 +19,11 @@ public class CaiwufkqrDaoImpl extends BaseDao implements IcaiwufkqrDao {
 		super(dataSource);
 		// TODO Auto-generated constructor stub
 	}
-
 	@Override
 	public boolean savefkqr(Tuanbiao tuanbiao) throws Exception {
-		// TODO Auto-generated method stub                                                                                                                                
-		String sql="insert into tuanbiao (team,kxsm,zhanghaoid,khmc,yushoutime,yingshou,huilvid,beizhu,ysyfid) values(?,?,?,?,?,?,?,?,?)";
-		int a=this.update(sql,tuanbiao.getTeam(),tuanbiao.getKxsm(),tuanbiao.getZhanghaoid(),tuanbiao.getKhmc(),tuanbiao.getYushoutime(),tuanbiao.getYingshou(),tuanbiao.getHuilvID(),tuanbiao.getBeizhu(),tuanbiao.getYsyfID());
+		// TODO Auto-generated method stub                                   5                                               10                                      15                                             20                                   25                               30                           35                              40                                               5         10        5         20        5         25        30        35        40
+		String sql="insert into tuanbiao (payment,team,suppliers,caozuo,xiaoshou,caiwuid,zhanghaoid,shenfenid,chutuantime,huituantime,yingshou,yishou,yifu,tuikuan,fanyong,yujilirun,shijilirun,danhao,fukuantime,yushoutime,huilvID,ykfp,fpxk,fuzeren,zhuangtai,ysyfID,khmc,kxsm,renshu,ddje,fankuan,yajin,cgje,cglr,zhichu,maoli,maolilv,beizhu,yfk,baojia,chengben,tuanduimc,shanchu) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		int a=this.update(sql,tuanbiao.getTeam(),tuanbiao.getPayment(),tuanbiao.getTeam(),tuanbiao.getSuppliers(),tuanbiao.getCaozuo(),tuanbiao.getXiaoshou(),tuanbiao.getCaiwuid(),tuanbiao.getZhanghaoid(),tuanbiao.getShenfenid(),tuanbiao.getChutuantime(),tuanbiao.getHuituantime(),tuanbiao.getYingshou(),tuanbiao.getYishou(),tuanbiao.getYifu(),tuanbiao.getTuikuan(),tuanbiao.getFanyong(),tuanbiao.getYujilirun(),tuanbiao.getShijilirun(),tuanbiao.getDanhao(),tuanbiao.getFukuantime(),tuanbiao.getYushoutime(),tuanbiao.getHuilvID(),tuanbiao.getYkfp(),tuanbiao.getFpxk(),tuanbiao.getFuzeren(),tuanbiao.getZhuangtai(),tuanbiao.getYsyfID(),tuanbiao.getKhmc(),tuanbiao.getKxsm(),tuanbiao.getRenshu(),tuanbiao.getDdje(),tuanbiao.getFankuan(),tuanbiao.getYajin(),tuanbiao.getCgje(),tuanbiao.getCglr(),tuanbiao.getZhichu(),tuanbiao.getMaoli(),tuanbiao.getMaolilv(),tuanbiao.getBeizhu(),tuanbiao.getYfk(),tuanbiao.getBaojia(),tuanbiao.getChengben(),tuanbiao.getTuanduimc(),tuanbiao.getShanchu());
 		return a>0;
 	}
 

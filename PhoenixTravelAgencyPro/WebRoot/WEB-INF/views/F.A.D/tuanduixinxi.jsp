@@ -24,12 +24,7 @@ href="js/themes/default/easyui.css">
 <script type="text/javascript" src="js/jquery.json.js"></script>
 </head>
   <body>
-  <div class="easyui-panel" title="财务" style="height:200px;width: auto;">
-    <form id="caiwu" method="post">
-  
 
-</form>
-</div>
 
   
   <div id="tb1">

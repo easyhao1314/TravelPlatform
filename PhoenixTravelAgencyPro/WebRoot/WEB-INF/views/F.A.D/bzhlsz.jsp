@@ -27,94 +27,107 @@
 
 <body>
 	<!-- 如果在正式开发环境下 url可以为后台的请求，地址 -->
-   <table>
+      <table>
 	    		<tr>
-
-	    			<td>
-	    		币种:
-              <input class="easyui-combobox"
-              name="" 
-              data-options="url:'',
-              valueField:'dicId',
-              textFiedld:'dicName',
-              panelHeight:'auto'
-              ">
-              
-               
-                 </td> 
-	    			<td>日期:<input id="dt" class="easyui-datetimebox" style="width:150px"></td>
-	    		
-	    			<td>
-	    		<div style="padding:5px;border:1px solid #ddd;">
-		<a href="#" class="easyui-linkbutton" data-options="toggle:true,group:'g1'">Button 1</a>
+	    		   	<td>团号:<input class="easyui-validatebox" type="text" name="team" id="team"></input></td>
+	    		   <td>
+	    		   	<div style="padding:5px;border:0px solid #ddd;">
+		<a href="javascript:cwfkspselect()" class="easyui-linkbutton" data-options="toggle:true,group:'g1'">搜索</a>
 	             </div>
-	    			
-	    		</td>
-	    		</tr>
-	    	
-	    		
-	    	</table>
-	
-	    		
-	    	
-	    	</table>
-	<table id="dg" class="easyui-datagrid"
-		data-options="url:'',border:false,singleSelect:false,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
+	    		   </td>
+	    		   	</tr>
+	  </table>
+	  
+	  <div id="tb">
+		<a
+			href="javascript:bzhlszsaveopen();" class="easyui-linkbutton"
+			iconCls="icon-add" plain="true">新增</a>&nbsp;&nbsp;| <a
+			href="javascript:bzhlszdelectopen();" class="easyui-linkbutton"
+			iconCls="icon-cut" plain="true">删除</a>
+		<a href="javascript:bzhlszupdateopen();" class="easyui-linkbutton"
+			iconCls="icon-save" plain="true">修改</a>
+	</div>
+     <div class="easyui-panel" title="团队费用"
+		style="height:500px;width: auto;" toolbar="#currencyDatagridtoolbar">	
+	   <table id="bzhlszdg" class="easyui-datagrid"
+		data-options="url:'fenghuang/bizhonghuilv.do',border:false,singleSelect:false,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
 		pagination="true" toolbar="#tb">
 		<thead>
 		
 			<tr>
-				<th data-options="field:'dicNo',editor:'text'" width="">币种</th>
-				<th data-options="field:'dicName',editor:'text'" width="">日期</th>
-				<th data-options="field:'dicName',editor:'text'" width="">汇率</th>
-				<th data-options="field:'dicName',editor:'text'" width="">单位</th>
-				<th data-options="field:'dicName',editor:'text'" width="">现金收款/换汇汇率</th>
-				<th data-options="field:'dicName',editor:'text'" width="">对公收款/换汇汇率</th>
-				<th data-options="field:'dicName',editor:'text'" width="">中行折算价/基准价</th>
-				<th data-options="field:'dicName',editor:'text'" width="">公司最低汇率标准</th>
-				<th data-options="field:'dicName',editor:'text'" width="">操作</th>
-				
-				
-			
+			    <th data-options="field:'id',editor:'text'" width="50">id</th>
+				<th data-options="field:'bizhong',editor:'text'" width="50">币种</th>
+				<th data-options="field:'riqi',editor:'text'" width="50">日期</th>
+				<th data-options="field:'huilv',editor:'text'" width="50">汇率</th>
+				<th data-options="field:'danwei',editor:'text'" width="50">单位</th>
+				<th data-options="field:'xianjinhuilv',editor:'text'" width="50">现金收款/换汇汇率</th>
+				<th data-options="field:'gongshou',editor:'text'" width="50">对公收款/换汇汇率</th>
+				<th data-options="field:'zhonghang',editor:'text'" width="50">中行折算价/基准价</th>
+				<th data-options="field:'zuidihuilv',editor:'text'" width="50">公司最低汇率标准</th>		
 			</tr>
 		</thead>
 	</table>
-	
-	<div id="editDic" class="easyui-dialog" title="新增业务字段"
+	</div>
+	<div id="bzhlszid" class="easyui-dialog" title="汇率添加"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:500px;height:200px;padding:10px;">
-		<form id="dicFrome" method="post">
+		<form id="bzhlszform" method="post">
 			<table align="left">
 				<tr>
 					<td><div class="fitem">
-							<label>编号:</label>
+							<label>币种:</label>
 					</td>
-					<td><input name="dicNo" class="easyui-validatebox"
+					<td><input name="bizhong" class="easyui-validatebox"
 						required="true">
 						</div></td>
 					<td><div class="fitem">
-							<label>名称:</label>
+							<label>日期:</label>
 					</td>
-					<td><input name="dicName" class="easyui-validatebox"
-						required="true">
+					<td><input id="htsj" name="riqi" type="text" class="easyui-datebox" required="required">
 						</div></td>
 				</tr>
 				<tr>
 					<td><div class="fitem">
-							<label>帮助提示:</label>
+							<label>汇率:</label>
 					</td>
-					<td><input name="dicHelp" class="easyui-validatebox">
+					<td><input name="huilv" class="easyui-validatebox">
 						</div></td>
 					<td><div class="fitem">
-							<label>显示顺序:</label>
+							<label>单位:</label>
 					</td>
-					<td><input name="dicSortNo" class="easyui-numberbox"
+					<td><input name="danwei" class="easyui-numberbox"
+						required="true">
+						</div></td>
+				</tr>
+					<tr>
+					<td><div class="fitem">
+							<label>现金收款/换汇汇率:</label>
+					</td>
+					<td><input name="xianjinhuilv" class="easyui-validatebox">
+						</div></td>
+					<td><div class="fitem">
+							<label>对公收款/换汇汇率:</label>
+					</td>
+					<td><input name="gongshou" class="easyui-numberbox"
+						required="true">
+						</div></td>
+				</tr>
+					<tr>
+					<td><div class="fitem">
+							<label>中行折算价/基准价:</label>
+					</td>
+					<td><input name="zhonghang" class="easyui-validatebox">
+						</div></td>
+					<td><div class="fitem">
+							<label>公司最低汇率标准:</label>
+					</td>
+					<td><input name="zuidihuilv" class="easyui-numberbox"
 						required="true">
 						</div></td>
 				</tr>
 				<tr>
 					<td colspan="4s" align="center"><a
-						href="javascript:mainBanMoshiSave();" class="easyui-linkbutton"
+						href="javascript:bzhlszsave();" class="easyui-linkbutton"
 						iconCls="icon-ok">保存</a> <a href="javascript:closeEditDic();"
 						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
 				</tr>
@@ -122,120 +135,184 @@
 			<input id="dicType" name="dicType" type="hidden">
 		</form>
 	</div>
-	<div id="searchDic" class="easyui-dialog" title="查询业务字段"
+<!-- **********************************************************************删除****************************************************************************** -->
+<div id="bzhlszdeleteid" class="easyui-dialog" title="汇率添加"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:500px;height:200px;padding:10px;">
-		<form id="searchForm" action="">
+		<form id="bzhlszdeleteform" method="post">
 			<table align="left">
+			<tr>
+			<td><input name="id" class="easyui-validatebox" onfocus=this.blur() hidden="true"
+						required="true">
+						</div></td>
+			</tr>
 				<tr>
 					<td><div class="fitem">
-							<label>编号:</label>
+							<label>币种:</label>
 					</td>
-					<td><input id="searchDicNo" name="dicNo"
-						class="easyui-validatebox">
+					<td><input name="bizhong" class="easyui-validatebox" onfocus=this.blur()
+						required="true">
 						</div></td>
 					<td><div class="fitem">
-							<label>名称:</label>
+							<label>日期:</label>
 					</td>
-					<td><input id="searchDicName" name="dicName"
-						class="easyui-validatebox">
+					<td><input id="htsj" name="riqi" type="text" class="easyui-datebox" required="required" onfocus=this.blur()>
 						</div></td>
 				</tr>
 				<tr>
 					<td><div class="fitem">
-							<label>帮助提示:</label>
+							<label>汇率:</label>
 					</td>
-					<td><input id="searchDicHelp" name="dicHelp"
-						class="easyui-validatebox">
+					<td><input name="huilv" class="easyui-validatebox" onfocus=this.blur()>
 						</div></td>
 					<td><div class="fitem">
-							<label>显示顺序:</label>
+							<label>单位:</label>
 					</td>
-					<td><input id="searchDicSortNo" name="dicSortNo"
-						class="easyui-numberbox">
+					<td><input name="danwei" class="easyui-numberbox" onfocus=this.blur()
+						required="true">
+						</div></td>
+				</tr>
+					<tr>
+					<td><div class="fitem">
+							<label>现金收款/换汇汇率:</label>
+					</td>
+					<td><input name="xianjinhuilv" class="easyui-validatebox" onfocus=this.blur()>
+						</div></td>
+					<td><div class="fitem">
+							<label>对公收款/换汇汇率:</label>
+					</td>
+					<td><input name="gongshou" class="easyui-numberbox" onfocus=this.blur()
+						required="true">
+						</div></td>
+				</tr>
+					<tr>
+					<td><div class="fitem">
+							<label>中行折算价/基准价:</label>
+					</td>
+					<td><input name="zhonghang" class="easyui-validatebox" onfocus=this.blur()>
+						</div></td>
+					<td><div class="fitem">
+							<label>公司最低汇率标准:</label>
+					</td>
+					<td><input name="zuidihuilv" class="easyui-numberbox" onfocus=this.blur()
+						required="true">
 						</div></td>
 				</tr>
 				<tr>
 					<td colspan="4s" align="center"><a
-						href="javascript:searchFormSubmit();" class="easyui-linkbutton"
-						iconCls="icon-ok">查询</a> <a href="javascript:closedSearch();"
+						href="javascript:bzhlszdelect();" class="easyui-linkbutton"
+						iconCls="icon-ok">确认删除</a> <a href="javascript:closeEditDic();"
 						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
 				</tr>
 			</table>
-			<input id="searchDicType" name="dicType" type="hidden">
+			<input id="dicType" name="dicType" type="hidden">
 		</form>
 	</div>
+<!-- ************************************************************************************************************************************************************* -->
+<!-- ******************************************************************修改*************************************************************************************** -->
+<div id="bzhlszupdateid" class="easyui-dialog" title="汇率修改"
+		data-options="modal:true,closed:true,iconCls:'icon-save'"
+		style="width:500px;height:200px;padding:10px;">
+		<form id="bzhlszupdateform" method="post">
+		
+			<table align="left">
+			     <tr>
+					
+					<td><input name="id" class="easyui-validatebox" hidden="true"
+						required="true">
+						</div></td>
+					
+				</tr>
+				<tr>
+					<td><div class="fitem">
+							<label>币种:</label>
+					</td>
+					<td><input name="bizhong" class="easyui-validatebox"
+						required="true">
+						</div></td>
+					<td><div class="fitem">
+							<label>日期:</label>
+					</td>
+					<td><input id="htsj" name="riqi" type="text" class="easyui-datebox" required="required">
+						</div></td>
+				</tr>
+				<tr>
+					<td><div class="fitem">
+							<label>汇率:</label>
+					</td>
+					<td><input name="huilv" class="easyui-validatebox">
+						</div></td>
+					<td><div class="fitem">
+							<label>单位:</label>
+					</td>
+					<td><input name="danwei" class="easyui-numberbox"
+						required="true">
+						</div></td>
+				</tr>
+					<tr>
+					<td><div class="fitem">
+							<label>现金收款/换汇汇率:</label>
+					</td>
+					<td><input name="xianjinhuilv" class="easyui-validatebox">
+						</div></td>
+					<td><div class="fitem">
+							<label>对公收款/换汇汇率:</label>
+					</td>
+					<td><input name="gongshou" class="easyui-numberbox"
+						required="true">
+						</div></td>
+				</tr>
+					<tr>
+					<td><div class="fitem">
+							<label>中行折算价/基准价:</label>
+					</td>
+					<td><input name="zhonghang" class="easyui-validatebox">
+						</div></td>
+					<td><div class="fitem">
+							<label>公司最低汇率标准:</label>
+					</td>
+					<td><input name="zuidihuilv" class="easyui-numberbox"
+						required="true">
+						</div></td>
+				</tr>
+				<tr>
+					<td colspan="4s" align="center"><a
+						href="javascript:bzhlszupdate();" class="easyui-linkbutton"
+						iconCls="icon-ok">保存</a> <a href="javascript:closeEditDic();"
+						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
+				</tr>
+			</table>
+			<input id="dicType" name="dicType" type="hidden">
+		</form>
+	</div>
+<!-- ************************************************************************************************************************************************************ -->	
 	<script type="text/javascript">
-		var editIndex = undefined;
-		function endEditing() {
-			if (editIndex == undefined) {
-				return true
-			}
-			if ($('#dg').datagrid('validateRow', editIndex)) {
-				$('#dg').datagrid('endEdit', editIndex);
-				$('#dg').datagrid('unselectRow', editIndex);
-				editIndex = undefined;
-				return true;
-			} else {
-				return false;
-			}
-		}
-		function addHangMoshi() {
-			$("#dg").datagrid("insertRow", {
-				index : 0,
-				row : {
-					dicType : '${param.dicType}'
-				}
-			});
-			editIndex = undefined;
-		}
+	
 		function onClickRow(index) {
 			if (editIndex != index) {
 				if (endEditing()) {
-					$('#dg').datagrid('selectRow', index).datagrid('beginEdit',
+					$('#bzhlszdg').datagrid('selectRow', index).datagrid('beginEdit',
 							index);
 					editIndex = index;
 				} else {
-					$('#dg').datagrid('selectRow', editIndex);
+					$('#bzhlszdg').datagrid('selectRow', editIndex);
 				}
 			}
 		}
-		function getChanges() {
-			$('#dg').datagrid('endEdit', editIndex);
-			var rows = $("#dg").datagrid("getChanges");
-			if (rows.length > 0) {
-				var param = {
-					"updateRows" : $.toJSON(rows)
-				};
-				$.ajax({
-					url : "fenghuang/updateDic.do",
-					data : param,
-					dataType : "json",
-					success : function(data) {
-						if (data.success) {
-							$.messager.alert("保存成功", "保存成功！", "info");
-							$("#dg").datagrid('reload');
-							editIndex = undefined;
-						} else {
-							$.messager.alert("保存失败", "保存失败!", "error");
-						}
-					},
-					error : function() {
-						$.messager.alert("保存失败", "服务器请求失败!", "error");
-					}
-				});
-			}
-
+		
+		
+			//添加	
+		
+		function bzhlszsaveopen() {
+			$("#bzhlszid").dialog("open");
+			$("#bzhlszform").form("clear");
 		}
-
-		function addMianBanMoshi() {
-			$("#editDic").dialog("open");
-			$("#dicFrome").form("clear");
-		}
-
-		function mainBanMoshiSave() {
-			$('#dicFrome').form('submit', {
-				url : 'fenghuang/saveDic.do?dicType=${param.dicType}',
+        function closeEditDic() {
+			$("#bzhlszid").dialog("close");
+		} 
+		function bzhlszsave() {
+			$('#bzhlszform').form('submit', {
+				url : 'fenghuang/bizhonghuilvinsert.do',
 				onSubmit : function() {
 					return $(this).form('validate');
 				},
@@ -243,63 +320,112 @@
 					var result = eval('(' + result + ')');
 					if (result.success) {
 						$.messager.alert("保存成功", "保存成功！", "info");
-						$('#editDic').dialog('close');
-						$('#dg').datagrid('reload');
+						$('#bzhlszid').dialog('close');
+						$('#bzhlszdg').datagrid('reload');
 					} else {
 						$.messager.alert("保存失败", "保存失败!", "error");
-						$('#dg').datagrid('reload');
+						$('#bzhlszdg').datagrid('reload');
 					}
 				}
 			});
 		}
+		
+/*******************************************删除********************************************************/
+           //按id查询
+           function bzhlszdelectopen() {
+          //通过主键，查询该操作，并处于编辑状态。 是否打开tab，还是直接弹出window
 
-		function shanchu() {
-			var rows = $("#dg").datagrid("getSelections");
-			if (rows.length > 0) {
-				var param = {
-					"deleteRows" : $.toJSON(rows)
-				};
-				$.ajax({
-					url : "fenghuang/deleteDics.do",
-					data : param,
-					dataType : "json",
-					success : function(data) {
-						if (data.success) {
-							$.messager.alert("删除成功", "删除成功！", "info");
-							$("#dg").datagrid('reload');
-						} else {
-							$.messager.alert("删除失败", "删除失败!", "error");
-						}
-					},
-					error : function() {
-						$.messager.alert("删除失败", "服务器请求失败!", "error");
-					}
-				});
-			}
-		}
-		function closeEditDic() {
-			$('#editDic').dialog('close');
-		} 
 
-		//
-		function searchDiJi() {
-			$("#searchDic").dialog("open");
-			$("#searchForm").form("clear");
-		}
-		function searchFormSubmit() {
-			$("#searchDic").dialog("close");
-			$("#dg").datagrid("load", {
-				dicNo : $("#searchDicNo").val(),
-				dicName : $("#searchDicName").val(),
-				dicHelp : $("#searchDicHelp").val(),
-				dicSortNo : $("#searchDicSortNo").val()
-			});
 
-		}
+           //获取选中 数据
+            var row = $("#bzhlszdg").datagrid("getSelected");
 
-		function closedSearch() {
-			$('#searchDic').dialog('close');
-		}
+           //alert(row.id);
+           if(row!=null){
+              $("#bzhlszdeleteid").dialog("open");
+               //清空ID
+             $('#id').attr('value','');
+             //填充
+            $('#bzhlszdeleteform').form('load', row);
+
+           }
+              }
+           //修改
+           function bzhlszdelect() {
+          $("#bzhlszdeleteform").form('submit', {
+             url : 'fenghuang/bizhonghuilvdelete.do',
+                   onSubmit : function() {
+               return $(this).form('validate');
+              },
+               success : function(data) {//data 是一个字符串 $.ajax(success:function(data):是一个对象)
+               console.info(data);
+            //var result = val('(' + data + ')');//吧字符串转换为对象
+             var result = $.parseJSON(data) ;
+
+               if (result.success) {
+               $("#bzhlszdeleteid").dialog('close');
+                 $.messager.alert("修改成功", "修改成功！", "info");
+                $("#bzhlszdg").datagrid('reload');
+               } else {
+                  $.messager.alert("修改失败", "修改失败!", "error");
+                 $("#bzhlszdg").datagrid('reload');
+                  }
+}
+});
+}
+
+
+/*****************************************************************************************************/
+
+
+/*******************************************修改********************************************************/
+           //按id查询
+           function bzhlszupdateopen() {
+          //通过主键，查询该操作，并处于编辑状态。 是否打开tab，还是直接弹出window
+
+
+
+           //获取选中 数据
+            var row = $("#bzhlszdg").datagrid("getSelected");
+
+           //alert(row.id);
+           if(row!=null){
+              $("#bzhlszupdateid").dialog("open");
+               //清空ID
+             $('#id').attr('value','');
+             //填充
+            $('#bzhlszupdateform').form('load', row);
+
+           }
+              }
+           //修改
+           function bzhlszupdate() {
+          $("#bzhlszupdateform").form('submit', {
+             url : 'fenghuang/bizhonghuilvupdate.do',
+                   onSubmit : function() {
+               return $(this).form('validate');
+              },
+               success : function(data) {//data 是一个字符串 $.ajax(success:function(data):是一个对象)
+               console.info(data);
+            //var result = val('(' + data + ')');//吧字符串转换为对象
+             var result = $.parseJSON(data) ;
+
+               if (result.success) {
+               $("#bzhlszupdateid").dialog('close');
+                 $.messager.alert("修改成功", "修改成功！", "info");
+                $("#bzhlszdg").datagrid('reload');
+               } else {
+                  $.messager.alert("修改失败", "修改失败!", "error");
+                 $("#bzhlszdg").datagrid('reload');
+                  }
+}
+});
+}
+
+
+/*****************************************************************************************************/
+		
+
 	</script>
 </body>
 </html>
