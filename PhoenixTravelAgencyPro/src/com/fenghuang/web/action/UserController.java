@@ -312,5 +312,31 @@ public class UserController {
 		
 		return null;
 	}
-
+    
+    
+    /**
+     * 根据用户id。恢复用户的密码为6个1.
+     * @param request
+     * @param response
+     * @param id
+     * @return
+     */
+    @RequestMapping("fenghuang/restorationPassowrd.do")
+	@ResponseBody
+	public Map<String, Object> restorationUserPassword(HttpServletRequest request,
+			HttpServletResponse response, Long id) {
+		boolean isSuccess = false;
+		Map<String, Object> result = new HashMap<String, Object>();
+		try {
+			
+			iUsersService.updateUserPassword(id, FengHuangMd5Util.getMD5("111111"));
+			isSuccess = true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			isSuccess = false;
+		}
+		result.put("success", isSuccess);
+		return result;
+	}
+    
 }
