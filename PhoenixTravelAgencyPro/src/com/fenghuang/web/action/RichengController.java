@@ -106,7 +106,8 @@ public class RichengController {
 	@RequestMapping("fenghuang/updatericheng.do")
 	@ResponseBody
 	public Map<String, Object> updatericheng(HttpServletRequest request,HttpServletResponse response,
-			String riid,String richenganpai,String huodong,String chengshiid,String jiudian,String jiaotong,String zao,String zhong,String wan){
+			String riid,String richenganpai,String huodong,String chengshiid,String jiudian,String jiaotong,String zao,String zhong,String wan,
+			String jiaotongchengshi){
 		boolean isSuccess = false;
 		Map<String,Object> result = new HashMap<String, Object>();	
 		Richeng r = new Richeng();
@@ -133,6 +134,7 @@ public class RichengController {
 			if(wan !=null && !"".equals(wan)){
 				r.setWan(Long.parseLong(wan));		
 			}
+			r.setJiaotongchengshi(jiaotongchengshi);
 		try {
 			is.update(r);
 			isSuccess=true;

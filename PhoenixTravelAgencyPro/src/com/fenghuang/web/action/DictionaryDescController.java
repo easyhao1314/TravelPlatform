@@ -79,7 +79,12 @@ public class DictionaryDescController {
 			ddDesc.setDicSortNo(-1);
 		}
 		ddDesc.setDicType(dicTypeCount);
-		
+		if(page==null){
+			page=1;
+		}
+		if(rows==null){
+			rows=2;
+		}
 		
 		try {
 			Pagination<DictionaryDesc> dicDescs = iDictionaryDescService.getDictionaryDescPaginations(page, rows, ddDesc);

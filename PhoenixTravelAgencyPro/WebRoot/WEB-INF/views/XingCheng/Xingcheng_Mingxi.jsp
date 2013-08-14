@@ -143,8 +143,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- 设定城市 交通 dlg！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！ -->
 <div id="jiaotongdlg" class="easyui-dialog" title="设定城市和交通工具" style="width:560px;height:360px;padding:10px"
             data-options="
-                iconCls: 'icon-save',
-                toolbar: '#dlg-jiaotongchengshi',
+                toolbar: '#dlgjiaotongchengshi',
                 buttons: '#dlg-buttons',
                 closed:	  true,
                 modal:true,buttons: 
@@ -152,7 +151,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     text:'保存',
                     iconCls:'icon-ok',
                     handler:function(){
-                    alert('保存');
+                    updatejiaotongchengshi();
                     }
                 },{
                     text:'关闭',
@@ -162,31 +161,114 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     }
                 }]
             ">
-            <input id="chengshijiaotongriid"  style="display: none;" />
-        <span>The dialog content.</span>
+            <div id="divdlg"></div>
+            <div id="showdivdlg" style="width: auto;  margin-top:30px; height:50px;  line-height:20px; background-color: yellow;">日程安排走向：</div>
+            <input id="chengshijiaotong"  style="display: none;" />
+            <input id="chengshijiaotongriid" style="display: none;">
     </div>
-    <div id="dlg-jiaotongchengshi" style="padding:2px 0">
+    <div id="dlgjiaotongchengshi" style="padding:2px 0">
         <table cellpadding="0" cellspacing="0" style="width:100%">
             <tr>
                 <td style="padding-left:2px;">
-                	<img src="Image/feiji.png">
-                    <a href="javascript:Addjiaotong('j1')" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true">飞机</a>
-                    <a href="javascript:Addjiaotong('j2')" class="easyui-linkbutton" data-options="iconCls:'icon-help',plain:true">游轮</a>
+                	<a href="javascript:Addjiaotong(':^1')" title="飞机"  style=" height: 20px; width: 20px; margin-top:2px;  display:block;  background-image: url('Image/feiji.png'); float: left;" ></a> 
+                	<a href="javascript:Addjiaotong(':^2')" title="游轮" style=" height: 20px; width: 20px; margin-top:2px;  display:block;  background-image: url('Image/youlun.png'); float: left;"></a>
+                    <a href="javascript:Addjiaotong(':^3')" title="火车" style=" height: 20px; width: 20px; margin-top:2px;  display:block;  background-image: url('Image/huoche.png'); float: left;"></a>
+                    <a href="javascript:Addjiaotong(':^4')" title="居住" style=" height: 20px; width: 20px; margin-top:2px;  display:block;  background-image: url('Image/juzhu.png'); float: left;"></a>
+                    <a href="javascript:Addjiaotong(':^5')" title="巴士" style=" height: 20px; width: 20px; margin-top:2px;  display:block;  background-image: url('Image/bashi.png'); float: left;"></a>
                 </td>
                 <td style="text-align:right;padding-right:2px">
-                    <input class="easyui-searchbox" data-options="prompt:'在此处搜索城市'" style="width:150px"></input>
+                    <input id="csselect" class="easyui-searchbox"  data-options="prompt:'在此处搜索城市',searcher:selectchengshi" style="width:150px"></input>
                 </td>
             </tr>
         </table>
         </div>
+        <script type="text/javascript">
+        function selectchengshi(getValue){
+        var jtapp="";
+        document.getElementById("divdlg").innerHTML="";
+        var url="fenghuang/getDictionaryDescs2.do?dicType=8&dicName="+getValue;
+        	$.ajax({
+					url :url,
+					data :getValue,
+					dataType : "json",
+					success : function(data) {
+					for(var i=0;i<data.rows.length;i++){
+					jtapp+='<a href="javascript:Addjiaotong(\''+data.rows[i].dicName+'\')" title="'+data.rows[i].dicName+'" style=" text-decoration:none;" >'+data.rows[i].dicName+'</a>&nbsp;&nbsp;&nbsp;&nbsp;';
+					 
+					}
+						$('#divdlg').append(jtapp);
+					
+					},
+					error : function() {
+						$.messager.alert("查询失败", "服务器请求失败!", "error");
+					}
+				});
+        	
+        }
+        
+        
+        </script>
 <script type="text/javascript">
+	function updatejiaotongchengshi(){
+	var riid = $('#chengshijiaotongriid').val();
+	var url = 'fenghuang/updatericheng.do?riid='+riid+'&jiaotongchengshi='+jtgj;
+	$.ajax({
+					url : url,
+					data : riid,
+					dataType : "json",
+					success : function(data) {
+					document.getElementById("mdiv").innerHTML="";
+						xunhuanRicheng('${param.xianid}');
+					$.messager.alert("保存成功", "保存成功!", "info");
+					},
+					error : function() {
+					$.messager.alert("查询失败", "服务器请求失败!", "error");
+					}
+				});
+	}
+	
+	//交通和城市全局变量
+	var jtgj='';
+	function Addjiaotong(jt){
+	
+	if(jt==':^1'){
+	$('#showdivdlg').append('<img src="Image/feiji.png" style="line-height:20px;" />');
+	jtgj+=jt;
+	}
+	if(jt==':^2'){
+	$('#showdivdlg').append('<img src="Image/youlun.png" />');
+	jtgj+=jt;
+	}
+	if(jt==':^3'){
+	$('#showdivdlg').append('<img src="Image/huoche.png" />');
+	jtgj+=jt;
+	}
+	if(jt==':^4'){
+	$('#showdivdlg').append('<img src="Image/juzhu.png" />');
+	jtgj+=jt;
+	}
+	if(jt==':^5'){
+	$('#showdivdlg').append('<img src="Image/bashi.png" />');
+	jtgj+=jt;
+	}
+	if(jt!=':^1'&&jt!=':^2'&&jt!=':^3'&&jt!=':^4'&&jt!=':^5'){
+	$('#showdivdlg').append('<a href="javascript:void(0)">'+jt+'</a>');
+	var fenge = ':';
+	fenge+=jt;
+	jtgj+=fenge;
+	
+	}
+	$('#chengshijiaotong').val(jtgj);
+	
+	}
 	function chengshijiaotongdlgOpen(riid){
+	$('#chengshijiaotong').val("");
+	jtgj='';
 	openjiaotongdlg();
 	$('#chengshijiaotongriid').val(riid);
 	
-	}
-	function Addjiaotong(jt){
-	alert(jt);
+	document.getElementById("showdivdlg").innerHTML="";
+	
 	}
 	
 </script>
@@ -238,6 +320,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          success : function(data) {
 					var result = $.parseJSON(data) ;
            if(result.success){      
+           	 
              $.messager.alert("保存修改成功","保存成功","info");
            }else{
               $.messager.alert("保存修改失败","保存失败","error");
@@ -259,23 +342,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					success : function(data) {
 					for(var i=0;i<data.rows.length;i++){
 					//循环修改交通城市在数据库里面读取出来的代码显示到JSP
-						 var xianshijiaotongchengshi="";
 						 var jt = new Array();
 						 var jj = data.rows[i].jiaotongchengshi;
 						 jt=jj.split(":");
 						 	var jtapp='';
 						 for(var j=0;j<jt.length;j++){
-						 	if(jt[j]=="^1"){
-						 	xianshijiaotongchengshi+="飞机";
+						 if(jt[j]=="^1"){
 						 	jtapp+='<img src="Image/feiji.png">';
 						 }
-						 	if(jt[j]=="^2"){
-						  	xianshijiaotongchengshi+="游轮";
+						 if(jt[j]=="^2"){
 						  	jtapp+='<img src="Image/youlun.png">';
 						 }
-						 if(jt[j]!="^1"&&jt[j]!="^2"){
+						 if(jt[j]=="^3"){
+						  	jtapp+='<img src="Image/huoche.png">';
+						 }
+						 if(jt[j]=="^4"){
+						  	jtapp+='<img src="Image/juzhu.png">';
+						 }
+						 if(jt[j]=="^5"){
+						  	jtapp+='<img src="Image/bashi.png">';
+						 }
+						 if(jt[j]!="^1"&&jt[j]!="^2"&&jt[j]!="^3"&&jt[j]!="^4"&&jt[j]!="^5"){
 						 	jtapp+=jt[j];
-						 }		 
+						 }
+						 		 
 						 }
 						 
 						 
