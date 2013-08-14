@@ -278,7 +278,7 @@
  * 查询按钮
  */
 		function canyinSelectLike(){
-		console.info($('#dgCanyin').datagrid('options'));
+
 		var opts = $('#dgCanyin').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
 			var param = {
 				name: $("#name").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
@@ -287,7 +287,7 @@
 				page:  opts.pageNumber ,
 				rows:  opts.pageSize
 			};
-		console.info(param);
+
 				$.ajax({
 					url : 'fenghuang/canyinSelect.do' ,
 					data :  param,

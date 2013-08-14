@@ -179,7 +179,7 @@ public class CustomerCenterDaoImpl extends BaseDao implements
 				return ps;
 			}
 		 }, keyHolder);
-		 System.out.println(keyHolder.getKey().intValue());
+
 		 return keyHolder.getKey().intValue();
 		
 		

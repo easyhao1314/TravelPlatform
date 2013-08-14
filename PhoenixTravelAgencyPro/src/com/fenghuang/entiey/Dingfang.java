@@ -2,17 +2,56 @@ package com.fenghuang.entiey;
 
 import java.util.Date;
 
-public class dingfang {
+public class Dingfang {
+	/**
+	 * id
+	 */
 	public int id;
+	/**
+	 *团号
+	 */
 	public String tuanNo;
+	/**
+	 * 酒店Id
+	 */
 	public long jiudianId;
+	public String getCaozuoqingkuang() {
+		return caozuoqingkuang;
+	}
+	public void setCaozuoqingkuang(String caozuoqingkuang) {
+		this.caozuoqingkuang = caozuoqingkuang;
+	}
+	/**
+	 * 入住时间
+	 */
 	public Date ruzhutime;
+	/**
+	 * 入住天数
+	 */
 	public int ruzhuDay;
+	/**
+	 * 预定时间
+	 */
 	public int yudingDay;
+	/**
+	 * 支付方式
+	 */
 	public long zhifufangshi;
-	public String caozuopingkuang;
+	/**
+	 * 操作情况
+	 */
+	public String caozuoqingkuang;
+	/**
+	 * 总价
+	 */
 	public  Float zongjia;
+	/**
+	 * 备注
+	 */
 	public String beizhu;
+	/**
+	 * id
+	 */
 	public int getId() {
 		return id;
 	}
@@ -55,12 +94,7 @@ public class dingfang {
 	public void setZhifufangshi(long zhifufangshi) {
 		this.zhifufangshi = zhifufangshi;
 	}
-	public String getCaozuopingkuang() {
-		return caozuopingkuang;
-	}
-	public void setCaozuopingkuang(String caozuopingkuang) {
-		this.caozuopingkuang = caozuopingkuang;
-	}
+	
 	public Float getZongjia() {
 		return zongjia;
 	}

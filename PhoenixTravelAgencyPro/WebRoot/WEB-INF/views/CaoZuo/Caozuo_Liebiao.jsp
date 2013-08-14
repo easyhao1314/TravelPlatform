@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'Caozuo_Liebiao.jsp' starting page</title>
+    <title></title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -79,19 +79,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            </table>
         </form>
     </div>
-	  <div id="caozuodingfang"  class="easyui-dialog" title="订房明细"
-		data-options="modal:true,closed:true,iconCls:'icon-save'"
-		style="width:600px;height:500px;padding:10px;"> 
-		  <form id="caozuodingfangForm" method="post">
-		    <table>
-		      <tr>
-		         <td>居住时间</td><td>居住城市</td><td>酒店标准</td><td>操作情况</td><td>操作</td>
-		      </tr>
-		       
-		    </table>
-		  </form>
-	    
-	</div>
+	 
 	  <div id="caozuodingche"  class="easyui-dialog" title="订车明细"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:600px;height:500px;padding:10px;"> 
@@ -145,8 +133,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 	}
 	function dingfang(){
-	  $("#caozuodingfang").dialog("open");
+	  	var row = $("#caozuoliebiaodg").datagrid("getSelected");
+
+      var url= "Caozuo_dingfang.do?tuanNo"+row.tuanNo;
+       var tab = $('#tt').tabs('getSelected'); 
+		if (tab){  
+	                 var index = $('#tt').tabs('getTabIndex', tab); 
+	                 $('#tt').tabs('close', index);  
+	       } 
+	       
+	       $('#tt').tabs('add', {
+				         title : "订房行程详细信息",
+				         href : url,
+				      //  closable : true,
+				         });
 	}
+	
 	function dingche(){
 	$("#caozuodingche").dialog("open");
 	}

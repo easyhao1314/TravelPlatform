@@ -419,6 +419,28 @@ data-options="
 			$("#addKehu").dialog("open");
 			$("#addKehuForm").form("clear");
 		}
+		
+		//验证客户名称是否存在
+		$("#kehuname").blur(function(){
+		var name=$("#kehuname").val();
+		var param={
+		  "name":name
+		 }
+		   $.ajax({
+		      url:"fenghuang/customInfoList.do?",
+		     data :  param,
+			 type : 'POST',
+			 dataType : 'json' ,
+			 
+		      success:function(data){
+		        if(data.rows[0].name!=null){
+		         alert("客户已存在,请重新输入");
+		        }
+		      },
+		   });
+		
+		});
+		
          
 		function kehuSave() {
 			$('#addKehuForm').form('submit', {
@@ -429,11 +451,10 @@ data-options="
 				success : function(result) {
 					var result = eval('(' + result + ')');
 					if (result.success) {
-					$('#addKehu').dialog('close');
+					$('#addKehu').dialog('close');					
 						$.messager.alert("保存成功", "保存成功！", "info");
 						 var  kehuname=$("#kehuname").val();
-						 $("#khId").val(kehuname);
-						 $("#khId").attr("value",kehuname);
+					
 					     $("#khId").combobox('setValue', kehuname); 
 					
 					} else {
