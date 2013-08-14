@@ -116,6 +116,7 @@
      <mvc:view-controller path="wswfcx.do" view-name="F.A.D/wswfcx"/>
      <mvc:view-controller path="sfkzhwh.do" view-name="F.A.D/sfkzhwh"/>
      <mvc:view-controller path="bzhlsz.do" view-name="F.A.D/bzhlsz"/>
+     <mvc:view-controller path="dantuan.do" view-name="F.A.D/dantuan"/>
 	<!-- 赵杨的配置 -->
 	<mvc:view-controller path="SanPin_caozuo.do" view-name="SanPin/SanPin_CaoZuo"/>
 	 <!-- 单团中心-->
@@ -197,6 +198,7 @@
       <!-- 赵杨的配置 -->
     <!-- 操作中心 -->
 	 <mvc:view-controller path="Caozuo_liebiao.do" view-name="CaoZuo/Caozuo_Liebiao"/>
+	 <mvc:view-controller path="Caozuo_dingfang.do" view-name="CaoZuo/dingfang"/>
 	<!-- 操作中心结束 -->
 	<!-- 客户中心 -->
 	<mvc:view-controller path="customerInfoList.do" view-name="KeHu/customerInfoList" />

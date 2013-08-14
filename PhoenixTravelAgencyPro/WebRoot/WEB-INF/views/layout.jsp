@@ -96,11 +96,6 @@
 				</ul>
 				<ul>
 					<li iconCls="icon-gears"><a
-						href="javascript:open1('退款返佣审核','tuikuanshenhe.do');">退款返佣审核</a>
-					</li>
-				</ul>
-				<ul>
-					<li iconCls="icon-gears"><a
 						href="javascript:open1('付款方式设置','fkfssz.do');">付款方式设置</a>
 					</li>
 				</ul>
@@ -113,7 +108,7 @@
 				</ul>
 				<ul>
 					<li iconCls="icon-gears"><a
-						href="javascript:open1('单团费用列表','sanpin.do');">单团费用列表</a>
+						href="javascript:open1('单团费用列表','dantuan.do');">单团费用列表</a>
 					</li>
 				</ul>
 				<ul>
@@ -225,6 +220,16 @@
 				<ul>
 					<li iconCls="icon-gears"><a
 						href="javascript:open1('团队进展状态字典','dictionaryDesc.do?dicType=2');">团队进展状态字典</a>
+					</li>
+				</ul>
+				<ul>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('国家','dictionaryDesc.do?dicType=8');">国家字典</a>
+					</li>
+				</ul>
+				<ul>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('城市','dictionaryDesc.do?dicType=7');">城市字典</a>
 					</li>
 				</ul>
 				<ul>
