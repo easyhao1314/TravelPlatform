@@ -121,7 +121,7 @@ public class CaiwuqrfkController {
 	@RequestMapping("fenghuang/inserttuanbiao.do")
 	@ResponseBody
 	public Map<String,Object> addCustom(HttpServletRequest request,HttpServletResponse response,
-		   String team,String kxsm,String zhanghaoid,String khmc,String yushoutime,String yingshou,String huilvid,String beizhu,String ysyfid,String shanchu){
+		   String team,String kxsm,String zhanghaoid,String khmc,String yushoutime,String yingshou,String huilvid,String beizhu,String ysyfid,String shanchu,String caiwuid,String shenfenid,String fuzeren){
 		Map<String, Object> result = new HashMap<String, Object>();
 		boolean isSuccess = false;
 		try {
@@ -159,6 +159,13 @@ public class CaiwuqrfkController {
 		if(beizhu!=null&&!"".equals(beizhu)){
 		    tuanbiao.setBeizhu(beizhu);
 		}
+		if(caiwuid!=null&&!"".equals(caiwuid)){
+			tuanbiao.setCaiwuid(Integer.parseInt(caiwuid));
+		}
+		if(shenfenid!=null&&!"".equals(shenfenid)){
+			tuanbiao.setShenfenid(Integer.parseInt(shenfenid));
+		}
+		    tuanbiao.setFuzeren("财务部");
 		    tuanbiao.setShanchu(1);
 			isSuccess = icaiwuskqrSerice.saveskqr(tuanbiao);
 			isSuccess=true;

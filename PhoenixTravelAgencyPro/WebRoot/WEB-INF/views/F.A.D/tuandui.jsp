@@ -64,45 +64,10 @@ pagination="true" toolbar="#tb">
 </table>
 </div>
 <div id="tb">
-<a href="javascript:caiwutdfyselect();" class="easyui-linkbutton"
-iconCls="icon-add" plain="true">查看</a>&nbsp;&nbsp;| <a
-href="javascript:addMianBanMoshi();" class="easyui-linkbutton"
-iconCls="icon-add" plain="true">新增(面板模式)</a>&nbsp;&nbsp;| <a
-href="javascript:shanchu();" class="easyui-linkbutton"
-iconCls="icon-cut" plain="true">删除</a>&nbsp;&nbsp;| <a
-href="javascript:searchDiJi();" class="easyui-linkbutton"
-iconCls="icon-save" plain="true">查询</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="javascript:getChanges();" class="easyui-linkbutton"
-iconCls="icon-save" plain="true">保存修改</a>
+<a href="javascript:caiwutdfyselecta();" class="easyui-linkbutton"
+iconCls="icon-add" plain="true">查看</a>
 </div>
-<div id="editDic" class="easyui-dialog" title="新增业务字段"
-data-options="modal:true,closed:true,iconCls:'icon-save'"
-style="width:500px;height:200px;padding:10px;">
-<form id="dicFrome" method="post">
-<table align="left">
-<tr>
-<td><div class="fitem">
-<label>帮助提示:</label>
-</td>
-<td><input name="dicHelp" class="easyui-validatebox">
-</div></td>
-<td><div class="fitem">
-<label>显示顺序:</label>
-</td>
-<td><input name="dicSortNo" class="easyui-numberbox"
-required="true">
-</div></td>
-</tr>
-<tr>
-<td colspan="4s" align="center"><a
-href="javascript:mainBanMoshiSave();" class="easyui-linkbutton"
-iconCls="icon-ok">保存</a> <a href="javascript:closeEditDic();"
-class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
-</tr>
-</table>
-<input id="dicType" name="dicType" type="hidden">
-</form>
-</div>
+
 
 <script type="text/javascript">
 
@@ -144,7 +109,7 @@ $('#dg').datagrid('loadData',data);
 }
 
 //按id查询
-function caiwutdfyselect(id) {
+function caiwutdfyselecta(id) {
           //通过主键，查询该操作，并处于编辑状态。 是否打开tab，还是直接弹出window
 
 //获取选中 数据
