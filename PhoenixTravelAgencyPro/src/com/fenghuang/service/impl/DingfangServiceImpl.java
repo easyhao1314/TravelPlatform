@@ -15,26 +15,26 @@ public class DingfangServiceImpl implements IdingfangSerice {
 	@Override
 	public boolean addDingfang(Dingfang df) throws Exception {
 		// TODO Auto-generated method stub
-		return false;
+		return idd.addDingfang(df);
 	}
 
 	@Override
 	public boolean deleteDingfang(int id) throws Exception {
 		// TODO Auto-generated method stub
-		return false;
+		return idd.deleteDingfang(id);
 	}
 
 	@Override
 	public boolean updateDingfang(Dingfang df) throws Exception {
 		// TODO Auto-generated method stub
-		return false;
+		return idd.updateDingfang(df);
 	}
 
 	@Override
-	public Pagination<Dingfang> dingfangSelect(int currentPage, int numPerPage)
+	public Pagination<Dingfang> dingfangSelect(int currentPage, int numPerPage,Dingfang df)
 			throws Exception {
 		// TODO Auto-generated method stub
-		return idd.dingfangSelect(currentPage, numPerPage);
+		return idd.dingfangSelect(currentPage, numPerPage,df);
 	}
 
 }

@@ -9,5 +9,5 @@ public interface IdingfangDao {
 	public boolean deleteDingfang(int id) throws Exception;
 	public boolean updateDingfang(Dingfang df) throws Exception;
 	//分页查询全部
-	public Pagination<Dingfang> dingfangSelect(int currentPage,int numPerPage) throws Exception;
+	public Pagination<Dingfang> dingfangSelect(int currentPage,int numPerPage,Dingfang df) throws Exception;
 }

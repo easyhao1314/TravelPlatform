@@ -32,11 +32,44 @@ public class Dingfang {
 	/**
 	 * 预定时间
 	 */
-	public int yudingDay;
+	public Date  yudingDay;
 	/**
 	 * 支付方式
 	 */
 	public long zhifufangshi;
+	/**
+	 * 卡号
+	 */
+	public String kahao;
+	/**
+	 * 货币单位
+	 */
+	public long huobi;
+	public String getKahao() {
+		return kahao;
+	}
+	public void setKahao(String kahao) {
+		this.kahao = kahao;
+	}
+	public long getHuobi() {
+		return huobi;
+	}
+	public void setHuobi(long huobi) {
+		this.huobi = huobi;
+	}
+	public float getHuilv() {
+		return huilv;
+	}
+	public void setHuilv(float huilv) {
+		this.huilv = huilv;
+	}
+	public void setYudingDay(Date yudingDay) {
+		this.yudingDay = yudingDay;
+	}
+	/**
+	 * 汇率
+	 */
+	public float huilv;
 	/**
 	 * 操作情况
 	 */
@@ -82,12 +115,7 @@ public class Dingfang {
 	public void setRuzhuDay(int ruzhuDay) {
 		this.ruzhuDay = ruzhuDay;
 	}
-	public int getYudingDay() {
-		return yudingDay;
-	}
-	public void setYudingDay(int yudingDay) {
-		this.yudingDay = yudingDay;
-	}
+	
 	public long getZhifufangshi() {
 		return zhifufangshi;
 	}

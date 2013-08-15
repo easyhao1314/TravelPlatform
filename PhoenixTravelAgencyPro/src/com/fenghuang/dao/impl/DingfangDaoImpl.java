@@ -20,30 +20,39 @@ public class DingfangDaoImpl extends BaseDao implements IdingfangDao{
 	@Override
 	public boolean addDingfang(Dingfang df) throws Exception {
 		// TODO Auto-generated method stub
-		String sql=" ";
-		int count=this.update(sql);
+		String sql="insert into dingfang (tuanNo,jiudianId,ruzhutime,ruzhuDay,zhifufangshi,caozuoqingkuang,zongjia,beizhu) values(?,?,?,?,?,?,?,?) ";
+		int count=this.update(sql,df.getTuanNo(),df.getJiudianId(),df.getRuzhutime(),df.getRuzhuDay(),df.getZhifufangshi(),df.getCaozuoqingkuang(),df.getZongjia(),df.getBeizhu());
 		return count>0;
 	}
 
 	@Override
 	public boolean deleteDingfang(int id) throws Exception {
 		// TODO Auto-generated method stub
-		return false;
+		String sql="delete from dingfang where id=?";
+		int count=this.update(sql);
+		return count>0;
 	}
 
 	@Override
 	public boolean updateDingfang(Dingfang df) throws Exception {
 		// TODO Auto-generated method stub
-		return false;
+		String sql="update dingfang set tuanNo=?,jiudianId=?,ruzhutime=?,ruzhuDay=?,zhifufangshi=?,caozuoqingkuang=?,zongjia=?,beizhu=?  where id=?";
+		int count=this.update(sql,df.getTuanNo(),df.getJiudianId(),df.getRuzhutime(),df.getRuzhuDay(),df.getZhifufangshi(),df.getCaozuoqingkuang(),df.getZongjia(),df.getBeizhu(),df.getId());
+		return count>0;
 	}
 
 	@Override
-	public Pagination<Dingfang> dingfangSelect(int currentPage, int numPerPage)
+	public Pagination<Dingfang> dingfangSelect(int currentPage, int numPerPage ,Dingfang df)
 			throws Exception {
 		// TODO Auto-generated method stub
-		String sql="select * from dingfang ";
+		StringBuffer sql=new StringBuffer("select df.id,df.tuanNo,df.caozuoqingkuang,df.ruzhuDay,df.ruzhuTime,df.zhifufangshi,df.zongjia,dx.cfgj,dx.tuanName,dx.jdNo from dingfang as df,dantuanxinxi as dx  where df.tuanNo=dx.tuanNO AND 1=1");
+		if(df.getTuanNo()!=null && !"".equals(df.getTuanNo())){
+			sql.append(" and df.tuanNo ='");
+			sql.append(df.getTuanNo());
+			sql.append("'");
+		}
 		
-		return this.getPagination(currentPage, numPerPage, sql);
+		return this.getPagination(currentPage, numPerPage, sql.toString());
 	}
 	
 

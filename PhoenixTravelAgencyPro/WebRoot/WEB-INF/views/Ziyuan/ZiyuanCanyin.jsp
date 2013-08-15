@@ -393,7 +393,7 @@
 					return $(this).form('validate');
 				},
 				success : function(data) {//data 是一个字符串  $.ajax(success:function(data):是一个对象)
-					console.info(data);
+
 					//var result = val('(' + data + ')');//吧字符串转换为对象
 					var result = $.parseJSON(data) ;
 

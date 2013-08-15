@@ -134,8 +134,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	}
 	function dingfang(){
 	  	var row = $("#caozuoliebiaodg").datagrid("getSelected");
-
-      var url= "Caozuo_dingfang.do?tuanNo"+row.tuanNo;
+      var url= "Caozuo_dingfang.do?tuanNo="+row.tuanNo;
        var tab = $('#tt').tabs('getSelected'); 
 		if (tab){  
 	                 var index = $('#tt').tabs('getTabIndex', tab); 

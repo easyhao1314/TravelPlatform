@@ -189,7 +189,7 @@ public class DictionaryDescController {
 	 *16.酒店标准17.酒店报价标准18.车型19.巴士司导20.巴士报价标准
 	 *21.用餐标准22.早餐标准23.午餐标准24.晚餐标准25.团队类型
 	 *26.客户资信 27.客户价值  28.客户类别  29.客户VIP 30.目标人群
-	 *31.产品类型 32.产品品牌
+	 *31.产品类型 32.产品品牌 33.支付方式
 	 **/
 	public List<Map<String, Object>> getComboxs(HttpServletRequest request,
 			HttpServletResponse response,String dicType){
