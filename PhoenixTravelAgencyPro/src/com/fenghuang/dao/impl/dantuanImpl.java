@@ -51,7 +51,7 @@ public class dantuanImpl extends BaseDao implements Idantuan{
 	@Override
 	public Pagination<DantuanXinXi> getByQueryConditionPagination(int currentPage,int numPerPage) throws Exception{
 	
-		String sql = "select d.tuanNo,d.tuanName,d.tdzt,d.ctsj,d.htsj,d.xsNo,d.jdNo,d.khId,d.djrtime,t.xlid,c.lxr from dantuanxinxi as d  left join tuanXianlu as t on d.tuanNO=t.tuanNo left join customerinfo as c on d.khId=c.id";
+		String sql = "select d.tdjb,d.tuanNo,d.tuanName,d.tdzt,d.ctsj,d.htsj,d.xsNo,d.jdNo,d.khId,d.djrtime,t.xlid,c.lxr from dantuanxinxi as d  left join tuanXianlu as t on d.tuanNO=t.tuanNo left join customerinfo as c on d.khId=c.id";
 		return this.getPagination(currentPage, numPerPage, sql);
 		
 	}

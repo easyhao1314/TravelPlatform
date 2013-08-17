@@ -51,17 +51,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	<table  style="width: 400px;">
         	<tr>
         		<td>应付款项： 
-        		<select class="easyui-combobox" name="fukuantype" style="width:200px;">
-        				<option value="sk">酒店首款</option>
-        				<option value="AL">酒店尾款</option>
-    			</select>
+        		
+        		<input id="cc" class="easyui-combotree"  required style="width: 150px;">
     			</td>
         	</tr>
         	<tr>
-        	<td>收款单位：<input /></td>
+        	<td>收款单位：<input class="easyui-validatebox" required style="width: 250px;" /></td>
         	</tr>
         	<tr>
-        	<td>应付日期：<input /></td>
+        	<td>应付日期： <input class="easyui-datetimebox" required style="width:150px"></td>
+        	</tr>
+        	<tr>
+        	<td>金额：<input class="easyui-validatebox" height="50px" required style="width: 150px;" /></td>
+        	</tr>
+        	<tr>
+        	<td>备注：<input class="easyui-validatebox" style="width: 150px;" /></td>
         	</tr>
         	</table>
         </form>
@@ -78,16 +82,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div onClick="dingcan()" data-options="iconCls:'icon-search'">订餐</div>
     <div onClick="dingdaoyou()" data-options="iconCls:'icon-search'">订导游</div>
     <div onClick="dinggouwudian()" data-options="iconCls:'icon-search'">订购物店</div>
-  	 	 <div>
+  	 	 <div onclick="$('#fukuan').window('open')">
             <span>付款</span>
-            <div style="width:150px;">
-                <div onclick="$('#fukuan').window('open')" data-options="iconCls:'icon-edit'" >酒店付款</div>
-                <div data-options="iconCls:'icon-edit'">车公司付款</div>
-                <div data-options="iconCls:'icon-edit'">地接社款</div>
-                <div data-options="iconCls:'icon-edit'">导游款</div>
-                <div data-options="iconCls:'icon-edit'">机票</div>
-                <div data-options="iconCls:'icon-edit'">保险</div>
-            </div>
+            
    		 </div>
     </div>
     
@@ -118,6 +115,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    
 	</div>
 	<script type="text/javascript">
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	function caozuotuanName(val,row){
 	//打开操作明细页面
 		return '<a href="javascript:openCaozuomx('+row.tuanNo+')">'+row.tuanName+'</a>';
@@ -174,5 +180,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     }
 	</script>
 	
+	<script type="text/javascript">
+	
+	</script>
   </body>
 </html>

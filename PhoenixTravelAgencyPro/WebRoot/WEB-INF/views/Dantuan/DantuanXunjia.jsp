@@ -26,6 +26,17 @@
 
 <body>
 	<!-- 询价查询 -->
+	<div id="mmtdjb" class="easyui-menu" style="width:120px;">
+		<input id="tdjbinput" style="display: none;" />
+		<div data-options="iconCls:'icon-edit'" onClick="updatetdjb(5)">确定</div>
+		<div data-options="iconCls:'icon-edit'" onClick="updatetdjb(4)">80%</div>
+		<div data-options="iconCls:'icon-edit'" onClick="updatetdjb(3)">60%</div>
+		<div data-options="iconCls:'icon-edit'" onClick="updatetdjb(2)">40%</div>
+		<div data-options="iconCls:'icon-edit'" onClick="updatetdjb(1)">20%</div>
+		<div data-options="iconCls:'icon-edit'" onClick="updatetdjb(0)">未确定</div>
+	</div>
+	
+	
 		 <div class="easyui-panel" title="单团查询"
 		style="height:105px;padding:10px;"
 		data-options="closable:false,tools:'#searchpanel'" align="center">
@@ -106,7 +117,7 @@ data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=3',
 		<thead>  
                     <tr>  
                       <th data-options="field:'ck',checkbox:true"></th>
-                     <th data-options="field:'tdjb'" width="60" >跟单进展</th> 
+                     <th data-options="field:'tdjb',formatter:tdjbfun" width="60" >跟单进展</th> 
                      <!--点击团号进入客户信息  -->
                      <th id="tuanNO" data-options="field:'tuanNO',formatter:onOperateDantuanList" width="40" >团号
                      <!--  
@@ -809,7 +820,7 @@ data-options="
 			}
 			}
    function	onOperateDantuanList(val,row){
-      return '<a href="javascript:openDanTuanDetail('+row.tuanNO+')">'+row.tuanNO+'</a>';
+      return '<a href="javascript:openDanTuanDetail(\''+row.tuanNo+'\')">'+row.tuanNo+'</a>';
    
    }
    function openDanTuanDetail(tuanNo){
@@ -873,6 +884,41 @@ data-options="
 	  		
    		
 	//'<a href="DantuanMingxi.do?tuanNO='+row.tuanNO+'">'+row.tuanNO+'</a>';		
+	</script>
+	<script type="text/javascript">
+	function tdjbfun(val,row){
+	var tdjb;
+	if(row.tdjb==0){tdjb="未成";}
+	if(row.tdjb==1){tdjb="20%";}
+	if(row.tdjb==2){tdjb="40%";}
+	if(row.tdjb==3){tdjb="60%";}
+	if(row.tdjb==4){tdjb="80%";}
+	if(row.tdjb==5){tdjb="确定";}
+	
+	 return '<div onclick="tdjbclick(event,\''+row.tuanNo+'\')" style="width: auto;">'+tdjb+'</div>';
+	}
+	function tdjbclick(e,tuan){
+   	      $('#tdjbinput').attr('value',tuan);
+   	         $('#mmtdjb').menu('show', {
+				left : e.pageX,
+				top : e.pageY
+			});   
+   	      }
+	function updatetdjb(tdjb){
+		var tuanNo=$('#tdjbinput').val();
+         var  url = "fenghuang/DantuanUpdate.do?tdjb="+tdjb+"&tuanNo="+tuanNo;
+           $.ajax({
+					url :url,
+					data : tuanNo,
+					dataType : "json",
+					success : function(data) {
+					$("#dg").datagrid("reload");
+					},
+					error : function() {
+						$.messager.alert("查询失败", "服务器请求失败!", "error");
+					}
+				});
+	}
 	</script>
 </body>
 </html>
