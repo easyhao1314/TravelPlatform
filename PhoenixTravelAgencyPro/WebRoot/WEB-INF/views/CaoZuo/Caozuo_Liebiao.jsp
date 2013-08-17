@@ -45,40 +45,52 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</tr>
 		</thead>
 	</table>
-	<div id="mm" class="easyui-menu" style="width:120px;">
-    <div onClick="View()" data-options="iconCls:'icon-search'">查看</div>
-    <div onClick="dingfang()" data-options="iconCls:'icon-add'">订房</div>
-    <div onClick="dingche()" data-options="iconCls:'icon-edit'">订车</div>
-    <div onClick="dingcan()" data-options="iconCls:'icon-remove'">订餐</div>
-    <div onClick="dingdaoyou()" data-options="iconCls:'icon-print'">订导游</div>
-    <div onClick="dinggouwudian()" data-options="iconCls:'icon-reload'">订购物店</div>
-    </div>
-    <div id="caozuoView"  class="easyui-dialog" title="查看明细"
-		data-options="modal:true,closed:true,iconCls:'icon-save'"
-		style="width:600px;height:500px;padding:10px;">
-            <form id="caozuoViewForm" method="post">
-           <table>
-              <tr>
-                 <td>团号：</td><td><input name="tuanNo" class="easyui-validatebox"/></td><td>团名：</td><td><input name="tuanName" class="easyui-validatebox"/></td>
-              </tr>
-               <tr>
-                 <td>客户名称：</td><td><input name="kehuName" class="easyui-validatebox"/></td><td></td><td></td>
-              </tr>
-               <tr>
-                 <td>出团日期：</td><td><input name="chutuantime" class="easyui-validatebox"/></td><td>回团日期：</td><td><input name="huituantime" class="easyui-validatebox"/></td>
-              </tr>
-               <tr>
-                 <td>派单人：</td><td><input name="paidanren" class="easyui-validatebox"/></td><td>接单人：</td><td><input name="jiedanren" class="easyui-validatebox"/></td>
-              </tr>
-               <tr>
-                 <td>操作进展：</td><td><input name="jinzhan" class="easyui-validatebox"/></td><td>派单日期：</td><td><input name="operateType" class="easyui-validatebox"/></td>
-              </tr>
-               <tr>
-                 <td>订单状态：</td><td><input name="operateType" class="easyui-combobox"/></td><td>操作状态：</td><td><input name="operatestate" class="easyui-combobox"/></td>
-              </tr>
-           </table>
+	<!-- 付款window -->
+    <div id="fukuan" class="easyui-window" title="应付款窗口" data-options="iconCls:'icon-save',closed:true" style="width:500px;height:200px;padding:10px;">
+        <form action="">
+        	<table  style="width: 400px;">
+        	<tr>
+        		<td>应付款项： 
+        		<select class="easyui-combobox" name="fukuantype" style="width:200px;">
+        				<option value="sk">酒店首款</option>
+        				<option value="AL">酒店尾款</option>
+    			</select>
+    			</td>
+        	</tr>
+        	<tr>
+        	<td>收款单位：<input /></td>
+        	</tr>
+        	<tr>
+        	<td>应付日期：<input /></td>
+        	</tr>
+        	</table>
         </form>
     </div>
+	<!-- END付款window ___________________________________________ -->
+	
+	
+	
+	
+	<div id="caozuomm" class="easyui-menu" style="width:120px;">
+    <div onClick="View()" data-options="iconCls:'icon-search'">查看</div>
+    <div onClick="dingfang()" data-options="iconCls:'icon-search'">订房</div>
+    <div onClick="dingche()" data-options="iconCls:'icon-search'">订车</div>
+    <div onClick="dingcan()" data-options="iconCls:'icon-search'">订餐</div>
+    <div onClick="dingdaoyou()" data-options="iconCls:'icon-search'">订导游</div>
+    <div onClick="dinggouwudian()" data-options="iconCls:'icon-search'">订购物店</div>
+  	 	 <div>
+            <span>付款</span>
+            <div style="width:150px;">
+                <div onclick="$('#fukuan').window('open')" data-options="iconCls:'icon-edit'" >酒店付款</div>
+                <div data-options="iconCls:'icon-edit'">车公司付款</div>
+                <div data-options="iconCls:'icon-edit'">地接社款</div>
+                <div data-options="iconCls:'icon-edit'">导游款</div>
+                <div data-options="iconCls:'icon-edit'">机票</div>
+                <div data-options="iconCls:'icon-edit'">保险</div>
+            </div>
+   		 </div>
+    </div>
+    
 	 
 	  <div id="caozuodingche"  class="easyui-dialog" title="订车明细"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
@@ -112,7 +124,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	}
 	function caozuoContextMenu(e, rowIndex, rowData){
 	 e.preventDefault();
-	  $('#mm').menu('show', {
+	  $('#caozuomm').menu('show', {
         left:e.pageX,
         top:e.pageY
     });  
