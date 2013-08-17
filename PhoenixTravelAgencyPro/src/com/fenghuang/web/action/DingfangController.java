@@ -60,7 +60,7 @@ public class DingfangController {
 	@RequestMapping("fenghuang/updateDingfang.do")
 	@ResponseBody
 	public Map<String,Object> updateDingfang(HttpServletRequest request,HttpServletResponse response,
-			String tuanNo,String jiudianId,String ruzhutime,String ruzhuDay,String zhifufangshi,String caozuoqingkuang,String zongjia,String beizhu,String id){
+			String tuanNo,String chengshiId,String jiudianId,String ruzhutime,String ruzhuDay,String yudingDay,String zhifufangshi,String kahao,String huobi,String huilv,String caozuoqingkuang,String zongjia,String beizhu,String id){
 		  Map<String,Object> result=new HashMap<String,Object>();
 		boolean bl=false;
 		try {
@@ -68,8 +68,11 @@ public class DingfangController {
 			if(tuanNo !=null && !"".equals(tuanNo)){
 			df.setTuanNo(tuanNo);
 			}
+			if(chengshiId !=null && !"".equals(chengshiId)){
+				df.setChengshiId(Long.parseLong(chengshiId));
+		    }
 			if(jiudianId !=null && !"".equals(jiudianId)){
-			df.setJiudianId(Long.parseLong(jiudianId));
+			df.setJiudianId(jiudianId);
 			}
 			if(ruzhutime !=null && !"".equals(ruzhutime)){
 			df.setRuzhutime(FengHuangDateUtil.getDateStringTODate(ruzhutime));
@@ -77,9 +80,21 @@ public class DingfangController {
 			if(ruzhuDay !=null && !"".equals(ruzhuDay)){
 			df.setRuzhuDay(Integer.parseInt(ruzhuDay));
 			}
+			if(yudingDay !=null && !"".equals(yudingDay)){
+				df.setYudingDay(FengHuangDateUtil.getDateStringTODate(yudingDay));
+			}
 			if(zhifufangshi !=null && !"".equals(zhifufangshi)){
 			df.setZhifufangshi(Long.parseLong(zhifufangshi));
 			}
+			if(kahao !=null && !"".equals(kahao)){
+				df.setCaozuoqingkuang(kahao);
+				}
+			if(huobi !=null && !"".equals(huobi)){
+				df.setCaozuoqingkuang(huobi);
+				}
+			if(huilv !=null && !"".equals(huilv)){
+				df.setCaozuoqingkuang(huilv);
+				}
 			if(caozuoqingkuang !=null && !"".equals(caozuoqingkuang)){
 			df.setCaozuoqingkuang(caozuoqingkuang);
 			}
@@ -98,6 +113,76 @@ public class DingfangController {
 			e.printStackTrace();
 		}
 		result.put("success", bl);
+		return result;
+	}
+	@RequestMapping("fenghuang/addDingfang.do")
+	@ResponseBody
+	public Map<String,Object> addDingfang(HttpServletRequest request,HttpServletResponse response,
+			String tuanNo,String chengshiId,String jiudianId,String ruzhutime,String ruzhuDay,String yudingDay,String zhifufangshi,String kahao,String huobi,String huilv,String caozuoqingkuang,String zongjia,String beizhu){
+		  Map<String,Object> result=new HashMap<String,Object>();
+		boolean bl=false;
+		try {
+			Dingfang df=new Dingfang();
+			if(tuanNo !=null && !"".equals(tuanNo)){
+			df.setTuanNo(tuanNo);
+			}
+			if(chengshiId !=null && !"".equals(chengshiId)){
+				df.setChengshiId(Long.parseLong(chengshiId));
+		    }
+			if(jiudianId !=null && !"".equals(jiudianId)){
+			df.setJiudianId(jiudianId);
+			}
+			if(ruzhutime !=null && !"".equals(ruzhutime)){
+			df.setRuzhutime(FengHuangDateUtil.getDateStringTODate(ruzhutime));
+			}
+			if(ruzhuDay !=null && !"".equals(ruzhuDay)){
+			df.setRuzhuDay(Integer.parseInt(ruzhuDay));
+			}
+			if(yudingDay !=null && !"".equals(yudingDay)){
+				df.setYudingDay(FengHuangDateUtil.getDateStringTODate(yudingDay));
+			}
+			if(zhifufangshi !=null && !"".equals(zhifufangshi)){
+			df.setZhifufangshi(Long.parseLong(zhifufangshi));
+			}
+			if(kahao !=null && !"".equals(kahao)){
+				df.setCaozuoqingkuang(kahao);
+				}
+			if(huobi !=null && !"".equals(huobi)){
+				df.setCaozuoqingkuang(huobi);
+				}
+			if(huilv !=null && !"".equals(huilv)){
+				df.setCaozuoqingkuang(huilv);
+				}
+			if(caozuoqingkuang !=null && !"".equals(caozuoqingkuang)){
+			df.setCaozuoqingkuang(caozuoqingkuang);
+			}
+			if(zongjia !=null && !"".equals(zongjia)){
+			df.setZongjia(Float.parseFloat(zongjia));
+			}
+			if(beizhu !=null && !"".equals(beizhu)){
+			df.setBeizhu(beizhu);
+			}
+		
+			bl=idfs.addDingfang(df);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		result.put("success", bl);
+		return result;
+	}
+	@RequestMapping("fenghuang/deleteDingfang.do")
+	@ResponseBody
+	public Map<String,Object> deleteDingfang(HttpServletRequest request,HttpServletResponse response,int id){
+		  Map<String,Object> result=new HashMap();
+		  boolean bl=false;
+		  try {
+			bl=idfs.deleteDingfang(id);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		  result.put("success", bl);
 		return result;
 	}
 

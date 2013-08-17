@@ -13,8 +13,14 @@ public class DantuanXinXi {
    /** 团号，根据给定的字符串产生的
     * 
     * @pdOid 856cc23c-2324-49ee-b408-7c734c146607 */
-   public String tuanNO;
-   /** 团队名称
+   public String tuanNo;
+   public String getTuanNo() {
+	return tuanNo;
+}
+public void setTuanNo(String tuanNo) {
+	this.tuanNo = tuanNo;
+}
+/** 团队名称
     * 
     * @pdOid 856cc23c-2324-49ee-b408-7c734c146607 */
    public String tuanName;
@@ -149,12 +155,7 @@ public void setDjrtime(Date djrtime) {
 	this.djrtime = djrtime;
 }
 
-public String getTuanNO() {
-	return tuanNO;
-}
-public void setTuanNO(String tuanNO) {
-	this.tuanNO = tuanNO;
-}
+
 public String getTuanName() {
 	return tuanName;
 }

@@ -35,6 +35,7 @@ public class dantuanServiceImpl implements IdantuanService{
 		int count=idt.add(dt);
 		if(count>0){
 			try {
+				// 线路
 				Xianlu x=new Xianlu();
 				x.setGuojia((int)(dt.getCfgj()));
 				x.setTianshu(dt.getCfts());
@@ -42,10 +43,11 @@ public class dantuanServiceImpl implements IdantuanService{
 	            ixls.AddXianlu(x);
 	            
 	            TuanXianlu txl=new TuanXianlu();
-	            txl.setTuanNo(dt.getTuanNO());
+	            txl.setTuanNo(dt.getTuanNo());
 	         
 	            txl.setXlid(ixls.AddXianlu(x));
 	            itxls.addTuanXianlu(txl);
+	            
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

@@ -53,8 +53,7 @@
 					textField:'dicName',
 					panelHeight:'auto',
 					editable:false"></div></td>			
-				<td>	<a href="javascript:ZyjiudianSelectLike();" 
-								class="easyui-linkbutton" iconCls="icon-ok">查询</a>
+				<td>	<a href="javascript:ZyjiudianSelectLike();" class="easyui-linkbutton" iconCls="icon-ok">查询</a>
 						<a href="javascript:void(0)" class="easyui-linkbutton"
 							iconCls="icon-undo" onclick="$('#jiudianForm').form('clear')">重置</a>
 				</td>

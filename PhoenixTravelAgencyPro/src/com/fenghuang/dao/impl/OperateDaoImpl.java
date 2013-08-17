@@ -36,8 +36,13 @@ public class OperateDaoImpl extends BaseDao implements IOperateDao {
 	@Override
 	public Pagination<Operate> OperateInfo(int page,int rows,Operate o) {
 		// TODO Auto-generated method stub
-		String sql = "select * from Operate";
+		String sql = "select * from Operate where 1=1";
 		StringBuffer sb = new StringBuffer(sql);
+		if(o.getTuanNo()!=null && !"".equals(o.getTuanNo())){
+			sb.append(" and tuanNo='");
+			sb.append(o.getTuanNo());
+			sb.append("'");
+		}
 		return this.getPagination(page, rows, sb.toString());
 	}
 

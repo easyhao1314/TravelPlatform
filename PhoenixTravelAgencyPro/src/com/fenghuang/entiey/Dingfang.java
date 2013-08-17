@@ -12,9 +12,21 @@ public class Dingfang {
 	 */
 	public String tuanNo;
 	/**
+	 * 
+	 * 城市
+	 */
+	public long chengshiId;
+
+	public long getChengshiId() {
+		return chengshiId;
+	}
+	public void setChengshiId(long chengshiId) {
+		this.chengshiId = chengshiId;
+	}
+	/**
 	 * 酒店Id
 	 */
-	public long jiudianId;
+	public String jiudianId;
 	public String getCaozuoqingkuang() {
 		return caozuoqingkuang;
 	}
@@ -29,6 +41,9 @@ public class Dingfang {
 	 * 入住天数
 	 */
 	public int ruzhuDay;
+	public Date getYudingDay() {
+		return yudingDay;
+	}
 	/**
 	 * 预定时间
 	 */
@@ -97,10 +112,11 @@ public class Dingfang {
 	public void setTuanNo(String tuanNo) {
 		this.tuanNo = tuanNo;
 	}
-	public long getJiudianId() {
+	
+	public String getJiudianId() {
 		return jiudianId;
 	}
-	public void setJiudianId(long jiudianId) {
+	public void setJiudianId(String jiudianId) {
 		this.jiudianId = jiudianId;
 	}
 	public Date getRuzhutime() {

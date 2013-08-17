@@ -36,13 +36,13 @@ public class dantuanAction {
 	@ResponseBody
     //如果不是json格式的话 就去掉 不加	@ResponseBody(用到ajax提交的 就加上	@ResponseBody不用ajax 就不要加了啊)
 	public Map<String,Object> dantuanAdd(HttpServletRequest request,HttpServletResponse response,
-			String tuanNO,String tuanName,String khId,String tdczlx,String tdjb,String tdzt,String cfrs,String cfts,String cfgj,String lyqy,
+			String tuanNo,String tuanName,String khId,String tdczlx,String tdjb,String tdzt,String cfrs,String cfts,String cfgj,String lyqy,
 			Date ctsj,Date htsj,String xsNo,String jdNo,String khjlNo,String qzlx,String xbqz,String xbyq,String jdbzNo,
 			String zcNo,String zhongcNo,String wcNo,String bssdNo,
 			String cheXingNo,String jdbjNo,String bsbjNo,String ycbjNo,String dybjNo,String qtdjDesc,String tsDesc) {
 
 		DantuanXinXi dt=new DantuanXinXi();
-        dt.setTuanNO(tuanNO);
+        dt.setTuanNo(tuanNo);
         dt.setTuanName(tuanName);
         if(khId != null && !"".equals(khId)){
         dt.setKhId(Long.parseLong(khId));
@@ -373,12 +373,12 @@ public class dantuanAction {
 	@RequestMapping("fenghuang/DantuanUpdate.do")
 	@ResponseBody
 	public Map<String,Object> updateDt(HttpServletRequest request,
-			HttpServletResponse response,String tuanNO,String tuanName,String khId,String tdczlx,String tdjb,String tdzt,String cfrs,String cfts,String cfgj,String lyqy,
+			HttpServletResponse response,String tuanNo,String tuanName,String khId,String tdczlx,String tdjb,String tdzt,String cfrs,String cfts,String cfgj,String lyqy,
 			Date ctsj,Date htsj,String xsNo,String jdNo,String khjlNo,String qzlx,String xbqz,String xbyq,String jdbzNo,
 			String zcNo,String zhongcNo,String wcNo,String bssdNo,
 			String cheXingNo,String jdbjNo,String bsbjNo,String ycbjNo,String dybjNo,String qtdjDesc,String tsDesc){
 		DantuanXinXi dt=new DantuanXinXi();
-		dt.setTuanNO(tuanNO);
+		dt.setTuanNo(tuanNo);
         dt.setTuanName(tuanName);
         if(khId != null && !"".equals(khId)){
         dt.setKhId(Long.parseLong(khId));

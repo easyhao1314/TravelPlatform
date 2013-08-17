@@ -31,9 +31,8 @@ public class OperateController {
 	@RequestMapping("fenghuang/Operateinfo.do")
 	@ResponseBody
 	public Map<String,Object> Operateinfo(HttpServletRequest request,HttpServletResponse response,
-			Integer page,Integer rows) {
+			Integer page,Integer rows,Operate o) {
 			try {
-			Operate o = new Operate();
 			Pagination<Operate> pagination = is.OperateInfo(page, rows, o);
 			List<Map<String, Object>> testUsers = pagination.getResultList();
 			Map<String,Object> returnValue  = new HashMap<String, Object>();

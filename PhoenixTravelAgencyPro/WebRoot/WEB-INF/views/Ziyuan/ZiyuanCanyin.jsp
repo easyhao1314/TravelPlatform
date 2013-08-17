@@ -263,7 +263,7 @@
 
 
 	<script type="text/javascript">
-    
+
     //这个方法是格式化是否可用列的，0：为不使用，1：为使用
 	function onIsUesStyle(val,row){
 	  if(val =='1'){
