@@ -29,7 +29,7 @@ public class DingfangDaoImpl extends BaseDao implements IdingfangDao{
 	public boolean deleteDingfang(int id) throws Exception {
 		// TODO Auto-generated method stub
 		String sql="delete from dingfang where id=?";
-		int count=this.update(sql);
+		int count=this.update(sql,id);
 		return count>0;
 	}
 

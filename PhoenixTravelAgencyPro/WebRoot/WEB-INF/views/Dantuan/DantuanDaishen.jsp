@@ -66,7 +66,7 @@
 					<th data-options="field:'ck',checkbox:true"></th>
 					<th data-options="field:'01'" width="80">提请时间</th>
 					<th data-options="field:'xsNo'" width="80">提请人</th>
-					<th data-options="field:'tuanNO'" width="80">报价团</th>
+					<th data-options="field:'tuanNo'" width="80">报价团</th>
 					<th data-options="field:'tuanName'" width="80">团名</th>
 					<th data-options="field:'02'" width="80">申请说明</th>
 					<th data-options="field:'03'" width="80">报价</th>
@@ -111,7 +111,7 @@
 	var row = $("#dg").datagrid("getSelected");
 			if (row) {
 				var param = {
-					"deleteRows" :  row.tuanNO
+					"deleteRows" :  row.tuanNo
 				};
 				$.ajax({
 					url : "fenghuang/deleteDantuan.do",
@@ -142,7 +142,7 @@
 	    var row = $("#dg").datagrid("getSelected");
 			if (row) {
 				var param = {
-					"querenRows" :  row.tuanNO
+					"querenRows" :  row.tuanNo
 				};
 				$.ajax({
 					url : "fenghuang/shenpi.do",
@@ -169,7 +169,7 @@
 	    var row = $("#dg").datagrid("getSelected");
 			if (row) {
 				var param = {
-					"querenRows" :  row.tuanNO
+					"querenRows" :  row.tuanNo
 				};
 				$.ajax({
 					url : "fenghuang/chexiao.do",

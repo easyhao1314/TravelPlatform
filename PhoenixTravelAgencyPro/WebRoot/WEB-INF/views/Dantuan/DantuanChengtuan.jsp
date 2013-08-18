@@ -39,7 +39,7 @@
                       <th data-options="field:'ck',checkbox:true"></th>
                      <th data-options="field:'tdjb'" width="60">跟单进展</th> 
                      <!--点击团号进入客户信息  -->
-                     <th id="tuanNO" data-options="field:'tuanNO'" width="40" >团号</th>  
+                     <th id="tuanNo" data-options="field:'tuanNo'" width="40" >团号</th>  
                      <th data-options="field:'tdzt'" width="60"> 团队状态</th>  
                      <!--点击团队名称进入团队详情（新增页面） -->                     
                      <th data-options="field:'tuanName'" width="60">团队名称</th> 
@@ -77,7 +77,7 @@
 			<table align="center">
 				<tr>
 <td><div class="fitem"><label>客户名称:</label></td><td><input name="khId" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>团号:</label></td><td><input name="tuanNO" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>团号:</label></td><td><input name="tuanNo" class="easyui-validatebox" required="true"></div></td>
 </tr>
 <tr>
 <td><div class="fitem"><label>团队操作类型：</label></td><td><input name="tdczlx" class="easyui-validatebox" required="true"></div></td>
@@ -158,7 +158,7 @@
 			<table align="center">
 				<tr>
 <td><div class="fitem"><label>客户名称:</label></td><td><input name="khId" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>团号:</label></td><td><input name="tuanNO" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>团号:</label></td><td><input name="tuanNo" class="easyui-validatebox" required="true"></div></td>
 </tr>
 <tr>
 <td><div class="fitem"><label>团队操作类型：</label></td><td><input name="tdczlx" class="easyui-validatebox" required="true"></div></td>
@@ -295,7 +295,7 @@
 			var row = $("#dg").datagrid("getSelected");
 			if (row) {
 				var param = {
-					"deleteRows" :  row.tuanNO
+					"deleteRows" :  row.tuanNo
 				};
 				$.ajax({
 					url : "fenghuang/deleteDantuan.do",
@@ -326,7 +326,7 @@
 			//alert(row.tuanNO);
 			if(row){
 				var param = {
-					"updateTuanNO" : row.tuanNO
+					"updateTuanNO" : row.tuanNo
 				};
 				
 				$.ajax({

@@ -54,7 +54,7 @@
 				<td><div class="fitem">
 						<strong><label>团号:</label></strong>
 				</td>
-				<td><strong><input name="tuanNO" class="easyui-validatebox"></strong>
+				<td><strong><input name="tuanNo" class="easyui-validatebox"></strong>
 					
 				</td>
 				<td><div class="fitem">

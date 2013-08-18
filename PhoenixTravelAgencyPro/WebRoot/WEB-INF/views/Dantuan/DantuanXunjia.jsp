@@ -340,7 +340,7 @@ data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=7',
 <td><div class="fitem"><label>特殊要求：</label></td><td colspan="3"><input name="tsDesc" class="easyui-validatebox" required="true" size="80"></div></td>
 </tr>
 <tr>
-<tr><td colspan="4s" align="center"><a href="javascript:dantuanSave();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> <input  type="reset" value="重置"></td>
+<tr><td colspan="4" align="center"><a href="javascript:dantuanSave();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> <input  type="reset" value="重置"></td>
 </tr>
 			</table>
 	
@@ -536,7 +536,7 @@ data-options="
 <td><div class="fitem"><label>特殊要求：</label></td><td colspan="3"><input name="tsDesc" class="easyui-validatebox" required="true" size="80"></div></td>
 </tr>
 <tr>
-<tr><td colspan="4s" align="center"><a href="javascript:dantuanUpdate1();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> <input  type="reset" value="重置"></td>
+<tr><td colspan="4" align="center"><a href="javascript:dantuanUpdate1();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> <input  type="reset" value="重置"></td>
 </tr>
 			</table>
 	
@@ -714,7 +714,7 @@ data-options="
 			var row = $("#dg").datagrid("getSelected");
 			if (row) {
 				var param = {
-					"deleteRows" :  row.tuanNO
+					"deleteRows" :  row.tuanNo
 				};
 				$.ajax({
 					url : "fenghuang/deleteDantuan.do",
@@ -746,7 +746,7 @@ data-options="
 		
 			if(row){
 				var param = {
-					"updateTuanNO" : row.tuanNO
+					"updateTuanNO" : row.tuanNo
 				};
 				
 				$.ajax({
@@ -799,7 +799,7 @@ data-options="
 	    var row = $("#dg").datagrid("getSelected");
 			if (row) {
 				var param = {
-					"querenRows" :  row.tuanNO
+					"querenRows" :  row.tuanNo
 				};
 				$.ajax({
 					url : "fenghuang/chengtuan.do",
@@ -854,7 +854,7 @@ data-options="
 			var row = $("#dg").datagrid("getSelected");
 			if(row){
 				var param = {
-					"updateTuanNO" : row.tuanNO
+					"updateTuanNO" : row.tuanNo
 				};
 			
 				$.ajax({

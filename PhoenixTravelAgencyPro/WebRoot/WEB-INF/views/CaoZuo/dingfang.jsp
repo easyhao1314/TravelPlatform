@@ -54,8 +54,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	            <td><div class="fitem">国家：</td> <td><input name="cfgj" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=7',
 					valueField:'dicNo',
 					textField:'dicName',
-					panelHeight:'auto',
-					editable:false "></div></td> 
+					method:'get',
+					panelHeight:'auto'"></div></td> 
 					<td><div class="fitem">城市：</td> <td><input name="chengshiId" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=8',
 					valueField:'dicNo',
 					textField:'dicName',
@@ -292,6 +292,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		     var param={
 		      id:row.id
 		      };
+		      
 		      if(confirm("确认要删除吗？")){
 		      $.ajax({
 		         url:'fenghuang/deleteDingfang.do',

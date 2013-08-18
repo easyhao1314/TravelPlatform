@@ -40,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					editable:false 
 	"></div>
      <a href="javascript:addKehu();" class="easyui-linkbutton" iconCls="icon-ok">新增客户</a></td>
-<td><div class="fitem"><label>团号:</label></td><td><input name="tuanNO" class="easyui-validatebox"></div></td>
+<td><div class="fitem"><label>团号:</label></td><td><input name="tuanNo" class="easyui-validatebox"></div></td>
 </tr>
 <tr>
 <td><div class="fitem"><label>团队操作类型：</label></td><td><input name="tdczlx"   class="easyui-combobox" data-options="
@@ -239,7 +239,7 @@ data-options="
 					<td><div class="fitem">
 							<label>客户名称:</label>
 					</td>
-					<td><input id="kehuname"  name="name" class="easyui-validatebox" size="70">
+					<td colspan="3"><input id="kehuname"  name="name" class="easyui-validatebox" size="70" required="true">
 						</div></td>
 				</tr>
 				<tr>
@@ -264,7 +264,7 @@ data-options="
 					<td><div class="fitem">
 							<label>联系人:</label>
 					</td>
-					<td><input name="lxr" class="easyui-validatebox">
+					<td><input name="lxr" class="easyui-validatebox" required="true">
 						</div></td>
 					<td><div class="fitem">
 							<label>职位:</label>
@@ -276,7 +276,7 @@ data-options="
 					<td><div class="fitem">
 							<label>通讯地址:</label>
 					</td>
-					<td><input name="address" class="easyui-validatebox" size="70">
+					<td colspan="3"><input name="address" class="easyui-validatebox" size="70">
 						</div></td>
 				</tr>
 				<tr>
@@ -320,7 +320,7 @@ data-options="
 				<tr>
 					<td colspan="4" align="center"><a
 						href="javascript:kehuSave();" class="easyui-linkbutton"
-						iconCls="icon-ok">保存</a> <a href="javascript:closeaddMianBan();"
+						iconCls="icon-ok">保存</a> <a href="javascript: kehuaddOpen();"
 						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
 				</tr>
 			</table>
@@ -424,10 +424,10 @@ data-options="
 		$("#kehuname").blur(function(){
 		var name=$("#kehuname").val();
 		var param={
-		  "name":name
+		  name:name
 		 }
 		   $.ajax({
-		      url:"fenghuang/customInfoList.do?",
+		      url:"fenghuang/customInfoList.do",
 		     data :  param,
 			 type : 'POST',
 			 dataType : 'json' ,
@@ -440,7 +440,9 @@ data-options="
 		   });
 		
 		});
-		
+		 function kehuaddOpen(){
+		 $("#addKehu").dialog("close");
+		 }
          
 		function kehuSave() {
 			$('#addKehuForm').form('submit', {

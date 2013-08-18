@@ -33,7 +33,7 @@
 			<table align="center">
 <tr>
 <td><div class="fitem"><label>客户名称:</label></td><td><input name="khId" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>团号:</label></td><td><input name="tuanNO" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>团号:</label></td><td><input name="tuanNo" class="easyui-validatebox" required="true"></div></td>
 </tr>
 <tr>
 <td><div class="fitem"><label>团队操作类型：</label></td><td><input name="tdczlx"   class="easyui-combobox" data-options="

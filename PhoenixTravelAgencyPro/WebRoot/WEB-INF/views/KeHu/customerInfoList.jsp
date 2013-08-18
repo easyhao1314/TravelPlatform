@@ -493,7 +493,7 @@
 					<td><div class="fitem">
 							<label>客户公司名称:</label>
 					</td>
-					<td colspan="3"><input name="name" class="easyui-validatebox" size="60">
+					<td colspan="3"><input name="name" class="easyui-validatebox" size="60" required="true">
 						</div></td>
 				</tr>
 				<tr>
@@ -518,7 +518,7 @@
 					<td><div class="fitem">
 							<label>联系人:</label>
 					</td>
-					<td><input name="lxr" class="easyui-validatebox">
+					<td><input name="lxr" class="easyui-validatebox" required="true">
 						</div></td>
 					
 				</tr>
