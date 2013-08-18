@@ -65,7 +65,6 @@
 			<thead>
 				<tr>
 				    <th data-options="field:'ck',checkbox:true"></th>
-					<th data-options="field:'dicNo',align:'right'" width="100">编号</th>
 					<th data-options="field:'dicName',align:'right'" width="100" editor="text">名称</th>
 					<th data-options="field:'dicDesc',align:'right'" width="100" editor="text">区域城市</th>
 					
