@@ -33,7 +33,7 @@
 		<thead>
 			<tr>
 				<th data-options="field:'ck',checkbox:true"></th>
-				<th data-options="field:'dicNo',editor:'text'" width="80">编号</th>
+				<!-- <th data-options="field:'dicNo',editor:'text'" width="80">编号</th> -->
 				<th data-options="field:'dicName',editor:'text'" width="80">名称</th>
 				<th data-options="field:'dicDesc',editor:'text'" width="80">说明</th>
 				<th data-options="field:'dicHelp',editor:'text'" width="80">帮助提示</th>

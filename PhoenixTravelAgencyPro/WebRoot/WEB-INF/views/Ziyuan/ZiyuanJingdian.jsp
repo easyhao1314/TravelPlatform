@@ -67,7 +67,7 @@
 			<thead>
 				<tr>
 					<th data-options="field:'ck',checkbox:true"></th>
-					<th data-options="field:'id'" width="80">景点编号</th>
+					<!--<th data-options="field:'id'" width="80">编号</th>-->
 					<th data-options="field:'name'" width="80">景点名称</th>
 					<th data-options="field:'name2'" width="80">景点英文名称</th>
 					<th data-options="field:'chengsi'" width="80">所属城市</th>

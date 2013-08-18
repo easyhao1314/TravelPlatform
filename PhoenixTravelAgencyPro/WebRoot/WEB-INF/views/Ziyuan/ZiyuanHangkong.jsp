@@ -60,7 +60,7 @@
 			<thead>
 				<tr>
 					<th data-options="field:'ck',checkbox:true"></th>
-					<th data-options="field:'id'" width="80">编号</th>
+					<!--<th data-options="field:'id'" width="80">编号</th>-->
 					<th data-options="field:'daima'" width="80">国际航协代码</th>
 					<th data-options="field:'name'" width="80">航空公司名称</th>
 					<th data-options="field:'shui'" width="80">税</th>

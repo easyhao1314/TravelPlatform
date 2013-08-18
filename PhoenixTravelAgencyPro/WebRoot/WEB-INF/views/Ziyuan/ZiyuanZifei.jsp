@@ -70,7 +70,7 @@
 			<thead>
 				<tr>
 					<th data-options="field:'ck',checkbox:true"></th>
-					<th data-options="field:'id'" width="80">自费节目编号</th>
+					<!--<th data-options="field:'id'" width="80">编号</th>-->
 					<th data-options="field:'name'" width="80">自费节目名称</th>
 					<th data-options="field:'feiyong'" width="80">自费节目费用</th>
 					<th data-options="field:'bizhong'" width="80">币种</th>

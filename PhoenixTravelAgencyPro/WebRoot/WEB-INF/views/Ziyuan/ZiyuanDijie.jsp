@@ -81,7 +81,7 @@
 			<thead>
 				<tr>
 					<th data-options="field:'ck',checkbox:true"></th>
-					<th data-options="field:'id'" width="80">编号</th>
+					<!--<th data-options="field:'id'" width="80">编号</th>-->
 					<th data-options="field:'chengshi'" width="80">所属城市</th>
 					<th data-options="field:'name'" width="80">供应商名称</th>
 					<th data-options="field:'lianxiren'" width="80">联系人</th>

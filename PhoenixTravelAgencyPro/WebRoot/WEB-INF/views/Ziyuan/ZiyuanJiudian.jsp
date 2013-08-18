@@ -76,7 +76,7 @@
 			<thead>
 				<tr>
 					<th data-options="field:'ck',checkbox:true,singleSelect:false"></th>
-					<th data-options="field:'id'" width="80">编号</th>
+					<!--<th data-options="field:'id'" width="80">编号</th>-->
 					<th data-options="field:'chengshiName'" width="80">城市</th>
 					<th data-options="field:'name'" width="80">酒店供应商名称</th>
 					<th data-options="field:'xingjibaozhun'" width="80">星级标准</th>

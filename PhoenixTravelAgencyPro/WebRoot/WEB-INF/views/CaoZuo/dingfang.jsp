@@ -55,7 +55,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					valueField:'dicNo',
 					textField:'dicName',
 					method:'get',
-					panelHeight:'auto'"></div></td> 
+					panelHeight:'auto'" ></div></td> 
 					<td><div class="fitem">城市：</td> <td><input name="chengshiId" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=8',
 					valueField:'dicNo',
 					textField:'dicName',
