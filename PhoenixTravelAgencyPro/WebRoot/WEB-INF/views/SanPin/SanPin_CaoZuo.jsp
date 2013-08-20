@@ -33,12 +33,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			iconCls="icon-save" plain="true">查询</a>
 	</div>
 <table id="dg" class="easyui-datagrid"
-		data-options="url:'fenghuang/Sanpinliebiao.do',border:false,singleSelect:false,fit:true,fitColumns:true, onClickRow: onClickRow"
+		data-options="url:'fenghuang/Sanpinliebiao.do',border:false,singleSelect:true,fit:true,fitColumns:true, onClickRow: onClickRow,onRowContextMenu: sanpincaozuoMenu"
 		pagination="true" toolbar="#tb">
 		<thead>
 			<tr>
 				<th data-options="field:'tuanNo'" width="50">团号</th>
-				<th id="tuanName" data-options="field:'tuanName',formatter:onOperateSanpinList" width="50" ">团名/路线</th>
+				<th id="tuanName" data-options="field:'tuanName',formatter:onOperateSanpinList" width="50" >团名/路线</th>
 				<th data-options="field:'groupdate'" width="50">出团日期</th>
 				<th data-options="field:'Tourdate'" width="50">回团日期</th>
 				<th data-options="field:'targetpopulation'" width="50">出发城市</th>
@@ -96,12 +96,74 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</table>
 			<input id="searchDicType" name="dicType" type="hidden">
 		</form>
-		
+		 <div id="sanpincaozuott">
+        <a href="javascript:void(0)" title="提交到计调报价" class="icon-add" onclick="addjidiao()"></a>
+    </div>
 		
 	</div>
+	<div id="sanpincaozuowindow" class="easyui-window" title="选择计调" data-options="iconCls:'icon-save',closed:true,minimizable:false,tools:'#sanpincaozuott'" style="width:650px;height:400px;padding:10px;">
+	标题：<br /><input id="biaoti" style="200px;" ><br />
+	填写备注说明：<br /><input id="beizhu" >
+	
+	<div style="height: 150px;">
+        <table id="dgUsers"   class="easyui-datagrid"
+		data-options="url:'fenghuang/getUsers.do',border:true,singleSelect:true,fit:true,fitColumns:true,pageSize:10,onClickRow: onClickRow,view:groupview,
+          groupField:'departName',
+          groupFormatter:function(value,rows){
+           return '所属部门:'+value + ' - ' + rows.length + '名员工';
+          }"
+		pagination="true" toolbar="#tbUsers">
+		<thead>
+			<tr>
+				<th data-options="field:'ck',checkbox:true"></th>
+				<th data-options="field:'userNumber',editor:'text'" width="80">编号</th>
+				<th data-options="field:'userName',editor:'text'" width="80">姓名</th>
+				<th data-options="field:'departmentId',formatter:function(value,row){
+							return row.departName;
+						},editor:{
+					type:'combobox',
+							options:{
+								valueField:'id',
+								textField:'departName',
+								url:'fenghuang/getDepartmentComboboxs.do'
+							}
+				}"
+					width="80">部门</th>
+				<th data-options="field:'id',hidden:true">b</th>
+			</tr>
+		</thead>
+	</table>
+	</div>
+    </div>
+	<div id="mmsanpincaozuo" class="easyui-menu" style="width:120px;">
+		<input id="sanpincaozuotuanNo" style="display: none;" />
+		<div data-options="iconCls:'icon-edit'" onClick="zhuanjidiao()">转到计调报价</div>
+	</div>
 	<script type="text/javascript">
+	function addjidiao(){
+		var row = $("#dgUsers").datagrid("getSelected");
+		alert(row.userName);
+	}
+	
+	
+	function sanpincaozuoMenu(e, rowIndex, rowData){
+	$('#sanpincaozuotuanNo').attr('value',rowData.tuanNo);
+		 e.preventDefault();
+         $('#mmsanpincaozuo').menu('show', {
+        left:e.pageX,
+        top:e.pageY
+    }); 
+	}
+	function zhuanjidiao(){
+		$('#sanpincaozuotuanNo').val();
+		$('#sanpincaozuowindow').window('open');
+	}
+	
+	
+	
+	
 		function onOperateSanpinList(val,row) {
-      return '<a href="javascript:openSanpinDetai(\''+row.tuanNo+'\')">'+row.tuanNo+'</a>';
+      return '<a href="javascript:openSanpinDetai(\''+row.tuanNo+'\')">'+row.tuanName+'</a>';
 		}
 		function openSanpinDetai(tuanNo){
 		 var row = $("#dg").datagrid("getSelected");

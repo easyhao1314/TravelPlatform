@@ -33,7 +33,7 @@ public class XianluController {
 			HttpServletResponse response, Integer page,Integer rows,String xianid){
 		try{
 			Long l=null;
-			if(xianid!=null){
+			if(xianid!=null && !"".equals(xianid)){
 			l=Long.parseLong(xianid);
 			}else{
 				l=null;
