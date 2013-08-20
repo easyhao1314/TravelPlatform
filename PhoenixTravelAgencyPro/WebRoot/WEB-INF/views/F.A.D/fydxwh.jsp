@@ -46,12 +46,12 @@
 		pagination="true" toolbar="#currencyDatagridtoolbar">
 		<thead>
 			<tr> 
-				<th data-options="field:'bianhao'" width="">编号</th>
-				<th data-options="field:'xingzhi'" width="">付款性质</th>
-				<th data-options="field:'shouzhi'" width="">收支类型</th>
-				<th data-options="field:'shuoming'" width="">费用项说明</th>
-				<th data-options="field:'liucheng'" width="">对应审批流程</th>
-				<th data-options="field:'fulei'" width="">父类</th>
+				<th data-options="field:'bianhao'" width="50">编号</th>
+				<th data-options="field:'xingzhi'" width="50">付款性质</th>
+				<th data-options="field:'shouzhi'" width="50">收支类型</th>
+				<th data-options="field:'shuoming'" width="50">费用项说明</th>
+				<th data-options="field:'liucheng'" width="50">对应审批流程</th>
+				<th data-options="field:'fulei'" width="50">父类</th>
 			
 			</tr>
 		</thead>

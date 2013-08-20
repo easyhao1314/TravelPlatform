@@ -43,7 +43,7 @@
 	    	</table>
 	    	<table>
 	    		<tr>
-	    		<td>状态：[<a href="javascript:dijieSelectLike(1)"  >待确认收款</a>][<a href="javascript:dijieSelectLike(2)" >已确认收款</a>]</td>
+	    		<td>状态：[<a href="javascript:dijieSelectLike(4)"  >待确认收款</a>][<a href="javascript:dijieSelectLike(5)" >已确认收款</a>]</td>
 	    		</tr>    			    	
 	    	</table>
 	    	
@@ -60,7 +60,7 @@
 	    <div class="easyui-panel" title="付款确认"
 		style="height:450px;width: auto;" toolbar="#currencyDatagridtoolbar">	
 	<table id="dg" class="easyui-datagrid"
-		data-options="url:'fenghuang/caiwuqrfkselect.do',border:false,singleSelect:true,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
+		data-options="url:'fenghuang/caiwuqrfkselect.do?shenfenid=3&ysyfid=2&caiwuid=4',border:false,singleSelect:true,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
 		pagination="true"  >
 		<thead>
 			<tr>
@@ -69,12 +69,12 @@
 				<th data-options="field:'zhanghaoid',editor:'text'" width="50px">账号</th>
 				<th data-options="field:'team',editor:'text'" width="50px">团号</th>
 				<th data-options="field:'suppliers',editor:'text'" width="50px">团队名称</th>
-				<th data-options="field:'gysid',editor:'text'" width="50px">供应商名称</th>
-				<th data-options="field:'dicDesc',editor:'text'" width="50px">款项</th>
-				<th data-options="field:'08',editor:'text'" width="50px">金额</th>
+				<th data-options="field:'kxsm',editor:'text'" width="50px">供应商名称</th>
+				<th data-options="field:'kxsm',editor:'text'" width="50px">款项</th>
+				<th data-options="field:'yfk',editor:'text'" width="50px">金额</th>
 			
 				<th data-options="field:'caozuo',editor:'numberbox'" width="50px">提交人</th>
-				<th data-options="field:'review',editor:'numberbox'" width="50px">财务审核</th>
+				<th data-options="field:'review',formatter:shenhezhuanhuan" width="50px">财务审核</th>
 				<th data-options="field:'cashier',formatter:openshouke" width="50px">出纳确认</th>
 			
 			</tr>
@@ -90,15 +90,23 @@
 			<table  align="center">
 				<tr>
 					<td>
-					ID<input id="id" name="id" class="easyui-validatebox" onfocus=this.blur()>
+					<input id="id" name="id" class="easyui-validatebox" onfocus=this.blur() hidden="true">
 					<div class="fitem">
 							
 					</td>
-					<td><input id="caiwu" value="2"  class="easyui-validatebox" hidden="true">
+					<td><input id="caiwu" value="5"  class="easyui-validatebox" hidden="true">
 						</div></td> 
 						
 				</tr>
-				
+					<tr>
+					<td><div class="fitem">
+							<label>团名:</label>
+					</td>
+					<td>
+					<input id="team" name="team" 
+						class="easyui-validatebox" onfocus=this.blur() >
+						</div></td>
+				</tr>
 				<tr>
 					<td colspan="4s" align="center"><a
 						href="javascript:caiwuxiugai()" class="easyui-linkbutton"
@@ -119,15 +127,23 @@
 			<table  align="center">
 				<tr>
 					<td>
-					<input id="id" name="id" class="easyui-validatebox" >
+					<input id="id" name="id" class="easyui-validatebox"  hidden="true">
 					<div class="fitem">
 							
 					</td>
-					<td><input id="caiwu2" value="1"  class="easyui-validatebox" hidden="true">
+					<td><input id="caiwu2" value="4"  class="easyui-validatebox" hidden="true">
 						</div></td> 
 						
 				</tr>
-				
+				<tr>
+					<td><div class="fitem">
+							<label>团名:</label>
+					</td>
+					<td>
+					<input id="team" name="team" 
+						class="easyui-validatebox" onfocus=this.blur() >
+						</div></td>
+				</tr>
 				<tr>
 					<td colspan="4s" align="center"><a
 						href="javascript:caiwuxiugai2()" class="easyui-linkbutton"
@@ -170,7 +186,8 @@
 				team: $("#team").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
 				caozuo: $("#caozuo").val() ,
 				caiwuid: id ,
-				
+				shenfenid:3,
+				ysyfid:2,
 				page:  opts.pageNumber ,
 				rows:  opts.pageSize
 			};
@@ -302,6 +319,12 @@
 		   var shouke=null;
 		   	 if(row.cashier==1){shouke="未付款";}
 		   	 if(row.cashier==2){shouke="已付款";}
+		     return '<div onclick="shoukeclick(event,'+row.tuanNo+')" style="width: auto;">'+shouke+'</div>';
+		   }
+		   function shenhezhuanhuan(val,row){
+		   var shouke=null;
+		   	 if(row.review==1){shouke="未付款";}
+		   	 if(row.review==2){shouke="已付款";}
 		     return '<div onclick="shoukeclick(event,'+row.tuanNo+')" style="width: auto;">'+shouke+'</div>';
 		   }
 	</script>

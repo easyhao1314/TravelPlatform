@@ -50,20 +50,16 @@ public class CaiwufkqrDaoImpl extends BaseDao implements IcaiwufkqrDao {
 	@Override
 	public boolean updatefkqr(Tuanbiao tuanbiao) throws Exception {
 		// TODO Auto-generated method stub
-		String sql = "update tuanbiao set payment=?,team=?,suppliers=?,caozuo=?,xiaoshou=?,caiwuid=?,zhanghaoid=?,shenfenid=?,chutuantime=?,huituantime=?," +
-				"yingshou=?,yishou=?,yifu=?,tuikuan=?,fanyong=?,yujilirun=?,shijilirun=?,danhao=?,fukuantime=?,yushoutime=?," +
-				"huilvID=?,ykfp=?,fpxk=?,fuzeren=?,zhuangtai=?,ysyfID=?,khmc=?,kxsm=?,renshu=?,ddje=?," +
-				"fankuan=?,yajin=?,cgje=?,cglr=?,zhichu=?,maoli=?,maolilv=?,beizhu=?,yfk=?,baojia=?," +
-				"chengben=?,tuanduimc=?,shanchu=?  where id=?";
-		int rs=this.update(sql,tuanbiao.getPayment(),tuanbiao.getTeam(),tuanbiao.getSuppliers(),tuanbiao.getCaozuo(),tuanbiao.getXiaoshou(),
-				tuanbiao.getCaiwuid(),tuanbiao.getZhanghaoid(),tuanbiao.getShenfenid(),tuanbiao.getChutuantime(),tuanbiao.getHuituantime(),
-				tuanbiao.getYingshou(),tuanbiao.getYishou(),tuanbiao.getYifu(),tuanbiao.getTuikuan(),tuanbiao.getFanyong(),
-				tuanbiao.getYujilirun(),tuanbiao.getShijilirun(),tuanbiao.getDanhao(),tuanbiao.getFukuantime(),tuanbiao.getYushoutime(),
-				tuanbiao.getHuilvID(),tuanbiao.getYkfp(),tuanbiao.getFpxk(),tuanbiao.getFuzeren(),tuanbiao.getZhuangtai(),
-				tuanbiao.getYsyfID(),tuanbiao.getKhmc(),tuanbiao.getKxsm(),tuanbiao.getRenshu(),tuanbiao.getDdje(),
-				tuanbiao.getFankuan(),tuanbiao.getYajin(),tuanbiao.getCgje(),tuanbiao.getCglr(),tuanbiao.getZhichu(),
-				tuanbiao.getMaoli(),tuanbiao.getMaolilv(),tuanbiao.getBeizhu(),tuanbiao.getYfk(),tuanbiao.getBaojia(),
-				tuanbiao.getChengben(),tuanbiao.getTuanduimc(),tuanbiao.getShanchu(),tuanbiao.getId());
+		String sql=null;
+		int rs=0;
+		if(tuanbiao.getShanchu()!=0&&!"".equals(tuanbiao.getShanchu())){
+		 sql = "update tuanbiao set shanchu=?  where id=?";
+		 rs=this.update(sql,tuanbiao.getShanchu(),tuanbiao.getId());
+		}
+		if(tuanbiao.getCaiwuid()!=0&&!"".equals(tuanbiao.getCaiwuid())){
+			 sql = "update tuanbiao set caiwuid=?  where id=?";
+			 rs=this.update(sql,tuanbiao.getCaiwuid(),tuanbiao.getId());
+			}
 		return rs>0;  
 		
 	}

@@ -57,7 +57,7 @@
 				<th data-options="field:'ddje',editor:'numberbox'" width="50">订单金额</th>
 				<th data-options="field:'yingshou',editor:'numberbox'" width="50">应收</th>
 				<th data-options="field:'yishou',editor:'numberbox'" width="50">已收</th>
-				<th data-options="field:'09',editor:'numberbox'" width="50">未收</th>
+				<th data-options="field:'09',formatter:sanpinhesuan" width="50">未收</th>
 				<th data-options="field:'fankuan',editor:'numberbox'" width="50">返款</th>
 				<th data-options="field:'yajin',editor:'numberbox'" width="50">押金</th>
 				<th data-options="field:'beizhu',editor:'numberbox'" width="50">备注</th>
@@ -68,6 +68,13 @@
 	</div>
 	
 	<script type="text/javascript">
+	
+	function sanpinhesuan(val,row){
+      var a=parseInt(row.yingshou);
+        var b=parseInt(row.yishou);
+       var c=(a-b);
+        return '<div style="width: auto;">'+c+'</div>';
+        }
 	
 		function onClickRow(index) {
 			if (editIndex != index) {

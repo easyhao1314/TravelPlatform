@@ -58,18 +58,17 @@
 	    	
 	 <div class="easyui-panel" title="付款审批"
 		style="height:450px;width: auto;" toolbar="#currencyDatagridtoolbar">	
-	<table id="dg" class="easyui-datagrid"
-		data-options="url:'fenghuang/fukuanshenhe.do',border:false,singleSelect:true,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
+	<table id="fkspdg" class="easyui-datagrid"
+		data-options="url:'fenghuang/fukuanshenhe.do?shenfenid=3&ysyfid=2&caiwuid=2',border:false,singleSelect:true,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
 		pagination="true" toolbar="#tb">
 		<thead>
 			<tr>	 
-			    <th data-options="field:'id',editor:'text'" width="10px">付款日期</th>
-				<th data-options="field:'payment',editor:'text'" width="10px">付款日期</th>
+				<th data-options="field:'fukuantime',editor:'text'" width="10px">付款日期</th>
 				<th data-options="field:'team',editor:'text'" width="10px">团号</th>
-				<th data-options="field:'dicDesc',editor:'text'" width="10px">团队名称</th>
-				<th data-options="field:'suppliers',editor:'text'" width="10px">供应商名称</th>
-				<th data-options="field:'gysid',editor:'text'" width="10px">款项</th>
-				<th data-options="field:'08',editor:'text'" width="10px">金额</th>
+				<th data-options="field:'tuanduimc',editor:'text'" width="10px">团队名称</th>
+				<th data-options="field:'khmc',editor:'text'" width="10px">供应商名称</th>
+				<th data-options="field:'kxsm',editor:'text'" width="10px">款项</th>
+				<th data-options="field:'yfk',editor:'text'" width="10px">金额</th>
 			
 				<th data-options="field:'caozuo',editor:'numberbox'" width="10px">提交人</th>
 				<th data-options="field:'09',editor:'numberbox'" width="10px">审批状态</th>
@@ -85,22 +84,26 @@
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:500px;height:200px;padding:10px;">
 		<form id="spform" action="">
-			<table align="left">
+			<table align="center">
 				<tr>
-					<td><div class="fitem">
-							<label>编号:</label>
-					</td>
-					<td><input id="id" name="id"
+					
+					<td><input id="id" name="id" hidden="true"
 						class="easyui-validatebox">
 						</div></td>
-					<td><div class="fitem">
-							<label>名称:</label>
-					</td>
-					<td><input id="caiwuid" name="caiwuid" value="4"
+					
+					<td><input id="caiwuid" name="caiwuid" value="4" hidden="true"
 						class="easyui-validatebox">
 						</div></td>
 				</tr>
-				
+					<tr>
+					<td><div class="fitem">
+							<label>团名:</label>
+					</td>
+					<td>
+					<input id="team" name="team" 
+						class="easyui-validatebox" onfocus=this.blur() >
+						</div></td>
+				</tr>
 				<tr>
 					<td colspan="4s" align="center"><a
 						href="javascript:fkspupdatea();" class="easyui-linkbutton"
@@ -118,20 +121,24 @@
 		<form id="spforma" action="">
 			<table align="left">
 				<tr>
-					<td><div class="fitem">
-							<label>编号:</label>
-					</td>
+					
 					<td><input id="id" name="id"
 						class="easyui-validatebox">
 						</div></td>
-					<td><div class="fitem">
-							<label>名称:</label>
-					</td>
-					<td><input id="caiwuid" name="caiwuid" value="2"
+					
+					<td><input id="caiwuid" name="caiwuid" value="2"hidden="true"
 						class="easyui-validatebox">
 						</div></td>
 				</tr>
-				
+				<tr>
+					<td><div class="fitem">
+							<label>团名:</label>
+					</td>
+					<td>
+					<input id="team" name="team" 
+						class="easyui-validatebox" onfocus=this.blur() >
+						</div></td>
+				</tr>
 				<tr>
 					<td colspan="4s" align="center"><a
 						href="javascript:fkspupdateb();" class="easyui-linkbutton"
@@ -175,13 +182,14 @@
 		   //条件查询
 		function cwfkspselect(id){
 		
-		console.info($('#dg').datagrid('options'));
-		var opts = $('#dg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
+		console.info($('#fkspdg').datagrid('options'));
+		var opts = $('#fkspdg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
 			var param = {
 				team: $("#team").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
 				caozuo: $("#caozuo").val() ,
 				caiwuid: id,
-
+                shenfenid:3,
+                ysyfid:2,
 				page:  opts.pageNumber ,
 				rows:  opts.pageSize
 			};
@@ -192,7 +200,7 @@
 					type : 'POST' ,
 					dataType : 'json' ,
 					success : function(data){
-						$('#dg').datagrid('loadData',data);
+						$('#fkspdg').datagrid('loadData',data);
 					}
 				});
 		}
@@ -202,14 +210,14 @@
           //通过主键，查询该操作，并处于编辑状态。 是否打开tab，还是直接弹出window 
 			
 			//获取选中 数据
-			var row = $("#dg").datagrid("getSelected");
+			var row = $("#fkspdg").datagrid("getSelected");
 			//alert(row.id);
 		if(row!=null){
 		$("#caiwufksp").dialog("open");
 		//清空ID
 		$('#id').attr('value','');
 		//填充
-		 $('#spform').form('load', {"id":row.id});
+		 $('#spform').form('load', row);
 		}
 		}
 		
@@ -230,10 +238,10 @@
 					if (result.success) {
 					  $("#caiwufksp").dialog('close');
 						$.messager.alert("修改成功", "修改成功！", "info"); 
-						$("#dg").datagrid('reload');
+						$("#fkspdg").datagrid('reload');
 					} else {
 						$.messager.alert("修改失败", "修改失败!", "error");
-						$("#dg").datagrid('reload');
+						$("#fkspdg").datagrid('reload');
 					}
 				}
 			});
@@ -246,14 +254,14 @@
           //通过主键，查询该操作，并处于编辑状态。 是否打开tab，还是直接弹出window 
 			
 			//获取选中 数据
-			var row = $("#dg").datagrid("getSelected");
+			var row = $("#fkspdg").datagrid("getSelected");
 			//alert(row.id);
 		if(row!=null){
 		$("#caiwufkspa").dialog("open");
 		//清空ID
 		$('#id').attr('value','');
 		//填充
-		 $('#spforma').form('load', {"id":row.id});
+		 $('#spforma').form('load', row);
 		}
 		}
 		
@@ -274,10 +282,10 @@
 					if (result.success) {
 					  $("#caiwufkspa").dialog('close');
 						$.messager.alert("修改成功", "修改成功！", "info"); 
-						$("#dg").datagrid('reload');
+						$("#fkspdg").datagrid('reload');
 					} else {
 						$.messager.alert("修改失败", "修改失败!", "error");
-						$("#dg").datagrid('reload');
+						$("#fkspdg").datagrid('reload');
 					}
 				}
 			});
