@@ -10,181 +10,181 @@ import java.util.*;
 
 /** 团队信息
  * 
- * @pdOid a8c4d38f-5600-4d75-8fd8-40f0e30ae35b */
+ * @pdOid 80d0fb8f-fed1-437d-9ad5-7c7a96635a5c */
 public class Tuanbiao {
-   /** @pdOid 55c7ca74-8fb9-497b-b4c6-60556a8ff644 */
+   /** @pdOid 51b4ddd3-62fb-467d-96de-8f53fbcaf8a0 */
    public long id;
    /** 付款日期
     * 
-    * @pdOid 70b84526-724b-49bd-a26d-7d373bdbcbd2 */
+    * @pdOid 70849751-6e51-442e-af9b-a23b2f585ac0 */
    public java.util.Date payment;
    /** 团号ID
     * 
-    * @pdOid 83936ce5-86ec-4b68-9a15-b6e42836acc7 */
+    * @pdOid 22b298c6-af0d-4a94-b191-5d68867cf7b2 */
    public java.lang.String team;
    /** 供应商ID
     * 
-    * @pdOid 2981c3e0-b47f-4b56-8627-ce8527e50891 */
+    * @pdOid fa91e375-f059-4e3e-81c4-83c1936c172d */
    public java.lang.String suppliers;
    /** 操作
     * 
-    * @pdOid 4279f71c-2f6d-4a85-b0fb-d8dce670fa67 */
+    * @pdOid f99eee3f-b6ca-4418-bc4d-69c1778470ea */
    public java.lang.String caozuo;
    /** 销售人员
     * 
-    * @pdOid df642516-ed64-4a06-b1a1-8e9549afba98 */
+    * @pdOid 28be7c6d-7a86-4af6-99d3-d91185c64303 */
    public java.lang.String xiaoshou;
    /** 财务id
     * 
-    * @pdOid b1b6f3fd-2fa2-4685-a677-b41b69915a91 */
+    * @pdOid b33f6d1f-5598-4c44-8183-89c8aec989c4 */
    public int caiwuid;
    /** 账号id
     * 
-    * @pdOid d0f1751b-69a9-4790-97c2-c6fd5fb6dbbc */
+    * @pdOid db1afd4c-f59f-447e-a53b-01e5e26aeaa7 */
    public int zhanghaoid;
    /** 身份id
     * 
-    * @pdOid 2f37eafc-b3a6-4e14-a139-be0a5bdbc24c */
+    * @pdOid 8f1ed703-da0b-40b6-a0b1-a7728bb09ebf */
    public int shenfenid;
    /** 出团时间
     * 
-    * @pdOid d31b65fd-4598-433b-a27e-d9d59c6d1920 */
+    * @pdOid f6386105-c36e-4a92-8790-56d138cd20d1 */
    public java.util.Date chutuantime;
    /** 回团日期
     * 
-    * @pdOid d7b46923-62a6-46b4-bea9-7df9227b353d */
+    * @pdOid 7fe4b8a0-b2f6-4f78-8104-44a30bbecd78 */
    public java.util.Date huituantime;
    /** 应收
     * 
-    * @pdOid dfaf7f41-98fa-4b13-b798-8214be418537 */
+    * @pdOid 88614fe3-6ec6-431a-b65c-424de2f3c0bc */
    public double yingshou;
    /** 已收
     * 
-    * @pdOid e2db6c76-650a-4b92-86df-45ce6f345309 */
+    * @pdOid 6fab1b6a-cc43-491d-a619-cf6fefcf238d */
    public double yishou;
    /** 已付
     * 
-    * @pdOid b3a3e473-7e9c-4f24-b4ed-f22a113cf872 */
+    * @pdOid 6387ee87-fcac-428e-91fb-a3fd8df96717 */
    public double yifu;
    /** 退款
     * 
-    * @pdOid 52af7a3c-2263-4a89-999b-d696ee1e21b2 */
+    * @pdOid 8457dd37-0760-46f6-a7cc-b2e3908cb661 */
    public double tuikuan;
    /** 返佣
     * 
-    * @pdOid 9eab84ef-dab2-4f52-99d0-443688b0edab */
+    * @pdOid ac4fe577-1915-4748-85ce-382d638d5b62 */
    public double fanyong;
    /** 预计利润
     * 
-    * @pdOid 5c0f0a08-ddf3-4019-a2b7-a5bef3256b04 */
+    * @pdOid 0d96ef10-f4c2-4d40-bd6f-e62794ede2e4 */
    public double yujilirun;
    /** 实际利润
     * 
-    * @pdOid 74200bd6-78fa-4adf-a071-f3092ef8b234 */
+    * @pdOid 6421bccf-6f05-4bf2-8bfe-a3e660931e05 */
    public double shijilirun;
    /** 单号
     * 
-    * @pdOid 4469f4a7-e65b-4bdd-ac2e-59c4ea5f154c */
+    * @pdOid 13fd8e75-6766-498c-98e0-2e73bbdee6b0 */
    public java.lang.String danhao;
    /** 付款日期
     * 
-    * @pdOid 1d896a48-f009-4c18-bc2a-8c6964aa7131 */
+    * @pdOid 54518fb1-9da8-41bd-a386-d6ed62edeacd */
    public java.util.Date fukuantime;
    /** 预收日期
     * 
-    * @pdOid c3a9722f-d6de-44bd-b4ba-98a84d7a4990 */
+    * @pdOid d048fe34-3c93-4311-a7d6-4c32343b76c0 */
    public java.util.Date yushoutime;
    /** 汇率
     * 
-    * @pdOid f3d10a3e-f7bc-400a-b240-98777c63377c */
+    * @pdOid 3c7d0fe3-c2a2-464a-895b-56631d4f2886 */
    public int huilvID;
    /** 已开发票
     * 
-    * @pdOid f4ca40b4-0036-4c5d-90e9-942e382aaca2 */
+    * @pdOid 566f46ff-67f3-46d7-be4b-14bfb035510d */
    public int ykfp;
    /** 发票许可
     * 
-    * @pdOid 6b16fff2-0df0-4385-9a61-5e7b6a922760 */
+    * @pdOid 3aae4a70-564f-4c71-ba8c-7b3a0a28cfb2 */
    public int fpxk;
    /** 负责人
     * 
-    * @pdOid 61c60c44-d78e-4092-9cd2-1283224c72a3 */
+    * @pdOid 54fe5f40-c883-4bf3-b059-2d11479b1c40 */
    public java.lang.String fuzeren;
    /** 状态
     * 
-    * @pdOid 3b639c60-1357-4253-a3dc-22516cd0dd03 */
+    * @pdOid d7e91a60-fcb9-4827-9337-3f4e2d0310e6 */
    public int zhuangtai;
    /** 应收款应付款统计身份
     * 
-    * @pdOid 77a21041-e0e8-4ee5-ad24-ea8e6e96891f */
+    * @pdOid 6edce38b-d30e-4e3b-aa7d-aac778a6f027 */
    public int ysyfID;
    /** 客户名称
     * 
-    * @pdOid c1286413-6562-4a7d-8aa2-1f001502db2d */
+    * @pdOid c577b347-2d79-45ce-9ae6-31d9454b3c5d */
    public java.lang.String khmc;
    /** 款项说明
     * 
-    * @pdOid 35c194b1-dd4e-4e80-9623-6827b46bcaf5 */
-   public int kxsm;
+    * @pdOid baccabab-ac88-4dc8-a4ca-00bd7fd63de9 */
+   public java.lang.String kxsm;
    /** 人数
     * 
-    * @pdOid aa17cd50-1bfc-4195-be7b-73f03d5b76bc */
+    * @pdOid ad779dd5-463a-4712-ab12-9d84ddde83b4 */
    public int renshu;
    /** 订单金额
     * 
-    * @pdOid fde12d76-c3f0-4cff-98b7-90cf6c83088f */
+    * @pdOid 872ed341-b61c-4347-a2e9-7568ff89357e */
    public double ddje;
    /** 返款
     * 
-    * @pdOid b78849c5-b42c-4802-b54a-4f4833bda9c4 */
+    * @pdOid 20b9cf36-4dab-44a5-b2e4-10b9e6b5edb6 */
    public double fankuan;
    /** 押金
     * 
-    * @pdOid 44f71a00-fbc9-4d5f-9e03-a8dea5f7da5a */
+    * @pdOid e7cb3ecd-03e0-40d4-920c-6b451b1b406c */
    public double yajin;
    /** 采购金额
     * 
-    * @pdOid e859c0c9-3221-4bb4-a5d7-6fe4a8ecc27f */
+    * @pdOid b349e5c9-db6b-4961-b4f9-19ea91fbf656 */
    public double cgje;
    /** 采购利润
     * 
-    * @pdOid 23b1ab21-e0ae-4c59-b034-07d521117927 */
+    * @pdOid cb3b36e8-2c01-429e-9e3a-4b8ed6c07b46 */
    public double cglr;
    /** 支出
     * 
-    * @pdOid 4d95f44a-3b23-48eb-9444-cba1896665b0 */
+    * @pdOid 95e6ebb4-5bac-4bab-9a3c-58b28835f2bb */
    public double zhichu;
    /** 毛利
     * 
-    * @pdOid e497914c-a48f-4b1e-8ee9-7543fc81bf20 */
+    * @pdOid a6db619c-5ba7-4bef-a4b6-fe3453c6b839 */
    public double maoli;
    /** 毛利率
     * 
-    * @pdOid 18d5cb09-a127-47f7-b06d-09dca08c1069 */
+    * @pdOid 14d91535-18c6-4de5-a24c-fdba28e77f58 */
    public double maolilv;
    /** 备注
     * 
-    * @pdOid 9d8b8be5-d113-4ae6-ab4b-5b5b68dd890c */
+    * @pdOid cf0389b4-223e-488c-8163-04ad7619c168 */
    public java.lang.String beizhu;
    /** 应付
     * 
-    * @pdOid 8e487904-eadd-497a-8fb7-c8d9e45ccfab */
+    * @pdOid 62845769-d277-4716-81e6-8b765f6116ef */
    public double yfk;
    /** 报价
     * 
-    * @pdOid cff2d460-32bc-4d77-b844-4d7ab0b9c36e */
+    * @pdOid c6e560c4-94e0-47c8-b534-51cc78cb3da1 */
    public double baojia;
    /** 成本
     * 
-    * @pdOid 07af50cf-460e-4db7-ab8d-77ea3d8e7259 */
+    * @pdOid 3c0b0009-bdd8-4da5-9dab-a098efeb9f1b */
    public double chengben;
    /** 团队名称
     * 
-    * @pdOid 32eac982-c725-4627-b10a-5b9b71a5b823 */
+    * @pdOid 5cda6606-39eb-4515-998a-659bd9d8c5fe */
    public java.lang.String tuanduimc;
    /** 删除的身份
     * 
-    * @pdOid 8d66cc9e-4eea-4ef8-912a-c318b48da51a */
+    * @pdOid 07b2dd7d-9cee-49b2-b5e1-6333544c395c */
    public int shanchu;
 public long getId() {
 	return id;
@@ -354,10 +354,10 @@ public java.lang.String getKhmc() {
 public void setKhmc(java.lang.String khmc) {
 	this.khmc = khmc;
 }
-public int getKxsm() {
+public java.lang.String getKxsm() {
 	return kxsm;
 }
-public void setKxsm(int kxsm) {
+public void setKxsm(java.lang.String kxsm) {
 	this.kxsm = kxsm;
 }
 public int getRenshu() {

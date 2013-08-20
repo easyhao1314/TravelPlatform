@@ -46,26 +46,61 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</thead>
 	</table>
 	<!-- 付款window -->
-    <div id="fukuan" class="easyui-window" title="应付款窗口" data-options="iconCls:'icon-save',closed:true" style="width:500px;height:200px;padding:10px;">
-        <form action="">
+    <div id="fukuan" class="easyui-window" title="应付款窗口" data-options="iconCls:'icon-save'" style="width:500px;height:200px;padding:10px;">
+        <form id="fukuanform" action="">
         	<table  style="width: 400px;">
         	<tr>
         		<td>应付款项： 
-        		<input class="easyui-combotree" value="122" data-options="url:'js/demo/combotree/fukuanTree.json',method:'get',required:true" style="width:200px;">
+        		<input  name="kxsm" class="easyui-combotree" value="122" data-options="url:'js/demo/combotree/fukuanTree.json',method:'get',required:true" style="width:200px;">
     			</td>
         	</tr>
         	<tr>
-        	<td>收款单位：<input class="easyui-validatebox" required style="width: 250px;" /></td>
+        	<td>收款单位：<input name="khmc" class="easyui-validatebox" required style="width: 250px;" /></td>
         	</tr>
         	<tr>
-        	<td>应付日期： <input class="easyui-datetimebox" required style="width:150px"></td>
+        	<td>应付日期： <input id="fukuantime" name="fukuantime" type="text" class="easyui-datebox" required="required"></td>
         	</tr>
         	<tr>
-        	<td>金额：<input class="easyui-validatebox" height="50px" required style="width: 150px;" /></td>
+        	<td>金额：<input name="yfk" class="easyui-validatebox" height="50px" required style="width: 150px;" /></td>
         	</tr>
         	<tr>
-        	<td>备注：<input class="easyui-validatebox" style="width: 150px;" /></td>
+        	<td>备注：<input name="beizhu" class="easyui-validatebox" style="width: 150px;" /></td>
         	</tr>
+        	<tr>
+        	<td>团名：<input id="team" name="team" class="easyui-validatebox" style="width: 150px;" /></td>
+        	</tr>
+        	<tr>
+        	<td>团队名称：<input id="tuanduimc" name="tuanduimc" class="easyui-validatebox" style="width: 150px;" /></td>
+        	</tr>
+        	<td>发团时间<input id="chutuantime" name="chutuantime" class="easyui-validatebox" style="width: 150px;" /></td>
+        	</tr>
+        	<tr>
+        	<td>回团时间：<input id="huituantime" name="huituantime" class="easyui-validatebox" style="width: 150px;" /></td>
+        	</tr>
+        	<tr>
+        	<td>身份ID：<input id="shenfenid" name="shenfenid" value="3" class="easyui-validatebox" style="width: 150px;" /></td>
+        	</tr>
+        	<tr>
+        	<td>删除：<input id="shanchu" name="shanchu" shanchu="1" class="easyui-validatebox" style="width: 150px;" /></td>
+        	</tr>
+        	<tr>
+        	<td>发票许可：<input id="fpxk" name="fpxk" value="0" class="easyui-validatebox" style="width: 150px;" /></td>
+        	</tr>
+        	<tr>
+        	<td>已开发票：<input id="ykfp" name="ykfp" value="0" class="easyui-validatebox" style="width: 150px;" /></td>
+        	</tr>
+        	<tr>
+        	<td>应收应付id：<input id="ykfp" name="ysyfid" value="2" class="easyui-validatebox" style="width: 150px;" /></td>
+        	</tr>
+        	<tr>
+        	<td>财务id：<input id="caiwuid" name="caiwuid" value="1" class="easyui-validatebox" style="width: 150px;" /></td>
+        	</tr>
+        	<tr>
+					<td colspan="4s" align="center"><a
+						href="javascript:caozuozhongxinsave();" class="easyui-linkbutton"
+						iconCls="icon-ok">确认</a> <a href="javascript:closedSearch();"
+						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
+				</tr>
         	</table>
         </form>
         
@@ -193,6 +228,38 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     $("#caozuodinggouwudian").dialog("open");
     }
 }
+
+
+
+
+   	//添加	
+		
+		function caozuozhongxinsave() {
+		alert(1);
+			$('#fukuanform').form('submit', {
+				url : 'fenghuang/inserttuanbiao.do',
+				onSubmit : function() {
+					return $(this).form('validate');
+				},
+				success : function(result) {
+					var result = eval('(' + result + ')');
+					if (result.success) {
+						$.messager.alert("保存成功", "保存成功！", "info");
+						$('#fukuan').dialog('close');
+						$('#caozuoliebiaodg').datagrid('reload');
+					} else {
+						$.messager.alert("保存失败", "保存失败!", "error");
+						$('#caozuoliebiaodg').datagrid('reload');
+					}
+				}
+			});
+		}
+		
+
+
+
+
+
 	</script>
 	
 	<script type="text/javascript">

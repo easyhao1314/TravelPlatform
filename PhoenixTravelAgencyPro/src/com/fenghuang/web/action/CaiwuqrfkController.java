@@ -132,7 +132,7 @@ public class CaiwuqrfkController {
 		
 		}
 		if(kxsm!=null&&!"".equals(kxsm)){
-		tuanbiao.setKxsm(Integer.parseInt(kxsm));	
+		tuanbiao.setKxsm(kxsm);	
 		}
 		if(ysyfid!=null&&!"".equals(ysyfid)){
 			tuanbiao.setYsyfID(Integer.parseInt(ysyfid));

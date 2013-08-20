@@ -99,7 +99,7 @@ public class CaiwutdfylbControll {
 			}
 			tuanbiao.setHuilvID(huilvID);
 			tuanbiao.setBeizhu(beizhu);
-			tuanbiao.setKxsm(Integer.parseInt(kxsm));
+			tuanbiao.setKxsm(kxsm);
 			tuanbiao.setZhanghaoid(Integer.parseInt(zhanghaoid));
 			tuanbiao.setKhmc(khmc);
 			tuanbiao.setYfk(Integer.parseInt(yfk));

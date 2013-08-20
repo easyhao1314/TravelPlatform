@@ -57,7 +57,7 @@ pagination="true" toolbar="#tb1">
 <thead>
 <tr>
                                   <th data-options="field:'id',editor:'text'" width="50">单号</th>
-                                  <th data-options="field:'name',editor:'text'" width="50">款项说明</th>
+                                  <th data-options="field:'kxsm',editor:'text'" width="50">款项说明</th>
                                   <th data-options="field:'khmc',editor:'text'" width="50">客户名称</th>
                                   <th data-options="field:'yushoutime',editor:'text'" width="80">预收日期</th>
                                   <th data-options="field:'huilv',editor:'text'" width="50">汇率</th>
@@ -85,9 +85,9 @@ pagination="true" toolbar="#tb2">
 <thead>
 <tr>
                        <th data-options="field:'id',editor:'text'" width="50">单号</th>
-                       <th data-options="field:'name',editor:'text'" width="50">款项说明</th>
+                       <th data-options="field:'kxsm',editor:'text'" width="50">款项说明</th>
                        <th data-options="field:'khmc',editor:'text'" width="50">供应商名称</th>
-                       <th data-options="field:'yushoutime',editor:'text'" width="80">预付日期</th>
+                       <th data-options="field:'fukuantime',editor:'text'" width="80">预付日期</th>
                        <th data-options="field:'huilv',editor:'text'" width="50">汇率</th>
                        <th data-options="field:'bizhong',editor:'text'" width="50">币种</th>
                        <th data-options="field:'yfk',editor:'text'" width="50">应付</th>
@@ -116,7 +116,7 @@ pagination="true" toolbar="#tb2">
 							<label>应付款项:</label>
 					</td>
 					<td><input id="kxsm"  name="kxsm" class="easyui-combobox" data-options="url:'fenghuang/caiwushoukuanxiangxiala.do',
-					valueField:'id',
+					valueField:'name',
 					textField:'name',
 					panelHeight:'auto',
 					editable:false" required="true">
@@ -352,7 +352,7 @@ pagination="true" toolbar="#tb2">
 							<label>应付款项:</label>
 					</td>
 					<td><input id="kxsm"  name="kxsm" class="easyui-combobox" data-options="url:'fenghuang/caiwushoukuanxiangxiala.do',
-					valueField:'id',
+					valueField:'name',
 					textField:'name',
 					panelHeight:'auto',
 					editable:false" required="true">
@@ -445,7 +445,7 @@ pagination="true" toolbar="#tb2">
 							<label>应付款项:</label>
 					</td>
 					<td><input id="kxsm"  name="kxsm" class="easyui-combobox" data-options="url:'fenghuang/caiwufukuanxiangxiala.do',
-					valueField:'id',
+					valueField:'name',
 					textField:'name',
 					panelHeight:'auto',
 					editable:false" required="true">
@@ -677,7 +677,7 @@ pagination="true" toolbar="#tb2">
 							<label>应付款项:</label>
 					</td>
 					<td><input id="kxsm"  name="kxsm" class="easyui-combobox" data-options="url:'fenghuang/caiwufukuanxiangxiala.do',
-					valueField:'id',
+					valueField:'name',
 					textField:'name',
 					panelHeight:'auto',
 					editable:false" required="true">
