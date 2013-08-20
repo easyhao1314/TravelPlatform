@@ -48,7 +48,7 @@
 		pagination="true" toolbar="#tb">
 		<thead>
 			<tr> 
-			
+			    <th data-options="field:'id',editor:'text'" width="50">团号</th>
 				<th data-options="field:'team',editor:'text'" width="50">团号</th>
 				<th data-options="field:'tuanduimc',editor:'text'" width="50">团队名称</th>
 				
@@ -59,13 +59,12 @@
 				<th data-options="field:'bizhong',editor:'text'" width="50">币种</th>
 				<th data-options="field:'yingshou',editor:'text'" width="50">应收</th>
 			    <th data-options="field:'yishou',editor:'text'" width="30">已收</th>
-			    <th data-options="field:'aaaa',editor:'text'" width="30">未收</th>
+			    <th data-options="field:'aaaa',formatter:yskjs" width="30">未收</th>
 				<th data-options="field:'ykfp'"width="50">已开发票</th>
 				<th data-options="field:'fpxk'" width="50">发票许可</th>
 				<th data-options="field:'xiaoshou',editor:'numberbox'" width="20">销售确认</th>
-				<th data-options="field:'review',editor:'numberbox'" width="20">财务确认</th>
+				<th data-options="field:'review',formatter:ysktjbeizhu" width="20">财务确认</th>
 				<th data-options="field:'zenrenren',editor:'numberbox'" width="50">责任人</th>
-				<th data-options="field:'yingshou',editor:'text'" width="50">状态</th>
 			
 			</tr>
 		</thead>
@@ -73,6 +72,19 @@
 	</div>
 	
 	<script type="text/javascript">
+	function ysktjbeizhu(val,row){
+		   var shouke=null;
+		   	 if(row.review==1){shouke="未审核";}
+		   	 if(row.review==2){shouke="已审核";}
+		     return '<div onclick="shoukeclick(event,'+row.tuanNo+')" style="width: auto;">'+shouke+'</div>';
+		   }
+	
+	function yskjs(val,row){
+var a=parseInt(row.yingshou);
+var b=parseInt(row.yishou);
+var c=(a-b);
+return '<div style="width: auto;">'+c+'</div>';
+}
 		function onClickRow(index) {
 			if (editIndex != index) {
 				if (endEditing()) {

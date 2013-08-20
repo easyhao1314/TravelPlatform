@@ -31,14 +31,19 @@ public class CaiwufukuanshenpiController {
 	@ResponseBody
 	public Map<String, Object> getCurrencyList(HttpServletRequest request,
 			HttpServletResponse response,HttpSession session,Integer page, Integer rows,String team,String caozuo,String caiwuid,
-            String id) {
+            String id,String shenfenid,String ysyfid) {
 		 Tuanbiao tuanbiao = new Tuanbiao();
 		 
 		    try {
 		    	 if(id!=null && !"".equals(id)){
 			    	 tuanbiao.setId(Long.parseLong(id));
 			     }
-				 
+		    	 if(shenfenid!=null && !"".equals(shenfenid)){
+			    	 tuanbiao.setShenfenid(Integer.parseInt(shenfenid));
+			     }
+		    	 if(ysyfid!=null && !"".equals(ysyfid)){
+			    	 tuanbiao.setYsyfID(Integer.parseInt(ysyfid));
+			     }
 		    	if(team!=null&&!"".equals(team)){
 		    		tuanbiao.setTeam(team);
 		    	}
