@@ -198,7 +198,8 @@
       <!-- 赵杨的配置 -->
     <!-- 操作中心 -->
 	 <mvc:view-controller path="Caozuo_liebiao.do" view-name="CaoZuo/Caozuo_Liebiao"/>
-	 <mvc:view-controller path="Caozuo_dingfang.do" view-name="CaoZuo/dingfang"/>
+	 <mvc:view-controller path="Caozuo_dingfang.do" view-name="CaoZuo/Caozuo_Dingfang"/>
+	 <mvc:view-controller path="Caozuo_dingdaoyou.do" view-name="CaoZuo/Caozuo_Dingdaoyou"/>
 	<!-- 操作中心结束 -->
 	<!-- 客户中心 -->
 	<mvc:view-controller path="customerInfoList.do" view-name="KeHu/customerInfoList" />

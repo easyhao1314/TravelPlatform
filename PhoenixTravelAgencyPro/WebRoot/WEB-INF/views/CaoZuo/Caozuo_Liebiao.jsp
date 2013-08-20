@@ -102,18 +102,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  </form>
 	    
 	</div>
-		  <div id="caozuodingdaoyou"  class="easyui-dialog" title="订导游明细"
-		data-options="modal:true,closed:true,iconCls:'icon-save'"
-		style="width:600px;height:500px;padding:10px;"> 
-		  <form id="caozuodingdaoyouForm" method="post">
-		    <table>
-		      <tr>
-		         <td>导游</td><td>均摊人数</td><td>城市</td><td>住店</td><td>工资否</td><td>导游类型</td>
-		      </tr>		      
-		    </table>
-		  </form>
-	    
-	</div>
+		
 	<script type="text/javascript">
 	
 	
@@ -173,7 +162,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     $("#caozuodingcan").dialog("open");
     }
     function dingdaoyou(){
-    $("#caozuodingdaoyou").dialog("open");
+      var row = $("#caozuoliebiaodg").datagrid("getSelected");
+      var url= "Caozuo_dingdaoyou.do?tuanNo="+row.tuanNo;
+       var tab = $('#tt').tabs('getSelected'); 
+		if (tab){  
+	                 var index = $('#tt').tabs('getTabIndex', tab); 
+	                 $('#tt').tabs('close', index);  
+	       } 
+	       
+	       $('#tt').tabs('add', {
+				         title : "订导游行程详细信息",
+				         href : url,
+				      //  closable : true,
+				         });
     }
     function dinggouwudian(){
     $("#caozuodinggouwudian").dialog("open");
