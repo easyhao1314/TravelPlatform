@@ -51,8 +51,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	<table  style="width: 400px;">
         	<tr>
         		<td>应付款项： 
-        		
-        		<input id="cc" class="easyui-combotree"  required style="width: 150px;">
+        		<input class="easyui-combotree" value="122" data-options="url:'js/demo/combotree/fukuanTree.json',method:'get',required:true" style="width:200px;">
     			</td>
         	</tr>
         	<tr>
@@ -69,6 +68,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	</tr>
         	</table>
         </form>
+        
     </div>
 	<!-- END付款window ___________________________________________ -->
 	
@@ -92,6 +92,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  <div id="caozuodingche"  class="easyui-dialog" title="订车明细"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:600px;height:500px;padding:10px;"> 
+		<div id="days"></div>
+		
 		  <form id="caozuodingcheForm" method="post">
 		    <table>
 		      <tr>
@@ -104,15 +106,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 		
 	<script type="text/javascript">
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	function caozuotuanName(val,row){
 	//打开操作明细页面
 		return '<a href="javascript:openCaozuomx('+row.tuanNo+')">'+row.tuanName+'</a>';
@@ -157,7 +151,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	function dingche(){
 	$("#caozuodingche").dialog("open");
-	}
+					    
+	var param = {
+					"xianluid" : "41"
+				};
+     $.ajax({
+                    url :'fenghuang/selectricheng.do',
+					data :param,
+					dataType : "json",
+					success : function(data) {
+					    alert(data.rows.length);
+					    var days = "";
+					    document.getElementById("days").innerHTML="";
+					    for ( var int = 0; int < data.rows.length; int++) {
+					     var d = parseInt(int+1);
+							 days += '<input type="checkbox"  >D'+d+'';
+						}
+						$('#days').append('选择日程：'+days);
+						days = "";
+					}
+	});
     function dingcan(){
     $("#caozuodingcan").dialog("open");
     }
@@ -179,6 +192,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     function dinggouwudian(){
     $("#caozuodinggouwudian").dialog("open");
     }
+}
 	</script>
 	
 	<script type="text/javascript">

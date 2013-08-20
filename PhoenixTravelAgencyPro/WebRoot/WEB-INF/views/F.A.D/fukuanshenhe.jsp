@@ -56,19 +56,18 @@
 	 <div class="easyui-panel" title="付款审核"
 		style="height:450px;width: auto;" toolbar="#currencyDatagridtoolbar">	
 	<table id="dg" class="easyui-datagrid"
-		data-options="url:'fenghuang/fukuanshenhe.do',border:false,singleSelect:true,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
+		data-options="url:'fenghuang/fukuanshenhe.do?shenfenid=3&ysyfid=2',border:false,singleSelect:true,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
 		pagination="true" toolbar="#tb">
 		<thead>
 			<tr> 
-			    <th data-options="field:'id',editor:'text'" width="40">付款日期</th>
-				<th data-options="field:'payment',editor:'text'" width="40">付款日期</th>
+				<th data-options="field:'fukuantime',editor:'text'" width="40">付款日期</th>
 				<th data-options="field:'team',editor:'text'" width="50">团号</th>
-				<th data-options="field:'dicDesc',editor:'text'" width="50">团队名称</th>
-				<th data-options="field:'suppliers',editor:'text'" width="50">供应商名称</th>
-				<th data-options="field:'dicDesc',editor:'text'" width="">款项</th>
-				<th data-options="field:'08',editor:'text'" width="50">金额</th>
+				<th data-options="field:'tuanduimc',editor:'text'" width="50">团队名称</th>
+				<th data-options="field:'khmc',editor:'text'" width="50">供应商名称</th>
+				<th data-options="field:'kxsm',editor:'text'" width="">款项</th>
+				<th data-options="field:'yfk',editor:'text'" width="50">金额</th>
 			
-				<th data-options="field:'caozuo',editor:'numberbox'" width="50">提交人</th>
+				<th data-options="field:'caozuo',editor:'numberbox'" width="50">销售</th>
 				<th data-options="field:'review',formatter:cwfkbz" width="50">财务审核</th>
 				<th data-options="field:'confirmed',formatter:cwfkbz2" width="50">出纳确认</th>
 			
@@ -85,15 +84,23 @@
 			<table  align="center">
 				<tr>
 					<td>
-					ID<input id="id" name="id" class="easyui-validatebox" onfocus=this.blur()>
+					<input id="id" name="id" class="easyui-validatebox" onfocus=this.blur() hidden="true">
 					<div class="fitem">
 							
 					</td>
-					<td><input id="fkshid" value="2"  class="easyui-validatebox" hidden="true">
+					<td><input id="fkshid" value="2"  class="easyui-validatebox" hidden="true" onfocus=this.blur()>
 						</div></td> 
 						
 				</tr>
-				
+				<tr>
+					<td><div class="fitem">
+							<label>团名:</label>
+					</td>
+					<td>
+					<input id="team" name="team" 
+						class="easyui-validatebox" onfocus=this.blur() >
+						</div></td>
+				</tr>
 				<tr>
 					<td colspan="4s" align="center"><a
 						href="javascript:fkshupdate()" class="easyui-linkbutton"
@@ -114,15 +121,23 @@
 			<table  align="center">
 				<tr>
 					<td>
-					ID<input id="id" name="id" class="easyui-validatebox" onfocus=this.blur()>
+					<input id="id" name="id" class="easyui-validatebox" onfocus=this.blur() hidden="true">
 					<div class="fitem">
 							
 					</td>
-					<td><input id="quxiao" value="1"  class="easyui-validatebox">
+					<td><input id="quxiao" value="1"  class="easyui-validatebox" hidden="true" onfocus=this.blur()>
 						</div></td> 
 						
 				</tr>
-				
+				<tr>
+					<td><div class="fitem">
+							<label>团名:</label>
+					</td>
+					<td>
+					<input id="team" name="team" 
+						class="easyui-validatebox" onfocus=this.blur()>
+						</div></td>
+				</tr>
 				<tr>
 					<td colspan="4s" align="center"><a
 						href="javascript:fkshupdate2()" class="easyui-linkbutton"
@@ -159,7 +174,8 @@
 				team: $("#team").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
 				caozuo: $("#caozuo").val() ,
 				caiwuid: id,
-
+                shenfenid:3,
+                ysyfid:2,
 				page:  opts.pageNumber ,
 				rows:  opts.pageSize
 			};
@@ -203,7 +219,7 @@
 			if(row!=null){
 			$("#caiwufkshid").dialog("open");
 		$('#id').attr('value','');
-		$('#xg').form('load', {"id":row.id});
+		$('#xg').form('load', row);
 		}
 		
 		}
@@ -246,7 +262,7 @@
 		//清空ID
 		$('#id').attr('value','');
 		//填充
-		 $('#quxiaoform').form('load', {"id":row.id});
+		 $('#quxiaoform').form('load',row);
 		}
 		}
 		  //修改

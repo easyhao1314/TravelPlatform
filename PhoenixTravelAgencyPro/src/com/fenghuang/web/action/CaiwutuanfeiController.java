@@ -22,6 +22,7 @@ import com.fenghuang.entiey.Tuanbiao;
 import com.fenghuang.service.IcaiwuskqrSerice;
 import com.fenghuang.util.DateJsonValueProcessor;
 import com.fenghuang.util.Pagination;
+import com.sun.corba.se.spi.orbutil.fsm.Input;
 
 
 @Controller
@@ -32,7 +33,7 @@ public class CaiwutuanfeiController {
 	@ResponseBody
 	public Map<String, Object> getCurrencyList(HttpServletRequest request,
 			HttpServletResponse response,HttpSession session,Integer page, Integer rows,String team,String caozuo,String caiwuid,
-            String id,String ysyfid) {
+            String id,String ysyfid,String shenfenid) {
 		   Tuanbiao tuanbiao = new Tuanbiao();
 		    try {
 		    	if(team!=null&&!"".equals(team)){
@@ -50,6 +51,10 @@ public class CaiwutuanfeiController {
 			 if(ysyfid!=null&&!"".equals(ysyfid)){
 				 tuanbiao.setYsyfID(Integer.parseInt(ysyfid));
 			 }
+			 if(shenfenid!=null&&!"".equals(shenfenid)){
+				 tuanbiao.setShenfenid(Integer.parseInt(shenfenid));
+			 }
+			 
 			if(page==null){
 		    	 page=1;
 		     }

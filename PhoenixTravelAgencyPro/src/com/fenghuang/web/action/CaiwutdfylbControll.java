@@ -1,6 +1,9 @@
 package com.fenghuang.web.action;
 
 import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -74,5 +77,39 @@ public class CaiwutdfylbControll {
 		}
 	        return null;
 	}
-
+	@RequestMapping("fenghuang/caiwutdfylbupdate.do")
+	@ResponseBody
+	public Map<String,Object> xiugai(HttpServletRequest request,
+			HttpServletResponse response,String id,String yingshou,String yishou,
+			String kxsm,String zhanghaoid,String khmc,String yushoutime,int huilvID,String beizhu,
+			String yfk
+			){
+		Map<String, Object> result = new HashMap<String, Object>();
+		boolean isSuccess = false;
+		Tuanbiao tuanbiao = new Tuanbiao();
+		try {
+			DateFormat format1 = new SimpleDateFormat("yyyy-MM-dd"); 
+			Date dategroupdate = format1.parse(yushoutime);
+			tuanbiao.setYushoutime(dategroupdate);
+			if(yingshou!=null&&!"".equals(yingshou)){
+			tuanbiao.setYingshou(Integer.parseInt(yingshou));
+			}
+			if(yishou!=null&&!"".equals(yishou)){
+				tuanbiao.setYishou(Integer.parseInt(yishou));
+			}
+			tuanbiao.setHuilvID(huilvID);
+			tuanbiao.setBeizhu(beizhu);
+			tuanbiao.setKxsm(Integer.parseInt(kxsm));
+			tuanbiao.setZhanghaoid(Integer.parseInt(zhanghaoid));
+			tuanbiao.setKhmc(khmc);
+			tuanbiao.setYfk(Integer.parseInt(yfk));
+			tuanbiao.setId(Integer.parseInt(id));
+			isSuccess = icaiwutdfylbService.updatetdfy(tuanbiao);
+			isSuccess=true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}	
+		result.put("success", isSuccess);
+		return result ; 
+	}
 }

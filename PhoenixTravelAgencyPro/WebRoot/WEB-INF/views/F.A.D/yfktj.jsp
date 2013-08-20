@@ -44,35 +44,40 @@
 	    	 <div class="easyui-panel" title="付款审批"
 		style="height:450px;width: auto;" toolbar="#currencyDatagridtoolbar">	
 	<table id="dgyfktj" class="easyui-datagrid"
-		data-options="url:'fenghuang/caiwuqrfkselect.do?ysyfid=2',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
+		data-options="url:'fenghuang/caiwuqrfkselect.do?ysyfid=2&shenfenid=3',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 		pagination="true" toolbar="#tb">
 		<thead>
 			<tr> 
-				<th data-options="field:'danhao',editor:'text'" width="">单号</th>
-				<th data-options="field:'team',editor:'text'" width="">团号</th>
-				<th data-options="field:'tuanduimc',editor:'text'" width="">团队名称</th>
-				<th data-options="field:'name',editor:'text'" width="">款项说明</th>
+				<th data-options="field:'id',editor:'text'" width="50" hidden="true"></th>
+				<th data-options="field:'team',editor:'text'" width="50">团号</th>
+				<th data-options="field:'tuanduimc',editor:'text'" width="50">团队名称</th>
+				<th data-options="field:'name',editor:'text'" width="50">款项说明</th>
 				<th data-options="field:'khmc',editor:'text'" width="">客户名称</th>
-				<th data-options="field:'yushoutime',editor:'text'" width="">预售日期</th>
+				<th data-options="field:'yushoutime',editor:'text'" width="50">预售日期</th>
 			
-				<th data-options="field:'huilv',editor:'numberbox'" width="">汇率</th>
-				<th data-options="field:'bizhong',editor:'numberbox'" width="">币种</th>
-				<th data-options="field:'yingshou',editor:'numberbox'" width="">应收</th>
-				<th data-options="field:'yishou',editor:'numberbox'" width="">已收</th>
-				<th data-options="field:'09',editor:'numberbox'" width="">未收</th>
-				<th data-options="field:'ykfp',editor:'numberbox'" width="">已开发票</th>
-				<th data-options="field:'fpxk',editor:'numberbox'" width="">发票许可</th>
+				<th data-options="field:'huilv',editor:'numberbox'" width="50">汇率</th>
+				<th data-options="field:'bizhong',editor:'numberbox'" width="50">币种</th>
+				<th data-options="field:'yfk',editor:'numberbox'" width="50">应付款</th>
+				<th data-options="field:'yifu',editor:'numberbox'" width="50">已付</th>
+				<th data-options="field:'09',formatter:yfktjjisuan" width="50">未付</th>
+				<th data-options="field:'ykfp',editor:'numberbox'" width="50">已开发票</th>
+				<th data-options="field:'fpxk',editor:'numberbox'" width="50">发票许可</th>
 				
-				<th data-options="field:'aaa',editor:'numberbox'" width="">销售确认</th>
-			    <th data-options="field:'confirmed',editor:'numberbox'" width="">财务确认</th>
-			    <th data-options="field:'zerenren',editor:'numberbox'" width="">责任人</th>
+				<th data-options="field:'aaa',editor:'numberbox'" width="50">销售确认</th>
+			    <th data-options="field:'confirmed',editor:'numberbox'" width="50">财务确认</th>
+			    <th data-options="field:'fuzeren',editor:'numberbox'" width="50">责任人</th>
 			</tr>
 		</thead>
 	</table>
 	</div>
 	
 	<script type="text/javascript">
-	
+	function yfktjjisuan(val,row){
+      var a=parseInt(row.yfk);
+        var b=parseInt(row.yifu);
+       var c=(a-b);
+        return '<div style="width: auto;">'+c+'</div>';
+        }
 		function onClickRow(index) {
 			if (editIndex != index) {
 				if (endEditing()) {

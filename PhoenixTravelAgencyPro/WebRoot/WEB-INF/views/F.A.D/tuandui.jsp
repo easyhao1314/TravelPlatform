@@ -115,7 +115,7 @@ function caiwutdfyselecta(id) {
 //获取选中 数据
 var row = $("#dg").datagrid("getSelected");
 if(row!=null){
-var url= "tuanduixinxi.do?team="+row.team;
+var url= "tuanduixinxi.do?team="+row.team+"&tuanNo="+row.tuanduimc+"&shenfenid="+row.shenfenid;
        var tab = $('#tt').tabs('getSelected');
 if (tab){
 var index = $('#tt').tabs('getTabIndex', tab);

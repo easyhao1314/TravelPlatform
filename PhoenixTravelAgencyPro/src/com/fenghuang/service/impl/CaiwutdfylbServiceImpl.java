@@ -31,7 +31,7 @@ public class CaiwutdfylbServiceImpl implements IcaiwutdfylbService {
 	@Override
 	public boolean updatetdfy(Tuanbiao tuanbiao) throws Exception {
 		// TODO Auto-generated method stub
-		return false;
+		return dao.updatetdfy(tuanbiao);
 	}
 
 	@Override

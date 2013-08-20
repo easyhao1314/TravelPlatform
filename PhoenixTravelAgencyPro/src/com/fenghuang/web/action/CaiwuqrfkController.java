@@ -92,21 +92,18 @@ public class CaiwuqrfkController {
 	@RequestMapping("fenghuang/updateqrfk.do")
 	@ResponseBody
 	public Map<String,Object> xiugai(HttpServletRequest request,
-			HttpServletResponse response,String caiwuid,String id,String shanchu,String yingshou,String yishou){
+			HttpServletResponse response,String caiwuid,String id,String shanchu
+			
+			){
 		Map<String, Object> result = new HashMap<String, Object>();
 		boolean isSuccess = false;
 		Tuanbiao tuanbiao = new Tuanbiao();
-		
-		
 		try {
 			if(caiwuid!=null&&!"".equals(caiwuid)){
 			tuanbiao.setCaiwuid(Integer.parseInt(caiwuid));
 			}
 			if(shanchu!=null&&!"".equals(shanchu)){
 				tuanbiao.setShanchu(Integer.parseInt(shanchu));
-			}
-			if(yingshou!=null&&!"".equals(yingshou)){
-				tuanbiao.setYingshou(Double.parseDouble(yingshou));
 			}
 			tuanbiao.setId(Integer.parseInt(id));
 			isSuccess = icaiwuskqrSerice.updateskqr(tuanbiao);
@@ -121,11 +118,15 @@ public class CaiwuqrfkController {
 	@RequestMapping("fenghuang/inserttuanbiao.do")
 	@ResponseBody
 	public Map<String,Object> addCustom(HttpServletRequest request,HttpServletResponse response,
-		   String team,String kxsm,String zhanghaoid,String khmc,String yushoutime,String yingshou,String huilvid,String beizhu,String ysyfid,String shanchu,String caiwuid,String shenfenid,String fuzeren){
+		   String team,String kxsm,String zhanghaoid,String khmc,String yushoutime,String yingshou,String huilvid,String beizhu,String ysyfid,String shanchu,String caiwuid,String shenfenid,String fuzeren,String tuanduimc,String yfk,String teamatest,String fukuantime){
 		Map<String, Object> result = new HashMap<String, Object>();
 		boolean isSuccess = false;
 		try {
 		Tuanbiao tuanbiao = new Tuanbiao();
+		
+		if(teamatest!=null&&!"".equals(teamatest)){
+			tuanbiao.setTeam(teamatest);
+		}
 		if(team!=null&&!"".equals(team)){
 		tuanbiao.setTeam(team);
 		
@@ -139,14 +140,24 @@ public class CaiwuqrfkController {
 		if(shanchu!=null&&!"".equals(shanchu)){
 			tuanbiao.setShanchu(Integer.parseInt(shanchu));
 		}
+		
 		if(zhanghaoid!=null&&!"".equals(zhanghaoid)){
 		tuanbiao.setZhanghaoid(Integer.parseInt(zhanghaoid));
 		}
+		if(yfk!=null&&!"".equals(yfk)){
+			tuanbiao.setYfk(Integer.parseInt(yfk));
+			}
+			
 		if(khmc!=null&&!"".equals(khmc)){
 		tuanbiao.setKhmc(khmc);
 		}
+		if(fukuantime!=null&&!"".equals(fukuantime)){
+			DateFormat format1 = new SimpleDateFormat("yyyy-MM-dd"); 
+			Date dategroupdate = format1.parse(fukuantime);
+			tuanbiao.setFukuantime(dategroupdate);
+		}
 		if(yushoutime!=null&&!"".equals(yushoutime)){
-		DateFormat format1 = new SimpleDateFormat("yyyy-MM-dd"); 
+		    DateFormat format1 = new SimpleDateFormat("yyyy-MM-dd"); 
 			Date dategroupdate = format1.parse(yushoutime);
 			tuanbiao.setYushoutime(dategroupdate);
 		}
@@ -164,6 +175,9 @@ public class CaiwuqrfkController {
 		}
 		if(shenfenid!=null&&!"".equals(shenfenid)){
 			tuanbiao.setShenfenid(Integer.parseInt(shenfenid));
+		}
+		if(tuanduimc!=null&&!"".equals(tuanduimc)){
+			tuanbiao.setTuanduimc(tuanduimc);
 		}
 		    tuanbiao.setFuzeren("财务部");
 		    tuanbiao.setShanchu(1);
