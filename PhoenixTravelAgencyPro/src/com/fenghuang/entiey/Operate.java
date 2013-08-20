@@ -63,9 +63,20 @@ public class Operate {
     * 
     * @pdOid 90013b42-7003-4011-9966-d8aa5c93d3c3 */
    public int operatestate;
-
+   /** 操作表备注
+    * 
+    * @pdOid 2e804a4f-0801-4363-850a-f6b607ac928c */
+   public java.lang.String beizhu;
    
    
+   
+   
+public java.lang.String getBeizhu() {
+	return beizhu;
+}
+public void setBeizhu(java.lang.String beizhu) {
+	this.beizhu = beizhu;
+}
 public int getOperatestate() {
 	return operatestate;
 }

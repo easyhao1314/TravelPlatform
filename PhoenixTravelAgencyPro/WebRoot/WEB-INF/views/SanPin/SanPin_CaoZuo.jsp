@@ -38,7 +38,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<thead>
 			<tr>
 				<th data-options="field:'tuanNo'" width="50">团号</th>
-				<th id="tuanName" data-options="field:'tuanName',formatter:onOperateSanpinList" width="50" >团名/路线</th>
+				<th data-options="field:'tuanName',formatter:onOperateSanpinList" width="50" >团名/路线</th>
 				<th data-options="field:'groupdate'" width="50">出团日期</th>
 				<th data-options="field:'Tourdate'" width="50">回团日期</th>
 				<th data-options="field:'targetpopulation'" width="50">出发城市</th>
@@ -102,10 +102,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 	</div>
 	<div id="sanpincaozuowindow" class="easyui-window" title="选择计调" data-options="iconCls:'icon-save',closed:true,minimizable:false,tools:'#sanpincaozuott'" style="width:650px;height:400px;padding:10px;">
-	标题：<br /><input id="biaoti" style="200px;" ><br />
-	填写备注说明：<br /><input id="beizhu" >
-	
-	<div style="height: 150px;">
+	<div class="easyui-layout" data-options="fit:true">
+			<div data-options="region:'west',split:true" style="width:307px;">
+				<div class="easyui-accordion" style="width:300px;">
+	<div title="选择员工" data-options="iconCls:'icon-help'" >
+			<div style="height: 311px; ">
         <table id="dgUsers"   class="easyui-datagrid"
 		data-options="url:'fenghuang/getUsers.do',border:true,singleSelect:true,fit:true,fitColumns:true,pageSize:10,onClickRow: onClickRow,view:groupview,
           groupField:'departName',
@@ -116,8 +117,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<thead>
 			<tr>
 				<th data-options="field:'ck',checkbox:true"></th>
-				<th data-options="field:'userNumber',editor:'text'" width="80">编号</th>
-				<th data-options="field:'userName',editor:'text'" width="80">姓名</th>
+				<th data-options="field:'userName',editor:'text'" width="10">姓名</th>
 				<th data-options="field:'departmentId',formatter:function(value,row){
 							return row.departName;
 						},editor:{
@@ -128,26 +128,69 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								url:'fenghuang/getDepartmentComboboxs.do'
 							}
 				}"
-					width="80">部门</th>
-				<th data-options="field:'id',hidden:true">b</th>
+					width="10">部门</th>
 			</tr>
 		</thead>
 	</table>
+	</div> 		
 	</div>
+	</div>
+			</div>
+			<div data-options="region:'center'" style="padding:10px">
+			<form id="zhuanjidiaoForm" action="">
+				填写备注说明：<br /><textarea name="beizhu" style="height:120px; width: 290px" > </textarea>
+				<input id="tuanNo" title="团号" type="hidden" name="tuanNo" class="easyui-validatebox" style="width: 290px;" >
+				<input id="tuanName" title="团名" type="hidden" name="tuanName" class="easyui-validatebox" style="width: 290px;" >
+				<input id="chutime" title="出团时间" type="hidden" name="chutuantime" class="easyui-validatebox" style="width: 290px;" >
+				<input id="huitime" title="回团时间" type="hidden" name="huituantime" class="easyui-validatebox" style="width: 290px;" >
+				<input id="userId" title="提交人（有问题）" type="hidden" name="userId" class="easyui-validatebox" style="width: 290px;" >
+				<input id="shenpiren" title="审批人" type="hidden" name="shenpiren" class="easyui-validatebox" style="width: 290px;" >
+				</form>
+			</div>
+		</div>
+	
+	
+	
+	
+	
+	
     </div>
 	<div id="mmsanpincaozuo" class="easyui-menu" style="width:120px;">
-		<input id="sanpincaozuotuanNo" style="display: none;" />
+		
 		<div data-options="iconCls:'icon-edit'" onClick="zhuanjidiao()">转到计调报价</div>
 	</div>
 	<script type="text/javascript">
 	function addjidiao(){
 		var row = $("#dgUsers").datagrid("getSelected");
-		alert(row.userName);
+			if(row==null){return;}
+				$('#shenpiren').attr('value',row.id);
+				$('#zhuanjidiaoForm').form('submit', {
+				url : 'fenghuang/addOperate.do',
+				onSubmit : function() {
+					return $(this).form('validate');
+				},
+				success : function(result) {
+					var result = eval('(' + result + ')');
+					if (result.success) {
+			
+						$.messager.alert("保存成功", "保存成功！", "info");
+					   
+					} else {
+						$.messager.alert("保存失败", "保存失败!", "error");
+					
+					}
+				}
+			});
+		
 	}
 	
 	
 	function sanpincaozuoMenu(e, rowIndex, rowData){
-	$('#sanpincaozuotuanNo').attr('value',rowData.tuanNo);
+	$('#tuanNo').attr('value',rowData.tuanNo);
+	$('#chutime').attr('value',rowData.groupdate);
+	$('#huitime').attr('value',rowData.Tourdate);
+	$('#tuanName').attr('value',rowData.tuanName);
+
 		 e.preventDefault();
          $('#mmsanpincaozuo').menu('show', {
         left:e.pageX,
@@ -155,7 +198,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     }); 
 	}
 	function zhuanjidiao(){
-		$('#sanpincaozuotuanNo').val();
 		$('#sanpincaozuowindow').window('open');
 	}
 	
