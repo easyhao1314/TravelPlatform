@@ -296,7 +296,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					
 					xunhuanRicheng('${param.xianid}');
 					//pares方法是 渲染JqueryEasyUi 插件的 解决不显示EasyUi的样式问题
-					$.parser.parse();
+					//$.parser.parse("#mdiv");
+
 					//循环结束
 					},
 					error : function() {
@@ -383,7 +384,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						$('#jtcs'+i).append(jtapp);
 					} 
 					//pares方法是 渲染JqueryEasyUi 插件的 解决不显示EasyUi的样式问题
-					$.parser.parse();
+					$.parser.parse("#mdiv");
 					//循环结束
 					},
 					error : function() {

@@ -35,8 +35,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<th data-options="field:'beizhu',formatter:chakanbeizhu" width="20">备注</th>
 				<th data-options="field:'chutuantime'" width="20">出团日期</th>
 				<th data-options="field:'huituantime'" width="20">回团日期</th>
-				<th data-options="field:'paidanren'" width="20">派单人</th>
-				<th data-options="field:'jiedanren'" width="20">接单人</th>
+				<th data-options="field:'paidanren',formatter:function(value,row){
+							return row.paidan;
+				}" width="20">派单人</th>
+				<th data-options="field:'jiedanren',formatter:function(value,row){
+							return row.jiedan;
+				}" width="20">接单人</th>
 				<th data-options="field:'jinzhan',formatter:jinzhan" width="20">进展</th>
 				<th data-options="field:'paidantime'" width="20">派单日期</th>
 				<th data-options="field:'operatestate'" width="20">操作状态</th>
@@ -44,7 +48,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</thead>
 	</table>
 	<!-- 付款window -->
-    <div id="fukuan" class="easyui-window" title="应付款窗口" data-options="iconCls:'icon-save',closed:true" style="width:500px;height:300px;padding:10px;">
+	<div id="fukuantt">
+        <a href="javascript:void(0)" class="icon-add" onclick="javascript:caozuozhongxinsave()"></a>
+        
+    </div>
+	
+	
+    <div id="fukuan" class="easyui-window" title="应付款窗口" data-options="iconCls:'icon-save',closed:true,tools:'#fukuantt'" style="width:500px;height:300px;padding:10px;">
         <form id="fukuanform" action="">
         	<table  style="width: 400px;">
         	<tr>
@@ -80,13 +90,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	<input id="chutuantime" type="hidden" name="chutuantime" class="easyui-validatebox" style="width: 150px;" />
         	</td>
         	</tr>
-        	
-        	<tr>
-					<td colspan="4s" align="center"><a
-						href="javascript:caozuozhongxinsave();" class="easyui-linkbutton"
-						iconCls="icon-ok">确认</a> <a href="javascript:closedSearch();"
-						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
-				</tr>
         	</table>
         </form>
         

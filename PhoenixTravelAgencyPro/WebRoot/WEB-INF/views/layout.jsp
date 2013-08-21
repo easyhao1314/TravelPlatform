@@ -340,11 +340,11 @@
 				     <a href="javascript:open1('自费节目维护','ZiyuanZifei.do');">自费节目维护</a></li>
 				</ul>
 			</li>
-			<!--陈家海的配置 -->
+			
 		<li iconCls="icon-base"  state="closed"><span>操作中心</span>
 				 <ul>
 			      <li iconCls="icon-gears">
-			        <a href="javascript:open1('我的订房任务','Caozuo_liebiao.do');">我的操作任务单</a>
+			        <a href="javascript:open1('我的操作任务','Caozuo_liebiao.do');">我的操作任务单</a>
 			      </li>
 			   </ul>
 

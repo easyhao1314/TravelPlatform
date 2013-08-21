@@ -54,8 +54,8 @@ public class OperateDaoImpl extends BaseDao implements IOperateDao {
 
 	@Override
 	public Pagination<Operate> OperateInfo(int page,int rows,Operate o) {
-		// TODO Auto-generated method stub
-		String sql = "select * from Operate where 1=1";
+		// TODO Auto-generated method stub select o.*,s.userName from Operate as o LEFT JOIN users as s ON s.id=o.jiedanren   where 1=1 
+		String sql = "select o.*,s.userName as jiedan ,ss.userName AS paidan from Operate as o LEFT JOIN users as s ON s.id=o.jiedanren LEFT JOIN users as ss ON ss.id=o.paidanren   where 1=1 ";
 		StringBuffer sb = new StringBuffer(sql);
 		if(o.getTuanNo()!=null && !"".equals(o.getTuanNo())){
 			sb.append(" and tuanNo='");
