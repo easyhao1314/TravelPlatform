@@ -33,7 +33,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<th data-options="field:'tuanNo'" width="20">团号</th>
 				<th data-options="field:'tuanName',formatter:caozuotuanName" width="20">团名</th>
 				<th data-options="field:'beizhu',formatter:chakanbeizhu" width="20">备注</th>
-				<th data-options="field:'kehuName'" width="20">客户名称</th>
 				<th data-options="field:'chutuantime'" width="20">出团日期</th>
 				<th data-options="field:'huituantime'" width="20">回团日期</th>
 				<th data-options="field:'paidanren'" width="20">派单人</th>
@@ -45,7 +44,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</thead>
 	</table>
 	<!-- 付款window -->
-    <div id="fukuan" class="easyui-window" title="应付款窗口" data-options="iconCls:'icon-save'" style="width:500px;height:200px;padding:10px;">
+    <div id="fukuan" class="easyui-window" title="应付款窗口" data-options="iconCls:'icon-save',closed:true" style="width:500px;height:300px;padding:10px;">
         <form id="fukuanform" action="">
         	<table  style="width: 400px;">
         	<tr>
@@ -61,42 +60,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	<td>应付日期： <input id="fukuantime" name="fukuantime" type="text" class="easyui-datebox" required="required"></td>
         	</tr>
         	<tr>
-        	<td>金额：<input name="yfk" class="easyui-validatebox" height="50px" required style="width: 150px;" /></td>
+        	<td>金&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;额：<input name="yfk" class="easyui-validatebox" height="50px" required style="width: 150px;" /></td>
         	</tr>
         	<tr>
-        	<td>备注：<input name="beizhu" class="easyui-validatebox" style="width: 150px;" /></td>
-        	<tr>
-        	<td>团名：<input id="team" name="team" value="oooo" class="easyui-validatebox" style="width: 150px;" /></td>
+        	<td>备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注：<input name="beizhu" class="easyui-validatebox" style="width: 150px;" /></td>
         	</tr>
+        	
+        	
         	<tr>
-        	<td>团队名称：<input id="tuanduimc" name="tuanduimc" class="easyui-validatebox" style="width: 150px;" /></td>
-        	</tr>
-        	<tr>
-        	<td>发团时间<input id="chutuantime" name="chutuantime" class="easyui-validatebox" style="width: 150px;" /></td>
-        	</tr>
-        	<tr>
-        	<td>回团时间：<input id="huituantime" name="huituantime" class="easyui-validatebox" style="width: 150px;" /></td>
-        	</tr>
-        	<tr>
-        	<td>身份ID：<input id="shenfenid" name="shenfenid" value="3" class="easyui-validatebox" style="width: 150px;" /></td>
-        	</tr>
-        	<tr>
-        	<td>删除：<input id="shanchu" name="shanchu" value="1" class="easyui-validatebox" style="width: 150px;" /></td>
-        	</tr>
-        	<tr>
-        	<td>发票许可：<input id="fpxk" name="fpxk" value="0" class="easyui-validatebox" style="width: 150px;" /></td>
-        	</tr>
-        	<tr>
-        	<td>已开发票：<input id="ykfp" name="ykfp" value="0" class="easyui-validatebox" style="width: 150px;" /></td>
-        	</tr>
-        	<tr>
-        	<td>应收应付id：<input id="ykfp" name="ysyfid" value="2" class="easyui-validatebox" style="width: 150px;" /></td>
-        	</tr>
-        	<tr>
-        	<td>财务id：<input id="caiwuid" name="caiwuid" value="1" class="easyui-validatebox" style="width: 150px;" />
-        	<a href="javascript:void(0);" style="font-size: 16px;text-decoration:none; text-align:center;"><b>备注</b></a>
+        	<td><input id="huituantime" type="hidden" name="huituantime" class="easyui-validatebox" style="width: 150px;" />
+        	<input id="shenfenid" type="hidden" name="shenfenid" value="3" class="easyui-validatebox" style="width: 150px;" />
+        	<input id="shanchu" type="hidden" name="shanchu" value="1" class="easyui-validatebox" style="width: 150px;" />
+        	<input id="fpxk" type="hidden" name="fpxk" value="0" class="easyui-validatebox" style="width: 150px;" />
+			<input id="ykfp" type="hidden" name="ykfp" value="0" class="easyui-validatebox" style="width: 150px;" />
+        	<input id="ykfp" type="hidden" name="ysyfid" value="2" class="easyui-validatebox" style="width: 150px;" />
+        	<input id="caiwuid" type="hidden" name="caiwuid" value="1" class="easyui-validatebox" style="width: 150px;" />
+        	<input id="team" type="hidden" name="team" value="oooo" class="easyui-validatebox" style="width: 150px;" />
+        	<input id="tuanduimc" type="hidden" name="tuanduimc" class="easyui-validatebox" style="width: 150px;" />
+        	<input id="chutuantime" type="hidden" name="chutuantime" class="easyui-validatebox" style="width: 150px;" />
         	</td>
         	</tr>
+        	
         	<tr>
 					<td colspan="4s" align="center"><a
 						href="javascript:caozuozhongxinsave();" class="easyui-linkbutton"
@@ -165,8 +149,75 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>	
 		
 	<script type="text/javascript">
-	function chakanbeizhu(){
-		return '<a href="javascript:void(0);" style=" text-align:center;font-size: 16px;text-decoration:none; width:auto;"><b>备注</b></a>';
+	
+	function jinzhan(val,row){
+	var jinzhan = "新派单";
+	
+	if(row.jinzhan==2){
+		jinzhan = "全部完成";
+	}
+	
+	return '<div onclick="shoukeclick(event,\''+row.oid+'\')" style="width: auto;">'+jinzhan+'</div>';
+	}
+	function shoukeclick(e,oid){
+   	      $('#oid').attr('value',oid);
+   	         $('#mmjinzhan').menu('show', {
+				left : e.pageX,
+				top : e.pageY
+			});
+   	      }
+	function updatejinzhan(jinzhan){
+	var oid = $('#oid').val();
+		var url = "fenghuang/updateOperate.do?oid="+oid+"&jinzhan="+jinzhan;
+   	      	$.ajax({
+   	      		url:url,
+   	      		data:oid,
+   	      		datatype:"json",
+   	      		success:function(data){
+   	      		
+   	      			$("#caozuoliebiaodg").datagrid("reload");
+   	      		},
+   	      		error : function() {
+						$.messager.alert("修改失败", "服务器请求失败!", "error");
+					}
+   	      	
+   	      	});
+	}
+	
+	
+	
+	
+	
+	
+	function chakanbeizhu(val,row){
+		return '<a href="javascript:openbeizhudlg('+row.oid+',\''+row.beizhu+'\');" style=" text-align:center;font-size: 16px;text-decoration:none; width:auto;"><b>查看备注</b></a>';
+	}
+	function openbeizhudlg(oid,beizhu){
+		var a=document.getElementById("beizhu");
+		a.value=beizhu;
+		$('#oid').attr('value',oid);
+		$('#beizhudlg').dialog('open');
+		
+	}
+	//保存备注 
+	function savebeizhu(){
+		var oid = $('#oid').val();
+		var beizhu = $('#beizhu').val();
+		var url = "fenghuang/updateOperate.do?oid="+oid+"&beizhu="+beizhu;
+   	      	$.ajax({
+   	      		url:url,
+   	      		data:oid,
+   	      		datatype:"json",
+   	      		success:function(data){
+   	      		$('#beizhudlg').dialog('close');
+   	      				$.messager.alert("保存成功", "保存成功!", "info");
+   	      			$("#caozuoliebiaodg").datagrid("reload");
+   	      		},
+   	      		error : function() {
+						$.messager.alert("修改失败", "服务器请求失败!", "error");
+					}
+   	      	
+   	      	});
 	}
 	
 	function caozuotuanName(val,row){
@@ -237,7 +288,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						days = "";
 					}
 	});
-	}
     function dingcan(){
     $("#caozuodingcan").dialog("open");
     }
@@ -255,11 +305,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				         href : url,
 				      //  closable : true,
 				         });
-         }
-    
+    }
     function dinggouwudian(){
     $("#caozuodinggouwudian").dialog("open");
     }
+}
+
 
 
 
