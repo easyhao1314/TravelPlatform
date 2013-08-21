@@ -51,7 +51,7 @@
 				<th data-options="field:'id',editor:'text'" width="50" hidden="true"></th>
 				<th data-options="field:'team',editor:'text'" width="50">团号</th>
 				<th data-options="field:'tuanduimc',editor:'text'" width="50">团队名称</th>
-				<th data-options="field:'name',editor:'text'" width="50">款项说明</th>
+				<th data-options="field:'kxsm',editor:'text'" width="50">款项说明</th>
 				<th data-options="field:'khmc',editor:'text'" width="">客户名称</th>
 				<th data-options="field:'yushoutime',editor:'text'" width="50">预售日期</th>
 			

@@ -37,25 +37,15 @@
 	             </div>
 	    			
 	    		</td>
-	    		</tr>
-	    	
-	    		
+	    		</tr>	
 	    	</table>
 	    	<table>
 	    		<tr>
 	    		<td>状态：[<a href="javascript:cwfkspselect(2)">待确认收款</a>][<a href="javascript:cwfkspselect(4)">已确认收款</a> ]</td>
 	    		</tr>    			    	
-	    	</table>
-	    	
-	    	
-	    	
-	    	
-	    	
-	    	   	<a href="javascript:caiwufkspselecta();" class="easyui-linkbutton" iconCls="icon-add" plain="true">审批确认</a>  
-		
-		
-		    <a href="javascript:caiwufkspselectb();" class="easyui-linkbutton" iconCls="icon-add" plain="true">取消付款</a>
-	    	
+	    	</table>	    	
+	    	<a href="javascript:caiwufkspselecta();" class="easyui-linkbutton" iconCls="icon-add" plain="true">审批确认</a>  
+		    <a href="javascript:caiwufkspselectb();" class="easyui-linkbutton" iconCls="icon-add" plain="true">取消付款</a> 	
 	 <div class="easyui-panel" title="付款审批"
 		style="height:450px;width: auto;" toolbar="#currencyDatagridtoolbar">	
 	<table id="fkspdg" class="easyui-datagrid"

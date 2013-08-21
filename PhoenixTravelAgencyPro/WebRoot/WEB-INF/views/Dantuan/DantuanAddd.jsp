@@ -458,6 +458,7 @@ data-options="
 						 var  kehuname=$("#kehuname").val();
 					
 					     $("#khId").combobox('setValue', kehuname); 
+					     $("#khId").combobox();
 					
 					} else {
 						$.messager.alert("保存失败", "保存失败!", "error");

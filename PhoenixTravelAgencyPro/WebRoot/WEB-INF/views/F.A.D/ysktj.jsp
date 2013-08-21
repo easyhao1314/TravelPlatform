@@ -52,7 +52,7 @@
 				<th data-options="field:'team',editor:'text'" width="50">团号</th>
 				<th data-options="field:'tuanduimc',editor:'text'" width="50">团队名称</th>
 				
-				<th data-options="field:'name',editor:'text'" width="50">款项说明</th>
+				<th data-options="field:'kxsm',editor:'text'" width="50">款项说明</th>
 				<th data-options="field:'khmc',editor:'text'" width="50">客户名称</th>
 				<th data-options="field:'yushoutime',editor:'text'" width="50">预售日期</th>
 				<th data-options="field:'huilv',editor:'text'" width="50">汇率</th>
@@ -60,11 +60,11 @@
 				<th data-options="field:'yingshou',editor:'text'" width="50">应收</th>
 			    <th data-options="field:'yishou',editor:'text'" width="30">已收</th>
 			    <th data-options="field:'aaaa',formatter:yskjs" width="30">未收</th>
-				<th data-options="field:'ykfp'"width="50">已开发票</th>
-				<th data-options="field:'fpxk'" width="50">发票许可</th>
+				<th data-options="field:'ykfp',formatter:ysktjfp"width="50">已开发票</th>
+				<th data-options="field:'fpxk',formatter:ysktjxk" width="50">发票许可</th>
 				<th data-options="field:'xiaoshou',editor:'numberbox'" width="20">销售确认</th>
 				<th data-options="field:'review',formatter:ysktjbeizhu" width="20">财务确认</th>
-				<th data-options="field:'zenrenren',editor:'numberbox'" width="50">责任人</th>
+				<th data-options="field:'fuzeren',editor:'numberbox'" width="50">责任人</th>
 			
 			</tr>
 		</thead>
@@ -72,6 +72,22 @@
 	</div>
 	
 	<script type="text/javascript">
+	
+	function ysktjfp(val,row){
+		   var shouke=null;
+		   	 if(row.ykfp==0){shouke="未开发票";}
+		   	 if(row.ykfp==1){shouke="已开发票";}
+		     return '<div onclick="shoukeclick(event,'+row.tuanNo+')" style="width: auto;">'+shouke+'</div>';
+		   }
+	
+	function ysktjxk(val,row){
+		   var shouke=null;
+		   	 if(row.fpxk==0){shouke="未开发票";}
+		   	 if(row.fpxk==1){shouke="已开发票";}
+		     return '<div onclick="shoukeclick(event,'+row.tuanNo+')" style="width: auto;">'+shouke+'</div>';
+		   }
+	
+	
 	function ysktjbeizhu(val,row){
 		   var shouke=null;
 		   	 if(row.review==1){shouke="未审核";}

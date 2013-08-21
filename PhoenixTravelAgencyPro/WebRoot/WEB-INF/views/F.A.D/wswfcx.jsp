@@ -55,8 +55,8 @@
 				<th data-options="field:'yingshou',editor:'text'" width="50">应收金额</th>
 				<th data-options="field:'yishou',editor:'text'" width="">已收金额</th>
 			
-				<th data-options="field:'09',editor:'numberbox'" width="50">未收金额</th>
-				<th data-options="field:'aa',editor:'numberbox'" width="50">经手人</th>
+				<th data-options="field:'09',formatter:wswfcxjisuan" width="50">未收金额</th>
+				<th data-options="field:'fuzeren',editor:'numberbox'" width="50">经手人</th>
 				
 			
 			</tr>
@@ -65,6 +65,20 @@
 	</div>
 
 	<script type="text/javascript">
+	
+	
+	
+	
+	
+	
+	function wswfcxjisuan(val,row){
+     var a=parseInt(row.yingshou);
+     var b=parseInt(row.yishou);
+      var c=(a-b);
+      return '<div style="width: auto;">'+c+'</div>';
+      }
+	
+	
 		function onClickRow(index) {
 			if (editIndex != index) {
 				if (endEditing()) {
