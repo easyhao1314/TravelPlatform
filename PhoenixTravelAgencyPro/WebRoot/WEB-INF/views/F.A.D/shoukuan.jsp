@@ -71,7 +71,6 @@
 			
 				<th data-options="field:'caozuo',editor:'numberbox'" width="10px">销售</th>
 				<th data-options="field:'confirmed',editor:'numberbox'" width="10px">财务确认</th>
-			
 			</tr>
 		</thead>
 	</table>
