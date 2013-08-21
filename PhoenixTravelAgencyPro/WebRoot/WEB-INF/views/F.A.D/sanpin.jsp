@@ -39,7 +39,7 @@
 	    		</tr>    		
 	    	</table>
 	<!-- 如果在正式开发环境下 url可以为后台的请求，地址 -->
-	 <div class="easyui-panel" title="付款审批"
+	 <div class="easyui-panel" title="散拼费用列表"
 		style="height:500px;width: auto;" toolbar="#currencyDatagridtoolbar">	
 	<table id="sanpindg" class="easyui-datagrid"
 		data-options="url:'fenghuang/caiwuqrfkselect.do?shenfenid=1&&ysyfid=1',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"

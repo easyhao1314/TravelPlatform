@@ -33,7 +33,6 @@ public class OperateDaoImpl extends BaseDao implements IOperateDao {
 	@Override
 	public boolean UpOperate(Operate o) {
 		// TODO Auto-generated method stub
-		
 		String sql = "UPDATE Operate SET operatestate=+1-1";
 		List list = new ArrayList();
 		StringBuffer sb = new StringBuffer(sql);

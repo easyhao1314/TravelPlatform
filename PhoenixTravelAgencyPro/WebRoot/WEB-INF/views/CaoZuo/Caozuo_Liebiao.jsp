@@ -38,9 +38,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<th data-options="field:'huituantime'" width="20">回团日期</th>
 				<th data-options="field:'paidanren'" width="20">派单人</th>
 				<th data-options="field:'jiedanren'" width="20">接单人</th>
-				<th data-options="field:'jinzhan'" width="20">进展</th>
+				<th data-options="field:'jinzhan',formatter:jinzhan" width="20">进展</th>
 				<th data-options="field:'paidantime'" width="20">派单日期</th>
-				<th data-options="field:'operateType'" width="20">操作类型</th>
 				<th data-options="field:'operatestate'" width="20">操作状态</th>
 			</tr>
 		</thead>
@@ -66,7 +65,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	</tr>
         	<tr>
         	<td>备注：<input name="beizhu" class="easyui-validatebox" style="width: 150px;" /></td>
-        	</tr>
         	<tr>
         	<td>团名：<input id="team" name="team" value="oooo" class="easyui-validatebox" style="width: 150px;" /></td>
         	</tr>
@@ -126,7 +124,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             
    		 </div>
     </div>
-    
+    <div id="mmjinzhan" class="easyui-menu" style="width:120px;">
+		<input id="oid" style="display: none;" />
+		<div data-options="iconCls:'icon-edit'" onClick="updatejinzhan(2)">全部完成</div>
+	</div>
 	 
 	  <div id="caozuodingche"  class="easyui-dialog" title="订车明细"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
@@ -144,19 +145,39 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    
 	</div>
 		
+	<div id="beizhudlg"  class="easyui-dialog" title="订车明细"
+		data-options="modal:true,closed:true,iconCls:'icon-save', modal:true,buttons: 
+	 			[{
+                    text:'保存',
+                    iconCls:'icon-ok',
+                    handler:function(){
+                    savebeizhu();
+                    }
+                },{
+                    text:'关闭',
+                    iconCls:'icon-cancel',
+                    handler:function(){
+                    $('#beizhudlg').dialog('close');
+                    }
+                }]"
+		style="width:600px;height:500px;padding:10px;">
+		<textarea id="beizhu" rows="25" cols="85"></textarea>
+		</div>	
+		
 	<script type="text/javascript">
 	function chakanbeizhu(){
 		return '<a href="javascript:void(0);" style=" text-align:center;font-size: 16px;text-decoration:none; width:auto;"><b>备注</b></a>';
 	}
-	
-	
-	
 	
 	function caozuotuanName(val,row){
 	//打开操作明细页面
 		return '<a href="javascript:openCaozuomx('+row.tuanNo+')">'+row.tuanName+'</a>';
 	}
 	function caozuoContextMenu(e, rowIndex, rowData){
+	$('#tuanduimc').attr('value',rowData.tuanNo);
+	$('#team').attr('value',rowData.tuanName);
+	$('#chutuantime').attr('value',rowData.chutuantime);
+	$('#huituantime').attr('value',rowData.huituantime);
 	 e.preventDefault();
 	  $('#caozuomm').menu('show', {
         left:e.pageX,
@@ -237,7 +258,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     function dinggouwudian(){
     $("#caozuodinggouwudian").dialog("open");
     }
+<<<<<<< HEAD
 
+=======
+}
+>>>>>>> branch 'master' of https://github.com/easyhao1314/TravelPlatform.git
 
 
 
