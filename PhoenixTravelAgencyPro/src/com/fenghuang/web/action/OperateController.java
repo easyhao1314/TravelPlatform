@@ -49,6 +49,9 @@ public class OperateController {
 			if(shenpiren!=null && !"".equals(shenpiren)){
 				o.setJiedanren(Long.parseLong(shenpiren));
 			}
+			if(userId!=null && !"".equals(userId)){
+				o.setPaidanren(Long.parseLong(userId));
+			}
 			o.setBeizhu(beizhu);
 			o.setPaidantime(new Date());
 			o.setTuanNo(tuanNo);

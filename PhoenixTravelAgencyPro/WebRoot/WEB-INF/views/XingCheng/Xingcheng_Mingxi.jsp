@@ -137,15 +137,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <input id="can">
         <textarea id="huodongtext" name="message"  style="height:200px; width: 300px;"></textarea>
     </div>
-    
+    <div id="jiaotongchengshidlgmenu" style="padding:2px 0">
+        <table style="width:100%">
+            <tr>
+                <td style="padding-left:2px;">
+                	<a href="javascript:Addjiaotong(':^1')" title="飞机"  style=" height: 20px; width: 20px; margin-top:2px;  display:block;  background-image: url('Image/feiji.png'); float: left;" ></a> 
+                	<a href="javascript:Addjiaotong(':^2')" title="游轮" style=" height: 20px; width: 20px; margin-top:2px;  display:block;  background-image: url('Image/youlun.png'); float: left;"></a>
+                    <a href="javascript:Addjiaotong(':^3')" title="火车" style=" height: 20px; width: 20px; margin-top:2px;  display:block;  background-image: url('Image/huoche.png'); float: left;"></a>
+                    <a href="javascript:Addjiaotong(':^4')" title="居住" style=" height: 20px; width: 20px; margin-top:2px;  display:block;  background-image: url('Image/juzhu.png'); float: left;"></a>
+                    <a href="javascript:Addjiaotong(':^5')" title="巴士" style=" height: 20px; width: 20px; margin-top:2px;  display:block;  background-image: url('Image/bashi.png'); float: left;"></a>
+                </td>
+                <td style="text-align:right;padding-right:2px">
+                    <input id="csselect" class="easyui-searchbox"  data-options="prompt:'在此处搜索城市',searcher:selectchengshi" style="width:150px"></input>
+                </td>
+            </tr>
+        </table>
+        </div>
    
 
 <!-- 设定城市 交通 dlg！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！ -->
-<div id="jiaotongdlg" class="easyui-dialog" title="设定城市和交通工具" style="width:560px;height:360px;padding:10px"
+<div id="csjiaotongdlg" class="easyui-dialog" title="设定城市和交通工具" Toolbar="#jiaotongchengshidlgmenu"  style="width:560px;height:360px;padding:10px"
             data-options="
-                toolbar: '#dlgjiaotongchengshi',
-                buttons: '#dlg-buttons',
-                closed:	  true,
+                closed:true,
                 modal:true,buttons: 
 	 			[{
                     text:'保存',
@@ -166,22 +179,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <input id="chengshijiaotong"  style="display: none;" />
             <input id="chengshijiaotongriid" style="display: none;">
     </div>
-    <div id="dlgjiaotongchengshi" style="padding:2px 0">
-        <table cellpadding="0" cellspacing="0" style="width:100%">
-            <tr>
-                <td style="padding-left:2px;">
-                	<a href="javascript:Addjiaotong(':^1')" title="飞机"  style=" height: 20px; width: 20px; margin-top:2px;  display:block;  background-image: url('Image/feiji.png'); float: left;" ></a> 
-                	<a href="javascript:Addjiaotong(':^2')" title="游轮" style=" height: 20px; width: 20px; margin-top:2px;  display:block;  background-image: url('Image/youlun.png'); float: left;"></a>
-                    <a href="javascript:Addjiaotong(':^3')" title="火车" style=" height: 20px; width: 20px; margin-top:2px;  display:block;  background-image: url('Image/huoche.png'); float: left;"></a>
-                    <a href="javascript:Addjiaotong(':^4')" title="居住" style=" height: 20px; width: 20px; margin-top:2px;  display:block;  background-image: url('Image/juzhu.png'); float: left;"></a>
-                    <a href="javascript:Addjiaotong(':^5')" title="巴士" style=" height: 20px; width: 20px; margin-top:2px;  display:block;  background-image: url('Image/bashi.png'); float: left;"></a>
-                </td>
-                <td style="text-align:right;padding-right:2px">
-                    <input id="csselect" class="easyui-searchbox"  data-options="prompt:'在此处搜索城市',searcher:selectchengshi" style="width:150px"></input>
-                </td>
-            </tr>
-        </table>
-        </div>
+    
         <script type="text/javascript">
         function selectchengshi(getValue){
         var jtapp="";
@@ -261,13 +259,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	$('#chengshijiaotong').val(jtgj);
 	
 	}
+	//打开DLG
 	function chengshijiaotongdlgOpen(riid){
+	
 	$('#chengshijiaotong').val("");
 	jtgj='';
-	openjiaotongdlg();
 	$('#chengshijiaotongriid').val(riid);
-	
 	document.getElementById("showdivdlg").innerHTML="";
+	$('#csjiaotongdlg').dialog('open');
+	
 	
 	}
 	
@@ -276,11 +276,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <script type="text/javascript">
 //页面加载时填充xianlumingxiForm
   $(document).ready(function() {
-  
-  
-  
-  
-  
+  $('#csjiaotongdlg').attr('Toolbar','#jiaotongchengshidlgmenu');
+  	
+	
   
   
   
@@ -293,7 +291,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					dataType : "json",
 					success : function(data) {
 					//循环添加天数
-
+					
 					$('#xianlumingxiForm').form('load',data.rows[0]);
 					
 					xunhuanRicheng('${param.xianid}');
@@ -481,7 +479,7 @@ function closedSearch(){
 	$('#huodongdlg').dialog('close');
 	$('#richengtext').val("");
 	$('#huodongtext').val("");
-	$('#jiaotongdlg').dialog('close');
+	$('#csjiaotongdlg').dialog('close');
 	}
 	function openhuodongDialog(huodong,riid){
 	$('#riid').attr('value',riid);
@@ -490,7 +488,7 @@ function closedSearch(){
 	$('#huodongdlg').dialog('open');
 	}
 	function openjiaotongdlg(){
-	$('#jiaotongdlg').dialog('open');
+	$('#csjiaotongdlg').dialog('open');
 	}
   </script>
   </body>
