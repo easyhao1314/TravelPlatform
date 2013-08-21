@@ -51,7 +51,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	<table  style="width: 400px;">
         	<tr>
         		<td>应付款项： 
-        		<input  name="kxsm" class="easyui-combotree" value="122" data-options="url:'js/demo/combotree/fukuanTree.json',method:'get',required:true" style="width:200px;">
+        		<input id="kxsm"   class="easyui-combotree"  data-options="url:'js/demo/combotree/fukuanTree.json',method:'get',required:true" style="width:200px;">
+    			<input title="款项说明" type="hidden" id="kuanxiang" name="kxsm" class="easyui-validatebox">
     			</td>
         	</tr>
         	<tr>
@@ -67,11 +68,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	<td>备注：<input name="beizhu" class="easyui-validatebox" style="width: 150px;" /></td>
         	</tr>
         	<tr>
-        	<td>团名：<input id="team" name="team" class="easyui-validatebox" style="width: 150px;" /></td>
+        	<td>团名：<input id="team" name="team" value="oooo" class="easyui-validatebox" style="width: 150px;" /></td>
         	</tr>
         	<tr>
         	<td>团队名称：<input id="tuanduimc" name="tuanduimc" class="easyui-validatebox" style="width: 150px;" /></td>
         	</tr>
+        	<tr>
         	<td>发团时间<input id="chutuantime" name="chutuantime" class="easyui-validatebox" style="width: 150px;" /></td>
         	</tr>
         	<tr>
@@ -81,7 +83,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	<td>身份ID：<input id="shenfenid" name="shenfenid" value="3" class="easyui-validatebox" style="width: 150px;" /></td>
         	</tr>
         	<tr>
-        	<td>删除：<input id="shanchu" name="shanchu" shanchu="1" class="easyui-validatebox" style="width: 150px;" /></td>
+        	<td>删除：<input id="shanchu" name="shanchu" value="1" class="easyui-validatebox" style="width: 150px;" /></td>
         	</tr>
         	<tr>
         	<td>发票许可：<input id="fpxk" name="fpxk" value="0" class="easyui-validatebox" style="width: 150px;" /></td>
@@ -235,7 +237,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    	//添加	
 		
 		function caozuozhongxinsave() {
-		alert(1);
+		var val = $('#kxsm').combotree('getText');
+		$('#kuanxiang').val(val);
 			$('#fukuanform').form('submit', {
 				url : 'fenghuang/inserttuanbiao.do',
 				onSubmit : function() {
