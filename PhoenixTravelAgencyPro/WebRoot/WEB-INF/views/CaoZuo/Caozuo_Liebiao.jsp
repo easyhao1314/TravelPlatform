@@ -1,4 +1,4 @@
-iebiao  <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -200,8 +200,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	var param = {
 					"xianluid" : "41"
 				};
-          $.ajax({
-                     url :'fenghuang/selectricheng.do',
+     $.ajax({
+                    url :'fenghuang/selectricheng.do',
 					data :param,
 					dataType : "json",
 					success : function(data) {
@@ -215,8 +215,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						$('#days').append('选择日程：'+days);
 						days = "";
 					}
-	       });
-	   }
+	});
     function dingcan(){
     $("#caozuodingcan").dialog("open");
     }
@@ -238,40 +237,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     function dinggouwudian(){
     $("#caozuodinggouwudian").dialog("open");
     }
-
-
-
-
-
-   	//添加	
-		
-		function caozuozhongxinsave() {
-		var val = $('#kxsm').combotree('getText');
-		$('#kuanxiang').val(val);
-			$('#fukuanform').form('submit', {
-				url : 'fenghuang/inserttuanbiao.do',
-				onSubmit : function() {
-					return $(this).form('validate');
-				},
-				success : function(result) {
-					var result = eval('(' + result + ')');
-					if (result.success) {
-						$.messager.alert("保存成功", "保存成功！", "info");
-						$('#fukuan').dialog('close');
-						$('#caozuoliebiaodg').datagrid('reload');
-					} else {
-						$.messager.alert("保存失败", "保存失败!", "error");
-						$('#caozuoliebiaodg').datagrid('reload');
-					}
-				}
-			});
-		}
-		
-
-
-
-
-
+}
 
 
 
@@ -306,6 +272,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 	</script>
-
+	
+	<script type="text/javascript">
+	
+	</script>
   </body>
 </html>
