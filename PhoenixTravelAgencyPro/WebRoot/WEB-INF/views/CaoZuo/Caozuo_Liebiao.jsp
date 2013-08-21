@@ -196,7 +196,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	function dingche(){
 	$("#caozuodingche").dialog("open");
-					    
+	}				    
 	var param = {
 					"xianluid" : "41"
 				};
@@ -237,7 +237,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     function dinggouwudian(){
     $("#caozuodinggouwudian").dialog("open");
     }
-}
+
 
 
 

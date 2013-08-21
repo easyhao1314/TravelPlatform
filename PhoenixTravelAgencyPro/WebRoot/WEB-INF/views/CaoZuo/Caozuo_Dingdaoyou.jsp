@@ -48,11 +48,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            </tr>
            <tr>
              <td><div class="fitem"><label>团号:</label></td><td><input id="tuanNo" name="tuanNo" class="easyui-validatebox" required="true"></div></td>
-             <td><div class="fitem"><label>导游:</label></td><td><input name="daoyouId" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=15',
-					valueField:'dicNo',
-					textField:'dicName',
-					panelHeight:'auto',
-					editable:false"></div></td>			
+             <td><div class="fitem"><label>导游:</label></td><td><input name="daoyouId" class="easyui-combobox" data-options="url:'fenghuang/getDaoyouComboboxs.do',
+					valueField:'id',
+					textField:'name',
+					panelHeight:'auto'"></div></td>			
           </tr>
            <tr>
           <td><div class="fitem"><label>备注:</label></td><td colspan="3"><input id=tuanNo name="beizhu" class="easyui-validatebox" width="70" required="true"></div></td>		

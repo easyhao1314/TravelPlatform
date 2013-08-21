@@ -211,5 +211,20 @@ public class ZyDaoyouController {
 				}
 				return null;
 		}
+		@RequestMapping("fenghuang/getDaoyouComboboxs.do")
+		@ResponseBody		
+			
+		public List<Map<String, Object>> getDaoyouComboboxs(HttpServletRequest request,
+				HttpServletResponse response){
+			
+			try {
+				return izds.getDaoyouComboboxs();
+				} catch (Exception e) {
+				e.printStackTrace();
+			}		
+			return null;
+		}
+		
+		
 
 }

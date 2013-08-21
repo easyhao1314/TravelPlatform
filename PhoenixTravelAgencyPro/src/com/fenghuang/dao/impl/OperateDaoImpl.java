@@ -1,5 +1,8 @@
 package com.fenghuang.dao.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +24,8 @@ public class OperateDaoImpl extends BaseDao implements IOperateDao {
 	@Override
 	public boolean AddOperate(Operate o) {
 		// TODO Auto-generated method stub
-		String sql ="insert into Operate (tuanNo,tuanName,kehuID,kehuName,chutuantime,huituantime,paidanren,jiedanren,jinzhan,paidantime,operateType,operatestate) values(?,?,?,?,?,?,?,?,?,?,?,?)";
-		int sum = this.update(sql,o.getTuanNo(),o.getTuanName(),o.getKehuID(),o.getKehuName(),o.chutuantime,o.huituantime,o.getPaidanren(),o.getJiedanren(),o.getJinzhan(),o.getPaidantime(),o.getOperateType(),o.getOperatestate());
+		String sql ="insert into Operate (tuanNo,tuanName,kehuID,kehuName,chutuantime,huituantime,paidanren,jiedanren,jinzhan,paidantime,operateType,operatestate,beizhu) values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		int sum = this.update(sql,o.getTuanNo(),o.getTuanName(),o.getKehuID(),o.getKehuName(),o.chutuantime,o.huituantime,o.getPaidanren(),o.getJiedanren(),o.getJinzhan(),o.getPaidantime(),o.getOperateType(),o.getOperatestate(),o.getBeizhu());
 		return sum>0;
 	}
 
@@ -30,7 +33,24 @@ public class OperateDaoImpl extends BaseDao implements IOperateDao {
 	@Override
 	public boolean UpOperate(Operate o) {
 		// TODO Auto-generated method stub
-		return false;
+		
+		String sql = "UPDATE Operate SET operatestate=+1-1";
+		List list = new ArrayList();
+		StringBuffer sb = new StringBuffer(sql);
+		if(o.getBeizhu()!=null && !"".equals(o.getBeizhu())){
+			sb.append(",beizhu=?");
+			list.add(o.getBeizhu());
+		}
+		if(o.getJinzhan()!=0){
+			sb.append(",jinzhan=?");
+			list.add(o.getJinzhan());
+		}
+		if(o.getOid()!=0){
+			sb.append(" where oid = ?");
+			list.add(o.getOid());
+		}
+		int num = this.update(sb.toString(),list.toArray());
+		return num>0;
 	}
 
 	@Override

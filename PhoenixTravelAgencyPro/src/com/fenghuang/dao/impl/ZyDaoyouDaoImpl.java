@@ -84,4 +84,12 @@ public class ZyDaoyouDaoImpl extends BaseDao implements IZyDaoyouDao{
 		return null;
 	}
 
+	@Override
+	public List<Map<String, Object>> getDaoyouComboboxs()throws Exception {
+		String sql="Select id,name from daoyou";
+		List<Map<String, Object>> daoyoulist=this.queryForList(sql);
+		return daoyoulist;
+	}
+
+
 }

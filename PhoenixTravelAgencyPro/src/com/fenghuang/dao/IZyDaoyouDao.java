@@ -19,7 +19,7 @@ public interface IZyDaoyouDao {
 	public boolean daoyouUpdate(Daoyou jd) throws Exception;
 	//模糊查询 
 	public  Pagination<Daoyou> daoyouSelectLike(int currentPage,int numPerPage,String name,int chengshi) throws Exception;
-
+	public List<Map<String, Object>> getDaoyouComboboxs()throws Exception;
 }
 
 

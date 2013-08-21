@@ -52,4 +52,10 @@ public class ZyDaoyouServiceImpl implements IZyDaoyouService{
 		return izdd.daoyouSelectLike(currentPage, numPerPage, name, chengshi);
 	}
 
+	@Override
+	public List<Map<String, Object>> getDaoyouComboboxs() throws Exception {
+		// TODO Auto-generated method stub
+		return izdd.getDaoyouComboboxs();
+	}
+
 }
