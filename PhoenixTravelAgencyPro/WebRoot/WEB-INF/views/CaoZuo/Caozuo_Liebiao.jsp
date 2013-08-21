@@ -217,7 +217,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	function dingche(){
 	$("#caozuodingche").dialog("open");
-	}				    
+					    
 	var param = {
 					"xianluid" : "41"
 				};
@@ -237,6 +237,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						days = "";
 					}
 	});
+	}
     function dingcan(){
     $("#caozuodingcan").dialog("open");
     }
@@ -254,16 +255,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				         href : url,
 				      //  closable : true,
 				         });
-    }
+         }
+    
     function dinggouwudian(){
     $("#caozuodinggouwudian").dialog("open");
     }
-<<<<<<< HEAD
-
-=======
-}
->>>>>>> branch 'master' of https://github.com/easyhao1314/TravelPlatform.git
-
 
 
 
