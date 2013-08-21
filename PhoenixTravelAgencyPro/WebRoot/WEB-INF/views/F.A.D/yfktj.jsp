@@ -41,7 +41,7 @@
 	    	
 	    		
 	    	</table>
-	    	 <div class="easyui-panel" title="付款审批"
+	    	 <div class="easyui-panel" title="应付款统计"
 		style="height:450px;width: auto;" toolbar="#currencyDatagridtoolbar">	
 	<table id="dgyfktj" class="easyui-datagrid"
 		data-options="url:'fenghuang/caiwuqrfkselect.do?ysyfid=2&shenfenid=3',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
@@ -60,11 +60,11 @@
 				<th data-options="field:'yfk',editor:'numberbox'" width="50">应付款</th>
 				<th data-options="field:'yifu',editor:'numberbox'" width="50">已付</th>
 				<th data-options="field:'09',formatter:yfktjjisuan" width="50">未付</th>
-				<th data-options="field:'ykfp',editor:'numberbox'" width="50">已开发票</th>
-				<th data-options="field:'fpxk',editor:'numberbox'" width="50">发票许可</th>
+				<th data-options="field:'ykfp',formatter:yfktjykfp" width="50">已开发票</th>
+				<th data-options="field:'fpxk',formatter:yfktjfpxk" width="50">发票许可</th>
 				
 				<th data-options="field:'aaa',editor:'numberbox'" width="50">销售确认</th>
-			    <th data-options="field:'confirmed',editor:'numberbox'" width="50">财务确认</th>
+			    <th data-options="field:'confirmed',formatter:yfktjconfirmed" width="50">财务确认</th>
 			    <th data-options="field:'fuzeren',editor:'numberbox'" width="50">责任人</th>
 			</tr>
 		</thead>
@@ -72,6 +72,35 @@
 	</div>
 	
 	<script type="text/javascript">
+	
+	 //备注
+		   function yfktjconfirmed(val,row){
+		   var shouke=null;
+		   	 if(row.confirmed==1){shouke="未审核";}
+		   	 if(row.confirmed==2){shouke="已审核";}
+		     return '<div onclick="shoukeclick(event,'+row.tuanNo+')" style="width: auto;">'+shouke+'</div>';
+		   }
+	
+	
+	
+	  //备注
+		   function yfktjykfp(val,row){
+		   var shouke=null;
+		   	 if(row.ykfp==0){shouke="未审核";}
+		   	 if(row.ykfp==1){shouke="已审核";}
+		     return '<div onclick="shoukeclick(event,'+row.tuanNo+')" style="width: auto;">'+shouke+'</div>';
+		   }
+	
+	  //备注
+		   function yfktjfpxk(val,row){
+		   var shouke=null;
+		   	 if(row.fpxk==0){shouke="未审核";}
+		   	 if(row.fpxk==1){shouke="已审核";}
+		     return '<div onclick="shoukeclick(event,'+row.tuanNo+')" style="width: auto;">'+shouke+'</div>';
+		   }
+	
+	
+	
 	function yfktjjisuan(val,row){
       var a=parseInt(row.yfk);
         var b=parseInt(row.yifu);

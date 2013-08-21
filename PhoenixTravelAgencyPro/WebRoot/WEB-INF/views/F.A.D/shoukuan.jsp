@@ -54,7 +54,7 @@
 	    	<a href="javascript:shoukuanopen(7);" class="easyui-linkbutton" iconCls="icon-add" plain="true">审批确认</a>  
 		    <a href="javascript:shoukuanopen(6);" class="easyui-linkbutton" iconCls="icon-add" plain="true">取消付款</a>
 	    	
-	 <div class="easyui-panel" title="付款审批"
+	 <div class="easyui-panel" title="收款确认"
 		style="height:450px;width: auto;" toolbar="#currencyDatagridtoolbar">	
 	<table id="shoukuandg" class="easyui-datagrid"
 		data-options="url:'fenghuang/caiwuqrfkselect.do?ysyfid=1&&caiwuid=6',border:false,singleSelect:true,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"

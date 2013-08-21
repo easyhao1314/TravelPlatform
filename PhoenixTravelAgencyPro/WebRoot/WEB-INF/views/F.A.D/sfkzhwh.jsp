@@ -26,7 +26,7 @@
 
 <body>
 	<!-- 如果在正式开发环境下 url可以为后台的请求，地址 -->
-	<div class="easyui-panel" title="团队费用"
+	<div class="easyui-panel" title="首付款账号维护"
 		style="height:530px;width: auto;" toolbar="#currencyDatagridtoolbar">	
 	<table id="sfkzhwhdg" class="easyui-datagrid"
 		data-options="url:'fenghuang/skzhanghaoselect.do',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"

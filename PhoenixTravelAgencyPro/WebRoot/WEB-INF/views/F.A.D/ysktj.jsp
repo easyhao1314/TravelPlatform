@@ -41,7 +41,7 @@
 	    	
 	    		
 	    	</table>
-	    	 <div class="easyui-panel" title="付款审批"
+	    	 <div class="easyui-panel" title="应收款统计"
 		style="height:450px;width: auto;" toolbar="#currencyDatagridtoolbar">	
 	<table id="dgysktjselect" class="easyui-datagrid"
 		data-options="url:'fenghuang/caiwuqrfkselect.do?ysyfid=1',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"

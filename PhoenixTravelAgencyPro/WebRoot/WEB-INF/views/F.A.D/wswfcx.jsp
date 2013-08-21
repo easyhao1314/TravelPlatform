@@ -41,7 +41,7 @@
 	    	
 	    		
 	    	</table>
-	  <div class="easyui-panel" title="付款审批"
+	  <div class="easyui-panel" title="未收未付统计"
 		style="height:500px;width: auto;" toolbar="#currencyDatagridtoolbar">	
 	<table id="wswfcxdg" class="easyui-datagrid"
 		data-options="url:'fenghuang/caiwuqrfkselect.do',border:false,singleSelect:true,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
