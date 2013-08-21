@@ -44,7 +44,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</thead>
 	</table>
 	<!-- 付款window -->
-    <div id="fukuan" class="easyui-window" title="应付款窗口" data-options="iconCls:'icon-save'" style="width:500px;height:300px;padding:10px;">
+    <div id="fukuan" class="easyui-window" title="应付款窗口" data-options="iconCls:'icon-save',closed:true" style="width:500px;height:300px;padding:10px;">
         <form id="fukuanform" action="">
         	<table  style="width: 400px;">
         	<tr>
@@ -129,6 +129,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    
 	</div>
 		
+	<div id="beizhudlg"  class="easyui-dialog" title="订车明细"
+		data-options="modal:true,closed:true,iconCls:'icon-save', modal:true,buttons: 
+	 			[{
+                    text:'保存',
+                    iconCls:'icon-ok',
+                    handler:function(){
+                    savebeizhu();
+                    }
+                },{
+                    text:'关闭',
+                    iconCls:'icon-cancel',
+                    handler:function(){
+                    $('#beizhudlg').dialog('close');
+                    }
+                }]"
+		style="width:600px;height:500px;padding:10px;">
+		<textarea id="beizhu" rows="25" cols="85"></textarea>
+		</div>	
+		
 	<script type="text/javascript">
 	
 	function jinzhan(val,row){
@@ -145,7 +164,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    	         $('#mmjinzhan').menu('show', {
 				left : e.pageX,
 				top : e.pageY
-			});   
+			});
    	      }
 	function updatejinzhan(jinzhan){
 	var oid = $('#oid').val();
@@ -155,6 +174,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    	      		data:oid,
    	      		datatype:"json",
    	      		success:function(data){
+   	      		
    	      			$("#caozuoliebiaodg").datagrid("reload");
    	      		},
    	      		error : function() {
@@ -169,9 +189,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	
 	
-	function chakanbeizhu(){
-		return '<a href="javascript:void(0);" style=" text-align:center;font-size: 16px;text-decoration:none; width:auto;"><b>备注</b></a>';
+	function chakanbeizhu(val,row){
+		return '<a href="javascript:openbeizhudlg('+row.oid+',\''+row.beizhu+'\');" style=" text-align:center;font-size: 16px;text-decoration:none; width:auto;"><b>查看备注</b></a>';
 	}
+	function openbeizhudlg(oid,beizhu){
+		var a=document.getElementById("beizhu");
+		a.value=beizhu;
+		$('#oid').attr('value',oid);
+		$('#beizhudlg').dialog('open');
+		
+	}
+	//保存备注 
+	function savebeizhu(){
+		var oid = $('#oid').val();
+		var beizhu = $('#beizhu').val();
+		var url = "fenghuang/updateOperate.do?oid="+oid+"&beizhu="+beizhu;
+   	      	$.ajax({
+   	      		url:url,
+   	      		data:oid,
+   	      		datatype:"json",
+   	      		success:function(data){
+   	      		$('#beizhudlg').dialog('close');
+   	      				$.messager.alert("保存成功", "保存成功!", "info");
+   	      			$("#caozuoliebiaodg").datagrid("reload");
+   	      		},
+   	      		error : function() {
+						$.messager.alert("修改失败", "服务器请求失败!", "error");
+					}
+   	      	
+   	      	});
+	}
+	
 	function caozuotuanName(val,row){
 	//打开操作明细页面
 		return '<a href="javascript:openCaozuomx('+row.tuanNo+')">'+row.tuanName+'</a>';
