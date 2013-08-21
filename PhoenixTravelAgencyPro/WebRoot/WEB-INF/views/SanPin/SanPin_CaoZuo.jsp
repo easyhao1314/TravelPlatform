@@ -31,6 +31,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <div id="tb">
 		<a href="javascript:Select();" class="easyui-linkbutton"
 			iconCls="icon-save" plain="true">查询</a>
+		<a href="javascript:sanpinupdate();" class="easyui-linkbutton"
+			iconCls="icon-edit" plain="true">修改</a>
 	</div>
 <table id="dg" class="easyui-datagrid"
 		data-options="url:'fenghuang/Sanpinliebiao.do',border:false,singleSelect:true,fit:true,fitColumns:true, onClickRow: onClickRow,onRowContextMenu: sanpincaozuoMenu"
@@ -51,12 +53,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</table>
 	<div id="searchDic" class="easyui-dialog" title="查询业务字段"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
-		style="width:500px;height:200px;padding:10px;">
-		<form id="selectFrome" method="post">
-			<table align="left">
+		style="width:500px;height:200px;padding:10px;"><div align="left"> 
+		</div><form id="selectFrome" method="post"><div align="left"> 
+			</div><table align="left">
 				<tr>
-					<td><div class="fitem">
-							<label>出团日期:</label>
+					<td><div class="fitem"><div align="left"> 
+							<label>出团日期:</label></div>
 					</td>
 					<td><input id="searchgroupdate" name="groupdate" class="easyui-datebox" ></input>
 						</div></td>
@@ -91,7 +93,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<td colspan="4s" align="center"><a
 						href="javascript:searchFormSubmit();" class="easyui-linkbutton"
 						iconCls="icon-ok">查询</a> <a href="javascript:closedSearch();"
-						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
+						class="easyui-linkbutton" iconCls="icon-cancel">取消</a>
+						
+						</td>
 				</tr>
 			</table>
 			<input id="searchDicType" name="dicType" type="hidden">
@@ -151,7 +155,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	
 	
-	
+	<div id="updatesanpinwindow" class="easyui-window" title="Modal Window" data-options="modal:true,closed:true,iconCls:'icon-save'" style="width:500px;height:200px;padding:10px;">
+        <form id="upsanpinform" action="">
+        	<table>
+        		<tr><td>团号</td><td><input name="tuanNo" class="easyui-validatebox" /></td><td>团名</td><td><input name="tuanName" class="easyui-validatebox" /></td></tr>
+        		<tr><td>出团日期</td><td><input name="groupdate" class="easyui-validatebox" /></td><td>回团日期</td><td><input name="Tourdate" class="easyui-validatebox" /></td></tr>
+        		<tr><td>出发城市</td><td><input name="" class="easyui-validatebox" /></td><td>终点城市</td><td><input name="" class="easyui-validatebox" /></td></tr>
+        		<tr><td>目标人群</td><td><input name="" class="easyui-validatebox" /></td><td>航空公司</td><td><input name="" class="easyui-validatebox" /></td></tr>
+        		<tr><td>地域类型</td><td><input name="" class="easyui-validatebox" /></td><td>目标人群</td><td><input name="" class="easyui-validatebox" /></td></tr>
+        		<tr><td>去程航班</td><td><input name="" class="easyui-validatebox" /></td><td>回程航班</td><td><input name="" class="easyui-validatebox" /></td></tr>
+        		<tr><td>产品类型</td><td><input name="" class="easyui-validatebox" /></td><td>产品品牌</td><td><input name="" class="easyui-validatebox" /></td></tr>
+        		<tr><td>酒店标准</td><td><input name="" class="easyui-validatebox" /></td><td>用餐标准</td><td><input name="" class="easyui-validatebox" /></td></tr>
+        	</table>
+        </form>
+    </div>
 	
 	
     </div>
@@ -160,6 +177,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div data-options="iconCls:'icon-edit'" onClick="zhuanjidiao()">转到计调报价</div>
 	</div>
 	<script type="text/javascript">
+	function sanpinupdate(){
+		var row = $("#dg").datagrid("getSelected");	
+		if(row==null){return;}
+		$('#updatesanpinwindow').window('open');
+		$('#upsanpinform').form('load',row);
+		alert(row.tuanNo);
+	}
+	
+	
+	
+	
 	function addjidiao(){
 		var row = $("#dgUsers").datagrid("getSelected");
 			if(row==null){return;}

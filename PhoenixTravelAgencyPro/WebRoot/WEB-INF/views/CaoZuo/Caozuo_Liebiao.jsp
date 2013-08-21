@@ -32,7 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<th data-options="field:'oid',hidden:true" width="20">编号</th>
 				<th data-options="field:'tuanNo'" width="20">团号</th>
 				<th data-options="field:'tuanName',formatter:caozuotuanName" width="20">团名</th>
-				<th data-options="field:'kehuID'" width="20">客户ID</th>
+				<th data-options="field:'beizhu',formatter:chakanbeizhu" width="20">备注</th>
 				<th data-options="field:'kehuName'" width="20">客户名称</th>
 				<th data-options="field:'chutuantime'" width="20">出团日期</th>
 				<th data-options="field:'huituantime'" width="20">回团日期</th>
@@ -95,7 +95,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	<td>应收应付id：<input id="ykfp" name="ysyfid" value="2" class="easyui-validatebox" style="width: 150px;" /></td>
         	</tr>
         	<tr>
-        	<td>财务id：<input id="caiwuid" name="caiwuid" value="1" class="easyui-validatebox" style="width: 150px;" /></td>
+        	<td>财务id：<input id="caiwuid" name="caiwuid" value="1" class="easyui-validatebox" style="width: 150px;" />
+        	<a href="javascript:void(0);" style="font-size: 16px;text-decoration:none; text-align:center;"><b>备注</b></a>
+        	</td>
         	</tr>
         	<tr>
 					<td colspan="4s" align="center"><a
@@ -143,7 +145,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 		
 	<script type="text/javascript">
-
+	function chakanbeizhu(){
+		return '<a href="javascript:void(0);" style=" text-align:center;font-size: 16px;text-decoration:none; width:auto;"><b>备注</b></a>';
+	}
+	
+	
+	
+	
 	function caozuotuanName(val,row){
 	//打开操作明细页面
 		return '<a href="javascript:openCaozuomx('+row.tuanNo+')">'+row.tuanName+'</a>';
