@@ -35,7 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			iconCls="icon-edit" plain="true">修改</a>
 	</div>
 <table id="dg" class="easyui-datagrid"
-		data-options="url:'fenghuang/Sanpinliebiao.do',border:false,singleSelect:true,fit:true,fitColumns:true, onClickRow: onClickRow,onRowContextMenu: sanpincaozuoMenu"
+		data-options="url:'fenghuang/Sanpinliebiao.do?fabustate=1',border:false,singleSelect:true,fit:true,fitColumns:true, onClickRow: onClickRow,onRowContextMenu: sanpincaozuoMenu"
 		pagination="true" toolbar="#tb">
 		<thead>
 			<tr>
@@ -87,7 +87,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					panelHeight:'auto',
 					editable:false 
 	">
-						</div></td>
+						</td>
 				</tr>
 				<tr>
 					<td colspan="4s" align="center"><a
@@ -147,7 +147,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<input id="tuanName" title="团名" type="hidden" name="tuanName" class="easyui-validatebox" style="width: 290px;" >
 				<input id="chutime" title="出团时间" type="hidden" name="chutuantime" class="easyui-validatebox" style="width: 290px;" >
 				<input id="huitime" title="回团时间" type="hidden" name="huituantime" class="easyui-validatebox" style="width: 290px;" >
-				<input id="userId" title="提交人（有问题）" type="hidden" name="userId" class="easyui-validatebox" style="width: 290px;" >
+				<input id="userId" title="提交人" type="hidden" name="userId" class="easyui-validatebox" style="width: 290px;" >
 				<input id="shenpiren" title="审批人" type="hidden" name="shenpiren" class="easyui-validatebox" style="width: 290px;" >
 				</form>
 			</div>
@@ -218,7 +218,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	$('#chutime').attr('value',rowData.groupdate);
 	$('#huitime').attr('value',rowData.Tourdate);
 	$('#tuanName').attr('value',rowData.tuanName);
-
+	$('#userId').attr('value','${sessionScope.userId}');
+	alert('${sessionScope.userId}');
 		 e.preventDefault();
          $('#mmsanpincaozuo').menu('show', {
         left:e.pageX,
