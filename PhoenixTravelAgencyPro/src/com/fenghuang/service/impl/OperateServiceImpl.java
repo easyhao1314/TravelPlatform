@@ -14,13 +14,13 @@ public class OperateServiceImpl implements IOperateService {
 	@Override
 	public boolean AddOperate(Operate o) {
 		// TODO Auto-generated method stub
-		return false;
+		return idao.AddOperate(o);
 	}
 
 	@Override
 	public boolean UpOperate(Operate o) {
 		// TODO Auto-generated method stub
-		return false;
+		return idao.UpOperate(o);
 	}
 
 	@Override
