@@ -69,7 +69,33 @@ public class OperateController {
 		result.put("success", isSuccess);
 		return result;
 	}
-	
+	@RequestMapping("fenghuang/updateOperate.do")
+	@ResponseBody
+	public Map<String, Object> updateOperate(HttpServletRequest request,
+			HttpServletResponse response,
+			String jinzhan,String beizhu,String oid){
+			
+			Operate o = new Operate();
+			if(jinzhan!=null && !"".equals(jinzhan)){
+			o.setJinzhan(Integer.parseInt(jinzhan));
+			}
+			o.setBeizhu(beizhu);
+			if(oid!=null && !"".equals(oid)){
+				o.setOid(Integer.parseInt(oid));
+			}
+			boolean isSuccess = false;
+			Map<String,Object> result = new HashMap<String, Object>();
+		try {
+			is.UpOperate(o);
+			isSuccess=true;
+		} catch (Exception e) {
+			isSuccess=false;
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		result.put("success", isSuccess);
+		return result;
+	}
 	@RequestMapping("fenghuang/Operateinfo.do")
 	@ResponseBody
 	public Map<String,Object> Operateinfo(HttpServletRequest request,HttpServletResponse response,

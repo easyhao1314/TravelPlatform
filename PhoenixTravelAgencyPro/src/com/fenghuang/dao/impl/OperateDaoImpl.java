@@ -1,5 +1,8 @@
 package com.fenghuang.dao.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +33,23 @@ public class OperateDaoImpl extends BaseDao implements IOperateDao {
 	@Override
 	public boolean UpOperate(Operate o) {
 		// TODO Auto-generated method stub
-		
-		return false;
+		String sql = "UPDATE Operate SET operatestate=+1-1";
+		List list = new ArrayList();
+		StringBuffer sb = new StringBuffer(sql);
+		if(o.getBeizhu()!=null && !"".equals(o.getBeizhu())){
+			sb.append(",beizhu=?");
+			list.add(o.getBeizhu());
+		}
+		if(o.getJinzhan()!=0){
+			sb.append(",jinzhan=?");
+			list.add(o.getJinzhan());
+		}
+		if(o.getOid()!=0){
+			sb.append(" where oid = ?");
+			list.add(o.getOid());
+		}
+		int num = this.update(sb.toString(),list.toArray());
+		return num>0;
 	}
 
 	@Override
