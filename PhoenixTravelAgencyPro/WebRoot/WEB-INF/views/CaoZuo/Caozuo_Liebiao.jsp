@@ -43,7 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				}" width="20">接单人</th>
 				<th data-options="field:'jinzhan',formatter:jinzhan" width="20">进展</th>
 				<th data-options="field:'paidantime'" width="20">派单日期</th>
-				<th data-options="field:'operatestate'" width="20">操作状态</th>
+				<th data-options="field:'operateType',formatter:operatetype" width="20">操作类型</th>
 			</tr>
 		</thead>
 	</table>
@@ -114,11 +114,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div id="mmjinzhan" class="easyui-menu" style="width:120px;">
 		<input id="oid" style="display: none;" />
 		<div data-options="iconCls:'icon-edit'" onClick="updatejinzhan(2)">全部完成</div>
+		<div data-options="iconCls:'icon-edit'" onClick="updatejinzhan(3)">完成报价</div>
 	</div>
 	 
 	  <div id="caozuodingche"  class="easyui-dialog" title="订车明细"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
-		style="width:600px;height:500px;padding:10px;"> 
+		style="width:600px;height:500px;padding:10px;">
 		<div id="days"></div>
 		
 		  <form id="caozuodingcheForm" method="post">
@@ -158,6 +159,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	if(row.jinzhan==2){
 		jinzhan = "全部完成";
+	}
+	if(row.jinzhan==3){
+		jinzhan = "完成报价";
 	}
 	
 	return '<div onclick="shoukeclick(event,\''+row.oid+'\')" style="width: auto;">'+jinzhan+'</div>';
@@ -341,7 +345,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			});
 		}
 		
-
+function operatetype(value,row){
+							var type = null;
+							if(row.operateType==2){
+								type="散拼";
+							}
+							return type;
+				}
 
 
 

@@ -55,7 +55,7 @@ public class Operate {
     * 
     * @pdOid 690b16fe-869f-4c1c-9ba0-3e369f18400c */
    public java.util.Date paidantime;
-   /** 订单类型   1、订房 2、订车3、订导游4、购物点
+   /** 订单类型   1、单团 2、散拼
     * 
     * @pdOid 8fa2e367-4ec4-4204-a3a4-445f5e9f4529 */
    public int operateType;

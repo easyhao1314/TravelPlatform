@@ -149,6 +149,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<input id="huitime" title="回团时间" type="hidden" name="huituantime" class="easyui-validatebox" style="width: 290px;" >
 				<input id="userId" title="提交人" type="hidden" name="userId" class="easyui-validatebox" style="width: 290px;" >
 				<input id="shenpiren" title="审批人" type="hidden" name="shenpiren" class="easyui-validatebox" style="width: 290px;" >
+				<input id="operateType" title="操作类型" type="hidden" name="operateType" class="easyui-validatebox" style="width: 290px;" >
 				</form>
 			</div>
 		</div>
@@ -219,6 +220,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	$('#huitime').attr('value',rowData.Tourdate);
 	$('#tuanName').attr('value',rowData.tuanName);
 	$('#userId').attr('value','${sessionScope.userId}');
+	$('#operateType').attr('value',2);
 	alert('${sessionScope.userId}');
 		 e.preventDefault();
          $('#mmsanpincaozuo').menu('show', {
