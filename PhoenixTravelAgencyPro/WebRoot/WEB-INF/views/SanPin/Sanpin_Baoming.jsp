@@ -109,11 +109,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<a id="tuituan" onclick="sanpintuituan(this)" class="easyui-linkbutton"
 			iconCls="icon-remove" plain="true">退团审批</a>&nbsp;&nbsp;|
 	<a id="baoming" onclick="sanpintuituan(this)" class="easyui-linkbutton"
-			iconCls="icon-remove" plain="true">报名审批</a>&nbsp;&nbsp;|
-	<a href="javascript:Select();" class="easyui-linkbutton"
-			iconCls="icon-remove" plain="true">报名确认</a>&nbsp;&nbsp;|
-	<a href="javascript:Select();" class="easyui-linkbutton"
-			iconCls="icon-remove" plain="true">取消确认</a>
+			iconCls="icon-remove" plain="true">报名审批</a>
 	
 	</div>
 	

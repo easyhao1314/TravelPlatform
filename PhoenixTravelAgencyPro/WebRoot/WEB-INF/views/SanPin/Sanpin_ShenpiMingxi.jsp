@@ -138,9 +138,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		 toolbar="#caozuotb">
 		<thead>
 			<tr>
+				<th data-options="field:'bmid'" width="20">客户编号</th>
 				<th data-options="field:'kehuid'" width="20">客户编号</th>
 				<th data-options="field:'kehuname'" width="20">姓名</th>
-				<th data-options="field:'beizhu'" width="20">备注</th>
 				<th data-options="field:'sex', formatter:function(value,row){
 	var sexinfo = '女';
 	if(row.sex=15){
@@ -192,11 +192,42 @@ return tuituanshenpi;
 	}
 return zhuantuanshenpi;
 }" width="20">转团审批</th>
-				<th data-options="field:'beizhu'" width="20">备注</th>
+				<th data-options="field:'beizhu',formatter:shenpicaozuo" width="20">操作</th>
 		</thead>
 	</table>
 	</div>	
   <script type="text/javascript">
+ function shenpicaozuo(){
+  	return '<a href="javascript:updateshenpi(2);" style="text-decoration:none; width:auto;">通过</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:updateshenpi(3);" style="text-decoration:none; width:auto;">驳回</a>';
+  	}
+  	function updateshenpi(jieguo){
+  		alert('${param.abmid}');
+  		alert(jieguo);
+  		
+  		var url = "fenghuang/updatebaomingshenpi.do?bmid="+'${param.abmid}';
+  		if('${param.shenpitype}'==2){url+="&zhuantuan="+jieguo;}
+  		if('${param.shenpitype}'==1){url+="&tuituan="+jieguo;}
+  		if('${param.shenpitype}'==3){url+="&baoming="+jieguo;}
+  		
+  		$.ajax({
+  			url : url,
+					data : '${param.abmid}',
+					dataType : "json",
+					success : function(data) {
+						if (data.success) {
+							$.messager.alert("成功", "审批通过！", "info");
+							$("#caozuodg").datagrid('reload');
+						} else {
+							$.messager.alert("错误", "审批失败!", "error");
+						}
+					},
+					error : function() {
+						$.messager.alert("失败", "服务器请求失败!", "error");
+					}
+  		});  		
+  	}
+  	
+  	
   $(document).ready(function() {
 	shenpituanload();
 	
