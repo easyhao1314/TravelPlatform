@@ -35,16 +35,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<th data-options="field:'beizhu',formatter:chakanbeizhu" width="20">备注</th>
 				<th data-options="field:'chutuantime'" width="20">出团日期</th>
 				<th data-options="field:'huituantime'" width="20">回团日期</th>
-				<th data-options="field:'paidanren'" width="20">派单人</th>
-				<th data-options="field:'jiedanren'" width="20">接单人</th>
+				<th data-options="field:'paidanren',formatter:function(value,row){
+							return row.paidan;
+				}" width="20">派单人</th>
+				<th data-options="field:'jiedanren',formatter:function(value,row){
+							return row.jiedan;
+				}" width="20">接单人</th>
 				<th data-options="field:'jinzhan',formatter:jinzhan" width="20">进展</th>
 				<th data-options="field:'paidantime'" width="20">派单日期</th>
-				<th data-options="field:'operatestate'" width="20">操作状态</th>
+				<th data-options="field:'operateType',formatter:operatetype" width="20">操作类型</th>
 			</tr>
 		</thead>
 	</table>
 	<!-- 付款window -->
-    <div id="fukuan" class="easyui-window" title="应付款窗口" data-options="iconCls:'icon-save',closed:true" style="width:500px;height:300px;padding:10px;">
+	<div id="fukuantt">
+        <a href="javascript:void(0)" class="icon-add" onclick="javascript:caozuozhongxinsave()"></a>
+        
+    </div>
+	
+	
+    <div id="fukuan" class="easyui-window" title="应付款窗口" data-options="iconCls:'icon-save',closed:true,tools:'#fukuantt'" style="width:500px;height:300px;padding:10px;">
         <form id="fukuanform" action="">
         	<table  style="width: 400px;">
         	<tr>
@@ -80,13 +90,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	<input id="chutuantime" type="hidden" name="chutuantime" class="easyui-validatebox" style="width: 150px;" />
         	</td>
         	</tr>
-        	
-        	<tr>
-					<td colspan="4s" align="center"><a
-						href="javascript:caozuozhongxinsave();" class="easyui-linkbutton"
-						iconCls="icon-ok">确认</a> <a href="javascript:closedSearch();"
-						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
-				</tr>
         	</table>
         </form>
         
@@ -111,11 +114,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div id="mmjinzhan" class="easyui-menu" style="width:120px;">
 		<input id="oid" style="display: none;" />
 		<div data-options="iconCls:'icon-edit'" onClick="updatejinzhan(2)">全部完成</div>
+		<div data-options="iconCls:'icon-edit'" onClick="updatejinzhan(3)">完成报价</div>
 	</div>
 	 
 	  <div id="caozuodingche"  class="easyui-dialog" title="订车明细"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
-		style="width:600px;height:500px;padding:10px;"> 
+		style="width:600px;height:500px;padding:10px;">
 		<div id="days"></div>
 		
 		  <form id="caozuodingcheForm" method="post">
@@ -155,6 +159,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	if(row.jinzhan==2){
 		jinzhan = "全部完成";
+	}
+	if(row.jinzhan==3){
+		jinzhan = "完成报价";
 	}
 	
 	return '<div onclick="shoukeclick(event,\''+row.oid+'\')" style="width: auto;">'+jinzhan+'</div>';
@@ -339,7 +346,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			});
 		}
 		
-
+function operatetype(value,row){
+							var type = null;
+							if(row.operateType==2){
+								type="散拼";
+							}
+							return type;
+				}
 
 
 
