@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fenghuang.entiey.Baomingshenpi;
+import com.fenghuang.entiey.Richeng;
 import com.fenghuang.service.IBaomingshenpiService;
 import com.fenghuang.util.DateJsonValueProcessor;
 import com.fenghuang.util.Pagination;
@@ -108,6 +109,37 @@ public class BaomingshenpiController {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	@RequestMapping("fenghuang/updatebaomingshenpi.do")
+	@ResponseBody
+	public Map<String, Object> updatericheng(HttpServletRequest request,HttpServletResponse response,
+			String bmid,String zhuantuan,String baoming,String tuituan
+			){
+		boolean isSuccess = false;
+		Map<String,Object> result = new HashMap<String, Object>();	
+		Baomingshenpi b = new Baomingshenpi();
+		if(bmid!=null && !"".equals(bmid)){
+			b.setBmid(Long.parseLong(bmid));
+		}
+		if(baoming!=null && !"".equals(baoming)){
+		b.setBaomingsp(Integer.parseInt(baoming));
+		}
+		if(zhuantuan!=null && !"".equals(zhuantuan)){
+			b.setZhuantuanshenpi(Integer.parseInt(zhuantuan));
+		}
+		if(tuituan!=null && !"".equals(tuituan)){
+			b.setTuituanshenpi(Integer.parseInt(tuituan));
+		}
+		try {
+			is.updatebaoming(b);
+			isSuccess=true;
+		} catch (Exception e) {
+			isSuccess=false;
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		result.put("success", isSuccess);
+		return result;
 	}
 	
 }

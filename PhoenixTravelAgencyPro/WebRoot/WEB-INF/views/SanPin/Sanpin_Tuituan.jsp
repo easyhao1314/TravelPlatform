@@ -42,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<th data-options="field:'approvalStatus',formatter:shenpiStatus" width="50">审批状态</th>
 				<th data-options="field:'shenpitype'" width="50">审批类型</th>
 				<th data-options="field:'approvaltuanNo'" width="50">申请团号</th>
-				<th data-options="field:'beizhu'" width="50">备注</th>
+				<th data-options="field:'beizhu'" width="50">操作</th>
 			</tr>
 		</thead>
 	</table>
@@ -57,7 +57,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	return '<a href="javascript:openShenpimingxi('+row.approvalNo+',\''+row.approvaltuanNo+'\','+row.bmid+')">'+row.shiwu+'</a>';
 	}
 	function openShenpimingxi(aNo,atuanNo,abmid){
-	alert(aNo);
 	var url = "Sanpin_shenpimingxi.do?aNo="+aNo+"&atuanNo="+atuanNo+"&shenpitype="+'${param.shenpitype}'+"&abmid="+abmid;
 		 var tab = $('#tt').tabs('getSelected'); 
 		if (tab){  
@@ -66,7 +65,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	       } 
 	       
 	       $('#tt').tabs('add', {
-				         title : "退团详细信息",
+				         title : "详细信息",
 				         href : url,
 				      //  closable : true,
 				         });  
@@ -86,6 +85,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				approvalStauts : status
 			});
   	}
+  	
   	</script>
   	
   

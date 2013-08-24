@@ -34,9 +34,12 @@ public class OperateController {
 	@ResponseBody
 	public Map<String, Object> addOperate(HttpServletRequest request,
 			HttpServletResponse response,String userId,String chutuantime,String huituantime,String jiedanren,String paidanren,String tuanNo,String tuanName,String jinzhan,
-			String shenpiren,String beizhu){
+			String shenpiren,String beizhu,String operateType){
 			
 			Operate o = new Operate();
+			if(operateType!=null && !"".equals(operateType)){
+				o.setOperateType(Integer.parseInt(operateType));
+			}
 			if(chutuantime != null && !"".equals(chutuantime)){
 				o.setChutuantime(FengHuangDateUtil.getDateStringTODate(chutuantime));
 			}
