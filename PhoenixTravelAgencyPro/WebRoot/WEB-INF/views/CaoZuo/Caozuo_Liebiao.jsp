@@ -348,9 +348,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 function operatetype(value,row){
 							var type = null;
-							if(row.operateType==2){
-								type="散拼";
-							}
+							if(row.operateType==1){type="单团";}
+							if(row.operateType==2){type="散拼";}
 							return type;
 				}
 
