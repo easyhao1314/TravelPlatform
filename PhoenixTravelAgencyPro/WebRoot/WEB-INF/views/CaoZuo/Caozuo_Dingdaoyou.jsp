@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'Caozuo_Dingdaoyou.jsp' starting page</title>
+    <title>My JSP 'DantuanAdd.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -17,11 +17,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
+	<link rel="stylesheet" type="text/css" href="styles.css"   readonly="readonly">
 	-->
+	
 
-  </head>
-  
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="js/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="js/jquery.json.js"></script>
+
   <body>
      <table id="caozuoDingdaoyouliebiaodg" class="easyui-datagrid"
 		data-options="url:'fenghuang/dingdaoyouSelect.do?tuanNo=${param.tuanNo}',border:false,singleSelect:true,fit:true,fitColumns:true,onRowContextMenu:DaoyouContextMenu"
@@ -48,10 +52,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            </tr>
            <tr>
              <td><div class="fitem"><label>团号:</label></td><td><input id="tuanNo" name="tuanNo" class="easyui-validatebox" required="true"></div></td>
-             <td><div class="fitem"><label>导游:</label></td><td><input name="daoyouId" class="easyui-combobox" data-options="url:'fenghuang/getDaoyouComboboxs.do',
-					valueField:'id',
+             <td><div class="fitem"><label>导游:</label></td><td><input id="a"  name="b" class="easyui-combobox" data-options="url:'fenghuang/daoyouXialaaa.do',
+			       method:'get',
+					valueField:'id',					
 					textField:'name',
-					panelHeight:'auto'"></div></td>			
+					panelHeight:'auto'" required="true"></div></td>
           </tr>
            <tr>
           <td><div class="fitem"><label>备注:</label></td><td colspan="3"><input id=tuanNo name="beizhu" class="easyui-validatebox" width="70" required="true"></div></td>		

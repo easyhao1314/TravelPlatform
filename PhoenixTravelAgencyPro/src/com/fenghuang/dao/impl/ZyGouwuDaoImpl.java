@@ -75,4 +75,11 @@ public class ZyGouwuDaoImpl extends BaseDao implements IZyGouwuDao{
 		return count>0;
 	}
 
+	@Override
+	public List<Map<String, Object>> gouwuXiala() throws Exception {
+		// TODO Auto-generated method stub
+		String sql="select * from gouwu";
+		return this.queryForList(sql);
+	}
+
 }

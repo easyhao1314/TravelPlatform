@@ -53,9 +53,9 @@ public class ZyDaoyouServiceImpl implements IZyDaoyouService{
 	}
 
 	@Override
-	public List<Map<String, Object>> getDaoyouComboboxs() throws Exception {
+	public List<Map<String, Object>> daoyouXiala()  throws Exception {
 		// TODO Auto-generated method stub
-		return izdd.getDaoyouComboboxs();
+		return izdd.daoyouXiala();
 	}
 
 }

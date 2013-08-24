@@ -39,7 +39,7 @@
                       <th data-options="field:'ck',checkbox:true"></th>
                      <th data-options="field:'tdjb'" width="60">跟单进展</th> 
                      <!--点击团号进入客户信息  -->
-                     <th id="tuanNO" data-options="field:'tuanNo'" width="40" >团号</th>  
+                     <th id="tuanNo" data-options="field:'tuanNo'" width="40" >团号</th>  
                      <th data-options="field:'tdzt'" width="60"> 团队状态</th>  
                      <!--点击团队名称进入团队详情（新增页面） -->                     
                      <th data-options="field:'tuanName'" width="60">团队名称</th> 
@@ -84,7 +84,7 @@
 <td><div class="fitem"><label>团队级别：</label></td><td><input name="tdjb" class="easyui-validatebox" required="true"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>团名：</label></td><td><input name="tdm" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>团名：</label></td><td><input name="tuanName" class="easyui-validatebox" required="true"></div></td>
 <td><div class="fitem"><label>团对状态：</label></td><td><input name="tdzt" class="easyui-validatebox" required="true"></div></td>
 </tr>
 <tr>
@@ -142,7 +142,7 @@
 <td><div class="fitem"><label>特殊要求：</label></td><td><input name="tsDesc" class="easyui-validatebox" required="true"></div></td>
 </tr>
 <tr>
-<tr><td colspan="4s" align="center"><a href="javascript:dantuanSave();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> <input  type="reset" value="重置"></td>
+<tr><td colspan="4" align="center"><a href="javascript:dantuanSave();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> <input  type="reset" value="重置"></td>
 </tr>
 			</table>
 			<input id="dicType" name="dicType" type="hidden">
@@ -165,7 +165,7 @@
 <td><div class="fitem"><label>团队级别：</label></td><td><input name="tdjb" class="easyui-validatebox" required="true"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>团名：</label></td><td><input name="tdm" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>团名：</label></td><td><input name="tuanName" class="easyui-validatebox" required="true"></div></td>
 <td><div class="fitem"><label>团对状态：</label></td><td><input name="tdzt" class="easyui-validatebox" required="true"></div></td>
 </tr>
 <tr>
@@ -223,7 +223,7 @@
 <td><div class="fitem"><label>特殊要求：</label></td><td><input name="tsDesc" class="easyui-validatebox" required="true"></div></td>
 </tr>
 <tr>
-<tr><td colspan="4s" align="center"><a href="javascript:dantuanUpdate();" 
+<tr><td colspan="4" align="center"><a href="javascript:dantuanUpdate();" 
 				class="easyui-linkbutton" iconCls="icon-ok">保存</a> <input  type="reset" value="重置"></td>
 </tr>
 				

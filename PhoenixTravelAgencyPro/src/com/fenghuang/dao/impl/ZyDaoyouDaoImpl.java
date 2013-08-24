@@ -85,11 +85,13 @@ public class ZyDaoyouDaoImpl extends BaseDao implements IZyDaoyouDao{
 	}
 
 	@Override
-	public List<Map<String, Object>> getDaoyouComboboxs()throws Exception {
-		String sql="Select id,name from daoyou";
-		List<Map<String, Object>> daoyoulist=this.queryForList(sql);
-		return daoyoulist;
+	public List<Map<String, Object>> daoyouXiala() throws Exception {
+		// TODO Auto-generated method stub
+		String sql="select id,name from daoyou";
+		
+		return this.queryForList(sql);
 	}
+
 
 
 }

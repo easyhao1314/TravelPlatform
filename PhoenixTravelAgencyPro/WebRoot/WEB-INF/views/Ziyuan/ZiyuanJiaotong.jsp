@@ -26,7 +26,7 @@
 
 <body>
 	<div class="easyui-panel" title="交通供应商查询"
-		style="height:100px;padding:10px;width:auto;"
+		style="height:110px;padding:10px;width:auto;"
 		data-options="closable:false,tools:'#searchpanel'" align="center">
 		<form id="jiaotongForm">
 		<table>

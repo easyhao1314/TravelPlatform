@@ -17,5 +17,7 @@ public interface IZyGouwuDao {
 	public List<Map<String,Object>> gouwuSelectId(long id) throws Exception;
 	//修改
 	public boolean gouwuUpdate(Gouwu gw) throws Exception;
+	//购物店下拉
+	public List<Map<String,Object>>  gouwuXiala() throws Exception;
 
 }

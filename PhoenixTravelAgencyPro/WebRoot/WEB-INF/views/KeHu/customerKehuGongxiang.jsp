@@ -27,7 +27,7 @@
 
 <body>
 	<div class="easyui-panel" title="客户共享/转移"
-		style="height:140px;padding:10px;width:auto;"
+		style="height:110px;padding:10px;width:auto;"
 		data-options="closable:false,tools:'#searchpanel'" align="center">
         <form id="ff" method="post"> 
             <table>  

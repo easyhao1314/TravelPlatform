@@ -31,6 +31,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<tr>
 				<th data-options="field:'tuanNo'" width="20">团号</th>
 				<th data-options="field:'ruzhuTime'" width="20">居住时间</th>
+				<th data-options="field:'ruzhuDay'" width="20">居住天数</th>
 				<th data-options="field:'chengshiId'" width="20">居住城市</th>
 				<th data-options="field:'jdNo'" width="20">酒店标准</th>
 				<th data-options="field:'caozuoqingkuang'" width="20">操作情况</th>
@@ -224,10 +225,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				var result = $.parseJSON(data) ;
 					if (result.success) {					
 					  $("#addDingfang").dialog('close');
-						$.messager.alert("修改成功", "修改成功！", "info"); 
+						$.messager.alert("保存成功", "保存成功！", "info"); 
 						$("#caozuoliebiaodg").datagrid('reload');
 					} else {
-						$.messager.alert("修改失败", "修改失败!", "error");
+						$.messager.alert("保存失败", "保存失败!", "error");
 						$("#caozuoliebiaodg").datagrid('reload');
 					}
 				}

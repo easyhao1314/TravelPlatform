@@ -119,7 +119,7 @@ public class ZyDaoyouController {
 	public Map<String,Object> daoyouUpdate(HttpServletRequest request,HttpServletResponse response,
 			String guojiaId,String name,String name2,String name3,String zjlx,String zjhm,String chengshiId,String dinhua,String lxfs1,String lxfs2,
 			String lxfs3,String email,String shouji,String fax,String dyfy,String hzjbId,String bz,long id){
-		Daoyou dy=new Daoyou();
+		Daoyou dy=new Daoyou(); 
 
 		if(guojiaId !=null && !"".equals(guojiaId)){
 			dy.setGuojiaId(Long.parseLong(guojiaId));
@@ -211,20 +211,19 @@ public class ZyDaoyouController {
 				}
 				return null;
 		}
-		@RequestMapping("fenghuang/getDaoyouComboboxs.do")
-		@ResponseBody		
-			
-		public List<Map<String, Object>> getDaoyouComboboxs(HttpServletRequest request,
-				HttpServletResponse response){
-			
-			try {
-				return izds.getDaoyouComboboxs();
+		@RequestMapping("fenghuang/daoyouXialaaa.do")
+		@ResponseBody
+		public List<Map<String, Object>> daoyouXiala(HttpServletRequest request,
+				HttpServletResponse response){			
+				try {
+					return  izds.daoyouXiala();
 				} catch (Exception e) {
-				e.printStackTrace();
-			}		
-			return null;
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return null;		
 		}
-		
+			
 		
 
 }

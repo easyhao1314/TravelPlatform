@@ -158,6 +158,18 @@ public class ZyGouwuController{
 		}
 		return result;
 	}
+	
+	@RequestMapping("fenghuang/gouwuXiala.do")
+	@ResponseBody
+	public List<Map<String, Object>> gouwuXiala(HttpServletRequest request,
+			HttpServletResponse response){
 
+		try {
+			return  izgs.gouwuXiala();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	   return  null;
+	}
 
 }

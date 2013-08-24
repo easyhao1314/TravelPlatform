@@ -58,7 +58,7 @@ public class dantuanImpl extends BaseDao implements Idantuan{
 	//模糊查询
 	public Pagination<DantuanXinXi>  getDantuanLike(int currentPage,
 	int numPerPage,String ctsj,String lyqy,String tdzt,Long tdjb)throws Exception{
-		StringBuffer sql = new StringBuffer("select d.tuanNo,d.tuanName,d.tdzt,d.ctsj,d.htsj,d.xsNo,d.jdNo,d.khId,d.djrtime,t.xlid,c.lxr from dantuanxinxi as d  left join tuanXianlu as t on d.tuanNO=t.tuanNo left join customerinfo as c on d.khId=c.id ELECT * from dantuanxinxi  where 1=1 ");
+		StringBuffer sql = new StringBuffer("select d.tuanNo,d.tuanName,d.tdzt,d.ctsj,d.htsj,d.xsNo,d.jdNo,d.khId,d.djrtime,t.xlid,c.lxr from dantuanxinxi as d  left join tuanXianlu as t on d.tuanNO=t.tuanNo left join customerinfo as c on d.khId=c.id where 1=1 ");
 		if(ctsj != null && !"".equals(ctsj)){
 			sql.append(" and  ctsj ='");
 			sql.append(ctsj);

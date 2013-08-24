@@ -38,7 +38,7 @@
 	
 	
 		 <div class="easyui-panel" title="单团查询"
-		style="height:105px;padding:10px;"
+		style="height:110px;padding:10px;"
 		data-options="closable:false,tools:'#searchpanel'" align="center">
 		<form id="searchPanelForm">
 		<table>
@@ -163,7 +163,7 @@ data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=3',
 				<tr>
 <td><div class="fitem"><label>客户名称:</label></td><td><input name="khId" class="easyui-validatebox" required="true"></div>
      <a href="javascript:addKehu();" class="easyui-linkbutton" iconCls="icon-ok">新增客户</a></td>
-<td><div class="fitem"><label>团号:</label></td><td><input name="tuanNO" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>团号:</label></td><td><input name="tuanNo" class="easyui-validatebox" required="true"></div></td>
 </tr>
 <tr>
 <td><div class="fitem"><label>团队操作类型：</label></td><td><input name="tdczlx"   class="easyui-combobox" data-options="
@@ -182,7 +182,7 @@ data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=3',
 	"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>团名：</label></td><td><input name="tdm" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>团名：</label></td><td><input name="tuanName" class="easyui-validatebox" required="true"></div></td>
 <td><div class="fitem"><label>团对状态：</label></td><td><input name="tdzt" class="easyui-combobox" data-options="
 					url:'fenghuang/getDicByTypeComboboxs.do?dicType=3',
 					valueField:'dicNo',
@@ -357,7 +357,7 @@ data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=7',
 <tr>
 <td><div class="fitem"><label>客户名称:</label></td><td><input name="khId" class="easyui-validatebox" required="true"></div>
      <a href="javascript:addKehu();" class="easyui-linkbutton" iconCls="icon-ok">新增客户</a></td>
-<td><div class="fitem"><label>团号:</label></td><td><input name="tuanNO" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>团号:</label></td><td><input name="tuanNo" class="easyui-validatebox" required="true"></div></td>
 </tr>
 <tr>
 <td><div class="fitem"><label>团队操作类型：</label></td><td><input name="tdczlx"   class="easyui-combobox" data-options="
@@ -376,7 +376,7 @@ data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=7',
 	"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>团名：</label></td><td><input name="tdm" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>团名：</label></td><td><input name="tuanName" class="easyui-validatebox" required="true"></div></td>
 <td><div class="fitem"><label>团对状态：</label></td><td><input name="tdzt" class="easyui-combobox" data-options="
 					url:'fenghuang/getDicByTypeComboboxs.do?dicType=3',
 					valueField:'dicNo',

@@ -288,6 +288,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						days = "";
 					}
 	});
+	}
     function dingcan(){
     $("#caozuodingcan").dialog("open");
     }
@@ -309,7 +310,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     function dinggouwudian(){
     $("#caozuodinggouwudian").dialog("open");
     }
-}
+
 
 
 
