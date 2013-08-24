@@ -102,7 +102,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</form>
 		 <div id="sanpincaozuott">
         <a href="javascript:void(0)" title="提交到计调报价" class="icon-add" onclick="addjidiao()"></a>
-    </div>
+    	 </div>
 		
 	</div>
 	<div id="sanpincaozuowindow" class="easyui-window" title="选择计调" data-options="iconCls:'icon-save',closed:true,minimizable:false,tools:'#sanpincaozuott'" style="width:650px;height:400px;padding:10px;">
@@ -155,7 +155,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 	
 	
-	
+	</div>
 	<div id="updatesanpinwindow" class="easyui-window" title="Modal Window" data-options="modal:true,closed:true,iconCls:'icon-save'" style="width:500px;height:200px;padding:10px;">
         <form id="upsanpinform" action="">
         	<table>
@@ -172,9 +172,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
 	
 	
-    </div>
+    
 	<div id="mmsanpincaozuo" class="easyui-menu" style="width:120px;">
-		
 		<div data-options="iconCls:'icon-edit'" onClick="zhuanjidiao()">转到计调报价</div>
 	</div>
 	<script type="text/javascript">

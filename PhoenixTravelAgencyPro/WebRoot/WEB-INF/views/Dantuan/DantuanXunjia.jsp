@@ -112,7 +112,7 @@ data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=3',
 	<!-- 如果在正式开发环境下 url可以为后台的请求，地址 -->
 	<div style="height:470px;width:100%">
 	<table id="dg" class="easyui-datagrid"
-		data-options="url:'fenghuang/DantuanXunjia.do',border:false,singleSelect:false,fit:true,fitColumns:true, onClickRow: onClickRow,onRowContextMenu: onRowContextMenu"
+		data-options="url:'fenghuang/DantuanXunjia.do',border:false,singleSelect:false,fit:true,fitColumns:true, onClickRow: onClickRow,onRowContextMenu: onjidiaoMenu"
 		pagination="true" toolbar="#tb">
 		<thead>  
                     <tr>  
@@ -543,19 +543,72 @@ data-options="
 		</form>
 	</div>
 	
-<div id="mm" class="easyui-menu" style="width:120px;">
-    <div onClick="view()" data-options="iconCls:'icon-search'">查看</div>
-    <div onClick="add()" data-options="iconCls:'icon-add'">新增</div>
-    <div onClick="edit()" data-options="iconCls:'icon-edit'">编辑</div>
-    <div onClick="del()" data-options="iconCls:'icon-remove'">删除</div>
-    <div class="menu-sep"></div>
-    <div onClick="print()" data-options="iconCls:'icon-print'">打印</div>
-    <div onClick="reload()" data-options="iconCls:'icon-reload'">刷新</div>
+<div id="jidiaomm" class="easyui-menu" style="width:120px;">
+    <div data-options="iconCls:'icon-edit'" onClick="zhuanjidiao()">转到计调报价</div>
 </div>   
+
+
+<div id="sanpincaozuott">
+        <a href="javascript:void(0)" title="提交到计调报价" class="icon-add" onclick="addjidiao()"></a>
+</div>
+<div id="dantuancaozuowindow" class="easyui-window" title="选择计调" data-options="iconCls:'icon-save',closed:true,minimizable:false,tools:'#sanpincaozuott'" style="width:650px;height:400px;padding:10px;">
+	<div class="easyui-layout" data-options="fit:true">
+			<div data-options="region:'west',split:true" style="width:307px;">
+				<div class="easyui-accordion" style="width:300px;">
+	<div title="选择员工" data-options="iconCls:'icon-help'" >
+			<div style="height: 311px; ">
+        <table id="dgUsers"   class="easyui-datagrid"
+		data-options="url:'fenghuang/getUsers.do',border:true,singleSelect:true,fit:true,fitColumns:true,pageSize:10,onClickRow: onClickRow,view:groupview,
+          groupField:'departName',
+          groupFormatter:function(value,rows){
+           return '所属部门:'+value + ' - ' + rows.length + '名员工';
+          }"
+		pagination="true" toolbar="#tbUsers">
+		<thead>
+			<tr>
+				<th data-options="field:'ck',checkbox:true"></th>
+				<th data-options="field:'userName',editor:'text'" width="10">姓名</th>
+				<th data-options="field:'departmentId',formatter:function(value,row){
+							return row.departName;
+						},editor:{
+					type:'combobox',
+							options:{
+								valueField:'id',
+								textField:'departName',
+								url:'fenghuang/getDepartmentComboboxs.do'
+							}
+				}"
+					width="10">部门</th>
+			</tr>
+		</thead>
+	</table>
+	</div> 		
+	</div>
+	</div>
+			</div>
+			<div data-options="region:'center'" style="padding:10px">
+			<form id="zhuanjidiaoForm" action="">
+				填写备注说明：<br /><textarea name="beizhu" style="height:120px; width: 290px" > </textarea>
+				<input id="tuanNo" title="团号" type="hidden" name="tuanNo" class="easyui-validatebox" style="width: 290px;" >
+				<input id="tuanName" title="团名" type="hidden" name="tuanName" class="easyui-validatebox" style="width: 290px;" >
+				<input id="chutime" title="出团时间" type="hidden" name="chutuantime" class="easyui-validatebox" style="width: 290px;" >
+				<input id="huitime" title="回团时间" type="hidden" name="huituantime" class="easyui-validatebox" style="width: 290px;" >
+				<input id="userId" title="提交人" type="hidden" name="userId" class="easyui-validatebox" style="width: 290px;" >
+				<input id="shenpiren" title="审批人" type="hidden" name="shenpiren" class="easyui-validatebox" style="width: 290px;" >
+				<input id="operateType" title="操作类型" type="hidden" name="operateType" class="easyui-validatebox" style="width: 290px;" >
+				</form>
+			</div>
+		</div>
+	
+	
+	</div>
 
 
     
 	<script type="text/javascript">
+	
+	
+	
 		var editIndex = undefined;
 		function endEditing() {
 			if (editIndex == undefined) {
@@ -872,15 +925,23 @@ data-options="
 				});
 		      }
 		   }		
-		function onRowContextMenu(e, rowIndex, rowData){
+		function onjidiaoMenu(e, rowIndex, rowData){
   		 e.preventDefault();
-
+	$('#tuanNo').attr('value',rowData.tuanNo);
+	$('#chutime').attr('value',rowData.ctsj);
+	$('#huitime').attr('value',rowData.htsj);
+	$('#tuanName').attr('value',rowData.tuanName);
+	$('#userId').attr('value','${sessionScope.userId}');
+	$('#operateType').attr('value',1);
     
-    $('#mm').menu('show', {
+    $('#jidiaomm').menu('show', {
         left:e.pageX,
         top:e.pageY
     });       
 }
+function zhuanjidiao(){
+		$('#dantuancaozuowindow').window('open');
+	}
 	  		
    		
 	//'<a href="DantuanMingxi.do?tuanNO='+row.tuanNO+'">'+row.tuanNO+'</a>';		
@@ -918,6 +979,29 @@ data-options="
 						$.messager.alert("查询失败", "服务器请求失败!", "error");
 					}
 				});
+	}
+	
+	
+	function addjidiao(){
+		var row = $("#dgUsers").datagrid("getSelected");
+			if(row==null){return;}
+				$('#shenpiren').attr('value',row.id);
+				$('#zhuanjidiaoForm').form('submit', {
+				url : 'fenghuang/addOperate.do',
+				onSubmit : function() {
+					return $(this).form('validate');
+				},
+				success : function(result) {
+					var result = eval('(' + result + ')');
+					if (result.success) {
+			
+						$.messager.alert("保存成功", "保存成功！", "info");
+					   
+					} else {
+						$.messager.alert("保存失败", "保存失败!", "error");
+					}
+				}
+			});
 	}
 	</script>
 </body>
