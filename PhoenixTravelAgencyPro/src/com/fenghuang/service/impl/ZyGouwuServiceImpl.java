@@ -45,4 +45,10 @@ public class ZyGouwuServiceImpl implements IZyGouwuService{
 		return izgd.gouwuUpdate(dj);
 	}
 
+	@Override
+	public List<Map<String, Object>> gouwuXiala() throws Exception {
+		// TODO Auto-generated method stub
+		return izgd.gouwuXiala();
+	}
+
 }

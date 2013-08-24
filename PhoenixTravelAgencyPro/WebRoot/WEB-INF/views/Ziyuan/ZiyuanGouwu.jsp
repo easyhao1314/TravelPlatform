@@ -26,7 +26,7 @@
 
 <body>
 	<div class="easyui-panel" title="购物店查询"
-		style="height:80px;padding:10px;width:auto;"
+		style="height:85px;padding:10px;width:auto;"
 		data-options="closable:false,tools:'#searchpanel'" align="center">
 		<form id="gouwuForm">
 		<table>

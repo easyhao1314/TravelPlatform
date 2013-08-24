@@ -34,11 +34,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<tr>
 <td><div class="fitem"><label>客户名称:</label></td><td><input id="khId" name="khId" class="easyui-combobox" data-options="
 					url:'fenghuang/findAllCustomName.do',
+					 method:'get',
 					valueField:'id',
 					textField:'name',
-					panelHeight:'auto',
-					editable:false 
-	"></div>
+					panelHeight:'auto'"></div>
      <a href="javascript:addKehu();" class="easyui-linkbutton" iconCls="icon-ok">新增客户</a></td>
 <td><div class="fitem"><label>团号:</label></td><td><input name="tuanNo" class="easyui-validatebox"></div></td>
 </tr>
@@ -455,11 +454,9 @@ data-options="
 					if (result.success) {
 					$('#addKehu').dialog('close');					
 						$.messager.alert("保存成功", "保存成功！", "info");
-						 var  kehuname=$("#kehuname").val();
-					
-					     $("#khId").combobox('setValue', kehuname); 
-					     $("#khId").combobox();
-					
+						  $("#khId").combobox("reload");
+						 var  kehuname=$("#kehuname").val();					
+					     $("#khId").combobox('setValue', kehuname); 								
 					} else {
 						$.messager.alert("保存失败", "保存失败!", "error");
 					

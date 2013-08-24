@@ -62,8 +62,7 @@ public interface IDictionaryDescService {
 	 * @throws Exception
 	 */
      public boolean deleteDictionaryDesc(Integer dicNo)throws Exception;
-	
-     
+	    
      public void updateDictionaryDescs(List<DictionaryDesc> dicDescs)throws Exception;
      
      public void deleteDictionaryDescs(List<DictionaryDesc> dicDescs)throws Exception;
