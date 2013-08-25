@@ -32,7 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		pagination="true">
 		<thead>
 			<tr>
-				<th data-options="field:'oid',hidden:true" width="20">&nbsp; 编号</th>
+				<th data-options="field:'id',hidden:true" width="20"> 编号</th>
 				<th data-options="field:'tuanNo'" width="20">团号</th>
 				<th data-options="field:'tuanName'" width="20">团名</th>
 				<th data-options="field:'ctsj'" width="20">出团时间</th>
@@ -46,20 +46,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		style="width:600px;height:240px;padding:10px;">
 		<form id="adddaoyouForm" method="post">
 			<table align="center">
-			<tr>
-           <td><div class="fitem"><label>编号:</label></td><td>--系统自动生成--</div></td>
-           <td><br></td>
-           </tr>
            <tr>
-             <td><div class="fitem"><label>团号:</label></td><td><input id="tuanNo" name="tuanNo" class="easyui-validatebox" required="true"></div></td>
-             <td><div class="fitem"><label>导游:</label></td><td><input id="a"  name="b" class="easyui-combobox" data-options="url:'fenghuang/daoyouXialaaa.do',
+             <td><div class="fitem"><label>团号:</label></td><td><input id="id" name="id" class="easyui-validatebox"><input id="tuanNo" name="tuanNo" class="easyui-validatebox" required="true"></div></td>
+             <td><div class="fitem"><label>导游:</label></td><td><input id="daoyouId"  name="daoyouId" class="easyui-combobox" data-options="url:'fenghuang/daoyouXialaaa.do',
 			       method:'get',
 					valueField:'id',					
 					textField:'name',
 					panelHeight:'auto'" required="true"></div></td>
           </tr>
            <tr>
-          <td><div class="fitem"><label>备注:</label></td><td colspan="3"><input id=tuanNo name="beizhu" class="easyui-validatebox" width="70" required="true"></div></td>		
+          <td><div class="fitem"><label>备注:</label></td><td colspan="3"><input name="beizhu" class="easyui-validatebox" width="70" required="true"></div></td>		
           </tr>
           <tr>
            <tr><td colspan="4" align="center"><a href="javascript:SaveDaoyou();" class="easyui-linkbutton" iconCls="icon-ok">安排导游</a>
@@ -81,6 +77,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	}
 	function saveDaoyouOpen(){
 	   $("#adddaoyou").dialog("open");
+	   var row=$("#caozuoDingdaoyouliebiaodg").datagrid("getSelected");
+	   $("#id").val(row.id);
 	   var tuanNo=${param.tuanNo};
  	  $("#tuanNo").val(tuanNo);
 	   

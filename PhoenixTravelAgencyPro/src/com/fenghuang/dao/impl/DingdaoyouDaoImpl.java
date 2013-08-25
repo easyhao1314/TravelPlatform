@@ -24,7 +24,7 @@ public class DingdaoyouDaoImpl extends BaseDao implements IdingdaoyouDao{
 	public Pagination<Dingdaoyou> dingdaoyouSelect(int currentPage,
 			int numPerPage,Dingdaoyou ddy) throws Exception {
 		// TODO Auto-generated method stub
-		String sql="select dt.tuanNo,dt.tuanName,dt.ctsj,dt.htsj,dt.cfrs ,ddy.daoyouId from dantuanxinxi as dt,dingdaoyou as ddy where dt.tuanNo=ddy.tuanNo ";
+		String sql="select dt.tuanNo,dt.tuanName,dt.ctsj,dt.htsj,dt.cfrs ,ddy.id,ddy.daoyouId from dantuanxinxi as dt,dingdaoyou as ddy where dt.tuanNo=ddy.tuanNo ";
 		
 		return this.getPagination(currentPage, numPerPage, sql);
 	}

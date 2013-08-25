@@ -53,8 +53,11 @@ public class DingdaoyouController {
 			@RequestMapping("fenghuang/dingdaoyouUpdate.do")
 			@ResponseBody
 			public Map<String,Object> dingdaoyouUpdate(HttpServletRequest request,HttpServletResponse response,
-					String tuanNo,String daoyouId,String beizhu){
+					String id,String tuanNo,String daoyouId,String beizhu){
 				Dingdaoyou ddy=new Dingdaoyou();
+				if(id !=null && !"".equals(id)){
+					ddy.setId(Integer.parseInt(id));					
+				}
 				ddy.setTuanNo(tuanNo);
 				if(daoyouId!=null && !"".equals(daoyouId)){
 				ddy.setDaoyouId(Integer.parseInt(daoyouId));
