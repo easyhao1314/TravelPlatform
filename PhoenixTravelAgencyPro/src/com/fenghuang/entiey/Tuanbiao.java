@@ -126,7 +126,7 @@ public class Tuanbiao {
     * 
     * @pdOid baccabab-ac88-4dc8-a4ca-00bd7fd63de9 */
    public java.lang.String kxsm;
-   /** 人数
+   /** 人数	
     * 
     * @pdOid ad779dd5-463a-4712-ab12-9d84ddde83b4 */
    public int renshu;

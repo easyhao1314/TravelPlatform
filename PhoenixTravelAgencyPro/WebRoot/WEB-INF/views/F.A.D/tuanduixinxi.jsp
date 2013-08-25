@@ -71,7 +71,7 @@ pagination="true" toolbar="#tb1">
                                   <th data-options="field:'yujilirun',editor:'numberbox'" width="50">财务确认</th>
                                   <th data-options="field:'beizhu',editor:'numberbox'" width="50">备注</th>
                                   <th data-options="field:'fuzeren',editor:'numberbox'" width="50">责任人</th>
-                                  <th data-options="field:'tuanduimc',editor:'numberbox'" width="50">责任人</th>
+                                 
 </tr>
 </thead>
 </table>
@@ -99,7 +99,7 @@ pagination="true" toolbar="#tb2">
                        <th data-options="field:'yujilirun',editor:'numberbox'" width="50">财务确认</th>
                        <th data-options="field:'beizhu',editor:'numberbox'" width="50">备注</th>
                        <th data-options="field:'fuzeren',editor:'numberbox'" width="50">责任人</th>
-                       <th data-options="field:'tuanduimc',editor:'numberbox'" width="50">责任人</th>
+                      
 </tr>
 </thead>
 </table>
