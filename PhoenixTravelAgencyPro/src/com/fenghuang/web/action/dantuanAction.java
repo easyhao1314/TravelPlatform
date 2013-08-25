@@ -22,12 +22,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fenghuang.entiey.DantuanXinXi;
+import com.fenghuang.service.IJbpmService;
 import com.fenghuang.service.IdantuanService;
 import com.fenghuang.util.DateJsonValueProcessor;
 import com.fenghuang.util.Pagination;
 
 @Controller
 public class dantuanAction {
+	@Autowired
+	public IJbpmService iJbpmService;
+	
 	@Autowired
 	public IdantuanService ids;
 	private Object returnValue;

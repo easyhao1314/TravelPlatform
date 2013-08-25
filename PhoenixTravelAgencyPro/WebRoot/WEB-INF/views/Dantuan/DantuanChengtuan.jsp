@@ -32,29 +32,18 @@
 <body>
 	<!-- 如果在正式开发环境下 url可以为后台的请求，地址 -->
 	<table id="dg" class="easyui-datagrid"
-		data-options="url:'fenghuang/DantuanQueren.do?dicType=${param.dicType}',border:false,singleSelect:false,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
+		data-options="url:'fenghuang/dantuancaiwuxianshi.do',border:false,singleSelect:false,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
 		pagination="true" toolbar="#tb">
 		<thead>  
                     <tr>  
                       <th data-options="field:'ck',checkbox:true"></th>
-                     <th data-options="field:'tdjb'" width="60">跟单进展</th> 
-                     <!--点击团号进入客户信息  -->
-                     <th id="tuanNo" data-options="field:'tuanNo'" width="40" >团号</th>  
-                     <th data-options="field:'tdzt'" width="60"> 团队状态</th>  
-                     <!--点击团队名称进入团队详情（新增页面） -->                     
-                     <th data-options="field:'tuanName'" width="60">团队名称</th> 
-                      <!--点击报价数进入客户信息  -->
-                      <!-- <th data-options="field:'05'" width="40">报价数</th>  -->                                                             
-                      <th data-options="field:'ctsj'" width="60">出团时间</th> 
-                     <th data-options="field:'htsj'" width="60">回团时间</th>  
-                    <th data-options="field:'xsNo'" width="60"> 销售编号</th>  
-                     <th data-options="field:'jdNo'" width="60">计调编号</th> 
-                     <th data-options="field:'lxr'" width="40">登记人</th>
-                      <!--点击客户名称进入客户沟通列表 -->
-                      <th data-options="field:'khId'" width="60"> 客户名称</th>  
-                        <th data-options="field:'djrtime'" width="40">登记日</th> 
-                          <th data-options="field:'03'" width="40">报价</th>
-                            <th data-options="field:'04'" width="80">预计毛利（万）</th> 
+                     <th id="tuanNo" data-options="field:'tuanduimc'" width="40" >团号</th>  
+                     <th data-options="field:'team'" width="60">团队名称</th> 
+                     <th data-options="field:'chutuantime'" width="60">出团时间</th> 
+                     <th data-options="field:'huituantime'" width="60">回团时间</th>  
+                    <th data-options="field:'caozuo'" width="60"> 销售编号</th>  
+                     <th data-options="field:'khmc'" width="60"> 客户名称</th> 
+                     <th data-options="field:'confirmed'" width="60"> 团队状态</th>                                          
                     </tr>  
                 </thead>  
 	</table>

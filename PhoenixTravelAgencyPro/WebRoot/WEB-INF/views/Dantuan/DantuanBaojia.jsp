@@ -64,14 +64,14 @@
 			<table align="center">
 <tr>
 <td><div class="fitem"><label>团号:</label></td><td><input id="tuanduimc" name="tuanduimc" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>团名：</label></td><td><input id="tuanName" name="tuanName" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>团名：</label></td><td><input id="team" name="team" class="easyui-validatebox" required="true"></div></td>
 </tr>
 <tr>
 <td><div class="fitem"><label>客户名称:</label></td><td colspan="3"><input id="khmc" name="khmc" class="easyui-validatebox" required="true"></div></td>
 </tr>
 <tr>
 <td><div class="fitem"><label>出访人数：</label></td><td><input id="renshu" name="renshu" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>销售：</label></td><td><input id="fuzeren" name="fuzeren" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>销售：</label></td><td><input id="caozuo" name="caozuo" class="easyui-validatebox" required="true"></div></td>
 </tr>
 <tr>
 <td><div class="fitem"><label>出团时间：</label></td><td><input id="chutuantime" name="chutuantime" type="text" class="easyui-datebox" required="required"></div></td>
@@ -114,7 +114,7 @@
 			$("#khmc").val(row.khId);
 			$("#chutuantime").val(row.ctsj);
 			$("#huituantime").val(row.htsj);
-			$("#fuzeren").val(row.xsNo);
+			$("#caozuo").val(row.xsNo);
 			$("#renshu").val(row.cfrs);
 				
 		}
