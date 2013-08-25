@@ -44,15 +44,16 @@
 	  <div class="easyui-panel" title="未收未付统计"
 		style="height:500px;width: auto;" toolbar="#currencyDatagridtoolbar">	
 	<table id="wswfcxdg" class="easyui-datagrid"
-		data-options="url:'fenghuang/caiwuqrfkselect.do',border:false,singleSelect:true,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
+		data-options="url:'fenghuang/caiwuqrfkselect.do?shenfenid!=3',border:false,singleSelect:true,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
 		pagination="true" toolbar="#tb">
 		<thead>
 			<tr> 
-				<th data-options="field:'yushoutime',editor:'text'" width="50">应收账期</th>
+			    <th data-options="field:'fukuantime',editor:'text'" width="50" hidden="true" >应收账期</th>
+		 		<th data-options="field:'yushoutime',formatter:wswfcxshijian" width="50">应收应付账期</th>
 				<th data-options="field:'team',editor:'text'" width="50">团号</th>
-				<th data-options="field:'khmc',editor:'text'" width="50">客户，供应商</th>
+				
 				<th data-options="field:'kxsm',editor:'text'" width="50">款项</th>
-				<th data-options="field:'yingshou',editor:'text'" width="50">应收金额</th>
+				<th data-options="field:'yingshou',editor:'text'" width="50">应收金额<th data-options="field:'khmc',editor:'text'" width="50">客户，供应商</th></th>
 				<th data-options="field:'yishou',editor:'text'" width="">已收金额</th>
 			
 				<th data-options="field:'09',formatter:wswfcxjisuan" width="50">未收金额</th>
@@ -66,8 +67,12 @@
 
 	<script type="text/javascript">
 	
-	
-	
+	 function wswfcxshijian(val,row){
+		   var ss=null;
+		   	 if(row.yushoutime==""){ss=row.fukuantime;}else{return row.yushoutime;}
+		     return '<div  style="width: auto;">'+ss+'</div>';
+		   }
+	//1 fukuantime 2 shoukuantime
 	
 	
 	

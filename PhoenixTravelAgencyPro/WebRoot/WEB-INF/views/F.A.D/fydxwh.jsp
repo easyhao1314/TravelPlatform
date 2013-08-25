@@ -68,7 +68,7 @@
 	</div>
 	<div id="addweihu" class="easyui-dialog" title="新增业务字段"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
-		style="width:500px;height:200px;padding:10px;">
+		style="width:500px;height:250px;padding:10px;">
 		<form id="dicFrome" method="post">
 			<table align="left">
 				<tr>
@@ -79,7 +79,7 @@
 						>
 						</div></td>
 					<td><div class="fitem">
-							<label>名称:</label>
+							<label>付款性质:</label>
 					</td>
 					<td><input name="xingzhi" class="easyui-validatebox"
 						>
@@ -89,12 +89,12 @@
 				
 				<tr>
 					<td><div class="fitem">
-							<label>帮助提示:</label>
+							<label>收支类型:</label>
 					</td>
 					<td><input name="shouzhi" class="easyui-validatebox">
 						</div></td>
 					<td><div class="fitem">
-							<label>显示顺序:</label>
+							<label>费用说明:</label>
 					</td>
 					<td><input name="shuoming" class="easyui-numberbox"
 					>
@@ -102,12 +102,12 @@
 				</tr>
 				<tr>
 					<td><div class="fitem">
-							<label>帮助提示:</label>
+							<label>对应审批流程:</label>
 					</td>
 					<td><input name="liucheng" class="easyui-validatebox">
 						</div></td>
 					<td><div class="fitem">
-							<label>显示顺序:</label>
+							<label>父类:</label>
 					</td>
 					<td><input name="fulei" class="easyui-numberbox"
 						>

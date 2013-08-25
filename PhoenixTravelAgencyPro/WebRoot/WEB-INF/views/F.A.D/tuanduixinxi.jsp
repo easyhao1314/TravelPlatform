@@ -108,7 +108,7 @@ pagination="true" toolbar="#tb2">
 <!--***************************************收款添加******************************************************-->
 <div id="tdxxsaveid" class="easyui-dialog" title="团队信息添加"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
-		style="width:500px;height:200px;padding:10px;">
+		style="width:500px;height:250px;padding:10px;">
 		<form id="tdxxsaveform" action="">
 			<table align="left">
 				<tr>
@@ -177,50 +177,38 @@ pagination="true" toolbar="#tb2">
 					
 				</tr>
 				<tr>
-				<td><div class="fitem">
-							<label>caiwuid:</label>
-					</td>
+				
 					<td> 
-					<input id="caiwuid" name="caiwuid"  value="1" 
+					<input id="caiwuid" name="caiwuid"  value="1" hidden="true"
 						class="easyui-validatebox">
 						</div></td>
-						<td><div class="fitem">
-							<label>shanchu:</label>
-					</td>
+						
 					<td>
-					<input id="shanchu" name="shanchu" value="1" 
+					<input id="shanchu" name="shanchu" value="1" hidden="true"
 						class="easyui-validatebox">
 						</div></td>
 				</tr>
 				<tr>
-				<td><div class="fitem">
-							<label>shenfenid:</label>
-					</td>
+				
 					<td> 
-					<input id="shenfenid" name="shenfenid" 
+					<input id="shenfenid" name="shenfenid" hidden="true"
 						class="easyui-validatebox">
 						</div></td>
-						<td><div class="fitem">
-							<label>fpxk:</label>
-					</td>
+						
 					<td>
-					<input id="fpxk" name="fpxk"  value="0" 
+					<input id="fpxk" name="fpxk"  value="0" hidden="true"
 						class="easyui-validatebox">
 						</div></td>
 				</tr>
 					<tr>
-					<td><div class="fitem">
-							<label>team:</label>
-					</td>
+					
 					<td> 
-					<input id="team" name="team" 
+					<input id="team" name="team" hidden="true"
 						class="easyui-validatebox">
 						</div></td>
-						<td><div class="fitem">
-							<label>tuanduimc:</label>
-					</td>
+						
 					<td>
-					<input id="tuanduimctest" name="tuanduimc" 
+					<input id="tuanduimctest" name="tuanduimc" hidden="true" 
 						class="easyui-validatebox">
 						</div></td>
 				</tr>
@@ -228,14 +216,14 @@ pagination="true" toolbar="#tb2">
 				<td>
 							<!-- 已开发票: -->
 					
-					<input id="ykfp" name="ykfp" value="0"  
+					<input id="ykfp" name="ykfp" value="0"  hidden="true"
 						class="easyui-validatebox">
 						</div></td>
 						
 							<!-- YSYFID  hidden="true"-->
 					
 					<td> 
-					<input id="ysyfid" name="ysyfid" value="1"
+					<input id="ysyfid" name="ysyfid" value="1" hidden="true"
 						class="easyui-validatebox">
 						</div></td>
 				
@@ -254,7 +242,7 @@ pagination="true" toolbar="#tb2">
 <!--***************************************收款删除******************************************************-->
 <div id="tdxxshanchuid" class="easyui-dialog" title="团队信息添加"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
-		style="width:500px;height:200px;padding:10px;">
+		style="width:500px;height:250px;padding:10px;">
 		<form id="tdxxshanchuform" action="">
 			<table align="left">
 			<tr>
@@ -344,7 +332,7 @@ pagination="true" toolbar="#tb2">
 <!--***************************************收款修改******************************************************-->
 <div id="tdxxupdateid" class="easyui-dialog" title="团队信息添加"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
-		style="width:500px;height:200px;padding:10px;">
+		style="width:500px;height:250px;padding:10px;">
 		<form id="tdxxupdateform" action="">
 			<table align="left">
 				<tr>
@@ -437,18 +425,15 @@ pagination="true" toolbar="#tb2">
 	<!--***************************************付款添加******************************************************-->
 <div id="tdxxfkid" class="easyui-dialog" title="团队信息添加"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
-		style="width:750px;height:400px;padding:10px;">
+		style="width:500px;height:250px;padding:10px;">
 		<form id="tdxxfkform" action="">
 			<table align="left">
 				<tr>
 					<td><div class="fitem">
 							<label>应付款项:</label>
 					</td>
-					<td><input id="kxsm"  name="kxsm" class="easyui-combobox" data-options="url:'fenghuang/caiwufukuanxiangxiala.do',
-					valueField:'name',
-					textField:'name',
-					panelHeight:'auto',
-					editable:false" required="true">
+					<td><input id="kxsmtree"   class="easyui-combotree"  data-options="url:'js/demo/combotree/fukuanTree.json',method:'get',required:true">
+    			<input title="款项说明" type="hidden" id="kuanxiang" name="kxsm" class="easyui-validatebox">
 						</div></td>
 						<td><div class="fitem">
 							<label>收款单位:</label>
@@ -496,63 +481,51 @@ pagination="true" toolbar="#tb2">
 					
 				</tr>
 				<tr>
-				<td><div class="fitem">
-							<label>caiwuid:</label>
-					</td>
+				
 					<td> 
-					<input id="caiwuid" name="caiwuid"  value="1" 
+					<input id="caiwuid" name="caiwuid"  value="1" hidden="true"
 						class="easyui-validatebox">
 						</div></td>
-						<td><div class="fitem">
-							<label>shanchu:</label>
-					</td>
+						
 					<td>
-					<input id="shanchu" name="shanchu" value="1" 
+					<input id="shanchu" name="shanchu" value="1" hidden="true"
 						class="easyui-validatebox">
 						</div></td>
 				</tr>
 				<tr>
-				<td><div class="fitem">
-							<label>shenfenid:</label>
-					</td>
+				
 					<td> 
-					<input id="shenfenid" name="shenfenid" value="3"
+					<input id="shenfenid" name="shenfenid" value="3" hidden="true"
 						class="easyui-validatebox">
 						</div></td>
-						<td><div class="fitem">
-							<label>fpxk:</label>
-					</td>
+						
 					<td>
-					<input id="fpxk" name="fpxk"  value="0" 
+					<input id="fpxk" name="fpxk"  value="0" hidden="true" hidden="true"
 						class="easyui-validatebox">
 						</div></td>
 				</tr>
 					<tr>
-					<td><div class="fitem">
-							<label>team:</label>
-					</td>
+					
 					<td> 
-					<input id="teamatest" name="team" 
+					<input id="teamatest" name="team" hidden="true"hidden="true"
 						class="easyui-validatebox">
 						</div></td>
-						<td><div class="fitem">
-							<label>tuanduimc:</label>
-					</td>
-					<td><input id="tuandui" name="tuanduimc" class="easyui-validatebox">
+						 
+					<td><input id="tuandui" name="tuanduimc" hidden="true" class="easyui-validatebox">
 						</div></td>
 				</tr>
 					<tr>
 				<td>
 							<!-- 已开发票: -->
 					
-					<input id="ykfp" name="ykfp" value="0"  
+					<input id="ykfp" name="ykfp" value="0"  hidden="true"
 						class="easyui-validatebox">
 						</div></td>
 						
 							<!-- YSYFID  hidden="true"-->
 					
 					<td> 
-					<input id="ysyfid" name="ysyfid" value="2"
+					<input id="ysyfid" name="ysyfid" value="2"hidden="true"
 						class="easyui-validatebox">
 						
 						</div></td>
@@ -561,7 +534,7 @@ pagination="true" toolbar="#tb2">
 				<tr>
 					<td colspan="4s" align="center"><a
 						href="javascript:xxfksave();" class="easyui-linkbutton"
-						iconCls="icon-ok">确认</a> <a href="javascript:closedSearch();"
+						iconCls="icon-ok">确认</a> <a href="javascript:$('#tdxxfkid').dialog('close');"
 						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
 				</tr>
 			</table>
@@ -572,7 +545,7 @@ pagination="true" toolbar="#tb2">
 <!--***************************************付款删除******************************************************-->
 <div id="xxfkshanchuid" class="easyui-dialog" title="团队信息添加"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
-		style="width:500px;height:200px;padding:10px;">
+		style="width:500px;height:250px;padding:10px;">
 		<form id="xxfkshanchuform" action="">
 			<table align="left">
 			<tr>
@@ -659,7 +632,7 @@ pagination="true" toolbar="#tb2">
 <!--***************************************付款修改******************************************************-->
 <div id="tdxxfkxiugaiid" class="easyui-dialog" title="团队信息添加"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
-		style="width:500px;height:200px;padding:10px;">
+		style="width:500px;height:250px;padding:10px;">
 		<form id="tdxxfkxiugaiform" action="">
 			<table align="left">
 			
@@ -695,7 +668,7 @@ pagination="true" toolbar="#tb2">
 							<label>应收日期:</label>
 					</td>
 					<td>
-					<input id="yushoutime" name="yushoutime" type="text" class="easyui-datebox" required="required">
+					<input id="fukuantime" name="fukuantime" type="text" class="easyui-datebox" required="required">
 						</div></td>
 				</tr>
 				
@@ -925,6 +898,8 @@ function shenfen(val,row){
 			$("#tdfkinsertid").dialog("close");
 		} 
 		function xxfksave() {
+		var val = $('#kxsmtree').combotree('getText');
+		$('#kuanxiang').val(val);
 			$('#tdxxfkform').form('submit', {
 				url : 'fenghuang/inserttuanbiao.do',
 				onSubmit : function() {
