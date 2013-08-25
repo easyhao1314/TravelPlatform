@@ -57,10 +57,6 @@ public class LoginController {
 				}
 			}
 			 boolean isExist = iUsersService.isExistUserLoginName(loginName);
-			 if("admin".equals(loginName)){
-					map.put("dateTime", FengHuangDateUtil.getTimeShow());
-				 return "layout";
-			 }
 			if(isExist){
 				Users users = iUsersService.getUsersByLoginName(loginName);
 				if(users != null&&FengHuangMd5Util.getMD5(password).equals(users.getPassword()))
@@ -81,7 +77,13 @@ public class LoginController {
 					personalEvent.setEventType("登陆操作");
 					personalEvent.setUserId(users.getId());
 					iPersonalEventService.insertPersonalEvent(personalEvent);
-					return "layouttest";
+					 if("admin".equals(loginName)){
+							map.put("dateTime", FengHuangDateUtil.getTimeShow());
+						 return "layout";
+					 }else {
+						
+						 return "layouttest";
+					}
 				}else{
 					map.put("loginError", "密码不正确！");
 					map.put("loginName", loginName);
