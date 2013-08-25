@@ -140,12 +140,12 @@ public class CaiwuqrfkController {
 		if(huituantime!=null&&!"".equals(huituantime)){
 			DateFormat format1 = new SimpleDateFormat("yyyy-MM-dd"); 
 			Date dategroupdate = format1.parse(huituantime);
-			tuanbiao.setFukuantime(dategroupdate);
+			tuanbiao.setHuituantime(dategroupdate);
 		}
 		if(chutuantime!=null&&!"".equals(chutuantime)){
 			DateFormat format1 = new SimpleDateFormat("yyyy-MM-dd"); 
 			Date dategroupdate = format1.parse(chutuantime);
-			tuanbiao.setFukuantime(dategroupdate);
+			tuanbiao.setChutuantime(dategroupdate);
 		}
 		if(ysyfid!=null&&!"".equals(ysyfid)){
 			tuanbiao.setYsyfID(Integer.parseInt(ysyfid));

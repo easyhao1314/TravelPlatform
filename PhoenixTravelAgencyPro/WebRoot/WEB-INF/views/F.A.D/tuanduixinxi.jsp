@@ -65,10 +65,10 @@ pagination="true" toolbar="#tb1">
                                   <th data-options="field:'yingshou',editor:'text'" width="50">应收</th>
                                   <th data-options="field:'yishou',editor:'text'" width="50">已收</th>
                                   <th data-options="field:'weifu',formatter:caigoulirun" width="50">未付</th>	
-                                  <th data-options="field:'ykfp',editor:'numberbox'" width="50">已开发票</th>
-                                  <th data-options="field:'fpxk',editor:'numberbox'" width="50">发票许可</th>
+                                  <th data-options="field:'ykfp',formatter:xinxiykfp" width="50">已开发票</th>
+                                  <th data-options="field:'fpxk',formatter:xinxifpxk" width="50">发票许可</th>
                                   <th data-options="field:'a',editor:'numberbox'" width="50">销售确认</th>
-                                  <th data-options="field:'yujilirun',editor:'numberbox'" width="50">财务确认</th>
+                                  <th data-options="field:'confirmed',formatter:xinxiconfirmed" width="50">财务确认</th>
                                   <th data-options="field:'beizhu',editor:'numberbox'" width="50">备注</th>
                                   <th data-options="field:'fuzeren',editor:'numberbox'" width="50">责任人</th>
                                  
@@ -93,10 +93,10 @@ pagination="true" toolbar="#tb2">
                        <th data-options="field:'yfk',editor:'text'" width="50">应付</th>
                        <th data-options="field:'yifu',editor:'text'" width="50">已付</th>
                        <th data-options="field:'a',formatter:lirun" width="50">未付</th>	
-                       <th data-options="field:'ykfp',editor:'numberbox'" width="50">已开发票</th>
-                       <th data-options="field:'fpxk',editor:'numberbox'" width="50">发票许可</th>
+                       <th data-options="field:'ykfp',formatter:xinxiykfp" width="50">已开发票</th>
+                       <th data-options="field:'fpxk',formatter:xinxifpxk" width="50">发票许可</th>
                        <th data-options="field:'a',editor:'numberbox'" width="50">销售确认</th>
-                       <th data-options="field:'yujilirun',editor:'numberbox'" width="50">财务确认</th>
+                       <th data-options="field:'yujilirun',formatter:xinxiconfirmed" width="50">财务确认</th>
                        <th data-options="field:'beizhu',editor:'numberbox'" width="50">备注</th>
                        <th data-options="field:'fuzeren',editor:'numberbox'" width="50">责任人</th>
                       
@@ -740,6 +740,25 @@ pagination="true" toolbar="#tb2">
 
 <!-- *********************************************************************************************** -->
 <script type="text/javascript">
+
+   function xinxiykfp(val,row){
+		   var shouke=null;
+		   	 if(row.ykfp==0){shouke="未开发票";}
+		   	 if(row.ykfp==1){shouke="已开发票";}
+		     return '<div onclick="shoukeclick(event,'+row.tuanNo+')" style="width: auto;">'+shouke+'</div>';
+		   }
+   function xinxiconfirmed(val,row){
+		   var shouke=null;
+		   	 if(row.confirmed==1){shouke="未确认";}
+		   	 if(row.confirmed==2){shouke="已确认";}
+		     return '<div onclick="shoukeclick(event,'+row.tuanNo+')" style="width: auto;">'+shouke+'</div>';
+		   }  
+ function xinxifpxk(val,row){
+		   var shouke=null;
+		   	 if(row.fpxk==0){shouke="未开发票";}
+		   	 if(row.fpxk==1){shouke="已开发票";}
+		     return '<div onclick="shoukeclick(event,'+row.tuanNo+')" style="width: auto;">'+shouke+'</div>';
+		   }
 //销售利润
 function lirun(val,row){
 var a=parseInt(row.yfk);
