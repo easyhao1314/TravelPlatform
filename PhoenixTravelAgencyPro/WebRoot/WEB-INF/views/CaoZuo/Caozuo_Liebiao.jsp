@@ -54,7 +54,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
 	
 	
-    <div id="fukuan" class="easyui-window" title="应付款窗口" data-options="iconCls:'icon-save',tools:'#fukuantt'" style="width:500px;height:300px;padding:10px;">
+    <div id="fukuan" class="easyui-window" title="应付款窗口" data-options="iconCls:'icon-save',tools:'#fukuantt',closed:true" style="width:500px;height:300px;padding:10px;">
         <form id="fukuanform" action="">
         	<table  style="width: 400px;">
         	<tr>
@@ -78,15 +78,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	
         	
         	<tr>
-        	<td><input id="huituantime" type="hidden" name="huituantime" class="easyui-validatebox" style="width: 150px;" />
+        	<td>
+        	<input id="huituantime"  name="huituantime" class="easyui-validatebox" style="width: 150px;" />
         	<input id="shenfenid" type="hidden" name="shenfenid" value="3" class="easyui-validatebox" style="width: 150px;" />
         	<input id="shanchu" type="hidden" name="shanchu" value="1" class="easyui-validatebox" style="width: 150px;" />
         	<input id="fpxk" type="hidden" name="fpxk" value="0" class="easyui-validatebox" style="width: 150px;" />
 			<input id="ykfp" type="hidden" name="ykfp" value="0" class="easyui-validatebox" style="width: 150px;" />
         	<input id="ykfp" type="hidden" name="ysyfid" value="2" class="easyui-validatebox" style="width: 150px;" />
         	<input id="caiwuid" type="hidden" name="caiwuid" value="1" class="easyui-validatebox" style="width: 150px;" />
-        	<input id="team" type="hidden" name="team" value="oooo" class="easyui-validatebox" style="width: 150px;" />
-        	<input id="tuanduimc" type="huilvid" name="huilvid" value="1" class="easyui-validatebox" style="width: 150px;" />
+        	<input id="team" type="hidden" name="team"  class="easyui-validatebox" style="width: 150px;" />
+        	<input id="huilvid" type="hidden" name="huilvid" value="1" class="easyui-validatebox" style="width: 150px;" />
+        	<input id="tuanduimc" name="tuanduimc" type="hidden" class="easyui-validatebox" >
         	</td>
         	</tr>
         	</table>
@@ -235,6 +237,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	$('#team').attr('value',rowData.tuanName);
 	$('#chutuantime').attr('value',rowData.chutuantime);
 	$('#huituantime').attr('value',rowData.huituantime);
+	alert($('#huituantime').val());
 	 e.preventDefault();
 	  $('#caozuomm').menu('show', {
         left:e.pageX,

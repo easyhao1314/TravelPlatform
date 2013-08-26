@@ -33,7 +33,7 @@
 		pagination="true" toolbar="#tb">
 		<thead>
 			<tr> 
-			    <th data-options="field:'id',editor:'text'" width="5">编号</th>
+			    <th data-options="field:'id',editor:'text'" width="5" >编号</th>
 				<th data-options="field:'zhanghaoming',editor:'text'" width="10">账号名称</th>
 				<th data-options="field:'yongtu',editor:'text'" width="10">用途</th>
 				<th data-options="field:'bizhong',editor:'text'" width="10">币种</th>
@@ -61,7 +61,7 @@
 	
 	<div id="sfkzhwhid" class="easyui-dialog" title="账号添加"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
-		style="width:500px;height:200px;padding:10px;">
+		style="width:500px;height:250px;padding:10px;">
 		<form id="sfkzhwhform" action="">
 			<table align="left">
 				<tr>

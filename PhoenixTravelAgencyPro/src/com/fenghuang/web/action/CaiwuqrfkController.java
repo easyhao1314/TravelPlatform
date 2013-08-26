@@ -116,9 +116,9 @@ public class CaiwuqrfkController {
 	}
 	
 	@RequestMapping("fenghuang/inserttuanbiao.do")
-	@ResponseBody
+	@ResponseBody    
 	public Map<String,Object> addCustom(HttpServletRequest request,HttpServletResponse response,
-		   String team,String kxsm,String zhanghaoid,String khmc,String yushoutime,String yingshou,String huilvid,String beizhu,String ysyfid,String shanchu,String caiwuid,String shenfenid,String fuzeren,String tuanduimc,String yfk,String teamatest,String fukuantime,String chutuantime,String huituantime,String renshu){
+		   String team,String kxsm,String zhanghaoid,String khmc,String yushoutime,String yingshou,String huilvid,String beizhu,String ysyfid,String shanchu,String caiwuid,String shenfenid,String fuzeren,String tuanduimc,String yfk,String teamatest,String fukuantime,String chutuantime,String huituantime,String renshu,String ddje){
 		Map<String, Object> result = new HashMap<String, Object>();
 		boolean isSuccess = false;
 		try {
@@ -131,6 +131,10 @@ public class CaiwuqrfkController {
 		tuanbiao.setTeam(team);
 		
 		}
+		if(ddje!=null&&!"".equals(ddje)){
+			tuanbiao.setDdje(Integer.parseInt(ddje));
+			
+			}
 		if(kxsm!=null&&!"".equals(kxsm)){
 		tuanbiao.setKxsm(kxsm);	
 		}

@@ -70,7 +70,7 @@
 	</div>
 	<div id="bzhlszid" class="easyui-dialog" title="汇率添加"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
-		style="width:500px;height:200px;padding:10px;">
+		style="width:500px;height:250px;padding:10px;">
 		<form id="bzhlszform" method="post">
 			<table align="left">
 				<tr>
