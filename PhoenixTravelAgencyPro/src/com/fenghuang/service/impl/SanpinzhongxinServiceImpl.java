@@ -52,7 +52,6 @@ public class SanpinzhongxinServiceImpl implements ISanpinzhongxinService {
             b.setHuilvID(1);
             b.setYishou(500);
             b.setCaiwuid(1);
-            
             icaiwu.savefkqr(b);
 		}
 		return bl;
