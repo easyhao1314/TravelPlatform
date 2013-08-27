@@ -1,6 +1,7 @@
 package com.fenghuang.service.impl;
 
 import java.sql.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -15,10 +16,12 @@ import com.fenghuang.entiey.FunctionMenu;
 import com.fenghuang.entiey.TestUser;
 import com.fenghuang.entiey.TuanXianlu;
 import com.fenghuang.entiey.Xianlu;
+import com.fenghuang.service.IJbpmService;
 import com.fenghuang.service.IXianluService;
 import com.fenghuang.service.IdantuanService;
 import com.fenghuang.service.ItuanXianluService;
 import com.fenghuang.util.Pagination;
+import com.fenghuang.util.ShowConstant;
 
 @Service
 public class dantuanServiceImpl implements IdantuanService{
@@ -29,6 +32,8 @@ public class dantuanServiceImpl implements IdantuanService{
 	 IXianluService ixls;
 	@Autowired
 	 ItuanXianluService itxls;
+	@Autowired
+	IJbpmService ijbpms;
 	@Override
 	public int add(DantuanXinXi dt) {
 		// TODO 添加
@@ -96,7 +101,21 @@ public class dantuanServiceImpl implements IdantuanService{
 		}
 		//是否审批
 		public boolean updateshenqi(String tuanNo){
-			return idt.updateshenqi(tuanNo);
+
+			Map map = new HashMap<String,Object>();
+			
+			
+			map.put("userId","999000");
+			map.put(ShowConstant.SUBMIT_TYPE, ShowConstant.SUBMIT_DANTUAN_OPERATE);
+			Long l = null;
+			try {
+				l = ijbpms.submitApproval(tuanNo, map);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			return l!=null;
 		}
 		//已确认审批报价团查询
 		public Pagination<DantuanXinXi> getDantuanYiqueren(int currentPage,int numPerPage) throws Exception{

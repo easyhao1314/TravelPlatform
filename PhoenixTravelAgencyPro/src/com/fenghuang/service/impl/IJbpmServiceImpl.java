@@ -4,6 +4,7 @@
 package com.fenghuang.service.impl;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,9 @@ public class IJbpmServiceImpl implements IJbpmService {
 		String submitType = (String) param.get(ShowConstant.SUBMIT_TYPE);
 		if (ShowConstant.SUBMIT_DANTUAN_OPERATE.equals(submitType)) {
            //冬青，添加代码的地方
+		
+			idantuan.updateshenqi(tuanNumber);
+		
 		} else if (ShowConstant.SUBMIT_CAIWU_OPERATE.equals(submitType)) {
           //赵月龙，添加代码的地方
 		}

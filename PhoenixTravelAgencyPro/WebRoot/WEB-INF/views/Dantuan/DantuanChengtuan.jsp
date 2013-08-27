@@ -37,7 +37,7 @@
 		<thead>  
                     <tr>  
                       <th data-options="field:'ck',checkbox:true"></th>
-                     <th id="tuanNo" data-options="field:'tuanduimc'" width="40" >团号</th>  
+                     <th  data-options="field:'tuanduimc'" width="40" >团号</th>  
                      <th data-options="field:'team'" width="60">团队名称</th> 
                      <th data-options="field:'chutuantime'" width="60">出团时间</th> 
                      <th data-options="field:'huituantime'" width="60">回团时间</th>  
