@@ -25,7 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
     
     <table id="caozuoliebiaodg" class="easyui-datagrid"
-		data-options="url:'fenghuang/Operateinfo.do',border:false,singleSelect:true,fit:true,fitColumns:true,onRowContextMenu: caozuoContextMenu"
+		data-options="url:'fenghuang/Operateinfo.do',border:false,singleSelect:true,fit:true,fitColumns:true,onRowContextMenu: caozuoContextMenu,pageSize:20"
 		pagination="true">
 		<thead>
 			<tr>
@@ -233,11 +233,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		return '<a href="javascript:openCaozuomx('+row.tuanNo+')">'+row.tuanName+'</a>';
 	}
 	function caozuoContextMenu(e, rowIndex, rowData){
+	
 	$('#tuanduimc').attr('value',rowData.tuanNo);
 	$('#team').attr('value',rowData.tuanName);
+	alert($('#team').val());
 	$('#chutuantime').attr('value',rowData.chutuantime);
 	$('#huituantime').attr('value',rowData.huituantime);
-	alert($('#huituantime').val());
 	 e.preventDefault();
 	  $('#caozuomm').menu('show', {
         left:e.pageX,

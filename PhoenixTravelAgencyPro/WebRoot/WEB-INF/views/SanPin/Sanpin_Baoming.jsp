@@ -220,7 +220,42 @@ return zhuantuanshenpi;
 
 </div>
 <div title="财务情况" style="padding:10px">
-<ul class="easyui-tree" data-options=""></ul>
+<table id="sanpincaiwudg" class="easyui-datagrid"
+		data-options="url:'fenghuang/baomingshenpiinfo.do?type=33&tuanNo=${param.tuanNo}',singleSelect:true,fitColumns:true,pageSize:10"
+		pagination="true" toolbar="#">
+		<thead>
+			<tr>
+				<th data-options="field:'kehuid'" width="20">客户编号</th>
+				<th data-options="field:'kehuname'" width="20">姓名</th>
+				<th data-options="field:'sex', formatter:function(value,row){
+	var sexinfo = '女';
+	if(row.sex=15){
+		sexinfo='男';
+	}
+return sexinfo;
+}" width="20">性别</th>
+				<th data-options="field:'zhengjianhao'" width="20">证件号</th>
+				<th data-options="field:'baomingsp',formatter:function(value,row){
+	var baomingsp = '未提交';
+	if(row.baomingsp==1){
+		baomingsp='等待审核';
+	}
+	if(row.baomingsp==2){
+		baomingsp='审核通过';
+	}
+	if(row.baomingsp==3){
+		baomingsp='审核失败';
+	}
+return baomingsp;
+}" width="20">报名审批</th>
+				
+				<th data-options="field:'yajinqueren'" width="20">押金确认</th>
+				<th data-options="field:'chupiaoqueren'" width="20">出票确认</th>
+				<th data-options="field:'chutuanqueren'" width="20">出团确认</th>
+				
+				<th data-options="field:'beizhu'" width="20">备注</th>
+		</thead>
+	</table>
 </div>
 </div>
 

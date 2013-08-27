@@ -5,8 +5,10 @@ import org.springframework.stereotype.Service;
 
 import com.fenghuang.dao.ISanpinzhongxinDao;
 import com.fenghuang.dao.IUserDao;
+import com.fenghuang.dao.IcaiwufkqrDao;
 import com.fenghuang.entiey.Sanpinzhongxin;
 import com.fenghuang.entiey.TuanXianlu;
+import com.fenghuang.entiey.Tuanbiao;
 import com.fenghuang.entiey.Xianlu;
 import com.fenghuang.service.ISanpinzhongxinService;
 import com.fenghuang.service.IXianluService;
@@ -20,6 +22,8 @@ public class SanpinzhongxinServiceImpl implements ISanpinzhongxinService {
 	 IXianluService ixls;
 	@Autowired
 	 ItuanXianluService itxls;
+	@Autowired
+	IcaiwufkqrDao icaiwu;
 	@Override
 	public boolean AddSanpinzhongxin(Sanpinzhongxin sanpin) throws Exception {
 		// TODO Auto-generated method stub
@@ -29,15 +33,27 @@ public class SanpinzhongxinServiceImpl implements ISanpinzhongxinService {
 			x.setGuojia((int)sanpin.getNumbercountry());
 			x.setTianshu(sanpin.getNumberday());
 			x.setXianluname(sanpin.getTuanName());
-            ixls.AddXianlu(x);
-            
+            ixls.AddXianlu(x);          
             TuanXianlu txl=new TuanXianlu();
             txl.setTuanNo(sanpin.getTuanNo());
-         
-            
             txl.setXlid(ixls.AddXianlu(x));
             bl=itxls.addTuanXianlu(txl);
-			
+            //添加财务
+            Tuanbiao b = new Tuanbiao();
+            b.setTeam(sanpin.getTuanName());
+            b.setTuanduimc(sanpin.getTuanNo());
+            b.setChutuantime(sanpin.getGroupdate());
+            b.setHuituantime(sanpin.getTourdate());
+            b.setRenshu(sanpin.getNumbermaster());
+            b.setYingshou(sanpin.getNumbermaster()*sanpin.getZhikejia());
+            b.setShenfenid(1);
+            b.setYsyfID(1);
+            b.setShanchu(1);
+            b.setHuilvID(1);
+            b.setYishou(500);
+            b.setCaiwuid(1);
+            
+            icaiwu.savefkqr(b);
 		}
 		return bl;
 	}
