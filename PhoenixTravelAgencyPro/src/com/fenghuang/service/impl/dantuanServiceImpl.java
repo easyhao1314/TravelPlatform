@@ -103,7 +103,7 @@ public class dantuanServiceImpl implements IdantuanService{
 		public boolean updateshenqi(String tuanNo){
 
 			Map map = new HashMap<String,Object>();
-			
+			List<Map<String, Object>> list=idt.selectDantuanId(tuanNo);
 			
 			map.put("userId","999000");
 			map.put(ShowConstant.SUBMIT_TYPE, ShowConstant.SUBMIT_DANTUAN_OPERATE);

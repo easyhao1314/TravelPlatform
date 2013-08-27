@@ -63,19 +63,19 @@
 		<form id="addCaiwuForm" method="post">
 			<table align="center">
 <tr>
-<td><div class="fitem"><label>团号:</label></td><td><input id="tuanduimc" name="tuanduimc" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>团名：</label></td><td><input id="team" name="team" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>团号:</label></td><td><input id="tuanduimc" name="tuanduimc" class="easyui-validatebox" disabled="true"></div></td>
+<td><div class="fitem"><label>团名：</label></td><td><input id="team" name="team" class="easyui-validatebox" disabled="true"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>客户名称:</label></td><td colspan="3"><input id="khmc" name="khmc" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>客户名称:</label></td><td colspan="3"><input id="khmc" name="khmc" class="easyui-validatebox" disabled="true"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>出访人数：</label></td><td><input id="renshu" name="renshu" class="easyui-validatebox" required="true"></div></td>
-<td><div class="fitem"><label>销售：</label></td><td><input id="caozuo" name="caozuo" class="easyui-validatebox" required="true"></div></td>
+<td><div class="fitem"><label>出访人数：</label></td><td><input id="renshu" name="renshu" class="easyui-validatebox" disabled="true"></div></td>
+<td><div class="fitem"><label>销售：</label></td><td><input id="caozuo" name="caozuo" class="easyui-validatebox" disabled="true"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>出团时间：</label></td><td><input id="chutuantime" name="chutuantime" type="text" class="easyui-datebox" required="required"></div></td>
-<td><div class="fitem"><label>回团时间：</label></td><td><input id="huituantime" name="huituantime" type="text" class="easyui-datebox" required="required"></div></td>
+<td><div class="fitem"><label>出团时间：</label></td><td><input id="chutuantime" name="chutuantime" type="text" class="easyui-datebox" disabled="true"></div></td>
+<td><div class="fitem"><label>回团时间：</label></td><td><input id="huituantime" name="huituantime" type="text" class="easyui-datebox" disabled="true"></div></td>
 </tr>
 <tr>
 <td><div class="fitem"><label>款项说明：</label></td><td><input id="kxsm" name="kxsm" class="easyui-validatebox" required="true"></div></td>
@@ -105,18 +105,16 @@
 	  
 	}
         //新增
-		function addCaiwu() {
-			$("#addCaiwu").dialog("open");
-			var row = $("#dgCaiwu").datagrid("getSelected");
-			
+		function addCaiwu() {			
+			var row = $("#dgCaiwu").datagrid("getSelected");			
 		    $("#tuanduimc").val(row.tuanNo);
 			$("#team").val(row.tuanName);
 			$("#khmc").val(row.khId);
-			$("#chutuantime").val(row.ctsj);
-			$("#huituantime").val(row.htsj);
+			$("#chutuantime").datebox('setValue',row.ctsj);
+			$("#huituantime").datebox('setValue',row.htsj);
 			$("#caozuo").val(row.xsNo);
 			$("#renshu").val(row.cfrs);
-				
+			$("#addCaiwu").dialog("open");	
 		}
          
 		function dantuanCauwu() {
