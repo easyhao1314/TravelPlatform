@@ -133,8 +133,7 @@ public class CaiwuqrfkController {
 		}
 		if(ddje!=null&&!"".equals(ddje)){
 			tuanbiao.setDdje(Integer.parseInt(ddje));
-			
-			}
+		}
 		if(kxsm!=null&&!"".equals(kxsm)){
 		tuanbiao.setKxsm(kxsm);	
 		}

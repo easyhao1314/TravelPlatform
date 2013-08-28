@@ -101,7 +101,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<input id="searchDicType" name="dicType" type="hidden">
 		</form>
 		 <div id="sanpincaozuott">
-        <a href="javascript:void(0)" title="提交到计调报价" class="icon-add" onclick="addjidiao()"></a>
+        <a href="javascript:addjidiao()" title="提交到计调报价" class="icon-add" ></a>
     	 </div>
 		
 	</div>
@@ -182,7 +182,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		if(row==null){return;}
 		$('#updatesanpinwindow').window('open');
 		$('#upsanpinform').form('load',row);
-		alert(row.tuanNo);
 	}
 	
 	
@@ -220,7 +219,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	$('#tuanName').attr('value',rowData.tuanName);
 	$('#userId').attr('value','${sessionScope.userId}');
 	$('#operateType').attr('value',2);
-	alert('${sessionScope.userId}');
 		 e.preventDefault();
          $('#mmsanpincaozuo').menu('show', {
         left:e.pageX,

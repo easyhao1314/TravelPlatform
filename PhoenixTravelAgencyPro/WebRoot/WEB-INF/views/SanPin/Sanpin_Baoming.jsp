@@ -27,13 +27,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<td><div class="fitem">
 						<strong><label>团号:</label></strong>
 				</td>
-				<td><strong><input name="tuanNo" class="easyui-validatebox"></strong>
+				<td><strong><input id="tNo" name="tuanNo" class="easyui-validatebox"></strong>
 					
 				</td>
 				<td><div class="fitem">
 						<strong><label>团队名称:</label></strong>
 				</td>
-				<td><strong><input name="tuanName" class="easyui-validatebox"></strong>
+				<td><strong><input id="tName" name="tuanName" class="easyui-validatebox"></strong>
 					
 				</td>
 				<td><div class="fitem">
@@ -51,9 +51,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					
 				</td>
 				<td><div class="fitem">
-						<strong><label>同行价:</label></strong>
+						<strong><label>直客价:</label></strong>
 				</td>
-				<td><strong><input name="tonghang" class="easyui-validatebox"></strong>
+				<td><strong><input id="zhikejia" name="zhikejia" class="easyui-validatebox"></strong>
 					
 				</td>
 				<td><div class="fitem">
@@ -120,7 +120,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		pagination="true" toolbar="#jibentb">
 		<thead>
 			<tr>
-				<th data-options="field:'ck',checkbox:true"></th>
+				<th data-options="field:'ck',checkbox:true">id</th>
 				<th data-options="field:'id'" width="80">客户编号</th>
 				<th data-options="field:'name',editor:'text'" width="80">姓名</th>
 				<th data-options="field:'sex',editor:'text', formatter:function(value,row){
@@ -155,7 +155,7 @@ data: [{
 	</table>
 
 </div>
-<div title="操作进展" style="padding:10px" onclick="shuaxincaozuodg()">
+<div title="操作进展" style="padding:10px">
 <table id="caozuodg" class="easyui-datagrid"
 		data-options="url:'fenghuang/baomingshenpiinfo.do?type=33&tuanNo=${param.tuanNo}',singleSelect:true,fitColumns:true,pageSize:10"
 		pagination="true" toolbar="#caozuotb">
@@ -220,7 +220,57 @@ return zhuantuanshenpi;
 
 </div>
 <div title="财务情况" style="padding:10px">
-<ul class="easyui-tree" data-options=""></ul>
+	<div id="caiwutd">
+		<a href="javascript:openfukuandlg();" class="easyui-linkbutton"
+			iconCls="icon-add" plain="true">付款</a>
+	</div>
+
+	<div id="fukuandlg" class="easyui-dialog" title="客户财务付款" data-options="iconCls:'icon-save',closed:true,buttons:'#sanpincaiwudlg-buttons'" style="width:600px;height:300px;padding:10px">
+        <form id="sanpincaiwuform" action="">
+        	金额：<input id="yishou" name="yishou" class="easyui-validatebox">
+        	备注：<input id="beizhu" name="beizhu" class="easyui-validatebox">
+        	款项：<input id="kuanxiang" name="kxsm" class="easyui-validatebox">
+        	<input id="tuanNo" name="tuanduimc" type="hidden" class="easyui-validatebox">
+        	<input id="tuanName" name="team" type="hidden" class="easyui-validatebox">
+        	<input id="kehuname" name="khmc" type="hidden" class="easyui-validatebox">
+        	<input id="yingshou" name="yingshou" type="hidden" class="easyui-validatebox">
+        	
+        	<input type="hidden" name="shenfenid" value="1" class="easyui-validatebox">
+        	<input type="hidden" name="ysyfid" value="1" class="easyui-validatebox">
+        	<input type="hidden" name="shanchu" value="1" class="easyui-validatebox">
+        	<input type="hidden" name="huilvid" value="1" class="easyui-validatebox">
+        	
+        	
+        	
+        </form>
+	</div>
+	 <div id="sanpincaiwudlg-buttons">
+        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="javascript:savesanpincaiwu();">提交</a>
+        <a href="javascript:$('#fukuandlg').dialog('close')" class="easyui-linkbutton">关闭</a>
+    </div>
+
+<table id="sanpincaiwudg" class="easyui-datagrid"
+		data-options="url:'fenghuang/baomingshenpiinfo.do?type=33&tuanNo=${param.tuanNo}',singleSelect:true,fitColumns:true,pageSize:10"
+		pagination="true" toolbar="#caiwutd">
+		<thead>
+			<tr>
+				<th data-options="field:'kehuid'" width="20">客户编号</th>
+				<th data-options="field:'kehuname'" width="20">姓名</th>
+				<th data-options="field:'sex', formatter:function(value,row){
+	var sexinfo = '女';
+	if(row.sex=15){
+		sexinfo='男';
+	}
+return sexinfo;
+}" width="20">性别</th>
+				<th data-options="field:'zhengjianhao'" width="20">证件号</th>
+				<th data-options="field:'yajinqueren'" width="20">押金确认</th>
+				<th data-options="field:'chupiaoqueren'" width="20">出票确认</th>
+				<th data-options="field:'chutuanqueren'" width="20">出团确认</th>
+				
+				<th data-options="field:'beizhu'" width="20">备注</th>
+		</thead>
+	</table>
 </div>
 </div>
 
@@ -231,6 +281,36 @@ return zhuantuanshenpi;
 	<!-- 填充fromLoad -->
 	<script type="text/javascript">
 	contentType:"application/x-www-form-urlencoded; charset=UTF-8";
+	function openfukuandlg(){
+		var row = $("#sanpincaiwudg").datagrid("getSelected");
+		$('#kehuname').attr('value',row.kehuname);
+		$('#yingshou').attr('value',$('#zhikejia').val());
+		$('#tuanNo').attr('value',$('#tNo').val());
+		$('#tuanName').attr('value',$('#tName').val());
+		
+		$('#fukuandlg').dialog('open');
+		
+	}
+	function savesanpincaiwu(){
+		$('#sanpincaiwuform').form('submit', {
+				url : 'fenghuang/inserttuanbiao.do',
+				onSubmit : function() {
+					return $(this).form('validate');
+				},
+				success : function(result) {
+					var result = eval('(' + result + ')');
+					if (result.success) {
+						$.messager.alert("保存成功", "保存成功！", "info");
+					} else {
+						$.messager.alert("保存失败", "保存失败!", "error");
+					}
+				}
+			});		
+	}
+	
+	
+	
+	
 $(document).ready(function() {
 	load();
 }); 
@@ -251,9 +331,6 @@ var url = "fenghuang/Sanpinliebiao.do?tuanNo="+'<%=request.getParameter("tuanNo"
 }
 	</script>
 	<script type="text/javascript">
-	function shuaxincaozuodg(){
-		$("#caozuodg").datagrid('reload');
-	}
 		var editIndex = undefined;
 		function endEditing() {
 			if (editIndex == undefined) {
