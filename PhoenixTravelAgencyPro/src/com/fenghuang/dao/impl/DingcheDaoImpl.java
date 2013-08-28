@@ -30,10 +30,10 @@ public class DingcheDaoImpl extends BaseDao implements IdingcheDao{
 	}
 
 	@Override
-	public boolean dingcheAdd(Dingche dy) throws Exception {
+	public boolean dingcheAdd(Dingche dc) throws Exception {
 		// TODO Auto-generated method stub
 		String sql="insert into  dingche(tuanNo,cheName,cheXinxi,chePaihao,siji,sidao,tianshu,zuoweishu,zongjiage) values(?,?,?,?,?,?,?,?,?) ";
-		int count=this.update(sql);
+		int count=this.update(sql,dc.getTuanNo(),dc.getCheName(),dc.getCheXinxi(),dc.getChePaihao(),dc.getSiji(),dc.getSidao(),dc.getTianshu(),dc.getZuoweishu(),dc.getZongjiage());
 		return count>0;
 	}
 

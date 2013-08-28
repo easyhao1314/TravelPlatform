@@ -82,6 +82,11 @@
 <td><div class="fitem"><label>总报价：</label></td><td><input id="yingshou" name="yingshou" class="easyui-validatebox" required="true"></div></td>
 </tr>
 <tr>
+<td><input id="shenfenid" name="shenfenid" class="easyui-validatebox" value="2" hidden="true">			
+<input id="ysyfID" name="ysyfID" class="easyui-validatebox" value="1" hidden="true"></td><td>
+<input id="caiwuid" name="caiwuid" class="easyui-validatebox" value="7" hidden="true"></td>
+</tr>
+<tr>
 <td colspan="4" align="center">
 <a href="javascript:dantuanCauwu();" class="easyui-linkbutton" iconCls="icon-ok">确认提交</a>
 <a href="javascript:closedSearch();" class="easyui-linkbutton" iconCls="icon-undo">取消</a></td>

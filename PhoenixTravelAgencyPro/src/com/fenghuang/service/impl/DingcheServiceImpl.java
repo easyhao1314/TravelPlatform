@@ -13,36 +13,36 @@ import com.fenghuang.util.Pagination;
 @Service
 public class DingcheServiceImpl implements IdingcheService{
 	@Autowired
-    public IdingcheDao idcd;
+    public IdingcheDao idingched;
 	@Override
 	public Pagination<Dingche> dingcheSelect(int currentPage, int numPerPage,
 			Dingche dc) throws Exception {
 		// TODO Auto-generated method stub
-		return idcd.dingcheSelect(currentPage, numPerPage, dc);
+		return idingched.dingcheSelect(currentPage, numPerPage, dc);
 	}
 
 	@Override
-	public boolean dingcheAdd(Dingche dy) throws Exception {
+	public boolean dingcheAdd(Dingche dc) throws Exception {
 		// TODO Auto-generated method stub
-		return idcd.dingcheAdd(dy);
+		return idingched.dingcheAdd(dc);
 	}
 
 	@Override
 	public boolean dingcheDelete(long id) throws Exception {
 		// TODO Auto-generated method stub
-		return idcd.dingcheDelete(id);
+		return idingched.dingcheDelete(id);
 	}
 
 	@Override
 	public List<Map<String, Object>> dingcheSelectId(long id) throws Exception {
 		// TODO Auto-generated method stub
-		return idcd.dingcheSelectId(id);
+		return idingched.dingcheSelectId(id);
 	}
 
 	@Override
-	public boolean dingcheUpdate(Dingche dy) throws Exception {
+	public boolean dingcheUpdate(Dingche dc) throws Exception {
 		// TODO Auto-generated method stub
-		return idcd.dingcheUpdate(dy);
+		return idingched.dingcheUpdate(dc);
 	}
 
 }

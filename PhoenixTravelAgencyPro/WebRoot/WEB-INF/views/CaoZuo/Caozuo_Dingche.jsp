@@ -25,65 +25,66 @@
 </head>
 
 <body>
-	 
+
+	<div class="easyui-panel" title="添加订车"
+		style="height:115px;padding:10px;width:auto;"
+		data-options="closable:false,tools:'#searchpanel'" align="center">
 		<form id="DingcheForm"> 
 		<table> 
 			<tr> 
 				<td><div class="fitem"> 
 						<label>车公司:</label> 
-				</div></td> 
-				<td><input id="cheName" name="cheName" class="easyui-validatebox"></td> 
+				</td> 
+				<td><input id="tuanNo" name="tuanNo" class="easyui-validatebox" required="true"><input id="cheName" name="cheName" class="easyui-validatebox"></td> 
 				<td><div class="fitem"> 
 						<label>车牌:</label> 
-				</div></td> 
+				</td> 
 				<td><input id="chePaihao" name="chePaihao" class="easyui-validatebox"> 
-					 
+					</div> 
 				</td> 
 				<td><div class="fitem"> 
 						<label>车信息:</label> 
-				</div></td> 
-				<td><input id="cheXinxi" name="cheXinxi" class="easyui-validatebox"> 
-					 
 				</td> 
-						</tr> 
-		<tr> 
+				<td><input id="cheXinxi" name="cheXinxi" class="easyui-validatebox"> 
+				</div>	 
+				</td> 
+	     	   </tr> 
+		        <tr> 
 				<td><div class="fitem"> 
-						<label> 司机:</label> 
-				</div></td> 
-				<td><input id="siji" name="siji" class="easyui-validatebox"></td> 
+					<label> 司机:</label> 
+				  </td> 
+				<td><input id="siji" name="siji" class="easyui-validatebox"></div></td> 
 				<td><div class="fitem"> 
 						<label>天数:</label> 
-				</div></td> 
+				</td> 
 				<td><input id="tianshu" name="tianshu" class="easyui-validatebox"> 
-					 
+					</div> 
 				</td> 
 				<td><div class="fitem"> 
 						<label>座位数:</label> 
-				</div></td> 
-			 
-				<td><input id="zuoweishu" name="zuoweishu" class="easyui-validatebox"></td> 
+				</td> 			 
+				<td><input id="zuoweishu" name="zuoweishu" class="easyui-validatebox"></div></td> 
 				<td><div class="fitem"> 
 						<label>总价:</label> 
-				</div></td> 
-			 
+				</td> 			 
 				<td><input id="zongjiage" name="zongjiage" class="easyui-validatebox"></td> 
-			
+			</div>
 					</tr> 
 				<tr> 
 				<td colspan="6"> 
-					<a href="javascript:canyinSelectLike();" class="easyui-linkbutton" iconcls="icon-ok">添加订车</a> 
-						<a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-undo" onclick="$('#canyinForm').form('clear')">重置</a> 
+					<a href="javascript:SaveDingche();" class="easyui-linkbutton" iconcls="icon-ok">添加订车</a> 
+						<a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-undo" onclick="$('#DingcheForm').form('clear')">重置</a> 
 				</td> 
 			</tr> 
 		</table> 
 		</form> 
-	
+	</div>
 		
 	
 		 
 		<div class="easyui-panel" title="订车列表" style="height:480px;width: auto;">
-		<table id="dgCanyin" class="easyui-datagrid"
-			data-options="url:'fenghuang/canyinSelect.do',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
+		<table id="dgDingche" class="easyui-datagrid"
+			data-options="url:'fenghuang/dingcheSelect.do',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 			pagination="true" toolbar="#currencyDatagridtoolbar">
 			<thead>
 				<tr>
@@ -91,7 +92,7 @@
 					<th data-options="field:'chengshi'" width="80">车公司</th>
 					<th data-options="field:'id'" width="80">车牌</th>
 					<th data-options="field:'name'" width="80">座位数</th>
-					<th data-options="field:'dianhua'" width="80">天数</th>
+					<th data-options="field:'tianshu'" width="80">天数</th>
 					<th data-options="field:'chuanzhen'" width="80">总价</th>
 					<th data-options="field:'shouji'" width="80">司机</th>
 					<th data-options="field:'hzjb'" width="80">团号</th>
@@ -100,79 +101,35 @@
 			</thead>
 		</table>
 		<div id="currencyDatagridtoolbar">
-		    <a href="javascript:canyinSelectId();" class="easyui-linkbutton" iconCls="icon-save"  plain="true">修改</a>
+		    <a href="javascript:;" class="easyui-linkbutton" iconCls="icon-save"  plain="true">修改</a>
 		     <a href="javascript:canyinDelete();" class="easyui-linkbutton" iconCls="icon-cut" plain="true">删除</a>  
 		</div>
 	</div>
-		
-
 <script type="text/javascript">
 
     //这个方法是格式化是否可用列的，0：为不使用，1：为使用
-	function onIsUesStyle(val,row){
-	  if(val =='1'){
-	      return "使用";
-	  }else{
-	     return "不使用";
-	  }
-	  
-	}
-
-/**
- * 查询按钮
- */
-		function canyinSelectLike(){
-
-		var opts = $('#dgCanyin').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
-			var param = {
-				name: $("#name").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
-				chengshiId: $("#chengshiId").combobox('getValue'),
-				hzjbId : $("#hzjbId").combobox('getValue'),
-				page:  opts.pageNumber ,
-				rows:  opts.pageSize
-			};
-
-				$.ajax({
-					url : 'fenghuang/canyinSelect.do' ,
-					data :  param,
-					type : 'POST',
-					dataType : 'json' ,
-					success : function(data){
-						$('#dgCanyin').datagrid('loadData',data);
-					}
-				});
-		}
-		
-	
-	
-	 //新增
-		function addCanyin() {
-			$("#addCanyin").dialog("open");
-			$("#addCanyinForm").form("clear");
-		}
-         
-		function SaveCanyin(){
-			$('#addCanyinForm').form('submit', {
-				url : 'fenghuang/canyinAdd.do',
+     $(document).ready(function() {
+            var tuanNo=${param.tuanNo};
+			$("#tuanNo").val(tuanNo);    
+      })
+			function SaveDingche(){
+						$('#DingcheForm').form('submit', {
+				url : 'fenghuang/dingcheAdd.do',
 				onSubmit : function() {
 					return $(this).form('validate');
 				},
 				success : function(result) {
 					var result = eval('(' + result + ')');
 					if (result.success) {
-					$('#addCanyin').dialog('close');
-						$.messager.alert("保存成功", "保存成功！", "info");
-						 $('#dgCanyin').datagrid('reload'); 
+					$('#addDingche').dialog('close');
+						$.messager.alert("添加成功", "添加成功！", "info");
+						 $('#dgDingche').datagrid('reload'); 
 					} else {
-						$.messager.alert("保存失败", "保存失败!", "error");
-						$('#dgCanyin').datagrid('reload');
+						$.messager.alert("添加失败", "添加失败!", "error");
+						$('#dgDingche').datagrid('reload');
 					}
 				}
 			});
-		}
-			//关闭
-		function closeEditDic() {
-			$('#addCanyin').dialog('close');
 		} 
 	//删除操作要执行的方法
 	function canyinDelete(){

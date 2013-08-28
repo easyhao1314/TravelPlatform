@@ -47,7 +47,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<form id="adddaoyouForm" method="post">
 			<table align="center">
            <tr>
-             <td><div class="fitem"><label>团号:</label></td><td><input id="id" name="id" class="easyui-validatebox"><input id="tuanNo" name="tuanNo" class="easyui-validatebox" required="true"></div></td>
+             <td><div class="fitem"><label>团号:</label></td><td><input id="id" name="id" class="easyui-validatebox" ><input id="tuanNo" name="tuanNo" class="easyui-validatebox" required="true"></div></td>
              <td><div class="fitem"><label>导游:</label></td><td><input id="daoyouId"  name="daoyouId" class="easyui-combobox" data-options="url:'fenghuang/daoyouXialaaa.do',
 			       method:'get',
 					valueField:'id',					

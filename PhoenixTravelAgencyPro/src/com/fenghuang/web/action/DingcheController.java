@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import net.sf.json.JSONObject;
 import net.sf.json.JsonConfig;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -24,7 +25,8 @@ import com.fenghuang.util.Pagination;
 
 @Controller
 public class DingcheController {
-	public IdingcheService idcs;
+	@Autowired
+	public IdingcheService idingches;
 	//添加
 	@RequestMapping("fenghuang/dingcheAdd.do")
 	@ResponseBody
@@ -37,13 +39,20 @@ public class DingcheController {
 		dc.setChePaihao(chePaihao);
 		dc.setSiji(siji);
 		dc.setSidao(sidao);
+		if(tianshu!=null && !"".equals(tianshu)){
 		dc.setTianshu(Integer.parseInt(tianshu));
+		}
+		if(zongjiage!=null && !"".equals(zongjiage)){
 		dc.setZongjiage(Float.parseFloat(zongjiage));
+		}
+		if(zuoweishu!=null && !"".equals(zuoweishu)){
 		dc.setZuoweishu(Integer.parseInt(zuoweishu));
+		}
 		Map<String,Object> reslut=new HashMap<String,Object>();
 		boolean bl=false;
 		try {
-			bl=idcs.dingcheAdd(dc);
+			idingches.dingcheAdd(dc);
+			bl=true;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -61,21 +70,21 @@ public class DingcheController {
 	// 查询
 	@RequestMapping("fenghuang/dingcheSelect.do")
 	@ResponseBody
-	public Map<String,Object> dingdaoyouSelect(HttpServletRequest request,HttpServletResponse response,
+	public Map<String,Object> dingcheSelect(HttpServletRequest request,HttpServletResponse response,
 			 Integer page,Integer rows,Dingche dc){
 		try {
-			Pagination<Dingche> pagination=(Pagination<Dingche>)idcs.dingcheSelect(page, rows, dc);
-			List<Map<String, Object>> dingdaoyouList = pagination.getResultList();
+			Pagination<Dingche> pagination=(Pagination<Dingche>)idingches.dingcheSelect(page, rows, dc);
+			List<Map<String, Object>> dingcheList = pagination.getResultList();
 			Map<String,Object> returnValue  = new HashMap<String, Object>();
-			for(int i = 0 ;i<dingdaoyouList.size();i++){
-				for(Entry<String, Object> entry : dingdaoyouList.get(i).entrySet()){
+			for(int i = 0 ;i<dingcheList.size();i++){
+				for(Entry<String, Object> entry : dingcheList.get(i).entrySet()){
 					if(entry.getValue() == null){
 						entry.setValue("") ;
 					}
 				}
 			}
 			returnValue.put("total",  pagination.getTotalRows());
-			returnValue.put("rows", dingdaoyouList);	
+			returnValue.put("rows", dingcheList);	
 			JsonConfig config = new JsonConfig();
 	     	config.registerJsonValueProcessor(Timestamp.class,new DateJsonValueProcessor("yyyy-MM-dd"));
 	     			//把MAP转换成JSON，返回到前台

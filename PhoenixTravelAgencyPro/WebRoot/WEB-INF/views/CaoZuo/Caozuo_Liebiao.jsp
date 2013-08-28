@@ -25,7 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
     
     <table id="caozuoliebiaodg" class="easyui-datagrid"
-		data-options="url:'fenghuang/Operateinfo.do',border:false,singleSelect:true,fit:true,fitColumns:true,onRowContextMenu: caozuoContextMenu"
+		data-options="url:'fenghuang/Operateinfo.do',border:false,singleSelect:true,fit:true,fitColumns:true,onRowContextMenu: caozuoContextMenu,pageSize:20"
 		pagination="true">
 		<thead>
 			<tr>
@@ -103,7 +103,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div id="caozuomm" class="easyui-menu" style="width:120px;">
     <div onClick="View()" data-options="iconCls:'icon-search'">查看</div>
     <div onClick="dingfang()" data-options="iconCls:'icon-search'">订房</div>
-    <div onClick="dingche()" data-options="iconCls:'icon-search'">订车</div>
+    <div onClick="dingche1()" data-options="iconCls:'icon-search'">订车</div>
     <div onClick="dingcan()" data-options="iconCls:'icon-search'">订餐</div>
     <div onClick="dingdaoyou()" data-options="iconCls:'icon-search'">订导游</div>
     <div onClick="dinggouwudian()" data-options="iconCls:'icon-search'">订购物店</div>
@@ -117,6 +117,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div data-options="iconCls:'icon-edit'" onClick="updatejinzhan(2)">全部完成</div>
 		<div data-options="iconCls:'icon-edit'" onClick="updatejinzhan(3)">完成报价</div>
 	</div>
+	 
 	 
 	  <div id="caozuodingche"  class="easyui-dialog" title="订车明细"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
@@ -133,8 +134,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  </form>
 	    
 	</div>
-		
-	<div id="beizhudlg"  class="easyui-dialog" title="订车明细"
+			<div id="beizhudlg"  class="easyui-dialog" title="订车明细"
 		data-options="modal:true,closed:true,iconCls:'icon-save', modal:true,buttons: 
 	 			[{
                     text:'保存',
@@ -233,11 +233,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		return '<a href="javascript:openCaozuomx('+row.tuanNo+')">'+row.tuanName+'</a>';
 	}
 	function caozuoContextMenu(e, rowIndex, rowData){
+	
 	$('#tuanduimc').attr('value',rowData.tuanNo);
 	$('#team').attr('value',rowData.tuanName);
+	alert($('#team').val());
 	$('#chutuantime').attr('value',rowData.chutuantime);
 	$('#huituantime').attr('value',rowData.huituantime);
-	alert($('#huituantime').val());
 	 e.preventDefault();
 	  $('#caozuomm').menu('show', {
         left:e.pageX,
@@ -267,17 +268,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                 var index = $('#tt').tabs('getTabIndex', tab); 
 	                 $('#tt').tabs('close', index);  
 	       } 
-	       
+	       	       
 	       $('#tt').tabs('add', {
 				         title : "订房行程详细信息",
 				         href : url,
 				      //  closable : true,
 				         });
 	}
+	function dingche1(){
+	  	var row = $("#caozuoliebiaodg").datagrid("getSelected");
+      var url= "Caozuo_dingche.do?tuanNo="+row.tuanNo;
+       var tab = $('#tt').tabs('getSelected'); 
+		if (tab){  
+	                 var index = $('#tt').tabs('getTabIndex', tab); 
+	                 $('#tt').tabs('close', index);  
+	       } 
+	       	       
+	       $('#tt').tabs('add', {
+				         title : "订车行程详细信息",
+				         href : url,
+				         });
+	}
 	
 	function dingche(){
-	$("#caozuodingche").dialog("open");
-					    
+	$("#beizhudlg").dialog("open");					    
 	var param = {
 					"xianluid" : "41"
 				};
@@ -361,8 +375,6 @@ function operatetype(value,row){
 
 	</script>
 	
-	<script type="text/javascript">
 	
-	</script>
   </body>
 </html>
