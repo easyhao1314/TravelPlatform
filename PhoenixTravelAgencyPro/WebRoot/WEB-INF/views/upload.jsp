@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
 <head>
-<title>test</title>
+<title>上传图片</title>
 <link rel="stylesheet" type="text/css" href="js/plupload/jquery.plupload.queue/css/jquery.plupload.queue.css" type="text/css" media="screen" />
 <script type="text/javascript" src="js/jquery.min.js" ></script>
 <script type="text/javascript" src="js/plupload/plupload.full.js"></script>
