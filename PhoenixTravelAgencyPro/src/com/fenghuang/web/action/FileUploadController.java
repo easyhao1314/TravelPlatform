@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,9 +17,13 @@ import org.apache.commons.fileupload.FileItemStream;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.fileupload.util.Streams;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.fenghuang.entiey.PicManage;
+import com.fenghuang.service.IPicManageService;
 
 /**
  * 
@@ -33,6 +38,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 public class FileUploadController {
+	
+	@Autowired
+	private IPicManageService iPicManageService;
+	
 	/**
 	 * 写文件的缓存大小
 	 */
@@ -85,9 +94,10 @@ public class FileUploadController {
 						if (!dir.isDirectory() || !dir.exists()) {
 							dir.mkdir();
 						}
-
+						String tempFileName = String.valueOf(System.currentTimeMillis());
 						// 保存文件绝对路径
-						String fullPath = dstPath + "/" + filename;
+						String extName = filename.substring(filename.indexOf("."),filename.length());
+						String fullPath = dstPath + "/" + tempFileName+extName;
 						if (chunk == 0) {
 							File file = new File(fullPath);
 							if (file.exists()) {
@@ -96,6 +106,12 @@ public class FileUploadController {
 							// 上传文件
 							File dst = new File(fullPath);
 							this.saveUploadFile(input, dst);
+							PicManage picManage = new PicManage();
+							picManage.setName(tempFileName+extName);
+							picManage.setUrl("fileUpload/"+tempFileName+extName);
+							picManage.setSearchName(filename);
+							iPicManageService.insertPicManageDao(picManage);
+							
 						}
 						if (chunk > 0) {
 							// 追加文件
