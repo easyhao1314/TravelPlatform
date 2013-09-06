@@ -57,39 +57,34 @@ public class CustomerCenterController {
 	 * @param rows
 	 */
 	@RequestMapping("fenghuang/customInfoList.do")
-	public void customInfoList(HttpServletRequest request,HttpServletResponse response,Integer page,Integer rows,
+	@ResponseBody
+	public Map<String,Object> customInfoList(HttpServletRequest request,HttpServletResponse response,Integer page,Integer rows,
 			String tuanNo,String name, String type, String lxr,String moblePhone,String telePhone,String qq,String msn, String daqu, String city, String hzjb, String xiaoshou,String zhtime,String jituan){
-		Pagination<CustomerInfo> teams = iCustomerCenterService.getCustomInfoListPaginations(page==null?1:page, rows==null?10:rows,tuanNo,name,type,lxr,moblePhone,telePhone,qq,msn,daqu,city,hzjb,xiaoshou,zhtime,jituan);
-		List<Map<String, Object>> teamsRows = teams.getResultList();
-		Map<String, Object> returnValue = new HashMap<String, Object>();
-		
-		
-		for(int i = 0 ;i<teamsRows.size();i++){
-			for(Entry<String, Object> entrySet :teamsRows.get(i).entrySet()){
-				
-					if(entrySet.getValue() == null){
-						entrySet.setValue("") ;
-					}
-				
+		try{
+			if(page==null){page=1;}
+			if(rows==null){rows=100;}
+		Pagination<CustomerInfo> pagination = iCustomerCenterService.getCustomInfoListPaginations(page,rows,tuanNo,name,type,lxr,moblePhone,telePhone,qq,msn,daqu,city,hzjb,xiaoshou,zhtime,jituan);
+		List<Map<String, Object>> testUsers = pagination.getResultList();
+		Map<String,Object> returnValue  = new HashMap<String, Object>();
+		for(int i = 0 ;i<testUsers.size();i++){
+			for(Entry<String, Object> entry : testUsers.get(i).entrySet()){
+				if(entry.getValue() == null){
+					entry.setValue("") ;
+				}
 			}
 		}
-		
-		returnValue.put("total", teams.getTotalRows());
-		returnValue.put("rows", teamsRows);
-		//MAP中的Date类型转换成JSON格式不正确，需要转换时间格式
+		returnValue.put("total", pagination.getTotalRows());
+		returnValue.put("rows", testUsers);	
 		JsonConfig config = new JsonConfig();
-		config.registerJsonValueProcessor(Timestamp.class,new DateJsonValueProcessor("yyyy-MM-dd HH:mm:ss"));
-		//把MAP转换成JSON，返回到前台
-		JSONObject fromObject = JSONObject.fromObject(returnValue,config);
-		System.out.println(fromObject);
-		PrintWriter out =null ;
-		try {
-			out = response.getWriter();
-			out.print(fromObject);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		out.flush();
+     	config.registerJsonValueProcessor(Timestamp.class,new DateJsonValueProcessor("yyyy-MM-dd"));
+     			//把MAP转换成JSON，返回到前台
+     	JSONObject fromObject = JSONObject.fromObject(returnValue,config);
+     	System.out.println(fromObject+"执行");
+		return fromObject;
+	} catch (Exception e) {
+		e.printStackTrace();
+	}	
+	return null;
 	}
 	
 	/**

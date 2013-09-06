@@ -29,7 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<a href="javascript:Select();" class="easyui-linkbutton"
 			iconCls="icon-save" plain="true">查询</a>
 	</div>
-<table id="dg" class="easyui-datagrid"
+<table id="sanpinliebiaodg" class="easyui-datagrid"
 		data-options="url:'fenghuang/Sanpinliebiao.do?fabustate=1',border:false,singleSelect:true,fit:true,fitColumns:true"
 		pagination="true" toolbar="#tb">
 		<thead>
@@ -41,7 +41,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<th data-options="field:'targetpopulation'" width="50">出发城市</th>
 				<th data-options="field:'tonghang'" width="50">同行价</th>
 				<th data-options="field:'zhikejia'" width="50">直客价</th>
-				<th data-options="field:'numbermaster'" width="50">预收人数</th>
+				<th data-options="field:'numbermaster',formatter:numbermaster" width="50">预收人数</th>
 				<th data-options="field:'shoukestate',formatter:openshouke" width="50">收客状态</th>
 				<th data-options="field:'productbrand',hidden:true" width="50">产品品牌_隐藏的</th>
 			</tr>
@@ -119,6 +119,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div data-options="iconCls:'icon-edit'" onClick="updateshouke(4)">已出团</div>
 		<div data-options="iconCls:'icon-edit'" onClick="updateshouke(5)">已回团</div>
 	</div>
+	
+	
+	
+	
+	<input id="baomingrenshu">
 	<script type="text/javascript">
 	
 	
@@ -132,7 +137,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 		function searchFormSubmit() {
 			$("#searchDic").dialog("close");
-			$("#dg").datagrid("load", {
+			$("#sanpinliebiaodg").datagrid("load", {
 				tuanName : $("#searchtuanName").val(),
 				groupdate : $("#searchgroupdate").datebox('getValue'),
 				Tourdate : $("#searchTourdate").datebox('getValue'),
@@ -210,7 +215,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					data : tuanNo,
 					dataType : "json",
 					success : function(data) {
-					$("#dg").datagrid("reload");
+					$("#sanpinliebiaodg").datagrid("reload");
 					},
 					error : function() {
 						$.messager.alert("查询失败", "服务器请求失败!", "error");
@@ -241,7 +246,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    	      		data:tuanNo,
    	      		datatype:"json",
    	      		success:function(data){
-   	      			$("#dg").datagrid("reload");
+   	      			$("#sanpinliebiaodg").datagrid("reload");
    	      		},
    	      		error : function() {
 						$.messager.alert("修改失败", "服务器请求失败!", "error");
@@ -249,6 +254,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    	      	
    	      	});
    	      }
+   	      
+   
+   	      function numbermaster(val,row){
+   	      var num;
+   	      	$.ajax({
+				url:"fenghuang/customInfoList.do?type=33&tuanNo="+row.tuanNo,
+   	      		data:row.tuanNo,
+   	      		datatype:"json",
+   	      		success:function(data){
+   	      		$('#baomingrenshu').val(data.rows.length);
+   	      			
+   	      		}
+			});
+			return $('#baomingrenshu').val();
+   	      }
+   	      
+   	      
    	      /* 
    	      //右键菜单
    	     function onRowContextMenu(e, rowIndex, rowData){

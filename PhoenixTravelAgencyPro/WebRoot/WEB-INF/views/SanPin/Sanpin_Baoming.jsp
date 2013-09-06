@@ -171,19 +171,7 @@ data: [{
 return sexinfo;
 }" width="20">性别</th>
 				<th data-options="field:'zhengjianhao'" width="20">证件号</th>
-				<th data-options="field:'baomingsp',formatter:function(value,row){
-	var baomingsp = '未提交';
-	if(row.baomingsp==1){
-		baomingsp='等待审核';
-	}
-	if(row.baomingsp==2){
-		baomingsp='审核通过';
-	}
-	if(row.baomingsp==3){
-		baomingsp='审核失败';
-	}
-return baomingsp;
-}" width="20">报名审批</th>
+				<th data-options="field:'baomingsp',formatter:baomingsp" width="20">报名审批</th>
 				<th data-options="field:'baomingsl'" width="20">报名受理</th>
 				<th data-options="field:'yajinqueren'" width="20">押金确认</th>
 				<th data-options="field:'chupiaoqueren'" width="20">出票确认</th>
@@ -236,12 +224,10 @@ return zhuantuanshenpi;
         	<input id="yingshou" name="yingshou" type="hidden" class="easyui-validatebox">
         	
         	<input type="hidden" name="shenfenid" value="1" class="easyui-validatebox">
+        	<input type="hidden" name="caiwuid" value="1" class="easyui-validatebox">        	
         	<input type="hidden" name="ysyfid" value="1" class="easyui-validatebox">
         	<input type="hidden" name="shanchu" value="1" class="easyui-validatebox">
         	<input type="hidden" name="huilvid" value="1" class="easyui-validatebox">
-        	
-        	
-        	
         </form>
 	</div>
 	 <div id="sanpincaiwudlg-buttons">
@@ -280,7 +266,26 @@ return sexinfo;
 	
 	<!-- 填充fromLoad -->
 	<script type="text/javascript">
+	
 	contentType:"application/x-www-form-urlencoded; charset=UTF-8";
+	
+	function baomingsp(val,row){
+	var baoming = '<img  src="js/themes/icons/tip.png">未提交';
+	if(row.baomingsp==1){
+		baoming = '<img  src="js/themes/icons/pencil.png">等待审核';
+	}
+	if(row.baomingsp==2){
+		baoming = '<img  src="js/themes/icons/ok.png">审核通过';
+	}
+	if(row.baomingsp==3){
+		baoming = '<img  src="js/themes/icons/no.png">审核驳回';
+	}
+		return baoming;
+	}
+	
+	
+	
+	
 	function openfukuandlg(){
 		var row = $("#sanpincaiwudg").datagrid("getSelected");
 		$('#kehuname').attr('value',row.kehuname);
@@ -309,7 +314,7 @@ return sexinfo;
 	}
 	
 	
-	
+
 	
 $(document).ready(function() {
 	load();

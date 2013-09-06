@@ -118,18 +118,19 @@ public class CaiwuqrfkController {
 	@RequestMapping("fenghuang/inserttuanbiao.do")
 	@ResponseBody    
 	public Map<String,Object> addCustom(HttpServletRequest request,HttpServletResponse response,
-		   String team,String kxsm,String zhanghaoid,String khmc,String yushoutime,String yingshou,String huilvid,String beizhu,String ysyfid,String shanchu,String caiwuid,String shenfenid,String fuzeren,String tuanduimc,String yfk,String teamatest,String fukuantime,String chutuantime,String huituantime,String renshu,String ddje){
+		   String team,String kxsm,String zhanghaoid,String khmc,String yushoutime,String yingshou,String huilvid,String beizhu,String ysyfid,String shanchu,String caiwuid,String shenfenid,String fuzeren,String tuanduimc,String yfk,String teamatest,String fukuantime,String chutuantime,String huituantime,String renshu,String ddje,String yishou){
 		Map<String, Object> result = new HashMap<String, Object>();
 		boolean isSuccess = false;
 		try {
 		Tuanbiao tuanbiao = new Tuanbiao();
-		
+		if(yishou!=null && !"".equals(yishou)){
+			tuanbiao.setYishou(Integer.parseInt(yishou));
+		}
 		if(teamatest!=null&&!"".equals(teamatest)){
 			tuanbiao.setTeam(teamatest);
 		}
 		if(team!=null&&!"".equals(team)){
 		tuanbiao.setTeam(team);
-		
 		}
 		if(ddje!=null&&!"".equals(ddje)){
 			tuanbiao.setDdje(Integer.parseInt(ddje));
