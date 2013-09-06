@@ -52,35 +52,45 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	
 	<!--订房开始-->
-	<div id="dingfang"  class="easyui-window" title="Layout Window"  data-options="modal:true,closed:true,iconCls:'icon-save'"  icon="icon-help" style="width:500px;height:250px;padding:5px;background: #fafafa;">
-           <div class="easyui-layout" fit="true">
-           
+	<div id="dingfang" class="easyui-window" title="订房" icon="icon-help" data-options="closable:false,tools:'#searchpanel'"  style="width:500px;height:250px;padding:5px;background: #fafafa;">
+
+    <div class="easyui-layout" fit="true">
         <table id="caozuoliebiaodg" class="easyui-datagrid"
 		data-options="url:'fenghuang/Operateinfo.do',border:false,singleSelect:true,fit:true,fitColumns:true,onRowContextMenu: caozuoContextMenu,pageSize:20"
-		pagination="true" toolbar="#currencyDatagridtoolbar">
+		pagination="true"  toolbar="#currencyDatagridtoolbar">
 		<thead>
 			<tr>
 				<th data-options="field:'id',hidden:true" width="20">编号</th>
 				<th data-options="field:'tuanNo'" width="20">团号</th>
-				<th data-options="field:'tuanName',formatter:caozuotuanName" width="20">团名</th>				
+				<th data-options="field:'tuanName',formatter:caozuotuanName" width="20">团名</th>
+				<th data-options="field:'beizhu',formatter:chakanbeizhu" width="20">备注</th>
+				<th data-options="field:'chutuantime'" width="20">出团日期</th>
+				<th data-options="field:'huituantime'" width="20">回团日期</th>				
 			</tr>
 		</thead>
 		</table>
 
-             <div region="south" border="false" style="text-align:right;height:30px;line-height:30px;">
+               <div region="south" border="false" style="text-align:right;height:30px;line-height:30px;">
 
             <a class="easyui-linkbutton" icon="icon-ok" href="javascript:void(0)">Ok</a>
 
             <a class="easyui-linkbutton" icon="icon-cancel" href="javascript:void(0)">Cancel</a>
 
-            </div>
-           </div>
-           <div id="currencyDatagridtoolbar">
+               </div>
+
+
+          
+         </div>
+         <div id="searchpanel">
+		<a href="javascript:void(0)" iconCls="icon-search"
+			onclick="javascript:alert('查询')"></a> <a href="javascript:void(0)"
+			iconCls="icon-undo" onclick="javascript:alert('重置')"></a>
+	</div>
+          <div id="currencyDatagridtoolbar">
 		     <a href="javascript:addCanyin();" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>  
 		     <a href="javascript:canyinSelectId();" class="easyui-linkbutton" iconCls="icon-save"  plain="true">修改</a>
 		     <a href="javascript:canyinDelete();" class="easyui-linkbutton" iconCls="icon-cut" plain="true">删除</a>  
 		</div>
-         </div>
 	<!--订房结束-->
 	<!--订车开始-->
 	
