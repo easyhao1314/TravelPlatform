@@ -41,9 +41,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</tr>
 		</thead>
 	</table>
+
+	
 	 <div id="adddaoyou" class="easyui-dialog" title="导游安排"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:600px;height:240px;padding:10px;">
+
+         
 		<form id="adddaoyouForm" method="post">
 			<table align="center">
            <tr>
