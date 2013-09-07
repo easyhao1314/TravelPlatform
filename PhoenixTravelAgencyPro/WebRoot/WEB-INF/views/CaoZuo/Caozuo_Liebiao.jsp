@@ -52,45 +52,163 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	
 	<!--订房开始-->
-	<div id="dingfang" class="easyui-window" title="订房" icon="icon-help" data-options="closable:false,tools:'#searchpanel'"  style="width:500px;height:250px;padding:5px;background: #fafafa;">
+	<div id="dingfang" class="easyui-window" title="订房"  data-options="modal:true,closed:true,iconCls:'icon-save'" style="width:800px;height:500px;padding:5px;background: #fafafa;">
 
     <div class="easyui-layout" fit="true">
-        <table id="caozuoliebiaodg" class="easyui-datagrid"
-		data-options="url:'fenghuang/Operateinfo.do',border:false,singleSelect:true,fit:true,fitColumns:true,onRowContextMenu: caozuoContextMenu,pageSize:20"
+        <table id="dingfangdg" class="easyui-datagrid"
+		data-options="url:'fenghuang/dingfangSelect.do?tuanNo=${param.tuanNo}',fitColumns:true,border:false,singleSelect:true,fit:true,onRowContextMenu: caozuoContextMenu,pageSize:20"
 		pagination="true"  toolbar="#currencyDatagridtoolbar">
 		<thead>
 			<tr>
-				<th data-options="field:'id',hidden:true" width="20">编号</th>
 				<th data-options="field:'tuanNo'" width="20">团号</th>
-				<th data-options="field:'tuanName',formatter:caozuotuanName" width="20">团名</th>
-				<th data-options="field:'beizhu',formatter:chakanbeizhu" width="20">备注</th>
-				<th data-options="field:'chutuantime'" width="20">出团日期</th>
-				<th data-options="field:'huituantime'" width="20">回团日期</th>				
+				<th data-options="field:'ruzhuTime'" width="20">居住时间</th>
+				<th data-options="field:'ruzhuDay'" width="20">居住天数</th>
+				<th data-options="field:'chengshiId'" width="20">居住城市</th>
+				<th data-options="field:'jdNo'" width="20">酒店标准</th>
+				<th data-options="field:'caozuoqingkuang'" width="20">操作情况</th>
+				<th data-options="field:'beizhu'" width="20">备注</th>
+				<th data-options="field:''" width="20">操作</th>			
 			</tr>
 		</thead>
 		</table>
 
-               <div region="south" border="false" style="text-align:right;height:30px;line-height:30px;">
-
+           <div region="south" border="false" style="text-align:right;height:30px;line-height:30px;">
             <a class="easyui-linkbutton" icon="icon-ok" href="javascript:void(0)">Ok</a>
-
             <a class="easyui-linkbutton" icon="icon-cancel" href="javascript:void(0)">Cancel</a>
-
-               </div>
-
-
-          
-         </div>
-         <div id="searchpanel">
-		<a href="javascript:void(0)" iconCls="icon-search"
-			onclick="javascript:alert('查询')"></a> <a href="javascript:void(0)"
-			iconCls="icon-undo" onclick="javascript:alert('重置')"></a>
-	</div>
-          <div id="currencyDatagridtoolbar">
-		     <a href="javascript:addCanyin();" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>  
-		     <a href="javascript:canyinSelectId();" class="easyui-linkbutton" iconCls="icon-save"  plain="true">修改</a>
-		     <a href="javascript:canyinDelete();" class="easyui-linkbutton" iconCls="icon-cut" plain="true">删除</a>  
-		</div>
+          </div>
+       </div>
+       </div>
+       
+         <div id="currencyDatagridtoolbar">
+		     <a href="javascript:addDingfangOpen();" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>  
+		     <a href="javascript:updateDingfang();" class="easyui-linkbutton" iconCls="icon-save"  plain="true">修改</a>
+		     <a href="javascript:deleteDingfang();" class="easyui-linkbutton" iconCls="icon-cut" plain="true">删除</a>  
+		 </div>
+		  
+	<div id="addDingfang" class="easyui-dialog" title="添加订房" data-options="modal:true,closed:true,iconCls:'icon-save'" style="width:600px;height:500px;padding:10px;">
+	   <form id="addDingfangForm">
+	      <table align="center">
+	         <tr>
+	            <td><div class="fitem">旅游团号：</td><td><input name="id" class="easyui-validatebox" hidden="true"><input id="tuanNo" name="tuanNo" class="easyui-validatebox"></div></td> <td><div class="fitem">团名：</td> <td><input name="tuanName" class="easyui-validatebox"></div></td>
+	         </tr>
+	         <tr>
+	            <td><div class="fitem">国家：</td> <td><input name="cfgj" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=7',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false "></div></td> 
+					<td><div class="fitem">城市：</td> <td><input name="chengshiId" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=8',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false "></div></td>
+	         </tr>
+	         <tr>
+	            <td><div class="fitem">星级标准：</td> <td><input name="jdbzNo" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=16',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false "></div></td> <td><div class="fitem">酒店名称：</td> <td><input id="jiudianId" name="jiudianId"  class="easyui-validatebox"/> <a href="javascript:ZyjiudianSelectLike();" class="easyui-linkbutton" iconCls="icon-ok">查询</a></div></td>
+	         </tr>
+	         <tr>
+	            <td><div class="fitem">入住时间：</td> <td><input name="ruzhutime" class="easyui-datebox"></div></td> <td><div class="fitem">入住天数：</td> <td><input name="ruzhuDay" class="easyui-validatebox"></div></td>
+	         </tr>
+	           <tr>
+	            <td><div class="fitem">支付方式：</td> <td><input name="zhifufangshi" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=33',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false "></div></td> <td><div class="fitem">请选择卡号：</td> <td><input name="kahao" class="easyui-validatebox"></div></td>
+	         </tr>
+	           <tr>
+	            <td><div class="fitem">货币单位：</td> <td><input name="huobi" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=5',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false "></div></td> <td><div class="fitem">汇率：</td> <td><input name="huilv" class="easyui-validatebox"></div></td>
+	         </tr>
+	          <tr>
+	            <td><div class="fitem">预计保留日：</td> <td><input name="yudingDay" class="easyui-datebox"></div></td> <td><div class="fitem">操作人：</td> <td><input name="" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=12',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false "></div></td> 
+	         </tr>
+	         <tr>
+	            <td><div class="fitem">操作情况：</td> <td><input name="caozuoqingkuang" class="easyui-validatebox"></div></td> <td><div class="fitem">总价：</td> <td><input name="zongjia" class="easyui-validatebox"></div></td>
+	         </tr>
+	         <tr>
+	            <td><div class="fitem">备注：</td> <td colspan="3"><input name="beizhu" class="easyui-validatebox"></div></td>
+	         </tr>
+	         <tr>
+                <td colspan="4" align="center"><a href="javascript:addDingfang()" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
+                                <a href="javascript:closedupdateDingfang()" class="easyui-linkbutton" iconCls="icon-undo">取消</a></td>
+             </tr>
+	      </table>
+	   </form>
+	   </div>
+	   <div id="updateDingfang" class="easyui-dialog" title="修改订房" data-options="modal:true,closed:true,iconCls:'icon-save'" style="width:600px;height:500px;padding:10px;">
+	   <form id="updateDingfangForm">
+	      <table align="center">
+	         <tr>
+	            <td><div class="fitem">旅游团号：</td><td><input name="id" class="easyui-validatebox" hidden="true"><input name="tuanNo" class="easyui-validatebox"></div></td> <td><div class="fitem">团名：</td> <td><input name="tuanName" class="easyui-validatebox"></div></td>
+	         </tr>
+	         <tr>
+	            <td><div class="fitem">国家：</td> <td><input name="cfgj" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=7',
+					valueField:'dicNo',
+					textField:'dicName',
+					method:'get',
+					panelHeight:'auto'" ></div></td> 
+					<td><div class="fitem">城市：</td> <td><input name="chengshiId" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=8',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false "></div></td>
+	         </tr>
+	         <tr>
+	            <td><div class="fitem">星级标准：</td> <td><input name="jdbzNo" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=16',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false "></div></td> <td><div class="fitem">酒店名称：</td> <td><input id="jiudianId" name="jiudianId"  class="easyui-validatebox"/> <a href="javascript:ZyjiudianSelectLike();" class="easyui-linkbutton" iconCls="icon-ok">查询</a></div></td>
+	         </tr>
+	         <tr>
+	            <td><div class="fitem">入住时间：</td> <td><input name="ruzhutime" class="easyui-datebox"></div></td> <td><div class="fitem">入住天数：</td> <td><input name="ruzhuDay" class="easyui-validatebox"></div></td>
+	         </tr>
+	           <tr>
+	            <td><div class="fitem">支付方式：</td> <td><input name="zhifufangshi" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=33',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false "></div></td> <td><div class="fitem">请选择卡号：</td> <td><input name="kahao" class="easyui-validatebox"></div></td>
+	         </tr>
+	           <tr>
+	            <td><div class="fitem">货币单位：</td> <td><input name="huobi" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=5',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false "></div></td> <td><div class="fitem">汇率：</td> <td><input name="huilv" class="easyui-validatebox"></div></td>
+	         </tr>
+	          <tr>
+	            <td><div class="fitem">预计保留日：</td> <td><input name="yudingDay" class="easyui-datebox"></div></td> <td><div class="fitem">操作人：</td> <td><input name="" class="easyui-combobox" data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=12',
+					valueField:'dicNo',
+					textField:'dicName',
+					panelHeight:'auto',
+					editable:false "></div></td> 
+	         </tr>
+	         <tr>
+	            <td><div class="fitem">操作情况：</td> <td><input name="caozuoqingkuang" class="easyui-validatebox"></div></td> <td><div class="fitem">总价：</td> <td><input name="zongjia" class="easyui-validatebox"></div></td>
+	         </tr>
+	         <tr>
+	            <td><div class="fitem">备注：</td> <td colspan="3"><input name="beizhu" class="easyui-validatebox"></div></td>
+	         </tr>
+	         <tr>
+                <td colspan="4" align="center"><a href="javascript:saveUpdateDingfang()" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
+                                <a href="javascript:closedupdateDingfang()" class="easyui-linkbutton" iconCls="icon-undo">取消</a></td>
+             </tr>
+	      </table>
+	   </form>
+	   </div>
 	<!--订房结束-->
 	<!--订车开始-->
 	
@@ -156,7 +274,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div id="caozuomm" class="easyui-menu" style="width:120px;">
     <div onClick="View()" data-options="iconCls:'icon-search'">查看</div>
     <div onClick="dingfang()" data-options="iconCls:'icon-search'">订房</div>
-    <div onClick="dingche1()" data-options="iconCls:'icon-search'">订车</div>
+    <div onClick="dingche()" data-options="iconCls:'icon-search'">订车</div>
     <div onClick="dingcan()" data-options="iconCls:'icon-search'">订餐</div>
     <div onClick="dingdaoyou()" data-options="iconCls:'icon-search'">订导游</div>
     <div onClick="dinggouwudian()" data-options="iconCls:'icon-search'">订购物店</div>
@@ -172,7 +290,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 	 
 	 
-	  <div id="caozuodingche"  class="easyui-dialog" title="订车明细"
+	  <div id="caozuodingche"  class="easyui-window" title="订车明细"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:600px;height:500px;padding:10px;">
 		<div id="days"></div>
@@ -245,10 +363,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    	      	});
 	}
 	
-	
-	
-	
-	
+
 	
 	function chakanbeizhu(val,row){
 		return '<a href="javascript:openbeizhudlg('+row.oid+',\''+row.beizhu+'\');" style=" text-align:center;font-size: 16px;text-decoration:none; width:auto;"><b>查看备注</b></a>';
@@ -256,6 +371,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	function openbeizhudlg(oid,beizhu){
 		var a=document.getElementById("beizhu");
 		a.value=beizhu;
+		alert(beizhu);
 		$('#oid').attr('value',oid);
 		$('#beizhudlg').dialog('open');
 		
@@ -313,36 +429,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	});
 			
 	}
-	function dingfang(){
-		$("#dingfang").dialog("open");
-	  	/**var row = $("#caozuoliebiaodg").datagrid("getSelected");
-      var url= "Caozuo_dingfang.do?tuanNo="+row.tuanNo;
-       var tab = $('#tt').tabs('getSelected'); 
-		if (tab){  
-	                 var index = $('#tt').tabs('getTabIndex', tab); 
-	                 $('#tt').tabs('close', index);  
-	       } 
-	       	       
-	       $('#tt').tabs('add', {
-				         title : "订房行程详细信息",
-				         href : url,
-				      //  closable : true,
-				         });*/
-	}
-	function dingche1(){
-	  	var row = $("#caozuoliebiaodg").datagrid("getSelected");
-      var url= "Caozuo_dingche.do?tuanNo="+row.tuanNo;
-       var tab = $('#tt').tabs('getSelected'); 
-		if (tab){  
-	                 var index = $('#tt').tabs('getTabIndex', tab); 
-	                 $('#tt').tabs('close', index);  
-	       } 
-	       	       
-	       $('#tt').tabs('add', {
-				         title : "订车行程详细信息",
-				         href : url,
-				         });
-	}
+	
+	
 	
 	function dingche(){
 	$("#beizhudlg").dialog("open");					    
@@ -366,32 +454,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					}
 	});
 	}
-    function dingcan(){
-    $("#caozuodingcan").dialog("open");
-    }
-    
-    function dingdaoyou(){
-      var row = $("#caozuoliebiaodg").datagrid("getSelected");
-      var url= "Caozuo_dingdaoyou.do?tuanNo="+row.tuanNo;
-       var tab = $('#tt').tabs('getSelected'); 
-		if (tab){  
-	                 var index = $('#tt').tabs('getTabIndex', tab); 
-	                 $('#tt').tabs('close', index);  
-	       } 
-	       
-	       $('#tt').tabs('add', {
-				         title : "订导游行程详细信息",
-				         href : url,
-				      //  closable : true,
-				         });
-    }
     function dinggouwudian(){
     $("#caozuodinggouwudian").dialog("open");
     }
-
-
-
-
 
    	//添加	
 		
@@ -425,8 +490,112 @@ function operatetype(value,row){
 				}
 
 
+//订房任务
+function dingfang(){
+		$("#dingfang").dialog("open");	    
+	}
+	
+  function addDingfangOpen(){
+	 $("#addDingfang").dialog("open");
+       var tuanNo='${param.tuanNo}';
+				var param = {
+					"updateTuanNO" :tuanNo
+				}
+				$.ajax({
+					url : "fenghuang/DantuanSelectId.do",
+					data : param,
+					dataType : "json",
+					success : function(data) {
+		
+					   $('#addDingfangForm').form('load',data.rows[0]);
+				
+					},
+					error : function() {
+						$.messager.alert("查询失败", "服务器请求失败!", "error");
+					}
+				});
 
-
+	}
+		function addDingfang(){
+	  $("#addDingfangForm").form('submit', {
+				url : "fenghuang/addDingfang.do",				
+				onSubmit : function() {
+					return $(this).form('validate');
+				},
+			
+				success : function(data) {
+				//data 是一个字符串  $.ajax(success:function(data):是一个对象)
+					//var result = val('(' + data + ')');//吧字符串转换为对象
+				var result = $.parseJSON(data) ;
+					if (result.success) {					
+					  $("#addDingfang").dialog('close');
+						$.messager.alert("保存成功", "保存成功！", "info"); 
+						$("#dingfangdg").datagrid('reload');
+					} else {
+						$.messager.alert("保存失败", "保存失败!", "error");
+						$("#dingfangdg").datagrid('reload');
+					}
+				}
+			});
+	  
+	}
+	function updateDingfang(){
+	   $("#updateDingfang").dialog("open");
+	   var row = $('#caozuoliebiaodg').datagrid('getSelected');
+	   $('#updateDingfangForm').form('load',row);
+	}
+	
+	function saveUpdateDingfang(){
+	$("#updateDingfangForm").form('submit', {
+				url : "fenghuang/updateDingfang.do",				
+				onSubmit : function() {
+					return $(this).form('validate');
+				},
+			
+				success : function(data) {
+				//data 是一个字符串  $.ajax(success:function(data):是一个对象)
+					//var result = val('(' + data + ')');//吧字符串转换为对象
+				var result = $.parseJSON(data) ;
+					if (result.success) {					
+					  $("#updateDingfang").dialog('close');
+						$.messager.alert("修改成功", "修改成功！", "info"); 
+						$("#dingfangdg").datagrid('reload');
+					} else {
+						$.messager.alert("修改失败", "修改失败!", "error");
+						$("#dingfangdg").datagrid('reload');
+					}
+				}
+			});
+	  
+	}
+		function deleteDingfang(){
+		 var row = $('#dingfangdg').datagrid('getSelected');
+		 if(row){
+		     var param={
+		      id:row.id
+		      };
+		      
+		      if(confirm("确认要删除吗？")){
+		      $.ajax({
+		         url:'fenghuang/deleteDingfang.do',
+		         data:param,
+		         type:'post',
+		         dataType:'json',
+		         success:function(data){
+		         if (data.success) {
+						  $.messager.alert("删除成功", "删除成功！", "info");
+		                  $("#dingfangdg").datagrid('reload');
+						} else {
+							$.messager.alert("删除失败", "删除失败!", "error");
+			              $("#dingfangdg").datagrid('reload');
+						}
+		         }
+		      });
+		      }
+		 }
+		 
+		}
+ 
 	</script>
 	
 	
