@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+ <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -57,7 +57,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="easyui-layout" fit="true">
         <table id="dingfangdg" class="easyui-datagrid"
 		data-options="url:'fenghuang/dingfangSelect.do?tuanNo=${param.tuanNo}',fitColumns:true,border:false,singleSelect:true,fit:true,onRowContextMenu: caozuoContextMenu,pageSize:20"
-		pagination="true"  toolbar="#currencyDatagridtoolbar">
+		pagination="true"  toolbar="#currencyDatagridtoolbarfang">
 		<thead>
 			<tr>
 				<th data-options="field:'tuanNo'" width="20">团号</th>
@@ -79,7 +79,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        </div>
        </div>
        
-         <div id="currencyDatagridtoolbar">
+         <div id="currencyDatagridtoolbarfang">
 		     <a href="javascript:addDingfangOpen();" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>  
 		     <a href="javascript:updateDingfang();" class="easyui-linkbutton" iconCls="icon-save"  plain="true">修改</a>
 		     <a href="javascript:deleteDingfang();" class="easyui-linkbutton" iconCls="icon-cut" plain="true">删除</a>  
@@ -211,10 +211,223 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	   </div>
 	<!--订房结束-->
 	<!--订车开始-->
-	
+	<div id="dingche" class="easyui-window" title="订车"  data-options="modal:true,closed:true,iconCls:'icon-save'" style="width:800px;height:500px;padding:5px;background: #fafafa;">
+
+    <div class="easyui-layout" fit="true">
+       <table id="dgDingche" class="easyui-datagrid"
+			data-options="url:'fenghuang/dingcheSelect.do',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
+			pagination="true" toolbar="#currencyDatagridtoolbarche">
+			<thead>
+				<tr>
+					<th data-options="field:'ck',checkbox:true"></th>
+					<th data-options="field:'chengshi'" width="80">车公司</th>
+					<th data-options="field:'id'" width="80">车牌</th>
+					<th data-options="field:'name'" width="80">座位数</th>
+					<th data-options="field:'tianshu'" width="80">天数</th>
+					<th data-options="field:'chuanzhen'" width="80">总价</th>
+					<th data-options="field:'shouji'" width="80">司机</th>
+					<th data-options="field:'hzjb'" width="80">团号</th>
+			
+				</tr>
+			</thead>
+		</table>
+
+           <div region="south" border="false" style="text-align:right;height:30px;line-height:30px;">
+            <a class="easyui-linkbutton" icon="icon-ok" href="javascript:void(0)">Ok</a>
+            <a class="easyui-linkbutton" icon="icon-cancel" href="javascript:void(0)">Cancel</a>
+          </div>
+       </div>
+       </div>
+       
+         <div id="currencyDatagridtoolbarche">
+		     <a href="javascript:savadingcheOpen();" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>  
+		     <a href="javascript:updateDingche();" class="easyui-linkbutton" iconCls="icon-save"  plain="true">修改</a>
+		     <a href="javascript:deleteDingche();" class="easyui-linkbutton" iconCls="icon-cut" plain="true">删除</a>  
+		 </div>
+		  
+	<div id="addDingche" class="easyui-panel" title="添加订车"
+		style="height:115px;padding:10px;width:auto;"
+		data-options="closable:false,tools:'#searchpanel'" align="center">
+		<form id="DingcheForm"> 
+		<table> 
+			<tr> 
+				<td><div class="fitem"> 
+						<label>车公司:</label> 
+				</td> 
+				<td><input id="tuanNo" name="tuanNo" class="easyui-validatebox" required="true"><input id="cheName" name="cheName" class="easyui-validatebox"></td> 
+				<td><div class="fitem"> 
+						<label>车牌:</label> 
+				</td> 
+				<td><input id="chePaihao" name="chePaihao" class="easyui-validatebox"> 
+					</div> 
+				</td> 
+				<td><div class="fitem"> 
+						<label>车信息:</label> 
+				</td> 
+				<td><input id="cheXinxi" name="cheXinxi" class="easyui-validatebox"> 
+				</div>	 
+				</td> 
+	     	   </tr> 
+		        <tr> 
+				<td><div class="fitem"> 
+					<label> 司机:</label> 
+				  </td> 
+				<td><input id="siji" name="siji" class="easyui-validatebox"></div></td> 
+				<td><div class="fitem"> 
+						<label>天数:</label> 
+				</td> 
+				<td><input id="tianshu" name="tianshu" class="easyui-validatebox"> 
+					</div> 
+				</td> 
+				<td><div class="fitem"> 
+						<label>座位数:</label> 
+				</td> 			 
+				<td><input id="zuoweishu" name="zuoweishu" class="easyui-validatebox"></div></td> 
+				<td><div class="fitem"> 
+						<label>总价:</label> 
+				</td> 			 
+				<td><input id="zongjiage" name="zongjiage" class="easyui-validatebox"></td> 
+			</div>
+					</tr> 
+				<tr> 
+				<td colspan="6"> 
+					<a href="javascript:SaveDingche();" class="easyui-linkbutton" iconcls="icon-ok">添加订车</a> 
+						<a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-undo" onclick="$('#DingcheForm').form('clear')">重置</a> 
+				</td> 
+			</tr> 
+		</table> 
+		</form> 
+	</div>
+		
+	   <div id="updateDingche" class="easyui-dialog" title="修改订车" data-options="modal:true,closed:true,iconCls:'icon-save'" style="width:600px;height:500px;padding:10px;">
+	  <form id="DingcheForm"> 
+		<table> 
+			<tr> 
+				<td><div class="fitem"> 
+						<label>车公司:</label> 
+				</td> 
+				<td><input id="tuanNo" name="tuanNo" class="easyui-validatebox" required="true"><input id="cheName" name="cheName" class="easyui-validatebox"></td> 
+				<td><div class="fitem"> 
+						<label>车牌:</label> 
+				</td> 
+				<td><input id="chePaihao" name="chePaihao" class="easyui-validatebox"> 
+					</div> 
+				</td> 
+				<td><div class="fitem"> 
+						<label>车信息:</label> 
+				</td> 
+				<td><input id="cheXinxi" name="cheXinxi" class="easyui-validatebox"> 
+				</div>	 
+				</td> 
+	     	   </tr> 
+		        <tr> 
+				<td><div class="fitem"> 
+					<label> 司机:</label> 
+				  </td> 
+				<td><input id="siji" name="siji" class="easyui-validatebox"></div></td> 
+				<td><div class="fitem"> 
+						<label>天数:</label> 
+				</td> 
+				<td><input id="tianshu" name="tianshu" class="easyui-validatebox"> 
+					</div> 
+				</td> 
+				<td><div class="fitem"> 
+						<label>座位数:</label> 
+				</td> 			 
+				<td><input id="zuoweishu" name="zuoweishu" class="easyui-validatebox"></div></td> 
+				<td><div class="fitem"> 
+						<label>总价:</label> 
+				</td> 			 
+				<td><input id="zongjiage" name="zongjiage" class="easyui-validatebox"></td> 
+			</div>
+					</tr> 
+				<tr> 
+				<td colspan="6"> 
+					<a href="javascript:SaveDingche();" class="easyui-linkbutton" iconcls="icon-ok">添加订车</a> 
+						<a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-undo" onclick="$('#DingcheForm').form('clear')">重置</a> 
+				</td> 
+			</tr> 
+		</table> 
+		</form> 
+	   </div>
 	<!--订车结束-->
-	<!--订导游开始-->
-	
+	<!--订导游开始
+		<div id="dingdaoyou" class="easyui-window" title="订导游"   data-options="modal:true,closed:true,iconCls:'icon-save'" style="width:600px;height:500px;padding:10px;">
+
+    <div class="easyui-layout" fit="true">
+        <table id="caozuoDingdaoyouliebiaodg" class="easyui-datagrid"
+		data-options="url:'fenghuang/dingdaoyouSelect.do?tuanNo=${param.tuanNo}',border:false,singleSelect:true,fit:true,fitColumns:true,onRowContextMenu:DaoyouContextMenu"
+		pagination="true" toolbar="#currencyDatagridtoolbardaoyou">
+		<thead>
+			<tr>
+				<th data-options="field:'id',hidden:true" width="20"> 编号</th>
+				<th data-options="field:'tuanNo'" width="20">团号</th>
+				<th data-options="field:'tuanName'" width="20">团名</th>
+				<th data-options="field:'ctsj'" width="20">出团时间</th>
+				<th data-options="field:'htsj'" width="20">回团时间</th>
+				<th data-options="field:'daoyouId'" width="20">导游</th>			
+			</tr>
+		</thead>
+	</table>
+
+           <div region="south" border="false" style="text-align:right;height:30px;line-height:30px;">
+            <a class="easyui-linkbutton" icon="icon-ok" href="javascript:void(0)">Ok</a>
+            <a class="easyui-linkbutton" icon="icon-cancel" href="javascript:void(0)">Cancel</a>
+          </div>
+       </div>
+       </div>
+       
+         <div id="currencyDatagridtoolbardaoyou">
+		     <a href="javascript:addDingdaoyouOpen();" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>  
+		     <a href="javascript:updateDingdaoyou();" class="easyui-linkbutton" iconCls="icon-save"  plain="true">修改</a>
+		     <a href="javascript:deleteDingdaoyou();" class="easyui-linkbutton" iconCls="icon-cut" plain="true">删除</a>  
+		 </div>
+		  
+	<div id="addDingdaoyou" class="easyui-panel" title="添加导游"
+		style="height:115px;padding:10px;width:auto;"
+		data-options="closable:false,tools:'#searchpanel'" align="center">
+	<form id="adddaoyouForm" method="post">
+			<table align="center">
+           <tr>
+             <td><div class="fitem"><label>团号:</label></td><td><input id="id" name="id" class="easyui-validatebox" ><input id="tuanNo" name="tuanNo" class="easyui-validatebox" required="true"></div></td>
+             <td><div class="fitem"><label>导游:</label></td><td><input id="daoyouId"  name="daoyouId" class="easyui-combobox" data-options="url:'fenghuang/daoyouXialaaa.do',
+			       method:'get',
+					valueField:'id',					
+					textField:'name',
+					panelHeight:'auto'" required="true"></div></td>
+          </tr>
+           <tr>
+          <td><div class="fitem"><label>备注:</label></td><td colspan="3"><input name="beizhu" class="easyui-validatebox" width="70" required="true"></div></td>		
+          </tr>
+         
+           <tr><td colspan="4" align="center"><a href="javascript:SaveDaoyou();" class="easyui-linkbutton" iconCls="icon-ok">安排导游</a>
+        <a  class="easyui-linkbutton" iconCls="icon-undo" onclick="$('#adddaoyouForm').form('clear')">重置</a></td>
+        </tr>
+			</table>
+		</form> 
+	</div>
+		
+	   <div id="updateDingdaoyou" class="easyui-dialog" title="修改导游" data-options="modal:true,closed:true,iconCls:'icon-save'" style="width:600px;height:500px;padding:10px;">
+	   <form id="adddaoyouForm" method="post">
+			<table align="center">
+           <tr>
+             <td><div class="fitem"><label>团号:</label></td><td><input id="id" name="id" class="easyui-validatebox" ><input id="tuanNo" name="tuanNo" class="easyui-validatebox" required="true"></div></td>
+             <td><div class="fitem"><label>导游:</label></td><td><input id="daoyouId"  name="daoyouId" class="easyui-combobox" data-options="url:'fenghuang/daoyouXialaaa.do',
+			       method:'get',
+					valueField:'id',					
+					textField:'name',
+					panelHeight:'auto'" required="true"></div></td>
+          </tr>
+           <tr>
+          <td><div class="fitem"><label>备注:</label></td><td colspan="3"><input name="beizhu" class="easyui-validatebox" width="70" required="true"></div></td>		
+          </tr>
+         
+           <tr><td colspan="4" align="center"><a href="javascript:SaveDaoyou();" class="easyui-linkbutton" iconCls="icon-ok">安排导游</a>
+           <a  class="easyui-linkbutton" iconCls="icon-undo" onclick="$('#adddaoyouForm').form('clear')">重置</a></td>
+        </tr>
+			</table>
+		</form>
+	   </div>-->
 	<!--订导游结束-->
 	
 	
@@ -274,9 +487,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div id="caozuomm" class="easyui-menu" style="width:120px;">
     <div onClick="View()" data-options="iconCls:'icon-search'">查看</div>
     <div onClick="dingfang()" data-options="iconCls:'icon-search'">订房</div>
-    <div onClick="dingche()" data-options="iconCls:'icon-search'">订车</div>
+    <div onClick="dingcheOpen()" data-options="iconCls:'icon-search'">订车</div>
     <div onClick="dingcan()" data-options="iconCls:'icon-search'">订餐</div>
-    <div onClick="dingdaoyou()" data-options="iconCls:'icon-search'">订导游</div>
+    <div onClick="DaoyouOpen()" data-options="iconCls:'icon-search'">订导游</div>
     <div onClick="dinggouwudian()" data-options="iconCls:'icon-search'">订购物店</div>
   	 	 <div onclick="$('#fukuan').window('open')">
             <span>付款</span>
@@ -595,6 +808,39 @@ function dingfang(){
 		 }
 		 
 		}
+		//订车任务
+		function dingcheOpen(){
+	   $("#dingche").dialog("open");	   
+	    }
+	    function savadingcheOpen(){
+	      $("#addDingche").dialog("open");
+	    }
+	//订导游任务	
+function DaoyouOpen(){
+	   $("#dingdaoyou").dialog("open");	   
+	}
+	function DaoyouOpen(){
+	   $("#dingdaoyou").dialog("open");	   
+	}
+	function SaveDaoyou(){
+	$('#adddaoyouForm').form('submit', {
+				url : 'fenghuang/dingdaoyouUpdate.do',
+				onSubmit : function(){
+					return $(this).form('validate');
+				},
+				success : function(result){
+					var result = eval('(' + result + ')');
+					if (result.success){
+					$('#adddaoyou').dialog('close');
+						$.messager.alert("保存成功", "保存成功！", "info");
+						 $('#caozuoDingdaoyouliebiaodg').datagrid('reload'); 
+					} else {
+						$.messager.alert("保存失败", "保存失败!", "error");
+						$('#caozuoDingdaoyouliebiaodg').datagrid('reload');
+					}
+				}
+			});
+	}
  
 	</script>
 	
