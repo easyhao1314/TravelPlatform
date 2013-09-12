@@ -52,7 +52,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	
 	<!--订房开始-->
-	<div id="dingfang" class="easyui-window" title="订房" icon="icon-help" data-options="closable:false,tools:'#searchpanel'"  style="width:500px;height:250px;padding:5px;background: #fafafa;">
+	<div id="dingfang" class="easyui-window" title="订房"  data-options="closable:true,tools:'#searchpanel'"  style="width:500px;height:250px;padding:5px;">
 
     <div class="easyui-layout" fit="true">
         <table id="caozuoliebiaodg" class="easyui-datagrid"
@@ -72,15 +72,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
                <div region="south" border="false" style="text-align:right;height:30px;line-height:30px;">
 
-            <a class="easyui-linkbutton" icon="icon-ok" href="javascript:void(0)">Ok</a>
+            <a class="easyui-linkbutton" icon="icon-ok" href="javascript:void(0)">确认</a>
 
-            <a class="easyui-linkbutton" icon="icon-cancel" href="javascript:void(0)">Cancel</a>
+            <a class="easyui-linkbutton" icon="icon-cancel" href="javascript:void(0)">取消</a>
 
                </div>
 
-
-          
          </div>
+         </div>
+<!-- 订房结束 -->         
+         
          <div id="searchpanel">
 		<a href="javascript:void(0)" iconCls="icon-search"
 			onclick="javascript:alert('查询')"></a> <a href="javascript:void(0)"
@@ -150,7 +151,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
 	<!-- END付款window ___________________________________________ -->
 	
-	
+	    
 	
 	
 	<div id="caozuomm" class="easyui-menu" style="width:120px;">
@@ -251,13 +252,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	
 	function chakanbeizhu(val,row){
-		return '<a href="javascript:openbeizhudlg('+row.oid+',\''+row.beizhu+'\');" style=" text-align:center;font-size: 16px;text-decoration:none; width:auto;"><b>查看备注</b></a>';
+		return '<a href="javascript:openbeizhudlg('+row.oid+',\''+row.beizhu+'\');" style="text-align:center;font-size: 16px;text-decoration:none; width:auto;"><b>查看备注</b></a>';
 	}
 	function openbeizhudlg(oid,beizhu){
+		$("#beizhudlg").dialog("open");
 		var a=document.getElementById("beizhu");
 		a.value=beizhu;
 		$('#oid').attr('value',oid);
-		$('#beizhudlg').dialog('open');
 		
 	}
 	//保存备注 
@@ -289,7 +290,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	$('#tuanduimc').attr('value',rowData.tuanNo);
 	$('#team').attr('value',rowData.tuanName);
-	alert($('#team').val());
 	$('#chutuantime').attr('value',rowData.chutuantime);
 	$('#huituantime').attr('value',rowData.huituantime);
 	 e.preventDefault();
