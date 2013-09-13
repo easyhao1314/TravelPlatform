@@ -52,7 +52,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	
 	<!--订房开始-->
-	<div id="dingfang" class="easyui-window" title="订房"  data-options="closable:true,tools:'#searchpanel'"  style="width:500px;height:250px;padding:5px;">
+	<div id="dingfang" class="easyui-window" title="订房"  data-options="closable:true,closed:true,tools:'#searchpanel'"  style="width:500px;height:250px;padding:5px;">
 
     <div class="easyui-layout" fit="true">
         <table id="caozuoliebiaodg" class="easyui-datagrid"
@@ -71,11 +71,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</table>
 
                <div region="south" border="false" style="text-align:right;height:30px;line-height:30px;">
-
-            <a class="easyui-linkbutton" icon="icon-ok" href="javascript:void(0)">确认</a>
-
-            <a class="easyui-linkbutton" icon="icon-cancel" href="javascript:void(0)">取消</a>
-
+            		<a class="easyui-linkbutton" icon="icon-ok" href="javascript:void(0)">确认</a>
+            		<a class="easyui-linkbutton" icon="icon-cancel" href="javascript:closewindow()">取消</a>
                </div>
 
          </div>
@@ -90,15 +87,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <div id="currencyDatagridtoolbar">
 		     <a href="javascript:addCanyin();" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>  
 		     <a href="javascript:canyinSelectId();" class="easyui-linkbutton" iconCls="icon-save"  plain="true">修改</a>
-		     <a href="javascript:canyinDelete();" class="easyui-linkbutton" iconCls="icon-cut" plain="true">删除</a>  
+		       <a href="javascript:canyinDelete();" class="easyui-linkbutton" iconCls="icon-cut" plain="true">删除</a>   
 		</div>
 	<!--订房结束-->
-	<!--订车开始-->
 	
-	<!--订车结束-->
-	<!--订导游开始-->
-	
-	<!--订导游结束-->
 	
 	
 	<!-- 付款window -->
@@ -156,11 +148,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	<div id="caozuomm" class="easyui-menu" style="width:120px;">
     <div onClick="View()" data-options="iconCls:'icon-search'">查看</div>
+    
+    <div><span>设定</span>
+    <div>
     <div onClick="dingfang()" data-options="iconCls:'icon-search'">订房</div>
     <div onClick="dingche1()" data-options="iconCls:'icon-search'">订车</div>
     <div onClick="dingcan()" data-options="iconCls:'icon-search'">订餐</div>
     <div onClick="dingdaoyou()" data-options="iconCls:'icon-search'">订导游</div>
     <div onClick="dinggouwudian()" data-options="iconCls:'icon-search'">订购物店</div>
+    </div>
+    </div>
+    
   	 	 <div onclick="$('#fukuan').window('open')">
             <span>付款</span>
             
@@ -188,7 +186,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  </form>
 	    
 	</div>
-			<div id="beizhudlg"  class="easyui-dialog" title="订车明细"
+			<div id="beizhudlg"  class="easyui-dialog" title="备注明细"
 		data-options="modal:true,closed:true,iconCls:'icon-save', modal:true,buttons: 
 	 			[{
                     text:'保存',
@@ -207,6 +205,45 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<textarea id="beizhu" rows="25" cols="85"></textarea>
 		</div>	
 		
+		
+		
+		<!-- 导游开始 -->
+	
+	<div id="adddaoyou" class="easyui-dialog" title="导游安排"
+		data-options="modal:true,closed:true,iconCls:'icon-save',buttons: 
+	 			[{
+                    text:'保存',
+                    iconCls:'icon-ok',
+                    handler:function(){
+                    }
+                },{
+                    text:'关闭',
+                    iconCls:'icon-cancel',
+                    handler:function(){
+                    closewindow();
+                    }
+                }]"
+		style="width:600px;height:240px;padding:10px;">
+		<table id="dgDaoyou" class="easyui-datagrid"
+			data-options="url:'fenghuang/daoyouSelect.do',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
+			pagination="true">
+			<thead>
+				<tr>
+					<th data-options="field:'ck',checkbox:true"></th>
+					<th data-options="field:'guojia'" width="80">国籍</th>
+					<th data-options="field:'name'" width="80">姓名</th>
+					<th data-options="field:'chengshi'" width="80">常驻地</th>
+					<th data-options="field:'dinhua'" width="80">移动电话</th>
+					<th data-options="field:'shouji'" width="80">手机</th>
+					<th data-options="field:'email'" width="80">EMAIL</th>
+					<th data-options="field:'bz'" width="80">备注</th>	
+				</tr>
+			</thead>
+		</table>
+        
+		
+	</div>
+	<!-- 导游END -->
 	<script type="text/javascript">
 	
 	function jinzhan(val,row){
@@ -284,8 +321,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	function caozuotuanName(val,row){
 	//打开操作明细页面
-		return '<a href="javascript:openCaozuomx('+row.tuanNo+')">'+row.tuanName+'</a>';
+		return '<a href="javascript:openCaozuomx(\''+row.tuanNo+'\','+row.oid+')">'+row.tuanName+'</a>';
 	}
+	function openCaozuomx(tuanNo,oid){
+	var url = "Caozuo_mingxi.do?oid="+oid+"&tuanNo="+tuanNo;
+	var tab = $('#tt').tabs('getSelected'); 
+		if (tab){  
+	                 var index = $('#tt').tabs('getTabIndex', tab); 
+	                 $('#tt').tabs('close', index);  
+	       } 
+	       
+	       $('#tt').tabs('add', {
+				         title : "操作详情",
+				         href : url,
+				      //  closable : true,
+				         });
+   	      }
+	
+	
 	function caozuoContextMenu(e, rowIndex, rowData){
 	
 	$('#tuanduimc').attr('value',rowData.tuanNo);
@@ -371,19 +424,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     }
     
     function dingdaoyou(){
-      var row = $("#caozuoliebiaodg").datagrid("getSelected");
-      var url= "Caozuo_dingdaoyou.do?tuanNo="+row.tuanNo;
-       var tab = $('#tt').tabs('getSelected'); 
-		if (tab){  
-	                 var index = $('#tt').tabs('getTabIndex', tab); 
-	                 $('#tt').tabs('close', index);  
-	       } 
-	       
-	       $('#tt').tabs('add', {
-				         title : "订导游行程详细信息",
-				         href : url,
-				      //  closable : true,
-				         });
+    $('#adddaoyou').dialog('open');
     }
     function dinggouwudian(){
     $("#caozuodinggouwudian").dialog("open");
@@ -423,6 +464,10 @@ function operatetype(value,row){
 							if(row.operateType==2){type="散拼";}
 							return type;
 				}
+function closewindow(){
+		$('#dingfang').dialog('close');
+		$('#adddaoyou').dialog('close');
+}
 
 
 
