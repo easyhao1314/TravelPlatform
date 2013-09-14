@@ -79,11 +79,14 @@ public class OperateController {
 	@ResponseBody
 	public Map<String, Object> updateOperate(HttpServletRequest request,
 			HttpServletResponse response,
-			String jinzhan,String beizhu,String oid){
+			String jinzhan,String beizhu,String daoyou,String oid){
 			
 			Operate o = new Operate();
 			if(jinzhan!=null && !"".equals(jinzhan)){
 			o.setJinzhan(Integer.parseInt(jinzhan));
+			}
+			if(daoyou!=null && !"".equals(daoyou)){
+				o.setDaoyou(Long.parseLong(daoyou));
 			}
 			o.setBeizhu(beizhu);
 			if(oid!=null && !"".equals(oid)){

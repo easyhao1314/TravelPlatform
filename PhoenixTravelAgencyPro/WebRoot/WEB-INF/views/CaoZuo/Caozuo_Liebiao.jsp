@@ -215,6 +215,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     text:'保存',
                     iconCls:'icon-ok',
                     handler:function(){
+                    savedaoyou();
                     }
                 },{
                     text:'关闭',
@@ -225,7 +226,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 }]"
 		style="width:600px;height:240px;padding:10px;">
 		<table id="dgDaoyou" class="easyui-datagrid"
-			data-options="url:'fenghuang/daoyouSelect.do',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
+			data-options="url:'fenghuang/daoyouSelect.do',border:true,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 			pagination="true">
 			<thead>
 				<tr>
@@ -340,7 +341,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	
 	function caozuoContextMenu(e, rowIndex, rowData){
-	
+	$('#oid').attr('value',rowData.oid);
 	$('#tuanduimc').attr('value',rowData.tuanNo);
 	$('#team').attr('value',rowData.tuanName);
 	$('#chutuantime').attr('value',rowData.chutuantime);
@@ -467,6 +468,25 @@ function operatetype(value,row){
 function closewindow(){
 		$('#dingfang').dialog('close');
 		$('#adddaoyou').dialog('close');
+}
+function savedaoyou(){
+	var row = $('#dgDaoyou').datagrid("getSelected");
+	var oid = $('#oid').val();
+	var url = "fenghuang/updateOperate.do?oid="+oid+"&daoyou="+row.id;
+   	      	$.ajax({
+   	      		url:url,
+   	      		data:oid,
+   	      		datatype:"json",
+   	      		success:function(data){
+   	      		$('#adddaoyou').dialog('close');
+   	      				$.messager.alert("保存成功", "保存成功!", "info");
+   	      		},
+   	      		error : function() {
+						$.messager.alert("修改失败", "服务器请求失败!", "error");
+					}
+   	      	
+   	      	});
+	
 }
 
 
