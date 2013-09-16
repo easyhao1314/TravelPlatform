@@ -60,7 +60,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		pagination="true"  toolbar="#currencyDatagridtoolbar">
 		<thead>
 			<tr>
-				<th data-options="field:'id',hidden:true" width="20">编号</th>
+				<th data-options="field:'id'" width="20">编号</th>
 				<th data-options="field:'tuanNo'" width="20">团号</th>
 				<th data-options="field:'ruzhuTime'" width="20">居住时间</th>
 				<th data-options="field:'ruzhuDay'" width="20">居住天数</th>
