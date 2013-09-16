@@ -56,7 +56,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     <div class="easyui-layout" fit="true">
         <table id="caozuodingfangdg" class="easyui-datagrid"
-		data-options="url:'fenghuang/dingfangSelect.do',border:false,singleSelect:true,fit:true,fitColumns:true,onRowContextMenu: caozuoContextMenu,pageSize:20"
+		data-options="url:'fenghuang/dingfangSelect.do',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 		pagination="true"  toolbar="#currencyDatagridtoolbar">
 		<thead>
 			<tr>
