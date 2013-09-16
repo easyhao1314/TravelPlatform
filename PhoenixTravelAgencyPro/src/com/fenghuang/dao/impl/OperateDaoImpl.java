@@ -44,6 +44,10 @@ public class OperateDaoImpl extends BaseDao implements IOperateDao {
 			sb.append(",jinzhan=?");
 			list.add(o.getJinzhan());
 		}
+		if(o.getDaoyou()!=0){
+			sb.append(",daoyou=?");
+			list.add(o.getDaoyou());
+		}
 		if(o.getOid()!=0){
 			sb.append(" where oid = ?");
 			list.add(o.getOid());

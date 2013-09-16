@@ -96,9 +96,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- ----------------------------------------------------基本信息END----------------------------------------------------------------- -->
 	<div id="jibentb">
 		<a href="javascript:addsanpinkehu();" class="easyui-linkbutton"
-			iconCls="icon-add" plain="true">新增</a>&nbsp;&nbsp;|  <a
+			iconCls="icon-add" plain="true">新增</a>
+			<!--删除功能  &nbsp;&nbsp;|  <a
 			href="javascript:deletesanpinkehu();" class="easyui-linkbutton"
-			iconCls="icon-cut" plain="true">删除</a>&nbsp;&nbsp;|
+			iconCls="icon-cut" plain="true">删除</a> -->&nbsp;&nbsp;|
 		<a href="javascript:getChanges();" class="easyui-linkbutton"
 			iconCls="icon-save" plain="true">保存修改</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 

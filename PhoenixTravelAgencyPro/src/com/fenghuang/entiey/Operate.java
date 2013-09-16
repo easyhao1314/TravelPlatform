@@ -68,9 +68,17 @@ public class Operate {
     * @pdOid 2e804a4f-0801-4363-850a-f6b607ac928c */
    public java.lang.String beizhu;
    
+   public long daoyou;
    
    
    
+   
+public long getDaoyou() {
+	return daoyou;
+}
+public void setDaoyou(long daoyou) {
+	this.daoyou = daoyou;
+}
 public java.lang.String getBeizhu() {
 	return beizhu;
 }
