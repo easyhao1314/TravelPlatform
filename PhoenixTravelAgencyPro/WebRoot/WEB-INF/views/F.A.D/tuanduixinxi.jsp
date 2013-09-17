@@ -231,7 +231,7 @@ pagination="true" toolbar="#tb2">
 				<tr>
 					<td colspan="4s" align="center"><a
 						href="javascript:xinxisave();" class="easyui-linkbutton"
-						iconCls="icon-ok">确认</a> <a href="javascript:closedSearch();"
+						iconCls="icon-ok">确认</a><a href="javascript:$('#tdxxsaveid').dialog('close');"
 						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
 				</tr>
 			</table>
@@ -320,7 +320,7 @@ pagination="true" toolbar="#tb2">
 					<tr>
 					<td colspan="4s" align="center"><a
 						href="javascript:xinxidelect();" class="easyui-linkbutton"
-						iconCls="icon-ok">确认</a> <a href="javascript:closedSearch();"
+						iconCls="icon-ok">确认</a> <a href="javascript:$('#tdxxshanchuid').dialog('close');"
 						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
 				</tr>
 			</table>
@@ -412,7 +412,7 @@ pagination="true" toolbar="#tb2">
 				<tr>
 					<td colspan="4s" align="center"><a
 						href="javascript:xinxiupdate();" class="easyui-linkbutton"
-						iconCls="icon-ok">确认</a> <a href="javascript:closedSearch();"
+						iconCls="icon-ok">确认</a> <a href="javascript:$('#tdxxupdateid').dialog('close');"
 						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
 				</tr>
 			</table>
@@ -621,7 +621,7 @@ pagination="true" toolbar="#tb2">
 					<tr>
 					<td colspan="4s" align="center"><a
 						href="javascript:xxfkdelete();" class="easyui-linkbutton"
-						iconCls="icon-ok">确认</a> <a href="javascript:closedSearch();"
+						iconCls="icon-ok">确认</a> <a href="javascript:$('#xxfkshanchuid').dialog('close');"
 						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
 				</tr>
 			</table>
@@ -703,7 +703,7 @@ pagination="true" toolbar="#tb2">
 					<tr>
 					<td colspan="4s" align="center"><a
 						href="javascript:xxfkupdate();" class="easyui-linkbutton"
-						iconCls="icon-ok">确认</a> <a href="javascript:closedSearch();"
+						iconCls="icon-ok">确认</a> <a href="javascript:$('#tdxxfkxiugaiid').dialog('close');"
 						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
 				</tr>
 			</table>

@@ -94,10 +94,17 @@
 				</tr>
 				<tr>
 					<td><div class="fitem">
-							<label>团名:</label>
+							<label>团号:</label>
 					</td>
 					<td>
 					<input id="team" name="team" 
+						class="easyui-validatebox" onfocus=this.blur() >
+						</div></td>
+				<td><div class="fitem">
+							<label>团名:</label>
+					</td>
+					<td>
+					<input id="tuanduimc" name="tuanduimc" 
 						class="easyui-validatebox" onfocus=this.blur() >
 						</div></td>
 				</tr>
