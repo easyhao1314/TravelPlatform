@@ -22,6 +22,8 @@ public class FengHuangDateUtil {
 
 	public static final String DEFAULT_DATE_PATTERN = "yyyy-MM-dd";
 
+	public static final String DEFAULT_DATE_PATTERN_TUANHAO = "yyyyMMddS";
+	
 	public static Date getDateStringTODate(String dateString) {
 		SimpleDateFormat sdf = new SimpleDateFormat(DEFAULT_DATE_PATTERN);
 		Date date = null;
@@ -45,6 +47,19 @@ public class FengHuangDateUtil {
 		}
 		return date_str;
 	}
+	
+	public static String getDateTOString_TuanHao(){
+		String date_str = "";
+		SimpleDateFormat sdf = new SimpleDateFormat(DEFAULT_DATE_PATTERN_TUANHAO);
+		try {
+			date_str = sdf.format(new Date());
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		}
+		return date_str;
+	}
+	
 	
 	public static String getTimeShow(){
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy年 MM月dd日 ");

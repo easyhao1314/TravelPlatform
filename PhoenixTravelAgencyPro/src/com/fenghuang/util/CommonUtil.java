@@ -1,5 +1,6 @@
 package com.fenghuang.util;
 
+import java.util.HashMap;
 import java.util.Random;
 import java.util.UUID;
 
@@ -15,6 +16,20 @@ import java.util.UUID;
  *
  */
 public class CommonUtil {
+	
+	private static HashMap<String,String> tuanHaoMap = new HashMap<String,String>();
+	/**
+	 * 如果code，很多可以修改为数据库的形式来读取。
+	 * 现在只是放在内存中。
+	 */
+	static {
+		tuanHaoMap.put("001", "DSG");
+		tuanHaoMap.put("002", "LTS");
+		//请按这种方式来添加产生团号的code和前缀
+		//tuanHaoMap.put("code", "前缀名");
+	}
+	
+	
 	/**
 	 * 产生唯一的uuid，并去掉”-“，用来表示唯一性
 	 * grant5adde8b048284a0fa04972ba9c490028
@@ -27,9 +42,9 @@ public class CommonUtil {
 		
 	}
 	
-	public static String getTuanHao(){
+	public static String getTuanHao(String code){
 		//团号格式。
-		return "";
+		return tuanHaoMap.get(code)+FengHuangDateUtil.getDateTOString_TuanHao();
 	}
 	//产生5-6位 不一样的数字
 	public static String getCode(){
@@ -48,9 +63,8 @@ public class CommonUtil {
 		return String.valueOf(result);
 	}
 	public static void main(String[] args) {
-		for(int i=0;i<100;i++){
-		System.out.println(getCode());
-		}
+		System.out.println(getTuanHao("001"));
+		
 	}
 
 
