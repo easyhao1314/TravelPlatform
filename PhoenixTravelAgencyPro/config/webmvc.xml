@@ -162,7 +162,7 @@
 	<mvc:view-controller path="SanPin_tuituansp.do" view-name="SanPin/Sanpin_Tuituansp"/>
 	<mvc:view-controller path="SanPin_wodebaomingsp.do" view-name="SanPin/Sanpin_WodeBaomingsp"/>
 	<mvc:view-controller path="Sanpin_zhuantuan.do" view-name="SanPin/Sanpin_Zhuantuan"/>
-	<mvc:view-controller path="Sanpin_mingxi.do" view-name="SanPin/Sanpin_Mingxi"/>
+	<mvc:view-controller path="Sanpin_mingxi.do" view-name="SanPin/SanPin_Mingxi"/>
 	<mvc:view-controller path="Sanpin_shenpimingxi.do" view-name="SanPin/Sanpin_ShenpiMingxi"/>
 	<!-- 赵杨_______操作中心 -->
 	<mvc:view-controller path="Caozuo_mingxi.do" view-name="CaoZuo/Caozuo_Mingxi"/>

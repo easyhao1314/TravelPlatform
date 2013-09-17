@@ -154,6 +154,16 @@ public class Sanpinzhongxin {
     * 
     * @pdOid c4d686bf-eee3-43cc-9f5a-3b12e5dab105 */
    public int shoukestate;
+   /** 散拼图片
+    * 
+    *  */
+   private String tupian;
+public String getTupian() {
+	return tupian;
+}
+public void setTupian(String tupian) {
+	this.tupian = tupian;
+}
 public java.lang.String getTuanNo() {
 	return tuanNo;
 }

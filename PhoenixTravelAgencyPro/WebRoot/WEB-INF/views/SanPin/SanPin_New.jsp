@@ -37,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
    <div style="background:#fafafa;padding:10px;width:10	00px;height:300px;">
-  <form id="addsanpinform" method="post">
+  <form id="addsanpinform" method="post" >
   <div >
   <h4><p>基础信息</p></h4> 
   <table style="" >
@@ -71,112 +71,105 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	<td>回团日期：</td><td><input id="dd" name="Tourdate" class="easyui-datebox" ></input></td>
   	<td></td><td></td>
   	<td>地域类型：</td><td>
-  	<input class="easyui-combobox" 
-			name="Areatype"
-			data-options="
+  	<input name="Areatype" class="easyui-combobox" data-options="
 					url:'fenghuang/getDicByTypeComboboxs.do?dicType=6',
-					valueField:'dicId',
+					valueField:'dicNo',
 					textField:'dicName',
-					panelHeight:'auto'
+					panelHeight:'auto',
+					editable:false 
 	">
 	</td>
   	</tr>
   	  	<tr>
   	<td>航空公司：</td><td><input class="easyui-validatebox" type="text" name="airways"></input></td>
   	<td></td><td></td>
-  	<td>目标人群：</td><td><input class="easyui-combobox" 
-			name="targetpopulation"
-			data-options="
+  	<td>目标人群：</td><td>
+  	<input name="targetpopulation" class="easyui-combobox" data-options="
 					url:'fenghuang/getDicByTypeComboboxs.do?dicType=30',
-					valueField:'dicId',
+					valueField:'dicNo',
 					textField:'dicName',
-					panelHeight:'auto'
+					panelHeight:'auto',
+					editable:false 
 	"></td>
   	</tr>
   	  	
   	  	<tr>
   	<td>去程航班：</td><td><input class="easyui-validatebox" type="text" name="groupflight"></input></td>
   	<td></td><td></td>
-  	<td>出发城市：</td><td><input class="easyui-combobox" 
-			name="Departurecity"
-			data-options="
+  	<td>出发城市：</td><td>
+  	<input name="Departurecity" class="easyui-combobox" data-options="
 					url:'fenghuang/getDicByTypeComboboxs.do?dicType=8',
-					valueField:'dicId',
+					valueField:'dicNo',
 					textField:'dicName',
-					panelHeight:'auto'
+					panelHeight:'auto',
+					editable:false 
 	"></td>
   	</tr>
   	  	<tr>
   	<td>回程航班：</td><td><input class="easyui-validatebox" type="text" name="Tourflight"></input></td>
   	<td></td><td></td>
-  	<td>终点城市：</td><td><input class="easyui-combobox" 
-			name="TerminalCity"
-			data-options="
+  	<td>终点城市：</td><td>
+  	<input name="TerminalCity" class="easyui-combobox" data-options="
 					url:'fenghuang/getDicByTypeComboboxs.do?dicType=8',
-					valueField:'dicId',
+					valueField:'dicNo',
 					textField:'dicName',
-					panelHeight:'auto'
+					panelHeight:'auto',
+					editable:false 
 	"></td>
   	</tr>
   	  	<tr>
   	<td>酒店标准：</td><td>
-  <input class="easyui-combobox" 
-			name="hotel"
-			data-options="
+  	<input name="hotel" class="easyui-combobox" data-options="
 					url:'fenghuang/getDicByTypeComboboxs.do?dicType=16',
-					valueField:'dicId',
+					valueField:'dicNo',
 					textField:'dicName',
-					panelHeight:'auto'
+					panelHeight:'auto',
+					editable:false 
 	">
 	</td>
   	<td></td><td></td>
   	<td>产品类型：</td><td>
-  	 <input class="easyui-combobox" 
-			name="Producttypes"
-			data-options="
+  	 <input name="Producttypes" class="easyui-combobox" data-options="
 					url:'fenghuang/getDicByTypeComboboxs.do?dicType=31',
-					valueField:'dicId',
+					valueField:'dicNo',
 					textField:'dicName',
-					panelHeight:'auto'
+					panelHeight:'auto',
+					editable:false 
 	"></td>
   	</tr>
   	  	<tr>
   	<td>用餐标准：</td><td>
-  	<input class="easyui-combobox" 
-			name="zao"
-			data-options="
+  	<input name="zao" class="easyui-combobox" data-options="
 					url:'fenghuang/getDicByTypeComboboxs.do?dicType=22',
-					valueField:'dicId',
+					valueField:'dicNo',
 					textField:'dicName',
-					panelHeight:'auto'
+					panelHeight:'auto',
+					editable:false 
 	">
-<input class="easyui-combobox" 
-			name="zhong"
-			data-options="
+	<input name="zhong" class="easyui-combobox" data-options="
 					url:'fenghuang/getDicByTypeComboboxs.do?dicType=23',
-					valueField:'dicId',
+					valueField:'dicNo',
 					textField:'dicName',
-					panelHeight:'auto'
+					panelHeight:'auto',
+					editable:false 
 	">
-	<input class="easyui-combobox" 
-			name="wan"
-			data-options="
+	<input name="wan" class="easyui-combobox" data-options="
 					url:'fenghuang/getDicByTypeComboboxs.do?dicType=24',
-					valueField:'dicId',
+					valueField:'dicNo',
 					textField:'dicName',
-					panelHeight:'auto'
+					panelHeight:'auto',
+					editable:false 
 	">
 	
 	</td>
   	<td></td><td></td>
   	<td>产品品牌：</td><td>
-  	<input class="easyui-combobox" 
-			name="productbrand"
-			data-options="
+  	<input name="productbrand" class="easyui-combobox" data-options="
 					url:'fenghuang/getDicByTypeComboboxs.do?dicType=32',
-					valueField:'dicId',
+					valueField:'dicNo',
 					textField:'dicName',
-					panelHeight:'auto'
+					panelHeight:'auto',
+					editable:false 
 	"></td>
   	</tr>
   </table>

@@ -38,7 +38,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<th data-options="field:'tuanName',formatter:onOperateSanpinList" width="50">团名/路线</th>
 				<th data-options="field:'groupdate'" width="50">出团日期</th>
 				<th data-options="field:'Tourdate'" width="50">回团日期</th>
-				<th data-options="field:'targetpopulation'" width="50">出发城市</th>
+				<th data-options="field:'chufa'" width="50">出发城市</th>
 				<th data-options="field:'tonghang'" width="50">同行价</th>
 				<th data-options="field:'zhikejia'" width="50">直客价</th>
 				<th data-options="field:'numbermaster',formatter:numbermaster" width="50">预收人数</th>
@@ -146,9 +146,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 		}
 		 function	onOperateSanpinList(val,row){
-      return '<a href="javascript:openSanpinDetail('+row.tuanNo+')">'+row.tuanName+'</a>';
+     		 return '<a href="javascript:openSanpinDetail(\''+row.tuanNo+'\',\''+row.tuanName+'\')">'+row.tuanName+'</a>';
+   			}
+   			function openSanpinDetail(tuanNo,tuanName){
+   				var url= "Sanpin_mingxi.do?tuanNo="+tuanNo+"&tuanName="+tuanName;
+       var tab = $('#tt').tabs('getSelected'); 
+		if (tab){  
+	                 var index = $('#tt').tabs('getTabIndex', tab); 
+	                 $('#tt').tabs('close', index);  
+	       } 
+	       
+	       $('#tt').tabs('add', {
+				         title : tuanName+"详细信息",
+				         href : url,
+				      //  closable : true,
+				         }); 
+   			}
    
-   }
    function openSanpinbaoming(tuanNo){  	
       var url= "Sanpin_mingxi.do?tuanNo="+tuanNo;
        var tab = $('#tt').tabs('getSelected'); 

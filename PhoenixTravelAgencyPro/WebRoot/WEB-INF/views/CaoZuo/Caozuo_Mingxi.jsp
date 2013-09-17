@@ -23,13 +23,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    ${param.oid}----------${param.tuanNo}
+    ${param.oid}
 
 
 
 <div class="easyui-accordion" data-options="fit:true,border:false">
-<div title="Title1" style="padding:10px;">
-content1
+<div id="tuanNo" title="团号：${param.tuanNo}" style="padding:10px;">
+<form id="tuan" action="">
+	<table>
+		<tr>
+		<td><strong>团号：</strong></td><td><input value="${param.tuanNo}"/></td>
+		<td><strong>团名/路线：</strong></td><td><input name="tuanName"/></td>
+		<td><strong>出团日期：</strong></td><td><input name="tuanName"/></td>
+		<td><strong>回团日期：</strong></td><td><input name="tuanName"/></td>
+		
+		</tr>
+	</table>
+</form>
 </div>
 <div title="Title2" data-options="selected:true" style="padding:10px;">
 content2
@@ -39,6 +49,13 @@ content3
 </div>
 </div>
 
-    
+    <script type="text/javascript">
+     $(document).ready(function() {
+     	tuanNoload();
+     });
+     function tuanNoload(){
+     	
+     }
+    </script>
   </body>
 </html>

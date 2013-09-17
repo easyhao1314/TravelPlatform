@@ -43,7 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<th data-options="field:'tuanName',formatter:onOperateSanpinList" width="50" >团名/路线</th>
 				<th data-options="field:'groupdate'" width="50">出团日期</th>
 				<th data-options="field:'Tourdate'" width="50">回团日期</th>
-				<th data-options="field:'targetpopulation'" width="50">出发城市</th>
+				<th data-options="field:'chufa'" width="50">出发城市</th>
 				<th data-options="field:'tonghang'" width="50">同行价</th>
 				<th data-options="field:'zhikejia'" width="50">直客价</th>
 				<th data-options="field:'numbermaster'" width="50">预收人数</th>
@@ -237,6 +237,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		}
 		function openSanpinDetai(tuanNo){
 		 var row = $("#dg").datagrid("getSelected");
+		 alert(row.xlid);
       var url= "Xingcheng_mx.do?xianid="+row.xlid;
        var tab = $('#tt').tabs('getSelected'); 
 		if (tab){  

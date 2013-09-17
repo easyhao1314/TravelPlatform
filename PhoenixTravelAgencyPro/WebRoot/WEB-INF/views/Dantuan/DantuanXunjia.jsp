@@ -878,7 +878,7 @@ data-options="
    }
    function openDanTuanDetail(tuanNo){
    	var row = $("#dg").datagrid("getSelected");
-
+	alert(row.xlid);
       var url= "Xingcheng_mx.do?xianid="+row.xlid;
        var tab = $('#tt').tabs('getSelected'); 
 		if (tab){  
