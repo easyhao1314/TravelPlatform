@@ -77,7 +77,7 @@ public class CaiwuqrfkController {
 			returnValue.put("total",  pagination.getTotalRows());
 			returnValue.put("rows", testUsers);	
 			JsonConfig config = new JsonConfig();
-	     	config.registerJsonValueProcessor(Timestamp.class,new DateJsonValueProcessor("yyyy-MM-dd"));
+	     	config.registerJsonValueProcessor(Timestamp.class,new DateJsonValueProcessor("yyyy-MM-dd HH:mm"));
 	     			//鎶奙AP杞崲鎴怞SON锛岃繑鍥炲埌鍓嶅彴
 	     
 	     	JSONObject fromObject = JSONObject.fromObject(returnValue,config);
@@ -173,11 +173,9 @@ public class CaiwuqrfkController {
 			Date dategroupdate = format1.parse(fukuantime);
 			tuanbiao.setFukuantime(dategroupdate);
 		}
-		if(yushoutime!=null&&!"".equals(yushoutime)){
-		    DateFormat format1 = new SimpleDateFormat("yyyy-MM-dd"); 
-			Date dategroupdate = format1.parse(yushoutime);
-			tuanbiao.setYushoutime(dategroupdate);
-		}
+		
+			tuanbiao.setYushoutime(new Date());
+		
 		if(yingshou!=null&&!"".equals(yingshou)){
 		    tuanbiao.setYingshou(Double.parseDouble(yingshou));
 		}

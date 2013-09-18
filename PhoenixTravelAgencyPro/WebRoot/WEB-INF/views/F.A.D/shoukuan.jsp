@@ -66,8 +66,8 @@
 				<th data-options="field:'team',editor:'text'" width="10px">团号</th>
 				<th data-options="field:'tuanduimc',editor:'text'" width="10px">团队名称</th>
 				<th data-options="field:'khmc',editor:'text'" width="10px">客户名称</th>
-				<th data-options="field:'name',editor:'text'" width="10px">款项</th>
-				<th data-options="field:'yingshou',editor:'text'" width="10px">金额</th>
+				<th data-options="field:'kxsm',editor:'text'" width="10px">款项</th>
+				<th data-options="field:'yishou',editor:'text'" width="10px">金额</th>
 			
 				<th data-options="field:'caozuo',editor:'numberbox'" width="10px">销售</th>
 				<th data-options="field:'confirmed',editor:'numberbox'" width="10px">财务确认</th>

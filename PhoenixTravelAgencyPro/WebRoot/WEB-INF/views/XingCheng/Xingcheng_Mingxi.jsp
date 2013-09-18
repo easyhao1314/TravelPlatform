@@ -134,7 +134,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 }]" style="width:400px;height:300px;padding:10px">
         <span>活动安排(少于800汉字)</span>
         <input id="riid" style="display: none;">
-        <input id="can">
+        <input id="can" type="hidden" >
         <textarea id="huodongtext" name="message"  style="height:200px; width: 300px;"></textarea>
     </div>
     <div id="jiaotongchengshidlgmenu" style="padding:2px 0">
@@ -282,7 +282,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   
   
- 	var param = {
+ 		var param = {
 					"xianid" :  '${param.xianid}'
 				};
 		$.ajax({

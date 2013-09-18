@@ -146,10 +146,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 		}
 		 function	onOperateSanpinList(val,row){
-     		 return '<a href="javascript:openSanpinDetail(\''+row.tuanNo+'\',\''+row.tuanName+'\')">'+row.tuanName+'</a>';
+     		 return '<a href="javascript:openSanpinDetail(\''+row.tuanNo+'\',\''+row.tuanName+'\',\''+row.xlid+'\')">'+row.tuanName+'</a>';
    			}
-   			function openSanpinDetail(tuanNo,tuanName){
-   				var url= "Sanpin_mingxi.do?tuanNo="+tuanNo+"&tuanName="+tuanName;
+   			function openSanpinDetail(tuanNo,tuanName,xlid){
+   				var url= "Sanpin_mingxi.do?tuanNo="+tuanNo+"&tuanName="+tuanName+"&xianid="+xlid;
        var tab = $('#tt').tabs('getSelected'); 
 		if (tab){  
 	                 var index = $('#tt').tabs('getTabIndex', tab); 

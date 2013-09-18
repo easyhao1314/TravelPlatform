@@ -85,7 +85,7 @@ public class RichengDaoImpl extends BaseDao implements IRichengDao  {
 	public Pagination<Richeng> select(int currentPage, int numPerPage, Richeng r)
 			throws Exception {
 		// TODO Auto-generated method stub
-		String sql = "SELECT * FROM richeng WHERE  1=1 ";
+		String sql = "SELECT richeng.*,zao.dicName as zaos,zhong.dicName as zhongs,wan.dicName AS wans  FROM richeng LEFT JOIN dictionarydesc AS wan ON wan.dicNo=wan LEFT JOIN dictionarydesc AS zhong ON zhong.dicNo=zhong LEFT JOIN dictionarydesc AS zao ON zao.dicNo=zao WHERE  1=1 ";
 		StringBuffer sb = new StringBuffer(sql);
 		if(r.getRiid()!=0 && !"".equals(r.getRiid())){
 		sb.append("and riid='"+r.getRiid()+"' ");

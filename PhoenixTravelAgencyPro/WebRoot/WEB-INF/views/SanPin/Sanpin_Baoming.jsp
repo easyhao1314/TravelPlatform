@@ -219,13 +219,13 @@ return zhuantuanshenpi;
         	金额：<input id="yishou" name="yishou" class="easyui-validatebox">
         	备注：<input id="beizhu" name="beizhu" class="easyui-validatebox">
         	款项：<input id="kuanxiang" name="kxsm" class="easyui-validatebox">
-        	<input id="tuanNo" name="tuanduimc" type="hidden" class="easyui-validatebox">
-        	<input id="tuanName" name="team" type="hidden" class="easyui-validatebox">
+        	<input id="tuanNo" name="tuanduimc" value="${param.tuanNo }"  class="easyui-validatebox">
+        	<input id="tuanName" name="team"  class="easyui-validatebox">
         	<input id="kehuname" name="khmc" type="hidden" class="easyui-validatebox">
-        	<input id="yingshou" name="yingshou" type="hidden" class="easyui-validatebox">
+        	
         	
         	<input type="hidden" name="shenfenid" value="1" class="easyui-validatebox">
-        	<input type="hidden" name="caiwuid" value="1" class="easyui-validatebox">        	
+        	<input type="hidden" name="caiwuid" value="6" class="easyui-validatebox">        	
         	<input type="hidden" name="ysyfid" value="1" class="easyui-validatebox">
         	<input type="hidden" name="shanchu" value="1" class="easyui-validatebox">
         	<input type="hidden" name="huilvid" value="1" class="easyui-validatebox">
