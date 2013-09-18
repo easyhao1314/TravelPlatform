@@ -37,18 +37,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<li>产品品牌：<span id="prand"></span></li>
     </ul>
     	</div>
-    	<h4>产品特点</h4>
-    	<div style="height: 10px; background-color: #333333;"></div>
-    	<span id="tedian" style="width: 300px;"></span>
-    	<h4>参团须知</h4>
-    	<div style="height: 10px; background-color: #333333;"></div>
-    	<span id="cantuan" style="width: 300px;"></span>
-    	<h4>服务包含</h4>
-    	<div style="height: 10px; background-color: #333333;"></div>
-    	<span id="baohan" style="width: 300px;"></span>
-    	<h4>服务不含</h4>
-    	<div style="height: 10px; background-color: #333333;"></div>
-    	<span id="buhan" style="width: 300px;"></span>
+    	<TABLE style="BORDER-RIGHT: #0076C8 2px dotted; BORDER-TOP: #0076C8 2px dotted; BORDER-LEFT: #0076C8 2px dotted; BORDER-BOTTOM: #0076C8 2px dotted; BORDER-COLLAPSE: collapse;margin-bottom: 10px;" borderColor=#0076C8  cellPadding=1 width=490 align=center border=2>
+			<TBODY>
+				<TR style="text-align: left; COLOR: #0076C8; BACKGROUND-COLOR: #F4FAFF; ">
+					<TD>
+						<font size="3" style="font-weight: bold">产品特点</font><br><span id="tedian" style="width: 300px;"></span>
+					</TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+		<TABLE style="BORDER-RIGHT: #0076C8 2px dotted; BORDER-TOP: #0076C8 2px dotted; BORDER-LEFT: #0076C8 2px dotted; BORDER-BOTTOM: #0076C8 2px dotted; BORDER-COLLAPSE: collapse;margin-bottom: 10px;" borderColor=#0076C8  cellPadding=1 width=490 align=center border=2>
+			<TBODY>
+				<TR style="text-align: left; COLOR: #0076C8; BACKGROUND-COLOR: #F4FAFF; ">
+					<TD>
+						<font size="3" style="font-weight: bold">参团须知</font><br><span id="cantuan" style="width: 300px;"></span>
+					</TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+    	<TABLE style="BORDER-RIGHT: #0076C8 2px dotted; BORDER-TOP: #0076C8 2px dotted; BORDER-LEFT: #0076C8 2px dotted; BORDER-BOTTOM: #0076C8 2px dotted; BORDER-COLLAPSE: collapse;margin-bottom: 10px;" borderColor=#0076C8  cellPadding=1 width=490 align=center border=2>
+			<TBODY>
+				<TR style="text-align: left; COLOR: #0076C8; BACKGROUND-COLOR: #F4FAFF; ">
+					<TD>
+						<font size="3" style="font-weight: bold">服务包含</font><br><span id="baohan" style="width: 300px;"></span>
+					</TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+		<TABLE style="BORDER-RIGHT: #0076C8 2px dotted; BORDER-TOP: #0076C8 2px dotted; BORDER-LEFT: #0076C8 2px dotted; BORDER-BOTTOM: #0076C8 2px dotted; BORDER-COLLAPSE: collapse;margin-bottom: 10px;" borderColor=#0076C8  cellPadding=1 width=490 align=center border=2>
+			<TBODY>
+				<TR style="text-align: left; COLOR: #0076C8; BACKGROUND-COLOR: #F4FAFF; ">
+					<TD>
+						<font size="3" style="font-weight: bold">服务不含</font><br><span id="buhan" style="width: 300px;"></span>
+					</TD>
+				</TR>
+			</TBODY>
+		</TABLE>
     	</div>
     <div id="sanpinyou" style=" width: 600px; float: left;" >
 		
@@ -60,7 +84,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <a href="javascript:void(0)" class="easyui-linkbutton" onclick="savesanpintupian()">保存</a>
         <a href="javascript:void(0)" class="easyui-linkbutton" onclick="javascript:$('#tupianxuanzedlg').dialog('close')">关闭</a>
     </div>
-    <div id="tupianxuanzedlg" class="easyui-dialog" title="设定图片" data-options="iconCls:'icon-save',buttons: '#tupianxuanzedlg-buttons'" style="width:700px;height:400px;padding:10px">
+    <div id="tupianxuanzedlg" class="easyui-dialog" title="设定图片" data-options="iconCls:'icon-save',buttons: '#tupianxuanzedlg-buttons',closed:true" style="width:700px;height:400px;padding:10px">
         <table id="dgPicManage" class="easyui-datagrid" 
 		data-options="url:'fenghuang/getPicManages.do',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 		pagination="true" toolbar="#dgPicToolbar">
@@ -137,7 +161,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					document.getElementById("baohan").innerHTML=data.rows[0].Servicesinclude;
 					document.getElementById("buhan").innerHTML=data.rows[0].servicenoinclude;
 					document.getElementById("cantuan").innerHTML=data.rows[0].notes;
-					alert(data.rows[0].tupian);
 					$('#sanpintupian').attr('src','data.rows[0].tupian');
 					},
 					error : function() {
