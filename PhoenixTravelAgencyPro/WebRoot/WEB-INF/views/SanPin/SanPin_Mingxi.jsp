@@ -24,8 +24,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
   	<div id="sanpinzuo" style=" width: 500px; float: left;">
-  		<div id="zuozuo" style="float: left; margin-right: 20px; margin-top: 40px;"><img alt="点击设定行程图片" width="150px" height="150px" style=""></div>
-  		<div id="zuoyou">
+  		<div id="zuozuo" style="float: left; margin-right: 20px; margin-top: 40px;"><img id="sanpintupian" alt="点击设定行程图片" width="150px" height="150px" onclick="opentupiandlg()" style=""></div>
+  		<div id="zuoyou" style="margin-top: 10px; margin-bottom: 30px;">
     <span style="margin: 20px;"><b><font color=#0000ff>${param.tuanName}</font></b></span>
     <ul>
     	<li>出发地点：<span id="chufa"></span></li>
@@ -52,16 +52,51 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	</div>
     <div id="sanpinyou" style=" width: 600px; float: left;" >
 		
-	
+	<font size="2" style="margin-top: -10px"></font>
 		</div>
-    
+		
+		
+	<div id="tupianxuanzedlg-buttons">
+        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="savesanpintupian()">保存</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="javascript:$('#tupianxuanzedlg').dialog('close')">关闭</a>
+    </div>
+    <div id="tupianxuanzedlg" class="easyui-dialog" title="设定图片" data-options="iconCls:'icon-save',buttons: '#tupianxuanzedlg-buttons'" style="width:700px;height:400px;padding:10px">
+        <table id="dgPicManage" class="easyui-datagrid" 
+		data-options="url:'fenghuang/getPicManages.do',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
+		pagination="true" toolbar="#dgPicToolbar">
+		<thead>
+			<tr>
+				<th data-options="field:'url',formatter:onOperateStyle" width="80">图片</th>
+			    <th data-options="field:'searchName'" width="80">名字</th>
+			</tr>
+		</thead>
+	</table>
+    </div>
     <script type="text/javascript">
     $(document).ready(function() {
      	sanpintuanNoload();
      	xingchengload();
      });
-     
-     
+     function savesanpintupian(){
+     	var row = $('#dgPicManage').datagrid("getSelected");
+     	$.ajax({
+					url :"fenghuang/upsanpin.do?tuanNo="+'${param.tuanNo}'+"&tupian="+row.url,
+					data :'${param.tuanNo}',
+					dataType : "json",
+					success : function(data) {
+						$.messager.alert("成功", "设定图片成功!", "info");
+						$('#sanpintupian').attr('src',row.url);
+					},
+					error : function() {
+						$.messager.alert("失败", "设定图片失败!", "error");
+					}
+				});
+     	
+     }
+     function onOperateStyle(val,row,index){
+       var returnStyleValue='<img alt="修改" src="'+row.url+'" width="100px" height="100px">';
+       return returnStyleValue;
+         }
      
      function xingchengload(){
      var param = {
@@ -102,7 +137,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					document.getElementById("baohan").innerHTML=data.rows[0].Servicesinclude;
 					document.getElementById("buhan").innerHTML=data.rows[0].servicenoinclude;
 					document.getElementById("cantuan").innerHTML=data.rows[0].notes;
-					
+					alert(data.rows[0].tupian);
+					$('#sanpintupian').attr('src','data.rows[0].tupian');
 					},
 					error : function() {
 						$.messager.alert("查询失败", "服务器请求失败!", "error");
@@ -124,33 +160,47 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						 var jj = data.rows[i].jiaotongchengshi;
 						 jt=jj.split(":");
 						 	var jtapp='';
+						 	var feiji='';
+						 	var bashi='';
+						 	var youlun='';
+						 	var huoche='';
 						 for(var j=0;j<jt.length;j++){
 						 if(jt[j]=="^1"){
-						 	jtapp+='<img src="Image/feiji.png">';
+						 	jtapp+='<img src="Image/feiji.png" style="margin-top: -2px;">';
+						 	feiji='飞机 ';
 						 }
 						 if(jt[j]=="^2"){
-						  	jtapp+='<img src="Image/youlun.png">';
+						  	jtapp+='<img src="Image/youlun.png" style="margin-top: -2px;">';
+						  	youlun='游轮 ';
 						 }
 						 if(jt[j]=="^3"){
-						  	jtapp+='<img src="Image/huoche.png">';
+						  	jtapp+='<img src="Image/huoche.png" style="margin-top: -2px;">';
+						  	huoche='火车 ';	
 						 }
 						 if(jt[j]=="^4"){
-						  	jtapp+='<img src="Image/juzhu.png">';
+						  	jtapp+='<img src="Image/juzhu.png" style="margin-top: -2px;">';
 						 }
 						 if(jt[j]=="^5"){
-						  	jtapp+='<img src="Image/bashi.png">';
+						  	jtapp+='<img src="Image/bashi.png" style="margin-top: -2px;">';
+						  	bashi='巴士 ';
 						 }
 						 if(jt[j]!="^1"&&jt[j]!="^2"&&jt[j]!="^3"&&jt[j]!="^4"&&jt[j]!="^5"){
-						 	jtapp+=jt[j];
+						 	jtapp+='<font id="fon" size="2" style="margin-top: -5px">'+jt[j]+'</font>';
 						 }
+						 
+						  
 						 		 
 						 }
 						 
+						
+						 
+						 
+						 
 						 
 						 var d = parseInt(i+1);	
-						 var app='<table border="0" cellpadding="3" cellspacing="1" width="100%" align="center" style="background-color: #b9d8f3; margin-top:15px;" >'
+						 var app='<table border="0" cellpadding="3" cellspacing="1" width="600px" align="center" style="background-color: #b9d8f3; margin-top:15px;" >'
 						 	+'<tr style="text-align: center; COLOR: #0076C8; BACKGROUND-COLOR: #F4FAFF; font-weight: bold">'
-    							+'<td colspan="3" align="left"><font size="2"  style="float: left;">第'+d+'天</font><div id="jtcs'+i+'" style="height:20px; backaground-color:yellow"></div></td>'
+    							+'<td colspan="3" align="left"><font size="2"  style="float: left;">第'+d+'天</font><div id="jtcs'+i+'"></div></td>'
     						+'</tr>'
 	
 						+'<tr style="text-align: center; COLOR: #0076C8; BACKGROUND-COLOR: #F4FAFF; font-weight: bold">'
@@ -162,21 +212,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     					+'</tr>'
 	
 	
-    					+'<tr style="text-align: center; COLOR: #0076C8; BACKGROUND-COLOR: #F4FAFF; font-weight: bold">'
-    +'<td><font size="2">'+data.rows[i].zaos+'</font></td>'
-    +'<td><font size="2">'+data.rows[i].zhongs+'</font></td>'
-    +'<td><font size="2">'+data.rows[i].wans+'</font></td>'
+    					+'<tr style="text-align: left; COLOR: #0076C8; BACKGROUND-COLOR: #F4FAFF; font-weight: bold">'
+    +'<td style="width:200px" ><font size="2">早餐：'+data.rows[i].zaos+'</font></td>'
+    +'<td><font size="2">午餐：'+data.rows[i].zhongs+'</font></td>'
+    +'<td><font size="2">晚餐：'+data.rows[i].wans+'</font></td>'
     +'</tr>'
 
-	+'<tr style="text-align: center; COLOR: #0076C8; BACKGROUND-COLOR: #F4FAFF; font-weight: bold">'
-    +'<td><font size="2">列1</font></td>'
-    +'<td><font size="2">列1</font></td>'
-    +'<td><font size="2">列1</font></td>'
+	+'<tr style="text-align: left; COLOR: #0076C8; BACKGROUND-COLOR: #F4FAFF; font-weight: bold">'
+    +'<td><font size="2" style="float: left;">交通工具：</font><div id="jtgj'+i+'"></div></td>'
+    +'<td><font size="2"></font></td>'
+    +'<td><font size="2">住宿：</font></td>'
     +'</tr>'
 						 +'<table>';			
 						$("#sanpinyou").append(app);
 						$('#d'+d).form('load',data.rows[i]);
 						$('#jtcs'+i).append(jtapp);
+						$('fon').attr('margin-top','-10px');
+						$('#jtgj'+i).append(feiji+bashi+huoche+youlun);
 					} 
 					//pares方法是 渲染JqueryEasyUi 插件的 解决不显示EasyUi的样式问题
 					$.parser.parse("#mdiv");
@@ -187,6 +239,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					}
       
       });
+  }
+  function opentupiandlg(){
+  	$('#tupianxuanzedlg').dialog('open');
   }
     </script>
   </body>

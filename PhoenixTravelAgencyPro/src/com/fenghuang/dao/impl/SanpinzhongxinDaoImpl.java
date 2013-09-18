@@ -120,6 +120,10 @@ public class SanpinzhongxinDaoImpl extends BaseDao implements ISanpinzhongxinDao
 			sb.append(",shoukestate=?");
 			list.add(sanpin.getShoukestate());
 		}
+		if(sanpin.getTupian()!=null && !"".equals(sanpin.getTupian())){
+			sb.append(",tupian=?");
+			list.add(sanpin.getTupian());
+		}
 		
 		if(sanpin.tuanNo!=null && !"".equals(sanpin.getTuanNo())){
 			sb.append(" where tuanNo=?");
