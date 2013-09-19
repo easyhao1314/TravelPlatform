@@ -161,7 +161,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					document.getElementById("baohan").innerHTML=data.rows[0].Servicesinclude;
 					document.getElementById("buhan").innerHTML=data.rows[0].servicenoinclude;
 					document.getElementById("cantuan").innerHTML=data.rows[0].notes;
-					$('#sanpintupian').attr('src','data.rows[0].tupian');
+					$('#sanpintupian').attr('src',data.rows[0].tupian);
 					},
 					error : function() {
 						$.messager.alert("查询失败", "服务器请求失败!", "error");

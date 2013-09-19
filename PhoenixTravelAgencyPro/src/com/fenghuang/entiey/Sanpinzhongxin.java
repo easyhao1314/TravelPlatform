@@ -147,7 +147,7 @@ public class Sanpinzhongxin {
     * @pdOid bbb16735-aa57-49d5-9c4a-c1a691766211 */
    public long wan;
    /** 发布状态
-    * 
+    *  0=取消发布状态 1=散拼操作状态 2=散拼列表状态
     * @pdOid 0959eef5-4797-4f17-b0bf-028afa6b3842 */
    public int fabustate;
    /** 收客状态
@@ -158,6 +158,16 @@ public class Sanpinzhongxin {
     * 
     *  */
    private String tupian;
+   /** 建团人
+    * 
+    *  */
+   private long jiantuanren;
+public long getJiantuanren() {
+	return jiantuanren;
+}
+public void setJiantuanren(long jiantuanren) {
+	this.jiantuanren = jiantuanren;
+}
 public String getTupian() {
 	return tupian;
 }

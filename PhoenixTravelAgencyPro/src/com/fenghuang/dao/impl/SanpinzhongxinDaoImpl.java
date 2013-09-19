@@ -34,7 +34,7 @@ public class SanpinzhongxinDaoImpl extends BaseDao implements ISanpinzhongxinDao
 				"teamexplains," +"Servicesinclude," +
 				"servicenoinclude,notes," +
 				"Reviewstatus,Shenpijia," +
-				"dakehujia,zhikejia,tonghang,ertongzhanchuang,ertongbuzhanchuang,zibeiqianjia,numberday,zao,zhong,wan,groupdate,Tourdate) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				"dakehujia,zhikejia,tonghang,ertongzhanchuang,ertongbuzhanchuang,zibeiqianjia,numberday,zao,zhong,wan,groupdate,Tourdate,jiantuanren) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		int num = this.update(sql,
 				sanpin.getTuanNo(),
 				sanpin.getTuanName(),
@@ -69,7 +69,8 @@ public class SanpinzhongxinDaoImpl extends BaseDao implements ISanpinzhongxinDao
 		        sanpin.getZhong(),
 		        sanpin.getWan(),
 		        sanpin.getGroupdate(),
-	 	        sanpin.getTourdate());
+	 	        sanpin.getTourdate(),
+	 	        sanpin.getJiantuanren());
 		return num>0;
 	}
 	@Override
@@ -92,10 +93,12 @@ public class SanpinzhongxinDaoImpl extends BaseDao implements ISanpinzhongxinDao
 		if(s.getProductbrand()!=0 && !"".equals(s.getProductbrand())){
 			sb.append(" and s.productbrand = '"+s.getProductbrand()+"'");
 		}
+		if(s.getJiantuanren()!=0){
+			sb.append(" and s.jiantuanren = '"+s.getJiantuanren()+"'");
+		}
 		if(s.getTuanNo()!=null && !"".equals(s.getTuanNo())){
 			sb.append(" and s.tuanNo = '"+s.getTuanNo()+"'");
 		}
-		//发布状态为必填
 		if(s.getFabustate()!=0){
 		sb.append(" and s.fabustate = '"+s.getFabustate()+"'");
 		}

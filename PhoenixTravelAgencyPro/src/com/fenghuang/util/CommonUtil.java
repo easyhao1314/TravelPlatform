@@ -23,8 +23,16 @@ public class CommonUtil {
 	 * 现在只是放在内存中。
 	 */
 	static {
-		tuanHaoMap.put("001", "DSG");
-		tuanHaoMap.put("002", "LTS");
+		tuanHaoMap.put("s国内", "GN");
+		tuanHaoMap.put("d国内", "GNS");
+		tuanHaoMap.put("s亚太", "GY");
+		tuanHaoMap.put("d亚太", "GNY");
+		tuanHaoMap.put("s日韩", "GK");
+		tuanHaoMap.put("d日韩", "GNK");
+		tuanHaoMap.put("s欧美", "GT");
+		tuanHaoMap.put("d欧美", "GNT");
+		tuanHaoMap.put("大客户", "GS");
+		tuanHaoMap.put("票务", "GP");
 		//请按这种方式来添加产生团号的code和前缀
 		//tuanHaoMap.put("code", "前缀名");
 	}
@@ -63,7 +71,7 @@ public class CommonUtil {
 		return String.valueOf(result);
 	}
 	public static void main(String[] args) {
-		System.out.println(getTuanHao("001"));
+		System.out.println(getTuanHao("s国内"));
 		
 	}
 

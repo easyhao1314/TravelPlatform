@@ -30,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			iconCls="icon-save" plain="true">查询</a>
 	</div>
 <table id="sanpinliebiaodg" class="easyui-datagrid"
-		data-options="url:'fenghuang/Sanpinliebiao.do?fabustate=1',border:false,singleSelect:true,fit:true,fitColumns:true"
+		data-options="url:'fenghuang/Sanpinliebiao.do?fabustate=2',border:false,singleSelect:true,fit:true,fitColumns:true"
 		pagination="true" toolbar="#tb">
 		<thead>
 			<tr>
@@ -223,7 +223,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    	      //取消发布状态功能
    	      function upfabustate(){
    	  	var tuanNo=$('#hideinput').val();
-         var  url = "fenghuang/upsanpin.do?tuanNo="+tuanNo+"&fabustate="+2;
+         var  url = "fenghuang/upsanpin.do?tuanNo="+tuanNo+"&fabustate="+0;
            $.ajax({
 					url :url,
 					data : tuanNo,

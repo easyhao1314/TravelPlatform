@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fenghuang.entiey.Sanpinzhongxin;
 import com.fenghuang.service.ISanpinzhongxinService;
+import com.fenghuang.util.CommonUtil;
 import com.fenghuang.util.DateJsonValueProcessor;
 import com.fenghuang.util.Pagination;
 
@@ -41,13 +42,17 @@ public class SanpinAction {
 			String Tourdate,String Areatype,String airways,String targetpopulation,String groupflight,
 			String Departurecity,String Tourflight,String TerminalCity,String hotel,String Producttypes,
 			String zao,String zhong,String wan,String productbrand,String predict,String report,String visa,
-			String teamexplains,String Servicesinclude,String servicenoinclude,String notes){
+			String teamexplains,String Servicesinclude,String servicenoinclude,String notes,String master,String areatypetext){
 			Sanpinzhongxin sanpin = new Sanpinzhongxin();
 			
 		try {
-			if(tuanno!=null && !"".equals(tuanno)){
-				sanpin.setTuanNo(tuanno);
-			}
+			
+			String tuanNotype = "s";
+			tuanNotype+=areatypetext;
+			String autotuanNo = CommonUtil.getTuanHao(tuanNotype);
+			
+			sanpin.setTuanNo(autotuanNo);
+			
 			if(tuanname!=null && !"".equals(tuanname)){
 				sanpin.setTuanName(tuanname);
 			}
@@ -146,6 +151,10 @@ public class SanpinAction {
 			if(notes!=null && !"".equals(notes)){
 				sanpin.setNotes(notes);
 			}
+			if(master!=null && !"".equals(master)){
+				sanpin.setJiantuanren(Long.parseLong(master));
+			}
+			sanpin.setFabustate(1);
 			} catch (ParseException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -234,6 +243,7 @@ public class SanpinAction {
 			if(productbrand!=null && !"".equals(productbrand)){
 				s.setProductbrand(Long.parseLong(productbrand));
 			}
+			
 			
 			if(page==null){
 				page=1;

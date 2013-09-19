@@ -101,13 +101,7 @@ data-options="
 					panelHeight:'auto',
 					editable:false 
 	"></div></td>
-<td><div class="fitem"><label>计调：</label></td><td><input name="jdNo" class="easyui-combobox" data-options="
-					url:'fenghuang/getDicByTypeComboboxs.do?dicType=12',
-					valueField:'dicNo',
-					textField:'dicName',
-					panelHeight:'auto',
-					editable:false 
-	"></div></td>
+<td></td>
 </tr>
 <tr>
 <td><div class="fitem"><label>客户经理：</label></td><td><input name="khjlNo" class="easyui-combobox" data-options="

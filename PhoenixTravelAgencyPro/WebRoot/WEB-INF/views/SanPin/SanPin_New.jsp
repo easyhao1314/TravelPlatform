@@ -8,20 +8,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">
-    <!-- 添加easyui样式 -->
-    <!--  
-<link rel="stylesheet" type="text/css"
-	href="js/themes/default/easyui.css">
-<link rel="stylesheet" type="text/css" href="js/themes/icon.css">
-<link rel="stylesheet" type="text/css" href="js/demo/demo.css">
--->
-<!-- 这里主要是jquery的js文件  -->
-<!--
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/jquery.easyui.min.js"></script>
-<script type="text/javascript" src="js/locale/easyui-lang-zh_CN.js"></script>
-<script type="text/javascript" src="js/jquery.json.js"></script>
-  -->
     <title>新建散拼</title>
     
 	<meta http-equiv="pragma" content="no-cache">
@@ -53,25 +39,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </table>
   <table>
    	<tr>
-  	<td>出团计划名称：</td><td><input class="easyui-validatebox" type="text" name="tuanname" ></input></td>
+  	<td>出团计划名称：</td><td><input class="easyui-validatebox" type="text" required="true" name="tuanname" ></input></td>
   	<td></td><td></td>
-  	<td>出团计划编号：</td><td><input class="easyui-validatebox" type="text" name="tuanno" ></input></td>
+  	<td>出团计划编号：</td><td></td>
   	</tr>
   	<tr>
-  	<td>全程天数：</td><td><input id="ss" name="tianshu" class="easyui-numberspinner" min="1" max="100" style="width:133px;"></input></td>
+  	<td>全程天数：</td><td><input id="ss" name="tianshu" class="easyui-numberspinner" min="1" max="100" required="true" style="width:133px;"></input></td>
   	<td></td><td></td>
   	<td>全程国家数：</td><td><input id="ss" name="guojiashu" class="easyui-numberspinner" min="1" max="100"  style="width:133px;"></input></td>
   	</tr>
   	<tr>
-  	<td>出团日期：</td><td><input id="dd" name="groupdate" class="easyui-datebox" ></input></td>
+  	<td>出团日期：</td><td><input id="dd" name="groupdate" class="easyui-datebox" required="true" ></input></td>
   	<td></td><td></td>
-  	<td>预收人数：</td><td><input id="ss" name="numbermaster" class="easyui-numberspinner" min="1" max="100" style="width:133px;"></input></td>
+  	<td>预收人数：</td><td><input id="ss" name="numbermaster" class="easyui-numberspinner" min="1" max="100" style="width:133px;" required="true"></input></td>
   	</tr>
   	  	<tr>
-  	<td>回团日期：</td><td><input id="dd" name="Tourdate" class="easyui-datebox" ></input></td>
+  	<td>回团日期：</td><td><input id="dd" name="Tourdate" class="easyui-datebox" required="true" ></input></td>
   	<td></td><td></td>
   	<td>地域类型：</td><td>
-  	<input name="Areatype" class="easyui-combobox" data-options="
+  	<input id="Areatype" name="Areatype" required="true" class="easyui-combobox" data-options="
 					url:'fenghuang/getDicByTypeComboboxs.do?dicType=6',
 					valueField:'dicNo',
 					textField:'dicName',
@@ -204,11 +190,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <br>
   <a href="javascript:sanpinSave();" class="easyui-linkbutton" >保存</a>
         </div>
-       
+       <input id="master" name="master" type="hidden"  >
+       <input id="areatype" name="areatypetext" type="hidden"  >
     </form>
 </div>
 <script type="text/javascript">
 			function sanpinSave() {
+			var userid = '${sessionScope.userId}';
+			$('#master').attr('value',userid);
+			
+			var areatype = $('#Areatype').combobox('getText');
+			$('#areatype').attr('value',areatype);
 			$('#addsanpinform').form('submit', {
 				url : 'fenghuang/addsanpin.do',
 				onSubmit : function() {
