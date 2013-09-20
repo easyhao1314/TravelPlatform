@@ -35,7 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			iconCls="icon-edit" plain="true">修改</a>
 	</div>
 <table id="dg" class="easyui-datagrid"
-		data-options="url:'fenghuang/Sanpinliebiao.do?fabustate=1',border:false,singleSelect:true,fit:true,fitColumns:true, onClickRow: onClickRow,onRowContextMenu: sanpincaozuoMenu"
+		data-options="url:'fenghuang/Sanpinliebiao.do?fabustate=1&master=${sessionScope.userId}',border:false,singleSelect:true,fit:true,fitColumns:true, onClickRow: onClickRow,onRowContextMenu: sanpincaozuoMenu"
 		pagination="true" toolbar="#tb">
 		<thead>
 			<tr>
@@ -175,6 +175,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
 	<div id="mmsanpincaozuo" class="easyui-menu" style="width:120px;">
 		<div data-options="iconCls:'icon-edit'" onClick="zhuanjidiao()">转到计调报价</div>
+		<div data-options="iconCls:'icon-search'"  onClick="">查看订单进度</div>
 	</div>
 	<script type="text/javascript">
 	function sanpinupdate(){
@@ -226,7 +227,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     }); 
 	}
 	function zhuanjidiao(){
-		$('#sanpincaozuowindow').window('open');
+	var tuanNo=$('#tuanNo').val();
+		$.ajax({
+					url :"fenghuang/Operateinfo.do?tuanNo="+tuanNo,
+					data :tuanNo,
+					dataType : "json",
+					success : function(data) {
+					if(data.rows.length!=0){
+					$.messager.alert("发送失败", " 该团已发送计调!", "error");
+					}else{
+					$('#sanpincaozuowindow').window('open');
+					}
+					
+					},
+					error : function() {
+						
+					}
+				});
+		
 	}
 	
 	
@@ -237,7 +255,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		}
 		function openSanpinDetai(tuanNo){
 		 var row = $("#dg").datagrid("getSelected");
-		 alert(row.xlid);
+		
       var url= "Xingcheng_mx.do?xianid="+row.xlid;
        var tab = $('#tt').tabs('getSelected'); 
 		if (tab){  

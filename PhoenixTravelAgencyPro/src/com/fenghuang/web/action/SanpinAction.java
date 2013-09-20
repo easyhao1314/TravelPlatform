@@ -222,10 +222,15 @@ public class SanpinAction {
 			String productbrand= request.getParameter("productbrand");
 			String tuanNo = request.getParameter("tuanNo");
 			String fabustate = request.getParameter("fabustate");
+			String master = request.getParameter("master");
 			//发布状态
 			if(fabustate!=null && !"".equals(fabustate)){
 				s.setFabustate(Integer.parseInt(fabustate));
 			}
+			if(master!=null && !"".equals(master)){
+				s.setJiantuanren(Long.parseLong(master));
+			}
+			
 			
 			
 			if(tuanNo!=null && !"".equals(tuanNo)){

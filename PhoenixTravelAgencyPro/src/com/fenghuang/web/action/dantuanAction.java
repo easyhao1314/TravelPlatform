@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.fenghuang.entiey.DantuanXinXi;
 import com.fenghuang.service.IJbpmService;
 import com.fenghuang.service.IdantuanService;
+import com.fenghuang.util.CommonUtil;
 import com.fenghuang.util.DateJsonValueProcessor;
 import com.fenghuang.util.Pagination;
 
@@ -43,10 +44,13 @@ public class dantuanAction {
 			String tuanNo,String tuanName,String khId,String tdczlx,String tdjb,String tdzt,String cfrs,String cfts,String cfgj,String lyqy,
 			Date ctsj,Date htsj,String xsNo,String jdNo,String khjlNo,String qzlx,String xbqz,String xbyq,String jdbzNo,
 			String zcNo,String zhongcNo,String wcNo,String bssdNo,
-			String cheXingNo,String jdbjNo,String bsbjNo,String ycbjNo,String dybjNo,String qtdjDesc,String tsDesc) {
+			String cheXingNo,String jdbjNo,String bsbjNo,String ycbjNo,String dybjNo,String qtdjDesc,String tsDesc,String areatypetext) {
 
 		DantuanXinXi dt=new DantuanXinXi();
-        dt.setTuanNo(tuanNo);
+		
+        String tuanHao = CommonUtil.getTuanHao("d"+areatypetext);
+        dt.setTuanNo(tuanHao);
+        
         dt.setTuanName(tuanName);
         if(khId != null && !"".equals(khId)){
         dt.setKhId(Long.parseLong(khId));

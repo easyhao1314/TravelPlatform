@@ -31,8 +31,10 @@ public class CommonUtil {
 		tuanHaoMap.put("d日韩", "GNK");
 		tuanHaoMap.put("s欧美", "GT");
 		tuanHaoMap.put("d欧美", "GNT");
-		tuanHaoMap.put("大客户", "GS");
-		tuanHaoMap.put("票务", "GP");
+		tuanHaoMap.put("s大客户", "GS");
+		tuanHaoMap.put("d大客户", "GS");
+		tuanHaoMap.put("s票务", "GP");
+		tuanHaoMap.put("d票务", "GP");
 		//请按这种方式来添加产生团号的code和前缀
 		//tuanHaoMap.put("code", "前缀名");
 	}
@@ -52,7 +54,7 @@ public class CommonUtil {
 	
 	public static String getTuanHao(String code){
 		//团号格式。
-		return tuanHaoMap.get(code)+FengHuangDateUtil.getDateTOString_TuanHao();
+		return "TH-"+tuanHaoMap.get(code)+FengHuangDateUtil.getDateTOString_TuanHao();
 	}
 	//产生5-6位 不一样的数字
 	public static String getCode(){

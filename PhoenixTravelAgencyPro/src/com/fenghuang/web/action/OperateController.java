@@ -108,8 +108,16 @@ public class OperateController {
 	@RequestMapping("fenghuang/Operateinfo.do")
 	@ResponseBody
 	public Map<String,Object> Operateinfo(HttpServletRequest request,HttpServletResponse response,
-			Integer page,Integer rows,Operate o) {
+			Integer page,Integer rows,String tuanNo,String oid) {
 			try {
+				Operate o = new Operate();
+				o.setTuanNo(tuanNo);
+				if(page==null){
+					page=1;
+				}
+				if(rows==null){
+					rows=1;
+				}
 			Pagination<Operate> pagination = is.OperateInfo(page, rows, o);
 			List<Map<String, Object>> testUsers = pagination.getResultList();
 			Map<String,Object> returnValue  = new HashMap<String, Object>();

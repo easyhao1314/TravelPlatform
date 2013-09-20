@@ -39,7 +39,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					textField:'name',
 					panelHeight:'auto'"></div>
      <a href="javascript:addKehu();" class="easyui-linkbutton" iconCls="icon-ok">新增客户</a></td>
-<td><div class="fitem"><label>团号:</label></td><td><input name="tuanNo" class="easyui-validatebox"></div></td>
+<td><div class="fitem"><label>团号:</label></td><td></div></td>
 </tr>
 <tr>
 <td><div class="fitem"><label>团队操作类型：</label></td><td><input name="tdczlx"   class="easyui-combobox" data-options="
@@ -82,7 +82,7 @@ data-options="
 <tr>
 <td><div class="fitem"><label>出访天数：</label></td><td><input id="cfts" name="cfts" class="easyui-numberbox" required="false"></div></td>
 <!-- CountryState 国家所属州 --> 
-<td><div class="fitem"><label>旅游区域：</label></td><td><input name="lyqy" class="easyui-combobox"
+<td><div class="fitem"><label>旅游区域：</label></td><td><input id="lyqy" name="lyqy" class="easyui-combobox"
  data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=6',
 					valueField:'dicNo',
 					textField:'dicName',
@@ -219,7 +219,7 @@ data-options="
 <tr><td colspan="4" align="center"><a href="javascript:dantuanSave();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> <input  type="reset" value="重置"></td>
 </tr>
 			</table>
-	
+	<input id="areatype" name="areatypetext"  >
 		</form>
 	</div>
 	
@@ -317,6 +317,7 @@ data-options="
 						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
 				</tr>
 			</table>
+			 
 		</form>
 	</div>
 	<script type="text/javascript">
@@ -377,6 +378,10 @@ data-options="
 			}
 			
 			function dantuanSave() {
+			var areatype = $('#lyqy').combobox('getText');
+			alert(areatype);
+			$('#areatype').attr('value',areatype);
+			
 			$('#addForm').form('submit', {
 				url : 'fenghuang/DantuanAdd.do',
 				onSubmit : function() {
