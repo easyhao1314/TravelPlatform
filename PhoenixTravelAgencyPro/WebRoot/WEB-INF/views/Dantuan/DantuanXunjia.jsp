@@ -589,7 +589,7 @@ data-options="
 			<div data-options="region:'center'" style="padding:10px">
 			<form id="zhuanjidiaoForm" action="">
 				填写备注说明：<br /><textarea name="beizhu" style="height:120px; width: 290px" > </textarea>
-				<input id="tuanNo" title="团号" type="hidden" name="tuanNo" class="easyui-validatebox" style="width: 290px;" >
+				<input id="tuanNo1" title="团号" type="hidden"  name="tuanNo" class="easyui-validatebox" style="width: 290px;" >
 				<input id="tuanName" title="团名" type="hidden" name="tuanName" class="easyui-validatebox" style="width: 290px;" >
 				<input id="chutime" title="出团时间" type="hidden" name="chutuantime" class="easyui-validatebox" style="width: 290px;" >
 				<input id="huitime" title="回团时间" type="hidden" name="huituantime" class="easyui-validatebox" style="width: 290px;" >
@@ -926,7 +926,7 @@ data-options="
 		   }		
 		function onjidiaoMenu(e, rowIndex, rowData){
   		 e.preventDefault();
-	$('#tuanNo').attr('value',rowData.tuanNo);
+	$('#tuanNo1').attr('value',rowData.tuanNo);
 	$('#chutime').attr('value',rowData.ctsj);
 	$('#huitime').attr('value',rowData.htsj);
 	$('#tuanName').attr('value',rowData.tuanName);
@@ -939,7 +939,24 @@ data-options="
     });       
 }
 function zhuanjidiao(){
-		$('#dantuancaozuowindow').window('open');
+var tuanNo=$('#tuanNo1').val();
+		$.ajax({
+					url :"fenghuang/Operateinfo.do?tuanNo="+tuanNo,
+					data :tuanNo,
+					dataType : "json",
+					success : function(data) {
+					if(data.rows.length!=0){
+					$.messager.alert("发送失败", " 该团已发送计调!", "error");
+					}else{
+					$('#dantuancaozuowindow').window('open');
+					}
+					
+					},
+					error : function() {
+						
+					}
+				});
+		
 	}
 	  		
    		

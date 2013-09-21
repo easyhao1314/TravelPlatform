@@ -253,9 +253,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						$('fon').attr('margin-top','-10px');
 						$('#jtgj'+i).append(feiji+bashi+huoche+youlun);
 					} 
-					//pares方法是 渲染JqueryEasyUi 插件的 解决不显示EasyUi的样式问题
-					$.parser.parse("#mdiv");
-					//循环结束
+					
 					},
 					error : function() {
 						$.messager.alert("查询失败", "服务器请求失败!", "error");

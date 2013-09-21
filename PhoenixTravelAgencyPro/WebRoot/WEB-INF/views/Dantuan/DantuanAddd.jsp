@@ -94,13 +94,13 @@ data-options="
 <td><div class="fitem"><label>回团时间：</label></td><td><input id="htsj" name="htsj" type="text" class="easyui-datebox" required="required"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>销售：</label></td><td><input name="xsNo" class="easyui-combobox" data-options="
+<td><div class="fitem"><label>销售：</label></td><td><!-- <input name="xsNo" class="easyui-combobox" data-options="
 					url:'fenghuang/getDicByTypeComboboxs.do?dicType=11',
 					valueField:'dicNo',
 					textField:'dicName',
 					panelHeight:'auto',
 					editable:false 
-	"></div></td>
+	">  --></div><input name="xsNo" type="hidden" class="easyui-validatebox" value="${sessionScope.userId }"></td>
 <td></td>
 </tr>
 <tr>

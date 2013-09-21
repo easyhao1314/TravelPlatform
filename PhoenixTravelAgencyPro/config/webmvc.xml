@@ -188,6 +188,7 @@
 	 <mvc:view-controller path="Caozuo_dingfang.do" view-name="CaoZuo/Caozuo_Dingfang"/>
 	 <mvc:view-controller path="Caozuo_dingdaoyou.do" view-name="CaoZuo/Caozuo_Dingdaoyou"/>
 	 <mvc:view-controller path="Caozuo_dingche.do" view-name="CaoZuo/Caozuo_Dingche"/>
+	 <mvc:view-controller path="Caozuo_xingcheng.do" view-name="CaoZuo/Caozuo_Xingcheng"/>
 	<!-- 操作中心结束 -->
 	
 	<!-- 客户中心 -->

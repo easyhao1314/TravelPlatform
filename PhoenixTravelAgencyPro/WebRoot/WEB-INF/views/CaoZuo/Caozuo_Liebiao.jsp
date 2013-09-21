@@ -275,13 +275,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	
 	<div id="caozuomm" class="easyui-menu" style="width:120px;">
-    <div onClick="View()" data-options="iconCls:'icon-search'">查看</div>
+    <div onClick="xingchengmingxi()" data-options="iconCls:'icon-search'">查看行程</div>
     
     <div><span>设定</span>
     <div>
     <div onClick="dingfang()" data-options="iconCls:'icon-search'">订房</div>
-    <div onClick="dingche1()" data-options="iconCls:'icon-search'">订车</div>
-    <div onClick="dingcan()" data-options="iconCls:'icon-search'">订餐</div>
+    <div onClick="dingche()" data-options="iconCls:'icon-search'">订车</div>
     <div onClick="dingdaoyou()" data-options="iconCls:'icon-search'">订导游</div>
     <div onClick="dinggouwudian()" data-options="iconCls:'icon-search'">订购物店</div>
     </div>
@@ -299,8 +298,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 	 
 	 
-	  <div id="caozuodingche"  class="easyui-dialog" title="订车明细"
-		data-options="modal:true,closed:true,iconCls:'icon-save'"
+	  <div id="dingchedlg"  class="easyui-dialog" title="车辆设定"
+		data-options="modal:true,closed:true,iconCls:'icon-save',buttons: 
+	 			[{
+                    text:'保存',
+                    iconCls:'icon-ok',
+                    handler:function(){
+                    alert('保存');
+                    }
+                },{
+                    text:'关闭',
+                    iconCls:'icon-cancel',
+                    handler:function(){
+                    $('#dingchedlg').dialog('close');
+                    }
+                }]"
 		style="width:600px;height:500px;padding:10px;">
 		<div id="days"></div>
 		
@@ -330,7 +342,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     }
                 }]"
 		style="width:600px;height:500px;padding:10px;">
-		<textarea id="beizhu" rows="25" cols="85"></textarea>
+		<textarea id="beizhutext" rows="25" cols="85"></textarea>
 		</div>	
 		
 		
@@ -373,6 +385,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 	</div>
 	<!-- 导游END -->
+	
+	<input id="xianid" type="hidden">
 	<script type="text/javascript">
 	
 	function jinzhan(val,row){
@@ -422,8 +436,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	}
 	function openbeizhudlg(oid,beizhu){
 		$("#beizhudlg").dialog("open");
-		var a=document.getElementById("beizhu");
-		a.value=beizhu;
+
+		document.getElementById("beizhutext").innerHTML=beizhu;
+		
+		
+		
 		$('#oid').attr('value',oid);
 		
 	}
@@ -474,6 +491,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	$('#team').attr('value',rowData.tuanName);
 	$('#chutuantime').attr('value',rowData.chutuantime);
 	$('#huituantime').attr('value',rowData.huituantime);
+	$('#xianid').attr('value',rowData.xianid);
 	 e.preventDefault();
 	  $('#caozuomm').menu('show', {
         left:e.pageX,
@@ -498,23 +516,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	function dingfang(){
 		$("#dingfang").dialog("open");
 	}
-	function dingche1(){
-	  	var row = $("#caozuoliebiaodg").datagrid("getSelected");
-      var url= "Caozuo_dingche.do?tuanNo="+row.tuanNo;
-       var tab = $('#tt').tabs('getSelected'); 
-		if (tab){  
-	                 var index = $('#tt').tabs('getTabIndex', tab); 
-	                 $('#tt').tabs('close', index);  
-	       } 
-	       	       
-	       $('#tt').tabs('add', {
-				         title : "订车行程详细信息",
-				         href : url,
-				         });
-	}
+	
 	
 	function dingche(){
-	$("#beizhudlg").dialog("open");					    
+	$("#dingchedlg").dialog("open");					    
 	var param = {
 					"xianluid" : "41"
 				};
@@ -694,6 +699,22 @@ function deleteDingfang(){
 		 }
 		 
 		}
+ function xingchengmingxi(){
+ 	var xianid = $('#xianid').val();
+ 	var tuanName = $('#team').val();
+ 	var url = "Caozuo_xingcheng.do?xianid="+xianid;
+	var tab = $('#tt').tabs('getSelected'); 
+		if (tab){  
+	                 var index = $('#tt').tabs('getTabIndex', tab); 
+	                 $('#tt').tabs('close', index);  
+	       } 
+	       
+	       $('#tt').tabs('add', {
+				         title : tuanName+"行程详情",
+				         href : url,
+				      //  closable : true,
+				         });
+   	      }
  
 	
 
