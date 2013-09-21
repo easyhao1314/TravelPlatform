@@ -45,7 +45,8 @@ public class DingfangDaoImpl extends BaseDao implements IdingfangDao{
 	public Pagination<Dingfang> dingfangSelect(int currentPage, int numPerPage ,Dingfang df)
 			throws Exception {
 		// TODO Auto-generated method stub
-		StringBuffer sql=new StringBuffer("select df.id,df.tuanNo,df.chengshiId,df.caozuoqingkuang,df.ruzhuDay,df.ruzhuTime,df.zhifufangshi,df.zongjia,df.beizhu,dx.cfgj,dx.tuanName,dx.jdNo from dingfang as df,dantuanxinxi as dx  where df.tuanNo=dx.tuanNO AND 1=1");
+		// select df.id,df.tuanNo,df.chengshiId,df.caozuoqingkuang,df.ruzhuDay,df.ruzhuTime,df.zhifufangshi,df.zongjia,df.beizhu from dingfang as df where  1=1 
+		StringBuffer sql=new StringBuffer("select df.id,df.tuanNo,df.chengshiId,df.caozuoqingkuang,df.ruzhuDay,df.ruzhuTime,df.zhifufangshi,df.zongjia,df.beizhu from dingfang as df where  1=1 ");
 		if(df.getTuanNo()!=null && !"".equals(df.getTuanNo())){
 			sql.append(" and df.tuanNo ='");
 			sql.append(df.getTuanNo());

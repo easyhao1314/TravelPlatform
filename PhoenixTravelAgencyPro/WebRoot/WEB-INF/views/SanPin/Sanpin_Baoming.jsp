@@ -122,8 +122,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<thead>
 			<tr>
 				<th data-options="field:'ck',checkbox:true">id</th>
-				<th data-options="field:'id'" width="80">客户编号</th>
 				<th data-options="field:'name',editor:'text'" width="80">姓名</th>
+				<th data-options="field:'xiaoshou',editor:'text'" width="80">销售</th>
 				<th data-options="field:'sex',editor:'text', formatter:function(value,row){
 	var sexinfo = '女';
 	if(row.sex=15){
@@ -387,7 +387,7 @@ var url = "fenghuang/Sanpinliebiao.do?tuanNo="+'<%=request.getParameter("tuanNo"
 		function getChanges() {
 			$('#dg').datagrid('endEdit', editIndex);
 			var rows = $("#dg").datagrid("getChanges");
-			
+			alert($.toJSON(rows));
 				var param = {
 					"updateRows" : $.toJSON(rows)
 				};

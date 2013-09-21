@@ -23,8 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-  <div id="xcdiv"></div> 
-    <br>Th速度速度是多少的速度 <br>
+  <div id="xcdiv"></div>
     <script type="text/javascript">
     $(document).ready(function() {
 

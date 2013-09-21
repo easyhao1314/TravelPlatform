@@ -56,7 +56,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     <div class="easyui-layout" fit="true">
         <table id="caozuodingfangdg" class="easyui-datagrid"
-		data-options="url:'fenghuang/dingfangSelect.do',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
+		data-options="border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 		pagination="true"  toolbar="#currencyDatagridtoolbar">
 		<thead>
 			<tr>
@@ -513,9 +513,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	});
 			
 	}
-	function dingfang(){
-		$("#dingfang").dialog("open");
-	}
+	
 	
 	
 	function dingche(){
@@ -716,6 +714,13 @@ function deleteDingfang(){
 				         });
    	      }
  
+	function dingfang(){
+	var tuanNo = $('#tuanduimc').val();
+	$('#caozuodingfangdg').datagrid({  
+    url:'fenghuang/dingfangSelect.do?tuanNo='+tuanNo 
+	});  
+		$("#dingfang").dialog("open");
+	}
 	
 
 	</script>
