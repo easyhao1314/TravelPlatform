@@ -58,7 +58,7 @@ pagination="true" toolbar="#tb">
 <th data-options="field:'yifu',editor:'numberbox'" width="10">已付</th>
 <th data-options="field:'fanyong',editor:'numberbox'" width="10">返佣</th>
 <th data-options="field:'yujilirun',editor:'numberbox'" width="10">预计利润</th>
-<th data-options="field:'shijilirun',editor:'numberbox'" width="10">实际利润</th>
+<th data-options="field:'shijilirun',formatter:tuanduishijishouru" width="10">实际利润</th>
 </tr>
 </thead>
 </table>
@@ -70,6 +70,14 @@ iconCls="icon-add" plain="true">查看</a>
 
 
 <script type="text/javascript">
+
+//时机收入
+function tuanduishijishouru(val,row){
+var a=parseInt(row.yingshou);
+var b=parseInt(row.yfk);
+var c=(a-b);
+return '<div style="width: auto;">'+c+'</div>';
+}
 
 function onClickRow(index) {
 if (editIndex != index) {
