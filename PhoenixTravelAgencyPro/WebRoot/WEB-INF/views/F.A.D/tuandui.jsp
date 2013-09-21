@@ -56,7 +56,6 @@ pagination="true" toolbar="#tb">
 <th data-options="field:'yishou',editor:'text'" width="10">已收</th>
 <th data-options="field:'yfk',editor:'text'" width="10">应付</th>	
 <th data-options="field:'yifu',editor:'numberbox'" width="10">已付</th>
-<th data-options="field:'tuikuan',editor:'numberbox'" width="10">退款</th>
 <th data-options="field:'fanyong',editor:'numberbox'" width="10">返佣</th>
 <th data-options="field:'yujilirun',editor:'numberbox'" width="10">预计利润</th>
 <th data-options="field:'shijilirun',editor:'numberbox'" width="10">实际利润</th>
@@ -130,7 +129,6 @@ href : url,
 });
 }
 }
-
 
 
 </script>

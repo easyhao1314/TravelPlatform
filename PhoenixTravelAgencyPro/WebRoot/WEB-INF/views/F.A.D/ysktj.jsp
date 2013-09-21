@@ -44,7 +44,7 @@
 	    	 <div class="easyui-panel" title="应收款统计"
 		style="height:450px;width: auto;" toolbar="#currencyDatagridtoolbar">	
 	<table id="dgysktjselect" class="easyui-datagrid"
-		data-options="url:'fenghuang/caiwuqrfkselect.do?ysyfid=1',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
+		data-options="url:'fenghuang/caiwutdfylbselect.do?ysyfid=1',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 		pagination="true" toolbar="#tb">
 		<thead>
 			<tr> 
@@ -63,7 +63,7 @@
 				<th data-options="field:'ykfp',formatter:ysktjfp"width="50">已开发票</th>
 				<th data-options="field:'fpxk',formatter:ysktjxk" width="50">发票许可</th>
 				<th data-options="field:'xiaoshou',editor:'numberbox'" width="20">销售确认</th>
-				<th data-options="field:'review',formatter:ysktjbeizhu" width="20">财务确认</th>
+				<th data-options="field:'caiwuid',formatter:ysktjbeizhu" width="20">财务确认</th>
 				<th data-options="field:'fuzeren',editor:'numberbox'" width="50">责任人</th>
 			
 			</tr>
@@ -90,8 +90,8 @@
 	
 	function ysktjbeizhu(val,row){
 		   var shouke=null;
-		   	 if(row.review==1){shouke="未审核";}
-		   	 if(row.review==2){shouke="已审核";}
+		   	 if(row.caiwuid==6){shouke="未审核";}
+		   	 if(row.caiwuid==7){shouke="已审核";}
 		     return '<div onclick="shoukeclick(event,'+row.tuanNo+')" style="width: auto;">'+shouke+'</div>';
 		   }
 	

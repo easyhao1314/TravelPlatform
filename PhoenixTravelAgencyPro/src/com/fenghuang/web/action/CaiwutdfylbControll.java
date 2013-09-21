@@ -34,10 +34,13 @@ public class CaiwutdfylbControll {
 	@RequestMapping("fenghuang/caiwutdfylbselect.do")
 	@ResponseBody
 	public Map<String, Object> getCurrencyList(HttpServletRequest request,
-			HttpServletResponse response,HttpSession session,Integer page, Integer rows,String team,String caiwuid,
+			HttpServletResponse response,HttpSession session,Integer page, Integer rows,String team,String caiwuid,String ysyfid,
             String id,String tuanduimc) {
 		   Tuanbiao tuanbiao = new Tuanbiao();
 		    try {
+		    	if(ysyfid!=null&&!"".equals(ysyfid)){
+		    		tuanbiao.setYsyfID(Integer.parseInt(ysyfid));
+		    	}
 		    	if(team!=null&&!"".equals(team)){
 		    		tuanbiao.setTeam(team);
 		    	}

@@ -60,6 +60,13 @@ public class CaiwutdfylbDaoImpl extends BaseDao implements IcaiwutdfylbDao{
 				sql.append("'");
 	    	   
 	       }
+		 if(tuanbiao.getYsyfID()!=0&&!"".equals(tuanbiao.getYsyfID())){
+	    	   
+	    	   sql.append(" and ysyfid='");
+				sql.append(tuanbiao.getYsyfID());
+				sql.append("'");
+	    	   
+	       }
 		return this.getPagination(currentPage, numPerPage, sql.toString());
 	}
 
