@@ -61,16 +61,16 @@
 		pagination="true" toolbar="#tb">
 		<thead>
 			<tr>	 
-			    <th data-options="field:'yushoutime',editor:'text'" width="10px">收款日期</th>
-				<th data-options="field:'zhanghaoid',editor:'text'" width="10px">收款账号</th>
-				<th data-options="field:'team',editor:'text'" width="10px">团号</th>
-				<th data-options="field:'tuanduimc',editor:'text'" width="10px">团队名称</th>
-				<th data-options="field:'khmc',editor:'text'" width="10px">客户名称</th>
-				<th data-options="field:'kxsm',editor:'text'" width="10px">款项</th>
-				<th data-options="field:'yishou',editor:'text'" width="10px">金额</th>
+			    <th data-options="field:'yushoutime'" width="10px">收款日期</th>
+				<th data-options="field:'zhanghaoid'" width="10px">收款账号</th>
+				<th data-options="field:'team'" width="10px">团号</th>
+				<th data-options="field:'tuanduimc'" width="10px">团队名称</th>
+				<th data-options="field:'khmc'" width="10px">客户名称</th>
+				<th data-options="field:'kxsm'" width="10px">款项</th>
+				<th data-options="field:'yishou'" width="10px">金额</th>
 			
-				<th data-options="field:'caozuo',editor:'numberbox'" width="10px">销售</th>
-				<th data-options="field:'confirmed',editor:'numberbox'" width="10px">财务确认</th>
+				<th data-options="field:'caozuo'" width="10px">销售</th>
+				<th data-options="field:'confirmed',formatter:caiwuqueren" width="10px">财务确认</th>
 			</tr>
 		</thead>
 	</table>
@@ -110,7 +110,14 @@
 	
 	
 	<script type="text/javascript">
-		
+		function caiwuqueren(val,row){
+			var caiwu = '未确认';
+			if(row.confirmed==2){
+				caiwu='已确认';
+			}
+			return caiwu;
+			
+		}
 		function onClickRow(index) {
 			if (editIndex != index) {
 				if (endEditing()) {

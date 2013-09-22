@@ -72,6 +72,14 @@ public class RichengDaoImpl extends BaseDao implements IRichengDao  {
 			sb.append(",jiaotongchengshi=?");
 			list.add(r.getJiaotongchengshi());
 		}
+		if(r.getCheid()!=0){
+			sb.append(",cheid=?");
+			list.add(r.getCheid());
+		}
+		if(r.getGouwuid()!=0){
+			sb.append(",gouwuid=?");
+			list.add(r.getGouwuid());
+		}
 		if(r.getRiid()!=0){
 			sb.append(" where riid=?");
 			list.add(r.getRiid());
@@ -84,8 +92,8 @@ public class RichengDaoImpl extends BaseDao implements IRichengDao  {
 	@Override
 	public Pagination<Richeng> select(int currentPage, int numPerPage, Richeng r)
 			throws Exception {
-		// TODO Auto-generated method stub
-		String sql = "SELECT richeng.*,zao.dicName as zaos,zhong.dicName as zhongs,wan.dicName AS wans  FROM richeng LEFT JOIN dictionarydesc AS wan ON wan.dicNo=wan LEFT JOIN dictionarydesc AS zhong ON zhong.dicNo=zhong LEFT JOIN dictionarydesc AS zao ON zao.dicNo=zao WHERE  1=1 ";
+		// TODO Auto-generated method stub SELECT richeng.*,zao.dicName as zaos,zhong.dicName as zhongs,wan.dicName AS wans,che.*  FROM richeng LEFT JOIN dictionarydesc AS wan ON wan.dicNo=wan LEFT JOIN dictionarydesc AS zhong ON zhong.dicNo=zhong LEFT JOIN dictionarydesc AS zao ON zao.dicNo=zao LEFT JOIN dingche AS che ON che.id=richeng.cheid WHERE  1=1 
+		String sql = "SELECT richeng.*,zao.dicName as zaos,zhong.dicName as zhongs,wan.dicName AS wans,che.*,jiaotong.`name` AS gongying  FROM richeng LEFT JOIN dictionarydesc AS wan ON wan.dicNo=wan LEFT JOIN dictionarydesc AS zhong ON zhong.dicNo=zhong LEFT JOIN dictionarydesc AS zao ON zao.dicNo=zao LEFT JOIN dingche AS che ON che.id=richeng.cheid LEFT JOIN jiaotong ON jiaotong.id=che.gongyingshang WHERE  1=1 ";
 		StringBuffer sb = new StringBuffer(sql);
 		if(r.getRiid()!=0 && !"".equals(r.getRiid())){
 		sb.append("and riid='"+r.getRiid()+"' ");

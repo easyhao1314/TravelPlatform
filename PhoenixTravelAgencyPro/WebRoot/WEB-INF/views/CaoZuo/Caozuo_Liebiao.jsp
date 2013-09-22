@@ -23,6 +23,120 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
+  <div id="xuanzechedlg"  class="easyui-dialog" title="选择车辆"
+		data-options="modal:true,closed:true,iconCls:'icon-save',buttons: 
+	 			[{
+                    text:'保存',
+                    iconCls:'icon-ok',
+                    handler:function(){
+                    updaterichengche();
+                    }
+                },{
+                    text:'关闭',
+                    iconCls:'icon-cancel',
+                    handler:function(){
+                    $('#xuanzechedlg').dialog('close');
+                    }
+                }]"
+		style="width:600px;height:500px;padding:10px;">
+		<input id="riid" type="hidden">
+		<table id="dingchedg" class="easyui-datagrid"
+		data-options="border:true,singleSelect:true,fit:true,fitColumns:true,pageSize:10"
+		pagination="true" >
+		<thead>
+			<tr>
+				<th data-options="field:'cheName'" width="1">车辆名称</th>
+				<th data-options="field:'siji'" width="auto">司机</th>
+				<th data-options="field:'chexinxi'" width="auto">车辆信息</th>
+				<th data-options="field:'zuoweishu'" width="auto">座位数</th>
+				<th data-options="field:'chepaihao'" width="auto">牌照号</th>
+				<th data-options="field:'sidao'" width="auto">司导</th>
+				<th data-options="field:'jiage'" width="auto">价格</th>
+				<th data-options="field:'gongying'" width="auto">供应商</th>
+			</tr>
+		</thead>
+		</table>
+		
+		</div>
+  
+  
+  <div id="addchedlg"  class="easyui-dialog" title="添加车辆"
+		data-options="modal:true,closed:true,iconCls:'icon-save',buttons: 
+	 			[{
+                    text:'保存',
+                    iconCls:'icon-ok',
+                    handler:function(){
+                    saveDingche();
+                    }
+                },{
+                    text:'关闭',
+                    iconCls:'icon-cancel',
+                    handler:function(){
+                    $('#addchedlg').dialog('close');
+                    }
+                }]"
+		style="width:600px;height:500px;padding:10px;">
+		<form id="dingcheform" >
+			<table>
+				<tr><td>车辆名称：</td><td><input class="easyui-validatebox" type="text" name="cheName" style="width: 130px; " /></td></tr>
+				<tr><td>车辆信息：</td><td><input class="easyui-validatebox" type="text" name="cheXinxi" style="width: 130px; " /></td></tr>
+				<tr><td>车牌号：</td><td><input class="easyui-validatebox" type="text" name="chePaihao" style="width: 130px; " /></td></tr>
+				<tr><td>司机：</td><td><input class="easyui-validatebox" type="text" name="siji" style="width: 130px; " /></td></tr>
+				<tr><td>司导分开：</td>
+				<td><select class="easyui-combobox" name="sidao" style="width: 133px;">
+											<option value="1">是</option>
+											<option value="2">否</option>
+										</select>
+				</td></tr>
+				<tr><td>座位数：</td><td><input class="easyui-numberspinner" name="zuoweishu" min="1" max="100" required="true" style="width:133px;" /></td></tr>
+				<tr><td>价格：</td><td><input class="easyui-numberspinner" name="jiage" min="1" max="100" required="true" style="width:133px;" /></td></tr>
+				<tr><td>车公司：</td>
+				<td><input name="gongyingshang" required="true" class="easyui-combobox" data-options="
+					url:'fenghuang/getjiaotongComboboxs.do',
+					valueField:'id',
+					textField:'name',
+					panelHeight:'auto',
+					editable:false 
+	">			</td></tr>
+			</table>
+		
+		</form>
+		
+		</div>
+  <div id="richengdingche">
+		     <a href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-add" onclick="javascript:$('#addchedlg').dialog('open');" plain="true">添加车辆信息</a>  
+		     <a href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-save" onclick="shedingcheliang()"  plain="true">设定车辆</a>  
+   </div>
+    <div id="dingchedlg"  class="easyui-dialog" title="车辆设定"
+		data-options="modal:true,closed:true,iconCls:'icon-save',buttons: 
+	 			[{
+                    text:'关闭',
+                    iconCls:'icon-cancel',
+                    handler:function(){
+                    $('#dingchedlg').dialog('close');
+                    }
+                }]"
+		style="width:600px;height:500px;padding:10px;">
+		<table id="richengdg" class="easyui-datagrid"
+		data-options="border:true,singleSelect:true,fit:true,fitColumns:true,pageSize:10"
+		pagination="true" toolbar="#richengdingche" >
+		<thead>
+			<tr>
+				<th data-options="field:'riid',formatter:days" width="auto">日期</th>
+				<th data-options="field:'cheName'" width="1">车辆名称</th>
+				<th data-options="field:'siji'" width="auto">司机</th>
+				<th data-options="field:'chexinxi'" width="auto">车辆信息</th>
+				<th data-options="field:'zuoweishu'" width="auto">座位数</th>
+				<th data-options="field:'chepaihao'" width="auto">牌照号</th>
+				<th data-options="field:'sidao'" width="auto">司导</th>
+				<th data-options="field:'gongying'" width="auto">供应商</th>
+				<th data-options="field:'jiage'" width="auto">价格</th>
+				
+			</tr>
+		</thead>
+		</table>
+		</div>
+    
     
     <table id="caozuoliebiaodg" class="easyui-datagrid"
 		data-options="url:'fenghuang/Operateinfo.do',border:false,singleSelect:true,fit:true,fitColumns:true,onRowContextMenu: caozuoContextMenu,pageSize:20"
@@ -52,11 +166,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	
 	<!--订房开始-->
-	<div id="dingfang" class="easyui-window" title="订房"  data-options="closable:true,closed:true,tools:'#searchpanel'"  style="width:500px;height:250px;padding:5px;">
+	<div id="dingfangwindow" class="easyui-window" title="订房"  data-options="closable:true,closed:true,tools:'#searchpanel'"  style="width:500px;height:250px;padding:5px;">
 
     <div class="easyui-layout" fit="true">
         <table id="caozuodingfangdg" class="easyui-datagrid"
-		data-options="border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
+		data-options="border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:10"
 		pagination="true"  toolbar="#currencyDatagridtoolbar">
 		<thead>
 			<tr>
@@ -207,16 +321,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 <!-- 订房结束 -->         
          
-         <div id="searchpanel">
-		<a href="javascript:void(0)" iconCls="icon-search"
-			onclick="javascript:alert('查询')"></a> <a href="javascript:void(0)"
-			iconCls="icon-undo" onclick="javascript:alert('重置')"></a>
-	</div>
+         
           <div id="currencyDatagridtoolbar">
 		     <a href="javascript:addDingfangOpen();" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>  
 		     <a href="javascript:updateDingfang();" class="easyui-linkbutton" iconCls="icon-save"  plain="true">修改</a>
 		       <a href="javascript:deleteDingfang();" class="easyui-linkbutton" iconCls="icon-cut" plain="true">删除</a>   
-		</div>
+		  </div>
 	<!--订房结束-->
 	
 	
@@ -298,34 +408,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 	 
 	 
-	  <div id="dingchedlg"  class="easyui-dialog" title="车辆设定"
-		data-options="modal:true,closed:true,iconCls:'icon-save',buttons: 
-	 			[{
-                    text:'保存',
-                    iconCls:'icon-ok',
-                    handler:function(){
-                    alert('保存');
-                    }
-                },{
-                    text:'关闭',
-                    iconCls:'icon-cancel',
-                    handler:function(){
-                    $('#dingchedlg').dialog('close');
-                    }
-                }]"
-		style="width:600px;height:500px;padding:10px;">
-		<div id="days"></div>
-		
-		  <form id="caozuodingcheForm" method="post">
-		    <table>
-		      <tr>
-		         <td>日期</td><td>行程线路</td><td>人数</td><td>车型</td><td>活动</td><td>司机酒店</td><td>客人酒店</td>
-		      </tr>
-		      
-		    </table>
-		  </form>
-	    
-	</div>
+	  
 			<div id="beizhudlg"  class="easyui-dialog" title="备注明细"
 		data-options="modal:true,closed:true,iconCls:'icon-save', modal:true,buttons: 
 	 			[{
@@ -370,7 +453,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			pagination="true">
 			<thead>
 				<tr>
-					<th data-options="field:'ck',checkbox:true"></th>
+					<th data-options="field:'ck',checkbox:true">nkai</th>
 					<th data-options="field:'guojia'" width="80">国籍</th>
 					<th data-options="field:'name'" width="80">姓名</th>
 					<th data-options="field:'chengshi'" width="80">常驻地</th>
@@ -387,6 +470,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!-- 导游END -->
 	
 	<input id="xianid" type="hidden">
+	<script type="text/javascript">
+	var day = 0;
+		function shedingcheliang(){
+		var row = $('#richengdg').datagrid("getSelected");
+			$('#riid').attr('value',row.riid);
+		
+			$('#dingchedg').datagrid({  
+    			url:'fenghuang/dingcheSelect.do'
+			});
+	
+		$('#xuanzechedlg').dialog('open');
+		}
+		function updaterichengche(){
+			var riid = $('#riid').val();
+			var row = $('#dingchedg').datagrid('getSelected');
+			var url = "fenghuang/updatericheng.do?riid="+riid+"&cheid="+row.id;
+			$.ajax({
+   	      		url:url,
+   	      		data:riid,
+   	      		datatype:"json",
+   	      		success:function(data){
+   	      		$('#xuanzechedlg').dialog('close');
+   	      		$.messager.alert("保存成功", "保存成功!", "info");
+   	      			$("#richengdg").datagrid("reload");
+   	      			day=0;
+   	      		},
+   	      		error : function() {
+						$.messager.alert("修改失败", "服务器请求失败!", "error");
+					}
+   	      	
+   	      	});
+		}
+	</script>
+	
 	<script type="text/javascript">
 	
 	function jinzhan(val,row){
@@ -435,12 +552,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		return '<a href="javascript:openbeizhudlg('+row.oid+',\''+row.beizhu+'\');" style="text-align:center;font-size: 16px;text-decoration:none; width:auto;"><b>查看备注</b></a>';
 	}
 	function openbeizhudlg(oid,beizhu){
-		$("#beizhudlg").dialog("open");
-
+		$('#beizhudlg').dialog("open");
+		if(beizhu == 'undefined'){
+		beizhu='';
+		}
 		document.getElementById("beizhutext").innerHTML=beizhu;
-		
-		
-		
+	
 		$('#oid').attr('value',oid);
 		
 	}
@@ -492,6 +609,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	$('#chutuantime').attr('value',rowData.chutuantime);
 	$('#huituantime').attr('value',rowData.huituantime);
 	$('#xianid').attr('value',rowData.xianid);
+	day=0;
 	 e.preventDefault();
 	  $('#caozuomm').menu('show', {
         left:e.pageX,
@@ -515,29 +633,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	}
 	
 	
-	
-	function dingche(){
-	$("#dingchedlg").dialog("open");					    
-	var param = {
-					"xianluid" : "41"
-				};
-     $.ajax({
-                    url :'fenghuang/selectricheng.do',
-					data :param,
-					dataType : "json",
-					success : function(data) {
-					    alert(data.rows.length);
-					    var days = "";
-					    document.getElementById("days").innerHTML="";
-					    for ( var int = 0; int < data.rows.length; int++) {
-					     var d = parseInt(int+1);
-							 days += '<input type="checkbox"  >D'+d+'';
-						}
-						$('#days').append('选择日程：'+days);
-						days = "";
-					}
-	});
-	}
     function dingcan(){
     $("#caozuodingcan").dialog("open");
     }
@@ -584,7 +679,7 @@ function operatetype(value,row){
 							return type;
 				}
 function closewindow(){
-		$('#dingfang').dialog('close');
+		$('#dingfangwindow').window('close');
 		$('#adddaoyou').dialog('close');
 }
 function savedaoyou(){
@@ -716,13 +811,48 @@ function deleteDingfang(){
  
 	function dingfang(){
 	var tuanNo = $('#tuanduimc').val();
+	
 	$('#caozuodingfangdg').datagrid({  
     url:'fenghuang/dingfangSelect.do?tuanNo='+tuanNo 
 	});  
-		$("#dingfang").dialog("open");
+		$("#dingfangwindow").window("open");
+	}
+	function dingche1(){
+	  
+		$("#dingchedlg").dialog("open");
 	}
 	
-
+	
+	function dingche(){
+	var xianid = $('#xianid').val();
+	
+	$("#dingchedlg").dialog("open");	
+	$('#richengdg').datagrid({  
+    url:"fenghuang/selectricheng.do?xianluid="+xianid 
+	});  				    
+	
+	}
+	
+	function days(val,row){
+		day++;
+		return "第"+day+"天";
+	}
+	function saveDingche(){
+	$('#dingcheform').form('submit', {
+				url : 'fenghuang/dingcheAdd.do',
+				onSubmit : function() {
+					return $(this).form('validate');
+				},
+				success : function(result) {
+					var result = eval('(' + result + ')');
+					if (result.success) {
+						$.messager.alert("保存成功", "保存成功！", "info");
+					} else {
+						$.messager.alert("保存失败", "保存失败!", "error");
+					}
+				}
+			});
+	}
 	</script>
 	
 	

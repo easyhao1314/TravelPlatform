@@ -73,7 +73,7 @@
 					<th data-options="field:'04'" width="80">预计毛利（万）</th>
 					<th data-options="field:'shenpi'" width="80">审批状态</th>
 					<th data-options="field:'05'" width="80">审批时间</th>
-					<th data-options="field:'8',formatter:onOperateStyle" width="80">操作</th>
+					
 				</tr>
 			</thead>
 		</table>

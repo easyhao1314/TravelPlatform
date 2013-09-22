@@ -49,8 +49,8 @@ public class ZyJiaotongDaoIMpl extends BaseDao implements IZyJiaotongDao{
 	@Override
 	public List<Map<String, Object>> jiaotongSelectId(long id) throws Exception {
 		// TODO Auto-generated method stub
-		String sql="select * from jiaotong where id=?";
-		List<Map<String,Object>> list=this.queryForList(sql,id);
+		String sql="select * from jiaotong ";
+		List<Map<String,Object>> list=this.queryForList(sql);
 		return list;
 	}
 

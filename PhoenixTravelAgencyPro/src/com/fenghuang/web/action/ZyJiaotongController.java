@@ -182,6 +182,18 @@ public class ZyJiaotongController {
 		}
 		return result;
 	}
+	@RequestMapping("fenghuang/getjiaotongComboboxs.do")
+	@ResponseBody
+	public List<Map<String, Object>> getComboxs(HttpServletRequest request,
+			HttpServletResponse response,String dicType){
+		
+		try {
+			return izjs.jiaotongSelectId(0);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}		
+		return null;
+	}
 
 	
 	}

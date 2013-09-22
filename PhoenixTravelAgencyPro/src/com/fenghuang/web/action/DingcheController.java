@@ -31,23 +31,26 @@ public class DingcheController {
 	@RequestMapping("fenghuang/dingcheAdd.do")
 	@ResponseBody
 	public Map<String,Object> dingdaoyouAdd(HttpServletRequest request,HttpServletResponse response,
-			String tuanNo,String cheName,String cheXinxi,String chePaihao,String siji,String sidao,String tianshu,String zuoweishu,String zongjiage){
+			String cheName,String cheXinxi,String chePaihao,String siji,String sidao,String zuoweishu,String jiage,String gongyingshang){
 		Dingche dc=new Dingche();
-		dc.setTuanNo(tuanNo);
 		dc.setCheName(cheName);
-		dc.setCheXinxi(cheXinxi);
-		dc.setChePaihao(chePaihao);
+		dc.setChexinxi(cheXinxi);
+		dc.setChepaihao(chePaihao);
 		dc.setSiji(siji);
-		dc.setSidao(sidao);
-		if(tianshu!=null && !"".equals(tianshu)){
-		dc.setTianshu(Integer.parseInt(tianshu));
+		if(gongyingshang!=null && !"".equals(gongyingshang)){
+			dc.setGongyingshang(Integer.parseInt(gongyingshang));
 		}
-		if(zongjiage!=null && !"".equals(zongjiage)){
-		dc.setZongjiage(Float.parseFloat(zongjiage));
+		if(sidao!=null && !"".equals(sidao)){
+			dc.setSidao(Integer.parseInt(sidao));
 		}
 		if(zuoweishu!=null && !"".equals(zuoweishu)){
-		dc.setZuoweishu(Integer.parseInt(zuoweishu));
+			dc.setZuoweishu(Integer.parseInt(zuoweishu));
 		}
+		if(jiage!=null && !"".equals(jiage)){
+			dc.setJiage(Float.parseFloat(jiage));
+		}
+		
+		
 		Map<String,Object> reslut=new HashMap<String,Object>();
 		boolean bl=false;
 		try {

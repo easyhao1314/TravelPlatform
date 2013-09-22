@@ -54,9 +54,27 @@ public class Richeng {
     * 
     * @pdOid 7dcf0cd9-ff93-4c27-8014-de4a278b58b1 */
    public java.lang.String jiaotongchengshi;
+   /** 车ID
+    * 
+    * @pdOid 7dcf0cd9-ff93-4c27-8014-de4a278b58b1 */
+   private int cheid;
+   /** 购物ID
+    * 
+    * @pdOid 7dcf0cd9-ff93-4c27-8014-de4a278b58b1 */
+   private int gouwuid;
    
-   
-   
+public int getCheid() {
+	return cheid;
+}
+public void setCheid(int cheid) {
+	this.cheid = cheid;
+}
+public int getGouwuid() {
+	return gouwuid;
+}
+public void setGouwuid(int gouwuid) {
+	this.gouwuid = gouwuid;
+}
 public java.lang.String getJiaotongchengshi() {
 	return jiaotongchengshi;
 }

@@ -24,7 +24,7 @@ public class DingcheDaoImpl extends BaseDao implements IdingcheDao{
 	public Pagination<Dingche> dingcheSelect(int currentPage, int numPerPage,
 			Dingche dc) throws Exception {
 		// TODO Auto-generated method stub
-		String sql="select * from dingche";
+		String sql="select che.*,jiaotong.`name` AS gongying from  dingche AS che LEFT JOIN jiaotong ON jiaotong.id=che.gongyingshang";
 		
 		return this.getPagination(currentPage, numPerPage, sql);
 	}
@@ -32,8 +32,8 @@ public class DingcheDaoImpl extends BaseDao implements IdingcheDao{
 	@Override
 	public boolean dingcheAdd(Dingche dc) throws Exception {
 		// TODO Auto-generated method stub
-		String sql="insert into  dingche(tuanNo,cheName,cheXinxi,chePaihao,siji,sidao,tianshu,zuoweishu,zongjiage) values(?,?,?,?,?,?,?,?,?) ";
-		int count=this.update(sql,dc.getTuanNo(),dc.getCheName(),dc.getCheXinxi(),dc.getChePaihao(),dc.getSiji(),dc.getSidao(),dc.getTianshu(),dc.getZuoweishu(),dc.getZongjiage());
+		String sql="insert into  dingche(cheName,chexinxi,chepaihao,siji,sidao,zuoweishu,jiage,gongyingshang) VALUES(?,?,?,?,?,?,?,?)";
+		int count=this.update(sql,dc.getCheName(),dc.getChexinxi(),dc.getChepaihao(),dc.getSiji(),dc.getSidao(),dc.getZuoweishu(),dc.getJiage(),dc.getGongyingshang());
 		return count>0;
 	}
 
