@@ -23,6 +23,79 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
+  <div id="gouwudlg"  class="easyui-dialog" title="购物店列表"
+		data-options="modal:true,closed:true,iconCls:'icon-save',buttons: 
+	 			[{
+                    text:'保存',
+                    iconCls:'icon-ok',
+                    handler:function(){
+                    updaterichenggouwu();
+                    }
+                },{
+                    text:'关闭',
+                    iconCls:'icon-cancel',
+                    handler:function(){
+                    $('#gouwudlg').dialog('close');
+                    }
+                }]"
+		style="width:600px;height:500px;padding:10px;">
+		<table id="gouwudg" class="easyui-datagrid"
+		data-options="border:true,singleSelect:true,fit:true,fitColumns:true,pageSize:10"
+		pagination="true" >
+		
+		<thead>
+			<tr>
+				<th data-options="field:'ck',checkbox:true"></th>
+					<th data-options="field:'chengshi'" width="80">所属城市</th>
+					<th data-options="field:'name'" width="80">购物店名称</th>
+					<th data-options="field:'lianxiren'" width="80">联系人</th>
+					<th data-options="field:'dianhua'" width="80">移动电话</th>
+					<th data-options="field:'chuanzhen'" width="80">传真</th>
+					<th data-options="field:'shouji'" width="80">手机</th>
+					<th data-options="field:'hzjb'" width="80">合作级别</th>
+					<th data-options="field:'bz'" width="80">备注</th>
+			</tr>
+		</thead>
+		</table>
+		</div>
+  
+  
+  
+  <div id="richenggouwu">  
+		     <a href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-save" onclick="gouwudianinfo()"  plain="true">选择购物店</a>  
+  </div>
+  <div id="dinggouwudlg"  class="easyui-dialog" title="设定购物店"
+		data-options="modal:true,closed:true,iconCls:'icon-save',buttons: 
+	 			[{
+                    text:'关闭',
+                    iconCls:'icon-cancel',
+                    handler:function(){
+                    $('#dinggouwudlg').dialog('close');
+                    }
+                }]"
+		style="width:600px;height:500px;padding:10px;">
+		<table id="gouwurichengdg" class="easyui-datagrid"
+		data-options="border:true,singleSelect:true,fit:true,fitColumns:true,pageSize:10"
+		pagination="true" toolbar="#richenggouwu" >
+		
+		<thead>
+			<tr>
+				<th data-options="field:'riid',formatter:days" width="auto">日期</th>
+				<th data-options="field:'gname'" width="auto">购物店名称</th>
+				<th data-options="field:'glianxiren'" width="auto">联系人</th>
+				<th data-options="field:'gdizhi'" width="auto">地址</th>
+				<th data-options="field:'gshouji'" width="auto">手机</th>
+				<th data-options="field:'gemail'" width="auto">Email</th>
+				<th data-options="field:'gbz'" width="auto">备注</th>
+				
+				
+			</tr>
+		</thead>
+		</table>
+		</div>
+  
+  
+  
   <div id="xuanzechedlg"  class="easyui-dialog" title="选择车辆"
 		data-options="modal:true,closed:true,iconCls:'icon-save',buttons: 
 	 			[{
@@ -392,7 +465,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div onClick="dingfang()" data-options="iconCls:'icon-search'">订房</div>
     <div onClick="dingche()" data-options="iconCls:'icon-search'">订车</div>
     <div onClick="dingdaoyou()" data-options="iconCls:'icon-search'">订导游</div>
-    <div onClick="dinggouwudian()" data-options="iconCls:'icon-search'">订购物店</div>
+    <div onClick="gouwudianload()" data-options="iconCls:'icon-search'">订购物店</div>
     </div>
     </div>
     
@@ -824,9 +897,9 @@ function deleteDingfang(){
 	
 	
 	function dingche(){
-	var xianid = $('#xianid').val();
 	
 	$("#dingchedlg").dialog("open");	
+	var xianid = $('#xianid').val();
 	$('#richengdg').datagrid({  
     url:"fenghuang/selectricheng.do?xianluid="+xianid 
 	});  				    
@@ -853,6 +926,43 @@ function deleteDingfang(){
 				}
 			});
 	}
+	function gouwudianload(){
+	 var xianid = $('#xianid').val();
+	$('#gouwurichengdg').datagrid({  
+    url:"fenghuang/selectricheng.do?xianluid="+xianid 
+	}); 
+	$('#dinggouwudlg').dialog('open');
+	}
+	function gouwudianinfo(){
+		var row = $('#gouwurichengdg').datagrid('getSelected');
+		$('#riid').attr('value',row.riid);
+		
+		$('#gouwudlg').dialog('open');
+		$('#gouwudg').datagrid({
+    url:"fenghuang/gouwuSelect.do" 
+	}); 
+	}
+	
+	function updaterichenggouwu(){
+			var riid = $('#riid').val();
+			var row = $('#gouwudg').datagrid('getSelected');
+			var url = "fenghuang/updatericheng.do?riid="+riid+"&gouwuid="+row.id;
+			$.ajax({
+   	      		url:url,
+   	      		data:riid,
+   	      		datatype:"json",
+   	      		success:function(data){
+   	      		$('#gouwudlg').dialog('close');
+   	      		$.messager.alert("保存成功", "保存成功!", "info");
+   	      			$("#gouwurichengdg").datagrid("reload");
+   	      			day=0;
+   	      		},
+   	      		error : function() {
+						$.messager.alert("修改失败", "服务器请求失败!", "error");
+					}
+   	      	
+   	      	});
+		}
 	</script>
 	
 	

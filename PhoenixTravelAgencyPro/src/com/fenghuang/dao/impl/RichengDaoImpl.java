@@ -93,7 +93,7 @@ public class RichengDaoImpl extends BaseDao implements IRichengDao  {
 	public Pagination<Richeng> select(int currentPage, int numPerPage, Richeng r)
 			throws Exception {
 		// TODO Auto-generated method stub SELECT richeng.*,zao.dicName as zaos,zhong.dicName as zhongs,wan.dicName AS wans,che.*  FROM richeng LEFT JOIN dictionarydesc AS wan ON wan.dicNo=wan LEFT JOIN dictionarydesc AS zhong ON zhong.dicNo=zhong LEFT JOIN dictionarydesc AS zao ON zao.dicNo=zao LEFT JOIN dingche AS che ON che.id=richeng.cheid WHERE  1=1 
-		String sql = "SELECT richeng.*,zao.dicName as zaos,zhong.dicName as zhongs,wan.dicName AS wans,che.*,jiaotong.`name` AS gongying  FROM richeng LEFT JOIN dictionarydesc AS wan ON wan.dicNo=wan LEFT JOIN dictionarydesc AS zhong ON zhong.dicNo=zhong LEFT JOIN dictionarydesc AS zao ON zao.dicNo=zao LEFT JOIN dingche AS che ON che.id=richeng.cheid LEFT JOIN jiaotong ON jiaotong.id=che.gongyingshang WHERE  1=1 ";
+		String sql = "SELECT richeng.*,zao.dicName as zaos,zhong.dicName as zhongs,wan.dicName AS wans,che.*,jiaotong.`name` AS gongying,gouwu.`name` AS gname,gouwu.bz AS gbz, gouwu.lianxiren AS glianxiren,gouwu.shouji AS gshouji,gouwu.email AS gemail,gouwu.dizhi AS gdizhi  FROM richeng LEFT JOIN dictionarydesc AS wan ON wan.dicNo=wan LEFT JOIN dictionarydesc AS zhong ON zhong.dicNo=zhong LEFT JOIN dictionarydesc AS zao ON zao.dicNo=zao LEFT JOIN dingche AS che ON che.id=richeng.cheid LEFT JOIN jiaotong ON jiaotong.id=che.gongyingshang LEFT JOIN gouwu ON richeng.gouwuid=gouwu.id WHERE  1=1  ";
 		StringBuffer sb = new StringBuffer(sql);
 		if(r.getRiid()!=0 && !"".equals(r.getRiid())){
 		sb.append("and riid='"+r.getRiid()+"' ");
