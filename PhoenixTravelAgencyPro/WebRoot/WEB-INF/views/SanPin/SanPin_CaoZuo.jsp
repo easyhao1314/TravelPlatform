@@ -172,12 +172,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
 	
 	
-    
+    <input id="xianid" type="hidden">
 	<div id="mmsanpincaozuo" class="easyui-menu" style="width:120px;">
 		<div data-options="iconCls:'icon-edit'" onClick="zhuanjidiao()">转到计调报价</div>
-		<div data-options="iconCls:'icon-search'"  onClick="">查看订单进度</div>
+		<div data-options="iconCls:'icon-search'"  onClick="chajidiao()">查看订单进度</div>
 	</div>
 	<script type="text/javascript">
+	function chajidiao(){
+		var tuanNo = $('#tuanNo').val();
+		var tuanName = $('#tuanName').val();
+		var xianid = $('#xianid').val();
+      var url= "Sanpin_jidiao.do?tuanNo="+tuanNo+"&tuanName="+tuanName+"&xianid="+xianid;
+       var tab = $('#tt').tabs('getSelected'); 
+		if (tab){  
+	                 var index = $('#tt').tabs('getTabIndex', tab); 
+	                 $('#tt').tabs('close', index);  
+	       } 
+	       
+	       $('#tt').tabs('add', {
+				         title : "计调订单进度",
+				         href : url,
+				      //  closable : true,
+				         });
+	}
 	function sanpinupdate(){
 		var row = $("#dg").datagrid("getSelected");	
 		if(row==null){return;}
@@ -220,6 +237,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	$('#tuanName').attr('value',rowData.tuanName);
 	$('#userId').attr('value','${sessionScope.userId}');
 	$('#operateType').attr('value',2);
+	$('#xianid').attr('value',rowData.xlid);
 		 e.preventDefault();
          $('#mmsanpincaozuo').menu('show', {
         left:e.pageX,

@@ -545,6 +545,7 @@ data-options="
 	
 <div id="jidiaomm" class="easyui-menu" style="width:120px;">
     <div data-options="iconCls:'icon-edit'" onClick="zhuanjidiao()">转到计调报价</div>
+    <div data-options="iconCls:'icon-search'" onClick="chajidiao()">查看订单进度</div>
 </div>   
 
 
@@ -602,12 +603,28 @@ data-options="
 	
 	
 	</div>
-
+<input id="xianid" type="hidden">
 
     
 	<script type="text/javascript">
 	
-	
+	function chajidiao(){
+		var tuanNo = $('#tuanNo1').val();
+		var tuanName = $('#tuanName').val();
+		var xianid = $('#xianid').val();
+      var url= "Sanpin_jidiao.do?tuanNo="+tuanNo+"&tuanName="+tuanName+"&xianid="+xianid;
+       var tab = $('#tt').tabs('getSelected'); 
+		if (tab){  
+	                 var index = $('#tt').tabs('getTabIndex', tab); 
+	                 $('#tt').tabs('close', index);  
+	       } 
+	       
+	       $('#tt').tabs('add', {
+				         title : "计调订单进度",
+				         href : url,
+				      //  closable : true,
+				         });
+	}
 	
 		var editIndex = undefined;
 		function endEditing() {
@@ -932,6 +949,7 @@ data-options="
 	$('#tuanName').attr('value',rowData.tuanName);
 	$('#userId').attr('value','${sessionScope.userId}');
 	$('#operateType').attr('value',1);
+	$('#xianid').attr('value',rowData.xlid);
     
     $('#jidiaomm').menu('show', {
         left:e.pageX,

@@ -164,6 +164,7 @@
 	<mvc:view-controller path="Sanpin_zhuantuan.do" view-name="SanPin/Sanpin_Zhuantuan"/>
 	<mvc:view-controller path="Sanpin_mingxi.do" view-name="SanPin/SanPin_Mingxi"/>
 	<mvc:view-controller path="Sanpin_shenpimingxi.do" view-name="SanPin/Sanpin_ShenpiMingxi"/>
+	<mvc:view-controller path="Sanpin_jidiao.do" view-name="SanPin/Sanpin_Jidiao"/>
 	<!-- 赵杨_______操作中心 -->
 	<mvc:view-controller path="Caozuo_mingxi.do" view-name="CaoZuo/Caozuo_Mingxi"/>
 	<!-- 赵杨_______行程库管理 -->

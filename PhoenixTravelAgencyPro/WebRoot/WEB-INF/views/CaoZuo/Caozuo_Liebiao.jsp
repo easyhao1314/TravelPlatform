@@ -526,7 +526,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			pagination="true">
 			<thead>
 				<tr>
-					<th data-options="field:'ck',checkbox:true">nkai</th>
+					<th data-options="field:'ck',checkbox:true"></th>
 					<th data-options="field:'guojia'" width="80">国籍</th>
 					<th data-options="field:'name'" width="80">姓名</th>
 					<th data-options="field:'chengshi'" width="80">常驻地</th>
