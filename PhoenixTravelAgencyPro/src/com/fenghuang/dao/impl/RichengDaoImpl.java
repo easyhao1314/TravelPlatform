@@ -48,7 +48,7 @@ public class RichengDaoImpl extends BaseDao implements IRichengDao  {
 			sb.append(",huodong=?");
 			list.add(r.getHuodong());
 		}
-		if(r.getJiudian()!=0){
+		if(r.getJiudian()!=null && !"".equals(r.getJiudian())){
 			sb.append(",jiudian=?");
 			list.add(r.getJiudian());
 		}
@@ -56,15 +56,15 @@ public class RichengDaoImpl extends BaseDao implements IRichengDao  {
 			sb.append(",jiaotong=?");
 			list.add(r.getJiaotong());
 		}
-		if(r.getZao()!=0){
+		if(r.getZao()!=null && !"".equals(r.getZao())){
 			sb.append(",zao=?");
 			list.add(r.getZao());
 		}
-		if(r.getZhong()!=0){
+		if(r.getZhong()!=null && !"".equals(r.getZhong())){
 			sb.append(",zhong=?");
 			list.add(r.getZhong());
 		}
-		if(r.getWan()!=0){
+		if(r.getWan()!=null && !"".equals(r.getWan())){
 			sb.append(",wan=?");
 			list.add(r.getWan());
 		}

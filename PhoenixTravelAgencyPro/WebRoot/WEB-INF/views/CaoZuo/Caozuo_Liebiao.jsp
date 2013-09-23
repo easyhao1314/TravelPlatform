@@ -80,13 +80,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		<thead>
 			<tr>
-				<th data-options="field:'riid',formatter:days" width="auto">日期</th>
-				<th data-options="field:'gname'" width="auto">购物店名称</th>
-				<th data-options="field:'glianxiren'" width="auto">联系人</th>
-				<th data-options="field:'gdizhi'" width="auto">地址</th>
-				<th data-options="field:'gshouji'" width="auto">手机</th>
-				<th data-options="field:'gemail'" width="auto">Email</th>
-				<th data-options="field:'gbz'" width="auto">备注</th>
+				<th data-options="field:'riid',formatter:days" width="20">日期</th>
+				<th data-options="field:'gname'" width="20">购物店名称</th>
+				<th data-options="field:'glianxiren'" width="20">联系人</th>
+				<th data-options="field:'gdizhi'" width="20">地址</th>
+				<th data-options="field:'gshouji'" width="20">手机</th>
+				<th data-options="field:'gemail'" width="20">Email</th>
+				<th data-options="field:'gbz'" width="20">备注</th>
 				
 				
 			</tr>
@@ -111,21 +111,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     $('#xuanzechedlg').dialog('close');
                     }
                 }]"
-		style="width:600px;height:500px;padding:10px;">
+		style="width:700px;height:500px;padding:10px;">
 		<input id="riid" type="hidden">
 		<table id="dingchedg" class="easyui-datagrid"
 		data-options="border:true,singleSelect:true,fit:true,fitColumns:true,pageSize:10"
 		pagination="true" >
 		<thead>
 			<tr>
-				<th data-options="field:'cheName'" width="1">车辆名称</th>
-				<th data-options="field:'siji'" width="auto">司机</th>
-				<th data-options="field:'chexinxi'" width="auto">车辆信息</th>
-				<th data-options="field:'zuoweishu'" width="auto">座位数</th>
-				<th data-options="field:'chepaihao'" width="auto">牌照号</th>
-				<th data-options="field:'sidao'" width="auto">司导</th>
-				<th data-options="field:'jiage'" width="auto">价格</th>
-				<th data-options="field:'gongying'" width="auto">供应商</th>
+				<th data-options="field:'cheName'" width="20">车辆名称</th>
+				<th data-options="field:'siji'" width="20">司机</th>
+				<th data-options="field:'chexinxi'" width="20">车辆信息</th>
+				<th data-options="field:'zuoweishu'" width="20">座位数</th>
+				<th data-options="field:'chepaihao'" width="20">牌照号</th>
+				<th data-options="field:'sidao'" width="20">司导</th>
+				<th data-options="field:'sijiphone'" width="20">司机电话</th>
+				<th data-options="field:'chenianxian'" width="20">使用年限</th>
+				<th data-options="field:'jiage'" width="20">价格</th>
+				<th data-options="field:'gongying'" width="20">供应商</th>
 			</tr>
 		</thead>
 		</table>
@@ -191,21 +193,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     $('#dingchedlg').dialog('close');
                     }
                 }]"
-		style="width:600px;height:500px;padding:10px;">
+		style="width:700px;height:500px;padding:10px;">
 		<table id="richengdg" class="easyui-datagrid"
 		data-options="border:true,singleSelect:true,fit:true,fitColumns:true,pageSize:10"
 		pagination="true" toolbar="#richengdingche" >
 		<thead>
 			<tr>
-				<th data-options="field:'riid',formatter:days" width="auto">日期</th>
-				<th data-options="field:'cheName'" width="1">车辆名称</th>
-				<th data-options="field:'siji'" width="auto">司机</th>
-				<th data-options="field:'chexinxi'" width="auto">车辆信息</th>
-				<th data-options="field:'zuoweishu'" width="auto">座位数</th>
-				<th data-options="field:'chepaihao'" width="auto">牌照号</th>
-				<th data-options="field:'sidao'" width="auto">司导</th>
-				<th data-options="field:'gongying'" width="auto">供应商</th>
-				<th data-options="field:'jiage'" width="auto">价格</th>
+				<th data-options="field:'riid',formatter:days" width="20">日期</th>
+				<th data-options="field:'cheName'" width="20">车辆名称</th>
+				<th data-options="field:'siji'" width="20">司机</th>
+				<th data-options="field:'chexinxi'" width="20">车辆信息</th>
+				<th data-options="field:'zuoweishu'" width="20">座位数</th>
+				<th data-options="field:'chepaihao'" width="20">牌照号</th>
+				<th data-options="field:'sidao'" width="20">司导</th>
+				<th data-options="field:'chenianxian'" width="20">使用年限</th>
+				<th data-options="field:'sijiphone'" width="20">司机电话</th>
+				<th data-options="field:'gongying'" width="20">供应商</th>
+				<th data-options="field:'jiage'" width="20">价格</th>
 				
 			</tr>
 		</thead>

@@ -111,7 +111,7 @@ public class RichengController {
 		boolean isSuccess = false;
 		Map<String,Object> result = new HashMap<String, Object>();	
 		Richeng r = new Richeng();
-				r.setRiid(Long.parseLong(riid));
+			r.setRiid(Long.parseLong(riid));
 			
 			r.setHuodong(huodong);
 			r.setRichenganpai(richenganpai);
@@ -122,19 +122,19 @@ public class RichengController {
 				r.setChengshiid(Long.parseLong(chengshiid));
 			}
 			if(jiudian !=null && !"".equals(jiudian)){
-				r.setJiudian(Long.parseLong(jiudian));
+				r.setJiudian(jiudian);
 			}
 			if(jiaotong!=null && !"".equals(jiaotong)){
 				r.setJiaotong(Long.parseLong(jiaotong));
 			}
 			if(zao !=null && !"".equals(zao)){
-				r.setZao(Long.parseLong(zao));		
+				r.setZao(zao);		
 			}
 			if(zhong !=null && !"".equals(zhong)){
-				r.setZhong(Long.parseLong(zhong));		
+				r.setZhong(zhong);		
 			}
 			if(wan !=null && !"".equals(wan)){
-				r.setWan(Long.parseLong(wan));		
+				r.setWan(wan);		
 			}
 			if(cheid!=null && !"".equals(cheid)){
 				r.setCheid(Integer.parseInt(cheid));

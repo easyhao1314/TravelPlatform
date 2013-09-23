@@ -87,7 +87,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    
     <div class="easyui-panel" title="工具"
 		style="height:300px;padding:10px;width:auto;"
-		data-options="closable:false,tools:'#searchpanel'" align="left">
+		data-options="closable:false,href:'uploadXingcheng.do'" align="left">
 		<table>
 		
 			<tr>
@@ -95,7 +95,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<label> 行程:</label>
 				</td>
 				<td>
-				 <a href="javascript:XingchengkuSave();" class="easyui-linkbutton" iconCls="icon-ok">保存到行程库</a>
+				 <a href="javascript:void(0)" class="easyui-linkbutton" onclick="javascript:" iconCls="icon-ok">导入线路行程</a>
 				</td>
 			</tr>
 		</table>

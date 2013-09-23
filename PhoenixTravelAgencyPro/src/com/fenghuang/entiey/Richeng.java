@@ -25,7 +25,7 @@ public class Richeng {
    /** 酒店
     * 
     * @pdOid 59c44143-737a-4d49-b9bf-6637108d63e1 */
-   public long jiudian;
+   public String jiudian;
    /** 城市ID
     * 
     * @pdOid a2437159-5443-4566-934e-721672d70dba */
@@ -37,15 +37,15 @@ public class Richeng {
    /** 早餐
     * 
     * @pdOid d8088698-e0e0-4d85-9cf2-14670e08f6a9 */
-   public long zao;
+   public String zao;
    /** 中餐
     * 
     * @pdOid 16c150d1-2eb2-43b5-b3d5-fec7a783d862 */
-   public long zhong;
+   public String zhong;
    /** 晚餐
     * 
     * @pdOid 0af04793-416f-448f-9b2c-e1839164b5c6 */
-   public long wan;
+   public String wan;
    /** 线路id
     * 
     * @pdOid 0af04793-416f-448f-9b2c-e1839164b5c6 */
@@ -105,12 +105,7 @@ public java.lang.String getHuodong() {
 public void setHuodong(java.lang.String huodong) {
 	this.huodong = huodong;
 }
-public long getJiudian() {
-	return jiudian;
-}
-public void setJiudian(long jiudian) {
-	this.jiudian = jiudian;
-}
+
 public long getChengshiid() {
 	return chengshiid;
 }
@@ -123,23 +118,30 @@ public long getJiaotong() {
 public void setJiaotong(long jiaotong) {
 	this.jiaotong = jiaotong;
 }
-public long getZao() {
+public String getJiudian() {
+	return jiudian;
+}
+public void setJiudian(String jiudian) {
+	this.jiudian = jiudian;
+}
+public String getZao() {
 	return zao;
 }
-public void setZao(long zao) {
+public void setZao(String zao) {
 	this.zao = zao;
 }
-public long getZhong() {
+public String getZhong() {
 	return zhong;
 }
-public void setZhong(long zhong) {
+public void setZhong(String zhong) {
 	this.zhong = zhong;
 }
-public long getWan() {
+public String getWan() {
 	return wan;
 }
-public void setWan(long wan) {
+public void setWan(String wan) {
 	this.wan = wan;
 }
+
 
 }

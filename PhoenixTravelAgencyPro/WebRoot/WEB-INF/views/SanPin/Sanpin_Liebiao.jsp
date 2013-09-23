@@ -271,17 +271,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    	      
    
    	      function numbermaster(val,row){
-   	      var num;
+   	      
    	      	$.ajax({
 				url:"fenghuang/customInfoList.do?type=33&tuanNo="+row.tuanNo,
    	      		data:row.tuanNo,
    	      		datatype:"json",
    	      		success:function(data){
-   	      		$('#baomingrenshu').val(data.rows.length);
-   	      			
+   	      		
+   	      		$('#baomingrenshu').attr('value',data.rows.length);	
    	      		}
 			});
-			return $('#baomingrenshu').val();
+			;
+			alert($('#baomingrenshu').val());
+			return 2;
    	      }
    	      
    	      
