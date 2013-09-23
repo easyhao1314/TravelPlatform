@@ -132,12 +132,48 @@ public class FileUploadXingchengController {
 					                    for (int j = 0; j < tr.numCells(); j++) {     
 					                        TableCell td = tr.getCell(j);//取得单元格  
 					                        //取得单元格的内容  
-					                        for(int k=0;k<td.numParagraphs();k++){     
-					                            Paragraph para =td.getParagraph(k);
-					                            //以下是获取的文字内容
-					                            String s = para.text().trim();     
-					                            System.out.println(s.trim());  
-					                        } //end for      
+					                        switch (j) {
+											case 0:
+											    for(int k=0;k<td.numParagraphs();k++){     
+						                            Paragraph para =td.getParagraph(k);
+						                            //以下是获取的文字内容
+						                            String s = para.text().trim();     
+						                            System.out.println(s.trim());  
+						                        } //end for 
+												break;
+
+											case 1:
+											    for(int k=0;k<td.numParagraphs();k++){     
+						                            Paragraph para =td.getParagraph(k);
+						                            //以下是获取的文字内容
+						                            String s = para.text().trim();     
+						                            System.out.println(s.trim());  
+						                        } //end for 
+												break;
+											case 2:
+											    for(int k=0;k<td.numParagraphs();k++){     
+						                            Paragraph para =td.getParagraph(k);
+						                            //以下是获取的文字内容
+						                            String s = para.text().trim();     
+						                            System.out.println(s.trim());  
+						                        } //end for 
+												break;
+											case 3:
+											    for(int k=0;k<td.numParagraphs();k++){     
+						                            Paragraph para =td.getParagraph(k);
+						                            //以下是获取的文字内容
+						                            String s = para.text().trim();  
+						                            System.out
+															.println(s);
+						                            String [] temp = s.split("：");
+						                            if(temp.length>=2){
+						                            System.out.println(temp[0]+"=="+temp[1]);
+						                            }
+						                        } //end for 
+												break;
+											case 4:
+												break;
+											} 
 					                    }   //end for  
 					                }   //end for  
 					                count++;
