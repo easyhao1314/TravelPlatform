@@ -101,6 +101,9 @@
     <mvc:view-controller path="picList.do" view-name="imageManage/piclist"/>
     <mvc:view-controller path="upload.do" view-name="upload"/>
     <mvc:view-controller path="uploadXingcheng.do" view-name="uploadXingcheng"/>
+    <mvc:view-controller path="chujlyhtfbPrint.do" view-name="chujlyhtfbPrint"/>
+    <mvc:view-controller path="wtxyPrint.do" view-name="wtxyPrint"/>
+    <mvc:view-controller path="gjlyhtfbPrint.do" view-name="gjlyhtfbPrint"/>
 	<!-- 财务模块  -->
 	<mvc:view-controller path="a.do" view-name="F.A.D/a"/>
 	<mvc:view-controller path="sanpin.do" view-name="F.A.D/sanpin"/>
