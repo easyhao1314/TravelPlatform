@@ -44,8 +44,27 @@ public class Dingche {
     * 
     * @pdOid f1411229-d317-4ecd-8754-94e3f9ff6670 */
    private int gongyingshang;
+   /** 司机电话
+    * 
+    * @pdOid f1411229-d317-4ecd-8754-94e3f9ff6670 */
+   private String sijiphone;
+   /** 使用年限
+    * 
+    * @pdOid f1411229-d317-4ecd-8754-94e3f9ff6670 */
+   private String chenianxian;
    
-   
+public String getSijiphone() {
+	return sijiphone;
+}
+public void setSijiphone(String sijiphone) {
+	this.sijiphone = sijiphone;
+}
+public String getChenianxian() {
+	return chenianxian;
+}
+public void setChenianxian(String chenianxian) {
+	this.chenianxian = chenianxian;
+}
 public int getGongyingshang() {
 	return gongyingshang;
 }

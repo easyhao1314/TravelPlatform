@@ -53,6 +53,7 @@
 		pagination="true" toolbar="#tb">
 		<thead>
 			<tr>	 
+			    <th data-options="field:'id',editor:'text'" width="10px">付款日期</th>
 				<th data-options="field:'fukuantime',editor:'text'" width="10px">付款日期</th>
 				<th data-options="field:'team',editor:'text'" width="10px">团号</th>
 				<th data-options="field:'tuanduimc',editor:'text'" width="10px">团队名称</th>
@@ -105,7 +106,7 @@
 		</form>
 	</div>
 	
-	<div id="caiwufkspa" class="easyui-dialog" title="财务审批确认"
+	<div id="caiwufkspa" class="easyui-dialog" title="财务审批取消"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:500px;height:200px;padding:10px;">
 		<form id="spforma" action="">

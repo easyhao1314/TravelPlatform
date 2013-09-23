@@ -31,8 +31,10 @@ public class DingcheController {
 	@RequestMapping("fenghuang/dingcheAdd.do")
 	@ResponseBody
 	public Map<String,Object> dingdaoyouAdd(HttpServletRequest request,HttpServletResponse response,
-			String cheName,String cheXinxi,String chePaihao,String siji,String sidao,String zuoweishu,String jiage,String gongyingshang){
+			String cheName,String cheXinxi,String chePaihao,String siji,String sidao,String zuoweishu,String jiage,String gongyingshang,String chenianxian,String sijiphone){
 		Dingche dc=new Dingche();
+		dc.setChenianxian(chenianxian);
+		dc.setSijiphone(sijiphone);
 		dc.setCheName(cheName);
 		dc.setChexinxi(cheXinxi);
 		dc.setChepaihao(chePaihao);

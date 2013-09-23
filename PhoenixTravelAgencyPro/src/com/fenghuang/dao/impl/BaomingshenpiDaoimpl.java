@@ -22,7 +22,7 @@ public class BaomingshenpiDaoimpl extends BaseDao implements IBaomingshenpiDao {
 	}
 
 	@Override
-	public Pagination<Baomingshenpi> baominginfo(int page,int rows,Baomingshenpi b,String tuanNo,Integer type)
+	public Pagination<Baomingshenpi> baominginfo(int page,int rows,Baomingshenpi b,String tuanNo,Integer type,Long xiaoshou)
 			throws Exception {
 		// TODO Auto-generated method stub
 		String sql="select bmid,kehuid,baomingsp,baomingsl,yajinqueren,chupiaoqueren,chutuanqueren,beizhu,kehuname,b.sex,zhengjianhao,b.tuituanshenpi,b.zhuantuanshenpi from baomingshenpi as b INNER JOIN customerinfo as c on b.kehuid=c.id WHERE 1=1 ";
@@ -32,6 +32,9 @@ public class BaomingshenpiDaoimpl extends BaseDao implements IBaomingshenpiDao {
 		}
 		if(type!=0){
 			sb.append(" AND c.type='"+type+"'");
+		}
+		if(xiaoshou!=0){
+			sb.append(" AND c.xiaoshou='"+xiaoshou+"'");
 		}
 		return this.getPagination(page, rows, sb.toString());
 	}

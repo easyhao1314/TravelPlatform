@@ -77,16 +77,20 @@ public class BaomingshenpiController {
 	@RequestMapping("fenghuang/baomingshenpiinfo.do")
 	@ResponseBody
 	public Map<String,Object> DantuanXunjia(HttpServletRequest request,
-			HttpServletResponse response, Integer page,Integer rows,String tuanNo,String type
+			HttpServletResponse response, Integer page,Integer rows,String tuanNo,String type,String xiaoshou
 			) {
 		Baomingshenpi b = new Baomingshenpi();
 		Integer ftype=0;
+		Long xiaos=0L;
 		if(type!=null && !"".equals(type)){
 			 ftype = Integer.parseInt(type);
 		}
+		if(xiaoshou!=null && !"".equals(xiaoshou)){
+			xiaos = Long.parseLong(xiaoshou);
+		}
 		
 		try {
-			Pagination<Baomingshenpi> pagination = is.baominginfo(page, rows, b, tuanNo, ftype);
+			Pagination<Baomingshenpi> pagination = is.baominginfo(page, rows, b, tuanNo, ftype,xiaos);
 			List<Map<String, Object>> testUsers = pagination.getResultList();
 			Map<String,Object> returnValue  = new HashMap<String, Object>();
 			for(int i = 0 ;i<testUsers.size();i++){

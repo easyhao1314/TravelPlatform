@@ -151,7 +151,7 @@ public class CustomerCenterDaoImpl extends BaseDao implements
 			public PreparedStatement createPreparedStatement(
 					java.sql.Connection con) throws SQLException {
 				// TODO Auto-generated method stub
-				 String sql = "INSERT INTO customerinfo(tuanNo,name,city,daqu,lxr,post,age,sex,address,moblePhone,telePhone,qq,msn,email,chuanzhen,sfzn,jituan,hzjb,cjtime,zhtime,lxrs,bz,type) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				 String sql = "INSERT INTO customerinfo(tuanNo,name,city,daqu,lxr,post,age,sex,address,moblePhone,telePhone,qq,msn,email,chuanzhen,sfzn,jituan,hzjb,cjtime,zhtime,lxrs,bz,type,xiaoshou) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 				PreparedStatement ps = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);  
 				ps.setString(1, customerInfo.getTuanNo());
 				ps.setString(2, customerInfo.getName());
@@ -176,6 +176,7 @@ public class CustomerCenterDaoImpl extends BaseDao implements
 				ps.setInt(21, customerInfo.getLxrs());
 				ps.setString(22, customerInfo.getBz());
 				ps.setLong(23, customerInfo.getType());
+				ps.setLong(24, customerInfo.getXiaoshou());
 				return ps;
 			}
 		 }, keyHolder);
@@ -236,10 +237,12 @@ public class CustomerCenterDaoImpl extends BaseDao implements
 
 	@Override
 	public boolean updateCustom(CustomerInfo customerInfo) {
-		String sql = "UPDATE customerinfo SET tuanNO=?,name=?,city=?,daqu=?,lxr=?,post=?,age=?,sex=?,address=?,moblePhone=?,telePhone=?,qq=?,msn=?,email=?,chuanzhen=?,sfzn=?,jituan=?,hzjb=?,cjtime=?,zhtime=?,lxrs=?,bz=?,type=? WHERE id=?";
+		//customerInfo.getXiaoshou();
+		//这里你都没有xiaoshou字段啊
+		String sql = "UPDATE customerinfo SET tuanNO=?,name=?,city=?,daqu=?,lxr=?,post=?,age=?,sex=?,address=?,moblePhone=?,telePhone=?,qq=?,msn=?,email=?,chuanzhen=?,sfzn=?,jituan=?,hzjb=?,cjtime=?,zhtime=?,lxrs=?,bz=?,type=?,xiaoshou=? WHERE id=?";
 		int count = this.update(sql,customerInfo.getTuanNo(),customerInfo.getName(),customerInfo.getCity(),customerInfo.getDaqu(),customerInfo.getLxr(),customerInfo.getPost(),customerInfo.getAge(),customerInfo.getSex(),customerInfo.getAddress(),
 				customerInfo.getMoblePhone(),customerInfo.getTelePhone(),customerInfo.getQq(),customerInfo.getMsn(),customerInfo.getEmail(),customerInfo.getChuanzhen(),customerInfo.getSfzn(),customerInfo.getJituan(),customerInfo.getHzjb(),
-				customerInfo.getCjtime(),customerInfo.getZhtime(),customerInfo.getLxrs(),customerInfo.getBz(),customerInfo.getType(),customerInfo.getId());
+				customerInfo.getCjtime(),customerInfo.getZhtime(),customerInfo.getLxrs(),customerInfo.getBz(),customerInfo.getType(),customerInfo.getXiaoshou(),customerInfo.getId());
 		return count > 0;
 	}
 

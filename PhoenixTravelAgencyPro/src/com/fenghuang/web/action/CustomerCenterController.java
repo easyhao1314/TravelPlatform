@@ -187,14 +187,21 @@ public class CustomerCenterController {
 		response.setCharacterEncoding("utf-8");
 
 		Map<String,Object>  result = new HashMap<String, Object>();
-		 JSONUtils.getMorpherRegistry().registerMorpher( new  DateMorpher( new String[]{
+		JSONUtils.getMorpherRegistry().registerMorpher( new  DateMorpher( new String[]{
                  "yyyy-MM-dd HH:mm:ss" ,
                  "yyyy-MM-dd"
         })); 
 		
 		JSONArray jsonArray = JSONArray.fromObject(updateRows);
 		List<CustomerInfo> Cust = JSONArray.toList(jsonArray,CustomerInfo.class);
-		boolean isSuccess = false ;
+		Object attribute = request.getSession().getAttribute("userId");
+		String user = attribute+"";
+		
+		for (int i = 0; i < Cust.size(); i++) {
+			
+			Cust.get(i).setXiaoshou(Long.parseLong(user));
+		}
+		boolean isSuccess = false;
 		try {
 			isSuccess = iCustomerCenterService.updatekehuzhongxin(Cust);
 		} catch (Exception e) {

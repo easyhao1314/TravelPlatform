@@ -32,8 +32,8 @@ public class DingcheDaoImpl extends BaseDao implements IdingcheDao{
 	@Override
 	public boolean dingcheAdd(Dingche dc) throws Exception {
 		// TODO Auto-generated method stub
-		String sql="insert into  dingche(cheName,chexinxi,chepaihao,siji,sidao,zuoweishu,jiage,gongyingshang) VALUES(?,?,?,?,?,?,?,?)";
-		int count=this.update(sql,dc.getCheName(),dc.getChexinxi(),dc.getChepaihao(),dc.getSiji(),dc.getSidao(),dc.getZuoweishu(),dc.getJiage(),dc.getGongyingshang());
+		String sql="insert into  dingche(cheName,chexinxi,chepaihao,siji,sidao,zuoweishu,jiage,gongyingshang,chenianxian,sijiphone) VALUES(?,?,?,?,?,?,?,?,?,?)";
+		int count=this.update(sql,dc.getCheName(),dc.getChexinxi(),dc.getChepaihao(),dc.getSiji(),dc.getSidao(),dc.getZuoweishu(),dc.getJiage(),dc.getGongyingshang(),dc.getChenianxian(),dc.getSijiphone());
 		return count>0;
 	}
 

@@ -176,8 +176,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div id="mmsanpincaozuo" class="easyui-menu" style="width:120px;">
 		<div data-options="iconCls:'icon-edit'" onClick="zhuanjidiao()">转到计调报价</div>
 		<div data-options="iconCls:'icon-search'"  onClick="chajidiao()">查看订单进度</div>
+		<div data-options="iconCls:'icon-remove'" onClick="upfabustate()">取消发布状态</div>
 	</div>
 	<script type="text/javascript">
+	
+	function upfabustate(){
+   	  	var tuanNo=$('#tuanNo').val();
+   	  	alert(tuanNo);
+         var  url = "fenghuang/upsanpin.do?tuanNo="+tuanNo+"&fabustate="+0;
+           $.ajax({
+					url :url,
+					data : tuanNo,
+					dataType : "json",
+					success : function(data) {
+					$("#sanpinliebiaodg").datagrid("reload");
+					},
+					error : function() {
+						$.messager.alert("查询失败", "服务器请求失败!", "error");
+					}
+				});
+   	      }
+	
 	function chajidiao(){
 		var tuanNo = $('#tuanNo').val();
 		var tuanName = $('#tuanName').val();

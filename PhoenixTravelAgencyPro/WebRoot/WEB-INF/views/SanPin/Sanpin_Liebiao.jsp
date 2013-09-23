@@ -104,7 +104,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<!-- 团号下拉菜单 -->
 	<div id="mmtest" class="easyui-menu" style="width:120px;">
 		<input id="hideinput" style="display: none;" />
-		<div data-options="iconCls:'icon-remove'" onClick="upfabustate()">取消发布状态</div>
+		
 		<div data-options="iconCls:'icon-edit'" onClick="tuanduibaoming()">团队报名</div>
 		<div onClick="testView(3)">查看3</div>
 		<div onClick="testView(4)">查看4</div>

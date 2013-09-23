@@ -117,13 +117,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="easyui-tabs" style="width:auto;height:auto">
 <div title="团队资料维护" style="padding:10px">
 <table id="dg" class="easyui-datagrid"
-		data-options="url:'fenghuang/customInfoList.do?type=33&tuanNo=${param.tuanNo}',singleSelect:false,fitColumns:true, onClickRow: onClickRow,pageSize:10"
+		data-options="url:'fenghuang/customInfoList.do?type=33&tuanNo=${param.tuanNo}&xiaoshou=${sessionScope.userId }',singleSelect:false,fitColumns:true, onClickRow: onClickRow,pageSize:10"
 		pagination="true" toolbar="#jibentb">
 		<thead>
 			<tr>
 				<th data-options="field:'ck',checkbox:true">id</th>
 				<th data-options="field:'name',editor:'text'" width="80">姓名</th>
-				<th data-options="field:'xiaoshou',editor:'text'" width="80">销售</th>
+				
 				<th data-options="field:'sex',editor:'text', formatter:function(value,row){
 	var sexinfo = '女';
 	if(row.sex=15){
@@ -158,7 +158,7 @@ data: [{
 </div>
 <div title="操作进展" style="padding:10px">
 <table id="caozuodg" class="easyui-datagrid"
-		data-options="url:'fenghuang/baomingshenpiinfo.do?type=33&tuanNo=${param.tuanNo}',singleSelect:true,fitColumns:true,pageSize:10"
+		data-options="url:'fenghuang/baomingshenpiinfo.do?type=33&tuanNo=${param.tuanNo}&xiaoshou=${sessionScope.userId }',singleSelect:true,fitColumns:true,pageSize:10"
 		pagination="true" toolbar="#caozuotb">
 		<thead>
 			<tr>
@@ -237,7 +237,7 @@ return zhuantuanshenpi;
     </div>
 
 <table id="sanpincaiwudg" class="easyui-datagrid"
-		data-options="url:'fenghuang/baomingshenpiinfo.do?type=33&tuanNo=${param.tuanNo}',singleSelect:true,fitColumns:true,pageSize:10"
+		data-options="url:'fenghuang/baomingshenpiinfo.do?type=33&tuanNo=${param.tuanNo}&xiaoshou=${sessionScope.userId }',singleSelect:true,fitColumns:true,pageSize:10"
 		pagination="true" toolbar="#caiwutd">
 		<thead>
 			<tr>
@@ -414,7 +414,7 @@ var url = "fenghuang/Sanpinliebiao.do?tuanNo="+'<%=request.getParameter("tuanNo"
 		
 
 
-		
+
 
 		function deletesanpinkehu() {
 		var row = $("#dg").datagrid("getSelected");

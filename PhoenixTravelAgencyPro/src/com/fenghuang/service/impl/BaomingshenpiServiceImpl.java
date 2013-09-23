@@ -15,9 +15,9 @@ public class BaomingshenpiServiceImpl implements IBaomingshenpiService {
 
 	@Override
 	public Pagination<Baomingshenpi> baominginfo(int page, int rows,
-			Baomingshenpi b, String tuanNo, Integer type) throws Exception {
+			Baomingshenpi b, String tuanNo, Integer type,Long xiaoshou) throws Exception {
 		// TODO Auto-generated method stub
-		return ib.baominginfo(page, rows, b, tuanNo, type);
+		return ib.baominginfo(page, rows, b, tuanNo, type,xiaoshou);
 	}
 	@Override
 	public boolean updatebaoming(Baomingshenpi b) throws Exception {

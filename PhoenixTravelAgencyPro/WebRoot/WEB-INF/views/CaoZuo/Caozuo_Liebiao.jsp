@@ -155,6 +155,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<tr><td>车辆信息：</td><td><input class="easyui-validatebox" type="text" name="cheXinxi" style="width: 130px; " /></td></tr>
 				<tr><td>车牌号：</td><td><input class="easyui-validatebox" type="text" name="chePaihao" style="width: 130px; " /></td></tr>
 				<tr><td>司机：</td><td><input class="easyui-validatebox" type="text" name="siji" style="width: 130px; " /></td></tr>
+				<tr><td>车辆年限：</td><td><input class="easyui-validatebox" type="text" name="chenianxian" style="width: 130px; " /></td></tr>
+				<tr><td>司机电话：</td><td><input class="easyui-validatebox" type="text" name="sijiphone" style="width: 130px; " /></td></tr>
 				<tr><td>司导分开：</td>
 				<td><select class="easyui-combobox" name="sidao" style="width: 133px;">
 											<option value="1">是</option>

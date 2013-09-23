@@ -119,6 +119,7 @@ public class CustomerCenterServiceImpl implements ICustomerCenterService {
 				}
         		 }        		 
         	 }else{
+        		 //这里更新销售的没有更新吧
         		 b =iCustomerCenterDao.updateCustom(customer);
         		 if(b){
         			 Baomingshenpi baoming = new Baomingshenpi();

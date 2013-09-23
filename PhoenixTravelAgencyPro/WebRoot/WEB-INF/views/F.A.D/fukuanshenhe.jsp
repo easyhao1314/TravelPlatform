@@ -60,6 +60,7 @@
 		pagination="true" toolbar="#tb">
 		<thead>
 			<tr> 
+			    <th data-options="field:'id',editor:'text'" width="40">付款日期</th>  
 				<th data-options="field:'fukuantime',editor:'text'" width="40">付款日期</th>
 				<th data-options="field:'team',editor:'text'" width="50">团号</th>
 				<th data-options="field:'tuanduimc',editor:'text'" width="50">团队名称</th>
@@ -77,7 +78,7 @@
 	</div>
 	
 	
-	<div id="caiwufkshid" class="easyui-dialog" title="付款审核取消"
+	<div id="caiwufkshid" class="easyui-dialog" title="付款审核确认"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:500px;height:200px;padding:10px;">
 		<form id="xg" method="post" >
