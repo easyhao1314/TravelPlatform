@@ -100,6 +100,7 @@
     <mvc:view-controller path="personalEvents.do" view-name="users/personalEvent"/>
     <mvc:view-controller path="picList.do" view-name="imageManage/piclist"/>
     <mvc:view-controller path="upload.do" view-name="upload"/>
+    <mvc:view-controller path="uploadXingcheng.do" view-name="uploadXingcheng"/>
 	<!-- 财务模块  -->
 	<mvc:view-controller path="a.do" view-name="F.A.D/a"/>
 	<mvc:view-controller path="sanpin.do" view-name="F.A.D/sanpin"/>
