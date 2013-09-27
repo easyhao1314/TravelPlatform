@@ -87,18 +87,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    
     <div class="easyui-panel" title="工具"
 		style="height:300px;padding:10px;width:auto;"
-		data-options="closable:false,href:'uploadXingcheng.do'" align="left">
-		<table>
+		data-options="closable:false" align="left">
 		
-			<tr>
-				<td><div class="fitem">
-						<label> 行程:</label>
-				</td>
-				<td>
-				 <a href="javascript:void(0)" class="easyui-linkbutton" onclick="javascript:" iconCls="icon-ok">导入线路行程</a>
-				</td>
-			</tr>
-		</table>
+				<div>
+				 <a href="javascript:void(0)" class="easyui-linkbutton" onclick="openloadword();" iconCls="icon-ok">导入线路行程</a>
+				 <a href="javascript:void(0)" class="easyui-linkbutton" onclick="openloaddialog();;" iconCls="icon-ok">导入线路行程</a>
+				</div>
+				
+				 <div id="upload" class="easyui-dialog" title="上传文档行程" data-options="iconCls:'icon-save',closed:true,href:'uploadXingcheng.do'" style="width:450px;height:350px;padding:10px">
+						
+				</div>
+
 	</div>	  
 	 <div id="richengdlg" class="easyui-dialog" title="设定日程"  data-options="iconCls:'icon-save',closed:true,modal:true,buttons: 
 	 			[{
@@ -180,7 +179,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <input id="chengshijiaotongriid" style="display: none;">
     </div>
     
-        <script type="text/javascript">
+        <script type="text/javascript">        
         function selectchengshi(getValue){
         var jtapp="";
         document.getElementById("divdlg").innerHTML="";
@@ -490,6 +489,24 @@ function closedSearch(){
 	}
 	function openjiaotongdlg(){
 	$('#csjiaotongdlg').dialog('open');
+	}
+	function openloadword(){
+	
+	var tab = $('#tt').tabs('getSelected'); 
+		if (tab){  
+	                 var index = $('#tt').tabs('getTabIndex', tab); 
+	                 $('#tt').tabs('close', index);  
+	       } 
+	       
+	       $('#tt').tabs('add', {
+				         title : "上传行程",
+				         href : 'uploadXingcheng.do',
+				      //  closable : true,
+				         });
+	
+	}
+	function openloaddialog(){
+	$('#upload').dialog('open');
 	}
   </script>
   </body>

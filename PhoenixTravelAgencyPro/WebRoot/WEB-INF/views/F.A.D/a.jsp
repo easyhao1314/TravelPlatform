@@ -53,7 +53,7 @@
 		pagination="true" toolbar="#tb">
 		<thead>
 			<tr>	 
-			    <th data-options="field:'id',editor:'text'" width="10px">付款日期</th>
+			    
 				<th data-options="field:'fukuantime',editor:'text'" width="10px">付款日期</th>
 				<th data-options="field:'team',editor:'text'" width="10px">团号</th>
 				<th data-options="field:'tuanduimc',editor:'text'" width="10px">团队名称</th>
@@ -82,7 +82,9 @@
 						class="easyui-validatebox">
 						</div></td>
 					
-					<td><input id="caiwuid" name="caiwuid" value="4" hidden="true"
+					<td><input id="caiwuidform" name="caiwuid"  value="4" hidden="true"
+						class="easyui-validatebox">
+						<input id="caiwuidaction" name="caiwuida"   value="4" hidden="true"
 						class="easyui-validatebox">
 						</div></td>
 				</tr>
@@ -215,7 +217,8 @@
 		
 		//修改
 			function fkspupdatea() {
-			var caiwuid = $("#caiwuid").val();
+			$('#caiwuidaction').attr('value',4);
+			var caiwuid = $("#caiwuidaction").val();
 			$("#spform").form('submit', {
 				url : 'fenghuang/updatefksp.do?caiwuid='+caiwuid,
 				onSubmit : function() {

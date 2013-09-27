@@ -24,10 +24,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
   <!-- 下拉列表 -->
-		
-
-	
-	
    <div id="tb">
 		<a href="javascript:Select();" class="easyui-linkbutton"
 			iconCls="icon-save" plain="true">查询</a>
@@ -217,8 +213,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	function sanpinupdate(){
 		var row = $("#dg").datagrid("getSelected");	
 		if(row==null){return;}
-		$('#updatesanpinwindow').window('open');
-		$('#upsanpinform').form('load',row);
+		var url= "SanPin_new.do?tuanNo="+row.tuanNo;
+        var tab = $('#tt').tabs('getSelected'); 
+		if (tab){  
+	                 var index = $('#tt').tabs('getTabIndex', tab); 
+	                 $('#tt').tabs('close', index);  
+	       } 
+	       
+	       $('#tt').tabs('add', {
+				         title : "散拼修改",
+				         href : url,
+				         closable : true,
+				         });
 	}
 	
 	

@@ -1,5 +1,8 @@
 package com.fenghuang.service.impl;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,9 +28,20 @@ public class SanpinzhongxinServiceImpl implements ISanpinzhongxinService {
 	@Autowired
 	IcaiwufkqrDao icaiwu;
 	@Override
-	public boolean AddSanpinzhongxin(Sanpinzhongxin sanpin) throws Exception {
+	public boolean AddSanpinzhongxin(Sanpinzhongxin sanpin,String areatypetext) throws Exception {
 		// TODO Auto-generated method stub
-		boolean bl=isanpin.AddSanpinzhongxin(sanpin);
+		boolean bl=false;
+		Sanpinzhongxin getsanpin = new Sanpinzhongxin();
+		getsanpin.setTuanNo(sanpin.getTuanNo());
+		Pagination<Sanpinzhongxin> pagination = isanpin.getByQueryConditionPagination(1, 1, getsanpin);
+		
+		List<Map<String, Object>> testUsers = pagination.getResultList();
+		if(testUsers.size()>0){
+			isanpin.upSanpinzhongxin(sanpin);
+		}
+		else{
+		
+		bl=isanpin.AddSanpinzhongxin(sanpin,areatypetext);
 		if(bl){
 			Xianlu x=new Xianlu();
 			x.setGuojia((int)sanpin.getNumbercountry());
@@ -53,7 +67,10 @@ public class SanpinzhongxinServiceImpl implements ISanpinzhongxinService {
             b.setCaiwuid(1);
             icaiwu.savefkqr(b);
 		}
+		}
+		
 		return bl;
+		
 	}
 	@Override
 	public Pagination<Sanpinzhongxin> getByQueryConditionPagination(

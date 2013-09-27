@@ -92,7 +92,7 @@ public class CaiwuqrfkController {
 	@RequestMapping("fenghuang/updateqrfk.do")
 	@ResponseBody
 	public Map<String,Object> xiugai(HttpServletRequest request,
-			HttpServletResponse response,String caiwuid,String id,String shanchu
+			HttpServletResponse response,String caiwuid,String id,String shanchu,String caiwuida
 			
 			){
 		Map<String, Object> result = new HashMap<String, Object>();

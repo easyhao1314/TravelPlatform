@@ -41,7 +41,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<th data-options="field:'chufa'" width="50">出发城市</th>
 				<th data-options="field:'tonghang'" width="50">同行价</th>
 				<th data-options="field:'zhikejia'" width="50">直客价</th>
-				<th data-options="field:'numbermaster',formatter:numbermaster" width="50">预收人数</th>
+				<th data-options="field:'numbermaster'" width="50">预收人数</th>
 				<th data-options="field:'shoukestate',formatter:openshouke" width="50">收客状态</th>
 				<th data-options="field:'productbrand',hidden:true" width="50">产品品牌_隐藏的</th>
 			</tr>

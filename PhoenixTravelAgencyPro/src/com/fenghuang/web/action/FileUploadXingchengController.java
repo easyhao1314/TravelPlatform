@@ -137,8 +137,8 @@ public class FileUploadXingchengController {
 											    for(int k=0;k<td.numParagraphs();k++){     
 						                            Paragraph para =td.getParagraph(k);
 						                            //以下是获取的文字内容
-						                            String s = para.text().trim();     
-						                            System.out.println(s.trim()+"days"); 
+						                            String s = para.text().trim();
+						                            System.out.println("早餐开始："+s.trim()+"早餐结束"); 
 						                        } //end for 
 												break;
 

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.fenghuang.dao.BaseDao;
 import com.fenghuang.dao.ISanpinzhongxinDao;
 import com.fenghuang.entiey.Sanpinzhongxin;
+import com.fenghuang.util.CommonUtil;
 import com.fenghuang.util.FengHuangDateUtil;
 import com.fenghuang.util.Pagination;
 @Repository
@@ -21,8 +22,12 @@ public class SanpinzhongxinDaoImpl extends BaseDao implements ISanpinzhongxinDao
 		super(dataSource);
 	}
 	@Override
-	public boolean AddSanpinzhongxin(Sanpinzhongxin sanpin) throws Exception {
+	public boolean AddSanpinzhongxin(Sanpinzhongxin sanpin,String areatypetext) throws Exception {
 		// TODO Auto-generated method stub
+		String tuanNotype = "s";
+		tuanNotype+=areatypetext;
+		String autotuanNo = CommonUtil.getTuanHao(tuanNotype);
+		sanpin.setTuanNo(autotuanNo);
 		String sql = "insert into sanpinzhongxin (tuanNo,tuanName," +
 				"Areatype,targetpopulation," +
 				"Departurecity,TerminalCity," +
@@ -109,9 +114,25 @@ public class SanpinzhongxinDaoImpl extends BaseDao implements ISanpinzhongxinDao
 	@Override
 	public boolean upSanpinzhongxin(Sanpinzhongxin sanpin) throws Exception {
 		// TODO Auto-generated method stub
-		String sql = "UPDATE sanpinzhongxin SET fabustate=fabustate+1-1";
+		String sql="UPDATE sanpinzhongxin SET tuanName=?,areatype=?,Departurecity=?,TerminalCity=?,Producttypes=?"+
+				",productbrand=?,hotel=?,numbercountry=?,numbermaster=?,airways=?"+
+				",groupflight=?,Tourflight=?,predict=?,report=?,teamexplains=?" +
+				",Servicesinclude=?,servicenoinclude=?,notes=?,Reviewstatus=?,Shenpijia=?" +
+				",dakehujia=?,zhikejia=?,tonghang=?,ertongzhanchuang=?,ertongbuzhanchuang=?" +
+				",zibeiqianjia=?,numberday=?,groupdate=?,Tourdate=?,zao=?" +
+				",zhong=?,wan=?,fabustate=?,shoukestate=? where tuanNo=?";
+		int sum=this.update(sql,sanpin.getTuanName(),sanpin.getAreatype(),sanpin.getDeparturecity(),sanpin.getTerminalCity(),sanpin.getProducttypes(),
+				sanpin.getProductbrand(),sanpin.getHotel(),sanpin.getNumbercountry(),sanpin.getNumbermaster(),sanpin.getAirways(),
+				sanpin.getGroupflight(),sanpin.getTourflight(),sanpin.getPredict(),sanpin.getReport(),sanpin.getTeamexplains(),
+				sanpin.getServicesinclude(),sanpin.getServicenoinclude(),sanpin.getNotes(),sanpin.getReviewstatus(),sanpin.getShenpijia(),
+				sanpin.getDakehujia(),sanpin.getZhikejia(),sanpin.getTonghang(),sanpin.getErtongzhanchuang(),sanpin.getErtongbuzhanchuang(),
+				sanpin.getZibeiqianjia(),sanpin.getNumberday(),sanpin.getGroupdate(),sanpin.getTourdate(),sanpin.getZao(),
+				sanpin.getZhong(),sanpin.getWan(),sanpin.getFabustate(),sanpin.getShoukestate(),sanpin.getTuanNo()
+				);
+		/*String sql = "UPDATE sanpinzhongxin SET fabustate=fabustate+1-1";
 		StringBuffer sb = new StringBuffer(sql);
 		List list = new ArrayList();
+		
 		
 		
 		if(sanpin.getFabustate()!=0){
@@ -133,8 +154,8 @@ public class SanpinzhongxinDaoImpl extends BaseDao implements ISanpinzhongxinDao
 			list.add(sanpin.getTuanNo());
 		}
 		int num = this.update(sb.toString(),list.toArray());
-	
-		return num>0;
+		*/
+		return sum>0;
 	}
 
 }

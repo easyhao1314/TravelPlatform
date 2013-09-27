@@ -59,8 +59,7 @@
 		data-options="url:'fenghuang/fukuanshenhe.do?shenfenid=3&ysyfid=2',border:false,singleSelect:true,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
 		pagination="true" toolbar="#tb">
 		<thead>
-			<tr> 
-			    <th data-options="field:'id',editor:'text'" width="40">付款日期</th>  
+			<tr>  
 				<th data-options="field:'fukuantime',editor:'text'" width="40">付款日期</th>
 				<th data-options="field:'team',editor:'text'" width="50">团号</th>
 				<th data-options="field:'tuanduimc',editor:'text'" width="50">团队名称</th>

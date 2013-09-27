@@ -28,8 +28,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <h4><p>基础信息</p></h4> 
   <table style="" >
   	<tr><td>价格体系（RMB）：</td>
-  	<td>审批价：</td><td><input class="easyui-validatebox" type="text" name="shenpijia" style="width: 50px; height: 15px;"></input></td>
-  	<td>大客户：</td><td><input class="easyui-validatebox" type="text" name="dakehu" style="width: 50px; height: 15px;"></input></td>
+  	<td>审批价：</td><td><input class="easyui-validatebox" type="text" name="Shenpijia" style="width: 50px; height: 15px;"></input></td>
+  	<td>大客户：</td><td><input class="easyui-validatebox" type="text" name="dakehujia" style="width: 50px; height: 15px;"></input></td>
   	<td>直客：</td><td><input class="easyui-validatebox" type="text" name="zhikejia" style="width: 50px; height: 15px;"></input></td>
   	<td>同行：</td><td><input class="easyui-validatebox" type="text" name="tonghang" style="width: 50px; height: 15px;"></input></td>
   	<td>儿童站床：</td><td><input class="easyui-validatebox" type="text" name="ertongzhanchuang" style="width: 50px; height: 15px;"></input></td>
@@ -39,14 +39,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </table>
   <table>
    	<tr>
-  	<td>出团计划名称：</td><td><input class="easyui-validatebox" type="text" required="true" name="tuanname" ></input></td>
+  	<td>出团计划名称：</td><td><input class="easyui-validatebox" type="text" required="true" name="tuanName" ></input></td>
   	<td></td><td></td>
-  	<td>出团计划编号：</td><td></td>
+  	<td>出团计划编号：</td><td><input name="tuanNo" class="easyui-validatebox"   readonly="readonly"   ></td>
   	</tr>
   	<tr>
-  	<td>全程天数：</td><td><input id="ss" name="tianshu" class="easyui-numberspinner" min="1" max="100" required="true" style="width:133px;"></input></td>
+  	<td>全程天数：</td><td><input id="ss" name="numberday" class="easyui-numberspinner" min="1" max="100" required="true" style="width:133px;"></input></td>
   	<td></td><td></td>
-  	<td>全程国家数：</td><td><input id="ss" name="guojiashu" class="easyui-numberspinner" min="1" max="100"  style="width:133px;"></input></td>
+  	<td>全程国家数：</td><td><input id="ss" name="numbercountry" class="easyui-numberspinner" min="1" max="100"  style="width:133px;"></input></td>
   	</tr>
   	<tr>
   	<td>出团日期：</td><td><input id="dd" name="groupdate" class="easyui-datebox" required="true" ></input></td>
@@ -162,7 +162,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </div>
   
   <div>
-  <h4><p>出境团基础信息</p></h4>
+  <h4>出境团基础信息</h4>
     预警人数<input class="easyui-validatebox" type="text" name="predict" style=" "></input>
   报警人数<input class="easyui-validatebox" type="text" name="report" style=" "></input>
   需办签证<select id="cc" class="easyui-combobox" name="visa" style="width: 100px;">
@@ -171,7 +171,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</select>
   </div>
         <div>
-        <h4><p>扩展信息</p></h4>
+        <h4>扩展信息</h4>
      团队特色说明：
    <br>
    <textarea name="teamexplains" style="height:60px; width: 500px;"></textarea>
@@ -195,6 +195,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </form>
 </div>
 <script type="text/javascript">
+	$(document).ready(function(){
+	var tuanNo = '${param.tuanNo}';
+	if(tuanNo!="" && tuanNo!=null){
+		var  url = "fenghuang/Sanpinliebiao.do?tuanNo="+tuanNo;
+           $.ajax({
+					url :url,
+					data : tuanNo,
+					dataType : "json",
+					success : function(data) {
+					$('#addsanpinform').form('load',data.rows[0]);
+					},
+					error : function() {
+						$.messager.alert("查询失败", "服务器请求失败!", "error");
+					}
+				});
+		}
+	});
+
 			function sanpinSave() {
 			var userid = '${sessionScope.userId}';
 			$('#master').attr('value',userid);

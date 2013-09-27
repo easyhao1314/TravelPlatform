@@ -65,11 +65,11 @@
 		<thead>
 			<tr>
 				 
-				<th data-options="field:'payment',editor:'text'" width="50px">付款日期</th>
+				<th data-options="field:'fukuantime',editor:'text'" width="50px">付款日期</th>
 				<th data-options="field:'zhanghaoid',editor:'text'" width="50px">账号</th>
 				<th data-options="field:'team',editor:'text'" width="50px">团号</th>
-				<th data-options="field:'suppliers',editor:'text'" width="50px">团队名称</th>
-				<th data-options="field:'kxsm',editor:'text'" width="50px">供应商名称</th>
+				<th data-options="field:'tuanduimc',editor:'text'" width="50px">团队名称</th>
+				<th data-options="field:'khmc',editor:'text'" width="50px">供应商名称</th>
 				<th data-options="field:'kxsm',editor:'text'" width="50px">款项</th>
 				<th data-options="field:'yfk',editor:'text'" width="50px">金额</th>
 			

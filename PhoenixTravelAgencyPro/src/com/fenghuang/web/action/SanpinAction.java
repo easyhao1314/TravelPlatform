@@ -36,9 +36,9 @@ public class SanpinAction {
 	@RequestMapping("fenghuang/addsanpin.do")
 	@ResponseBody
 	public Map<String, Object> Addsanpin(HttpServletRequest request,
-			HttpServletResponse response,String shenpijia,String dakehu,String zhikejia,
+			HttpServletResponse response,String Shenpijia,String dakehujia,String zhikejia,
 			String tonghang,String ertongzhanchuang,String ertongbuzhanchuang,String zibeiqianjia,
-			String tuanname,String tuanno,String tianshu,String guojiashu,String groupdate,String numbermaster,
+			String tuanName,String tuanNo,String numberday,String numbercountry,String groupdate,String numbermaster,
 			String Tourdate,String Areatype,String airways,String targetpopulation,String groupflight,
 			String Departurecity,String Tourflight,String TerminalCity,String hotel,String Producttypes,
 			String zao,String zhong,String wan,String productbrand,String predict,String report,String visa,
@@ -46,21 +46,17 @@ public class SanpinAction {
 			Sanpinzhongxin sanpin = new Sanpinzhongxin();
 			
 		try {
+			sanpin.setTuanNo(tuanNo);
 			
-			String tuanNotype = "s";
-			tuanNotype+=areatypetext;
-			String autotuanNo = CommonUtil.getTuanHao(tuanNotype);
 			
-			sanpin.setTuanNo(autotuanNo);
-			
-			if(tuanname!=null && !"".equals(tuanname)){
-				sanpin.setTuanName(tuanname);
+			if(tuanName!=null && !"".equals(tuanName)){
+				sanpin.setTuanName(tuanName);
 			}
-			if(shenpijia!=null && !"".equals(shenpijia)){				
-				sanpin.setShenpijia(Integer.parseInt(shenpijia));
+			if(Shenpijia!=null && !"".equals(Shenpijia)){				
+				sanpin.setShenpijia(Integer.parseInt(Shenpijia));
 			}
-			if(dakehu!=null && !"".equals(dakehu)){
-				sanpin.setDakehujia(Float.parseFloat(dakehu));
+			if(dakehujia!=null && !"".equals(dakehujia)){
+				sanpin.setDakehujia(Float.parseFloat(dakehujia));
 			}
 			if(zhikejia!=null && !"".equals(zhikejia)){
 				sanpin.setZhikejia(Float.parseFloat(zhikejia));
@@ -77,11 +73,11 @@ public class SanpinAction {
 			if(zibeiqianjia!=null && !"".equals(zibeiqianjia)){
 				sanpin.setZibeiqianjia(Float.parseFloat(zibeiqianjia));
 			}
-			if(tianshu!=null && !"".equals(tianshu)){
-				sanpin.setNumberday(Integer.parseInt(tianshu));
+			if(numberday!=null && !"".equals(numberday)){
+				sanpin.setNumberday(Integer.parseInt(numberday));
 			}
-			if(guojiashu!=null && !"".equals(guojiashu)){
-				sanpin.setNumbercountry(Integer.parseInt(guojiashu));
+			if(numbercountry!=null && !"".equals(numbercountry)){
+				sanpin.setNumbercountry(Integer.parseInt(numbercountry));
 			}
 			DateFormat format1 = new SimpleDateFormat("yyyy-MM-dd"); 
 			if(groupdate!=null && !"".equals(groupdate)){
@@ -164,7 +160,7 @@ public class SanpinAction {
 			boolean isSuccess = false;
 			Map<String,Object> result = new HashMap<String, Object>();
 		try {
-			iss.AddSanpinzhongxin(sanpin);
+			iss.AddSanpinzhongxin(sanpin,areatypetext);
 			isSuccess=true;
 		} catch (Exception e) {
 			isSuccess=false;
