@@ -33,11 +33,12 @@ public class SanpinzhongxinServiceImpl implements ISanpinzhongxinService {
 		boolean bl=false;
 		Sanpinzhongxin getsanpin = new Sanpinzhongxin();
 		getsanpin.setTuanNo(sanpin.getTuanNo());
+		if(sanpin.getTuanNo()!=null && !"".equals(sanpin.getTuanNo())){
 		Pagination<Sanpinzhongxin> pagination = isanpin.getByQueryConditionPagination(1, 1, getsanpin);
-		
 		List<Map<String, Object>> testUsers = pagination.getResultList();
 		if(testUsers.size()>0){
 			isanpin.upSanpinzhongxin(sanpin);
+		}
 		}
 		else{
 		

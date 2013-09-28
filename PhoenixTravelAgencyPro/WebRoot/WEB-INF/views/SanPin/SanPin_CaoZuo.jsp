@@ -173,8 +173,70 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div data-options="iconCls:'icon-edit'" onClick="zhuanjidiao()">转到计调报价</div>
 		<div data-options="iconCls:'icon-search'"  onClick="chajidiao()">查看订单进度</div>
 		<div data-options="iconCls:'icon-remove'" onClick="upfabustate()">取消发布状态</div>
+		<div><span>行程</span>
+    <div>
+    <div onClick="shedingxingcheng()" data-options="iconCls:'icon-search'">生成行程</div>
+    <div onClick="daoruxingcheng()" data-options="iconCls:'icon-search'">导入行程</div>
+    <input id="numberday" type="hidden">
+    </div>
+    </div>
 	</div>
 	<script type="text/javascript">
+	function daoruxingcheng(){
+	var xianid = $('#xianid').val();
+		$.ajax({
+					url :"fenghuang/selectricheng.do?xianluid="+xianid,
+					data :xianid,
+					dataType : "json",
+					success : function(data) {
+					if(data.rows.length!=0){
+					$.messager.alert("发送失败", " 该团已设定行程!", "error");
+					}else{
+					window.open('uploadXingcheng.do?xianid='+xianid,'上传文档','height=400,width=480,top=200,left=200,toolbar=no,menubar=no,scrollbars=no,resizable=no,location=no,status=no');
+					}
+					
+					},
+					error : function() {
+						
+					}
+				});
+	
+	
+	}
+	function shedingxingcheng(){
+	var xianid = $('#xianid').val();
+	var numberday = $('#numberday').val();
+		$.ajax({
+					url :"fenghuang/selectricheng.do?xianluid="+xianid,
+					data :xianid,
+					dataType : "json",
+					success : function(data) {
+					if(data.rows.length!=0){
+					$.messager.alert("发送失败", " 该团已设定行程!", "error");
+					}else{
+					 	$.messager.confirm('提示', '系统 会根据散拼行程天数生成新的日程，是否继续?', function(r){
+							if (r){
+									$.ajax({
+					url :"fenghuang/shengchengricheng.do?xianid="+xianid+"&numberday="+numberday,
+					data :xianid,
+					dataType : "json",
+					success : function(data) {
+					$.messager.alert("消息", "生成线路日程成功!", "info");
+					}
+					
+					});
+					
+								   }
+						});
+					
+					}
+					
+					},
+					error : function() {
+						
+					}
+				});
+	}
 	
 	function upfabustate(){
    	  	var tuanNo=$('#tuanNo').val();
@@ -262,6 +324,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	$('#tuanName').attr('value',rowData.tuanName);
 	$('#userId').attr('value','${sessionScope.userId}');
 	$('#operateType').attr('value',2);
+	$('#numberday').attr('value',rowData.numberday);
 	$('#xianid').attr('value',rowData.xlid);
 		 e.preventDefault();
          $('#mmsanpincaozuo').menu('show', {

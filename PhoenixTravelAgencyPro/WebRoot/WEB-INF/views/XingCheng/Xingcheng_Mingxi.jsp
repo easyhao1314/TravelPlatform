@@ -89,15 +89,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		style="height:300px;padding:10px;width:auto;"
 		data-options="closable:false" align="left">
 		
-				<div>
-				 <a href="javascript:void(0)" class="easyui-linkbutton" onclick="openloadword();" iconCls="icon-ok">导入线路行程</a>
-				 <a href="javascript:void(0)" class="easyui-linkbutton" onclick="openloaddialog();;" iconCls="icon-ok">导入线路行程</a>
-				</div>
-				
-				 <div id="upload" class="easyui-dialog" title="上传文档行程" data-options="iconCls:'icon-save',closed:true,href:'uploadXingcheng.do'" style="width:450px;height:350px;padding:10px">
-						
-				</div>
-
 	</div>	  
 	 <div id="richengdlg" class="easyui-dialog" title="设定日程"  data-options="iconCls:'icon-save',closed:true,modal:true,buttons: 
 	 			[{
@@ -376,7 +367,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						 	+'<tr><td width="100px;"><strong>日期</strong></td>'
 						 		+'<td valign="middle"><div id="jtcs'+i+'" style="height:20px; backaground-color:yellow"></div><a href="javascript:richenganpaiOpen()"  class="easyui-linkbutton" style="float: right;" iconCls="icon-add" plain="true">酒店</a><a href="javascript:openhuodongDialog(\''+data.rows[i].huodong+'\','+data.rows[i].riid+')"  class="easyui-linkbutton" style="float: right;" iconCls="icon-add" plain="true">活动</a><a  href="javascript:openrichengDialog(\''+data.rows[i].richenganpai+'\','+data.rows[i].riid+')"   class="easyui-linkbutton"   style="float: right;" iconCls="icon-add" plain="true">日程</a></td>'
 						 	+'</tr>'
-						 	+'<tr><td> <a href="javascript:chengshijiaotongdlgOpen('+data.rows[i].riid+')" title="设定当天的交通工具和城市" class="easyui-linkbutton" plain="true" iconCls="icon-reload">第'+d+'天</a></td><td><h4>日程:</h4> <span>'+data.rows[i].richenganpai+'</span><hr /><h4>活动:</h4> <span>'+data.rows[i].huodong+'</span><hr /><h4>酒店:</h4> <span>'+data.rows[i]+'</span><hr />餐饮：<input name="zao" class="easyui-combobox" data-options="url:\''+zao+'\',valueField:\'dicNo\',textField:\'dicName\',panelHeight:\'auto\',editable:false,onSelect:function(rel){funcanyin(rel,'+data.rows[i].riid+',\'zao\');}" > 中：<input name="zhong" class="easyui-combobox" data-options="url:\''+zhong+'\',valueField:\'dicNo\',textField:\'dicName\',panelHeight:\'auto\',editable:false,onSelect:function(rel){funcanyin(rel,'+data.rows[i].riid+',\'zhong\');}" >晚：<input id="wan" name="wan"  class="easyui-combobox" data-options="url:\''+wan+'\',valueField:\'dicNo\',textField:\'dicName\',panelHeight:\'auto\',editable:false,onSelect:function(rel){funcanyin(rel,'+data.rows[i].riid+',\'wan\');}"></td></tr>'
+						 	+'<tr><td> <a href="javascript:chengshijiaotongdlgOpen('+data.rows[i].riid+')" title="设定当天的交通工具和城市" class="easyui-linkbutton" plain="true" iconCls="icon-reload">第'+d+'天</a></td><td><h4>日程:</h4> <span>'+data.rows[i].richenganpai+'</span><hr /><h4>活动:</h4> <span>'+data.rows[i].huodong+'</span><hr /><h4>住宿:</h4> <span>'+data.rows[i].jiudian+'</span><hr />餐饮：<input name="zao" class="easyui-combobox" data-options="url:\''+zao+'\',valueField:\'dicNo\',textField:\'dicName\',panelHeight:\'auto\',editable:false,onSelect:function(rel){funcanyin(rel,'+data.rows[i].riid+',\'zao\');}" > 中：<input name="zhong" class="easyui-combobox" data-options="url:\''+zhong+'\',valueField:\'dicNo\',textField:\'dicName\',panelHeight:\'auto\',editable:false,onSelect:function(rel){funcanyin(rel,'+data.rows[i].riid+',\'zhong\');}" >晚：<input id="wan" name="wan"  class="easyui-combobox" data-options="url:\''+wan+'\',valueField:\'dicNo\',textField:\'dicName\',panelHeight:\'auto\',editable:false,onSelect:function(rel){funcanyin(rel,'+data.rows[i].riid+',\'wan\');}"></td></tr>'
 						 +'<table></form>';			
 						$("#mdiv").append(app);
 						$('#d'+d).form('load',data.rows[i]);
@@ -492,17 +483,7 @@ function closedSearch(){
 	}
 	function openloadword(){
 	
-	var tab = $('#tt').tabs('getSelected'); 
-		if (tab){  
-	                 var index = $('#tt').tabs('getTabIndex', tab); 
-	                 $('#tt').tabs('close', index);  
-	       } 
-	       
-	       $('#tt').tabs('add', {
-				         title : "上传行程",
-				         href : 'uploadXingcheng.do',
-				      //  closable : true,
-				         });
+	window.open('uploadXingcheng.do?xianid='+'${param.xianid}','上传','height=400,width=480,top=200,left=200,toolbar=no,menubar=no,scrollbars=no,resizable=no,location=no,status=no');
 	
 	}
 	function openloaddialog(){

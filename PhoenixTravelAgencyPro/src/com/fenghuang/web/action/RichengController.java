@@ -103,6 +103,34 @@ public class RichengController {
 		result.put("success", isSuccess);
 		return result;
 	}
+	@RequestMapping("fenghuang/shengchengricheng.do")
+	@ResponseBody
+	public Map<String, Object> shengchengricheng(HttpServletRequest request,
+			HttpServletResponse response,String xianid,String numberday){
+		boolean isSuccess = false;
+		Map<String,Object> result = new HashMap<String, Object>();
+		int parseInt = Integer.parseInt(numberday);
+		Richeng r;
+	try {
+		for (int i = 0; i < parseInt; i++) {
+			r=new Richeng();
+			r.setXianluid(Long.parseLong(xianid));
+			is.insert(r);
+		}
+		isSuccess=true;
+	} catch (Exception e) {
+		isSuccess=false;
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	result.put("success", isSuccess);
+	return result;
+	}
+	
+	
+	
+	
+	
 	@RequestMapping("fenghuang/updatericheng.do")
 	@ResponseBody
 	public Map<String, Object> updatericheng(HttpServletRequest request,HttpServletResponse response,

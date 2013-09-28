@@ -114,7 +114,7 @@ public class SanpinzhongxinDaoImpl extends BaseDao implements ISanpinzhongxinDao
 	@Override
 	public boolean upSanpinzhongxin(Sanpinzhongxin sanpin) throws Exception {
 		// TODO Auto-generated method stub
-		String sql="UPDATE sanpinzhongxin SET tuanName=?,areatype=?,Departurecity=?,TerminalCity=?,Producttypes=?"+
+		/*String sql="UPDATE sanpinzhongxin SET tuanName=?,areatype=?,Departurecity=?,TerminalCity=?,Producttypes=?"+
 				",productbrand=?,hotel=?,numbercountry=?,numbermaster=?,airways=?"+
 				",groupflight=?,Tourflight=?,predict=?,report=?,teamexplains=?" +
 				",Servicesinclude=?,servicenoinclude=?,notes=?,Reviewstatus=?,Shenpijia=?" +
@@ -128,13 +128,142 @@ public class SanpinzhongxinDaoImpl extends BaseDao implements ISanpinzhongxinDao
 				sanpin.getDakehujia(),sanpin.getZhikejia(),sanpin.getTonghang(),sanpin.getErtongzhanchuang(),sanpin.getErtongbuzhanchuang(),
 				sanpin.getZibeiqianjia(),sanpin.getNumberday(),sanpin.getGroupdate(),sanpin.getTourdate(),sanpin.getZao(),
 				sanpin.getZhong(),sanpin.getWan(),sanpin.getFabustate(),sanpin.getShoukestate(),sanpin.getTuanNo()
-				);
-		/*String sql = "UPDATE sanpinzhongxin SET fabustate=fabustate+1-1";
+				);*/
+		String sql = "UPDATE sanpinzhongxin SET fabustate=fabustate+1-1";
 		StringBuffer sb = new StringBuffer(sql);
 		List list = new ArrayList();
-		
-		
-		
+		if(sanpin.getTuanName()!=null && !"".equals(sanpin.getTuanName())){
+			sb.append(",tuanName=?");
+			list.add(sanpin.getTuanName());
+		}
+		if(sanpin.getAreatype()!=0){
+			sb.append(",Areatype=?");
+			list.add(sanpin.getAreatype());
+		}
+		if(sanpin.getTargetpopulation()!=0){
+			sb.append(",targetpopulation=?");
+			list.add(sanpin.getTargetpopulation());
+		}
+		if(sanpin.getDeparturecity()!=0){
+			sb.append(",Departurecity=?");
+			list.add(sanpin.getDeparturecity());
+		}
+		if(sanpin.getTerminalCity()!=0){
+			sb.append(",TerminalCity=?");
+			list.add(sanpin.getTerminalCity());
+		}
+		if(sanpin.getProducttypes()!=0){
+			sb.append(",Producttypes=?");
+			list.add(sanpin.getProducttypes());
+		}
+		if(sanpin.getProductbrand()!=0){
+			sb.append(",productbrand=?");
+			list.add(sanpin.getProductbrand());
+		}
+		if(sanpin.getHotel()!=0){
+			sb.append(",hotel=?");
+			list.add(sanpin.getHotel());
+		}
+		if(sanpin.getNumbercountry()!=0){
+			sb.append(",numbercountry=?");
+			list.add(sanpin.getNumbercountry());
+		}
+		if(sanpin.getNumbermaster()!=0){
+			sb.append(",numbermaster=?");
+			list.add(sanpin.getNumbermaster());
+		}
+		if(sanpin.getAirways()!=null && !"".equals(sanpin.getAirways())){
+			sb.append(",airways=?");
+			list.add(sanpin.getAirways());
+		}
+		if(sanpin.getGroupflight()!=null && !"".equals(sanpin.getGroupflight())){
+			sb.append(",groupflight=?");
+			list.add(sanpin.getGroupflight());
+		}
+		if(sanpin.getTourflight()!=null && !"".equals(sanpin.getTourflight())){
+			sb.append(",Tourflight=?");
+			list.add(sanpin.getTourflight());
+		}
+		if(sanpin.getPredict()!=0){
+			sb.append(",predict=?");
+			list.add(sanpin.getPredict());
+		}
+		if(sanpin.getReport()!=0){
+			sb.append(",report=?");
+			list.add(sanpin.getReport());
+		}
+		if(sanpin.getTeamexplains()!=null && !"".equals(sanpin.getTeamexplains())){
+			sb.append(",teamexplains=?");
+			list.add(sanpin.getTeamexplains());
+		}
+		if(sanpin.getServicesinclude()!=null && !"".equals(sanpin.getServicesinclude())){
+			sb.append(",Servicesinclude=?");
+			list.add(sanpin.getServicesinclude());
+		}
+		if(sanpin.getServicenoinclude()!=null && !"".equals(sanpin.getServicenoinclude())){
+			sb.append(",servicenoinclude=?");
+			list.add(sanpin.getServicenoinclude());
+		}
+		if(sanpin.getNotes()!=null && !"".equals(sanpin.getNotes())){
+			sb.append(",notes=?");
+			list.add(sanpin.getNotes());
+		}
+		if(sanpin.getReviewstatus()!=0){
+			sb.append(",Reviewstatus=?");
+			list.add(sanpin.getReviewstatus());
+		}
+		if(sanpin.getShenpijia()!=0){
+			sb.append(",Shenpijia=?");
+			list.add(sanpin.getShenpijia());
+		}
+		if(sanpin.getDakehujia()!=0){
+			sb.append(",dakehujia=?");
+			list.add(sanpin.getDakehujia());
+		}
+		if(sanpin.getZhikejia()!=0){
+			sb.append(",zhikejia=?");
+			list.add(sanpin.getZhikejia());
+		}
+		if(sanpin.getTonghang()!=0){
+			sb.append(",tonghang=?");
+			list.add(sanpin.getTonghang());
+		}
+		if(sanpin.getErtongzhanchuang()!=0){
+			sb.append(",ertongzhanchuang=?");
+			list.add(sanpin.getErtongzhanchuang());
+		}
+		if(sanpin.getErtongbuzhanchuang()!=0){
+			sb.append(",ertongbuzhanchuang=?");
+			list.add(sanpin.getErtongbuzhanchuang());
+		}
+		if(sanpin.getZibeiqianjia()!=0){
+			sb.append(",zibeiqianjia=?");
+			list.add(sanpin.getZibeiqianjia());
+		}
+		if(sanpin.getNumberday()!=0){
+			sb.append(",numberday=?");
+			list.add(sanpin.getNumberday());
+		}
+		if(sanpin.getGroupdate()!=null && !"".equals(sanpin.getGroupdate())){
+			sb.append(",groupdate=?");
+			list.add(sanpin.getGroupdate());
+		}
+		if(sanpin.getTourdate()!=null && !"".equals(sanpin.getTourdate())){
+			sb.append(",Tourdate=?");
+			list.add(sanpin.getTourdate());
+		}
+		if(sanpin.getZao()!=0){
+			sb.append(",zao=?");
+			list.add(sanpin.getZao());
+		}
+		if(sanpin.getZhong()!=0){
+			sb.append(",zhong=?");
+			list.add(sanpin.getZhong());
+		}
+		if(sanpin.getWan()!=0){
+			sb.append(",wan=?");
+			list.add(sanpin.getWan());
+		}
 		if(sanpin.getFabustate()!=0){
 			sb.append(",fabustate=?");
 			list.add(sanpin.getFabustate());
@@ -154,8 +283,8 @@ public class SanpinzhongxinDaoImpl extends BaseDao implements ISanpinzhongxinDao
 			list.add(sanpin.getTuanNo());
 		}
 		int num = this.update(sb.toString(),list.toArray());
-		*/
-		return sum>0;
+		
+		return num>0;
 	}
 
 }

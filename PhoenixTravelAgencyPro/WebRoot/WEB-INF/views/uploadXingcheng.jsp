@@ -14,7 +14,7 @@ $(function(){
 		$("#uploader").pluploadQueue({
 			// General settings
 			runtimes : 'html5,gears,browserplus,silverlight,flash,html4',
-			url : 'fenghuang/uploadFileXingcheng.do',
+			url : 'fenghuang/uploadFileXingcheng.do?xianid='+'${param.xianid}',
 			max_file_size : '10mb',
 			unique_names : true,
 			chunk_size: '2mb',
@@ -42,6 +42,7 @@ $(function(){
 </head>
 
 <body>
+
 	<div>
 		<div style="width: 450px; margin: 0px auto">
 			<form id="formId" action="Submit.action" method="post">
