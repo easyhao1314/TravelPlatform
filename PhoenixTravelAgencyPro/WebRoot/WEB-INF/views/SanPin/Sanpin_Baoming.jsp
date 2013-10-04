@@ -37,9 +37,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					
 				</td>
 				<td><div class="fitem">
-						<strong><label>收客状态:</label></strong>
+						<strong><label>计调:</label></strong>
 				</td>
-				<td><strong><input name="shoukestate" class="easyui-validatebox"></strong>
+				<td><strong><input id="userName" name="userName" class="easyui-validatebox"></strong>
 					
 				</td>
 			</tr>
@@ -83,13 +83,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					
 				</td>
 			</tr>
-			<tr>
-				<td><div class="fitem">
-						<strong><label>备注:</label></strong>
-				</td>
-				<td colspan="5"><strong><input name="tsDesc" class="easyui-validatebox"></strong>
-				</td>
-			</tr>
+			
 	</table>
 </form>
 </div>
@@ -101,7 +95,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			href="javascript:deletesanpinkehu();" class="easyui-linkbutton"
 			iconCls="icon-cut" plain="true">删除</a> -->&nbsp;&nbsp;|
 		<a href="javascript:getChanges();" class="easyui-linkbutton"
-			iconCls="icon-save" plain="true">保存修改</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			iconCls="icon-save" plain="true">保存修改</a>&nbsp;&nbsp;|
+			<a href="javascript:kehuprint();" class="easyui-linkbutton"
+			iconCls="icon-print" plain="true">资料打印</a>&nbsp;&nbsp;
 
 	</div>
 	<div id="caozuotb">
@@ -214,13 +210,13 @@ return zhuantuanshenpi;
 			iconCls="icon-add" plain="true">付款</a>
 	</div>
 
-	<div id="fukuandlg" class="easyui-dialog" title="客户财务付款" data-options="iconCls:'icon-save',closed:true,buttons:'#sanpincaiwudlg-buttons'" style="width:600px;height:300px;padding:10px">
+	<div id="fukuandlg" class="easyui-dialog" title="客户财务付款" data-options="iconCls:'icon-save',closed:true,buttons:'#sanpincaiwudlg-buttons'" style="width:400px;height:300px;padding:10px">
         <form id="sanpincaiwuform" action="">
-        	金额：<input id="yishou" name="yishou" class="easyui-validatebox">
-        	备注：<input id="beizhu" name="beizhu" class="easyui-validatebox">
-        	款项：<input id="kuanxiang" name="kxsm" class="easyui-validatebox">
-        	<input id="tuanNo" name="tuanduimc" value="${param.tuanNo }"  class="easyui-validatebox">
-        	<input id="tuanName" name="team"  class="easyui-validatebox">
+        	金额：<input id="yishou" name="yishou" style="width: 300px;" class="easyui-validatebox"><br><br>
+        	备注：<input id="beizhu" name="beizhu" style="width: 300px;" class="easyui-validatebox"><br><br>
+        	款项：<input id="kuanxiang" name="kxsm" style="width: 300px;" class="easyui-validatebox">
+        	<input id="tuanNo" name="tuanduimc" type="hidden" value="${param.tuanNo }"  class="easyui-validatebox">
+        	<input id="tuanName" name="team" type="hidden"  class="easyui-validatebox">
         	<input id="kehuname" name="khmc" type="hidden" class="easyui-validatebox">
         	
         	
@@ -269,6 +265,35 @@ return sexinfo;
 	<script type="text/javascript">
 	
 	contentType:"application/x-www-form-urlencoded; charset=UTF-8";
+	function kehuprint(){
+	var rows = $("#dg").datagrid("getSelections");
+	alert(rows[1].name);
+	var tuanName = $('#tName').val();
+	var userName = $('#userName').val();
+	var url= "Sanpin_kehuprint.do?tuanName="+tuanName+"&userName="+userName;
+       var tab = $('#tt').tabs('getSelected'); 
+		if (tab){  
+	                 var index = $('#tt').tabs('getTabIndex', tab); 
+	                 $('#tt').tabs('close', index);  
+	       } 
+	       
+	       $('#tt').tabs('add', {
+				         title : "客户资料",
+				         href : url,
+				      //  closable : true,
+				         });  
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	function baomingsp(val,row){
 	var baoming = '<img  src="js/themes/icons/tip.png">未提交';

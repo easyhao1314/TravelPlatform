@@ -29,6 +29,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			iconCls="icon-save" plain="true">查询</a>
 		<a href="javascript:sanpinupdate();" class="easyui-linkbutton"
 			iconCls="icon-edit" plain="true">修改</a>
+		<a href="javascript:UpdateSanpinstate();" class="easyui-linkbutton"
+			iconCls="icon-edit" plain="true">正式收客</a>
 	</div>
 <table id="dg" class="easyui-datagrid"
 		data-options="url:'fenghuang/Sanpinliebiao.do?fabustate=1&master=${sessionScope.userId}',border:false,singleSelect:true,fit:true,fitColumns:true, onClickRow: onClickRow,onRowContextMenu: sanpincaozuoMenu"
@@ -400,6 +402,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			});
 
 		}
+	function UpdateSanpinstate(){
+	var row = $("#dg").datagrid("getSelected");
+	 $.messager.confirm('My Title', '将“'+row.tuanName+'”为正式收客?', function(r){
+		if (r){
+		
+ 	$.ajax({
+					url :"fenghuang/upsanpin.do?tuanNo="+row.tuanNo+"&fabustate="+2,
+					data :row.tuanNo,
+					dataType : "json",
+					success : function(data) {
+					$.messager.alert("保存成功", "保存成功!", "info");
+					$("#dg").datagrid("reload");
+					},
+					error : function() {
+						
+					}
+				});
+		}
+	});
+	
+ }
 	</script>
 
   </body>

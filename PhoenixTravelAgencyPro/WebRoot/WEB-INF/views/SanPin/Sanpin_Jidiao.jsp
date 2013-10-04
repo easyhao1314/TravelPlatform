@@ -75,19 +75,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  function loadricheng(){
  	
  }
- function UpdateSanpinstate(){
- 	$.ajax({
-					url :"fenghuang/upsanpin.do?tuanNo="+'${param.tuanNo}'+"&fabustate="+2,
-					data :'${param.tuanNo}',
-					dataType : "json",
-					success : function(data) {
-					$.messager.alert("保存成功", "保存成功!", "info");
-					},
-					error : function() {
-						
-					}
-				});
- }
+ 
  var day=0;
  function days(val,row){
 		day++;
