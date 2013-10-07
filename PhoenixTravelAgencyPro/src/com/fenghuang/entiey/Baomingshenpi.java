@@ -62,8 +62,17 @@ public class Baomingshenpi {
     * 
     * @pdOid 8835d3ed-358b-4532-83f1-d0b87caf4c1a */
    public int zhuantuanshenpi;
+   /** 已收金额
+    * 
+    * @pdOid 8835d3ed-358b-4532-83f1-d0b87caf4c1a */
+   public float yishoukuan;
    
-   
+public float getYishoukuan() {
+	return yishoukuan;
+}
+public void setYishoukuan(float yishoukuan) {
+	this.yishoukuan = yishoukuan;
+}
 public int getTuituanshenpi() {
 	return tuituanshenpi;
 }

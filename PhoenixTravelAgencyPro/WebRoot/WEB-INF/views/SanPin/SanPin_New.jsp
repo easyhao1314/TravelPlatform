@@ -25,7 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <div style="background:#fafafa;padding:10px;width:10	00px;height:300px;">
   <form id="addsanpinform" method="post" >
   <div >
-  <h4><p>基础信息</p></h4> 
+  <h4>基础信息</h4> 
   <table style="" >
   	<tr><td>价格体系（RMB）：</td>
   	<td>审批价：</td><td><input class="easyui-validatebox" type="text" name="Shenpijia" style="width: 50px; height: 15px;"></input></td>

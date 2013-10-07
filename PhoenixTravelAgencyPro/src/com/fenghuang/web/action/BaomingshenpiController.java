@@ -117,13 +117,19 @@ public class BaomingshenpiController {
 	@RequestMapping("fenghuang/updatebaomingshenpi.do")
 	@ResponseBody
 	public Map<String, Object> updatericheng(HttpServletRequest request,HttpServletResponse response,
-			String bmid,String zhuantuan,String baoming,String tuituan
+			String bmid,String zhuantuan,String baoming,String tuituan,String yajin,String yishoukuan
 			){
 		boolean isSuccess = false;
 		Map<String,Object> result = new HashMap<String, Object>();	
 		Baomingshenpi b = new Baomingshenpi();
 		if(bmid!=null && !"".equals(bmid)){
 			b.setBmid(Long.parseLong(bmid));
+		}
+		if(yajin!=null && !"".equals(yajin)){
+			b.setYajinqueren(Integer.parseInt(yajin));
+		}
+		if(yishoukuan !=null && !"".equals(yishoukuan)){
+			b.setYishoukuan(Float.parseFloat(yishoukuan));
 		}
 		if(baoming!=null && !"".equals(baoming)){
 		b.setBaomingsp(Integer.parseInt(baoming));

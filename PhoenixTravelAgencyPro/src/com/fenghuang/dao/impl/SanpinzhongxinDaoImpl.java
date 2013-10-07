@@ -82,7 +82,7 @@ public class SanpinzhongxinDaoImpl extends BaseDao implements ISanpinzhongxinDao
 	public Pagination<Sanpinzhongxin> getByQueryConditionPagination(
 			int currentPage, int numPerPage,Sanpinzhongxin s) throws Exception {
 		// TODO Auto-generated method stub 
-		String sql = "select s.*,ss.userName,t.xlid,chufacs.dicName AS chufa,huics.dicName AS zhongdian,prand.dicName AS prand,renqun.dicName as renqun from sanpinzhongxin as s LEFT JOIN dictionarydesc AS chufacs ON chufacs.dicNo=s.Departurecity LEFT JOIN dictionarydesc AS huics ON huics.dicNo=s.terminalCity LEFT JOIN dictionarydesc AS prand ON prand.dicNo=s.productbrand left join tuanXianlu as t on s.tuanNO=t.tuanNo LEFT JOIN dictionarydesc AS renqun ON renqun.dicNo=s.targetpopulation LEFT JOIN users as ss ON ss.id=s.jiantuanren where 1=1";
+		String sql = "select s.*,ss.userName,t.xlid,chufacs.dicName AS chufa,huics.dicName AS zhongdian,prand.dicName AS prand,renqun.dicName as renqun,(SELECT  COUNT(*) FROM customerinfo cu WHERE s.tuanNo=cu.tuanNo) as yishourenshu from sanpinzhongxin as s LEFT JOIN dictionarydesc AS chufacs ON chufacs.dicNo=s.Departurecity LEFT JOIN dictionarydesc AS huics ON huics.dicNo=s.terminalCity LEFT JOIN dictionarydesc AS prand ON prand.dicNo=s.productbrand left join tuanXianlu as t on s.tuanNO=t.tuanNo LEFT JOIN dictionarydesc AS renqun ON renqun.dicNo=s.targetpopulation LEFT JOIN users as ss ON ss.id=s.jiantuanren where 1=1";
 		StringBuffer sb = new StringBuffer(sql);
 		if(s.getTuanName()!=null && !"".equals(s.getTuanName())){
 			sb.append(" and s.tuanName LIKE '%"+s.getTuanName()+"%'");

@@ -25,7 +25,7 @@ public class BaomingshenpiDaoimpl extends BaseDao implements IBaomingshenpiDao {
 	public Pagination<Baomingshenpi> baominginfo(int page,int rows,Baomingshenpi b,String tuanNo,Integer type,Long xiaoshou)
 			throws Exception {
 		// TODO Auto-generated method stub
-		String sql="select bmid,kehuid,baomingsp,baomingsl,yajinqueren,chupiaoqueren,chutuanqueren,beizhu,kehuname,b.sex,zhengjianhao,b.tuituanshenpi,b.zhuantuanshenpi from baomingshenpi as b INNER JOIN customerinfo as c on b.kehuid=c.id WHERE 1=1 ";
+		String sql="select bmid,kehuid,baomingsp,baomingsl,yajinqueren,chupiaoqueren,chutuanqueren,beizhu,kehuname,b.sex,zhengjianhao,b.tuituanshenpi,b.zhuantuanshenpi,b.yishoukuan from baomingshenpi as b INNER JOIN customerinfo as c on b.kehuid=c.id WHERE 1=1 ";
 		StringBuffer sb = new StringBuffer(sql);
 		if(tuanNo!=null && !"".equals(tuanNo)){
 			sb.append(" AND c.tuanNo='"+tuanNo+"'");
@@ -49,6 +49,10 @@ public class BaomingshenpiDaoimpl extends BaseDao implements IBaomingshenpiDao {
 			sb.append(",tuituanshenpi=?");
 			l.add(b.getTuituanshenpi());
 		}
+		if(b.getYajinqueren()!=0){
+			sb.append(",yajinqueren=?");
+			l.add(b.getYajinqueren());
+		}
 		if(b.getZhuantuanshenpi()!=0){
 			sb.append(",zhuantuanshenpi=?");
 			l.add(b.getZhuantuanshenpi());
@@ -68,6 +72,10 @@ public class BaomingshenpiDaoimpl extends BaseDao implements IBaomingshenpiDao {
 		if(b.getZhengjianhao()!=null && !"".equals(b.getZhengjianhao())){
 			sb.append(",zhengjianhao=?");
 			l.add(b.getZhengjianhao());
+		}
+		if(b.getYishoukuan()!=0){
+			sb.append(",yishoukuan=yishoukuan+?");
+			l.add(b.getYishoukuan());
 		}
 		if(b.getBmid()!=0){
 			sb.append(" where bmid=?");
