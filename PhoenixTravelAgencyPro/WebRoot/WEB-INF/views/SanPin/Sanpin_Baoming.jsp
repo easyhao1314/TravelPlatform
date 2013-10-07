@@ -327,7 +327,7 @@ return sexinfo;
 		$('#kuanxiangshuoming').val(val);
 		var bmid = $('#bmid').val();
 		var yishou = $('#yishou').val();
-		if(val=='押金'){
+		if(val=='押金' || val=='全款包含押金'){
 		$.ajax({
 					url :"fenghuang/updatebaomingshenpi.do?bmid="+bmid+"&yajin="+1,
 					data : bmid,
