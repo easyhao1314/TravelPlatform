@@ -404,6 +404,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		}
 	function UpdateSanpinstate(){
 	var row = $("#dg").datagrid("getSelected");
+	var yingshou = row.numbermaster*row.zhikejia;
 	 $.messager.confirm('My Title', '将“'+row.tuanName+'”为正式收客?', function(r){
 		if (r){
 		
@@ -412,7 +413,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					data :row.tuanNo,
 					dataType : "json",
 					success : function(data) {
+					$.ajax({
+					url :"fenghuang/inserttuanbiao.do?team="+row.tuanName+"&tuanduimc="+row.tuanNo+"&chutuantime="+row.groupdate+"&huituantime="+row.Tourdate+"&renshu="+row.numbermaster+"&yingshou="+yingshou+"&shenfenid="+4+"&ysyfid="+1+"&shanchu="+1+"&huilvid="+1+"&caiwuid="+1+"&xiaoshou="+row.jiantuanren,
+					data :row.tuanNo,
+					dataType : "json",
+					success : function(data) {
 					$.messager.alert("保存成功", "保存成功!", "info");
+					},
+					error : function() {
+						
+					}
+				});
 					$("#dg").datagrid("reload");
 					},
 					error : function() {

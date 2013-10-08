@@ -44,7 +44,7 @@ public class CaiwutdfylbDaoImpl extends BaseDao implements IcaiwutdfylbDao{
 	public Pagination<Tuanbiao> getPaginationfkqr(int currentPage,
 			int numPerPage, Tuanbiao tuanbiao) throws Exception {
 		// TODO Auto-generated method stub
-		StringBuffer sql=new StringBuffer("SELECT team,caiwuid,id,payment,suppliers,caozuo,xiaoshou,zhanghaoid,shenfenid,chutuantime,huituantime,sum(yingshou) as yingshou,sum(yishou) as yishou,sum(yifu) as yifu,tuikuan,fanyong,yujilirun,shijilirun,danhao,fukuantime,yushoutime,huilvID,ykfp,fpxk,fuzeren,zhuangtai,ysyfID,khmc,kxsm,renshu,ddje,fankuan,yajin,cgje,cglr,zhichu,maoli,maolilv,beizhu,sum(yfk) as yfk,baojia,chengben,tuanduimc,shanchu from tuanbiao   group by team  HAVING 1=1 ");
+		StringBuffer sql=new StringBuffer("SELECT t.*,sum(t.yingshou) ,sum(t.yishou) ,sum(t.yifu) ,sum(t.yfk) ,s.userName as xiaoshouyuan from tuanbiao AS t LEFT JOIN users AS s ON s.id=t.xiaoshou    group by team  HAVING 1=1 ");
 		
 		 if(tuanbiao.getTeam()!=null&&!"".equals(tuanbiao.getTeam())){
 	    	   

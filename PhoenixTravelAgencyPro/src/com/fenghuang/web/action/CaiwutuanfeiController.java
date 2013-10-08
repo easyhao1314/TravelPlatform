@@ -52,6 +52,9 @@ public class CaiwutuanfeiController {
 				 tuanbiao.setYsyfID(Integer.parseInt(ysyfid));
 			 }
 			 if(shenfenid!=null&&!"".equals(shenfenid)){
+				 if("4".equals(shenfenid)){
+					 shenfenid="1";
+				 }
 				 tuanbiao.setShenfenid(Integer.parseInt(shenfenid));
 			 }
 			 

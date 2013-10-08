@@ -52,7 +52,7 @@ iconCls="icon-save" plain="true">修改</a>
     
   
 <table id="xinxidg" class="easyui-datagrid"
-data-options="url:'fenghuang/caiwutuanduifeiyong.do?team=${param.team}&&ysyfid=1',border:false,singleSelect:true,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
+data-options="url:'fenghuang/caiwutuanduifeiyong.do?team=${param.team}&&ysyfid=1&&shenfenid=4',border:false,singleSelect:true,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
 pagination="true" toolbar="#tb1">
 <thead>
 <tr>

@@ -213,14 +213,16 @@ return zhuantuanshenpi;
 
 	<div id="fukuandlg" class="easyui-dialog" title="客户财务收款" data-options="iconCls:'icon-save',closed:true,buttons:'#sanpincaiwudlg-buttons'" style="width:400px;height:300px;padding:10px">
         <form id="sanpincaiwuform" action="">
-        	<input title="款项说明" type="hidden" id="kuanxiangshuoming" name="kuanxiang" class="easyui-validatebox">
+        	<input title="款项说明" type="hidden" id="kuanxiangshuoming" name="kxsm" class="easyui-validatebox">
         	款项：<input id="kuanxiang" class="easyui-combotree"  data-options="url:'js/demo/combotree/sanpincaiwukuanxiang.json',method:'get',required:true" style="width:200px;"><br><br>
         	金额：<input id="yishou" name="yishou"  style="width: 300px;"data-options="required:true" class="easyui-numberspinner" min="1" max="10000000"><br><br>
         	备注：<input id="beizhu" name="beizhu"  style="width: 300px;" class="easyui-validatebox"><br><br>
         	<input id="tuanNo" name="tuanduimc" type="hidden" value="${param.tuanNo }"  class="easyui-validatebox">
         	<input id="tuanName" name="team" type="hidden"  class="easyui-validatebox">
+        	<input id="yingshou" name="yingshou" type="hidden"  class="easyui-validatebox">
         	<input id="kehuname" name="khmc" type="hidden" class="easyui-validatebox">
         	<input id="bmid"  type="hidden" class="easyui-validatebox">
+        	<input name="caozuo" type="hidden" value="${sessionScope.userId }" class="easyui-validatebox" >
         	
         	<input type="hidden" name="shenfenid" value="1" class="easyui-validatebox">
         	<input type="hidden" name="caiwuid" value="6" class="easyui-validatebox">        	
@@ -315,9 +317,11 @@ return sexinfo;
 		var row = $("#sanpincaiwudg").datagrid("getSelected");
 		$('#kehuname').attr('value',row.kehuname);
 		$('#bmid').attr('value',row.bmid);
-		$('#yingshou').attr('value',$('#zhikejia').val());
+		var yingshou = $('#zhikejia').val();
+		$('#yingshou').attr('value',yingshou);
 		$('#tuanNo').attr('value',$('#tNo').val());
-		$('#tuanName').attr('value',$('#tName').val());
+		var tName = $('#tName').val();
+		$('#tuanName').attr('value',tName);
 		
 		$('#fukuandlg').dialog('open');
 		

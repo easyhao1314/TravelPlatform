@@ -54,19 +54,19 @@ public class SanpinzhongxinServiceImpl implements ISanpinzhongxinService {
             txl.setXlid(ixls.AddXianlu(x));
             bl=itxls.addTuanXianlu(txl);
             //添加财务
-            Tuanbiao b = new Tuanbiao();
-            b.setTeam(sanpin.getTuanName());
-            b.setTuanduimc(sanpin.getTuanNo());
-            b.setChutuantime(sanpin.getGroupdate());
-            b.setHuituantime(sanpin.getTourdate());
-            b.setRenshu(sanpin.getNumbermaster());
-            b.setYingshou(sanpin.getNumbermaster()*sanpin.getZhikejia());
-            b.setShenfenid(1);
-            b.setYsyfID(1);
-            b.setShanchu(1);
-            b.setHuilvID(1);
-            b.setCaiwuid(1);
-            icaiwu.savefkqr(b);
+//            Tuanbiao b = new Tuanbiao();
+//            b.setTeam(sanpin.getTuanName());
+//            b.setTuanduimc(sanpin.getTuanNo());
+//            b.setChutuantime(sanpin.getGroupdate());
+//            b.setHuituantime(sanpin.getTourdate());
+//            b.setRenshu(sanpin.getNumbermaster());
+//            b.setYingshou(sanpin.getNumbermaster()*sanpin.getZhikejia());
+//            b.setShenfenid(1);
+//            b.setYsyfID(1);
+//            b.setShanchu(1);
+//            b.setHuilvID(1);
+//            b.setCaiwuid(1);
+//            icaiwu.savefkqr(b);
 		}
 		}
 		

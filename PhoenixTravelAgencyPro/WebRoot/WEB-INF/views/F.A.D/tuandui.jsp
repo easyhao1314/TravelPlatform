@@ -41,17 +41,19 @@ href="js/themes/default/easyui.css">
 <!-- 如果在正式开发环境下 url可以为后台的请求，地址 -->
 <div class="easyui-panel" title="团队费用"
 style="height:480px;width: auto;" toolbar="#currencyDatagridtoolbar">	
-<table id="dg" class="easyui-datagrid"
+<table id="tuanduifeiyongdg" class="easyui-datagrid"
 data-options="url:'fenghuang/caiwutdfylbselect.do',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 pagination="true" toolbar="#tb">
 <thead>
 <tr>
 <th data-options="field:'id',editor:'text'" width="5">ID</th>
 
-<th data-options="field:'tuanduimc',editor:'text'" width="10">团队名称</th>
-<th data-options="field:'team',editor:'text'" width="10">团号</th>
+
+<th data-options="field:'tuanduimc',editor:'text'" width="10">团号</th>
+<th data-options="field:'team',editor:'text'" width="10">团名</th>
 <th data-options="field:'chutuantime',editor:'text'" width="10">出团日期</th>
-<th data-options="field:'huituantime',editor:'text'" width="10">回团日期</th>
+<th data-options="field:'huituantime'" width="10">回团日期</th>
+<th data-options="field:'xiaoshouyuan'" width="10">操作人</th>
 <th data-options="field:'yingshou',editor:'text'" width="10">应收</th>
 <th data-options="field:'yishou',editor:'text'" width="10">已收</th>
 <th data-options="field:'yfk',editor:'text'" width="10">应付</th>	
@@ -82,11 +84,11 @@ return '<div style="width: auto;">'+c+'</div>';
 function onClickRow(index) {
 if (editIndex != index) {
 if (endEditing()) {
-$('#dg').datagrid('selectRow', index).datagrid('beginEdit',
+$('#tuanduifeiyongdg').datagrid('selectRow', index).datagrid('beginEdit',
 index);
 editIndex = index;
 } else {
-$('#dg').datagrid('selectRow', editIndex);
+$('#tuanduifeiyongdg').datagrid('selectRow', editIndex);
 }
 }
 }
@@ -94,8 +96,8 @@ $('#dg').datagrid('selectRow', editIndex);
 //条件查询
 function cwtdfyselect(id){
 
-console.info($('#dg').datagrid('options'));
-var opts = $('#dg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
+console.info($('#tuanduifeiyongdg').datagrid('options'));
+var opts = $('#tuanduifeiyongdg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
 var param = {
 team: $("#team").val(),//获取databox的值 ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
 tuanduimc: $("#tuanduimc").val() ,
@@ -111,7 +113,7 @@ data : param,
 type : 'POST' ,
 dataType : 'json' ,
 success : function(data){
-$('#dg').datagrid('loadData',data);
+$('#tuanduifeiyongdg').datagrid('loadData',data);
 }
 });
 }
@@ -121,7 +123,7 @@ function caiwutdfyselecta(id) {
           //通过主键，查询该操作，并处于编辑状态。 是否打开tab，还是直接弹出window
 
 //获取选中 数据
-var row = $("#dg").datagrid("getSelected");
+var row = $("#tuanduifeiyongdg").datagrid("getSelected");
 if(row!=null){
 var url= "tuanduixinxi.do?team="+row.team+"&tuanNo="+row.tuanduimc+"&shenfenid="+row.shenfenid;
        var tab = $('#tt').tabs('getSelected');
