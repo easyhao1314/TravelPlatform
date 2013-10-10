@@ -37,7 +37,7 @@ public class RichengDaoImpl extends BaseDao implements IRichengDao  {
 	@Override
 	public boolean update(Richeng r) throws Exception {
 		// TODO Auto-generated method stub
-		String sql="UPDATE richeng SET xianluid=+1-1";
+		String sql="UPDATE richeng SET xianluid=xianluid+1-1";
 		List list = new ArrayList();
 		StringBuffer sb = new StringBuffer(sql);
 		if(r.getRichenganpai()!=null && !"".equals(r.getRichenganpai())){

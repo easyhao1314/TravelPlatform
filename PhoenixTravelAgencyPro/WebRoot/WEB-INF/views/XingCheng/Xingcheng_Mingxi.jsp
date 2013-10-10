@@ -107,6 +107,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <span>日程安排(少于800汉字)</span>
         <textarea id="richengtext" name="message"  style="height:300px; width: 600px;"></textarea>
     </div>
+<div id="jiudiandlg" class="easyui-dialog" title="设定酒店"  data-options="iconCls:'icon-save',closed:true,modal:true,buttons: 
+	 			[{
+                    text:'保存',
+                    iconCls:'icon-ok',
+                    handler:function(){
+                        jiudianupdateSave();
+                    }
+                },{
+                    text:'关闭',
+                    iconCls:'icon-cancel',
+                    handler:function(){
+                        closeDialog();
+                    }
+                }]" style="width:400px;height:200px;padding:10px">
+        <span>酒店安排</span>
+        <textarea  id="jiudiantext" name="message"  style="height:50px; width: 250px;"></textarea>
+    </div>
+
+
+
+
     
      <div id="huodongdlg" class="easyui-dialog" title="活动设定"  data-options="iconCls:'icon-save',closed:true,modal:true,buttons: 
 	 			[{
@@ -308,8 +329,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				},
          success : function(data) {
 					var result = $.parseJSON(data) ;
-           if(result.success){      
-           	 
+           if(result.success){
              $.messager.alert("保存修改成功","保存成功","info");
            }else{
               $.messager.alert("保存修改失败","保存失败","error");
@@ -365,7 +385,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						 var app='<form id="d'+d+'">'
 						 +'<table border="1" width="800px" >'
 						 	+'<tr><td width="100px;"><strong>日期</strong></td>'
-						 		+'<td valign="middle"><div id="jtcs'+i+'" style="height:20px; backaground-color:yellow"></div><a href="javascript:richenganpaiOpen()"  class="easyui-linkbutton" style="float: right;" iconCls="icon-add" plain="true">酒店</a><a href="javascript:openhuodongDialog(\''+data.rows[i].huodong+'\','+data.rows[i].riid+')"  class="easyui-linkbutton" style="float: right;" iconCls="icon-add" plain="true">活动</a><a  href="javascript:openrichengDialog(\''+data.rows[i].richenganpai+'\','+data.rows[i].riid+')"   class="easyui-linkbutton"   style="float: right;" iconCls="icon-add" plain="true">日程</a></td>'
+						 		+'<td valign="middle"><div id="jtcs'+i+'" style="height:20px; backaground-color:yellow"></div><a href="javascript:void(0)" onclick="openjiudiandlg('+data.rows[i].riid+',\''+data.rows[i].jiudian+'\')"  class="easyui-linkbutton" style="float: right;" iconCls="icon-add" plain="true">酒店</a><a href="javascript:openhuodongDialog(\''+data.rows[i].huodong+'\','+data.rows[i].riid+')"  class="easyui-linkbutton" style="float: right;" iconCls="icon-add" plain="true">活动</a><a  href="javascript:openrichengDialog(\''+data.rows[i].richenganpai+'\','+data.rows[i].riid+')"   class="easyui-linkbutton"   style="float: right;" iconCls="icon-add" plain="true">日程</a></td>'
 						 	+'</tr>'
 						 	+'<tr><td> <a href="javascript:chengshijiaotongdlgOpen('+data.rows[i].riid+')" title="设定当天的交通工具和城市" class="easyui-linkbutton" plain="true" iconCls="icon-reload">第'+d+'天</a></td><td><h4>日程:</h4> <span>'+data.rows[i].richenganpai+'</span><hr /><h4>活动:</h4> <span>'+data.rows[i].huodong+'</span><hr /><h4>住宿:</h4> <span>'+data.rows[i].jiudian+'</span><hr />餐饮：<input name="zao" class="easyui-combobox" data-options="url:\''+zao+'\',valueField:\'dicNo\',textField:\'dicName\',panelHeight:\'auto\',editable:false,onSelect:function(rel){funcanyin(rel,'+data.rows[i].riid+',\'zao\');}" > 中：<input name="zhong" class="easyui-combobox" data-options="url:\''+zhong+'\',valueField:\'dicNo\',textField:\'dicName\',panelHeight:\'auto\',editable:false,onSelect:function(rel){funcanyin(rel,'+data.rows[i].riid+',\'zhong\');}" >晚：<input id="wan" name="wan"  class="easyui-combobox" data-options="url:\''+wan+'\',valueField:\'dicNo\',textField:\'dicName\',panelHeight:\'auto\',editable:false,onSelect:function(rel){funcanyin(rel,'+data.rows[i].riid+',\'wan\');}"></td></tr>'
 						 +'<table></form>';			
@@ -384,6 +404,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       });
   }
 
+function openjiudiandlg(riid,jiudian){
+$('#jiudiantext').val(jiudian);
+$('#riid').val(riid);
+	$('#jiudiandlg').dialog('open');
+}
 function funcanyin(rel,riid,type){
 	var url = 'fenghuang/updatericheng.do?riid='+riid+'&'+type+'='+rel.dicNo;
 	$.ajax({
@@ -398,9 +423,6 @@ function funcanyin(rel,riid,type){
 					}
 				});
 }
-
-  
-  
   
   //修改日程开始
   function richenganpaiOpen(riid){ 
@@ -452,11 +474,6 @@ function closedSearch(){
 				});
   }
   //修改日程结束
-  //保存到行程库开始
-  function XingchengkuSave(){
-       
-  }
-  //保存到行程库结束
   </script>
   <script type="text/javascript">
   	function openrichengDialog(richeng,riid){
@@ -471,6 +488,8 @@ function closedSearch(){
 	$('#richengtext').val("");
 	$('#huodongtext').val("");
 	$('#csjiaotongdlg').dialog('close');
+	$('#jiudiantext').val("");
+	$('#jiudiandlg').dialog('close');
 	}
 	function openhuodongDialog(huodong,riid){
 	$('#riid').attr('value',riid);
@@ -488,6 +507,24 @@ function closedSearch(){
 	}
 	function openloaddialog(){
 	$('#upload').dialog('open');
+	}
+	function jiudianupdateSave(){
+	var riid = $('#riid').val();
+	var jiudian = $('#jiudiantext').val();
+	
+	$.ajax({
+					url :"fenghuang/updatericheng.do?riid="+riid+"&jiudian="+jiudian,
+					data : riid,
+					dataType : "json",
+					success : function(data) {
+						$.messager.alert("保存成功","保存成功","info");
+						document.getElementById("mdiv").innerHTML="";
+						xunhuanRicheng('${param.xianid}');
+					},
+					error : function() {
+						$.messager.alert("保存失败", "服务器请求失败!", "error");
+					}
+				});
 	}
   </script>
   </body>
