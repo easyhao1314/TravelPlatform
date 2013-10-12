@@ -25,7 +25,7 @@
 	&nbsp;&nbsp;&nbsp;&nbsp;旅游者：_____________________等____人（名单可附页，需出境社和旅游者代表签字盖章确认）；<br />
 	&nbsp;&nbsp;&nbsp;&nbsp;出境社：________________________________________________________________________________________________________________________________________________。  <br />                                                       
 	&nbsp;&nbsp;&nbsp;&nbsp;旅行社业务经营许可证编号： _____________________________________________________________________________________________________________________________。<br />                                     
- <div id="divdiyizhangleft" style="width: 50%; font-size: 14px; float: left;  height: 3450px; " align="left">
+ <div id="divdiyizhangleft" style="width: 50%; font-size: 14px; float: left;  height: 3000px; " align="left">
  <p align="center">第一章  定义和概念</p>
  <p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第一条　本合同词语定义</p>
  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;1、出境社，指取得《旅行社业务经营许可证》和《企业法人营业执照》、具有出境旅游业务经营权的旅行社。</p>
@@ -87,7 +87,7 @@
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;3、按照合同约定向旅游者收取全额旅游费用；</p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;4、旅游团队遇紧急情况时，可以采取紧急避险措施并要求旅游者配合；</p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;5、拒绝旅游者提出的超出合同约定的不合理要求。</p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;第七条  出境社的义务</p>
+<p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;第七条  出境社的义务</p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;1、按照合同和《计划书》约定的内容和标准为旅游者提供服务；</p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;2、在出团前召开说明会，把根据《计划书》细化的《行程表》和《行程须知》发给旅游者，如实告知具体行程安排和有关具体事项，具体事项包括但不限于所到国家或者地区的重要规定和风俗习惯、安全避险措施、境外小费标准、外汇兑换事项、应急联络方式（包括我驻外使领馆及出境社境内和境外应急联系人及联系方式）；</p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;3、为旅游团队安排符合《旅行社条例》、《中国公民出国旅游管理办法》等法规、规章规定的持证领队人员；</p>
@@ -96,12 +96,19 @@
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;6、对可能危及旅游者人身、财产安全的事项和须注意的问题，向旅游者做出真实的说明和明确的警示，并采取合理必要措施防止危害发生，旅游者人身、财产权益受到损害时，应采取合理必要的保护和救助措施，避免旅游者人身、财产权益损失扩大；</p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;7、按照相关法规、规章的规定投保旅行社责任保险；</p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;8、提示旅游者购买个人旅游保险；</p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;9、按照合同约定安排购物和另行付费项目，不强迫或者变相强迫旅游者购物和参加另行付费项目；</p>
+ <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;9、按照合同约定安排购物和另行付费项目，不强迫或者变相强迫旅游者购物和参加另行付费项目；</p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;10、旅游者在《计划书》安排的购物场所所购物品系假冒伪劣商品时，旅游者提出索赔的，积极协助旅游者进行索赔，自索赔之日起超过90日，旅游者无法从购物点获得赔偿的，应当先行赔付；</p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;11、向旅游者提供合法的旅游费用发票；</p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;12、依法对旅游者个人信息保密；</p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;13、积极协调处理旅游者在旅游行程中的投诉，出现纠纷时，采取适当措施防止损失扩大；</p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;14、采用拼团方式出团的，出境社仍承担本合同约定的责任和义务。</p>
+ </div>
+ 
+ 
+ 
+ <div id="divdiyizhangright" style="  width: 50%; font-size: 14px; float: left;  height: 3000px;  "  align="left">
+   
+  
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;第八条  旅游者的权利</p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;1、要求出境社按照合同和《计划书》及依据《计划书》细化的《行程表》兑现旅游行程服务；</p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;2、拒绝出境社及其工作人员未经事先协商一致的转团、拼团行为和合同约定以外的购物及另行付费项目安排； </p>
@@ -109,18 +116,11 @@
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;4、在合法权益受到损害时向旅游、工商等部门投诉或者要求出境社协助索赔；</p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;5、《中华人民共和国消费者权益保护法》和有关法律法规赋予消费者的其他各项权利。</p>
 <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;第九条  旅游者的义务</p>
- <p align="center">第四章  合同的变更与转让</p>
+  <p align="center">第四章  合同的变更与转让</p>
    <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;1、如实填写《出境旅游报名表》、签证/签注资料和游客安全保障卡，并对所填的内容承担责任，如实告知出境社工作人员询问的与旅游活动相关的个人健康信息，所提供的联系方式须是经常使用或者能够及时联系到的；</p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;2、向出境社提交的因私护照或者通行证有效期在半年以上，自办签证/签注者应当确保所持签证/签注在出游期间有效；</p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;3、按照合同约定支付旅游费用；</p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;4、按照合同约定随团完成旅游行程，配合领队人员的统一管理，发生突发事件时，采取措施防止损失扩大；</p>
- </div>
- 
- 
- 
- <div id="divdiyizhangright" style="width: 50%; font-size: 14px; float: left;  height: 3450px;  "  align="left">
- 
-  
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;5、遵守我国和旅游目的地国家（地区）的法律法规和有关规定，不携带违禁物品出入境，不在境外滞留不归；</p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;6、遵守旅游目的地国家（地区）的公共秩序，尊重当地的风俗习惯，尊重旅游服务人员的人格，举止文明，不在景观、建筑上乱刻乱画，不随地吐痰和乱扔垃圾，不参与色情、赌博和涉毒活动；</p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;7、妥善保管自己的行李物品，尤其是贵重物品；</p>
@@ -184,59 +184,78 @@
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;1、因旅游者提供材料存在问题或者自身其他原因被拒签、缓签、拒绝入境和出境的，相关责任和费用由旅游者承担，出境社将未发生的费用退还旅游者。如给出境社造成损失的，旅游者还应当承担赔偿责任。</p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;2、由于第三方侵害等不可归责于出境社的原因导致旅游者人身、财产权益受到损害的，出境社不承担赔偿责任。但因出境社不履行协助义务致使旅游者人身、财产权益损失扩大的，应当就扩大的损失承担赔偿责任。</p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;3、旅游者自行安排活动期间人身、财产权益受到损害的，出境社在事前已尽到必要警示说明义务且事后已尽到必要协助义务的，出境社不承担赔偿责任。</p>
-  <p align="center">第七章  协议条款</p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;第十九条  旅游时间</p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;出发时间               ，结束时间                ；共        天        夜。</p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;第二十条  旅游费用及支付</p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;（旅游费用以人民币为计算单位）</p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;成人                元/人；儿童（不满12岁的）               元/人；</p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;合计                          元（其中签证／签注费用                 元/人）。</p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;旅游费用支付的方式和时间</p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;第二十一条  个人旅游保险</p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;旅游者     　   　（同意或者不同意，打勾无效）委托出境社办理旅游者投保的个人旅游保险。</p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;保险产品名称：                              保险人：  </p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;保险金额：                                  保险费：  </p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;第二十二条  成团人数与不成团的约定</p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;最低成团人数          人；低于此人数不能成团时，出境社应当在出发前         日通知旅游者。</p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;如不能成团，旅游者是否同意按下列方式解决：
-  <br>1、             （同意或者不同意，打勾无效）转至                           出境社出团；
-  <br>2、             （同意或者不同意，打勾无效）延期出团；
-  <br>3、             （同意或者不同意，打勾无效）改签其他线路出团。
-  </p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;第二十三条  拼团约定</p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;旅游者           （同意或者不同意，打勾无效）采用拼团方式出团。</p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;第二十四条  黄金周特别约定</p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;黄金周旅游高峰期间，旅游者和出境社对行前退团及取消出团的提前告知时间、相关责任约定如下：</p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;提前告知时间	旅游者行前退团应当支付出境社的业务损失费占旅游费用总额的百分比	出境社取消出团应当支付旅游者的违约金占旅游费用总额的百分比
-  <br>出发前    日至    日
-  <br>出发前    日至    日
-  <br>出发前    日至    日
-  <br>出发前    日至    日
-  <br>出发前    日至    日
-  </p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;第二十五条  争议的解决方式</p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;本合同履行过程中发生争议，由双方协商解决，亦可向合同签订地的旅游质监执法机构、消费者协会等有关部门或者机构申请调解。协商或者调解不成的，按下列第　       　种方式解决：</p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;1、提交                            仲裁委员会仲裁；</p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;2、依法向人民法院起诉。</p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;第二十六条  其他约定事项</p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;未尽事宜，经旅游者和出境社双方协商一致，可以列入补充条款。</p>
+  
  </div>		
  
  
- <div align="center" style="">
- <p>旅游者代表签字（盖章）：__________出境社盖章：_____________。</p>                            
-<p>证件号码______________签约代表签字（盖章）：______________。   </p>
-<p>住    址：___________________________。 营业地址：________________________。 </p>
-<p>联系电话：_______________。联系客服及电话： _______________。     </p>
-<p>传    真：_______________。 传    真：_______________。    </p>
-<p>邮    编：_______________。邮    编：_______________。   </p>
-<p>电子信箱： _______________。电子信箱：_______________。 </p>
-<p>签约日期：____________。签约日期：____________。　</p>
-<p>签约地点：_____________________。 </p>
-<p>出境社监督、投诉电话：__________________。     </p>
-<p>_________省_________市旅游质监执法机构：_______________。</p>
-<p>投诉电话：____________电子邮箱：_______________。 </p>
-<p>地  址：__________________。邮    编：_________。  </p>                          
+ 
+ <div id="diqizhang"  style="">
+ <p align="center">第七章  协议条款</p>
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;第十九条  旅游时间</p>
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;出发时间 __________________，结束时间 ________________；共_______________天______________夜。</p>
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;第二十条  旅游费用及支付</p>
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;（旅游费用以人民币为计算单位）</p>
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;成人__________________ 元/人；儿童（不满12岁的）_______________________元/人；</p>
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;合计___________________元（其中签证／签注费用_________________元/人）。</p>
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;旅游费用支付的方式和时间</p>
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;第二十一条  个人旅游保险</p>
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;旅游者_________________________（同意或者不同意，打勾无效）委托出境社办理旅游者投保的个人旅游保险。</p>
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;保险产品名称：___________________________________保险人：__________________________________</p>
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;保险金额：____________________________保险费：_____________________________</p>
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;第二十二条  成团人数与不成团的约定</p>
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;最低成团人数________________人；低于此人数不能成团时，出境社应当在出发前______________________日通知旅游者。</p>
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;如不能成团，旅游者是否同意按下列方式解决：
+  <br>&nbsp;&nbsp;&nbsp;&nbsp;1、_____________________________（同意或者不同意，打勾无效）转至______________________________________ 出境社出团；
+  <br>&nbsp;&nbsp;&nbsp;&nbsp;2、_____________________________（同意或者不同意，打勾无效）延期出团；
+  <br>&nbsp;&nbsp;&nbsp;&nbsp;3、_____________________________（同意或者不同意，打勾无效）改签其他线路出团。
+  </p>
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;第二十三条  拼团约定</p>
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;旅游者_________________________________（同意或者不同意，打勾无效）采用拼团方式出团。</p>
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;第二十四条  黄金周特别约定</p>
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;黄金周旅游高峰期间，旅游者和出境社对行前退团及取消出团的提前告知时间、相关责任约定如下：</p>
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;提前告知时间	旅游者行前退团应当支付出境社的业务损失费占旅游费用总额的百分比	出境社取消出团应当支付旅游者的违约金占旅游费用总额的百分比</p>
+  <TABLE style="BORDER-COLLAPSE: collapse" borderColor=#000000 height=40 cellPadding=1 width=1200 align=center border=1>
+<TBODY>
+<TR>
+<TD><DIV align=center>提前告知时间</DIV></TD><TD><DIV align=center>旅游者行前退团应当支付出境社的业务损失费占旅游费用总额的百分比</DIV></TD><TD><DIV align=center>出境社取消出团应当支付旅游者的违约金占旅游费用总额的百分比</DIV></TD>
+</TR>
+<TR>
+<TD><DIV align=center>出发前_______日至_______日</DIV></TD><TD><DIV align=center></DIV></TD><TD><DIV align=center></DIV></TD>
+</TR>
+<TR>
+<TD><DIV align=center>出发前_______日至_______日</DIV></TD><TD><DIV align=center></DIV></TD><TD><DIV align=center></DIV></TD>
+</TR>
+<TR>
+<TD><DIV align=center>出发前_______日至_______日</DIV></TD><TD><DIV align=center></DIV></TD><TD><DIV align=center></DIV></TD>
+</TR>
+<TR>
+<TD><DIV align=center>出发前_______日至_______日</DIV></TD><TD><DIV align=center></DIV></TD><TD><DIV align=center></DIV></TD>
+</TR>
+<TR>
+<TD><DIV align=center>出发前_______日至_______日</DIV></TD><TD><DIV align=center></DIV></TD><TD><DIV align=center></DIV></TD>
+</TR>
+</TBODY>
+</TABLE>
+
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;第二十五条  争议的解决方式</p>
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;本合同履行过程中发生争议，由双方协商解决，亦可向合同签订地的旅游质监执法机构、消费者协会等有关部门或者机构申请调解。协商或者调解不成的，按下列第__________种方式解决：</p>
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;1、提交_________________________________________________仲裁委员会仲裁；</p>
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;2、依法向人民法院起诉。</p>
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;第二十六条  其他约定事项</p>
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;未尽事宜，经旅游者和出境社双方协商一致，可以列入补充条款。</p>
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;旅游者代表签字（盖章）：_____________________出境社盖章：___________________________。</p>                            
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;证件号码____________________________________签约代表签字（盖章）：_____________________________。   </p>
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;住    址：_____________________________________________。 营业地址：_________________________________________。 </p>
+<p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;联系电话：_________________________________。联系客服及电话： _______________________________________________。     </p>
+<p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;传    真：_____________________________________。 传    真：___________________________________。    </p>
+<p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;邮    编：________________________________________。邮    编：_____________________________________。   </p>
+<p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;电子信箱：_____________________________________________。电子信箱：_________________________________________。 </p>
+<p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;签约日期：________________________________________。签约日期：____________________________________。　</p>
+<p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;签约地点：___________________________________________________________________________。 </p>
+<p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;出境社监督、投诉电话：______________________________________________________________________。     </p>
+<p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;_________________省__________________市旅游质监执法机构：_______________________________。</p>
+<p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;投诉电话：_______________________电子邮箱：________________________________。 </p>
+<p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;地  址：___________________________。邮    编：_________________________________。  </p>                          
                                   
                        
 
