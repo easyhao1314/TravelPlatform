@@ -204,7 +204,7 @@ public class SanpinAction {
 	//分页散拼列表
 	@RequestMapping("fenghuang/Sanpinliebiao.do")
 	@ResponseBody
-	public Map<String,Object> DantuanXunjia(HttpServletRequest request,
+	public Map<String,Object> Sanpinliebiao(HttpServletRequest request,
 			HttpServletResponse response, Integer page,Integer rows
 			) {
 		try {
@@ -280,6 +280,31 @@ public class SanpinAction {
 		return null;
 
 	}
+	
+	
+	@RequestMapping("fenghuang/deletesanpin.do")
+	@ResponseBody
+	public Map<String,Object> deletesanpin(HttpServletRequest request,HttpServletResponse response,String tuanNo,String xianluid) {
+	Sanpinzhongxin sanpin = new Sanpinzhongxin();
+	if(tuanNo!=null && !"".equals(tuanNo)){
+		sanpin.setTuanNo(tuanNo);
+	}
+	boolean isSuccess = false;
+	Map<String,Object> result = new HashMap<String, Object>();
+	try {
+		
+		isSuccess=true;
+		iss.DeleteSanpinzhongxin(sanpin, xianluid);
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		isSuccess=false;
+	}
+		result.put("success", isSuccess);
+		return result;
+	}
+	
+	
 
 	
 	

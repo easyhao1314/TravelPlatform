@@ -286,5 +286,13 @@ public class SanpinzhongxinDaoImpl extends BaseDao implements ISanpinzhongxinDao
 		
 		return num>0;
 	}
+	@Override
+	public boolean DeleteSanpinzhongxin(Sanpinzhongxin sanpin, String xianluid)
+			throws Exception {
+		// TODO Auto-generated method stub
+		StringBuffer sb = new StringBuffer("delete from sanpinzhongxin where tuanNo=?");
+		int num = this.update(sb.toString(),sanpin.getTuanNo());
+		return num>0;
+	}
 
 }

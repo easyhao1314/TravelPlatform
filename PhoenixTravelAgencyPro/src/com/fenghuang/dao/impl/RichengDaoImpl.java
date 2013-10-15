@@ -29,8 +29,15 @@ public class RichengDaoImpl extends BaseDao implements IRichengDao  {
 	@Override
 	public boolean delete(Richeng r) throws Exception {
 		// TODO Auto-generated method stub
-		String sql ="delete from richeng where 1=1 and riid=?";
-		int update = this.update(sql,r.getRiid());
+		String sql ="delete from richeng where 1=1";
+		StringBuffer sb = new StringBuffer(sql);
+		List l = new ArrayList();
+		if(r.getXianluid()!=0){
+			sb.append(" and richeng.xianluid = ?");
+			l.add(r.getXianluid());
+		}
+		
+		int update = this.update(sb.toString(),l.toArray());
 		return update>0;
 	}
 

@@ -11,5 +11,6 @@ public interface ISanpinzhongxinDao {
 	public Pagination<Sanpinzhongxin> getByQueryConditionPagination(int currentPage,int numPerPage,Sanpinzhongxin s) throws Exception;
 	//修改散拼中心
 	public boolean upSanpinzhongxin(Sanpinzhongxin sanpin)throws Exception;
-	
+	//删除散拼
+	public boolean DeleteSanpinzhongxin(Sanpinzhongxin sanpin,String xianluid)throws Exception;
 }

@@ -163,12 +163,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <div>
   <h4>出境团基础信息</h4>
-    预警人数<input class="easyui-validatebox" type="text" name="predict" style=" "></input>
-  报警人数<input class="easyui-validatebox" type="text" name="report" style=" "></input>
-  需办签证<select id="cc" class="easyui-combobox" name="visa" style="width: 100px;">
-		<option value="1">是</option>
-		<option value="2">否</option>
-	</select>
+   预报人数<input class="easyui-validatebox" type="text" name="predict" style=" "></input>
+
   </div>
         <div>
         <h4>扩展信息</h4>

@@ -23,7 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-  <!-- 下拉列表 -->
+
    <div id="tb">
 		<a href="javascript:Select();" class="easyui-linkbutton"
 			iconCls="icon-save" plain="true">查询</a>
@@ -31,6 +31,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			iconCls="icon-edit" plain="true">修改</a>
 		<a href="javascript:UpdateSanpinstate();" class="easyui-linkbutton"
 			iconCls="icon-edit" plain="true">正式收客</a>
+		<a href="javascript:DeleteSanpin();" class="easyui-linkbutton"
+			iconCls="icon-cut" plain="true">删除</a>
 	</div>
 <table id="dg" class="easyui-datagrid"
 		data-options="url:'fenghuang/Sanpinliebiao.do?fabustate=1&master=${sessionScope.userId}',border:false,singleSelect:true,fit:true,fitColumns:true, onClickRow: onClickRow,onRowContextMenu: sanpincaozuoMenu"
@@ -434,6 +436,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	});
 	
  }
+ function DeleteSanpin(){
+ 	var row = $('#dg').datagrid('getSelected');
+ 		$.messager.confirm('提示', '是否删除“'+row.tuanName+'”?，继续将会删除之前所有做过的形成！！', function(r){
+			if (r){
+				$.ajax({
+					url :"fenghuang/deletesanpin.do?tuanNo="+row.tuanNo+"&xianluid="+row.xlid,
+					data :row.tuanNo,
+					dataType : "json",
+					success : function(data) {
+					$.messager.alert("消息", "删除成功!", "info");
+					$('#dg').datagrid('reload');
+					},
+					error : function() {
+					$.messager.alert("消息", "删除失败!", "error");
+					}
+				});
+				
+			}
+		});
+ }
+ 
+ 
+ 
 	</script>
 
   </body>

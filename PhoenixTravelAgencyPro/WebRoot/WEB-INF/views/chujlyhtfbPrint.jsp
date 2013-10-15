@@ -25,7 +25,7 @@
 	&nbsp;&nbsp;&nbsp;&nbsp;旅游者：_____________________等____人（名单可附页，需出境社和旅游者代表签字盖章确认）；<br />
 	&nbsp;&nbsp;&nbsp;&nbsp;出境社：________________________________________________________________________________________________________________________________________________。  <br />                                                       
 	&nbsp;&nbsp;&nbsp;&nbsp;旅行社业务经营许可证编号： _____________________________________________________________________________________________________________________________。<br />                                     
- <div id="divdiyizhangleft" style="width: 50%; font-size: 14px; float: left;  height: 3000px; " align="left">
+ <div id="divdiyizhangleft" style="width: 50%; font-size: 14px; float: left;  height: 3000px; margin-bottom: 400px; " align="left">
  <p align="center">第一章  定义和概念</p>
  <p align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第一条　本合同词语定义</p>
  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;1、出境社，指取得《旅行社业务经营许可证》和《企业法人营业执照》、具有出境旅游业务经营权的旅行社。</p>
@@ -106,7 +106,7 @@
  
  
  
- <div id="divdiyizhangright" style="  width: 50%; font-size: 14px; float: left;  height: 3000px;  "  align="left">
+ <div id="divdiyizhangright" style="  width: 50%; font-size: 14px; float: left;  height: 3000px; margin-bottom: 400px; "  align="left">
    
   
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;第八条  旅游者的权利</p>
@@ -189,7 +189,7 @@
  
  
  
- <div id="diqizhang"  style="">
+ <div id="diqizhang"  style=" margin-top: 500px;">
  <p align="center">第七章  协议条款</p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;第十九条  旅游时间</p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;出发时间 __________________，结束时间 ________________；共_______________天______________夜。</p>
@@ -214,7 +214,7 @@
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;第二十四条  黄金周特别约定</p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;黄金周旅游高峰期间，旅游者和出境社对行前退团及取消出团的提前告知时间、相关责任约定如下：</p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;提前告知时间	旅游者行前退团应当支付出境社的业务损失费占旅游费用总额的百分比	出境社取消出团应当支付旅游者的违约金占旅游费用总额的百分比</p>
-  <TABLE style="BORDER-COLLAPSE: collapse" borderColor=#000000 height=40 cellPadding=1 width=1200 align=center border=1>
+  <TABLE style="margin-left:35px;   BORDER-COLLAPSE: collapse" borderColor=#000000 height=40 cellPadding=1 width=1000 align=center border=1 >
 <TBODY>
 <TR>
 <TD><DIV align=center>提前告知时间</DIV></TD><TD><DIV align=center>旅游者行前退团应当支付出境社的业务损失费占旅游费用总额的百分比</DIV></TD><TD><DIV align=center>出境社取消出团应当支付旅游者的违约金占旅游费用总额的百分比</DIV></TD>

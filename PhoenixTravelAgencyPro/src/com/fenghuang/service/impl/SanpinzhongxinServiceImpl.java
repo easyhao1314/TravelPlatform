@@ -9,10 +9,12 @@ import org.springframework.stereotype.Service;
 import com.fenghuang.dao.ISanpinzhongxinDao;
 import com.fenghuang.dao.IUserDao;
 import com.fenghuang.dao.IcaiwufkqrDao;
+import com.fenghuang.entiey.Richeng;
 import com.fenghuang.entiey.Sanpinzhongxin;
 import com.fenghuang.entiey.TuanXianlu;
 import com.fenghuang.entiey.Tuanbiao;
 import com.fenghuang.entiey.Xianlu;
+import com.fenghuang.service.IRichengService;
 import com.fenghuang.service.ISanpinzhongxinService;
 import com.fenghuang.service.IXianluService;
 import com.fenghuang.service.ItuanXianluService;
@@ -27,6 +29,8 @@ public class SanpinzhongxinServiceImpl implements ISanpinzhongxinService {
 	 ItuanXianluService itxls;
 	@Autowired
 	IcaiwufkqrDao icaiwu;
+	@Autowired
+	IRichengService iricheng;
 	@Override
 	public boolean AddSanpinzhongxin(Sanpinzhongxin sanpin,String areatypetext) throws Exception {
 		// TODO Auto-generated method stub
@@ -83,6 +87,17 @@ public class SanpinzhongxinServiceImpl implements ISanpinzhongxinService {
 	public boolean upSanpinzhongxin(Sanpinzhongxin sanpin) throws Exception {
 		// TODO Auto-generated method stub
 		return isanpin.upSanpinzhongxin(sanpin);
+	}
+	@Override
+	public boolean DeleteSanpinzhongxin(Sanpinzhongxin sanpin, String xianluid)
+			throws Exception {
+		// TODO Auto-generated method stub
+		Richeng r=new Richeng();
+		r.setXianluid(Long.parseLong(xianluid));
+		boolean b = iricheng.delete(r);
+		b = isanpin.DeleteSanpinzhongxin(sanpin, xianluid);
+		return b; 
+				
 	}
 
 }
