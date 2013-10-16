@@ -92,9 +92,12 @@ public class SanpinzhongxinServiceImpl implements ISanpinzhongxinService {
 	public boolean DeleteSanpinzhongxin(Sanpinzhongxin sanpin, String xianluid)
 			throws Exception {
 		// TODO Auto-generated method stub
+		boolean b;
+		if(xianluid!=null && !"".equals(xianluid)){
 		Richeng r=new Richeng();
 		r.setXianluid(Long.parseLong(xianluid));
-		boolean b = iricheng.delete(r);
+		b = iricheng.delete(r);
+		}
 		b = isanpin.DeleteSanpinzhongxin(sanpin, xianluid);
 		return b; 
 				
