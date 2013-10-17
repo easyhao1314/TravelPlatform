@@ -39,7 +39,7 @@ public class SanpinzhongxinDaoImpl extends BaseDao implements ISanpinzhongxinDao
 				"teamexplains," +"Servicesinclude," +
 				"servicenoinclude,notes," +
 				"Reviewstatus,Shenpijia," +
-				"dakehujia,zhikejia,tonghang,ertongzhanchuang,ertongbuzhanchuang,zibeiqianjia,numberday,zao,zhong,wan,groupdate,Tourdate,jiantuanren) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				"dakehujia,zhikejia,tonghang,ertongzhanchuang,ertongbuzhanchuang,zibeiqianjia,numberday,zao,zhong,wan,groupdate,Tourdate,jiantuanren,beizhu) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		int num = this.update(sql,
 				sanpin.getTuanNo(),
 				sanpin.getTuanName(),
@@ -75,7 +75,8 @@ public class SanpinzhongxinDaoImpl extends BaseDao implements ISanpinzhongxinDao
 		        sanpin.getWan(),
 		        sanpin.getGroupdate(),
 	 	        sanpin.getTourdate(),
-	 	        sanpin.getJiantuanren());
+	 	        sanpin.getJiantuanren(),
+	 	        sanpin.getBeizhu());
 		return num>0;
 	}
 	@Override
@@ -277,7 +278,10 @@ public class SanpinzhongxinDaoImpl extends BaseDao implements ISanpinzhongxinDao
 			sb.append(",tupian=?");
 			list.add(sanpin.getTupian());
 		}
-		
+		if(sanpin.getBeizhu()!=null && !"".equals(sanpin.getBeizhu())){
+			sb.append(",beizhu=?");
+			list.add(sanpin.getBeizhu());
+		}
 		if(sanpin.tuanNo!=null && !"".equals(sanpin.getTuanNo())){
 			sb.append(" where tuanNo=?");
 			list.add(sanpin.getTuanNo());

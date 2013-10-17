@@ -32,12 +32,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<form id="addForm" method="post">
 			<table align="left">
 				<tr>
-<td><div class="fitem"><label>客户名称:</label></td><td><input id="khId" name="khId" class="easyui-combobox" data-options="
-					url:'fenghuang/findAllCustomName.do',
-					 method:'get',
-					valueField:'id',
-					textField:'name',
-					panelHeight:'auto'"></div>
+<td><div class="fitem"><label>客户名称:</label></td><td>	<select class="easyui-combogrid" style="width:250px" data-options="
+			panelWidth: 500,
+			idField: 'id',
+			textField: 'name',
+			url: 'fenghuang/customInfoList.do',
+			columns: [[
+				{field:'id',title:'Item ID',width:80},
+				{field:'name',title:'Product',width:120},
+				{field:'listprice',title:'List Price',width:80,align:'right'},
+				{field:'unitcost',title:'Unit Cost',width:80,align:'right'},
+				{field:'attr1',title:'Attribute',width:200},
+				{field:'status',title:'Status',width:60,align:'center'}
+			]],
+			fitColumns: true
+		">
+	</select>
+</div>
      <a href="javascript:addKehu();" class="easyui-linkbutton" iconCls="icon-ok">新增客户</a></td>
 <td><div class="fitem"><label>团号:</label></td><td></div></td>
 </tr>

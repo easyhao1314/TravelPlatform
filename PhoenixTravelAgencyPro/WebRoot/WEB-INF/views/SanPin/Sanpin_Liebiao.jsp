@@ -43,6 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<th data-options="field:'zhikejia'" width="50">直客价</th>
 				<th data-options="field:'numbermaster',formatter:yushouyishou"  width="50">预收/已收</th>
 				<th data-options="field:'shoukestate',formatter:openshouke" width="50">收客状态</th>
+				<th data-options="field:'beizhu'" width="50">备注</th>
 				<th data-options="field:'productbrand',hidden:true" width="50">产品品牌_隐藏的</th>
 			</tr>
 		</thead>
@@ -111,7 +112,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div onClick="testView(5)">查看5</div>
 	</div>
 	<!-- 收客状态下拉菜单 -->
-	<div id="mmshouke" class="easyui-menu" style="width:120px;">
+	<!--  <div id="mmshouke" class="easyui-menu" style="width:120px;">
 		<input id="shoukeinput" style="display: none;" />
 		<div data-options="iconCls:'icon-edit'" onClick="updateshouke(1)">在收客</div>
 		<div data-options="iconCls:'icon-edit'" onClick="updateshouke(2)">已封团</div>
@@ -119,7 +120,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div data-options="iconCls:'icon-edit'" onClick="updateshouke(4)">已出团</div>
 		<div data-options="iconCls:'icon-edit'" onClick="updateshouke(5)">已回团</div>
 	</div>
-	
+	-->
 	
 	
 	

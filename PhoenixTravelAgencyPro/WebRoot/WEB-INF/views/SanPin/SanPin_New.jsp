@@ -32,7 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	<td>大客户：</td><td><input class="easyui-validatebox" type="text" name="dakehujia" style="width: 50px; height: 15px;"></input></td>
   	<td>直客：</td><td><input class="easyui-validatebox" type="text" name="zhikejia" style="width: 50px; height: 15px;"></input></td>
   	<td>同行：</td><td><input class="easyui-validatebox" type="text" name="tonghang" style="width: 50px; height: 15px;"></input></td>
-  	<td>儿童站床：</td><td><input class="easyui-validatebox" type="text" name="ertongzhanchuang" style="width: 50px; height: 15px;"></input></td>
+  	<td>儿童占床：</td><td><input class="easyui-validatebox" type="text" name="ertongzhanchuang" style="width: 50px; height: 15px;"></input></td>
  	<td>儿童不占床：</td><td><input class="easyui-validatebox" type="text" name="ertongbuzhanchuang" style="width: 50px; height: 15px;"></input></td>
  	<td>自备签价：</td><td><input class="easyui-validatebox" type="text" name="zibeiqianjia" style="width: 50px; height: 15px;"></input></td>
   	</tr>
@@ -183,6 +183,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    参团须知： 
    <br>      
    <textarea name="notes" style="height:60px; width: 500px;"></textarea>
+   <br>
+   备注： 
+   <br>      
+   <textarea name="beizhu" style="height:60px; width: 500px;"></textarea>
    <br>
   <a href="javascript:sanpinSave();" class="easyui-linkbutton" >保存</a>
         </div>

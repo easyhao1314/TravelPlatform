@@ -141,6 +141,8 @@
 					<li iconCls="icon-gears"><a
 						href="javascript:open1('散拼团列表','SanPin_liebiao.do');">散拼团列表</a></li>
 					<li iconCls="icon-gears"><a
+						href="javascript:open1('我的已发布的散拼团','Sanpin_yibufa.do');">我的已发布的散拼团</a></li>
+					<li iconCls="icon-gears"><a
 						href="javascript:open1('退团申请','SanPin_tuituan.do?shenpitype=1');">退团申请</a>
 					</li>
 					<li iconCls="icon-gears"><a
@@ -239,6 +241,16 @@
 				<ul>
 					<li iconCls="icon-gears"><a
 						href="javascript:open1('导游-导游类型字典','dictionaryDesc.do?dicType=15');">导游-导游类型字典</a>
+					</li>
+				</ul>
+				<ul>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('产品-品牌字典维护','dictionaryDesc.do?dicType=32');">产品-品牌字典维护</a>
+					</li>
+				</ul>
+				<ul>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('产品-类型字典维护','dictionaryDesc.do?dicType=31');">产品-类型字典维护</a>
 					</li>
 				</ul>
 

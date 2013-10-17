@@ -162,6 +162,17 @@ public class Sanpinzhongxin {
     * 
     *  */
    private long jiantuanren;
+   /** 备注
+    * 
+    *  */
+   private String beizhu;
+   
+public String getBeizhu() {
+	return beizhu;
+}
+public void setBeizhu(String beizhu) {
+	this.beizhu = beizhu;
+}
 public long getJiantuanren() {
 	return jiantuanren;
 }
