@@ -220,7 +220,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					}else{
 					 	$.messager.confirm('提示', '系统 会根据散拼行程天数生成新的日程，是否继续?', function(r){
 							if (r){
-									$.ajax({
+					$.ajax({
 					url :"fenghuang/shengchengricheng.do?xianid="+xianid+"&numberday="+numberday,
 					data :xianid,
 					dataType : "json",

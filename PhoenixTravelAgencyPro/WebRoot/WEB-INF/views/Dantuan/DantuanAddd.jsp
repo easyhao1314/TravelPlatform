@@ -32,17 +32,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<form id="addForm" method="post">
 			<table align="left">
 				<tr>
-<td><div class="fitem"><label>客户名称:</label></td><td>	<select class="easyui-combogrid" style="width:250px" data-options="
+<td><div class="fitem"><label>客户名称:</label></td><td>	<select name="khId" class="easyui-combogrid" style="width:250px" data-options="
 			panelWidth: 500,
 			idField: 'id',
 			textField: 'name',
 			url: 'fenghuang/customInfoList.do',
 			columns: [[
-				{field:'id',title:'Item ID',width:80},
-				{field:'name',title:'Product',width:120},
-				{field:'listprice',title:'List Price',width:80,align:'right'},
-				{field:'unitcost',title:'Unit Cost',width:80,align:'right'},
-				{field:'attr1',title:'Attribute',width:200},
+				{field:'id',title:'客户编号',width:80},
+				{field:'name',title:'客户名称',width:120},
+				{field:'lxr',title:'联系人',width:80,align:'right'},
+				{field:'telePhone',title:'联系电话',width:80,align:'right'},
+				{field:'cjtime',title:'添加时间',width:200},
 				{field:'status',title:'Status',width:60,align:'center'}
 			]],
 			fitColumns: true
@@ -69,7 +69,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	"></div></td>
 </tr>
 <tr>
-<td><div class="fitem"><label>团名：</label></td><td><input name="tuanName" class="easyui-validatebox"></div></td>
+<td><div class="fitem"><label>团名：</label></td><td><input name="tuanName" class="easyui-validatebox" required="true"></div></td>
 <td><div class="fitem"><label>团对状态：</label></td><td><input name="tdzt" class="easyui-combobox" data-options="
 					url:'fenghuang/getDicByTypeComboboxs.do?dicType=3',
 					valueField:'dicNo',
@@ -93,7 +93,7 @@ data-options="
 <tr>
 <td><div class="fitem"><label>出访天数：</label></td><td><input id="cfts" name="cfts" class="easyui-numberbox" required="false"></div></td>
 <!-- CountryState 国家所属州 --> 
-<td><div class="fitem"><label>旅游区域：</label></td><td><input id="lyqy" name="lyqy" class="easyui-combobox"
+<td><div class="fitem"><label>旅游区域：</label></td><td><input id="lyqy" name="lyqy" required="true" class="easyui-combobox"
  data-options="url:'fenghuang/getDicByTypeComboboxs.do?dicType=6',
 					valueField:'dicNo',
 					textField:'dicName',
@@ -230,7 +230,7 @@ data-options="
 <tr><td colspan="4" align="center"><a href="javascript:dantuanSave();" class="easyui-linkbutton" iconCls="icon-ok">保存</a> <input  type="reset" value="重置"></td>
 </tr>
 			</table>
-	<input id="areatype" name="areatypetext"  >
+	<input id="areatype" type="hidden" name="areatypetext"  >
 		</form>
 	</div>
 	
@@ -390,7 +390,6 @@ data-options="
 			
 			function dantuanSave() {
 			var areatype = $('#lyqy').combobox('getText');
-			alert(areatype);
 			$('#areatype').attr('value',areatype);
 			
 			$('#addForm').form('submit', {

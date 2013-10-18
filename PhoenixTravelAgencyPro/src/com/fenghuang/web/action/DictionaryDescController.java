@@ -83,7 +83,7 @@ public class DictionaryDescController {
 			page=1;
 		}
 		if(rows==null){
-			rows=2;
+			rows=50;
 		}
 		
 		try {

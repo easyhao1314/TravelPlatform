@@ -26,7 +26,7 @@ public class XianluServiceImpl implements IXianluService{
 		// TODO Auto-generated method stub
 		 int count=0;
 		count=xldao.AddXianlu(x);
-		/*if(count>0){
+		if(count>0){
 			Richeng r=new Richeng();
 			for(int i=0;i<x.getTianshu();i++){
 			
@@ -34,7 +34,7 @@ public class XianluServiceImpl implements IXianluService{
 			
 			richengs.insert(r);
 			}
-		}*/
+		}
 		return count;
 	}
 
