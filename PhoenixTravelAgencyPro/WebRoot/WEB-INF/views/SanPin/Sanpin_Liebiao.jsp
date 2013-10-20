@@ -151,6 +151,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    			}
    			function openSanpinDetail(tuanNo,tuanName,xlid){
    				var url= "Sanpin_mingxi.do?tuanNo="+tuanNo+"&tuanName="+tuanName+"&xianid="+xlid;
+   				window.open (url, 'newwindow', 'height=100, width=400, top=0,left=0, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no'); 
+   				return;
        var tab = $('#tt').tabs('getSelected'); 
 		if (tab){  
 	                 var index = $('#tt').tabs('getTabIndex', tab); 

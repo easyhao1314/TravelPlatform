@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.fenghuang.dao.ISanpinzhongxinDao;
 import com.fenghuang.dao.IUserDao;
+import com.fenghuang.dao.IXianluDao;
 import com.fenghuang.dao.IcaiwufkqrDao;
 import com.fenghuang.entiey.Richeng;
 import com.fenghuang.entiey.Sanpinzhongxin;
@@ -25,6 +26,8 @@ public class SanpinzhongxinServiceImpl implements ISanpinzhongxinService {
 	private ISanpinzhongxinDao isanpin;
 	@Autowired
 	 IXianluService ixls;
+	@Autowired
+	 IXianluDao ixlsdao;
 	@Autowired
 	 ItuanXianluService itxls;
 	@Autowired
@@ -52,7 +55,7 @@ public class SanpinzhongxinServiceImpl implements ISanpinzhongxinService {
 			x.setGuojia((int)sanpin.getNumbercountry());
 			x.setTianshu(sanpin.getNumberday());
 			x.setXianluname(sanpin.getTuanName());
-            ixls.AddXianlu(x);          
+			ixlsdao.AddXianlu(x);          
             TuanXianlu txl=new TuanXianlu();
             txl.setTuanNo(sanpin.getTuanNo());
             txl.setXlid(ixls.AddXianlu(x));

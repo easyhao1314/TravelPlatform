@@ -19,11 +19,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+	<link rel="stylesheet" type="text/css"
+	href="js/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="js/themes/icon.css">
+<link rel="stylesheet" type="text/css" href="js/demo/demo.css">
+<!-- 这里主要是jquery的js文件  -->
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="js/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="js/jquery.json.js"></script>
+<script type="text/javascript" src="js/datagrid-groupview.js"></script>
 
   </head>
   
   <body>
-  	<div id="sanpinzuo" style=" width: 500px; float: left;">
+  	<div id="sanpinzuo" style=" width: 100%;">
   		<div id="zuozuo" style="float: left; margin-right: 20px; margin-top: 40px;"><img id="sanpintupian" alt="点击设定行程图片" width="150px" height="150px" onclick="opentupiandlg()" style=""></div>
   		<div id="zuoyou" style="margin-top: 10px; margin-bottom: 30px;">
     <span style="margin: 20px;"><b><font color=#0000ff>${param.tuanName}</font></b></span>
@@ -37,16 +47,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<li>产品品牌：<span id="prand"></span></li>
     </ul>
     	</div>
-    	<TABLE style="BORDER-RIGHT: #0076C8 2px dotted; BORDER-TOP: #0076C8 2px dotted; BORDER-LEFT: #0076C8 2px dotted; BORDER-BOTTOM: #0076C8 2px dotted; BORDER-COLLAPSE: collapse;margin-bottom: 10px;" borderColor=#0076C8  cellPadding=1 width=490 align=center border=2>
+    	<TABLE style="BORDER-RIGHT: #0076C8 2px dotted; BORDER-TOP: #0076C8 2px dotted; BORDER-LEFT: #0076C8 2px dotted; BORDER-BOTTOM: #0076C8 2px dotted; BORDER-COLLAPSE: collapse;margin-bottom: 10px;" borderColor=#0076C8  cellPadding=1 width=100% align=center border=2>
 			<TBODY>
 				<TR style="text-align: left; COLOR: #0076C8; BACKGROUND-COLOR: #F4FAFF; ">
 					<TD>
-						<font size="3" style="font-weight: bold">产品特点</font><br><span id="tedian" style="width: 300px;"></span>
+						<font size="3" style="font-weight: bold">产品特点</font><br><span id="tedian" style="width: 100%;"></span>
 					</TD>
 				</TR>
 			</TBODY>
 		</TABLE>
-		<TABLE style="BORDER-RIGHT: #0076C8 2px dotted; BORDER-TOP: #0076C8 2px dotted; BORDER-LEFT: #0076C8 2px dotted; BORDER-BOTTOM: #0076C8 2px dotted; BORDER-COLLAPSE: collapse;margin-bottom: 10px;" borderColor=#0076C8  cellPadding=1 width=490 align=center border=2>
+		<TABLE style="BORDER-RIGHT: #0076C8 2px dotted; BORDER-TOP: #0076C8 2px dotted; BORDER-LEFT: #0076C8 2px dotted; BORDER-BOTTOM: #0076C8 2px dotted; BORDER-COLLAPSE: collapse;margin-bottom: 10px;" borderColor=#0076C8  cellPadding=1 width=100% align=center border=2>
 			<TBODY>
 				<TR style="text-align: left; COLOR: #0076C8; BACKGROUND-COLOR: #F4FAFF; ">
 					<TD>
@@ -55,7 +65,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</TR>
 			</TBODY>
 		</TABLE>
-    	<TABLE style="BORDER-RIGHT: #0076C8 2px dotted; BORDER-TOP: #0076C8 2px dotted; BORDER-LEFT: #0076C8 2px dotted; BORDER-BOTTOM: #0076C8 2px dotted; BORDER-COLLAPSE: collapse;margin-bottom: 10px;" borderColor=#0076C8  cellPadding=1 width=490 align=center border=2>
+    	<TABLE style="BORDER-RIGHT: #0076C8 2px dotted; BORDER-TOP: #0076C8 2px dotted; BORDER-LEFT: #0076C8 2px dotted; BORDER-BOTTOM: #0076C8 2px dotted; BORDER-COLLAPSE: collapse;margin-bottom: 10px;" borderColor=#0076C8  cellPadding=1 width=100% align=center border=2>
 			<TBODY>
 				<TR style="text-align: left; COLOR: #0076C8; BACKGROUND-COLOR: #F4FAFF; ">
 					<TD>
@@ -64,7 +74,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</TR>
 			</TBODY>
 		</TABLE>
-		<TABLE style="BORDER-RIGHT: #0076C8 2px dotted; BORDER-TOP: #0076C8 2px dotted; BORDER-LEFT: #0076C8 2px dotted; BORDER-BOTTOM: #0076C8 2px dotted; BORDER-COLLAPSE: collapse;margin-bottom: 10px;" borderColor=#0076C8  cellPadding=1 width=490 align=center border=2>
+		<TABLE style="BORDER-RIGHT: #0076C8 2px dotted; BORDER-TOP: #0076C8 2px dotted; BORDER-LEFT: #0076C8 2px dotted; BORDER-BOTTOM: #0076C8 2px dotted; BORDER-COLLAPSE: collapse;margin-bottom: 10px;" borderColor=#0076C8  cellPadding=1 width=100% align=center border=2>
 			<TBODY>
 				<TR style="text-align: left; COLOR: #0076C8; BACKGROUND-COLOR: #F4FAFF; ">
 					<TD>
@@ -74,7 +84,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</TBODY>
 		</TABLE>
     	</div>
-    <div id="sanpinyou" style=" width: 600px; float: left;" >
+    <div id="sanpinyou" style=" width: 100%; float: left;" >
 		
 	<font size="2" style="margin-top: -10px"></font>
 		</div>
@@ -221,7 +231,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						 
 						 
 						 var d = parseInt(i+1);	
-						 var app='<table border="0" cellpadding="3" cellspacing="1" width="600px" align="center" style="background-color: #b9d8f3; margin-top:15px;" >'
+						 var app='<table border="0" cellpadding="3" cellspacing="1" width="100%" align="center" style="background-color: #b9d8f3; margin-top:15px;" >'
 						 	+'<tr style="text-align: center; COLOR: #0076C8; BACKGROUND-COLOR: #F4FAFF; font-weight: bold">'
     							+'<td colspan="3" align="left"><font size="2"  style="float: left;">第'+d+'天</font><div id="jtcs'+i+'"></div></td>'
     						+'</tr>'
