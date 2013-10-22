@@ -168,23 +168,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <h4>扩展信息</h4>
      团队特色说明：
    <br>
-   <textarea name="teamexplains" style="height:60px; width: 500px;"></textarea>
+   <textarea name="teamexplains" style="height:70px; width: 1000px;"></textarea>
    <br>
    服务包含： 
    <br>      
-   <textarea name="Servicesinclude" style="height:60px; width: 500px;"></textarea>
+   <textarea name="Servicesinclude" style="height:70px; width: 1000px;"></textarea>
    <br>
    服务不含： 
    <br>      
-   <textarea name="servicenoinclude" style="height:60px; width: 500px;"></textarea>
+   <textarea name="servicenoinclude" style="height:70px; width: 1000px;"></textarea>
    <br>  
    参团须知： 
    <br>      
-   <textarea name="notes" style="height:60px; width: 500px;"></textarea>
+   <textarea name="notes" style="height:70px; width: 1000px;"></textarea>
    <br>
    备注： 
    <br>      
-   <textarea name="beizhu" style="height:60px; width: 500px;"></textarea>
+   <textarea name="beizhu" style="height:70px; width: 1000px;"></textarea>
    <br>
   <a href="javascript:sanpinSave();" class="easyui-linkbutton" >保存</a>
         </div>

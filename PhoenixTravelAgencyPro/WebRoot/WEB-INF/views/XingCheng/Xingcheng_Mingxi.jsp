@@ -386,14 +386,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						 var app='<form id="d'+d+'">'
 						 +'<table border="1" width="800px" >'
 						 	+'<tr><td width="100px;"><strong>日期</strong></td>'
-						 		+'<td valign="middle"><div id="jtcs'+i+'" style="height:20px; backaground-color:yellow"></div><a href="javascript:void(0)" onclick="openjiudiandlg('+data.rows[i].riid+',\''+data.rows[i].jiudian+'\')"  class="easyui-linkbutton" style="float: right;" iconCls="icon-add" plain="true">酒店</a><a  href="javascript:void(0);" onclick="openrichengDialog('+data.rows[i].riid+',\''+data.rows[i].richenganpai+'\')"   class="easyui-linkbutton"   style="float: right;" iconCls="icon-add" plain="true">日程</a></td>'
+						 		+'<td valign="middle"><div id="jtcs'+i+'" style="height:20px; backaground-color:yellow"></div><a href="javascript:void(0)" onclick="openjiudiandlg('+data.rows[i].riid+',\''+data.rows[i].jiudian+'\')"  class="easyui-linkbutton" style="float: right;" iconCls="icon-add" plain="true">酒店</a><a  href="javascript:void(0);" onclick="openrichengDialog('+data.rows[i].riid+',\''+data.rows[i].richenganpai.replace(/(^\s*)|(\s*$)/g, "")+'\')"   class="easyui-linkbutton"   style="float: right;" iconCls="icon-add" plain="true">日程</a></td>'
 						 	+'</tr>'
 						 	+'<tr><td> <a href="javascript:chengshijiaotongdlgOpen('+data.rows[i].riid+')" title="设定当天的交通工具和城市" class="easyui-linkbutton" plain="true" iconCls="icon-reload">第'+d+'天</a></td><td><h4>日程:</h4> <span>'+data.rows[i].richenganpai+'</span><hr /><h4>住宿:</h4> <span>'+data.rows[i].jiudian+'</span><hr />餐饮：<input name="zao" class="easyui-combobox" data-options="url:\''+zao+'\',valueField:\'dicNo\',textField:\'dicName\',panelHeight:\'auto\',editable:false,onSelect:function(rel){funcanyin(rel,'+data.rows[i].riid+',\'zao\');}" > 中：<input name="zhong" class="easyui-combobox" data-options="url:\''+zhong+'\',valueField:\'dicNo\',textField:\'dicName\',panelHeight:\'auto\',editable:false,onSelect:function(rel){funcanyin(rel,'+data.rows[i].riid+',\'zhong\');}" >晚：<input id="wan" name="wan"  class="easyui-combobox" data-options="url:\''+wan+'\',valueField:\'dicNo\',textField:\'dicName\',panelHeight:\'auto\',editable:false,onSelect:function(rel){funcanyin(rel,'+data.rows[i].riid+',\'wan\');}"></td></tr>'
 						 +'<table></form>';			
 						$("#mdiv").append(app);
 						$('#d'+d).form('load',data.rows[i]);
 						$('#jtcs'+i).append(jtapp);
-					} 
+					}
 					//pares方法是 渲染JqueryEasyUi 插件的 解决不显示EasyUi的样式问题
 					$.parser.parse("#mdiv");
 					//循环结束

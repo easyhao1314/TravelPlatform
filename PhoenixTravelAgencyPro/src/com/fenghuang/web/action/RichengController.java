@@ -142,7 +142,7 @@ public class RichengController {
 			r.setRiid(Long.parseLong(riid));
 			
 			r.setHuodong(huodong);
-			r.setRichenganpai(richenganpai);
+			r.setRichenganpai(richenganpai.replace("\n",""));
 			if(gouwuid!=null && !"".equals(gouwuid)){
 				r.setGouwuid(Integer.parseInt(gouwuid));
 			}

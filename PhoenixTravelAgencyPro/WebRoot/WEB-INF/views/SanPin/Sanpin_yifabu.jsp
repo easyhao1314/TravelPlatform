@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'Sanpin_yifabu.jsp' starting page</title>
+    <title></title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -34,7 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<thead>
 			<tr>
 				<th data-options="field:'tuanNo'" width="50">团号</th>
-				<th data-options="field:'tuanName'" width="50">团名/路线</th>
+				<th data-options="field:'tuanName',formatter:baoming" width="50">团名/路线</th>
 				<th data-options="field:'groupdate'" width="50">出团日期</th>
 				<th data-options="field:'Tourdate'" width="50">回团日期</th>
 				<th data-options="field:'chufa'" width="50">出发城市</th>
@@ -112,6 +112,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    	      	}
    	      	});
    	  }
+   	  function baoming(val,row){
+   	  return '<a href="javascript:yifabubaoming(\''+row.tuanNo+'\')">'+row.tuanName+'</a>';
+   	  }
+   	  function yifabubaoming(tuanNo){
+   	   var url= "Sanpin_yibufabaoming.do?tuanNo="+tuanNo;
+       var tab = $('#tt').tabs('getSelected'); 
+		if (tab){  
+	                 var index = $('#tt').tabs('getTabIndex', tab); 
+	                 $('#tt').tabs('close', index);  
+	       } 
+	       
+	       $('#tt').tabs('add', {
+				         title : "团队报名",
+				         href : url,
+				      //  closable : true,
+				         });
+   	      }
 	</script>
   </body>
 </html>

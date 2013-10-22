@@ -87,10 +87,10 @@ public class RichengDaoImpl extends BaseDao implements IRichengDao  {
 			sb.append(",gouwuid=?");
 			list.add(r.getGouwuid());
 		}
-		if(r.getRiid()!=0){
+		
 			sb.append(" where riid=?");
 			list.add(r.getRiid());
-		}
+		
 		int num = this.update(sb.toString(),list.toArray());
 	
 		return num>0;
