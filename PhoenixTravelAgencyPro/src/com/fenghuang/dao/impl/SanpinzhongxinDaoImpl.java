@@ -39,7 +39,7 @@ public class SanpinzhongxinDaoImpl extends BaseDao implements ISanpinzhongxinDao
 				"teamexplains," +"Servicesinclude," +
 				"servicenoinclude,notes," +
 				"Reviewstatus,Shenpijia," +
-				"dakehujia,zhikejia,tonghang,ertongzhanchuang,ertongbuzhanchuang,zibeiqianjia,numberday,zao,zhong,wan,groupdate,Tourdate,jiantuanren,beizhu) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				"dakehujia,zhikejia,tonghang,ertongzhanchuang,ertongbuzhanchuang,zibeiqianjia,numberday,zao,zhong,wan,groupdate,Tourdate,jiantuanren,beizhu,groupdatebeizhu) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		int num = this.update(sql,
 				sanpin.getTuanNo(),
 				sanpin.getTuanName(),
@@ -76,7 +76,8 @@ public class SanpinzhongxinDaoImpl extends BaseDao implements ISanpinzhongxinDao
 		        sanpin.getGroupdate(),
 	 	        sanpin.getTourdate(),
 	 	        sanpin.getJiantuanren(),
-	 	        sanpin.getBeizhu());
+	 	        sanpin.getBeizhu(),
+	 	        sanpin.getGroupdatebeizhu());
 		return num>0;
 	}
 	@Override

@@ -30,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			iconCls="icon-save" plain="true">查询</a>
 	</div>
 <table id="sanpinliebiaodg" class="easyui-datagrid"
-		data-options="url:'fenghuang/Sanpinliebiao.do?fabustate=2',border:false,singleSelect:true,fit:true,fitColumns:true"
+		data-options="url:'fenghuang/Sanpinliebiao.do?fabustate=2',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 		pagination="true" toolbar="#tb">
 		<thead>
 			<tr>
@@ -39,7 +39,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<th data-options="field:'groupdate'" width="50">出团日期</th>
 				<th data-options="field:'Tourdate'" width="50">回团日期</th>
 				<th data-options="field:'chufa'" width="50">出发城市</th>
-				<th data-options="field:'tonghang'" width="50">同行价</th>
 				<th data-options="field:'zhikejia'" width="50">直客价</th>
 				<th data-options="field:'numbermaster',formatter:yushouyishou"  width="50">预收/已收</th>
 				<th data-options="field:'shoukestate',formatter:openshouke" width="50">收客状态</th>
@@ -107,9 +106,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<input id="hideinput" style="display: none;" />
 		
 		<div data-options="iconCls:'icon-edit'" onClick="tuanduibaoming()">团队报名</div>
-		<div onClick="testView(3)">查看3</div>
-		<div onClick="testView(4)">查看4</div>
-		<div onClick="testView(5)">查看5</div>
 	</div>
 	<!-- 收客状态下拉菜单 -->
 	<!--  <div id="mmshouke" class="easyui-menu" style="width:120px;">
@@ -151,7 +147,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    			}
    			function openSanpinDetail(tuanNo,tuanName,xlid){
    				var url= "Sanpin_mingxi.do?tuanNo="+tuanNo+"&tuanName="+tuanName+"&xianid="+xlid;
-   				window.open (url, 'newwindow', 'height=100, width=400, top=0,left=0, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no'); 
+   				window.open (url, 'newwindow', 'height=100, width=400, top=0,left=0, toolbar=no, menubar=no, scrollbars=yes, resizable=no,location=no, status=no'); 
    				return;
        var tab = $('#tt').tabs('getSelected'); 
 		if (tab){  

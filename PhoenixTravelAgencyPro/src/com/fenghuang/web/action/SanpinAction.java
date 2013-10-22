@@ -42,7 +42,7 @@ public class SanpinAction {
 			String Tourdate,String Areatype,String airways,String targetpopulation,String groupflight,
 			String Departurecity,String Tourflight,String TerminalCity,String hotel,String Producttypes,
 			String zao,String zhong,String wan,String productbrand,String predict,String report,String visa,
-			String teamexplains,String Servicesinclude,String servicenoinclude,String notes,String master,String areatypetext,String beizhu){
+			String teamexplains,String Servicesinclude,String servicenoinclude,String notes,String master,String areatypetext,String beizhu,String groupdatebeizhu){
 			Sanpinzhongxin sanpin = new Sanpinzhongxin();
 			
 		try {
@@ -150,6 +150,7 @@ public class SanpinAction {
 			if(master!=null && !"".equals(master)){
 				sanpin.setJiantuanren(Long.parseLong(master));
 			}
+			sanpin.setGroupdatebeizhu(groupdatebeizhu);
 			sanpin.setBeizhu(beizhu);
 			sanpin.setFabustate(1);
 			} catch (ParseException e1) {

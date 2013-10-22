@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>出团通知单</title>
+    <title></title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -35,16 +35,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
   	<div id="sanpinzuo" style=" width: 100%;">
   		<div id="zuozuo" style="float: left; margin-right: 20px; margin-top: 40px;"><img id="sanpintupian" alt="点击设定行程图片" width="150px" height="150px" onclick="opentupiandlg()" style=""></div>
-  		<div id="zuoyou" style="margin-top: 10px; margin-bottom: 30px;">
+  		<div id="zuoyou" style="margin-top: 30px; margin-bottom: 30px;">
     <span style="margin: 20px;"><b><font color=#0000ff>${param.tuanName}</font></b></span>
-    <ul>
+    <ul style="margin-top: 20px;">
     	<li>出发地点：<span id="chufa"></span></li>
+    	<li>出团日期备注：<span id="groupdatebeizhu"></span></li>
     	<li>行程天数：<span id="numberday"></span>天</li>
-    	<li>参考价格：<span id="jiage"></span>RMB</li>
     	<li>航空公司：<span id="hangkong"></span><ul><li>去程：<span id="qucheng"></span></li><li>回程：<span id="huicheng"></span></li></ul></li>
-    	<li>预收人数：<span id="numbermaster"></span>人</li>
     	<li>适合人群：<span id="renqun"></span></li>
     	<li>产品品牌：<span id="prand"></span></li>
+    	<li>直客价：<span id="jiage"></span>RMB</li>
+    	<li>儿童站床价：<span id="ertongzhanchuang"></span></li>
+    	<li>儿童不站床价：<span id="ertongbuzhanchuang"></span></li>
     </ul>
     	</div>
     	<TABLE style="BORDER-RIGHT: #0076C8 2px dotted; BORDER-TOP: #0076C8 2px dotted; BORDER-LEFT: #0076C8 2px dotted; BORDER-BOTTOM: #0076C8 2px dotted; BORDER-COLLAPSE: collapse;margin-bottom: 10px;" borderColor=#0076C8  cellPadding=1 width=100% align=center border=2>
@@ -55,8 +57,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</TD>
 				</TR>
 			</TBODY>
-		</TABLE>
-		<TABLE style="BORDER-RIGHT: #0076C8 2px dotted; BORDER-TOP: #0076C8 2px dotted; BORDER-LEFT: #0076C8 2px dotted; BORDER-BOTTOM: #0076C8 2px dotted; BORDER-COLLAPSE: collapse;margin-bottom: 10px;" borderColor=#0076C8  cellPadding=1 width=100% align=center border=2>
+			</TABLE>
+		
+			
+			
+		
+    	</div>
+    <div id="sanpinyou" style=" width: 100%; float: left; margin-bottom: 20px;" >
+		
+	<font size="2" style="margin-top: -10px"></font>
+		</div>
+		
+	
+    <div style="margin-top: 20px;">
+    <TABLE style="BORDER-RIGHT: #0076C8 2px dotted; BORDER-TOP: #0076C8 2px dotted; BORDER-LEFT: #0076C8 2px dotted; BORDER-BOTTOM: #0076C8 2px dotted; BORDER-COLLAPSE: collapse;margin-bottom: 10px;" borderColor=#0076C8  cellPadding=1 width=100% align=center border=2>
 			<TBODY>
 				<TR style="text-align: left; COLOR: #0076C8; BACKGROUND-COLOR: #F4FAFF; ">
 					<TD>
@@ -83,14 +97,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</TR>
 			</TBODY>
 		</TABLE>
-    	</div>
-    <div id="sanpinyou" style=" width: 100%; float: left;" >
-		
-	<font size="2" style="margin-top: -10px"></font>
 		</div>
 		
 		
-	<div id="tupianxuanzedlg-buttons">
+		
+    <div id="tupianxuanzedlg-buttons">
         <a href="javascript:void(0)" class="easyui-linkbutton" onclick="savesanpintupian()">保存</a>
         <a href="javascript:void(0)" class="easyui-linkbutton" onclick="javascript:$('#tupianxuanzedlg').dialog('close')">关闭</a>
     </div>
@@ -159,11 +170,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					success : function(data) {
 					document.getElementById("numberday").innerHTML=data.rows[0].numberday;
 					document.getElementById("chufa").innerHTML=data.rows[0].chufa;
-					document.getElementById("jiage").innerHTML=data.rows[0].zhikejia*data.rows[0].numbermaster;
+					document.getElementById("jiage").innerHTML=data.rows[0].zhikejia;
 					document.getElementById("hangkong").innerHTML=data.rows[0].airways;
 					document.getElementById("qucheng").innerHTML=data.rows[0].groupflight;
 					document.getElementById("huicheng").innerHTML=data.rows[0].Tourflight;
-					document.getElementById("numbermaster").innerHTML=data.rows[0].numbermaster;
+					document.getElementById("ertongzhanchuang").innerHTML=data.rows[0].ertongzhanchuang;
+					document.getElementById("ertongbuzhanchuang").innerHTML=data.rows[0].ertongbuzhanchuang;
 					document.getElementById("prand").innerHTML=data.rows[0].prand;
 					document.getElementById("renqun").innerHTML=data.rows[0].renqun;
 					document.getElementById("tedian").innerHTML=data.rows[0].teamexplains;
@@ -171,6 +183,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					document.getElementById("baohan").innerHTML=data.rows[0].Servicesinclude;
 					document.getElementById("buhan").innerHTML=data.rows[0].servicenoinclude;
 					document.getElementById("cantuan").innerHTML=data.rows[0].notes;
+					document.getElementById("groupdatebeizhu").innerHTML=data.rows[0].groupdatebeizhu;
 					$('#sanpintupian').attr('src',data.rows[0].tupian);
 					},
 					error : function() {
@@ -245,16 +258,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     					+'</tr>'
 	
 	
-    					+'<tr style="text-align: left; COLOR: #0076C8; BACKGROUND-COLOR: #F4FAFF; font-weight: bold">'
-    +'<td style="width:200px" ><font size="2">早餐：'+data.rows[i].zaos+'</font></td>'
-    +'<td><font size="2">午餐：'+data.rows[i].zhongs+'</font></td>'
-    +'<td><font size="2">晚餐：'+data.rows[i].wans+'</font></td>'
+    					+'<tr style="text-align: left; COLOR: #0076C8; BACKGROUND-COLOR: #F4FAFF; font-weight: bold; ">'
+    +'<td style="width:33%" ><font size="2">早餐：'+data.rows[i].zaos+'</font></td>'
+    +'<td style="width:33%" ><font size="2">午餐：'+data.rows[i].zhongs+'</font></td>'
+    +'<td style="width:33%" ><font size="2">晚餐：'+data.rows[i].wans+'</font></td>'
     +'</tr>'
 
 	+'<tr style="text-align: left; COLOR: #0076C8; BACKGROUND-COLOR: #F4FAFF; font-weight: bold">'
     +'<td><font size="2" style="float: left;">交通工具：</font><div id="jtgj'+i+'"></div></td>'
     +'<td><font size="2"></font></td>'
-    +'<td><font size="2">住宿：</font></td>'
+    +'<td><font size="2">住宿：'+data.rows[i].jiudian+'</font></td>'
     +'</tr>'
 						 +'<table>';			
 						$("#sanpinyou").append(app);

@@ -104,7 +104,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         closeDialog();
                     }
                 }]" style="width:700px;height:400px;padding:10px">
-        <span>日程安排(少于800汉字)</span>
+        <span>日程安排(少于2000汉字)</span>
         <textarea id="richengtext" name="message"  style="height:300px; width: 600px;"></textarea>
     </div>
 <div id="jiudiandlg" class="easyui-dialog" title="设定酒店"  data-options="iconCls:'icon-save',closed:true,modal:true,buttons: 
@@ -188,7 +188,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div id="divdlg"></div>
             <div id="showdivdlg" style="width: auto;  margin-top:30px; height:50px;  line-height:20px; background-color: yellow;">日程安排走向：</div>
             <input id="chengshijiaotong"  style="display: none;" />
-            <input id="chengshijiaotongriid" style="display: none;">
+            <input id="chengshijiaotongriid" style="display: none;" >
     </div>
     
         <script type="text/javascript">        
@@ -229,6 +229,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					document.getElementById("mdiv").innerHTML="";
 						xunhuanRicheng('${param.xianid}');
 					$.messager.alert("保存成功", "保存成功!", "info");
+					closeDialog();
 					},
 					error : function() {
 					$.messager.alert("查询失败", "服务器请求失败!", "error");
@@ -385,9 +386,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						 var app='<form id="d'+d+'">'
 						 +'<table border="1" width="800px" >'
 						 	+'<tr><td width="100px;"><strong>日期</strong></td>'
-						 		+'<td valign="middle"><div id="jtcs'+i+'" style="height:20px; backaground-color:yellow"></div><a href="javascript:void(0)" onclick="openjiudiandlg('+data.rows[i].riid+',\''+data.rows[i].jiudian+'\')"  class="easyui-linkbutton" style="float: right;" iconCls="icon-add" plain="true">酒店</a><a href="javascript:openhuodongDialog(\''+data.rows[i].huodong+'\','+data.rows[i].riid+')"  class="easyui-linkbutton" style="float: right;" iconCls="icon-add" plain="true">活动</a><a  href="javascript:openrichengDialog(\''+data.rows[i].richenganpai+'\','+data.rows[i].riid+')"   class="easyui-linkbutton"   style="float: right;" iconCls="icon-add" plain="true">日程</a></td>'
+						 		+'<td valign="middle"><div id="jtcs'+i+'" style="height:20px; backaground-color:yellow"></div><a href="javascript:void(0)" onclick="openjiudiandlg('+data.rows[i].riid+',\''+data.rows[i].jiudian+'\')"  class="easyui-linkbutton" style="float: right;" iconCls="icon-add" plain="true">酒店</a><a  href="javascript:void(0);" onclick="openrichengDialog('+data.rows[i].riid+',\''+data.rows[i].richenganpai+'\')"   class="easyui-linkbutton"   style="float: right;" iconCls="icon-add" plain="true">日程</a></td>'
 						 	+'</tr>'
-						 	+'<tr><td> <a href="javascript:chengshijiaotongdlgOpen('+data.rows[i].riid+')" title="设定当天的交通工具和城市" class="easyui-linkbutton" plain="true" iconCls="icon-reload">第'+d+'天</a></td><td><h4>日程:</h4> <span>'+data.rows[i].richenganpai+'</span><hr /><h4>活动:</h4> <span>'+data.rows[i].huodong+'</span><hr /><h4>住宿:</h4> <span>'+data.rows[i].jiudian+'</span><hr />餐饮：<input name="zao" class="easyui-combobox" data-options="url:\''+zao+'\',valueField:\'dicNo\',textField:\'dicName\',panelHeight:\'auto\',editable:false,onSelect:function(rel){funcanyin(rel,'+data.rows[i].riid+',\'zao\');}" > 中：<input name="zhong" class="easyui-combobox" data-options="url:\''+zhong+'\',valueField:\'dicNo\',textField:\'dicName\',panelHeight:\'auto\',editable:false,onSelect:function(rel){funcanyin(rel,'+data.rows[i].riid+',\'zhong\');}" >晚：<input id="wan" name="wan"  class="easyui-combobox" data-options="url:\''+wan+'\',valueField:\'dicNo\',textField:\'dicName\',panelHeight:\'auto\',editable:false,onSelect:function(rel){funcanyin(rel,'+data.rows[i].riid+',\'wan\');}"></td></tr>'
+						 	+'<tr><td> <a href="javascript:chengshijiaotongdlgOpen('+data.rows[i].riid+')" title="设定当天的交通工具和城市" class="easyui-linkbutton" plain="true" iconCls="icon-reload">第'+d+'天</a></td><td><h4>日程:</h4> <span>'+data.rows[i].richenganpai+'</span><hr /><h4>住宿:</h4> <span>'+data.rows[i].jiudian+'</span><hr />餐饮：<input name="zao" class="easyui-combobox" data-options="url:\''+zao+'\',valueField:\'dicNo\',textField:\'dicName\',panelHeight:\'auto\',editable:false,onSelect:function(rel){funcanyin(rel,'+data.rows[i].riid+',\'zao\');}" > 中：<input name="zhong" class="easyui-combobox" data-options="url:\''+zhong+'\',valueField:\'dicNo\',textField:\'dicName\',panelHeight:\'auto\',editable:false,onSelect:function(rel){funcanyin(rel,'+data.rows[i].riid+',\'zhong\');}" >晚：<input id="wan" name="wan"  class="easyui-combobox" data-options="url:\''+wan+'\',valueField:\'dicNo\',textField:\'dicName\',panelHeight:\'auto\',editable:false,onSelect:function(rel){funcanyin(rel,'+data.rows[i].riid+',\'wan\');}"></td></tr>'
 						 +'<table></form>';			
 						$("#mdiv").append(app);
 						$('#d'+d).form('load',data.rows[i]);
@@ -467,6 +468,7 @@ function closedSearch(){
 						xunhuanRicheng('${param.xianid}');
 						$('#richengtext').val("");
 						$('#huodongtext').val("");
+						closeDialog();
 					},
 					error : function() {
 						$.messager.alert("保存失败", "服务器请求失败!", "error");
@@ -476,7 +478,7 @@ function closedSearch(){
   //修改日程结束
   </script>
   <script type="text/javascript">
-  	function openrichengDialog(richeng,riid){
+  	function openrichengDialog(riid,richeng){
   	$('#riid').attr('value',riid);
   	var a=document.getElementById("richengtext");
   	a.value=richeng;
@@ -520,6 +522,7 @@ function closedSearch(){
 						$.messager.alert("保存成功","保存成功","info");
 						document.getElementById("mdiv").innerHTML="";
 						xunhuanRicheng('${param.xianid}');
+						closeDialog();
 					},
 					error : function() {
 						$.messager.alert("保存失败", "服务器请求失败!", "error");

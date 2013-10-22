@@ -28,13 +28,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <h4>基础信息</h4> 
   <table style="" >
   	<tr><td>价格体系（RMB）：</td>
-  	<td>审批价：</td><td><input class="easyui-validatebox" type="text" name="Shenpijia" style="width: 50px; height: 15px;"></input></td>
-  	<td>大客户：</td><td><input class="easyui-validatebox" type="text" name="dakehujia" style="width: 50px; height: 15px;"></input></td>
-  	<td>直客：</td><td><input class="easyui-validatebox" type="text" name="zhikejia" style="width: 50px; height: 15px;"></input></td>
-  	<td>同行：</td><td><input class="easyui-validatebox" type="text" name="tonghang" style="width: 50px; height: 15px;"></input></td>
-  	<td>儿童占床：</td><td><input class="easyui-validatebox" type="text" name="ertongzhanchuang" style="width: 50px; height: 15px;"></input></td>
- 	<td>儿童不占床：</td><td><input class="easyui-validatebox" type="text" name="ertongbuzhanchuang" style="width: 50px; height: 15px;"></input></td>
- 	<td>自备签价：</td><td><input class="easyui-validatebox" type="text" name="zibeiqianjia" style="width: 50px; height: 15px;"></input></td>
+  	<td>直客：</td><td><input class="easyui-validatebox" type="text" name="zhikejia" style="width: 70px; height: 15px;"></input></td>
+  	<td>同行：</td><td><input class="easyui-validatebox" type="text" name="tonghang" style="width: 70px; height: 15px;"></input></td>
+  	<td>儿童占床：</td><td><input class="easyui-validatebox" type="text" name="ertongzhanchuang" style="width: 70px; height: 15px;"></input></td>
+ 	<td>儿童不占床：</td><td><input class="easyui-validatebox" type="text" name="ertongbuzhanchuang" style="width: 70px; height: 15px;"></input></td>
+ 	<td>大客户：</td><td><input class="easyui-validatebox" type="text" name="dakehujia" style="width: 70px; height: 15px;"></input></td>
+ 	<td>自备签价：</td><td><input class="easyui-validatebox" type="text" name="zibeiqianjia" style="width: 70px; height: 15px;"></input></td>
   	</tr>
   </table>
   <table>
@@ -54,6 +53,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	<td>预收人数：</td><td><input id="ss" name="numbermaster" class="easyui-numberspinner" min="1" max="100" style="width:133px;" required="true"></input></td>
   	</tr>
   	  	<tr>
+  	  	
+  	
+  	  	
+  	  	
+  	  	
   	<td>回团日期：</td><td><input id="dd" name="Tourdate" class="easyui-datebox" required="true" ></input></td>
   	<td></td><td></td>
   	<td>地域类型：</td><td>
@@ -61,46 +65,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					url:'fenghuang/getDicByTypeComboboxs.do?dicType=6',
 					valueField:'dicNo',
 					textField:'dicName',
-					panelHeight:'auto',
-					editable:false 
+					panelHeight:'auto'
 	">
 	</td>
   	</tr>
   	  	<tr>
-  	<td>航空公司：</td><td><input class="easyui-validatebox" type="text" name="airways"></input></td>
+  	<td>航空公司：</td><td><input class="easyui-validatebox" type="text" name="airways" style="width: 400px;"></input></td>
   	<td></td><td></td>
   	<td>目标人群：</td><td>
   	<input name="targetpopulation" class="easyui-combobox" data-options="
 					url:'fenghuang/getDicByTypeComboboxs.do?dicType=30',
 					valueField:'dicNo',
 					textField:'dicName',
-					panelHeight:'auto',
-					editable:false 
+					panelHeight:'auto'
 	"></td>
   	</tr>
   	  	
   	  	<tr>
-  	<td>去程航班：</td><td><input class="easyui-validatebox" type="text" name="groupflight"></input></td>
+  	<td>去程航班：</td><td><input class="easyui-validatebox" type="text" name="groupflight" style="width: 400px;"></input></td>
   	<td></td><td></td>
   	<td>出发城市：</td><td>
   	<input name="Departurecity" class="easyui-combobox" data-options="
 					url:'fenghuang/getDicByTypeComboboxs.do?dicType=8',
 					valueField:'dicNo',
 					textField:'dicName',
-					panelHeight:'auto',
-					editable:false 
+					panelHeight:'auto'
 	"></td>
   	</tr>
   	  	<tr>
-  	<td>回程航班：</td><td><input class="easyui-validatebox" type="text" name="Tourflight"></input></td>
+  	<td>回程航班：</td><td><input class="easyui-validatebox" type="text" name="Tourflight" style="width: 400px;"></input></td>
   	<td></td><td></td>
   	<td>终点城市：</td><td>
   	<input name="TerminalCity" class="easyui-combobox" data-options="
 					url:'fenghuang/getDicByTypeComboboxs.do?dicType=8',
 					valueField:'dicNo',
 					textField:'dicName',
-					panelHeight:'auto',
-					editable:false 
+					panelHeight:'auto' 
 	"></td>
   	</tr>
   	  	<tr>
@@ -109,8 +109,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					url:'fenghuang/getDicByTypeComboboxs.do?dicType=16',
 					valueField:'dicNo',
 					textField:'dicName',
-					panelHeight:'auto',
-					editable:false 
+					panelHeight:'auto'
 	">
 	</td>
   	<td></td><td></td>
@@ -119,8 +118,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					url:'fenghuang/getDicByTypeComboboxs.do?dicType=31',
 					valueField:'dicNo',
 					textField:'dicName',
-					panelHeight:'auto',
-					editable:false 
+					panelHeight:'auto'
 	"></td>
   	</tr>
   	  	<tr>
@@ -129,22 +127,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					url:'fenghuang/getDicByTypeComboboxs.do?dicType=22',
 					valueField:'dicNo',
 					textField:'dicName',
-					panelHeight:'auto',
-					editable:false 
+					panelHeight:'auto'
 	">
 	<input name="zhong" class="easyui-combobox" data-options="
 					url:'fenghuang/getDicByTypeComboboxs.do?dicType=23',
 					valueField:'dicNo',
 					textField:'dicName',
-					panelHeight:'auto',
-					editable:false 
+					panelHeight:'auto' 
 	">
 	<input name="wan" class="easyui-combobox" data-options="
 					url:'fenghuang/getDicByTypeComboboxs.do?dicType=24',
 					valueField:'dicNo',
 					textField:'dicName',
-					panelHeight:'auto',
-					editable:false 
+					panelHeight:'auto'
 	">
 	
 	</td>
@@ -154,9 +149,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					url:'fenghuang/getDicByTypeComboboxs.do?dicType=32',
 					valueField:'dicNo',
 					textField:'dicName',
-					panelHeight:'auto',
-					editable:false 
+					panelHeight:'auto'
 	"></td>
+  	</tr>
+  	<tr>
+  	<td>出团日期备注：</td><td colspan="5"><textarea name="groupdatebeizhu" style="height:40px; width: 640px;"></textarea></td>
+  	
   	</tr>
   </table>
   </div>

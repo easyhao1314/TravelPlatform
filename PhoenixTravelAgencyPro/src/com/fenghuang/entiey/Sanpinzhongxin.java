@@ -166,7 +166,18 @@ public class Sanpinzhongxin {
     * 
     *  */
    private String beizhu;
+   /** 出团日期备注
+    * 
+    *  */
+   private String groupdatebeizhu;
    
+   
+public String getGroupdatebeizhu() {
+	return groupdatebeizhu;
+}
+public void setGroupdatebeizhu(String groupdatebeizhu) {
+	this.groupdatebeizhu = groupdatebeizhu;
+}
 public String getBeizhu() {
 	return beizhu;
 }
