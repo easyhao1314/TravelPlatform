@@ -33,7 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		pagination="true" toolbar="#fabutb" >
 		<thead>
 			<tr>
-				<th data-options="field:'tuanNo'" width="50">团号</th>
+				<th data-options="field:'tuanNo',formatter:xingcheng" width="50">团号</th>
 				<th data-options="field:'tuanName',formatter:baoming" width="50">团名/路线</th>
 				<th data-options="field:'groupdate'" width="50">出团日期</th>
 				<th data-options="field:'Tourdate'" width="50">回团日期</th>
@@ -129,6 +129,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				      //  closable : true,
 				         });
    	      }
+   	    function xingcheng(val,row){
+   	    return '<a href="javascript:openSanpinDetail(\''+row.tuanNo+'\',\''+row.tuanName+'\',\''+row.xlid+'\')">'+row.tuanNo+'</a>';
+   	    }
+   	    function openSanpinDetail(tuanNo,tuanName,xlid){
+   				var url= "Sanpin_mingxi.do?tuanNo="+tuanNo+"&tuanName="+tuanName+"&xianid="+xlid;
+   				window.open (url, 'newwindow', 'height=100, width=400, top=0,left=0, toolbar=no, menubar=no, scrollbars=yes, resizable=no,location=no, status=no'); 
+   				return;
+       var tab = $('#tt').tabs('getSelected'); 
+		if (tab){  
+	                 var index = $('#tt').tabs('getTabIndex', tab); 
+	                 $('#tt').tabs('close', index);  
+	       } 
+	       
+	       $('#tt').tabs('add', {
+				         title : tuanName+"详细信息",
+				         href : url,
+				      //  closable : true,
+				         }); 
+   			}
 	</script>
   </body>
 </html>
