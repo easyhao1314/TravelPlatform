@@ -25,7 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
 
    <div id="tb">
-		<a href="javascript:Select();" class="easyui-linkbutton"
+		<a href="javascript:void(0);" onclick="javascript:$('#searchDic').dialog('open');" class="easyui-linkbutton"
 			iconCls="icon-save" plain="true">查询</a>
 		<a href="javascript:sanpinupdate();" class="easyui-linkbutton"
 			iconCls="icon-edit" plain="true">修改</a>
@@ -81,7 +81,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<td><input id="searchproductbrand" class="easyui-combobox" 
 			name="productbrand"
 			data-options="
-					url:'fenghuang/getDicByTypeComboboxs.do?dicType=12',
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=32',
 					valueField:'dicId',
 					textField:'dicName',
 					panelHeight:'auto',
@@ -176,7 +176,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div id="mmsanpincaozuo" class="easyui-menu" style="width:120px;">
 		<div data-options="iconCls:'icon-edit'" onClick="zhuanjidiao()">转到计调报价</div>
 		<div data-options="iconCls:'icon-search'"  onClick="chajidiao()">查看订单进度</div>
-		<div data-options="iconCls:'icon-remove'" onClick="upfabustate()">取消发布状态</div>
 		<div><span>行程</span>
     <div>
     <div onClick="shedingxingcheng()" data-options="iconCls:'icon-search'">生成行程</div>

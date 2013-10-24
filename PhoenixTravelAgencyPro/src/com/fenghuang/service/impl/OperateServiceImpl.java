@@ -29,4 +29,10 @@ public class OperateServiceImpl implements IOperateService {
 		return idao.OperateInfo(page, rows, o);
 	}
 
+	@Override
+	public boolean Delete(Operate o) throws Exception {
+		// TODO Auto-generated method stub
+		return idao.Delete(o);
+	}
+
 }

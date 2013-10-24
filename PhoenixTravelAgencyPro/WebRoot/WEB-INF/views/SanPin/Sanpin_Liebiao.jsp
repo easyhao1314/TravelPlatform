@@ -77,7 +77,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<td><input id="searchproductbrand" class="easyui-combobox" 
 			name="productbrand"
 			data-options="
-					url:'fenghuang/getDicByTypeComboboxs.do?dicType=12',
+					url:'fenghuang/getDicByTypeComboboxs.do?dicType=32',
 					valueField:'dicId',
 					textField:'dicName',
 					panelHeight:'auto',

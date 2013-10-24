@@ -10,11 +10,13 @@ import com.fenghuang.dao.ISanpinzhongxinDao;
 import com.fenghuang.dao.IUserDao;
 import com.fenghuang.dao.IXianluDao;
 import com.fenghuang.dao.IcaiwufkqrDao;
+import com.fenghuang.entiey.Operate;
 import com.fenghuang.entiey.Richeng;
 import com.fenghuang.entiey.Sanpinzhongxin;
 import com.fenghuang.entiey.TuanXianlu;
 import com.fenghuang.entiey.Tuanbiao;
 import com.fenghuang.entiey.Xianlu;
+import com.fenghuang.service.IOperateService;
 import com.fenghuang.service.IRichengService;
 import com.fenghuang.service.ISanpinzhongxinService;
 import com.fenghuang.service.IXianluService;
@@ -32,6 +34,8 @@ public class SanpinzhongxinServiceImpl implements ISanpinzhongxinService {
 	 ItuanXianluService itxls;
 	@Autowired
 	IcaiwufkqrDao icaiwu;
+	@Autowired
+	IOperateService ioperate;
 	@Autowired
 	IRichengService iricheng;
 	@Override
@@ -96,6 +100,10 @@ public class SanpinzhongxinServiceImpl implements ISanpinzhongxinService {
 			throws Exception {
 		// TODO Auto-generated method stub
 		boolean b;
+		Operate o = new Operate();
+		o.setTuanNo(sanpin.getTuanNo());
+		ioperate.Delete(o);
+		
 		if(xianluid!=null && !"".equals(xianluid)){
 		Richeng r=new Richeng();
 		r.setXianluid(Long.parseLong(xianluid));

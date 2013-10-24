@@ -69,4 +69,12 @@ public class OperateDaoImpl extends BaseDao implements IOperateDao {
 		return this.getPagination(page, rows, sb.toString());
 	}
 
+	@Override
+	public boolean Delete(Operate o) throws Exception {
+		// TODO Auto-generated method stub
+		String sql = "delete from operate where tuanNo=?";
+		int num = this.update(sql,o.getTuanNo());
+		return num>0;
+	}
+
 }
