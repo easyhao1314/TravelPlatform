@@ -143,6 +143,10 @@
 					<li iconCls="icon-gears"><a
 						href="javascript:open1('我的已发布的散拼团','Sanpin_yibufa.do');">我的已发布的散拼团</a></li>
 					<li iconCls="icon-gears"><a
+						href="javascript:open1('已提交的散拼团','SanPin_shenpi.do');">已提交的散拼团</a></li>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('我提交的散拼团','SanPin_wotijiaoshenpi.do');">我提交的散拼团</a></li>
+					<li iconCls="icon-gears"><a
 						href="javascript:open1('退团申请','SanPin_tuituan.do?shenpitype=1');">退团申请</a>
 					</li>
 					<li iconCls="icon-gears"><a
