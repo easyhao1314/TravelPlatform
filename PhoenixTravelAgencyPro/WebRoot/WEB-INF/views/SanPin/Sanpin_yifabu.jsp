@@ -54,6 +54,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div data-options="iconCls:'icon-edit'" onClick="updateshouke(4)">已出团</div>
 		<div data-options="iconCls:'icon-edit'" onClick="updateshouke(5)">已回团</div>
 	</div>
+	
+	<div id="sanpinshenpiwindow" class="easyui-window" title="提交审批申请" data-options="modal:true,closed:true,iconCls:'icon-save'" style="width:700px;height:400px;padding:10px;">
+        <form id="sanpinshenpiform" action="">
+        	<input id="tuanNo" name="tuanNo" type="hidden" class="easyui-validatebox">
+        	备注说明：<br>
+        	<textarea id="beizhu" name="beizhu" rows="20" cols="100%"></textarea>
+        	
+        </form>
+    <div data-options="region:'south',border:false" style="text-align:right;padding:5px 0 0;">
+                <a class="easyui-linkbutton" data-options="iconCls:'icon-ok'" href="javascript:void(0)" onclick="javascript:sanpinshenpiwindowsubmit();">提交</a>
+                <a class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" href="javascript:void(0)" onclick="javascript:$('#sanpinshenpiwindow').window('close');">取消</a>
+    </div>
+    </div>
+	
+	
+	
 	<script type="text/javascript">
 	function updateshouke(shoukeid){
    	      	var tuanNo = $('#shoukeinput').val();
@@ -94,24 +110,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    	      }
    	  function quxiaofabu(){
    	  		var row = $('#sanpinyifabudg').datagrid('getSelected');
-   	  $.messager.confirm('提示', '是否要取消发布“'+row.tuanName+'”?！！', function(r){
-			if (r){
-   	  		var url = "fenghuang/upsanpin.do?tuanNo="+row.tuanNo+"&fabustate="+4;
-   	      	$.ajax({
-   	      		url:url,
-   	      		data:row.tuanNo,
-   	      		datatype:"json",
-   	      		success:function(data){
-   	      			$("#sanpinyifabudg").datagrid("reload");
-   	      		},
-   	      		error : function() {
-						$.messager.alert("修改失败", "服务器请求失败!", "error");
-					}
-   	      	
-   	      	});
-   	      	}
-   	      	});
+   	  		if(row.length==0){return;}
+   	  		$('#tuanNo').attr('value',row.tuanNo);
+   	  		$('#sanpinshenpiwindow').window('open');
    	  }
+   	  function sanpinshenpiwindowsubmit(){
+   	  	$('#sanpinshenpiform').form('submit', {
+				url : 'fenghuang/addsanpinshenpi.do',
+				onSubmit : function() {
+					return $(this).form('validate');
+				},
+				success : function(result) {
+					var result = eval('(' + result + ')');
+					if (result.success) {
+						$('#sanpinshenpiwindow').window('close');
+						$.messager.alert("保存成功", "保存成功！", "info");
+					   
+					} else {
+						$.messager.alert("保存失败", "保存失败!", "error");
+					
+					}
+				}
+			});
+   	  }
+   	  
    	  function baoming(val,row){
    	  return '<a href="javascript:yifabubaoming(\''+row.tuanNo+'\')">'+row.tuanName+'</a>';
    	  }

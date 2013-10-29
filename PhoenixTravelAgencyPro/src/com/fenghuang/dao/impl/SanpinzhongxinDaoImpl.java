@@ -131,9 +131,13 @@ public class SanpinzhongxinDaoImpl extends BaseDao implements ISanpinzhongxinDao
 				sanpin.getZibeiqianjia(),sanpin.getNumberday(),sanpin.getGroupdate(),sanpin.getTourdate(),sanpin.getZao(),
 				sanpin.getZhong(),sanpin.getWan(),sanpin.getFabustate(),sanpin.getShoukestate(),sanpin.getTuanNo()
 				);*/
-		String sql = "UPDATE sanpinzhongxin SET fabustate=fabustate+1-1";
+		String sql = "UPDATE sanpinzhongxin SET shoukestate=shoukestate+1-1";
 		StringBuffer sb = new StringBuffer(sql);
 		List list = new ArrayList();
+		if(sanpin.getFabustate()!=0){
+			sb.append(",fabustate=?");
+			list.add(sanpin.getFabustate());
+		}
 		if(sanpin.getTuanName()!=null && !"".equals(sanpin.getTuanName())){
 			sb.append(",tuanName=?");
 			list.add(sanpin.getTuanName());
@@ -265,10 +269,6 @@ public class SanpinzhongxinDaoImpl extends BaseDao implements ISanpinzhongxinDao
 		if(sanpin.getWan()!=0){
 			sb.append(",wan=?");
 			list.add(sanpin.getWan());
-		}
-		if(sanpin.getFabustate()!=0){
-			sb.append(",fabustate=?");
-			list.add(sanpin.getFabustate());
 		}
 
 		if(sanpin.getShoukestate()!=0){

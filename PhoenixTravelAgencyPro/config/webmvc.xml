@@ -172,6 +172,8 @@
 	<mvc:view-controller path="Sanpin_kehuprint.do" view-name="SanPin/SanPin_KehuPrint"/>
 	<mvc:view-controller path="Sanpin_yibufa.do" view-name="SanPin/Sanpin_yifabu"/>
 	<mvc:view-controller path="Sanpin_yibufabaoming.do" view-name="SanPin/SanPin_yifabubaoming"/>
+	<mvc:view-controller path="SanPin_shenpi.do" view-name="SanPin/SanPin_Shenpi"/>
+	<mvc:view-controller path="SanPin_wotijiaoshenpi.do" view-name="SanPin/SanPin_Wotijiaoshenpi"/>
 	<!-- 赵杨_______操作中心 -->
 	<mvc:view-controller path="Caozuo_mingxi.do" view-name="CaoZuo/Caozuo_Mingxi"/>
 	<!-- 赵杨_______行程库管理 -->
