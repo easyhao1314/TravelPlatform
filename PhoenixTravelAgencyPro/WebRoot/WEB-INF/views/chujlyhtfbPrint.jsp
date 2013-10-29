@@ -192,47 +192,47 @@
  <div id="diqizhang"  style=" margin-top: 500px;">
  <p align="center">第七章  协议条款</p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;第十九条  旅游时间</p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;出发时间 __________________，结束时间 ________________；共_______________天______________夜。</p>
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;出发时间 ____________________，结束时间 ________________________；共____________________天_____________________夜。</p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;第二十条  旅游费用及支付</p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;（旅游费用以人民币为计算单位）</p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;成人__________________ 元/人；儿童（不满12岁的）_______________________元/人；</p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;合计___________________元（其中签证／签注费用_________________元/人）。</p>
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;成人_________________________________ 元/人；儿童（不满12岁的）_____________________________________________元/人；</p>
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;合计_______________________________________元（其中签证／签注费用_________________________________________元/人）。</p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;旅游费用支付的方式和时间</p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;第二十一条  个人旅游保险</p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;旅游者_________________________（同意或者不同意，打勾无效）委托出境社办理旅游者投保的个人旅游保险。</p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;保险产品名称：___________________________________保险人：__________________________________</p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;保险金额：____________________________保险费：_____________________________</p>
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;旅游者_________________________________________________________（同意或者不同意，打勾无效）委托出境社办理旅游者投保的个人旅游保险。</p>
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;保险产品名称：______________________________________________保险人：__________________________________________</p>
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;保险金额：________________________________________________保险费：____________________________________________</p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;第二十二条  成团人数与不成团的约定</p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;最低成团人数________________人；低于此人数不能成团时，出境社应当在出发前______________________日通知旅游者。</p>
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;最低成团人数____________________________人；低于此人数不能成团时，出境社应当在出发前__________________________________日通知旅游者。</p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;如不能成团，旅游者是否同意按下列方式解决：
-  <br>&nbsp;&nbsp;&nbsp;&nbsp;1、_____________________________（同意或者不同意，打勾无效）转至______________________________________ 出境社出团；
+  <br>&nbsp;&nbsp;&nbsp;&nbsp;1、_____________________________（同意或者不同意，打勾无效）转至__________________________________________________________________________ 出境社出团；
   <br>&nbsp;&nbsp;&nbsp;&nbsp;2、_____________________________（同意或者不同意，打勾无效）延期出团；
   <br>&nbsp;&nbsp;&nbsp;&nbsp;3、_____________________________（同意或者不同意，打勾无效）改签其他线路出团。
   </p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;第二十三条  拼团约定</p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;旅游者_________________________________（同意或者不同意，打勾无效）采用拼团方式出团。</p>
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;旅游者_________________________________________________________________________（同意或者不同意，打勾无效）采用拼团方式出团。</p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;第二十四条  黄金周特别约定</p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;黄金周旅游高峰期间，旅游者和出境社对行前退团及取消出团的提前告知时间、相关责任约定如下：</p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;提前告知时间	旅游者行前退团应当支付出境社的业务损失费占旅游费用总额的百分比	出境社取消出团应当支付旅游者的违约金占旅游费用总额的百分比</p>
-  <TABLE style="margin-left:35px;   BORDER-COLLAPSE: collapse" borderColor=#000000 height=40 cellPadding=1 width=1000 align=center border=1 >
+  <TABLE style="BORDER-COLLAPSE: collapse" borderColor=#000000 height=40 cellPadding=1 width=1200 align=center border=1>
 <TBODY>
 <TR>
 <TD><DIV align=center>提前告知时间</DIV></TD><TD><DIV align=center>旅游者行前退团应当支付出境社的业务损失费占旅游费用总额的百分比</DIV></TD><TD><DIV align=center>出境社取消出团应当支付旅游者的违约金占旅游费用总额的百分比</DIV></TD>
 </TR>
 <TR>
-<TD><DIV align=center>出发前_______日至_______日</DIV></TD><TD><DIV align=center></DIV></TD><TD><DIV align=center></DIV></TD>
+<TD><DIV align=center >出发前&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日至&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日</DIV></TD><TD><DIV align=center ></DIV></TD><TD><DIV align=center></DIV></TD>
 </TR>
 <TR>
-<TD><DIV align=center>出发前_______日至_______日</DIV></TD><TD><DIV align=center></DIV></TD><TD><DIV align=center></DIV></TD>
+<TD><DIV align=center>出发前&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日至&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日</DIV></TD><TD><DIV align=center></DIV></TD><TD><DIV align=center></DIV></TD>
 </TR>
 <TR>
-<TD><DIV align=center>出发前_______日至_______日</DIV></TD><TD><DIV align=center></DIV></TD><TD><DIV align=center></DIV></TD>
+<TD><DIV align=center>出发前&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日至&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日</DIV></TD><TD><DIV align=center></DIV></TD><TD><DIV align=center></DIV></TD>
 </TR>
 <TR>
-<TD><DIV align=center>出发前_______日至_______日</DIV></TD><TD><DIV align=center></DIV></TD><TD><DIV align=center></DIV></TD>
+<TD><DIV align=center>出发前&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日至&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日</DIV></TD><TD><DIV align=center></DIV></TD><TD><DIV align=center></DIV></TD>
 </TR>
 <TR>
-<TD><DIV align=center>出发前_______日至_______日</DIV></TD><TD><DIV align=center></DIV></TD><TD><DIV align=center></DIV></TD>
+<TD><DIV align=center>出发前&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日至&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日</DIV></TD><TD><DIV align=center></DIV></TD><TD><DIV align=center></DIV></TD>
 </TR>
 </TBODY>
 </TABLE>

@@ -106,7 +106,7 @@
  
  
  
- <div id="divdiyizhangright" style="  width: 50%; font-size: 14px; float: left;  height: 3000px;  "  align="left">
+ <div id="divdiyizhangright" style="  width: 50%; font-size: 14px; float: left;  height: 3000px; margin-bottom: 400px;  "  align="left">
    
   
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;第八条  旅游者的权利</p>
@@ -167,50 +167,48 @@
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;5、出境社未经旅游者同意，擅自将旅游者转团、拼团的，旅游者在出发前（不含当日）得知的，有权解除合同，出境社全额退还已交旅游费用，并按旅游费用总额的15%支付违约金；旅游者在出发当日或者出发后得知的，出境社应当按旅游费用总额的25%支付违约金。如违约金不足以赔偿旅游者的实际损失，出境社应当按实际损失对旅游者予以赔偿。</p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;6、与旅游者出现纠纷时，出境社应当积极采取措施防止损失扩大，否则应当就扩大的损失承担责任。</p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;第十七条  旅游者的违约责任</p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;1、旅游者在出发前30日内（含第30日，下同）提出解除合同的，应当按下列标准向出境社支付业务损失费：
-  <br>出发前30日至15日，按旅游费用总额5%；
-  <br>出发前14日至7日，按旅游费用总额15%；
-  <br>出发前6日至4日，按旅游费用总额70%；
-  <br>出发前3日至1日，按旅游费用总额85%；
-  <br>出发当日，按旅游费用总额90%；
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;1、旅游者在出发前7日以内（含第7日，下同）提出解除合同的，应当按下列标准向旅行社支付业务损失费：
+  <br>出发前7日至4日，支付旅游费用总额50%；
+  <br>出发前3日至1日，支付旅游费用总额60%；
+  <br>出发当日，支付旅游费用总额80%。
   <br>如按上述比例支付的业务损失费不足以赔偿出境社的实际损失，旅游者应当按实际损失对出境社予以赔偿，但最高额不应当超过旅游费用总额。
-  <br>出境社在扣除上述业务损失费后，应当在旅游者退团通知到达日起5个工作日内向旅游者退还剩余旅游费用。
+  <br>旅行社在扣除上述业务损失费后，应当在旅游者退团通知到达日起5个工作日内向旅游者退还剩余旅游费用。
   </p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;2、因不听从出境社及其领队的劝告而影响团队行程，给出境社造成损失的，应当承担相应的赔偿责任。</p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;3、旅游者超出本合同约定的内容进行个人活动所造成的损失，由其自行承担。</p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;4、由于旅游者的过错，使出境社遭受损害的，应当由旅游者赔偿损失。</p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;5、与出境社出现纠纷时，旅游者应当积极采取措施防止损失扩大，否则应当就扩大的损失承担责任。</p>
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;2、旅游者未能按照本合同约定的时间足额支付旅游费用的，旅行社有权解除合同，并要求旅游者承担旅行社的业务损失费。</p>
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;3、旅游者因不听从旅行社及其导游的劝告而影响团队行程，给旅行社造成损失的，应当承担相应的赔偿责任。</p>
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;4、旅游者超出本合同约定的内容进行个人活动所造成的损失，由其自行承担。</p>
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;5、由于旅游者的过错，使旅行社遭受损害的，旅游者应当赔偿损失。</p>
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;6、与旅行社出现纠纷时，旅游者应当采取积极措施防止损失扩大，否则应当就扩大的损失承担责任。</p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;第十八条 其他责任</p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;1、因旅游者提供材料存在问题或者自身其他原因被拒签、缓签、拒绝入境和出境的，相关责任和费用由旅游者承担，出境社将未发生的费用退还旅游者。如给出境社造成损失的，旅游者还应当承担赔偿责任。</p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;2、由于第三方侵害等不可归责于出境社的原因导致旅游者人身、财产权益受到损害的，出境社不承担赔偿责任。但因出境社不履行协助义务致使旅游者人身、财产权益损失扩大的，应当就扩大的损失承担赔偿责任。</p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;3、旅游者自行安排活动期间人身、财产权益受到损害的，出境社在事前已尽到必要警示说明义务且事后已尽到必要协助义务的，出境社不承担赔偿责任。</p>
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;1、由于第三方侵害等不可归责于旅行社的原因导致旅游者人身、财产权益受到损害的，旅行社不承担赔偿责任。但因旅行社不履行协助义务致使旅游者人身、财产权益损失扩大的，旅行社应当就扩大的损失承担赔偿责任。</p>
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;2、旅游者在自行安排活动期间人身、财产权益受到损害的，旅行社在事前已尽到必要警示说明义务且事后已尽到必要协助义务的，旅行社不承担赔偿责任。</p>
   
  </div>		
  
  
  
- <div id="diqizhang"  style="">
+ <div id="diqizhang"  style=" margin-top: 500px;">
  <p align="center">第七章  协议条款</p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;第十九条  旅游时间</p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;出发时间 __________________，结束时间 ________________；共_______________天______________夜。</p>
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;出发时间 ____________________，结束时间 ________________________；共____________________天_____________________夜。</p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;第二十条  旅游费用及支付</p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;（旅游费用以人民币为计算单位）</p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;成人__________________ 元/人；儿童（不满12岁的）_______________________元/人；</p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;合计___________________元（其中签证／签注费用_________________元/人）。</p>
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;成人_________________________________ 元/人；儿童（不满12岁的）_____________________________________________元/人；</p>
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;合计_______________________________________元（其中签证／签注费用_________________________________________元/人）。</p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;旅游费用支付的方式和时间</p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;第二十一条  个人旅游保险</p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;旅游者_________________________（同意或者不同意，打勾无效）委托出境社办理旅游者投保的个人旅游保险。</p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;保险产品名称：___________________________________保险人：__________________________________</p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;保险金额：____________________________保险费：_____________________________</p>
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;旅游者_________________________________________________________（同意或者不同意，打勾无效）委托出境社办理旅游者投保的个人旅游保险。</p>
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;保险产品名称：______________________________________________保险人：__________________________________________</p>
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;保险金额：________________________________________________保险费：____________________________________________</p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;第二十二条  成团人数与不成团的约定</p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;最低成团人数________________人；低于此人数不能成团时，出境社应当在出发前______________________日通知旅游者。</p>
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;最低成团人数____________________________人；低于此人数不能成团时，出境社应当在出发前__________________________________日通知旅游者。</p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;如不能成团，旅游者是否同意按下列方式解决：
-  <br>&nbsp;&nbsp;&nbsp;&nbsp;1、_____________________________（同意或者不同意，打勾无效）转至______________________________________ 出境社出团；
+  <br>&nbsp;&nbsp;&nbsp;&nbsp;1、_____________________________（同意或者不同意，打勾无效）转至__________________________________________________________________________ 出境社出团；
   <br>&nbsp;&nbsp;&nbsp;&nbsp;2、_____________________________（同意或者不同意，打勾无效）延期出团；
   <br>&nbsp;&nbsp;&nbsp;&nbsp;3、_____________________________（同意或者不同意，打勾无效）改签其他线路出团。
   </p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;第二十三条  拼团约定</p>
-  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;旅游者_________________________________（同意或者不同意，打勾无效）采用拼团方式出团。</p>
+  <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;旅游者_________________________________________________________________________（同意或者不同意，打勾无效）采用拼团方式出团。</p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;第二十四条  黄金周特别约定</p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;黄金周旅游高峰期间，旅游者和出境社对行前退团及取消出团的提前告知时间、相关责任约定如下：</p>
   <p style="margin-left: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;提前告知时间	旅游者行前退团应当支付出境社的业务损失费占旅游费用总额的百分比	出境社取消出团应当支付旅游者的违约金占旅游费用总额的百分比</p>
@@ -220,19 +218,19 @@
 <TD><DIV align=center>提前告知时间</DIV></TD><TD><DIV align=center>旅游者行前退团应当支付出境社的业务损失费占旅游费用总额的百分比</DIV></TD><TD><DIV align=center>出境社取消出团应当支付旅游者的违约金占旅游费用总额的百分比</DIV></TD>
 </TR>
 <TR>
-<TD><DIV align=center>出发前_______日至_______日</DIV></TD><TD><DIV align=center></DIV></TD><TD><DIV align=center></DIV></TD>
+<TD><DIV align=center >出发前&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日至&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日</DIV></TD><TD><DIV align=center ></DIV></TD><TD><DIV align=center></DIV></TD>
 </TR>
 <TR>
-<TD><DIV align=center>出发前_______日至_______日</DIV></TD><TD><DIV align=center></DIV></TD><TD><DIV align=center></DIV></TD>
+<TD><DIV align=center>出发前&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日至&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日</DIV></TD><TD><DIV align=center></DIV></TD><TD><DIV align=center></DIV></TD>
 </TR>
 <TR>
-<TD><DIV align=center>出发前_______日至_______日</DIV></TD><TD><DIV align=center></DIV></TD><TD><DIV align=center></DIV></TD>
+<TD><DIV align=center>出发前&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日至&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日</DIV></TD><TD><DIV align=center></DIV></TD><TD><DIV align=center></DIV></TD>
 </TR>
 <TR>
-<TD><DIV align=center>出发前_______日至_______日</DIV></TD><TD><DIV align=center></DIV></TD><TD><DIV align=center></DIV></TD>
+<TD><DIV align=center>出发前&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日至&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日</DIV></TD><TD><DIV align=center></DIV></TD><TD><DIV align=center></DIV></TD>
 </TR>
 <TR>
-<TD><DIV align=center>出发前_______日至_______日</DIV></TD><TD><DIV align=center></DIV></TD><TD><DIV align=center></DIV></TD>
+<TD><DIV align=center>出发前&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日至&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日</DIV></TD><TD><DIV align=center></DIV></TD><TD><DIV align=center></DIV></TD>
 </TR>
 </TBODY>
 </TABLE>

@@ -68,6 +68,7 @@
 			<artifactId>javax.servlet.jsp</artifactId>
 			<version>3.0.1</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.glassfish</groupId>
 			<artifactId>javax.servlet.jsp.jstl</artifactId>

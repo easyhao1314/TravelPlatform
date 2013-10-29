@@ -568,7 +568,10 @@ var url = "fenghuang/Sanpinliebiao.do?tuanNo="+'<%=request.getParameter("tuanNo"
 			
 		}
 		function openchujing(){
-		 window.open ('chujlyhtfbPrint.do','newwindow','height=100,width=400,top=0,left=0,toolbar=no,menubar=no,scrollbars=yes, resizable=no,location=no, status=no')
+		 window.open ('chujlyhtfbPrint.do','newwindow','height=100,width=400,top=0,left=0,toolbar=no,menubar=no,scrollbars=yes, resizable=no,location=no, status=no');
+		}
+		function openguonei(){
+		  window.open ('gjlyhtfbPrint.do','newwindow','height=100,width=400,top=0,left=0,toolbar=no,menubar=no,scrollbars=yes, resizable=no,location=no, status=no')
 		}
   	</script>
   </body>
