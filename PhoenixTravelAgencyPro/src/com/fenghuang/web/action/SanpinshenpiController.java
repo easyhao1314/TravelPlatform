@@ -93,12 +93,13 @@ public class SanpinshenpiController {
 	
 	@RequestMapping("fenghuang/upsanpinshenpi.do")
 	@ResponseBody
-	public Map<String,Object> Upsanpinshenpi(HttpServletRequest request,HttpServletResponse response,String id,String yijian,String jieguo,String shenpiren) {
+	public Map<String,Object> Upsanpinshenpi(HttpServletRequest request,HttpServletResponse response,String id,String yijian,String jieguo,String shenpiren,String tuanNo) {
 	Sanpinshenpi s= new Sanpinshenpi();
 	s.setId(Integer.parseInt(id));
 	s.setShenpiyijian(yijian);
 	s.setShenpiuserid(Long.parseLong(shenpiren));
 	s.setShenpijieguo(Integer.parseInt(jieguo));
+	s.setTuanNo(tuanNo);
 	boolean isSuccess = false;
 	Map<String,Object> result = new HashMap<String, Object>();
 	try {

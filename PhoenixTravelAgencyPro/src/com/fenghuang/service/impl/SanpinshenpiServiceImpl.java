@@ -32,9 +32,12 @@ public class SanpinshenpiServiceImpl implements ISanpinshenpiService {
 		// TODO Auto-generated method stub
 		if(s.getShenpijieguo()==1){
 			Sanpinzhongxin sanpin = new Sanpinzhongxin();
-			sanpin.setTuanNo(s.getTuanNo());
-			sanpin.setFabustate(1);
-			isanpin.upSanpinzhongxin(sanpin);
+			if(s.getTuanNo()!=null && !"".equals(s.getTuanNo())){
+				
+				sanpin.setTuanNo(s.getTuanNo());
+				sanpin.setFabustate(1);
+				isanpin.upSanpinzhongxin(sanpin);
+			}
 		}
 		return dao.upsanpinshenpi(s);
 	}

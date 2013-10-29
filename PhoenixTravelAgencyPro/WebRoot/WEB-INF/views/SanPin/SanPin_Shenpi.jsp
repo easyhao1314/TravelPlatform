@@ -42,7 +42,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<th data-options="field:'shenhejieguo'" width="50">审核结果</th>
 				<th data-options="field:'beizhu',formatter:beizhudiv" width="50">备注</th>
 				<th data-options="field:'caozuo',formatter:caozuo" width="50">操作</th>
-				
 			</tr>
 		</thead>
 	</table>
@@ -56,6 +55,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <form id="sanpinshenpiform" action="">
         	<input id="id" name="id" type="hidden" class="easyui-validatebox">
         	<input id="userid" type="hidden" value="${sessionScope.userId}" class="easyui-validatebox">
+        	<input id="tuanNo" type="hidden"  class="easyui-validatebox">
         	审核意见：<br>
         	<textarea id="yijian" name="yijian" rows="20" cols="100%"></textarea>
         	
@@ -88,8 +88,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    	var id = $('#id').val();
    	var yijian = $('#yijian').val();
    	var userId = $('#userid').val();
+   	var tuanNo = $('#tuanNo').val();
    	
-   		var url = "fenghuang/upsanpinshenpi.do?id="+id+"&yijian="+yijian+"&shenpiren="+userId+"&jieguo="+shenhe;
+   		var url = "fenghuang/upsanpinshenpi.do?id="+id+"&yijian="+yijian+"&shenpiren="+userId+"&jieguo="+shenhe+"&tuanNo="+tuanNo;
    	      	$.ajax({
    	      		url:url,
    	      		data:id,
