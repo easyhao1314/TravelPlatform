@@ -33,10 +33,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
+  <img src="Image/title.jpg" style="width: 100%; height: 150px" />
+  <h1 align="center" style="font-size: 20px;">${param.tuanName}</h1>
   	<div id="sanpinzuo" style=" width: 100%;">
   		<div id="zuozuo" style="float: left; margin-right: 20px; margin-top: 40px;"><img id="sanpintupian" alt="点击设定行程图片" width="150px" height="150px" onclick="opentupiandlg()" style=""></div>
   		<div id="zuoyou" style="margin-top: 30px; margin-bottom: 30px;">
-    <span style="margin: 20px;"><b><font color=#0000ff>${param.tuanName}</font></b></span>
+    <span> &nbsp;</span>
     <ul style="margin-top: 20px;">
     	<li>出发地点：<span id="chufa"></span></li>
     	<li>出团日期备注：<span id="groupdatebeizhu"></span></li>
@@ -99,8 +101,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</TABLE>
 		</div>
 		
-		
-		
+	<!-- 测试表格 
+	<table border=1 cellpadding="3" cellspacing="1" width="100%" align="center" style="background-color: #b9d8f3; margin-top:15px; border-collapse: collapse;  border-color:#0076C8; font-weight: bold; " >
+	<tr  style=" border=1; COLOR: #0076C8; BACKGROUND-COLOR: #F4FAFF; font-weight: bold; ">
+    <td style="width:10%; text-align:center; " ><font size="2">天数</font></td>
+    <td style="width:70%; " ><font size="2">行程：</font></td>
+    <td style="width:20%; text-align:center;" ><font size="2">餐饮</font></td>
+    </tr>
+	<tr style="text-align: left; COLOR: #0076C8; BACKGROUND-COLOR: #F4FAFF; font-weight: bold">
+    <td ><font size="2" style="text-align:center;" ><img id="sanpintupian" alt="点击设定日程图片" width="130px" height="80px" onclick="opentupiandlg()" style=""></font></td>
+    <td> <p style="font-size: 10px;">日程日程日</p></td>
+    <td><p>早餐：</p><p>午餐：</p><p>晚餐：</p><p>住宿：</p>
+    </td>
+    </tr>
+	</table>
+	-->
+	
+	
+	
+	
+			
     <div id="tupianxuanzedlg-buttons">
         <a href="javascript:void(0)" class="easyui-linkbutton" onclick="savesanpintupian()">保存</a>
         <a href="javascript:void(0)" class="easyui-linkbutton" onclick="javascript:$('#tupianxuanzedlg').dialog('close')">关闭</a>
@@ -117,6 +137,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</thead>
 	</table>
     </div>
+    <img src="Image/title1.jpg" style="width: 100%; height: 80px" />
     <script type="text/javascript">
     $(document).ready(function() {
      	sanpintuanNoload();
@@ -244,32 +265,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						 
 						 
 						 var d = parseInt(i+1);	
-						 var app='<table border="0" cellpadding="3" cellspacing="1" width="100%" align="center" style="background-color: #b9d8f3; margin-top:15px;" >'
-						 	+'<tr style="text-align: center; COLOR: #0076C8; BACKGROUND-COLOR: #F4FAFF; font-weight: bold">'
-    							+'<td colspan="3" align="left"><font size="2"  style="float: left;">第'+d+'天</font><div id="jtcs'+i+'"></div></td>'
+						 var app='<table border=1 cellpadding="3" cellspacing="1" width="100%" align="center" style="background-color: #b9d8f3; margin-top:15px; border-collapse: collapse;  border-color:#0076C8; " >'
+						 	+'<tr  style=" COLOR: #0076C8; BACKGROUND-COLOR: #F4FAFF; font-weight: bold; ">'
+						 		+'<td style="width:10%; text-align:center; " ><font size="2">第'+d+'天</font></td>'
+						 		+'<td style="width:77%;" ><font size="2"><div id="jtcs'+i+'"></div></font></td>'
+    							+'<td style="width:13%; text-align:center;" ><font size="2">餐饮</font></td>'
     						+'</tr>'
 	
-						+'<tr style="text-align: center; COLOR: #0076C8; BACKGROUND-COLOR: #F4FAFF; font-weight: bold">'
-    						+'<td colspan="3" align="left"><font size="2">日程安排：'+data.rows[i].richenganpai+'</font></td>'
-    					+'</tr>'
-    					
-    					+'<tr style="text-align: center; COLOR: #0076C8; BACKGROUND-COLOR: #F4FAFF; font-weight: bold">'
-    						+'<td colspan="3" align="left"><font size="2">活动安排：'+data.rows[i].huodong+'</font></td>'
-    					+'</tr>'
-	
-	
-    					+'<tr style="text-align: left; COLOR: #0076C8; BACKGROUND-COLOR: #F4FAFF; font-weight: bold; ">'
-    +'<td style="width:33%" ><font size="2">早餐：'+data.rows[i].zaos+'</font></td>'
-    +'<td style="width:33%" ><font size="2">午餐：'+data.rows[i].zhongs+'</font></td>'
-    +'<td style="width:33%" ><font size="2">晚餐：'+data.rows[i].wans+'</font></td>'
-    +'</tr>'
-
+						
 	+'<tr style="text-align: left; COLOR: #0076C8; BACKGROUND-COLOR: #F4FAFF; font-weight: bold">'
-    +'<td><font size="2" style="float: left;">交通工具：</font><div id="jtgj'+i+'"></div></td>'
-    +'<td><font size="2"></font></td>'
-    +'<td><font size="2">住宿：'+data.rows[i].jiudian+'</font></td>'
+    +'<td ><font size="2" style="text-align:center;" ><img id="sanpintupian" alt="点击设定日程图片" width="130px" height="80px" onclick="opentupiandlg()" style=""></font></td>'
+    +'<td>'+data.rows[i].richenganpai+''+data.rows[i].huodong+'</td>'
+    +'<td><p>早餐：'+data.rows[i].zaos+'</p><p>午餐：'+data.rows[i].zhongs+'</p><p>晚餐：'+data.rows[i].wans+'</p><p>住宿：'+data.rows[i].jiudian+'</p></td>'
     +'</tr>'
-						 +'<table>';			
+						 +'</table>';			
 						$("#sanpinyou").append(app);
 						$('#d'+d).form('load',data.rows[i]);
 						$('#jtcs'+i).append(jtapp);

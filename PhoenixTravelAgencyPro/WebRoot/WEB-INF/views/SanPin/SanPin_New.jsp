@@ -18,6 +18,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+	<script src="js/ckeditor/ckeditor.js"></script>
+	<link href="js/ckeditor/sample.css" rel="stylesheet">
+	
+	
 
   </head>
   
