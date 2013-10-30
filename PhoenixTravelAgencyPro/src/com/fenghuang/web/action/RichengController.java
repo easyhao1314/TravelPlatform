@@ -135,7 +135,7 @@ public class RichengController {
 	@ResponseBody
 	public Map<String, Object> updatericheng(HttpServletRequest request,HttpServletResponse response,
 			String riid,String richenganpai,String huodong,String chengshiid,String jiudian,String jiaotong,String zao,String zhong,String wan,
-			String jiaotongchengshi,String cheid,String gouwuid){
+			String jiaotongchengshi,String cheid,String gouwuid,String richengtupian){
 		boolean isSuccess = false;
 		Map<String,Object> result = new HashMap<String, Object>();	
 		Richeng r = new Richeng();
@@ -168,6 +168,9 @@ public class RichengController {
 			}
 			if(cheid!=null && !"".equals(cheid)){
 				r.setCheid(Integer.parseInt(cheid));
+			}
+			if(richengtupian!=null && !"".equals(richengtupian)){
+				r.setRichengtupian(richengtupian);
 			}
 			r.setJiaotongchengshi(jiaotongchengshi);
 		try {

@@ -87,6 +87,11 @@ public class RichengDaoImpl extends BaseDao implements IRichengDao  {
 			sb.append(",gouwuid=?");
 			list.add(r.getGouwuid());
 		}
+		if(r.getRichengtupian()!=null && !"".equals(r.getRichengtupian())){
+			sb.append(",richengtupian=?");
+			list.add(r.getRichengtupian());
+			
+		}
 		
 			sb.append(" where riid=?");
 			list.add(r.getRiid());

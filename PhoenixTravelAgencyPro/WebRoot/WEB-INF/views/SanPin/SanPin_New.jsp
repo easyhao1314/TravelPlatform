@@ -1,3 +1,9 @@
+<%@ taglib uri="http://ckeditor.com" prefix="ckeditor" %>
+<%@page import="com.ckeditor.CKEditorConfig"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.Map"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
@@ -5,7 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <base href="<%=basePath%>">
     <title>新建散拼</title>
@@ -170,26 +176,49 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </div>
         <div>
         <h4>扩展信息</h4>
+        		<%
+        		String value = "";
+				Map<String, String> attr = new HashMap<String, String>();
+				CKEditorConfig settings = new CKEditorConfig();
+				  %>
      团队特色说明：
-   <br>
-   <textarea name="teamexplains" style="height:70px; width: 1000px;"></textarea>
-   <br>
+   <p>
+			<% 
+				
+				attr.put("rows", "8");
+				attr.put("cols", "10");
+				
+				settings.addConfigValue("width", "1000");
+				settings.addConfigValue("toolbar", "Basic");
+			%>
+			<ckeditor:editor textareaAttributes="<%=attr %>"
+				basePath="ckeditor/" config="<%=settings %>"
+				editor="teamexplains" value="<%= value %>"/>
+		</p>
    服务包含： 
-   <br>      
-   <textarea name="Servicesinclude" style="height:70px; width: 1000px;"></textarea>
-   <br>
+   		<p>
+			<ckeditor:editor textareaAttributes="<%=attr %>"
+				basePath="ckeditor/" config="<%=settings %>"
+				editor="Servicesinclude" value="<%= value %>"/>
+		</p>
    服务不含： 
-   <br>      
-   <textarea name="servicenoinclude" style="height:70px; width: 1000px;"></textarea>
-   <br>  
+   		<p>
+			<ckeditor:editor textareaAttributes="<%=attr %>"
+				basePath="ckeditor/" config="<%=settings %>"
+				editor="servicenoinclude" value="<%= value %>"/>
+		</p>
    参团须知： 
-   <br>      
-   <textarea name="notes" style="height:70px; width: 1000px;"></textarea>
-   <br>
+   		<p>
+			<ckeditor:editor textareaAttributes="<%=attr %>"
+				basePath="ckeditor/" config="<%=settings %>"
+				editor="notes" value="<%= value %>"/>
+		</p>
    备注： 
-   <br>      
-   <textarea name="beizhu" style="height:70px; width: 1000px;"></textarea>
-   <br>
+   		<p>
+			<ckeditor:editor textareaAttributes="<%=attr %>"
+				basePath="ckeditor/" config="<%=settings %>"
+				editor="beizhu" value="<%= value %>"/>
+		</p>
   <a href="javascript:sanpinSave();" class="easyui-linkbutton" >保存</a>
         </div>
        <input id="master" name="master" type="hidden"  >

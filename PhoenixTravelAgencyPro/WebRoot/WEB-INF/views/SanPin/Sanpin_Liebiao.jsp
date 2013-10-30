@@ -40,9 +40,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<th data-options="field:'Tourdate'" width="50">回团日期</th>
 				<th data-options="field:'chufa'" width="50">出发城市</th>
 				<th data-options="field:'zhikejia'" width="50">直客价</th>
-				<th data-options="field:'numbermaster',formatter:yushouyishou"  width="50">预收/已收</th>
+				<th data-options="field:'numbermaster'"  width="50">预收人数</th>
+				<th data-options="field:'yishourenshu'"  width="50">已收人数</th>
 				<th data-options="field:'shoukestate',formatter:openshouke" width="50">收客状态</th>
-				<th data-options="field:'beizhu'" width="50">备注</th>
 				<th data-options="field:'productbrand',hidden:true" width="50">产品品牌_隐藏的</th>
 			</tr>
 		</thead>

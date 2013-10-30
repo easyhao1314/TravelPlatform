@@ -62,7 +62,19 @@ public class Richeng {
     * 
     * @pdOid 7dcf0cd9-ff93-4c27-8014-de4a278b58b1 */
    private int gouwuid;
+   /** 日程图片
+    * 
+    * @pdOid 7dcf0cd9-ff93-4c27-8014-de4a278b58b1 */
+   private String richengtupian;
    
+   
+
+public String getRichengtupian() {
+	return richengtupian;
+}
+public void setRichengtupian(String richengtupian) {
+	this.richengtupian = richengtupian;
+}
 public int getCheid() {
 	return cheid;
 }

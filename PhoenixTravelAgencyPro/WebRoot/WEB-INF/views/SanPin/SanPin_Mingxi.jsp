@@ -39,27 +39,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		<div id="zuozuo" style="float: left; margin-right: 20px; margin-top: 40px;"><img id="sanpintupian" alt="点击设定行程图片" width="150px" height="150px" onclick="opentupiandlg()" style=""></div>
   		<div id="zuoyou" style="margin-top: 30px; margin-bottom: 30px;">
     <span> &nbsp;</span>
-    <ul style="margin-top: 20px;">
+    <ul style="margin-top: 45px; margin-left:-20px; margin-right:30px; float: left; ">
     	<li>出发地点：<span id="chufa"></span></li>
     	<li>出团日期备注：<span id="groupdatebeizhu"></span></li>
     	<li>行程天数：<span id="numberday"></span>天</li>
-    	<li>航空公司：<span id="hangkong"></span><ul><li>去程：<span id="qucheng"></span></li><li>回程：<span id="huicheng"></span></li></ul></li>
     	<li>适合人群：<span id="renqun"></span></li>
     	<li>产品品牌：<span id="prand"></span></li>
     	<li>直客价：<span id="jiage"></span>RMB</li>
     	<li>儿童站床价：<span id="ertongzhanchuang"></span></li>
     	<li>儿童不站床价：<span id="ertongbuzhanchuang"></span></li>
     </ul>
+    <ul style="margin-top: 30px; margin-left: 100px;">
+    	<li>出团日期：<span id="groupdate"></span></li>
+    	<li>回团日期：<span id="Tourdate"></span></li>
+    	<li>航空公司：<span id="hangkong"></span><ul><li>去程：<span id="qucheng"></span></li><li>回程：<span id="huicheng"></span></li></ul></li>
+    </ul>
     	</div>
     	<TABLE style="BORDER-RIGHT: #0076C8 2px dotted; BORDER-TOP: #0076C8 2px dotted; BORDER-LEFT: #0076C8 2px dotted; BORDER-BOTTOM: #0076C8 2px dotted; BORDER-COLLAPSE: collapse;margin-bottom: 10px;" borderColor=#0076C8  cellPadding=1 width=100% align=center border=2>
 			<TBODY>
 				<TR style="text-align: left; COLOR: #0076C8; BACKGROUND-COLOR: #F4FAFF; ">
 					<TD>
-						<font size="3" style="font-weight: bold">产品特点</font><br><span id="tedian" style="width: 100%;"></span>
+						<font size="3" style="font-weight: bold">产品特点：</font><br><span id="tedian" style="width: 100%;"></span>
 					</TD>
 				</TR>
 			</TBODY>
-			</TABLE>
+		</TABLE>
 		
 			
 			
@@ -76,7 +80,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<TBODY>
 				<TR style="text-align: left; COLOR: #0076C8; BACKGROUND-COLOR: #F4FAFF; ">
 					<TD>
-						<font size="3" style="font-weight: bold">参团须知</font><br><span id="cantuan" style="width: 300px;"></span>
+						<font size="3" style="font-weight: bold">参团须知：</font><br><span id="cantuan" style="width: 300px;"></span>
 					</TD>
 				</TR>
 			</TBODY>
@@ -85,7 +89,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<TBODY>
 				<TR style="text-align: left; COLOR: #0076C8; BACKGROUND-COLOR: #F4FAFF; ">
 					<TD>
-						<font size="3" style="font-weight: bold">服务包含</font><br><span id="baohan" style="width: 300px;"></span>
+						<font size="3" style="font-weight: bold">服务包含：</font><br><span id="baohan" style="width: 300px;"></span>
 					</TD>
 				</TR>
 			</TBODY>
@@ -94,7 +98,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<TBODY>
 				<TR style="text-align: left; COLOR: #0076C8; BACKGROUND-COLOR: #F4FAFF; ">
 					<TD>
-						<font size="3" style="font-weight: bold">服务不含</font><br><span id="buhan" style="width: 300px;"></span>
+						<font size="3" style="font-weight: bold">服务不含：</font><br><span id="buhan" style="width: 300px;"></span>
+					</TD>
+				</TR>
+			</TBODY>
+		</TABLE>
+		<TABLE style="BORDER-RIGHT: #0076C8 2px dotted; BORDER-TOP: #0076C8 2px dotted; BORDER-LEFT: #0076C8 2px dotted; BORDER-BOTTOM: #0076C8 2px dotted; BORDER-COLLAPSE: collapse;margin-bottom: 10px;" borderColor=#0076C8  cellPadding=1 width=100% align=center border=2>
+			<TBODY>
+				<TR style="text-align: left; COLOR: #0076C8; BACKGROUND-COLOR: #F4FAFF; ">
+					<TD>
+						<font size="3" style="font-weight: bold">备注：</font><br><span id="beizhu" style="width: 300px;"></span>
 					</TD>
 				</TR>
 			</TBODY>
@@ -122,8 +135,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 			
     <div id="tupianxuanzedlg-buttons">
-        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="savesanpintupian()">保存</a>
+    	<a id="richeng" href="javascript:void(0)" class="easyui-linkbutton" onclick="saverichengtupian()">保存日程</a>
+        <a id="xianlu" href="javascript:void(0)" class="easyui-linkbutton" onclick="savesanpintupian()">保存线路</a>
         <a href="javascript:void(0)" class="easyui-linkbutton" onclick="javascript:$('#tupianxuanzedlg').dialog('close')">关闭</a>
+        <input id="rid" type="hidden">
     </div>
     <div id="tupianxuanzedlg" class="easyui-dialog" title="设定图片" data-options="iconCls:'icon-save',buttons: '#tupianxuanzedlg-buttons',closed:true" style="width:700px;height:400px;padding:10px">
         <table id="dgPicManage" class="easyui-datagrid" 
@@ -201,10 +216,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					document.getElementById("renqun").innerHTML=data.rows[0].renqun;
 					document.getElementById("tedian").innerHTML=data.rows[0].teamexplains;
 					
-					document.getElementById("baohan").innerHTML=data.rows[0].Servicesinclude;
-					document.getElementById("buhan").innerHTML=data.rows[0].servicenoinclude;
+					document.getElementById("buhan").innerHTML=data.rows[0].Servicesinclude;
+					document.getElementById("baohan").innerHTML=data.rows[0].servicenoinclude;
+					document.getElementById("beizhu").innerHTML=data.rows[0].beizhu;
 					document.getElementById("cantuan").innerHTML=data.rows[0].notes;
 					document.getElementById("groupdatebeizhu").innerHTML=data.rows[0].groupdatebeizhu;
+					document.getElementById("groupdate").innerHTML=data.rows[0].groupdate;
+					document.getElementById("Tourdate").innerHTML=data.rows[0].Tourdate;
 					$('#sanpintupian').attr('src',data.rows[0].tupian);
 					},
 					error : function() {
@@ -274,7 +292,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 						
 	+'<tr style="text-align: left; COLOR: #0076C8; BACKGROUND-COLOR: #F4FAFF; font-weight: bold">'
-    +'<td ><font size="2" style="text-align:center;" ><img id="sanpintupian" alt="点击设定日程图片" width="130px" height="80px" onclick="opentupiandlg()" style=""></font></td>'
+    +'<td ><font size="2" style="text-align:center;" ><img id="sanpintupian" alt="暂无图片" src="'+data.rows[i].richengtupian+'" width="130px" height="80px" onclick="openrichengtupiandlg('+data.rows[i].riid+')" style=""></font></td>'
     +'<td>'+data.rows[i].richenganpai+''+data.rows[i].huodong+'</td>'
     +'<td><p>早餐：'+data.rows[i].zaos+'</p><p>午餐：'+data.rows[i].zhongs+'</p><p>晚餐：'+data.rows[i].wans+'</p><p>住宿：'+data.rows[i].jiudian+'</p></td>'
     +'</tr>'
@@ -294,7 +312,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       });
   }
   function opentupiandlg(){
+  $('#richeng').hide();
+  $('#xianlu').show();
   	$('#tupianxuanzedlg').dialog('open');
+  }
+  function openrichengtupiandlg(riid){
+  	$('#xianlu').hide();
+  	$('#richeng').show();
+  	$('#rid').attr('value',riid);
+  	$('#tupianxuanzedlg').dialog('open');
+  }
+  function saverichengtupian(){
+  	var row = $('#dgPicManage').datagrid("getSelected");
+  	var riid = $('#rid').val();
+     	$.ajax({
+					url :"fenghuang/updatericheng.do?riid="+riid+"&richengtupian="+row.url,
+					data :riid,
+					dataType : "json",
+					success : function(data) {
+						$.messager.alert("成功", "设定图片成功!", "info");
+						$('#tupianxuanzedlg').dialog('close');
+					},
+					error : function() {
+						$.messager.alert("失败", "设定图片失败!", "error");
+					}
+				});
   }
     </script>
   </body>
