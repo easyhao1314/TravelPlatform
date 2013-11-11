@@ -51,10 +51,10 @@ public class XianluServiceImpl implements IXianluService{
 	}
 
 	@Override
-	public Pagination<Xianlu> xianluinfo(int page, int rows, Long xianid)
+	public Pagination<Xianlu> xianluinfo(int page, int rows, Xianlu x)
 			throws Exception {
 		// TODO Auto-generated method stub
-		return xldao.xianluinfo(page, rows, xianid);
+		return xldao.xianluinfo(page, rows, x);
 	}
 
 	@Override

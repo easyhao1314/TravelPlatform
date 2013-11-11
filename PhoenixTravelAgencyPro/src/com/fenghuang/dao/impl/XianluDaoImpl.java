@@ -40,12 +40,13 @@ public class XianluDaoImpl extends BaseDao implements IXianluDao {
 			public PreparedStatement createPreparedStatement(Connection con)
 					throws SQLException {
 				// TODO Auto-generated method stub
-				String sql="insert into xianlu(xianluname,tianshu,guojia,weihuren) values(?,?,?,?)";
+				String sql="insert into xianlu(xianluname,tianshu,guojia,weihuren,xingchengku) values(?,?,?,?,?)";
 				PreparedStatement ps=con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 				ps.setString(1,x.getXianluname());
 				ps.setLong(2,x.getTianshu());
 				ps.setLong(3,x.getGuojia());
 				ps.setLong(4,x.getWeihuren());
+				ps.setLong(5,x.getXingchengku());
 				return ps;
 			}
 		},keyholder);
@@ -63,22 +64,24 @@ public class XianluDaoImpl extends BaseDao implements IXianluDao {
 	@Override
 	public boolean updateXianlu(Xianlu x) throws Exception {
 		// TODO Auto-generated method stub
-		String sql="update xianlu set xianluname=?,tianshu=?,guojia=?,weihuren=? where xianid=?";
-		int count=this.update(sql,x.getXianluname(),x.getTianshu(),x.getGuojia(),x.getWeihuren(),x.getXianid());
+		String sql="update xianlu set xianluname=?,tianshu=?,guojia=?,weihuren=?,xingchengku=? where xianid=?";
+		int count=this.update(sql,x.getXianluname(),x.getTianshu(),x.getGuojia(),x.getWeihuren(),x.getXingchengku(),x.getXianid());
 		return count>0;
 	}
 
 	@Override
-	public Pagination<Xianlu> xianluinfo(int page, int rows, Long xianid)
+	public Pagination<Xianlu> xianluinfo(int page, int rows, Xianlu x)
 			throws Exception {
 		// TODO Auto-generated method stub
 		String sql = "select * FROM xianlu where 1=1 ";
 		StringBuffer sb = new StringBuffer(sql);
-		if(xianid!=null && !"".equals(xianid)){			
-			sb.append(" and xianid='");
-			sb.append(xianid);
-			sb.append("'");
+		if(x.getXianid()!=0 && !"".equals(x.getXianid())){
+			sb.append("and xianid = '"+x.getXianid()+"'");
 		}
+		if(x.getXingchengku()!=0){
+			sb.append("and xingchengku = '"+x.getXingchengku()+"'");
+		}
+		
 		return this.getPagination(page, rows, sb.toString());
 	}
 

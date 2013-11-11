@@ -21,7 +21,7 @@
 	&nbsp;&nbsp;&nbsp;&nbsp;3、双方当事人可以书面形式对本示范文本内容进行变更或者补充。变更或者补充的内容，不得减轻或者免除应当由出境社承担的责任。<br>
 	&nbsp;&nbsp;&nbsp;&nbsp;4、本示范文本由国家旅游局和国家工商行政管理总局共同制定、解释，在全国范围内推行使用。<br>
  	</p>
-			<div align="center"><h4>团队出境旅游合同</h4></div>
+			<div align="center"><h4>团队国内旅游合同</h4></div>
 			<div align="right">合同编号：______________</div>
 	&nbsp;&nbsp;&nbsp;&nbsp;旅游者：                    等     人（名单可附页，需旅行社和旅游者代表签字盖章确认）；<br />
 	&nbsp;&nbsp;&nbsp;&nbsp;旅行社：                                           ；  <br />                                                       

@@ -30,6 +30,17 @@ public class Xianlu {
     * 
     * @pdOid 666d8278-f875-4d84-b579-06d30c61e1b1 */
    public long weihuren;
+   /** 是否属于行程库
+    * 
+    * @pdOid 666d8278-f875-4d84-b579-06d30c61e1b1 */
+   public int xingchengku;
+   
+public int getXingchengku() {
+	return xingchengku;
+}
+public void setXingchengku(int xingchengku) {
+	this.xingchengku = xingchengku;
+}
 public long getXianid() {
 	return xianid;
 }

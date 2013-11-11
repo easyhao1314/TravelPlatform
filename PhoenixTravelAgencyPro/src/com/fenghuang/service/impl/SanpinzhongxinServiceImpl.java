@@ -59,6 +59,7 @@ public class SanpinzhongxinServiceImpl implements ISanpinzhongxinService {
 			x.setGuojia((int)sanpin.getNumbercountry());
 			x.setTianshu(sanpin.getNumberday());
 			x.setXianluname(sanpin.getTuanName());
+			x.setWeihuren(sanpin.getJiantuanren());
 			ixlsdao.AddXianlu(x);          
             TuanXianlu txl=new TuanXianlu();
             txl.setTuanNo(sanpin.getTuanNo());

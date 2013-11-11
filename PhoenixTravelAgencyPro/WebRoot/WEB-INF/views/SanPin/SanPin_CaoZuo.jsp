@@ -156,19 +156,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	
 	</div>
-	<div id="updatesanpinwindow" class="easyui-window" title="Modal Window" data-options="modal:true,closed:true,iconCls:'icon-save'" style="width:500px;height:200px;padding:10px;">
-        <form id="upsanpinform" action="">
-        	<table>
-        		<tr><td>团号</td><td><input name="tuanNo" class="easyui-validatebox" /></td><td>团名</td><td><input name="tuanName" class="easyui-validatebox" /></td></tr>
-        		<tr><td>出团日期</td><td><input name="groupdate" class="easyui-validatebox" /></td><td>回团日期</td><td><input name="Tourdate" class="easyui-validatebox" /></td></tr>
-        		<tr><td>出发城市</td><td><input name="" class="easyui-validatebox" /></td><td>终点城市</td><td><input name="" class="easyui-validatebox" /></td></tr>
-        		<tr><td>目标人群</td><td><input name="" class="easyui-validatebox" /></td><td>航空公司</td><td><input name="" class="easyui-validatebox" /></td></tr>
-        		<tr><td>地域类型</td><td><input name="" class="easyui-validatebox" /></td><td>目标人群</td><td><input name="" class="easyui-validatebox" /></td></tr>
-        		<tr><td>去程航班</td><td><input name="" class="easyui-validatebox" /></td><td>回程航班</td><td><input name="" class="easyui-validatebox" /></td></tr>
-        		<tr><td>产品类型</td><td><input name="" class="easyui-validatebox" /></td><td>产品品牌</td><td><input name="" class="easyui-validatebox" /></td></tr>
-        		<tr><td>酒店标准</td><td><input name="" class="easyui-validatebox" /></td><td>用餐标准</td><td><input name="" class="easyui-validatebox" /></td></tr>
-        	</table>
-        </form>
+	<div id="xianludialog" class="easyui-dialog" title="选择线路" data-options="modal:true,closed:true,iconCls:'icon-save',buttons: 
+	 			[{
+                    text:'保存',
+                    iconCls:'icon-ok',
+                    handler:function(){
+                    savexianlusanpin();
+                    }
+                },{
+                    text:'关闭',
+                    iconCls:'icon-cancel',
+                    handler:function(){
+                    $('#xianludialog').dialog('close');
+                    }
+                }]" style="width:500px;height:600px;padding:10px;">
+    <table id="xianludg" class="easyui-datagrid"
+		data-options="border:true,singleSelect:true,fit:true,fitColumns:true,pageSize:10"
+		pagination="true" toolbar="#currencyDatagridtoolbar">
+		<thead>
+			<tr>
+				<th data-options="field:'xianid'" width="50px">编号</th>
+				<th data-options="field:'xianluname'" width="50px">线路名称</th>
+				<th data-options="field:'guojia'" width="50px">国家数</th>
+				<th data-options="field:'tianshu'" width="50px">天数</th>
+				<th data-options="field:'weihuren'" width="50px">维护人</th>
+			</tr>
+		</thead>
+	</table>
+	<input id="xlid" type="hidden">
     </div>
 	
 	
@@ -178,13 +193,58 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div data-options="iconCls:'icon-search'"  onClick="chajidiao()">查看订单进度</div>
 		<div><span>行程</span>
     <div>
-    <div onClick="shedingxingcheng()" data-options="iconCls:'icon-search'">生成行程</div>
+    <div onClick="shedingxingcheng()" data-options="iconCls:'icon-add'">生成行程</div>
     <div onClick="daoruxingcheng()" data-options="iconCls:'icon-search'">导入行程</div>
+    <div onClick="diaoyongxingcheng()" data-options="iconCls:'icon-search'">调用行程</div>
     <input id="numberday" type="hidden">
     </div>
     </div>
 	</div>
 	<script type="text/javascript">
+	
+	function savexianlusanpin(){
+		var xlid = $('#xlid').val();
+		var row = $('#xianludg').datagrid("getSelected");
+		$.ajax({
+					url :"fenghuang/savesanpinxingcheng.do?xlid="+xlid+"&xianluname="+row.xianluname+"&guojia="+row.guojia+"&tianshu="+row.tianshu+"&xianid="+row.xianid,
+					data :xlid,
+					dataType : "json",
+					success : function(data) {
+					
+					$.messager.alert("成功", " 保存成功!", "info");
+					$('#xianludialog').dialog('close');
+					},
+					error : function() {
+						$.messager.alert("保存失败", "保存失败!", "error");
+					}
+				});
+	}
+	function diaoyongxingcheng(){
+		var xianid = $('#xianid').val();
+		$.ajax({
+					url :"fenghuang/selectricheng.do?xianluid="+xianid,
+					data :xianid,
+					dataType : "json",
+					success : function(data) {
+					if(data.rows.length!=0){
+					$.messager.alert("发送失败", " 该团已设定行程!", "error");
+					}else{
+								$('#xianludialog').dialog('open');
+					
+					}
+					
+					},
+					error : function() {
+						
+					}
+				});
+
+						$('#xianludg').datagrid({  
+    					url:'fenghuang/xianluinfo.do?xingchengku=1'
+						});
+						
+
+	}
 	function daoruxingcheng(){
 	var xianid = $('#xianid').val();
 		$.ajax({
@@ -329,6 +389,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	$('#operateType').attr('value',2);
 	$('#numberday').attr('value',rowData.numberday);
 	$('#xianid').attr('value',rowData.xlid);
+	$('#xlid').attr('value',rowData.xlid);
 		 e.preventDefault();
          $('#mmsanpincaozuo').menu('show', {
         left:e.pageX,

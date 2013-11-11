@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fenghuang.entiey.Canyin;
+import com.fenghuang.entiey.Richeng;
 import com.fenghuang.entiey.Xianlu;
+import com.fenghuang.service.IRichengService;
 import com.fenghuang.service.IXianluService;
 import com.fenghuang.util.DateJsonValueProcessor;
 import com.fenghuang.util.Pagination;
@@ -27,16 +29,19 @@ import com.fenghuang.util.Pagination;
 public class XianluController {
 	@Autowired
 	IXianluService xlservice;
+	@Autowired
+	IRichengService rs;
 	@RequestMapping("fenghuang/xianluinfo.do")
 	@ResponseBody
 	public Map<String,Object> xianluinfo(HttpServletRequest request,
-			HttpServletResponse response, Integer page,Integer rows,String xianid){
+			HttpServletResponse response, Integer page,Integer rows,String xianid,String xingchengku){
 		try{
-			Long l=null;
+			Xianlu x = new Xianlu();
 			if(xianid!=null && !"".equals(xianid)){
-			l=Long.parseLong(xianid);
-			}else{
-				l=null;
+				x.setXianid(Long.parseLong(xianid));
+			}
+			if(xingchengku!=null && !"".equals(xingchengku)){
+				x.setXingchengku(Integer.parseInt(xingchengku));
 			}
 			if(page==null){
 				page=1;
@@ -44,13 +49,13 @@ public class XianluController {
 			if(rows==null){
 				rows=1;
 			}
-			Pagination<Xianlu> pagination=(Pagination<Xianlu>)xlservice.xianluinfo(page, rows,l);
+			Pagination<Xianlu> pagination=(Pagination<Xianlu>)xlservice.xianluinfo(page, rows,x);
 			List<Map<String, Object>> xlservice=pagination.getResultList();
 			Map<String,Object> returnValue  = new HashMap<String, Object>();
 			for(int i = 0 ;i<xlservice.size();i++){
 				for(Entry<String, Object> entry : xlservice.get(i).entrySet()){
 					if(entry.getValue() == null){
-						entry.setValue("") ;
+						entry.setValue("");
 					}
 				}
 			}
@@ -101,4 +106,79 @@ public class XianluController {
 		result.put("success", isSuccess);
 	    return result;	
 	}
+	@RequestMapping("fenghuang/submitxingchengku.do")
+	@ResponseBody
+	public Map<String,Object> submitxingchengku(HttpServletRequest request,HttpServletResponse response,Xianlu x){
+		Map<String,Object> result=new HashMap<String,Object>();
+		Xianlu xian = new Xianlu();
+		xian.setXingchengku(1);
+		xian.setGuojia(x.getGuojia());
+		xian.setTianshu(x.getTianshu());
+		xian.setWeihuren(x.getWeihuren());
+		xian.setXianluname(x.getXianluname());
+		
+		
+		Richeng r = new Richeng();
+		r.setXianluid(x.getXianid());
+		
+		boolean isSuccess=false;
+		try{
+			Pagination<Richeng> pagination = rs.select(1, 50, r);
+			List<Map<String,Object>> list = pagination.getResultList();
+			Integer newxianluid = xlservice.AddXianlu(xian);
+			Richeng ri;
+			System.out.println(list.size()+"日程数量");
+			for (int i = 0; i < list.size(); i++) {
+				ri = new Richeng();
+				ri.setXianluid(Long.parseLong(newxianluid.toString()));
+				ri.setRichenganpai(""+list.get(i).get("richenganpai"));
+				ri.setJiudian(""+list.get(i).get("jiudian"));
+				ri.setZao(""+list.get(i).get("zao"));
+				ri.setZhong(""+list.get(i).get("zhong"));
+				ri.setWan(""+list.get(i).get("wan"));
+				ri.setJiaotongchengshi(""+list.get(i).get("jiaotongchengshi"));
+				rs.insert(ri);
+			}
+
+			System.out.println(list.get(0).get("jiaotongchengshi")+"日程安排！！！");
+			isSuccess=true;
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		result.put("success", isSuccess);
+	    return result;	
+	}
+	
+	@RequestMapping("fenghuang/savesanpinxingcheng.do")
+	@ResponseBody
+	public Map<String,Object> savesanpinxingcheng(HttpServletRequest request,HttpServletResponse response,String xlid,String xianid){
+		Map<String,Object> result=new HashMap<String,Object>();
+		Richeng r = new Richeng();
+		r.setXianluid(Long.parseLong(xianid));
+		boolean isSuccess=false;
+		try{
+			Pagination<Richeng> pagination = rs.select(1, 50, r);
+			List<Map<String,Object>> list = pagination.getResultList();
+			Richeng ri;
+			for (int i = 0; i < list.size(); i++) {
+				ri = new Richeng();
+				ri.setXianluid(Long.parseLong(xlid));
+				ri.setRichenganpai(""+list.get(i).get("richenganpai"));
+				ri.setJiudian(""+list.get(i).get("jiudian"));
+				ri.setZao(""+list.get(i).get("zao"));
+				ri.setZhong(""+list.get(i).get("zhong"));
+				ri.setWan(""+list.get(i).get("wan"));
+				ri.setJiaotongchengshi(""+list.get(i).get("jiaotongchengshi"));
+				rs.insert(ri);
+			}
+			isSuccess=true;
+		}catch(Exception e){	
+			e.printStackTrace();
+		}
+		result.put("success", isSuccess);
+	    return result;	
+	}
+	
+	
+	
 }

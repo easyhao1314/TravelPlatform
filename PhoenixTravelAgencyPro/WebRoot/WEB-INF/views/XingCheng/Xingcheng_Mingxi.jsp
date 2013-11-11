@@ -88,8 +88,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="easyui-panel" title="工具"
 		style="height:300px;padding:10px;width:auto;"
 		data-options="closable:false" align="left">
+		<a href="javascript:void(0);" onclick="javascript:submitxingch();" class="easyui-linkbutton">提交到行程库</a>
 		
-	</div>	  
+	</div>	
+	
+	
+	
+	
+	
+	  
 	 <div id="richengdlg" class="easyui-dialog" title="设定日程"  data-options="iconCls:'icon-save',closed:true,modal:true,buttons: 
 	 			[{
                     text:'保存',
@@ -529,6 +536,24 @@ function closedSearch(){
 					}
 				});
 	}
+	function submitxingch(){
+		$('#xianlumingxiForm').form('submit',{
+        url:'fenghuang/submitxingchengku.do',
+         onSubmit : function() {
+					return $(this).form('validate');
+				},
+         success : function(data) {
+					var result = $.parseJSON(data) ;
+           if(result.success){
+             $.messager.alert("保存修改成功","保存成功","info");
+           }else{
+              $.messager.alert("保存修改失败","保存失败","error");
+           }
+        }
+     });
+	
+	}
+	
   </script>
   </body>
 </html>

@@ -24,9 +24,9 @@
   </head>
   
   <body>
-  <div class="easyui-panel" title="线路列表" style="height:480px;width: auto;">
+  
     <table id="dg" class="easyui-datagrid"
-		data-options="url:'fenghuang/xianluinfo.do',border:false,singleSelect:true,fit:true,fitColumns:true"
+		data-options="url:'fenghuang/xianluinfo.do?xingchengku=1',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 		pagination="true" toolbar="#currencyDatagridtoolbar">
 		<thead>
 			<tr>
@@ -38,7 +38,8 @@
 			</tr>
 		</thead>
 	</table>
-	</div>
+
+
 	 <div id="currencyDatagridtoolbar">
 		<a href="javascript:addXianluOpen();" class="easyui-linkbutton" iconCls="icon-add" plain="true">添加</a>
 		<a href="javascript:updateselectxianlu();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">修改</a>
