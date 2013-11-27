@@ -124,7 +124,7 @@ public class CaiwuqrfkController {
 		try {
 		Tuanbiao tuanbiao = new Tuanbiao();
 		tuanbiao.setCaozuo(caozuo);
-		tuanbiao.setXiaoshou(xiaoshou);
+		tuanbiao.setXiaoshou(caozuo);
 		if(yishou!=null && !"".equals(yishou)){
 			tuanbiao.setYishou(Integer.parseInt(yishou));
 		}
