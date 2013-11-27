@@ -191,4 +191,25 @@ public class XianluController {
 	
 	
 	
+	@RequestMapping("fenghuang/deletexianlu.do")
+	@ResponseBody
+	public Map<String,Object> deletexianlu(HttpServletRequest request,HttpServletResponse response,String xianid){
+		Map<String,Object> result=new HashMap<String,Object>();
+		boolean isSuccess=false;
+		Xianlu x= new Xianlu();
+		x.setXianid(Long.parseLong(xianid));
+		try{
+			Richeng r = new Richeng();
+			r.setXianluid(Long.parseLong(xianid));
+			rs.delete(r);
+			xlservice.delXianlu(x);
+			isSuccess=true;
+		}catch(Exception e){	
+			e.printStackTrace();
+		}
+		result.put("success", isSuccess);
+	    return result;	
+	}
+	
+	
 }

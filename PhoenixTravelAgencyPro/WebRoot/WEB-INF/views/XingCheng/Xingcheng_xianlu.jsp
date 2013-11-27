@@ -43,7 +43,7 @@
 	 <div id="currencyDatagridtoolbar">
 		<a href="javascript:addXianluOpen();" class="easyui-linkbutton" iconCls="icon-add" plain="true">添加</a>
 		<a href="javascript:updateselectxianlu();" class="easyui-linkbutton" iconCls="icon-edit" plain="true">修改</a>
-		<a href="javascript:deletericheng();" class="easyui-linkbutton" iconCls="icon-cut" plain="true">删除</a>
+		<a href="javascript:void(0);" onclick="deletexingcheng();" class="easyui-linkbutton" iconCls="icon-cut" plain="true">删除</a>
 		<a href="javascript:void(0);" onclick="newricheng();" class="easyui-linkbutton" iconCls="icon-add" plain="true">生成新日程</a>
 		<a href="javascript:void(0);" onclick="daoruword();" class="easyui-linkbutton" iconCls="icon-add" plain="true">导入word日程</a>
 	</div>
@@ -70,14 +70,14 @@
 	  <form id="xianluAddForm" method="post">
 	     <table>
 	       <tr>
-	         <td>线路名称：</td><td><input name="xianluname" class="easyui-validatebox" style="width: 400px;"  required="true"></td>
+	         <td>线路名称：</td><td><input id="xianluname" name="xianluname" class="easyui-validatebox" style="width: 380px;"  required="true"></td>
 	       </tr>
 	       <tr>
-	       	<td>行程天数：</td><td><input  name="tianshu" class="easyui-numberspinner"  style="width: 400px;" min="1" max="100" style="width:133px;" required="true"></input></td>
+	       	<td>行程天数：</td><td><input id="tianshu" name="tianshu" class="easyui-numberspinner"  style="width: 380px;" min="1" max="100" required="true"></input><font color="FF0000">最大值为：100</font></td>
 	       </tr>
 	       
 	        <tr>
-	         <td>行程国家数：</td><td><input name="guojia" class="easyui-numberspinner"  style="width: 400px;" min="1" max="100" style="width:133px;" required="true"></input></td>
+	         <td>行程国家数：</td><td><input id="guojia" name="guojia" class="easyui-numberspinner"  style="width: 380px;" min="1" max="100"  required="true"><font color="FF0000">最大值为：100</font></input></td>
 	       </tr>
 	        <tr>
 	        <td></td><td><input name="weihuren" type="hidden" title="维护人" value="${sessionScope.userId}"></td>
@@ -94,6 +94,9 @@
 	<script type="text/javascript">
 	
 	function addXianluOpen(){
+	var form = document.getElementById("xianluAddForm");
+	//重置表单
+	form.reset();
 	$("#xianluAdd").dialog("open");
 	}
 	function addXianlu(){
@@ -187,6 +190,23 @@
 						
 					}
 				});
+	}
+	function deletexingcheng(){
+	var row = $("#dg").datagrid("getSelected");
+			$.messager.confirm('提示', '系统会删除该行程的所有日程！！，是否继续?', function(r){
+							if (r){
+							}
+					$.ajax({
+					url :"fenghuang/deletexianlu.do?xianid="+row.xianid,
+					data :row.xianid,
+					dataType : "json",
+					success : function(data) {
+					$("#dg").datagrid("reload");
+					$.messager.alert("消息", "删除成功!", "info");
+					}
+					
+					});
+			});
 	}
 	
 	

@@ -243,7 +243,7 @@ public class FileUploadXingchengController {
 							                
 							                        } //end for 
 												    System.out.println(s.trim()+"第二列");
-													 jiudian = s.trim();
+												    jiudian = s.trim();
 													break;
 												} 
 						                    
@@ -258,13 +258,16 @@ public class FileUploadXingchengController {
 					                    	ri.setJiaotongchengshi(jiaotongchengshi);
 					                    	ri.setRichenganpai(richenganpai);
 					                    	ri.setHuodong(huodong);
-					                    	ri.setZao(zao);
-					                    	ri.setZhong(zhong);
-					                    	ri.setWan(wan);
+					                    	
+					                    	ri.setZao(zao.substring(3));
+					                    	ri.setZhong(zhong.substring(3));
+					                    	ri.setWan(wan.substring(3));
+					                    	String sjiudian = jiudian.substring(3);
+					                    	ri.setJiudian(sjiudian);
 					                    	ri.setXianluid(Long.parseLong(xianid));
 					                    	l.add(ri);
 					                    	lie=0;
-					                    	System.out.println(l.get(0).getRichenganpai());
+					                    	System.out.println(l.get(0).getJiudian());
 					                    	continue;
 					                    }
 					                    

@@ -135,7 +135,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    	  }
    	  
    	  function baoming(val,row){
-   	  return '<a href="javascript:yifabubaoming(\''+row.tuanNo+'\')">'+row.tuanName+'</a>';
+   	  return '<a href="javascript:yifabubaoming(\''+row.tuanNo+'\')" style="text-decoration:none;">'+row.tuanName+'</a>';
    	  }
    	  function yifabubaoming(tuanNo){
    	   var url= "Sanpin_yibufabaoming.do?tuanNo="+tuanNo;
@@ -152,7 +152,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				         });
    	      }
    	    function xingcheng(val,row){
-   	    return '<a href="javascript:openSanpinDetail(\''+row.tuanNo+'\',\''+row.tuanName+'\',\''+row.xlid+'\')">'+row.tuanNo+'</a>';
+   	    return '<a href="javascript:openSanpinDetail(\''+row.tuanNo+'\',\''+row.tuanName+'\',\''+row.xlid+'\' )" style="text-decoration:none;">'+row.tuanNo+'</a>';
    	    }
    	    function openSanpinDetail(tuanNo,tuanName,xlid){
    				var url= "Sanpin_mingxi.do?tuanNo="+tuanNo+"&tuanName="+tuanName+"&xianid="+xlid;
