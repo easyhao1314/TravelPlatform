@@ -42,28 +42,26 @@
 	    		
 	    	</table>
 	    	 <div class="easyui-panel" title="应收款统计"
-		style="height:450px;width: auto;" toolbar="#currencyDatagridtoolbar">	
+		style="height:540px;width: auto;" toolbar="#currencyDatagridtoolbar">	
 	<table id="dgysktjselect" class="easyui-datagrid"
 		data-options="url:'fenghuang/caiwutdfylbselect.do?ysyfid=1',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 		pagination="true" toolbar="#tb">
 		<thead>
 			<tr> 
-			    <th data-options="field:'id',editor:'text'" width="50">团号</th>
 				<th data-options="field:'team',editor:'text'" width="50">团号</th>
-				<th data-options="field:'tuanduimc',editor:'text'" width="50">团队名称</th>
-				
+				<th data-options="field:'tuanduimc',editor:'text'" width="80">团队名称</th>
 				<th data-options="field:'kxsm',editor:'text'" width="50">款项说明</th>
-				<th data-options="field:'khmc',editor:'text'" width="50">客户名称</th>
+				<th data-options="field:'khmc',editor:'text'" width="50" hidden="true">客户名称</th>
 				<th data-options="field:'yushoutime',editor:'text'" width="50">预售日期</th>
-				<th data-options="field:'huilv',editor:'text'" width="50">汇率</th>
-				<th data-options="field:'bizhong',editor:'text'" width="50">币种</th>
-				<th data-options="field:'yingshou',editor:'text'" width="50">应收</th>
-			    <th data-options="field:'yishou',editor:'text'" width="30">已收</th>
-			    <th data-options="field:'aaaa',formatter:yskjs" width="30">未收</th>
+				<th data-options="field:'huilv',editor:'text'" width="30">汇率</th>
+				<th data-options="field:'bizhong',editor:'text'" width="30">币种</th>
+				<th data-options="field:'syingshou',editor:'text'" width="50">应收</th>
+			    <th data-options="field:'syishou',editor:'text'" width="40">已收</th>
+			    <th data-options="field:'aaaa',formatter:yskjs" width="40">未收</th>
 				<th data-options="field:'ykfp',formatter:ysktjfp"width="50">已开发票</th>
 				<th data-options="field:'fpxk',formatter:ysktjxk" width="50">发票许可</th>
-				<th data-options="field:'xiaoshou',editor:'numberbox'" width="20">销售确认</th>
-				<th data-options="field:'caiwuid',formatter:ysktjbeizhu" width="20">财务确认</th>
+				<th data-options="field:'xiaoshouyuan',editor:'numberbox'" width="30">销售确认</th>
+				<th data-options="field:'caiwuid',formatter:ysktjbeizhu" width="30">财务确认</th>
 				<th data-options="field:'fuzeren',editor:'numberbox'" width="50">责任人</th>
 			
 			</tr>
@@ -96,8 +94,8 @@
 		   }
 	
 	function yskjs(val,row){
-var a=parseInt(row.yingshou);
-var b=parseInt(row.yishou);
+var a=parseInt(row.syingshou);
+var b=parseInt(row.syishou);
 var c=(a-b);
 return '<div style="width: auto;">'+c+'</div>';
 }

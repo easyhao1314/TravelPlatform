@@ -48,18 +48,16 @@ pagination="true" toolbar="#tb">
 <tr>
 
 
-<th data-options="field:'tuanduimc',editor:'text'" width="10">团号</th>
+<th data-options="field:'tuanduimc',editor:'text'" width="15">团号</th>
 <th data-options="field:'team',editor:'text'" width="10">团名</th>
 <th data-options="field:'chutuantime',editor:'text'" width="10">出团日期</th>
 <th data-options="field:'huituantime'" width="10">回团日期</th>
 <th data-options="field:'xiaoshouyuan'" width="10">操作人</th>
-<th data-options="field:'yingshou',editor:'text'" width="10">应收</th>
-<th data-options="field:'yishou',editor:'text'" width="10">已收</th>
-<th data-options="field:'yfk',editor:'text'" width="10">应付</th>	
-<th data-options="field:'yifu',editor:'numberbox'" width="10">已付</th>
-<th data-options="field:'fanyong',editor:'numberbox'" width="10">返佣</th>
-<th data-options="field:'yujilirun',editor:'numberbox'" width="10">预计利润</th>
-<th data-options="field:'shijilirun',formatter:tuanduishijishouru" width="10">实际利润</th>
+<th data-options="field:'syingshou',editor:'text'" width="10">应收</th>
+<th data-options="field:'syishou',editor:'text'" width="10">已收</th>
+<th data-options="field:'syfk',editor:'text'" width="10">应付</th>	
+<th data-options="field:'syifu',editor:'numberbox'" width="10">已付</th>
+<th data-options="field:'yujilirun',formatter:tuanduiyujilirun" width="10">预计利润</th>
 </tr>
 </thead>
 </table>
@@ -72,14 +70,20 @@ iconCls="icon-add" plain="true">查看</a>
 
 <script type="text/javascript">
 
-//时机收入
-function tuanduishijishouru(val,row){
-var a=parseInt(row.yingshou);
-var b=parseInt(row.yfk);
+//预计利润
+function tuanduiyujilirun(val,row){
+var a=parseInt(row.syingshou);
+var b=parseInt(row.syfk);
+var c=(a-b);
+return '<div style="width: auto;">'+c+'</div>';
+} 
+//团队实际利润
+function tuanduishijilirun(val,row){
+var a=parseInt(row.syishou);
+var b=parseInt(row.syifu);
 var c=(a-b);
 return '<div style="width: auto;">'+c+'</div>';
 }
-
 function onClickRow(index) {
 if (editIndex != index) {
 if (endEditing()) {

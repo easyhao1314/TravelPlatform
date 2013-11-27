@@ -46,21 +46,18 @@
 		pagination="true" toolbar="#tb">
 		<thead>
 			<tr>
-				<th data-options="field:'team',editor:'text'" width="50">团号</th>
-				<th data-options="field:'tuanduimc',editor:'text'" width="50">团队名称</th>
-				<th data-options="field:'suppliers',editor:'text'" width="50">回团时间</th>
-				<th data-options="field:'khmc',editor:'text'" width="">客户/联系人</th>
-				<th data-options="field:'xiaoshou',editor:'text'" width="50">销售专员</th>			
-				<th data-options="field:'aa',editor:'numberbox'" width="">状态</th>
-				<th data-options="field:'renshu',editor:'numberbox'" width="50">人数</th>
-				<th data-options="field:'bizhong',editor:'numberbox'" width="50">币种</th>
-				<th data-options="field:'ddje',editor:'numberbox'" width="50">订单金额</th>
-				<th data-options="field:'yingshou',editor:'numberbox'" width="50">应收</th>
-				<th data-options="field:'yishou',editor:'numberbox'" width="50">已收</th>
+				<th data-options="field:'sanpintuanName'" width="50">团队名称</th>
+				<th data-options="field:'tuanduimc'" width="50">团号</th>
+				<th data-options="field:'khmc'" width="" >客户/联系人</th>
+				<th data-options="field:'xiaoshouyuan'" width="50">销售专员</th>			
+				<th data-options="field:'renshu'" width="50">人数</th>
+				<th data-options="field:'bizhong'" width="50">币种</th>
+				<th data-options="field:'ddje'" width="50">订单金额</th>
+				<th data-options="field:'yingshou'" width="50">应收</th>
+				<th data-options="field:'yishou'" width="50">已收</th>
 				<th data-options="field:'09',formatter:sanpinhesuan" width="50">未收</th>
-				<th data-options="field:'fankuan',editor:'numberbox'" width="50">返款</th>
-				<th data-options="field:'yajin',editor:'numberbox'" width="50">押金</th>
-				<th data-options="field:'beizhu',editor:'numberbox'" width="50">备注</th>
+				<th data-options="field:'fankuan'" width="50">返款</th>
+				<th data-options="field:'beizhu'" width="50">备注</th>
 			
 			</tr>
 		</thead>
