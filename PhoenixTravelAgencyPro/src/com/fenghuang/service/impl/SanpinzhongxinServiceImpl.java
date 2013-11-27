@@ -60,10 +60,10 @@ public class SanpinzhongxinServiceImpl implements ISanpinzhongxinService {
 			x.setTianshu(sanpin.getNumberday());
 			x.setXianluname(sanpin.getTuanName());
 			x.setWeihuren(sanpin.getJiantuanren());
-			ixlsdao.AddXianlu(x);          
+			Integer xianluid = ixls.AddXianlu(x);       
             TuanXianlu txl=new TuanXianlu();
             txl.setTuanNo(sanpin.getTuanNo());
-            txl.setXlid(ixls.AddXianlu(x));
+            txl.setXlid(xianluid);
             bl=itxls.addTuanXianlu(txl);
             //添加财务
 //            Tuanbiao b = new Tuanbiao();

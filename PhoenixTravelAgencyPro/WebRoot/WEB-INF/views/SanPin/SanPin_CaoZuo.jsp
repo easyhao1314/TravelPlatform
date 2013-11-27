@@ -179,7 +179,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<th data-options="field:'xianluname'" width="50px">线路名称</th>
 				<th data-options="field:'guojia'" width="50px">国家数</th>
 				<th data-options="field:'tianshu'" width="50px">天数</th>
-				<th data-options="field:'weihuren'" width="50px">维护人</th>
+				<th data-options="field:'userName'" width="50px">维护人</th>
 			</tr>
 		</thead>
 	</table>

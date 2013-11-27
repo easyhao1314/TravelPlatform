@@ -57,8 +57,10 @@ public class XianluDaoImpl extends BaseDao implements IXianluDao {
 	@Override
 	public boolean delXianlu(Xianlu x) throws Exception {
 		// TODO Auto-generated method stub
+		String sql = "delete from xianlu where xianid=?";
 		
-		return false;
+		int count = this.update(sql,x.getXianid());
+		return count>0;
 	}
 
 	@Override
@@ -73,7 +75,7 @@ public class XianluDaoImpl extends BaseDao implements IXianluDao {
 	public Pagination<Xianlu> xianluinfo(int page, int rows, Xianlu x)
 			throws Exception {
 		// TODO Auto-generated method stub
-		String sql = "select * FROM xianlu where 1=1 ";
+		String sql = "select xianlu.*,users.userName FROM xianlu LEFT JOIN users ON xianlu.weihuren=users.id where 1=1 ";
 		StringBuffer sb = new StringBuffer(sql);
 		if(x.getXianid()!=0 && !"".equals(x.getXianid())){
 			sb.append("and xianid = '"+x.getXianid()+"'");

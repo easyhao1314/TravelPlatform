@@ -72,7 +72,13 @@ public class FileUploadXingchengController {
 		 */
 		System.out.println(xianid);
 		
-		
+		String richenganpai = "";
+		String zao ="";
+		String zhong ="";
+		String wan ="";
+		String jiaotongchengshi = "";
+		String jiudian ="";
+		String huodong="";
 		
 		String filename = null;
 		int chunk = 0;// 当前正在处理的文件分块序号
@@ -132,87 +138,140 @@ public class FileUploadXingchengController {
 					         int count=0;
 					           //迭代文档中的表格  
 					            while (it.hasNext()) {     
-					            	if(count>=2){
-					            		break;
-					            	}
+					            	int lie = 0;//区分表格
 					                Table tb = (Table) it.next();     
 					                //迭代行，默认从0开始  
-					                if(count==1){
+					                if(count==0){
 					                for (int i = 0; i < tb.numRows(); i++) {     
-					                	if(count==1 && i==0){
+					                	if(count==0 && i==0){
 					                		continue;
 					                	}
-					                	ri = new Richeng();
+					                	
+					                	
 					                	//这是每一行要处理的操作。
-					                    TableRow tr = tb.getRow(i);      
-					                    //迭代列，默认从0开始  
-					                    for (int j = 0; j < tr.numCells(); j++) {     
-					                        TableCell td = tr.getCell(j);//取得单元格  
-					                        //取得单元格的内容  
-					                        String s ="";
-					                        switch (j) {
-											case 0:
-											    for(int k=0;k<td.numParagraphs();k++){     
-						                            Paragraph para =td.getParagraph(k);
-						                            //以下是获取的文字内容	                            
-						                            s += para.text().trim();
-						                        } //end for 
-											    ri.setXianluid(Long.parseLong(xianid));
-												break;
-
-											case 1:
-											
-												 
-											    for(int k=0;k<td.numParagraphs();k++){     
-						                            Paragraph para =td.getParagraph(k);
-						                            //以下是获取的文字内容
-						                            s+=para.text().trim(); 
-						                
-						                        } //end for 
-												 ri.setRichenganpai(s.trim());
-												break;
-											case 2:
-											    for(int k=0;k<td.numParagraphs();k++){     
-						                            Paragraph para =td.getParagraph(k);
-						                            //以下是获取的文字内容
-						                            s += para.text().trim();
-						                        } //end for 
-											    ri.setZao(s.trim());
-												break;
-											case 3:
-											    for(int k=0;k<td.numParagraphs();k++){     
-						                            Paragraph para =td.getParagraph(k);
-						                            //以下是获取的文字内容
-						                            s += para.text().trim();
-						                        } //end for 
-											    ri.setZhong(s);
-												break;
-											case 4:
-												for(int k=0;k<td.numParagraphs();k++){     
-						                            Paragraph para =td.getParagraph(k);
-						                            //以下是获取的文字内容
-						                            s += para.text().trim();
-						                        } //end for 
-												ri.setWan(s);
-												break;
-											case 5:
-												for(int k=0;k<td.numParagraphs();k++){     
-						                            Paragraph para =td.getParagraph(k);
-						                            //以下是获取的文字内容
-						                            s += para.text().trim();
-						                        } //end for 
-												ri.setJiudian(s);
-												break;
-											default:
-												for(int k=0;k<td.numParagraphs();k++){     
-						                            Paragraph para =td.getParagraph(k);
-						                            //以下是获取的文字内容
-						                            s += para.text().trim();
-						                        }
-											} 
+					                    TableRow tr = tb.getRow(i);   
+					                    System.out.println("共"+tr.numCells()+"列");
 					                    
-					                    }   //end for  
-					                    l.add(ri);
+					                    if(lie==0){
+					                    	System.out.println("获得第一行数据");
+					                    	//迭代列，默认从0开始  
+						                    for (int j = 0; j < tr.numCells(); j++) {     
+						                        TableCell td = tr.getCell(j);//取得单元格  
+						                        //取得单元格的内容  
+						                        String s ="";
+						                        switch (j) {
+												case 1:
+												    for(int k=0;k<td.numParagraphs();k++){     
+							                            Paragraph para =td.getParagraph(k);
+							                            //以下是获取的文字内容
+							                            s+=para.text().trim(); 
+							                
+							                        } //end for 
+												    System.out.println("第二列"+s.trim());
+												    huodong = s.trim();
+													break;
+												} 
+						                    
+						                    }   //end for
+					                    	
+					                    }
+					                    if(lie==1){
+					                    	System.out.println("获得第二行数据");
+					                    	//迭代列，默认从0开始  
+						                    for (int j = 0; j < tr.numCells(); j++) {     
+						                        TableCell td = tr.getCell(j);//取得单元格  
+						                        //取得单元格的内容  
+						                        String s ="";
+						                        switch (j) {
+												case 1:
+												    for(int k=0;k<td.numParagraphs();k++){     
+							                            Paragraph para =td.getParagraph(k);
+							                            //以下是获取的文字内容
+							                            s+=para.text().trim(); 
+							                
+							                        } //end for 
+												    System.out.println("第二列:"+s.trim());
+													 richenganpai = s.trim();
+													break;
+												} 
+						                    
+						                    }   //end for
+					                    	
+					                    }
+					                    if(lie==2){
+					                    	//迭代列，默认从0开始  
+						                    for (int j = 0; j < tr.numCells(); j++) {     
+						                        TableCell td = tr.getCell(j);//取得单元格  
+						                        //取得单元格的内容  
+						                        String s ="";
+						                        switch (j) {
+												case 1:
+												    for(int k=0;k<td.numParagraphs();k++){     
+							                            Paragraph para =td.getParagraph(k);
+							                            //以下是获取的文字内容
+							                            s+=para.text().trim(); 
+							                
+							                        } //end for 
+												    System.out.println("第二列:"+s.trim());
+													 zao = s.trim();
+													break;
+												case 2:
+												    for(int k=0;k<td.numParagraphs();k++){     
+							                            Paragraph para =td.getParagraph(k);
+							                            //以下是获取的文字内容
+							                            s+=para.text().trim(); 
+							                
+							                        } //end for 
+												    System.out.println("第三列:"+s.trim());
+													 zhong = s.trim();
+													break;
+												case 3:
+												    for(int k=0;k<td.numParagraphs();k++){     
+							                            Paragraph para =td.getParagraph(k);
+							                            //以下是获取的文字内容
+							                            s+=para.text().trim(); 
+							                
+							                        } //end for 
+												    System.out.println("第四列:"+s.trim());
+													 wan = s.trim();
+													break;
+												case 4:
+												    for(int k=0;k<td.numParagraphs();k++){     
+							                            Paragraph para =td.getParagraph(k);
+							                            //以下是获取的文字内容
+							                            s+=para.text().trim(); 
+							                
+							                        } //end for 
+												    System.out.println(s.trim()+"第二列");
+													 jiudian = s.trim();
+													break;
+												} 
+						                    
+						                    }   //end for
+					                    	System.out.println("获得第三行数据");
+					                    	
+					                    	
+					                    }
+					                    lie++;
+					                    if(lie>2){
+					                    	ri = new Richeng();
+					                    	ri.setJiaotongchengshi(jiaotongchengshi);
+					                    	ri.setRichenganpai(richenganpai);
+					                    	ri.setHuodong(huodong);
+					                    	ri.setZao(zao);
+					                    	ri.setZhong(zhong);
+					                    	ri.setWan(wan);
+					                    	ri.setXianluid(Long.parseLong(xianid));
+					                    	l.add(ri);
+					                    	lie=0;
+					                    	System.out.println(l.get(0).getRichenganpai());
+					                    	continue;
+					                    }
+					                    
+					                    
+					                    
+					                
+					                    
 					                }   //end for 
 					            	
 					              

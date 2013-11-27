@@ -23,7 +23,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fenghuang.entiey.Sanpinzhongxin;
+import com.fenghuang.entiey.TuanXianlu;
+import com.fenghuang.entiey.Xianlu;
 import com.fenghuang.service.ISanpinzhongxinService;
+import com.fenghuang.service.IXianluService;
+import com.fenghuang.service.ItuanXianluService;
 import com.fenghuang.util.CommonUtil;
 import com.fenghuang.util.DateJsonValueProcessor;
 import com.fenghuang.util.Pagination;
@@ -32,6 +36,10 @@ import com.fenghuang.util.Pagination;
 public class SanpinAction {
 	@Autowired
 	private ISanpinzhongxinService iss;
+	@Autowired
+	private IXianluService ixls;
+	@Autowired
+	private ItuanXianluService ituans;
 	//添加散拼信息
 	@RequestMapping("fenghuang/addsanpin.do")
 	@ResponseBody
@@ -46,6 +54,7 @@ public class SanpinAction {
 			Sanpinzhongxin sanpin = new Sanpinzhongxin();
 			
 		try {
+			
 			sanpin.setTuanNo(tuanNo);
 			
 			
@@ -296,6 +305,17 @@ public class SanpinAction {
 	try {
 		
 		isSuccess=true;
+		//删除线路表
+		Xianlu x= new Xianlu();
+		x.setXianid(Long.parseLong(xianluid));
+		ixls.delXianlu(x);
+		//删除关联关系
+		TuanXianlu t= new TuanXianlu();
+		t.setXlid(Long.parseLong(xianluid));
+		ituans.deltuanxianlu(t);
+		
+		
+		//删除散拼中心表
 		iss.DeleteSanpinzhongxin(sanpin, xianluid);
 	} catch (Exception e) {
 		// TODO Auto-generated catch block

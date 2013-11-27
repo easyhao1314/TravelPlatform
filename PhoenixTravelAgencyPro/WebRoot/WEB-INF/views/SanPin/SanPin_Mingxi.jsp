@@ -33,27 +33,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-  <img src="Image/title.jpg" style="width: 100%; height: 150px" />
   <h1 align="center" style="font-size: 20px;">${param.tuanName}</h1>
   	<div id="sanpinzuo" style=" width: 100%;">
-  		<div id="zuozuo" style="float: left; margin-right: 20px; margin-top: 40px;"><img id="sanpintupian" alt="点击设定行程图片" width="150px" height="150px" onclick="opentupiandlg()" style=""></div>
+  		<div id="zuozuo" style="float: left; margin-right: 20px; margin-top: 40px;"></div>
   		<div id="zuoyou" style="margin-top: 30px; margin-bottom: 30px;">
-    <span> &nbsp;</span>
-    <ul style="margin-top: 45px; margin-left:-20px; margin-right:30px; float: left; ">
-    	<li>出发地点：<span id="chufa"></span></li>
-    	<li>出团日期备注：<span id="groupdatebeizhu"></span></li>
-    	<li>行程天数：<span id="numberday"></span>天</li>
-    	<li>适合人群：<span id="renqun"></span></li>
-    	<li>产品品牌：<span id="prand"></span></li>
-    	<li>直客价：<span id="jiage"></span>RMB</li>
-    	<li>儿童站床价：<span id="ertongzhanchuang"></span></li>
-    	<li>儿童不站床价：<span id="ertongbuzhanchuang"></span></li>
-    </ul>
-    <ul style="margin-top: 30px; margin-left: 100px;">
-    	<li>出团日期：<span id="groupdate"></span></li>
-    	<li>回团日期：<span id="Tourdate"></span></li>
-    	<li>航空公司：<span id="hangkong"></span><ul><li>去程：<span id="qucheng"></span></li><li>回程：<span id="huicheng"></span></li></ul></li>
-    </ul>
+
     	</div>
     	<TABLE style="BORDER-RIGHT: #0076C8 2px dotted; BORDER-TOP: #0076C8 2px dotted; BORDER-LEFT: #0076C8 2px dotted; BORDER-BOTTOM: #0076C8 2px dotted; BORDER-COLLAPSE: collapse;margin-bottom: 10px;" borderColor=#0076C8  cellPadding=1 width=100% align=center border=2>
 			<TBODY>
@@ -113,24 +97,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</TBODY>
 		</TABLE>
 		</div>
-		
-	<!-- 测试表格 
-	<table border=1 cellpadding="3" cellspacing="1" width="100%" align="center" style="background-color: #b9d8f3; margin-top:15px; border-collapse: collapse;  border-color:#0076C8; font-weight: bold; " >
-	<tr  style=" border=1; COLOR: #0076C8; BACKGROUND-COLOR: #F4FAFF; font-weight: bold; ">
-    <td style="width:10%; text-align:center; " ><font size="2">天数</font></td>
-    <td style="width:70%; " ><font size="2">行程：</font></td>
-    <td style="width:20%; text-align:center;" ><font size="2">餐饮</font></td>
-    </tr>
-	<tr style="text-align: left; COLOR: #0076C8; BACKGROUND-COLOR: #F4FAFF; font-weight: bold">
-    <td ><font size="2" style="text-align:center;" ><img id="sanpintupian" alt="点击设定日程图片" width="130px" height="80px" onclick="opentupiandlg()" style=""></font></td>
-    <td> <p style="font-size: 10px;">日程日程日</p></td>
-    <td><p>早餐：</p><p>午餐：</p><p>晚餐：</p><p>住宿：</p>
-    </td>
-    </tr>
+		<!--  
+	
+<TABLE style="BORDER-COLLAPSE: collapse; " borderColor=#000000 cellSpacing=0 width=100% align=center bgColor=#ffffff border=1>
+<TBODY>
+<TR>
+<TD height=40>
+
+<TABLE style="BORDER-COLLAPSE: collapse; margin-top: -13px; margin-left: 5px; " borderColor=#000000 cellSpacing=0 width=10% align=left bgColor=#ffffff border=1>
+<TBODY>
+<TR>
+<TD height=10>
+日期
+</TD></TR>
+</TBODY></TABLE>
+<TABLE style="BORDER-COLLAPSE: collapse; margin-top: -13px;  margin-left: 5px;" borderColor=#000000 cellSpacing=0 width=89% align=left bgColor=#ffffff border=1>
+<TBODY>
+<TR>
+<TD height=10>
+日期
+</TD></TR>
+</TBODY></TABLE>
+
+
+</TD></TR>
+</TBODY></TABLE>
+	
+	
+	
+	<table border="1" width=100%>
+		<tr><td rowspan="3" width="10%">第一天</td><td colspan="2">路线</td></tr>
+		<tr><td width="%80">新城安排</td><td width="10%"><img id="sanpintupian" alt="点击设定日程图片" width="100%" height="100px" onclick="opentupiandlg()" style=""></td></tr>
+		<tr><td>早：午：晚：</td><td>住宿</td></tr>
 	</table>
 	-->
-	
-	
 	
 	
 			
@@ -152,7 +152,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</thead>
 	</table>
     </div>
-    <img src="Image/title1.jpg" style="width: 100%; height: 80px" />
     <script type="text/javascript">
     $(document).ready(function() {
      	sanpintuanNoload();
@@ -215,7 +214,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					document.getElementById("prand").innerHTML=data.rows[0].prand;
 					document.getElementById("renqun").innerHTML=data.rows[0].renqun;
 					document.getElementById("tedian").innerHTML=data.rows[0].teamexplains;
-					
 					document.getElementById("buhan").innerHTML=data.rows[0].Servicesinclude;
 					document.getElementById("baohan").innerHTML=data.rows[0].servicenoinclude;
 					document.getElementById("beizhu").innerHTML=data.rows[0].beizhu;
@@ -278,28 +276,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						 }
 						 
 						
-						 
+						 	
+		
+		
+		
+	
 						 
 						 
 						 
 						 var d = parseInt(i+1);	
-						 var app='<table border=1 cellpadding="3" cellspacing="1" width="100%" align="center" style="background-color: #b9d8f3; margin-top:15px; border-collapse: collapse;  border-color:#0076C8; " >'
-						 	+'<tr  style=" COLOR: #0076C8; BACKGROUND-COLOR: #F4FAFF; font-weight: bold; ">'
-						 		+'<td style="width:10%; text-align:center; " ><font size="2">第'+d+'天</font></td>'
-						 		+'<td style="width:77%;" ><font size="2"><div id="jtcs'+i+'"></div></font></td>'
-    							+'<td style="width:13%; text-align:center;" ><font size="2">餐饮</font></td>'
-    						+'</tr>'
-	
-						
-	+'<tr style="text-align: left; COLOR: #0076C8; BACKGROUND-COLOR: #F4FAFF; font-weight: bold">'
-    +'<td ><font size="2" style="text-align:center;" ><img id="sanpintupian" alt="暂无图片" src="'+data.rows[i].richengtupian+'" width="130px" height="80px" onclick="openrichengtupiandlg('+data.rows[i].riid+')" style=""></font></td>'
-    +'<td>'+data.rows[i].richenganpai+''+data.rows[i].huodong+'</td>'
-    +'<td><p>早餐：'+data.rows[i].zaos+'</p><p>午餐：'+data.rows[i].zhongs+'</p><p>晚餐：'+data.rows[i].wans+'</p><p>住宿：'+data.rows[i].jiudian+'</p></td>'
-    +'</tr>'
-						 +'</table>';			
+						 var app='<table border="1" width=100%>'
+						 	+'<tr><td rowspan="3"  width="10%" style="text-align:center;">第'+d+'天</td><td colspan="2"><div id="jtcs'+i+'"></div></td></tr>'
+						 		+'<tr><td width="%75">'+data.rows[i].richenganpai+'</td><td width="15%"><img id="sanpintupian" alt="暂无图片" src="'+data.rows[i].richengtupian+'" width="170px" height="120px" onclick="openrichengtupiandlg('+data.rows[i].riid+')" style=""></td></tr>' 
+
+								+''
+						 		+'<tr><td>早：'+data.rows[i].zaos+' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;午：'+data.rows[i].zhongs+' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 晚：'+data.rows[i].wans+'</td><td>住宿：'+data.rows[i].jiudian+'</td></tr>'
+    							+'</table>';			
 						$("#sanpinyou").append(app);
 						$('#d'+d).form('load',data.rows[i]);
-						$('#jtcs'+i).append(jtapp);
+						$('#jtcs'+i).append(jtapp+"<br>"+data.rows[i].huodong);
 						$('fon').attr('margin-top','-10px');
 						$('#jtgj'+i).append(feiji+bashi+huoche+youlun);
 					} 

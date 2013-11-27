@@ -46,7 +46,6 @@ data-options="url:'fenghuang/caiwutdfylbselect.do',border:false,singleSelect:tru
 pagination="true" toolbar="#tb">
 <thead>
 <tr>
-<th data-options="field:'id',editor:'text'" width="5">ID</th>
 
 
 <th data-options="field:'tuanduimc',editor:'text'" width="10">团号</th>

@@ -15,5 +15,10 @@ public class TuanXianluServiceImpl implements ItuanXianluService{
 		// TODO Auto-generated method stub
 		return itxld.addTuanXianlu(txl);
 	}
+	@Override
+	public boolean deltuanxianlu(TuanXianlu t) throws Exception {
+		// TODO Auto-generated method stub
+		return itxld.deltuanxianlu(t);
+	}
 
 }

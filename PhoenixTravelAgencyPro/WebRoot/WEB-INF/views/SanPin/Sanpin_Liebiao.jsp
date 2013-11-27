@@ -23,7 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-	
+	<!--  <div  style="width: auto; height: 30px;background-image: url('Image/buttonxiala.jpg');"></div> -->
 	
    <div id="tb">
 		<a href="javascript:Select();" class="easyui-linkbutton"
@@ -192,7 +192,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		   
 		   
 		   function onOperateSanpinList1(val,row){
-		     return '<div onclick="testOnclick(event,\''+row.tuanNo+'\')" style="width: auto;">'+row.tuanNo+'</div>';
+		     return '<div onclick="testOnclick(event,\''+row.tuanNo+'\')" style="width: auto; height: 20px; background-image: url(\'Image/buttonxiala.jpg\');  ">'+row.tuanNo+'</div>';
 		   }
 		   function openshouke(val,row){
 		   var shouke=null;

@@ -66,7 +66,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<td><div class="fitem">
 						<strong><label>维护人:</label></strong>
 				</td>
-				<td><strong><input name="weihuren" class="easyui-validatebox"></strong>
+				<td><strong><input name="userName" class="easyui-validatebox"></strong>
 					
 				</td>
 			</tr>
@@ -359,7 +359,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					success : function(data) {
 					for(var i=0;i<data.rows.length;i++){
 					//循环修改交通城市在数据库里面读取出来的代码显示到JSP
+						 var huodong;
 						 var jt = new Array();
+						 
 						 var jj = data.rows[i].jiaotongchengshi;
 						 jt=jj.split(":");
 						 	var jtapp='';
@@ -384,6 +386,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						 }
 						 		 
 						 }
+						 huodong=data.rows[i].huodong;
 						 
 						 
 						 var d = parseInt(i+1);	
@@ -399,7 +402,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						 +'<table></form>';			
 						$("#mdiv").append(app);
 						$('#d'+d).form('load',data.rows[i]);
-						$('#jtcs'+i).append(jtapp);
+						$('#jtcs'+i).append(jtapp+"<br>"+huodong);
+						
 					}
 					//pares方法是 渲染JqueryEasyUi 插件的 解决不显示EasyUi的样式问题
 					$.parser.parse("#mdiv");

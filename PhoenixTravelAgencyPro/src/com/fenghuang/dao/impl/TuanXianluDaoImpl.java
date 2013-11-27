@@ -24,4 +24,12 @@ public class TuanXianluDaoImpl extends BaseDao implements ItuanXianluDao{
 		return count>0;
 	}
 
+	@Override
+	public boolean deltuanxianlu(TuanXianlu t) throws Exception {
+		// TODO Auto-generated method stub
+		String sql = "delete from tuanxianlu where xlid=?";
+		int count = this.update(sql,t.getXlid());
+		return false;
+	}
+
 }

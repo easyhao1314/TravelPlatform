@@ -82,6 +82,16 @@ public class XianluController {
 		 int count=0;
 		try {
 		count=xlservice.AddXianlu(x);
+		Richeng r = new Richeng();
+		/*
+		for(int i=0;i<x.getTianshu();i++){
+			
+			r.setXianluid(count);
+		
+		rs.insert(r);
+		}
+		*/
+		
 		if(count>0){
 			isSuccess=true;
 		}

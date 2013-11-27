@@ -37,21 +37,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <form id="addsanpinform" method="post" >
   <div >
   <h4>基础信息</h4> 
+  <p><font color="#FF0000">提示：价格体系的最大上限金额为：9999999</font></p>
   <table style="" >
   	<tr><td>价格体系（RMB）：</td>
-  	<td>直客：</td><td><input class="easyui-validatebox" type="text" name="zhikejia" style="width: 70px; height: 15px;"></input></td>
-  	<td>同行：</td><td><input class="easyui-validatebox" type="text" name="tonghang" style="width: 70px; height: 15px;"></input></td>
-  	<td>儿童占床：</td><td><input class="easyui-validatebox" type="text" name="ertongzhanchuang" style="width: 70px; height: 15px;"></input></td>
- 	<td>儿童不占床：</td><td><input class="easyui-validatebox" type="text" name="ertongbuzhanchuang" style="width: 70px; height: 15px;"></input></td>
- 	<td>大客户：</td><td><input class="easyui-validatebox" type="text" name="dakehujia" style="width: 70px; height: 15px;"></input></td>
- 	<td>自备签价：</td><td><input class="easyui-validatebox" type="text" name="zibeiqianjia" style="width: 70px; height: 15px;"></input></td>
+  	<td>直客：</td><td><input  class="easyui-numberspinner" min="1" max="9999999" type="text" name="zhikejia" style="width: 70px; height: 15px;"></input></td>
+  	<td>同行：</td><td><input class="easyui-numberspinner" min="1" max="9999999" type="text" name="tonghang" style="width: 70px; height: 15px;"></input></td>
+  	<td>儿童占床：</td><td><input class="easyui-numberspinner" min="1" max="9999999" type="text" name="ertongzhanchuang" style="width: 70px; height: 15px;"></input></td>
+ 	<td>儿童不占床：</td><td><input class="easyui-numberspinner" min="1" max="9999999" type="text" name="ertongbuzhanchuang" style="width: 70px; height: 15px;"></input></td>
+ 	<td>大客户：</td><td><input class="easyui-numberspinner" min="1" max="9999999" type="text" name="dakehujia" style="width: 70px; height: 15px;"></input></td>
+ 	<td>自备签价：</td><td><input class="easyui-numberspinner" min="1" max="9999999" name="zibeiqianjia" style="width: 70px; height: 15px;"></input></td>
   	</tr>
   </table>
   <table>
    	<tr>
-  	<td>出团计划名称：</td><td><input class="easyui-validatebox" type="text" required="true" name="tuanName" ></input></td>
+  	<td>线路名称：</td><td><input class="easyui-validatebox" type="text" required="true" name="tuanName" ></input></td>
   	<td></td><td></td>
-  	<td>出团计划编号：</td><td><input name="tuanNo" class="easyui-validatebox"   readonly="readonly"   ></td>
+  	<td>出团编号：</td><td>根据地域类型生成<input name="tuanNo" type="hidden" class="easyui-validatebox"   readonly="readonly"   ></td>
   	</tr>
   	<tr>
   	<td>全程天数：</td><td><input id="ss" name="numberday" class="easyui-numberspinner" min="1" max="100" required="true" style="width:133px;"></input></td>
@@ -133,26 +134,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	"></td>
   	</tr>
   	  	<tr>
-  	<td>用餐标准：</td><td>
-  	<input name="zao" class="easyui-combobox" data-options="
-					url:'fenghuang/getDicByTypeComboboxs.do?dicType=22',
-					valueField:'dicNo',
-					textField:'dicName',
-					panelHeight:'auto'
-	">
-	<input name="zhong" class="easyui-combobox" data-options="
-					url:'fenghuang/getDicByTypeComboboxs.do?dicType=23',
-					valueField:'dicNo',
-					textField:'dicName',
-					panelHeight:'auto' 
-	">
-	<input name="wan" class="easyui-combobox" data-options="
-					url:'fenghuang/getDicByTypeComboboxs.do?dicType=24',
-					valueField:'dicNo',
-					textField:'dicName',
-					panelHeight:'auto'
-	">
-	
+  	<td></td><td>
+  	
 	</td>
   	<td></td><td></td>
   	<td>产品品牌：</td><td>
@@ -172,7 +155,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <div>
   <h4>出境团基础信息</h4>
-   预报人数<input class="easyui-validatebox" type="text" name="predict" style=" "></input>
+   预报人数: <input name="predict" class="easyui-numberspinner" min="1" max="100" style="width:133px;" ></input><font color="FF0000">最大数值为：100</font>
 
   </div>
         <div>

@@ -55,7 +55,7 @@
 		<thead>
 		
 			<tr>
-			    <th data-options="field:'id',editor:'text'" width="50">id</th>
+			  
 				<th data-options="field:'bizhong',editor:'text'" width="50">币种</th>
 				<th data-options="field:'riqi',editor:'text'" width="50">日期</th>
 				<th data-options="field:'huilv',editor:'text'" width="50">汇率</th>

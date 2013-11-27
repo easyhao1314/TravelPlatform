@@ -46,7 +46,6 @@
 		pagination="true" toolbar="#currencyDatagridtoolbar">
 		<thead>
 			<tr> 
-				<th data-options="field:'bianhao'" width="50">编号</th>
 				<th data-options="field:'xingzhi'" width="50">付款性质</th>
 				<th data-options="field:'shouzhi'" width="50">收支类型</th>
 				<th data-options="field:'shuoming'" width="50">费用项说明</th>
