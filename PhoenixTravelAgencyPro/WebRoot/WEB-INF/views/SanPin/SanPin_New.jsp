@@ -60,7 +60,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	<td>全程国家数：</td><td><input id="ss" name="numbercountry" class="easyui-numberspinner" min="1" max="100"  style="width:133px;"></input></td>
   	</tr>
   	<tr>
-  	<td>出团日期：</td><td><input id="dd" name="groupdate" class="easyui-datebox" required="true" ></input></td>
+  	<td>出团日期：</td><td><input id="dd" name="groupdate" class="easyui-datebox"  ></input></td>
   	<td></td><td></td>
   	<td>预收人数：</td><td><input id="ss" name="numbermaster" class="easyui-numberspinner" min="1" max="100" style="width:133px;" required="true"></input></td>
   	</tr>
@@ -70,7 +70,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	  	
   	  	
   	  	
-  	<td>回团日期：</td><td><input id="dd" name="Tourdate" class="easyui-datebox" required="true" ></input></td>
+  	<td>回团日期：</td><td><input id="dd" name="Tourdate" class="easyui-datebox" required="true"></input></td>
   	<td></td><td></td>
   	<td>地域类型：</td><td>
   	<input id="Areatype" name="Areatype" required="true" class="easyui-combobox" data-options="

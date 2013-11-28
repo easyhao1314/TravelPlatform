@@ -39,16 +39,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		<div id="zuoyou" style="margin-top: 30px; margin-bottom: 30px;">
 
     	</div>
-    	<TABLE style="BORDER-RIGHT: #0076C8 2px dotted; BORDER-TOP: #0076C8 2px dotted; BORDER-LEFT: #0076C8 2px dotted; BORDER-BOTTOM: #0076C8 2px dotted; BORDER-COLLAPSE: collapse;margin-bottom: 10px;" borderColor=#0076C8  cellPadding=1 width=100% align=center border=2>
-			<TBODY>
-				<TR style="text-align: left; COLOR: #0076C8; BACKGROUND-COLOR: #F4FAFF; ">
-					<TD>
-						<font size="3" style="font-weight: bold">产品特点：</font><br><span id="tedian" style="width: 100%;"></span>
-					</TD>
-				</TR>
-			</TBODY>
-		</TABLE>
-		
+    	
+			<font  size="3" style="font-weight: bold; margin-left: -20px;">产品特点</font><span id="tedian" style="width: 100%;"></span>
 			
 			
 		
@@ -97,40 +89,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</TBODY>
 		</TABLE>
 		</div>
-		<!--  
-	
-<TABLE style="BORDER-COLLAPSE: collapse; " borderColor=#000000 cellSpacing=0 width=100% align=center bgColor=#ffffff border=1>
-<TBODY>
-<TR>
-<TD height=40>
-
-<TABLE style="BORDER-COLLAPSE: collapse; margin-top: -13px; margin-left: 5px; " borderColor=#000000 cellSpacing=0 width=10% align=left bgColor=#ffffff border=1>
-<TBODY>
-<TR>
-<TD height=10>
-日期
-</TD></TR>
-</TBODY></TABLE>
-<TABLE style="BORDER-COLLAPSE: collapse; margin-top: -13px;  margin-left: 5px;" borderColor=#000000 cellSpacing=0 width=89% align=left bgColor=#ffffff border=1>
-<TBODY>
-<TR>
-<TD height=10>
-日期
-</TD></TR>
-</TBODY></TABLE>
 
 
-</TD></TR>
-</TBODY></TABLE>
-	
-	
-	
-	<table border="1" width=100%>
-		<tr><td rowspan="3" width="10%">第一天</td><td colspan="2">路线</td></tr>
-		<tr><td width="%80">新城安排</td><td width="10%"><img id="sanpintupian" alt="点击设定日程图片" width="100%" height="100px" onclick="opentupiandlg()" style=""></td></tr>
-		<tr><td>早：午：晚：</td><td>住宿</td></tr>
-	</table>
-	-->
 	
 	
 			
@@ -203,24 +163,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					data :'${param.tuanNo}',
 					dataType : "json",
 					success : function(data) {
-					document.getElementById("numberday").innerHTML=data.rows[0].numberday;
-					document.getElementById("chufa").innerHTML=data.rows[0].chufa;
-					document.getElementById("jiage").innerHTML=data.rows[0].zhikejia;
-					document.getElementById("hangkong").innerHTML=data.rows[0].airways;
-					document.getElementById("qucheng").innerHTML=data.rows[0].groupflight;
-					document.getElementById("huicheng").innerHTML=data.rows[0].Tourflight;
-					document.getElementById("ertongzhanchuang").innerHTML=data.rows[0].ertongzhanchuang;
-					document.getElementById("ertongbuzhanchuang").innerHTML=data.rows[0].ertongbuzhanchuang;
-					document.getElementById("prand").innerHTML=data.rows[0].prand;
-					document.getElementById("renqun").innerHTML=data.rows[0].renqun;
 					document.getElementById("tedian").innerHTML=data.rows[0].teamexplains;
 					document.getElementById("buhan").innerHTML=data.rows[0].Servicesinclude;
 					document.getElementById("baohan").innerHTML=data.rows[0].servicenoinclude;
 					document.getElementById("beizhu").innerHTML=data.rows[0].beizhu;
 					document.getElementById("cantuan").innerHTML=data.rows[0].notes;
-					document.getElementById("groupdatebeizhu").innerHTML=data.rows[0].groupdatebeizhu;
-					document.getElementById("groupdate").innerHTML=data.rows[0].groupdate;
-					document.getElementById("Tourdate").innerHTML=data.rows[0].Tourdate;
 					$('#sanpintupian').attr('src',data.rows[0].tupian);
 					},
 					error : function() {
@@ -285,18 +232,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						 
 						 
 						 var d = parseInt(i+1);	
+						
 						 var app='<table border="1" width=100%>'
 						 	+'<tr><td rowspan="3"  width="10%" style="text-align:center;">第'+d+'天</td><td colspan="2"><div id="jtcs'+i+'"></div></td></tr>'
-						 		+'<tr><td width="%75">'+data.rows[i].richenganpai+'</td><td width="15%"><img id="sanpintupian" alt="暂无图片" src="'+data.rows[i].richengtupian+'" width="170px" height="120px" onclick="openrichengtupiandlg('+data.rows[i].riid+')" style=""></td></tr>' 
+						 		+'<tr><td width="%75" >'+data.rows[i].richenganpai+'</td><td id="ss"  width="15%"> <div id="sanpintupian'+i+'"><img   alt="暂无图片" src="'+data.rows[i].richengtupian+'" width="170px" height="120px" onclick="openrichengtupiandlg('+data.rows[i].riid+')" style=""></div></td></tr>' 
 
 								+''
 						 		+'<tr><td>早：'+data.rows[i].zaos+' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;午：'+data.rows[i].zhongs+' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 晚：'+data.rows[i].wans+'</td><td>住宿：'+data.rows[i].jiudian+'</td></tr>'
-    							+'</table>';			
+    							+'</table>';
+    							
+						
+						    		
 						$("#sanpinyou").append(app);
 						$('#d'+d).form('load',data.rows[i]);
 						$('#jtcs'+i).append(jtapp+"<br>"+data.rows[i].huodong);
 						$('fon').attr('margin-top','-10px');
 						$('#jtgj'+i).append(feiji+bashi+huoche+youlun);
+						if(!data.rows[i].richengtupian){
+						 $("#sanpintupian"+i).hide();
+						 //$("#ss").attr('colspan','2');
+						 }
 					} 
 					
 					},

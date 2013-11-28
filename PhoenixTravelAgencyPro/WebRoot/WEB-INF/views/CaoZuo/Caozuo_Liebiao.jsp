@@ -442,7 +442,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	
         	<tr>
         	<td>
-        	<input id="huituantime"  name="huituantime" class="easyui-validatebox" style="width: 150px;" />
+        	<input id="huituantime"  name="huituantime" class="easyui-validatebox" type="hidden" style="width: 150px;" />
         	<input id="shenfenid" type="hidden" name="shenfenid" value="3" class="easyui-validatebox" style="width: 150px;" />
         	<input id="shanchu" type="hidden" name="shanchu" value="1" class="easyui-validatebox" style="width: 150px;" />
         	<input id="fpxk" type="hidden" name="fpxk" value="0" class="easyui-validatebox" style="width: 150px;" />
@@ -452,6 +452,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	<input id="team" type="hidden" name="team"  class="easyui-validatebox" style="width: 150px;" />
         	<input id="huilvid" type="hidden" name="huilvid" value="1" class="easyui-validatebox" style="width: 150px;" />
         	<input id="tuanduimc" name="tuanduimc" type="hidden" class="easyui-validatebox" >
+        	<input id="tuanduimc" name="xiaoshou" value="${sessionScope.userId}" type="hidden" class="easyui-validatebox" >
         	</td>
         	</tr>
         	</table>

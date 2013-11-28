@@ -19,7 +19,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
+	
+	<style type="text/css">
+		#div1{
+			background-image: url("Image/ao.png");
+		}
+	</style>
   </head>
   
   <body>
@@ -34,7 +39,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		pagination="true" toolbar="#tb">
 		<thead>
 			<tr>
-				<th data-options="field:'tuanNo',formatter:onOperateSanpinList1" style="width:290px;">团号</th>
+				<th data-options="field:'tuanNo',formatter:onOperateSanpinList1" width="57">团号</th>
 				<th data-options="field:'tuanName',formatter:onOperateSanpinList" width="50">团名/路线</th>
 				<th data-options="field:'groupdate'" width="50">出团日期</th>
 				<th data-options="field:'Tourdate'" width="50">回团日期</th>
@@ -193,7 +198,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		   
 		   function onOperateSanpinList1(val,row){
 		   //url(\'Image/buttonxiala.jpg\')
-		     return '<div onclick="testOnclick(event,\''+row.tuanNo+'\')" style="width: auto; height: 20px; background-color:red ;  ">'+row.tuanNo+'</div>';
+		     return '<div id=""+row.tuanNo onclick="testOnclick(event,\''+row.tuanNo+'\')" style="width: auto; height: 22px; background-image:url(\'Image/tu.png\');   ">'+row.tuanNo+'</div>';
 		   }
 		   function openshouke(val,row){
 		   var shouke=null;
