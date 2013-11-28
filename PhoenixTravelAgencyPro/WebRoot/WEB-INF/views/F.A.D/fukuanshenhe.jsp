@@ -66,7 +66,6 @@
 				<th data-options="field:'khmc'" width="50">供应商名称</th>
 				<th data-options="field:'kxsm'" width="">款项</th>
 				<th data-options="field:'yfk'" width="50">金额</th>
-			
 				<th data-options="field:'xiaoshouyuan'" width="50">销售</th>
 				<th data-options="field:'review',formatter:cwfkbz" width="50">财务审核</th>
 				<th data-options="field:'confirmed',formatter:cwfkbz2" width="50">出纳确认</th>
@@ -112,7 +111,7 @@
 					<td colspan="4s" align="center"><a
 						href="javascript:fkshupdate()" class="easyui-linkbutton"
 						iconCls="icon-ok">确认</a> 
-						<a href="javascript:closedialog();"
+						 <a href="javascript:fukuanshenheclose();"
 						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td></td>
 				</tr>
 			</table>
@@ -149,7 +148,7 @@
 					<td colspan="4s" align="center"><a
 						href="javascript:fkshupdate2()" class="easyui-linkbutton"
 						iconCls="icon-ok">确认</a> 
-						<a href="javascript:closedialog();"
+						<a href="javascript:fukuanshenheclose1();"
 						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td></td>
 				</tr>
 			</table>
@@ -159,6 +158,15 @@
 	
 	
 	<script type="text/javascript">	
+	      //关闭
+		   function fukuanshenheclose(){
+			$("#caiwufkshid").dialog("close");
+		    }
+	
+	       //关闭
+		   function fukuanshenheclose1(){
+			$("#caiwuquxiao").dialog("close");
+		    }
 		function onClickRow(index) {
 			if (editIndex != index) {
 				if (endEditing()) {

@@ -101,7 +101,7 @@
 				<tr>
 					<td colspan="4s" align="center"><a
 						href="javascript:shoukuanupdate();" class="easyui-linkbutton"
-						iconCls="icon-ok">确认</a> <a href="javascript:closedSearch();"
+						iconCls="icon-ok">确认</a> <a href="javascript:shoukuanclose();"
 						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
 				</tr>
 			</table>
@@ -110,6 +110,12 @@
 	
 	
 	<script type="text/javascript">
+	  //关闭
+		   function shoukuanclose(){
+			$("#shoukuanxiugai").dialog("close");
+		    }
+	
+	
 		function caiwuqueren(val,row){
 			var caiwu = '未确认';
 			if(row.confirmed==2){

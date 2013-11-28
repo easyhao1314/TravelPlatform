@@ -128,7 +128,7 @@
 				<tr>
 					<td colspan="4s" align="center"><a
 						href="javascript:bzhlszsave();" class="easyui-linkbutton"
-						iconCls="icon-ok">保存</a> <a href="javascript:closeEditDic();"
+						iconCls="icon-ok">保存</a> <a href="javascript:bzhlszclose();"
 						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
 				</tr>
 			</table>
@@ -136,7 +136,7 @@
 		</form>
 	</div>
 <!-- **********************************************************************删除****************************************************************************** -->
-<div id="bzhlszdeleteid" class="easyui-dialog" title="汇率添加"
+<div id="bzhlszdeleteid" class="easyui-dialog" title="汇率删除"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:500px;height:200px;padding:10px;">
 		<form id="bzhlszdeleteform" method="post">
@@ -201,7 +201,7 @@
 				<tr>
 					<td colspan="4s" align="center"><a
 						href="javascript:bzhlszdelect();" class="easyui-linkbutton"
-						iconCls="icon-ok">确认删除</a> <a href="javascript:closeEditDic();"
+						iconCls="icon-ok">确认删除</a> <a href="javascript:bzhlszclosea();"
 						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
 				</tr>
 			</table>
@@ -278,7 +278,7 @@
 				<tr>
 					<td colspan="4s" align="center"><a
 						href="javascript:bzhlszupdate();" class="easyui-linkbutton"
-						iconCls="icon-ok">保存</a> <a href="javascript:closeEditDic();"
+						iconCls="icon-ok">保存</a> <a href="javascript:bzhlszcloseb();"
 						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
 				</tr>
 			</table>
@@ -331,6 +331,22 @@
 		}
 		
 /*******************************************删除********************************************************/
+  
+           //关闭
+		   function bzhlszclose(){
+			$("#bzhlszid").dialog("close");
+		    }
+		     //关闭
+		   function bzhlszclosea(){
+			$("#bzhlszdeleteid").dialog("close");
+		    }
+		     //关闭
+		   function bzhlszcloseb(){
+			$("#bzhlszupdateid").dialog("close");
+		    }
+		
+		    
+		    
            //按id查询
            function bzhlszdelectopen() {
           //通过主键，查询该操作，并处于编辑状态。 是否打开tab，还是直接弹出window

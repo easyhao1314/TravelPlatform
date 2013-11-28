@@ -100,7 +100,7 @@
 				<tr>
 					<td colspan="4s" align="center"><a
 						href="javascript:fkspupdatea();" class="easyui-linkbutton"
-						iconCls="icon-ok">确认</a> <a href="javascript:closedSearch();"
+						iconCls="icon-ok">确认</a> <a href="javascript:aclose();"
 						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
 				</tr>
 			</table>
@@ -115,7 +115,7 @@
 			<table align="left">
 				<tr>
 					
-					<td><input id="id" name="id"
+					<td><input id="id" name="id" hidden="true"
 						class="easyui-validatebox">
 						</div></td>
 					
@@ -135,7 +135,7 @@
 				<tr>
 					<td colspan="4s" align="center"><a
 						href="javascript:fkspupdateb();" class="easyui-linkbutton"
-						iconCls="icon-ok">确认</a> <a href="javascript:closedSearch();"
+						iconCls="icon-ok">确认</a> <a href="javascript:bclose();"
 						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
 				</tr>
 			</table>
@@ -143,6 +143,20 @@
 		</form>
 	</div>
 	<script type="text/javascript">
+		
+		 //关闭
+		   function aclose(){
+			$("#caiwufksp").dialog("close");
+		    }
+		     //关闭
+		   function bclose(){
+			$("#caiwufkspa").dialog("close");
+		    }
+		
+		
+		
+		
+		
 		
 		function onClickRow(index) {
 			if (editIndex != index) {
@@ -248,7 +262,7 @@
           //通过主键，查询该操作，并处于编辑状态。 是否打开tab，还是直接弹出window 
 			
 			//获取选中 数据
-			var row = $("#fkspdg").datagrid("getSelected");
+		var row = $("#fkspdg").datagrid("getSelected");
 			//alert(row.id);
 		if(row!=null){
 		$("#caiwufkspa").dialog("open");
@@ -263,6 +277,7 @@
 		//修改
 			function fkspupdateb() {
 			var caiwuid = $("#caiwuid").val();
+			alert(caiwuid);
 			$("#spforma").form('submit', {
 				url : 'fenghuang/updatefksp.do?caiwuid='+caiwuid,
 				onSubmit : function() {
