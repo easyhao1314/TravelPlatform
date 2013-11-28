@@ -114,10 +114,19 @@ public class CaiwufkqrDaoImpl extends BaseDao implements IcaiwufkqrDao {
 			sql.append("%'");
       }
        if(tuanbiao.getShenfenid()!=0&&!"".equals(tuanbiao.getShenfenid())){
+    	   if(tuanbiao.getShenfenid()==5){
+    		   sql.append(" and t.shenfenid!=4");
+    	   }else{
   		    sql.append(" and t.shenfenid='");
 			sql.append(tuanbiao.getShenfenid());
 			sql.append("'");
+    	   }
      }
+       if(tuanbiao.getTuanduimc()!=null&&!"".equals(tuanbiao.getTuanduimc())){
+    	   sql.append(" and t.tuanduimc like'");
+			sql.append(tuanbiao.getTuanduimc());
+			sql.append("%'");
+       }
 
     	   return this.getPagination(currentPage, numPerPage, sql.toString());
        }

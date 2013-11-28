@@ -28,8 +28,8 @@
 <body>
       <table>
 	    		<tr>
-	    		   	<td>团号:<input class="easyui-validatebox" type="text" name="team"  id="team"></input></td>
-	    			<td>客户:<input class="easyui-validatebox" type="text" name="khmc" id="khmc"></input></td>
+	    		   	<td>团名:<input class="easyui-validatebox" type="text" name="team"  id="team"></input></td>
+	    			<td>团号:<input class="easyui-validatebox" type="text" name="tuanduimc" id="tuanduimc"></input></td>
 	    			<td>
 	    		<div style="padding:5px;">
 		<a href="javascript:sanpinselect()" class="easyui-linkbutton" data-options="toggle:true,group:'g1'">搜索</a>
@@ -52,11 +52,9 @@
 				<th data-options="field:'xiaoshouyuan'" width="50">销售专员</th>			
 				<th data-options="field:'renshu'" width="50">人数</th>
 				<th data-options="field:'bizhong'" width="50">币种</th>
-				<th data-options="field:'ddje'" width="50">订单金额</th>
 				<th data-options="field:'yingshou'" width="50">应收</th>
 				<th data-options="field:'yishou'" width="50">已收</th>
 				<th data-options="field:'09',formatter:sanpinhesuan" width="50">未收</th>
-				<th data-options="field:'fankuan'" width="50">返款</th>
 				<th data-options="field:'beizhu'" width="50">备注</th>
 			
 			</tr>
@@ -91,7 +89,7 @@
 		var opts = $('#sanpindg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
 			var param = {
 				team: $("#team").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
-				khmc: $("#khmc").val() ,
+				tuanduimc: $("#tuanduimc").val() ,
                 shenfenid:1,
 				page:  opts.pageNumber ,
 				rows:  opts.pageSize

@@ -35,7 +35,7 @@ public class CaiwutdfylbControll {
 	@ResponseBody
 	public Map<String, Object> getCurrencyList(HttpServletRequest request,
 			HttpServletResponse response,HttpSession session,Integer page, Integer rows,String team,String caiwuid,String ysyfid,
-            String id,String tuanduimc) {
+            String id,String tuanduimc,String  shenfenid) {
 		   Tuanbiao tuanbiao = new Tuanbiao();
 		    try {
 		    	if(ysyfid!=null&&!"".equals(ysyfid)){
@@ -46,6 +46,12 @@ public class CaiwutdfylbControll {
 		    	}
 		    	if(tuanduimc!=null&&!"".equals(tuanduimc)){
 		    		tuanbiao.setTuanduimc(tuanduimc);
+		    	}
+		    	if(caiwuid!=null&&!"".equals(caiwuid)){
+		    		tuanbiao.setCaiwuid(Integer.parseInt(caiwuid));
+		    	}
+		    	if(shenfenid!=null&&!"".equals(shenfenid)){
+		    		tuanbiao.setShenfenid(Integer.parseInt(shenfenid));
 		    	}
 			 if(id!=null && !"".equals(id)){
 		    	 tuanbiao.setId(Long.parseLong(id));

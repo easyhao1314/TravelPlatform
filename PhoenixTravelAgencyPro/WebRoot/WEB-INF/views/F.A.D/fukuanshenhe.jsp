@@ -56,18 +56,18 @@
 	 <div class="easyui-panel" title="付款审核"
 		style="height:450px;width: auto;" toolbar="#currencyDatagridtoolbar">	
 	<table id="dg" class="easyui-datagrid"
-		data-options="url:'fenghuang/fukuanshenhe.do?shenfenid=3&ysyfid=2',border:false,singleSelect:true,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
+		data-options="url:'fenghuang/caiwuqrfkselect.do?shenfenid=3&ysyfid=2&&caiwuid=1',border:false,singleSelect:true,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
 		pagination="true" toolbar="#tb">
 		<thead>
 			<tr>  
-				<th data-options="field:'fukuantime',editor:'text'" width="40">付款日期</th>
-				<th data-options="field:'team',editor:'text'" width="50">团号</th>
-				<th data-options="field:'tuanduimc',editor:'text'" width="50">团队名称</th>
-				<th data-options="field:'khmc',editor:'text'" width="50">供应商名称</th>
-				<th data-options="field:'kxsm',editor:'text'" width="">款项</th>
-				<th data-options="field:'yfk',editor:'text'" width="50">金额</th>
+				<th data-options="field:'fukuantime'" width="40">付款日期</th>
+				<th data-options="field:'team'" width="50">团号</th>
+				<th data-options="field:'tuanduimc'" width="50">团队名称</th>
+				<th data-options="field:'khmc'" width="50">供应商名称</th>
+				<th data-options="field:'kxsm'" width="">款项</th>
+				<th data-options="field:'yfk'" width="50">金额</th>
 			
-				<th data-options="field:'caozuo',editor:'numberbox'" width="50">销售</th>
+				<th data-options="field:'xiaoshouyuan'" width="50">销售</th>
 				<th data-options="field:'review',formatter:cwfkbz" width="50">财务审核</th>
 				<th data-options="field:'confirmed',formatter:cwfkbz2" width="50">出纳确认</th>
 			

@@ -34,7 +34,7 @@ public class CaiwuqrfkController {
 	@ResponseBody
 	public Map<String, Object> getCurrencyList(HttpServletRequest request,
 			HttpServletResponse response,HttpSession session,Integer page, Integer rows,String team,String caozuo,String caiwuid,
-            String id,String ysyfid,String khmc,String shenfenid) {
+            String id,String ysyfid,String khmc,String shenfenid,String tuanduimc) {
 		   Tuanbiao tuanbiao = new Tuanbiao();
 		    try {
 		    	if(team!=null&&!"".equals(team)){
@@ -54,6 +54,10 @@ public class CaiwuqrfkController {
 		    	}
 		    	if(shenfenid!=null&&!"".equals(shenfenid)){
 		    		tuanbiao.setShenfenid(Integer.parseInt(shenfenid));
+		    	}
+		    	if(tuanduimc!=null&&!"".equals(tuanduimc)){
+		    		
+		    		tuanbiao.setTuanduimc(tuanduimc);
 		    	}
 			 if(id!=null && !"".equals(id)){
 		    	 tuanbiao.setId(Long.parseLong(id));
@@ -77,7 +81,7 @@ public class CaiwuqrfkController {
 			returnValue.put("total",  pagination.getTotalRows());
 			returnValue.put("rows", testUsers);	
 			JsonConfig config = new JsonConfig();
-	     	config.registerJsonValueProcessor(Timestamp.class,new DateJsonValueProcessor("yyyy-MM-dd HH:mm"));
+	     	config.registerJsonValueProcessor(Timestamp.class,new DateJsonValueProcessor("yyyy-MM-dd"));
 	     			//鎶奙AP杞崲鎴怞SON锛岃繑鍥炲埌鍓嶅彴
 	     
 	     	JSONObject fromObject = JSONObject.fromObject(returnValue,config);
@@ -195,6 +199,9 @@ public class CaiwuqrfkController {
 		}
 		if(tuanduimc!=null&&!"".equals(tuanduimc)){
 			tuanbiao.setTuanduimc(tuanduimc);
+		}
+		if(xiaoshou!=null&&!"".equals(xiaoshou)){
+			tuanbiao.setXiaoshou(xiaoshou);
 		}
 		    tuanbiao.setFuzeren("财务部");
 		    tuanbiao.setShanchu(1);

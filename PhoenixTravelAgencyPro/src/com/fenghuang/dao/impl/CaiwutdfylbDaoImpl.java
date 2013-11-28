@@ -48,9 +48,9 @@ public class CaiwutdfylbDaoImpl extends BaseDao implements IcaiwutdfylbDao{
 		
 		 if(tuanbiao.getTeam()!=null&&!"".equals(tuanbiao.getTeam())){
 	    	   
-	    	   sql.append(" and team='");
+			 sql.append(" and t.team like '");
 				sql.append(tuanbiao.getTeam());
-				sql.append("'");
+				sql.append("%'");
 	    	   
 	       }
 		 if(tuanbiao.getTuanduimc()!=null&&!"".equals(tuanbiao.getTuanduimc())){
@@ -67,6 +67,7 @@ public class CaiwutdfylbDaoImpl extends BaseDao implements IcaiwutdfylbDao{
 				sql.append("'");
 	    	   
 	       }
+		 
 		return this.getPagination(currentPage, numPerPage, sql.toString());
 	}
 
