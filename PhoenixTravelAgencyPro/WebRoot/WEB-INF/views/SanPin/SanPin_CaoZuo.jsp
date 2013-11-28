@@ -476,7 +476,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					dataType : "json",
 					success : function(data) {
 					$.ajax({
-					url :"fenghuang/inserttuanbiao.do?team="+row.tuanName+"&tuanduimc="+row.tuanNo+"&chutuantime="+row.groupdate+"&huituantime="+row.Tourdate+"&renshu="+row.numbermaster+"&yingshou="+yingshou+"&shenfenid="+4+"&ysyfid="+1+"&shanchu="+1+"&huilvid="+1+"&caiwuid="+1+"&xiaoshou="+row.jiantuanren,
+					url :"fenghuang/inserttuanbiao.do?team="+row.tuanName+"&tuanduimc="+row.tuanNo+"&chutuantime="+row.groupdate+"&huituantime="+row.Tourdate+"&renshu="+row.numbermaster+"&yingshou="+yingshou+"&shenfenid="+4+"&ysyfid="+1+"&shanchu="+1+"&huilvid="+1+"&caiwuid="+6+"&xiaoshou="+row.jiantuanren,
 					data :row.tuanNo,
 					dataType : "json",
 					success : function(data) {

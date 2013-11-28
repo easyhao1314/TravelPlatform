@@ -88,18 +88,11 @@ public class CaiwufkqrDaoImpl extends BaseDao implements IcaiwufkqrDao {
 			sql.append(tuanbiao.getCaiwuid());
 			sql.append("'");
 		
-	   }
+	}
        if(tuanbiao.getTeam()!=null&&!"".equals(tuanbiao.getTeam())){
     	   
-    	    sql.append(" and t.team like '");
+    	   sql.append(" and t.team like '");
 			sql.append(tuanbiao.getTeam());
-			sql.append("%'");
-    	   
-       }
-       if(tuanbiao.getXiaoshou()!=null&&!"".equals(tuanbiao.getXiaoshou())){
-    	   
-    	    sql.append(" and users.userName like '");
-			sql.append(tuanbiao.getXiaoshou());
 			sql.append("%'");
     	   
        }
@@ -121,14 +114,9 @@ public class CaiwufkqrDaoImpl extends BaseDao implements IcaiwufkqrDao {
 			sql.append("%'");
       }
        if(tuanbiao.getShenfenid()!=0&&!"".equals(tuanbiao.getShenfenid())){
-    	   if(tuanbiao.getShenfenid()==5){
-    		   sql.append(" and t.shenfenid!=4");
-   			
-    	   }else{
   		    sql.append(" and t.shenfenid='");
 			sql.append(tuanbiao.getShenfenid());
 			sql.append("'");
-    	   }
      }
 
     	   return this.getPagination(currentPage, numPerPage, sql.toString());

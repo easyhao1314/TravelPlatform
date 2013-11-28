@@ -30,7 +30,7 @@
    <table>
 	    		<tr>
 	    		   	<td>团号:<input class="easyui-validatebox" type="text" name="team" id="team"></input></td>
-	    			<td>团队名称:<input class="easyui-validatebox" type="text" name="tuanduimc" id="tuanduimc"></input></td>
+	    			<td>客户:<input class="easyui-validatebox" type="text" name="khmc" id="khmc"></input></td>
 	    			<td>
 	    		<div style="padding:5px;">
 		<a href="javascript:ysktjselect()" class="easyui-linkbutton" data-options="toggle:true,group:'g1'">搜索</a>
@@ -48,8 +48,8 @@
 		pagination="true" toolbar="#tb">
 		<thead>
 			<tr> 
-				<th data-options="field:'team',editor:'text'" width="50">团队名称</th>
-				<th data-options="field:'tuanduimc',editor:'text'" width="80">团号</th>
+				<th data-options="field:'team',editor:'text'" width="50">团号</th>
+				<th data-options="field:'tuanduimc',editor:'text'" width="80">团队名称</th>
 				<th data-options="field:'kxsm',editor:'text'" width="50">款项说明</th>
 				<th data-options="field:'khmc',editor:'text'" width="50" hidden="true">客户名称</th>
 				<th data-options="field:'yushoutime',editor:'text'" width="50">预售日期</th>
@@ -60,8 +60,8 @@
 			    <th data-options="field:'aaaa',formatter:yskjs" width="40">未收</th>
 				<th data-options="field:'ykfp',formatter:ysktjfp"width="50">已开发票</th>
 				<th data-options="field:'fpxk',formatter:ysktjxk" width="50">发票许可</th>
-				<th data-options="field:'xiaoshouyuan',editor:'numberbox'" width="30" >销售确认</th>
-				<th data-options="field:'caiwuid',formatter:ysktjbeizhu" width="30" hidden="true" >财务确认</th>
+				<th data-options="field:'xiaoshouyuan',editor:'numberbox'" width="30">销售确认</th>
+				<th data-options="field:'caiwuid',formatter:ysktjbeizhu" width="30">财务确认</th>
 				<th data-options="field:'fuzeren',editor:'numberbox'" width="50">责任人</th>
 			
 			</tr>
@@ -117,18 +117,17 @@ return '<div style="width: auto;">'+c+'</div>';
 		var opts = $('#dgysktjselect').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
 			var param = {
 				team: $("#team").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
-				tuanduimc: $("#tuanduimc").val() ,
+				khmc: $("#khmc").val() ,
 			
 				ysyfid:1,
-				caiwuid:6,
-				shenfenid:4,
+				caiwuid: id,
                    	
 				page:  opts.pageNumber ,
 				rows:  opts.pageSize
 			};
 		console.info(param);
 				$.ajax({
-					url : 'fenghuang/caiwutdfylbselect.do' ,
+					url : 'fenghuang/caiwuqrfkselect.do' ,
 					data :  param,
 					type : 'POST' ,
 					dataType : 'json' ,

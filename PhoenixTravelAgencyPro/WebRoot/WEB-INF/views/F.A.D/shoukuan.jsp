@@ -30,7 +30,7 @@
    <table>
 	    		<tr>
 	    		   	<td>团号:<input class="easyui-validatebox" type="text" name="team" id="team"></input></td>
-	    			<td>销售<input class="easyui-validatebox" type="text" name="xiaoshou" id="xiaoshou"></input></td>
+	    			<td>销售<input class="easyui-validatebox" type="text" name="caozuo" id="caozuo"></input></td>
 	    			<td><input class="easyui-validatebox" type="text" name="caozuo" id="zhi" hidden="true ></input></td>
 	    			<td>
 	    			<!-- hidden="true" -->
@@ -57,17 +57,19 @@
 	 <div class="easyui-panel" title="收款确认"
 		style="height:450px;width: auto;" toolbar="#currencyDatagridtoolbar">	
 	<table id="shoukuandg" class="easyui-datagrid"
-		data-options="url:'fenghuang/caiwuqrfkselect.do?ysyfid=1&&caiwuid=6&&shenfenid=1',border:false,singleSelect:true,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
+		data-options="url:'fenghuang/caiwuqrfkselect.do?ysyfid=1&&caiwuid=6',border:false,singleSelect:true,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
 		pagination="true" toolbar="#tb">
 		<thead>
 			<tr>	 
 			    <th data-options="field:'yushoutime'" width="10px">收款日期</th>
+				<th data-options="field:'zhanghaoid'" width="10px">收款账号</th>
 				<th data-options="field:'team'" width="10px">团名</th>
 				<th data-options="field:'tuanduimc'" width="10px">团号</th>
 				<th data-options="field:'khmc'" width="10px">客户名称</th>
 				<th data-options="field:'kxsm'" width="10px">款项</th>
 				<th data-options="field:'yishou'" width="10px">金额</th>
-				<th data-options="field:'xiaoshouyuan'" width="10px">操作人</th>
+			
+				<th data-options="field:'userName'" width="10px">操作人</th>
 				<th data-options="field:'beizhu'" width="10px">备注</th>
 				<th data-options="field:'confirmed',formatter:caiwuqueren" width="10px">财务确认</th>
 			</tr>
@@ -163,11 +165,10 @@
 		var opts = $('#shoukuandg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
 			var param = {
 				team: $("#team").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
-				xiaoshou: $("#xiaoshou").val(),
+				caozuo: $("#caozuo").val(),
 				ysyfid:1,
 				
 				caiwuid:id,
-				shenfenid:1,
 				page:  opts.pageNumber ,
 				rows:  opts.pageSize
 			};

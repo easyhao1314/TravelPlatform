@@ -100,7 +100,10 @@
 					<li iconCls="icon-gears"><a
 						href="javascript:open1('单团费用列表','dantuan.do');">单团费用列表</a></li>
 				</ul>
-				
+				<ul>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('团队费用列表','tuandui.do');">团队费用列表</a></li>
+				</ul>
 				<ul>
 					<li iconCls="icon-gears"><a
 						href="javascript:open1('币种汇率设置	','bzhlsz.do');">币种汇率设置</a></li>
