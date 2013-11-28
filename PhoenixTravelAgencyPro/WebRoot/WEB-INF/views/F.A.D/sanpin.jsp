@@ -56,7 +56,6 @@
 				<th data-options="field:'yingshou'" width="50">应收</th>
 				<th data-options="field:'yishou'" width="50">已收</th>
 				<th data-options="field:'09',formatter:sanpinhesuan" width="50">未收</th>
-				<th data-options="field:'fankuan'" width="50">返款</th>
 				<th data-options="field:'beizhu'" width="50">备注</th>
 			
 			</tr>

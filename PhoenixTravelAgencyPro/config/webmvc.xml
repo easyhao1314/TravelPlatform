@@ -111,9 +111,9 @@
     <mvc:view-controller path="shoukuan.do" view-name="F.A.D/shoukuan"/>
     <mvc:view-controller path="fydxwh.do" view-name="F.A.D/fydxwh"/>
     <mvc:view-controller path="fkfssz.do" view-name="F.A.D/fkfssz"/>
-    <mvc:view-controller path="shoukuan.do" view-name="F.A.D/shoukuan"/>
+  
     <mvc:view-controller path="querenfukuan.do" view-name="F.A.D/querenfukuan"/>
-    <mvc:view-controller path="tuandui.do" view-name="F.A.D/tuandui"/>
+    
     <mvc:view-controller path="fukuanshenhe.do" view-name="F.A.D/fukuanshenhe"/>
     <mvc:view-controller path="yfktj.do" view-name="F.A.D/yfktj"/>
     <mvc:view-controller path="tuanduixinxi.do" view-name="F.A.D/tuanduixinxi"/>
@@ -122,7 +122,7 @@
      <mvc:view-controller path="wswfcx.do" view-name="F.A.D/wswfcx"/>
      <mvc:view-controller path="sfkzhwh.do" view-name="F.A.D/sfkzhwh"/>
      <mvc:view-controller path="bzhlsz.do" view-name="F.A.D/bzhlsz"/>
-     <mvc:view-controller path="dantuan.do" view-name="F.A.D/dantuan"/>
+
 	 <!-- 资源中心 -->    
      <mvc:view-controller path="ZiyuanJiudian.do" view-name="Ziyuan/ZiyuanJiudian"/>
      <mvc:view-controller path="ZiyuanJiaotong.do" view-name="Ziyuan/ZiyuanJiaotong"/>

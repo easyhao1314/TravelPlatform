@@ -46,17 +46,32 @@ public class CaiwutdfylbDaoImpl extends BaseDao implements IcaiwutdfylbDao{
 		// TODO Auto-generated method stub
 		StringBuffer sql=new StringBuffer(" SELECT t.*,sum(t.yingshou*b.huilv) as syingshou ,sum(t.yishou*b.huilv) as syishou,sum(t.yifu*b.huilv) as syifu ,sum(t.yfk*b.huilv) as syfk ,s.userName as xiaoshouyuan,b.huilv as huilv,b.bizhong as bizhong from tuanbiao AS t LEFT JOIN users AS s ON s.id=t.xiaoshou LEFT JOIN bizhonghuilv as b on t.huilvID=b.id  group by tuanduimc  HAVING 1=1 ");
 		
-		 if(tuanbiao.getTeam()!=null&&!"".equals(tuanbiao.getTeam())){
+		if(tuanbiao.getTeam()!=null&&!"".equals(tuanbiao.getTeam())){
 	    	   
-	    	   sql.append(" and team='");
+	    	   sql.append(" and t.team like '");
 				sql.append(tuanbiao.getTeam());
-				sql.append("'");
+				sql.append("%'");
 	    	   
 	       }
 		 if(tuanbiao.getTuanduimc()!=null&&!"".equals(tuanbiao.getTuanduimc())){
 	    	   
 	    	   sql.append(" and tuanduimc='");
 				sql.append(tuanbiao.getTuanduimc());
+				sql.append("'");
+	    	   
+	       }
+		 if(tuanbiao.getCaiwuid()!=0&&!"".equals(tuanbiao.getCaiwuid())){
+	    	   
+	    	   sql.append(" and caiwuid='");
+				sql.append(tuanbiao.getCaiwuid());
+				sql.append("'");
+	    	   
+	       }
+		 
+		 if(tuanbiao.getShenfenid()!=0&&!"".equals(tuanbiao.getShenfenid())){
+	    	   
+	    	   sql.append(" and shenfenid='");
+				sql.append(tuanbiao.getShenfenid());
 				sql.append("'");
 	    	   
 	       }
