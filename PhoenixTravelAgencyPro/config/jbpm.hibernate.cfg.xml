@@ -8,9 +8,9 @@
   <session-factory>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://127.0.0.1:3308/fenghuangdb?useUnicode=true&amp;characterEncoding=utf8</property>
-    <property name="hibernate.connection.username">fenghuangdb</property>
-    <property name="hibernate.connection.password">panjiaqi</property>
+    <property name="hibernate.connection.url">jdbc:mysql://192.168.1.120:3306/fenghuangdb?useUnicode=true&amp;characterEncoding=utf8</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">sa1234</property>
     <property name="hibernate.format_sql">true</property>
 
     <mapping resource="jbpm.repository.hbm.xml" />

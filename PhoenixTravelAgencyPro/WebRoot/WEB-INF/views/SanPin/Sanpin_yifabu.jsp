@@ -19,6 +19,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+	<style type="text/css">
+		.aao{
+			background-image: url("Image/ao.png");
+		}
+	</style>
 
   </head>
   
@@ -33,8 +38,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		pagination="true" toolbar="#fabutb" >
 		<thead>
 			<tr>
-				<th data-options="field:'tuanNo',formatter:xingcheng" width="50">团号</th>
-				<th data-options="field:'tuanName',formatter:baoming" width="50">团名/路线</th>
+				<th data-options="field:'tuanNo',formatter:xingcheng" width="57">团号</th>
+				<th data-options="field:'tuanName',formatter:baoming" width="57">团名/路线</th>
 				<th data-options="field:'groupdate'" width="50">出团日期</th>
 				<th data-options="field:'Tourdate'" width="50">回团日期</th>
 				<th data-options="field:'chufa'" width="50">出发城市</th>
@@ -135,7 +140,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    	  }
    	  
    	  function baoming(val,row){
-   	  return '<a href="javascript:yifabubaoming(\''+row.tuanNo+'\')" style="text-decoration:none;">'+row.tuanName+'</a>';
+   	  return '<a class="aao" href="javascript:yifabubaoming(\''+row.tuanNo+'\')" style="text-decoration:none;background-image:url(\'Image/tu.png\'); width:141px; height:21px; padding-left: 10px ; display:block;  ">'+row.tuanName+'</a>';
    	  }
    	  function yifabubaoming(tuanNo){
    	   var url= "Sanpin_yibufabaoming.do?tuanNo="+tuanNo;
@@ -152,7 +157,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				         });
    	      }
    	    function xingcheng(val,row){
-   	    return '<a href="javascript:openSanpinDetail(\''+row.tuanNo+'\',\''+row.tuanName+'\',\''+row.xlid+'\' )" style="text-decoration:none;">'+row.tuanNo+'</a>';
+   	    //<a style="background-image: url('Image/tu.png'); width:140px; height:21px; padding-left: 10px ; display:block; " >TH-202022003332</a>
+   	    return '<a href="javascript:openSanpinDetail(\''+row.tuanNo+'\',\''+row.tuanName+'\',\''+row.xlid+'\')" style="text-decoration:none; background-image:url(\'Image/tu.png\'); width:141px; height:21px; padding-left: 10px ; display:block; ">'+row.tuanNo+'</a>';
    	    }
    	    function openSanpinDetail(tuanNo,tuanName,xlid){
    				var url= "Sanpin_mingxi.do?tuanNo="+tuanNo+"&tuanName="+tuanName+"&xianid="+xlid;
