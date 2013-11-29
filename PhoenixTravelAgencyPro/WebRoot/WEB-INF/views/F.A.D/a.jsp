@@ -27,42 +27,62 @@
 
 <body>
 	<!-- 如果在正式开发环境下 url可以为后台的请求，地址 -->
+	<div id="fukuanshenhesousuo" class="easyui-dialog" title="查询"
+		data-options="modal:true,closed:true,iconCls:'icon-save',buttons:[{
+			text:'查询',
+			iconCls:'icon-search',
+			handler:function(){
+			$('#fukuanshenhesousuo').dialog('close');
+			cwfkspselect();
+			}
+			},
+			{
+			text:'关闭',
+			iconCls:'icon-cancel',
+			handler:function(){
+			$('#fukuanshenhesousuo').dialog('close');
+		
+			}
+			}
+		]"
+		style="width:300px;height:180px;padding:10px;">
    <table>
 	    		<tr>
-	    		   	<td>团号:<input class="easyui-validatebox" type="text" name="team" id="team"></input></td>
-	    			<td>销售，客户<input class="easyui-validatebox" type="text" name="caozuo" id="caozuo"></input></td>
-	    			<td>
-	    		<div style="padding:5px;border:0px solid #ddd;">
-		<a href="javascript:cwfkspselect()" class="easyui-linkbutton" data-options="toggle:true,group:'g1'">搜索</a>
-	             </div>
-	    			
-	    		</td>
+	    		   	<td>团队名称:<input class="easyui-validatebox" type="text" name="team" id="team"></input></td>
+	    		   	</tr>
+	    		   	<tr>
+	    			<td>团号:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="easyui-validatebox" type="text" name="tuanduimc" id="tuanduimc"></input></td>
+
 	    		</tr>	
 	    	</table>
-	    	<table>
-	    		<tr>
-	    		<td>状态：[<a href="javascript:cwfkspselect(2)">待确认收款</a>][<a href="javascript:cwfkspselect(4)">已确认收款</a> ]</td>
-	    		</tr>    			    	
-	    	</table>	    	
+	    	</div>
+	    	
+	    	<div id="dgtb">	 
+	    	
+	    		
+	    		 	
 	    	<a href="javascript:caiwufkspselecta();" class="easyui-linkbutton" iconCls="icon-add" plain="true">审批确认</a>  
-		    <a href="javascript:caiwufkspselectb();" class="easyui-linkbutton" iconCls="icon-add" plain="true">取消付款</a> 	
+		    <a href="javascript:caiwufkspselectb();" class="easyui-linkbutton" iconCls="icon-add" plain="true">取消付款</a> 
+		    <a href="javascript:void(0);"  onclick="javascript:$('#fukuanshenhesousuo').dialog('open');" class="easyui-linkbutton" iconCls="icon-save" plain="true">查询</a> 	
+			<a href="javascript:cwfkspselect(4)" class="easyui-linkbutton" iconCls="icon-search" plain="true">已确认收款</a>
+			<a href="javascript:cwfkspselect(2)" class="easyui-linkbutton" iconCls="icon-search" plain="true">待确认收款</a>
+	</div>
 	 <div class="easyui-panel" title="付款审批"
 		style="height:450px;width: auto;" toolbar="#currencyDatagridtoolbar">	
 	<table id="fkspdg" class="easyui-datagrid"
 		data-options="url:'fenghuang/fukuanshenhe.do?shenfenid=3&ysyfid=2&caiwuid=2',border:false,singleSelect:true,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
-		pagination="true" toolbar="#tb">
+		pagination="true" toolbar="#dgtb">
 		<thead>
 			<tr>	 
 			    
-				<th data-options="field:'fukuantime',editor:'text'" width="10px">付款日期</th>
-				<th data-options="field:'team',editor:'text'" width="10px">团号</th>
-				<th data-options="field:'tuanduimc',editor:'text'" width="10px">团队名称</th>
-				<th data-options="field:'khmc',editor:'text'" width="10px">供应商名称</th>
-				<th data-options="field:'kxsm',editor:'text'" width="10px">款项</th>
-				<th data-options="field:'yfk',editor:'text'" width="10px">金额</th>
+				<th data-options="field:'fukuantime'" width="10px">付款日期</th>
+				<th data-options="field:'team'" width="10px">团号</th>
+				<th data-options="field:'tuanduimc'" width="10px">团队名称</th>
+				<th data-options="field:'khmc'" width="10px">供应商名称</th>
+				<th data-options="field:'kxsm'" width="10px">款项</th>
+				<th data-options="field:'yfk'" width="10px">金额</th>
 			
-				<th data-options="field:'caozuo',editor:'numberbox'" width="10px">提交人</th>
-				<th data-options="field:'09',editor:'numberbox'" width="10px">审批状态</th>
+				<th data-options="field:'caozuo'" width="10px">提交人</th>
 				<th data-options="field:'review',formatter:cwfksp" width="10px">财务审核</th>
 				<th data-options="field:'confirmed',formatter:cwfksp2" width="10px">财务确认</th>
 			
@@ -82,7 +102,8 @@
 						class="easyui-validatebox">
 						</div></td>
 					
-					<td><input id="caiwuidform" name="caiwuid"  value="4" hidden="true"
+					<td>
+					<input id="caiwuid" name="caiwuid"   value="4" hidden="true"
 						class="easyui-validatebox">
 						<input id="caiwuidaction" name="caiwuida"   value="4" hidden="true"
 						class="easyui-validatebox">
@@ -119,7 +140,7 @@
 						class="easyui-validatebox">
 						</div></td>
 					
-					<td><input id="caiwuid" name="caiwuid" value="2"hidden="true"
+					<td><input id="caiwuidssss"  name="caiwuid" value="2“
 						class="easyui-validatebox">
 						</div></td>
 				</tr>
@@ -226,6 +247,8 @@
 		//填充
 		 $('#spform').form('load', row);
 		}
+		
+		
 		}
 		
 		
@@ -269,8 +292,8 @@
 		//清空ID
 		$('#id').attr('value','');
 		//填充
-		 $('#spforma').form('load', row);
 		}
+		$('#caiwuidssss').attr('value',2);
 		}
 		
 		

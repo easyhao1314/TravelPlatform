@@ -20,7 +20,6 @@ public class CaiwuskqrSericeImpl implements IcaiwuskqrSerice {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 	@Override
 	public boolean saveskqr(Tuanbiao tuanbiao) throws Exception {
 		// TODO Auto-generated method stub

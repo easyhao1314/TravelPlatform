@@ -27,37 +27,52 @@
 
 <body>
 	<!-- 如果在正式开发环境下 url可以为后台的请求，地址 -->
+	<div id="fukuanshenhesousuo" class="easyui-dialog" title="查询"
+		data-options="modal:true,closed:true,iconCls:'icon-save',buttons:[{
+			text:'查询',
+			iconCls:'icon-search',
+			handler:function(){
+			$('#fukuanshenhesousuo').dialog('close');
+			cufkshselect();
+			}
+			},
+			{
+			text:'关闭',
+			iconCls:'icon-cancel',
+			handler:function(){
+			$('#fukuanshenhesousuo').dialog('close');
+		
+			}
+			}
+		]"
+		style="width:300px;height:180px;padding:10px;">
    <table>
 	    		<tr>
-	    		   	<td>团号:<input class="easyui-validatebox" type="text" name="team"  id="team"></input></td>
-	    			<td>销售，客户<input class="easyui-validatebox" type="text" name="caozuo" id="caozuo"></input></td>
-	    			<td>
-	    		<div style="padding:5px;border:0px solid #ddd;">
-		<a href="javascript:cufkshselect()" class="easyui-linkbutton" data-options="toggle:true,group:'g1'">搜索</a>
-	             </div>
-	    			
-	    		</td>
+	    		   	<td>团队名称：<input class="easyui-validatebox" type="text" name="team"  id="team" style="width:200px"></input></td>
+	    		</tr>
+	    		<tr>
+	    		   	<td>团号：&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input class="easyui-validatebox" type="text" name="tuanduimc"  id="tuanduimc" style="width:200px"></input></td>			
 	    		</tr>
 	    	
 	    		
 	    	</table>
+	 </div>
+	    	
+	    	<div id="dgtb">
 	    	<table>
 	    		<tr>
 	    		<td>状态：[<a href="javascript:cufkshselect(1)">待确认收款</a>][<a href="javascript:cufkshselect(2)">已确认收款</a> ]</td>
 	    		</tr>
-	    		
-	    	
 	    	</table>
-	    	<a href="javascript:caiwufkshselect();" class="easyui-linkbutton" iconCls="icon-add" plain="true">付款确认</a>  
-		
-		
+	    	<a href="javascript:caiwufkshselect();" class="easyui-linkbutton" iconCls="icon-add" plain="true">付款确认</a>
 		    <a href="javascript:caiwufkshselecta();" class="easyui-linkbutton" iconCls="icon-add" plain="true">取消付款</a>
-	    	
+	    	<a href="javascript:void(0);" onclick="javascript:$('#fukuanshenhesousuo').dialog('open');" class="easyui-linkbutton" iconCls="icon-save" plain="true">查询</a>  
+	    	</div>
 	 <div class="easyui-panel" title="付款审核"
 		style="height:450px;width: auto;" toolbar="#currencyDatagridtoolbar">	
 	<table id="dg" class="easyui-datagrid"
-		data-options="url:'fenghuang/caiwuqrfkselect.do?shenfenid=3&ysyfid=2&&caiwuid=1',border:false,singleSelect:true,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
-		pagination="true" toolbar="#tb">
+		data-options="url:'fenghuang/caiwuqrfkselect.do?shenfenid=3&&ysyfid=2&&caiwuid=1',border:false,singleSelect:true,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
+		pagination="true" toolbar="#dgtb">
 		<thead>
 			<tr>  
 				<th data-options="field:'fukuantime'" width="40">付款日期</th>
@@ -187,7 +202,7 @@
 		var opts = $('#dg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
 			var param = {
 				team: $("#team").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
-				caozuo: $("#caozuo").val() ,
+				tuanduimc: $("#tuanduimc").val() ,
 				caiwuid: id,
                 shenfenid:3,
                 ysyfid:2,
@@ -230,14 +245,19 @@
            //通过主键，查询该操作，并处于编辑状态。 是否打开tab，还是直接弹出window 
 			//准备回显的数据
 			var row = $("#dg").datagrid("getSelected");
-	
-			if(row!=null){
-			$("#caiwufkshid").dialog("open");
-		$('#id').attr('value','');
-		$('#xg').form('load', row);
-		}
-		
-		}
+			$('#id').attr('value','');
+		    $('#xg').form('load', row);
+			 $.messager.confirm('消息', '是否将团号：'+row.team+'确认付款?',
+			 function(r){  
+			  if (r){                  
+			                fkshupdate();
+			              
+			           }          
+			                });
+			                
+			                return;
+			                
+		             }
 		  //修改
 			function fkshupdate() {
 			var caiwuid = $("#fkshid").val();
@@ -271,14 +291,21 @@
 			
 			//获取选中 数据
 			var row = $("#dg").datagrid("getSelected");
+			$('#id').attr('value','');
+		    $('#quxiaoform').form('load',row);
 			//alert(row.id);
-		if(row!=null){
-		$("#caiwuquxiao").dialog("open");
-		//清空ID
-		$('#id').attr('value','');
-		//填充
-		 $('#quxiaoform').form('load',row);
-		}
+			 $.messager.confirm('消息', '是否将团号：'+row.team+'取消付款?',
+			 function(r){  
+			  if (r){                  
+			                fkshupdate2();
+			              
+			           }          
+			                });
+			                
+			                return;
+			   
+		   
+		
 		}
 		  //修改
 			function fkshupdate2() {
