@@ -26,34 +26,46 @@
 </head>
 
 <body>
+<div id="bzhlszsousuo" class="easyui-dialog" title="查询"
+		data-options="modal:true,closed:true,iconCls:'icon-save',buttons:[{
+			text:'查询',
+			iconCls:'icon-search',
+			handler:function(){
+			$('#bzhlszsousuo').dialog('close');
+			cwfkspselect();
+			}
+			},
+			{
+			text:'关闭',
+			iconCls:'icon-cancel',
+			handler:function(){
+			$('#bzhlszsousuo').dialog('close');
+		
+			}
+			}
+		]"
+		style="width:300px;height:180px;padding:10px;">
 	<!-- 如果在正式开发环境下 url可以为后台的请求，地址 -->
       <table>
 	    		<tr>
-	    		   	<td>团号:<input class="easyui-validatebox" type="text" name="team" id="team"></input></td>
-	    		   <td>
-	    		   	<div style="padding:5px;border:0px solid #ddd;">
-		<a href="javascript:cwfkspselect()" class="easyui-linkbutton" data-options="toggle:true,group:'g1'">搜索</a>
-	             </div>
-	    		   </td>
+	    		   	<td>团号:<input class="easyui-validatebox" type="text" name="team" id="team" style="width:200px"></input></td>
 	    		   	</tr>
 	  </table>
-	  
-	  <div id="tb">
+	  </div>
+	  <div id="bzhlszdgtb">	
+	    	 <!--  <a href="javascript:void(0);" onclick="javascript:$('#bzhlszsousuo').dialog('open');" class="easyui-linkbutton" iconCls="icon-save" plain="true">查询</a> -->	 
 		<a
 			href="javascript:bzhlszsaveopen();" class="easyui-linkbutton"
-			iconCls="icon-add" plain="true">新增</a>&nbsp;&nbsp;| <a
+			iconCls="icon-add" plain="true">新增</a>&nbsp;&nbsp; <a
 			href="javascript:bzhlszdelectopen();" class="easyui-linkbutton"
 			iconCls="icon-cut" plain="true">删除</a>
 		<a href="javascript:bzhlszupdateopen();" class="easyui-linkbutton"
 			iconCls="icon-save" plain="true">修改</a>
 	</div>
-     <div class="easyui-panel" title="团队费用"
-		style="height:500px;width: auto;" toolbar="#currencyDatagridtoolbar">	
 	   <table id="bzhlszdg" class="easyui-datagrid"
 		data-options="url:'fenghuang/bizhonghuilv.do',border:false,singleSelect:false,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
-		pagination="true" toolbar="#tb">
-		<thead>
-		
+		pagination="true" toolbar="#bzhlszdgtb">
+		<thead>	
 			<tr>
 			  
 				<th data-options="field:'bizhong',editor:'text'" width="50">币种</th>
@@ -67,7 +79,6 @@
 			</tr>
 		</thead>
 	</table>
-	</div>
 	<div id="bzhlszid" class="easyui-dialog" title="汇率添加"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:500px;height:250px;padding:10px;">

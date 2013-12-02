@@ -26,39 +26,52 @@
 </head>
 
 <body>
+<div id="shoukuansousuo" class="easyui-dialog" title="查询"
+		data-options="modal:true,closed:true,iconCls:'icon-save',buttons:[{
+			text:'查询',
+			iconCls:'icon-search',
+			handler:function(){
+			$('#shoukuansousuo').dialog('close');
+			shoukuanselect();
+			}
+			},
+			{
+			text:'关闭',
+			iconCls:'icon-cancel',
+			handler:function(){
+			$('#shoukuansousuo').dialog('close');
+		
+			}
+			}
+		]"
+		style="width:300px;height:180px;padding:10px;">
 	<!-- 如果在正式开发环境下 url可以为后台的请求，地址 -->
    <table>
 	    		<tr>
-	    		   	<td>团名:<input class="easyui-validatebox" type="text" name="team" id="team"></input></td>
-	    			<td>团号:<input class="easyui-validatebox" type="text" name="tuanduimc" id="tuanduimc"></input></td>
+	    		   	<td>团队名称:<input class="easyui-validatebox" type="text" name="team" id="team" style="width:200px"></input></td>
+	    		   	</tr>
+	    		   	<tr>
+	    			<td>团号:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="easyui-validatebox" type="text" name="tuanduimc" id="tuanduimc" style="width:200px"></input></td>
+	    			</tr>
+	    			<tr>
 	    			<td><input class="easyui-validatebox" type="text" name="caozuo" id="zhi" hidden="true ></input></td>
+	    			</tr>
 	    			<td>
 	    			<!-- hidden="true" -->
-	    		<div style="padding:5px;">
-		<a href="javascript:shoukuanselect()" class="easyui-linkbutton" data-options="toggle:true,group:'g1'">搜索</a>
-	             </div>
-	    			
-	    		</td>
+	    		    </td>
 	    		</tr>    		
 	    	</table>
-	    	<table>
-	    		<tr>
-	    		<td>状态：[<a href="javascript:shoukuanselect(6)">待确认收款</a>][<a href="javascript:shoukuanselect(7)">已确认收款</a> ]</td>
-	    		</tr>    			    	
-	    	</table>
-	    	
-	    	
-	    	
-	    	
-	    	
-	    	<a href="javascript:shoukuanopen(7);" class="easyui-linkbutton" iconCls="icon-add" plain="true">审批确认</a>  
-		    <a href="javascript:shoukuanopen(6);" class="easyui-linkbutton" iconCls="icon-add" plain="true">取消付款</a>
-	    	
-	 <div class="easyui-panel" title="收款确认"
-		style="height:450px;width: auto;" toolbar="#currencyDatagridtoolbar">	
+	    </div> 			    	
+	    	  <div id="shoukuandgtb">	
+	    	   <a href="javascript:shoukuanopen(7);" class="easyui-linkbutton" iconCls="icon-add" plain="true">审批确认</a>  
+		       <a href="javascript:shoukuanopen(6);" class="easyui-linkbutton" iconCls="icon-add" plain="true">取消付款</a>	   
+		       <a href="javascript:void(0);" onclick="javascript:$('#shoukuansousuo').dialog('open');" class="easyui-linkbutton" iconCls="icon-save" plain="true">查询</a>  	  
+	           <a href="javascript:shoukuanselect(6)" class="easyui-linkbutton" iconCls="icon-search" plain="true">已确认收款</a>
+			   <a href="javascript:shoukuanselect(7)" class="easyui-linkbutton" iconCls="icon-search" plain="true">待确认收款</a>
+	    	  </div>
 	<table id="shoukuandg" class="easyui-datagrid"
 		data-options="url:'fenghuang/caiwuqrfkselect.do?ysyfid=1&&caiwuid=6&&shenfenid=5',border:false,singleSelect:true,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
-		pagination="true" toolbar="#tb">
+		pagination="true" toolbar="#shoukuandgtb">
 		<thead>
 			<tr>	 
 			    <th data-options="field:'yushoutime'" width="10px">收款日期</th>
@@ -74,10 +87,6 @@
 			</tr>
 		</thead>
 	</table>
-	</div>
-	
-	
-	
 		<div id="shoukuanxiugai" class="easyui-dialog" title="财务收款"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:500px;height:200px;padding:10px;">
@@ -194,48 +203,46 @@
 		
 			//按id查询
 		function shoukuanopen(id) {
-          //通过主键，查询该操作，并处于编辑状态。 是否打开tab，还是直接弹出window 
-			
-			//获取选中 数据
 			var row = $("#shoukuandg").datagrid("getSelected");
-			//alert(row.id);
-		if(row!=null){
-		$("#shoukuanxiugai").dialog("open");
-		//清空ID
-		$('#id').attr('value','');
-		//填充
-		row.caiwuid=id;
-		 $('#shoukuanxiugaiform').form('load', {"id":row.id,"caiwuid":row.caiwuid});
-		}
-		}
-		
-		
-		//修改
-			function shoukuanupdate() {
-			var caiwuid = $("#caiwuid").val();
-			$("#shoukuanxiugaiform").form('submit', {
-				url : 'fenghuang/updateqrfk.do?caiwuid='+caiwuid,
-				onSubmit : function() {
-					return $(this).form('validate');
-				},
-				success : function(data) {//data 是一个字符串  $.ajax(success:function(data):是一个对象)
-					console.info(data);
-					//var result = val('(' + data + ')');//吧字符串转换为对象
-					var result = $.parseJSON(data) ;
-
-					if (result.success) {
-					  $("#shoukuanxiugai").dialog('close');
-						$.messager.alert("修改成功", "修改成功！", "info"); 
-						$("#shoukuandg").datagrid('reload');
-					} else {
-						$.messager.alert("修改失败", "修改失败!", "error");
-						$("#shoukuandg").datagrid('reload');
-					}
-				}
-			});
-		}
-		
-	
+		    $('#id').attr('value','');
+		     row.caiwuid=id;
+		     alert(row.caiwuid);
+		     if(row.caiwuid==7){
+		     $.messager.confirm('消息', '是否将团号：'+row.team+'收款审批通过?',
+			 function(r){  
+			  if (r){                  
+			                $.ajax({
+			           url:'fenghuang/updatefksp.do?caiwuid='+row.caiwuid+'&id='+row.id,
+			           date:row.id,
+			           dateType:"json",
+			           success:function(data){
+			           $('#shoukuandg').datagrid("reload");
+			           $.messager.alert('消息','收款成功');	     
+			          }
+			          });    
+			           }                  
+			                }); 
+			       }   
+			       
+			   if(row.caiwuid==6){
+		     $.messager.confirm('消息', '是否将团号：'+row.team+'取消收款通过?',
+			 function(r){  
+			  if (r){                  
+			                $.ajax({
+			           url:'fenghuang/updatefksp.do?caiwuid='+row.caiwuid+'&id='+row.id,
+			           date:row.id,
+			           dateType:"json",
+			           success:function(data){
+			           $('#shoukuandg').datagrid("reload");
+			           $.messager.alert('消息','取消收款成功');	     
+			          }
+			          });    
+			           }                  
+			                }); 
+			       }   
+			       
+			                return;	
+		}	
 	</script>
 </body>
 </html>

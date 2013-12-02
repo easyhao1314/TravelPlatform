@@ -26,26 +26,38 @@
 </head>
 
 <body>
+<div id="wswfcxsousuo" class="easyui-dialog" title="查询"
+		data-options="modal:true,closed:true,iconCls:'icon-save',buttons:[{
+			text:'查询',
+			iconCls:'icon-search',
+			handler:function(){
+			$('#wswfcxsousuo').dialog('close');
+			wswfcxselect();
+			}
+			},
+			{
+			text:'关闭',
+			iconCls:'icon-cancel',
+			handler:function(){
+			$('#wswfcxsousuo').dialog('close');
+		
+			}
+			}
+		]"
+		style="width:300px;height:180px;padding:10px;">
 	<!-- 如果在正式开发环境下 url可以为后台的请求，地址 -->
    <table>
 	    		<tr>
-	    		   	<td>团名:<input class="easyui-validatebox" type="text" name="team" id="team" ></input></td>
-	    			
-	    			<td>
-	    		<div style="padding:5px;">
-		<a href="javascript:wswfcxselect()" class="easyui-linkbutton" data-options="toggle:true,group:'g1'">搜索</a>
-	             </div>
-	    			
-	    		</td>
+	    		   	<td>团队名称:<input class="easyui-validatebox" type="text" name="team" id="team" style="width:200px" ></input></td>
 	    		</tr>
-	    	
-	    		
 	    	</table>
-	  <div class="easyui-panel" title="未收未付统计"
-		style="height:500px;width: auto;" toolbar="#currencyDatagridtoolbar">	
+	    	</div>
+	    	<div id="wswfcxdgtb">	
+	    	  <a href="javascript:void(0);" onclick="javascript:$('#wswfcxsousuo').dialog('open');" class="easyui-linkbutton" iconCls="icon-save" plain="true">查询</a> 
+	    	</div>
 	<table id="wswfcxdg" class="easyui-datagrid"
 		data-options="url:'fenghuang/caiwutdfylbselect.do',border:false,singleSelect:true,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
-		pagination="true" toolbar="#tb">
+		pagination="true" toolbar="#wswfcxdgtb">
 		<thead>
 			<tr> 
 			    <th data-options="field:'fukuantime',editor:'text'" width="10" hidden="true" >应收账期</th>
@@ -60,8 +72,6 @@
 			</tr>
 		</thead>
 	</table>
-	</div>
-
 	<script type="text/javascript">
 	
 	 function wswfcxshijian(val,row){

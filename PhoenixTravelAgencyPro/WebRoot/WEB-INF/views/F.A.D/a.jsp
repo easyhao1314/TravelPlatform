@@ -48,10 +48,10 @@
 		style="width:300px;height:180px;padding:10px;">
    <table>
 	    		<tr>
-	    		   	<td>团队名称:<input class="easyui-validatebox" type="text" name="team" id="team"></input></td>
+	    		   	<td>团队名称:<input class="easyui-validatebox" type="text" name="team" id="team" style="width:200px"></input></td>
 	    		   	</tr>
 	    		   	<tr>
-	    			<td>团号:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="easyui-validatebox" type="text" name="tuanduimc" id="tuanduimc"></input></td>
+	    			<td>团号:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="easyui-validatebox" type="text" name="tuanduimc" id="tuanduimc" style="width:200px"></input></td>
 
 	    		</tr>	
 	    	</table>
@@ -285,13 +285,10 @@
 			 function(r){  
 			  if (r){                  
 			                fkspupdateb();
-			              
 			           }          
-			                });
-			                
-			                return;
-		
-		}
+			                });     
+			                return;	
+		       }
 		
 		
 		//修改

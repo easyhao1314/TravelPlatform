@@ -26,24 +26,43 @@
 </head>
 
 <body>
+<div id="dantuansousuo" class="easyui-dialog" title="查询"
+		data-options="modal:true,closed:true,iconCls:'icon-save',buttons:[{
+			text:'查询',
+			iconCls:'icon-search',
+			handler:function(){
+			$('#dantuansousuo').dialog('close');
+			sanpinselect();
+			}
+			},
+			{
+			text:'关闭',
+			iconCls:'icon-cancel',
+			handler:function(){
+			$('#dantuansousuo').dialog('close');
+		
+			}
+			}
+		]"
+		style="width:300px;height:180px;padding:10px;">
       <table>
 	    		<tr>
-	    		   	<td>团号:<input class="easyui-validatebox" type="text" name="team"  id="team"></input></td>
-	    			<td>客户:<input class="easyui-validatebox" type="text" name="khmc" id="khmc"></input></td>
-	    			<td>
-	    		<div style="padding:5px;">
-		<a href="javascript:sanpinselect()" class="easyui-linkbutton" data-options="toggle:true,group:'g1'">搜索</a>
-	             </div>
-	    			
+	    		   	<td>团队名称:<input class="easyui-validatebox" type="text" name="team"  id="team" style="width:200px"></input></td>
+	    		   	</tr>
+	    		   	<tr>
+	    			<td>团号:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="easyui-validatebox" type="text" name="khmc" id="khmc" style="width:200px"	></input></td>
+	    			<td>    			
 	    		</td>
 	    		</tr>    		
 	    	</table>
+	    	</div>
+	    	<div id="dantuandgtb">	
+	    	  <a href="javascript:void(0);" onclick="javascript:$('#dantuansousuo').dialog('open');" class="easyui-linkbutton" iconCls="icon-save" plain="true">查询</a> 
+	    	</div>
 	<!-- 如果在正式开发环境下 url可以为后台的请求，地址 -->
-	 <div class="easyui-panel" title="单团费用列表"
-		style="height:500px;width: auto;" toolbar="#currencyDatagridtoolbar">	
 	<table id="sanpindg" class="easyui-datagrid"
 		data-options="url:'fenghuang/caiwuqrfkselect.do?shenfenid=2&&ysyfid=1',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
-		pagination="true" toolbar="#tb">
+		pagination="true" toolbar="#dantuandgtb">
 		<thead>
 			<tr>
 				<th data-options="field:'team',editor:'text'" width="50">团号</th>
@@ -59,7 +78,6 @@
 			</tr>
 		</thead>
 	</table>
-	</div>
 	
 	<script type="text/javascript">
 	
