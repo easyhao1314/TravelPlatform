@@ -92,9 +92,10 @@ public class CaiwufukuanshenpiController {
 	public Map<String,Object> xiugai(HttpServletRequest request,
 			HttpServletResponse response,String caiwuid,String id,String caiwuida){
 		Map<String, Object> result = new HashMap<String, Object>();
-	
+	   if(caiwuid==null&&"".equals(caiwuid)){
 		caiwuid = caiwuida;
-		boolean isSuccess = false;
+	   }
+		boolean isSuccess = false;  
 		Tuanbiao tuanbiao = new Tuanbiao();
 		tuanbiao.setCaiwuid(Integer.parseInt(caiwuid));
 		tuanbiao.setId(Integer.parseInt(id));

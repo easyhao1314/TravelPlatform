@@ -55,9 +55,9 @@ public class CaiwutdfylbDaoImpl extends BaseDao implements IcaiwutdfylbDao{
 	       }
 		 if(tuanbiao.getTuanduimc()!=null&&!"".equals(tuanbiao.getTuanduimc())){
 	    	   
-	    	   sql.append(" and tuanduimc='");
+	    	   sql.append(" and t.tuanduimc like'");
 				sql.append(tuanbiao.getTuanduimc());
-				sql.append("'");
+				sql.append("%'");
 	    	   
 	       }
 		 if(tuanbiao.getYsyfID()!=0&&!"".equals(tuanbiao.getYsyfID())){

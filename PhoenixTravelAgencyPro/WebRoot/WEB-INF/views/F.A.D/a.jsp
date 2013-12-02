@@ -27,12 +27,12 @@
 
 <body>
 	<!-- 如果在正式开发环境下 url可以为后台的请求，地址 -->
-	<div id="fukuanshenhesousuo" class="easyui-dialog" title="查询"
+	<div id="asousuo" class="easyui-dialog" title="查询"
 		data-options="modal:true,closed:true,iconCls:'icon-save',buttons:[{
 			text:'查询',
 			iconCls:'icon-search',
 			handler:function(){
-			$('#fukuanshenhesousuo').dialog('close');
+			$('#asousuo').dialog('close');
 			cwfkspselect();
 			}
 			},
@@ -40,7 +40,7 @@
 			text:'关闭',
 			iconCls:'icon-cancel',
 			handler:function(){
-			$('#fukuanshenhesousuo').dialog('close');
+			$('#asousuo').dialog('close');
 		
 			}
 			}
@@ -63,12 +63,10 @@
 	    		 	
 	    	<a href="javascript:caiwufkspselecta();" class="easyui-linkbutton" iconCls="icon-add" plain="true">审批确认</a>  
 		    <a href="javascript:caiwufkspselectb();" class="easyui-linkbutton" iconCls="icon-add" plain="true">取消付款</a> 
-		    <a href="javascript:void(0);"  onclick="javascript:$('#fukuanshenhesousuo').dialog('open');" class="easyui-linkbutton" iconCls="icon-save" plain="true">查询</a> 	
-			<a href="javascript:cwfkspselect(4)" class="easyui-linkbutton" iconCls="icon-search" plain="true">已确认收款</a>
-			<a href="javascript:cwfkspselect(2)" class="easyui-linkbutton" iconCls="icon-search" plain="true">待确认收款</a>
+		    <a href="javascript:void(0);"  onclick="javascript:$('#asousuo').dialog('open');" class="easyui-linkbutton" iconCls="icon-save" plain="true">查询</a> 	
+			<a href="javascript:cwfkspselect(2)" class="easyui-linkbutton" iconCls="icon-search" plain="true">已确认收款</a>
+			<a href="javascript:cwfkspselect(4)" class="easyui-linkbutton" iconCls="icon-search" plain="true">待确认收款</a>
 	</div>
-	 <div class="easyui-panel" title="付款审批"
-		style="height:450px;width: auto;" toolbar="#currencyDatagridtoolbar">	
 	<table id="fkspdg" class="easyui-datagrid"
 		data-options="url:'fenghuang/fukuanshenhe.do?shenfenid=3&ysyfid=2&caiwuid=2',border:false,singleSelect:true,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
 		pagination="true" toolbar="#dgtb">
@@ -89,8 +87,6 @@
 			</tr>
 		</thead>
 	</table>
-	</div>
-	
 	<div id="caiwufksp" class="easyui-dialog" title="财务审批确认"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:500px;height:200px;padding:10px;">
@@ -132,7 +128,7 @@
 	<div id="caiwufkspa" class="easyui-dialog" title="财务审批取消"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:500px;height:200px;padding:10px;">
-		<form id="spforma" action="">
+
 			<table align="left">
 				<tr>
 					
@@ -161,7 +157,7 @@
 				</tr>
 			</table>
 			<input id="searchDicType" name="dicType" type="hidden">
-		</form>
+
 	</div>
 	<script type="text/javascript">
 		
@@ -239,44 +235,38 @@
 			
 			//获取选中 数据
 			var row = $("#fkspdg").datagrid("getSelected");
-			//alert(row.id);
-		if(row!=null){
-		$("#caiwufksp").dialog("open");
-		//清空ID
-		$('#id').attr('value','');
-		//填充
-		 $('#spform').form('load', row);
-		}
-		
-		
-		}
+		     //清空ID
+		    $('#id').attr('value','');
+		    //填充
+		    $('#spform').form('load', row);
+		      $.messager.confirm('消息', '是否将团号：'+row.team+'确认审批通过?',
+			 function(r){  
+			  if (r){                  
+			                fkspupdatea();
+			              
+			           }          
+			                });
+			                
+			                return;
+		               }
 		
 		
 		//修改
 			function fkspupdatea() {
-			$('#caiwuidaction').attr('value',4);
-			var caiwuid = $("#caiwuidaction").val();
-			$("#spform").form('submit', {
-				url : 'fenghuang/updatefksp.do?caiwuid='+caiwuid,
-				onSubmit : function() {
-					return $(this).form('validate');
-				},
-				success : function(data) {//data 是一个字符串  $.ajax(success:function(data):是一个对象)
-					console.info(data);
-					//var result = val('(' + data + ')');//吧字符串转换为对象
-					var result = $.parseJSON(data) ;
-
-					if (result.success) {
-					  $("#caiwufksp").dialog('close');
-						$.messager.alert("修改成功", "修改成功！", "info"); 
-						$("#fkspdg").datagrid('reload');
-					} else {
-						$.messager.alert("修改失败", "修改失败!", "error");
-						$("#fkspdg").datagrid('reload');
-					}
-				}
+		    var row=$("#fkspdg").datagrid("getSelected");	
+		    var param={};
+		    $.ajax({
+			url:'fenghuang/updatefksp.do?caiwuid='+4+'&id='+row.id,
+			date:param,
+			dateType:"json",
+			success:function(data){
+			 $('#fkspdg').datagrid("reload");
+			  $.messager.alert('消息','确认审批通过');	
+			}
+			
 			});
-		}
+		    
+		    }
 		
 		
 		
@@ -287,40 +277,42 @@
 			//获取选中 数据
 		var row = $("#fkspdg").datagrid("getSelected");
 			//alert(row.id);
-		if(row!=null){
-		$("#caiwufkspa").dialog("open");
 		//清空ID
 		$('#id').attr('value','');
 		//填充
-		}
 		$('#caiwuidssss').attr('value',2);
+		  $.messager.confirm('消息', '是否将团号：'+row.team+'确认审批通过?',
+			 function(r){  
+			  if (r){                  
+			                fkspupdateb();
+			              
+			           }          
+			                });
+			                
+			                return;
+		
 		}
 		
 		
 		//修改
 			function fkspupdateb() {
-			var caiwuid = $("#caiwuid").val();
-			alert(caiwuid);
-			$("#spforma").form('submit', {
-				url : 'fenghuang/updatefksp.do?caiwuid='+caiwuid,
-				onSubmit : function() {
-					return $(this).form('validate');
-				},
-				success : function(data) {//data 是一个字符串  $.ajax(success:function(data):是一个对象)
-					console.info(data);
-					//var result = val('(' + data + ')');//吧字符串转换为对象
-					var result = $.parseJSON(data) ;
-
-					if (result.success) {
-					  $("#caiwufkspa").dialog('close');
-						$.messager.alert("修改成功", "修改成功！", "info"); 
-						$("#fkspdg").datagrid('reload');
-					} else {
-						$.messager.alert("修改失败", "修改失败!", "error");
-						$("#fkspdg").datagrid('reload');
-					}
-				}
+			var row=$("#fkspdg").datagrid("getSelected");	
+			var param={
+			};
+			
+			
+			$.ajax({
+			url:'fenghuang/updatefksp.do?caiwuid='+2+'&id='+row.id,
+			date:param,
+			dateType:"json",
+			success:function(data){
+			$('#fkspdg').datagrid("reload");
+			  $.messager.alert('消息','取消成功');	
+			}
+			
 			});
+			
+			
 		}
 		
 	

@@ -26,26 +26,43 @@
 </head>
 
 <body>
+<div id="ysktjsousuo" class="easyui-dialog" title="查询"
+		data-options="modal:true,closed:true,iconCls:'icon-save',buttons:[{
+			text:'查询',
+			iconCls:'icon-search',
+			handler:function(){
+			$('#ysktjsousuo').dialog('close');
+			ysktjselect();
+			}
+			},
+			{
+			text:'关闭',
+			iconCls:'icon-cancel',
+			handler:function(){
+			$('#ysktjsousuo').dialog('close');
+		
+			}
+			}
+		]"
+		style="width:300px;height:180px;padding:10px;">
 	<!-- 如果在正式开发环境下 url可以为后台的请求，地址 -->
    <table>
 	    		<tr>
-	    		   	<td>团名:<input class="easyui-validatebox" type="text" name="team" id="team"></input></td>
-	    			<td>团号:<input class="easyui-validatebox" type="text" name="tuanduimc" id="tuanduimc"></input></td>
-	    			<td>
-	    		<div style="padding:5px;">
-		<a href="javascript:ysktjselect()" class="easyui-linkbutton" data-options="toggle:true,group:'g1'">搜索</a>
-	             </div>
-	    			
+	    		   	<td>团队名称:<input class="easyui-validatebox" type="text" name="team" id="team"></input></td>
+	    		   	</tr>
+	    		   	<tr>
+	    			<td>团号:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="easyui-validatebox" type="text" name="tuanduimc" id="tuanduimc"></input></td>
+	    			<td>   			
 	    		</td>
-	    		</tr>
-	    	
-	    		
+	    		</tr>   		
 	    	</table>
-	    	 <div class="easyui-panel" title="应收款统计"
-		style="height:540px;width: auto;" toolbar="#currencyDatagridtoolbar">	
+	    	</div>
+	    	<div id="ysktjdgtb">	
+	    	  <a href="javascript:void(0);" onclick="javascript:$('#ysktjsousuo').dialog('open');" class="easyui-linkbutton" iconCls="icon-save" plain="true">查询</a> 
+	    	</div>
 	<table id="dgysktjselect" class="easyui-datagrid"
 		data-options="url:'fenghuang/caiwutdfylbselect.do?ysyfid=1',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
-		pagination="true" toolbar="#tb">
+		pagination="true" toolbar="#ysktjdgtb">
 		<thead>
 			<tr> 
 				<th data-options="field:'team'" width="50">团队名称</th>
@@ -66,9 +83,7 @@
 			
 			</tr>
 		</thead>
-	</table>
-	</div>
-	
+	</table>	
 	<script type="text/javascript">
 	
 	function ysktjfp(val,row){

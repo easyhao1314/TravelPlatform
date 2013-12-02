@@ -46,12 +46,12 @@
 			}
 		]"
 		style="width:300px;height:180px;padding:10px;">
-   <table>
+            <table>
 	    		<tr>
 	    		   	<td>团队名称：<input class="easyui-validatebox" type="text" name="team"  id="team" style="width:200px"></input></td>
 	    		</tr>
 	    		<tr>
-	    		   	<td>团号：&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input class="easyui-validatebox" type="text" name="tuanduimc"  id="tuanduimc" style="width:200px"></input></td>			
+	    		   	<td>团号：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="easyui-validatebox" type="text" name="tuanduimc"  id="tuanduimc" style="width:200px"></input></td>			
 	    		</tr>
 	    	
 	    		
@@ -59,17 +59,14 @@
 	 </div>
 	    	
 	    	<div id="dgtb">
-	    	<table>
-	    		<tr>
-	    		<td>状态：[<a href="javascript:cufkshselect(1)">待确认收款</a>][<a href="javascript:cufkshselect(2)">已确认收款</a> ]</td>
-	    		</tr>
-	    	</table>
+	    	
 	    	<a href="javascript:caiwufkshselect();" class="easyui-linkbutton" iconCls="icon-add" plain="true">付款确认</a>
 		    <a href="javascript:caiwufkshselecta();" class="easyui-linkbutton" iconCls="icon-add" plain="true">取消付款</a>
 	    	<a href="javascript:void(0);" onclick="javascript:$('#fukuanshenhesousuo').dialog('open');" class="easyui-linkbutton" iconCls="icon-save" plain="true">查询</a>  
+	    	<a href="javascript:cufkshselect(1)" class="easyui-linkbutton" iconCls="icon-search" plain="true">已确认收款</a>
+			<a href="javascript:cufkshselect(2)" class="easyui-linkbutton" iconCls="icon-search" plain="true">待确认收款</a>
 	    	</div>
-	 <div class="easyui-panel" title="付款审核"
-		style="height:450px;width: auto;" toolbar="#currencyDatagridtoolbar">	
+	
 	<table id="dg" class="easyui-datagrid"
 		data-options="url:'fenghuang/caiwuqrfkselect.do?shenfenid=3&&ysyfid=2&&caiwuid=1',border:false,singleSelect:true,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
 		pagination="true" toolbar="#dgtb">
@@ -88,7 +85,6 @@
 			</tr>
 		</thead>
 	</table>
-	</div>
 	
 	
 	<div id="caiwufkshid" class="easyui-dialog" title="付款审核确认"
