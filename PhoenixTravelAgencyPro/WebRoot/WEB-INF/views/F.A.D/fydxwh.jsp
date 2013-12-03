@@ -26,24 +26,45 @@
 </head>
 
 <body>
-	<!-- 如果在正式开发环境下 url可以为后台的请求，地址 -->
+	<div id="fydxwhsousuo" class="easyui-dialog" title="查询"
+		data-options="modal:true,closed:true,iconCls:'icon-save',buttons:[{
+			text:'查询',
+			iconCls:'icon-search',
+			handler:function(){
+			$('#fydxwhsousuo').dialog('close');
+			dijieSelectLike();
+			}
+			},
+			{
+			text:'关闭',
+			iconCls:'icon-cancel',
+			handler:function(){
+			$('#fydxwhsousuo').dialog('close');
+		
+			}
+			}
+		]"
+		style="width:300px;height:180px;padding:10px;">
    <table>
 	    		<tr>
-	    			<td>费用项编号:<input class="easyui-validatebox" type="text" id="bianhao" name="bianhao" ></input></td>
-	    			<td>付款性质<input class="easyui-validatebox" type="text" id="xingzhi" name="xingzhi" ></input></td>	    
-	    			<td>
-	    		<div style="padding:5px;border:1px solid #ddd;">
-		         <a href="javascript:dijieSelectLike()" class="easyui-linkbutton" data-options="toggle:true,group:'g1'">查询</a>
-	             </div>
+	    			<td>费用项编号:<input class="easyui-validatebox" type="text" id="bianhao" name="bianhao" style="width:180px"></input></td>
+	    			</tr>
+	    			<tr>
+	    			<td>付款性质:&nbsp;&nbsp;&nbsp;&nbsp;<input class="easyui-validatebox" type="text" id="xingzhi" name="xingzhi" style="width:180px"></input></td>	    
+	    		</tr>
 	    			
 	    		
 	    	</table>
-
-	    	<div class="easyui-panel" title="大类维护列表"
-		style="height:480px;width: auto;">
+          </div>
+	  <div id="fydxwhtb">
+	         <a href="javascript:void(0);"  onclick="javascript:$('#fydxwhsousuo').dialog('open');" class="easyui-linkbutton" iconCls="icon-save" plain="true">查询</a> 	
+		     <a href="javascript:addMianBanMoshi()" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>  
+		     <a href="javascript:werhuSelectId();" class="easyui-linkbutton" iconCls="icon-add" plain="true">修改</a>  		
+		     <a href="javascript:shanchu('+row.id+');" class="easyui-linkbutton" iconCls="icon-cancel" plain="true">删除</a>  	
+	</div>	
 	<table id="dg" class="easyui-datagrid"
 		data-options="url:'fenghuang/caiwuweihu.do',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
-		pagination="true" toolbar="#currencyDatagridtoolbar">
+		pagination="true" toolbar="#fydxwhtb">
 		<thead>
 			<tr> 
 				<th data-options="field:'xingzhi'" width="50">付款性质</th>
@@ -55,16 +76,7 @@
 			</tr>
 		</thead>
 	</table>
-	<div id="currencyDatagridtoolbar">
-		     <a href="javascript:addMianBanMoshi()" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>  
 	
-		
-		     <a href="javascript:werhuSelectId();" class="easyui-linkbutton" iconCls="icon-add" plain="true">修改</a>  
-		
-		
-		     <a href="javascript:shanchu('+row.id+');" class="easyui-linkbutton" iconCls="icon-add" plain="true">删除</a>  
-		
-	</div>
 	<div id="addweihu" class="easyui-dialog" title="新增业务字段"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:500px;height:250px;padding:10px;">

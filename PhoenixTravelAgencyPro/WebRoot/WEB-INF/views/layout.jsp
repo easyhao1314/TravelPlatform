@@ -86,12 +86,14 @@
 					<li iconCls="icon-gears"><a
 						href="javascript:open1('应收款统计','ysktj.do');">应收款统计</a></li>
 				</ul>
-				<!-- 
+				<ul>
+					<li iconCls="icon-gears"><a
+						href="javascript:open1('团队信息','tuandui.do');">团队信息</a></li>
+				</ul>
 				<ul>
 					<li iconCls="icon-gears"><a
 						href="javascript:open1('付款方式设置','fkfssz.do');">付款方式设置</a></li>
 				</ul>
-                -->
 
 				<ul>
 					<li iconCls="icon-gears"><a
@@ -106,23 +108,20 @@
 					<li iconCls="icon-gears"><a
 						href="javascript:open1('币种汇率设置	','bzhlsz.do');">币种汇率设置</a></li>
 				</ul>
-				<!-- 
 				<ul>
 					<li iconCls="icon-gears"><a
 						href="javascript:open1('费用项大类维护','fydxwh.do');">费用项大类维护</a></li>
 				</ul>
-				 -->
 
 				<ul>
 					<li iconCls="icon-gears"><a
 						href="javascript:open1('未收未付款查询','wswfcx.do');">未收未付款查询</a></li>
 				</ul>
-				<!-- 
 				<ul>
 					<li iconCls="icon-gears"><a
 						href="javascript:open1('收付款账号维护','sfkzhwh.do');">收付款账号维护</a></li>
 				</ul>
-                -->
+
 
 				<ul>
 					<li iconCls="icon-gears"><a

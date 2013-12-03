@@ -119,7 +119,7 @@ public class CaiwuhuilvControll {
 			bizhonghuilv.setGongshou(Integer.parseInt(gongshou));
 			bizhonghuilv.setZhonghang(Integer.parseInt(zhonghang));
 			bizhonghuilv.setZuidihuilv(Integer.parseInt(zuidihuilv));
-			bizhonghuilv.setHuilv(Integer.parseInt(huilv));
+			bizhonghuilv.setHuilv(Double.parseDouble(huilv));
 			bizhonghuilv.setJianxie(jianxie);
 			bizhonghuilv.setJianxiemingchen(jianxiemingchen);
 			bizhonghuilv.setDanwei(Integer.parseInt(danwei));
@@ -150,7 +150,7 @@ public class CaiwuhuilvControll {
 			bizhonghuilv.setGongshou(Integer.parseInt(gongshou));
 			bizhonghuilv.setZhonghang(Integer.parseInt(zhonghang));
 			bizhonghuilv.setZuidihuilv(Integer.parseInt(zuidihuilv));
-			bizhonghuilv.setHuilv(Integer.parseInt(huilv));
+			bizhonghuilv.setHuilv(Double.parseDouble(huilv));
 			bizhonghuilv.setJianxie(jianxie);
 			bizhonghuilv.setJianxiemingchen(jianxiemingchen);
 			bizhonghuilv.setDanwei(Integer.parseInt(danwei));

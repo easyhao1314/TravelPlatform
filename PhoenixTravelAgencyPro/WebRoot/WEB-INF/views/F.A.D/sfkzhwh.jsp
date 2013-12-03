@@ -25,9 +25,16 @@
 </head>
 
 <body>
+<div id="tb">
+		<a
+			href="javascript:sfkzhwhopen();" class="easyui-linkbutton"
+			iconCls="icon-add" plain="true">新增</a><a
+			href="javascript:sfkzhwhdelectopen();" class="easyui-linkbutton"
+			iconCls="icon-cut" plain="true">删除</a>
+		<a href="javascript:sfkzhwhupdateopen();" class="easyui-linkbutton"
+			iconCls="icon-save" plain="true">修改</a>
+	</div>
 	<!-- 如果在正式开发环境下 url可以为后台的请求，地址 -->
-	<div class="easyui-panel" title="首付款账号维护"
-		style="height:530px;width: auto;" toolbar="#currencyDatagridtoolbar">	
 	<table id="sfkzhwhdg" class="easyui-datagrid"
 		data-options="url:'fenghuang/skzhanghaoselect.do',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 		pagination="true" toolbar="#tb">
@@ -44,21 +51,6 @@
 			</tr>
 		</thead>
 	</table>
-	</div>
-	
-	<div id="tb">
-		<a
-			href="javascript:sfkzhwhopen();" class="easyui-linkbutton"
-			iconCls="icon-add" plain="true">新增</a>&nbsp;&nbsp;| <a
-			href="javascript:sfkzhwhdelectopen();" class="easyui-linkbutton"
-			iconCls="icon-cut" plain="true">删除</a>
-		<a href="javascript:sfkzhwhupdateopen();" class="easyui-linkbutton"
-			iconCls="icon-save" plain="true">修改</a>
-	</div>
-	
-	
-	
-	
 	<div id="sfkzhwhid" class="easyui-dialog" title="账号添加"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:500px;height:250px;padding:10px;">
@@ -76,8 +68,11 @@
 					<td><div class="fitem">
 							<label>币种:</label>
 					</td>
-					<td><input id="bizhongid" name="bizhongid"
-						class="easyui-validatebox">
+					<td><input id="bizhongid"  name="bizhongid" class="easyui-combobox" data-options="url:'fenghuang/caiwuhuilvxiala.do',
+					valueField:'id',
+					textField:'bizhong',
+					panelHeight:'auto',
+					editable:false">
 						</div></td>
 					<td><div class="fitem">
 							<label>用途:</label>
@@ -118,7 +113,7 @@
 				<tr>
 					<td colspan="4s" align="center"><a
 						href="javascript:sfkzhwhsave();" class="easyui-linkbutton"
-						iconCls="icon-ok">确认</a> <a href="javascript:closedSearch();"
+						iconCls="icon-ok">确认</a> <a href="javascript:sfkzhwhclose();"
 						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
 				</tr>
 			</table>
@@ -199,7 +194,7 @@
 <!-- ********************************************************************************************** -->
 <div id="sfkzhwhupdateid" class="easyui-dialog" title="账号修改"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
-		style="width:500px;height:200px;padding:10px;">
+		style="width:500px;height:210px;padding:10px;">
 		<form id="sfkzhwhupdateform" action="">
 			<table align="left">
 				<tr>
@@ -209,19 +204,20 @@
 					<td><input id="zhanghaoming" name="zhanghaoming" 
 						class="easyui-validatebox">
 						</div></td>
-						<td><div class="fitem">
-							<label>id:</label>
-					</td>
+						
 					<td><input id="id" name="id" 
-						class="easyui-validatebox">
+						class="easyui-validatebox" hidden="true">
 						</div></td>
 				</tr>
 				<tr>
 					<td><div class="fitem">
 							<label>币种:</label>
 					</td>
-					<td><input id="bizhongid" name="bizhongid"
-						class="easyui-validatebox">
+					<td><input id="bizhongid"  name="bizhongid" class="easyui-combobox" data-options="url:'fenghuang/caiwuhuilvxiala.do',
+					valueField:'id',
+					textField:'bizhong',
+					panelHeight:'auto',
+					editable:false">
 						</div></td>
 					<td><div class="fitem">
 							<label>用途:</label>
@@ -262,7 +258,7 @@
 				<tr>
 					<td colspan="4s" align="center"><a
 						href="javascript:sfkzhwhupdate();" class="easyui-linkbutton"
-						iconCls="icon-ok">确认</a> <a href="javascript:closedSearch();"
+						iconCls="icon-ok">确认</a> <a href="javascript:bzhlszxiugaiclose();"
 						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
 				</tr>
 			</table>
@@ -271,6 +267,20 @@
 	</div>
 
 	<script type="text/javascript">
+	
+	        //关闭
+		   function sfkzhwhclose(){
+			$("#sfkzhwhid").dialog("close");
+		    }
+		     //关闭
+		   function bzhlszxiugaiclose(){
+			$("#sfkzhwhupdateid").dialog("close");
+		    }
+	
+	
+	
+	
+	
 		
 		function onClickRow(index) {
 			if (editIndex != index) {
@@ -323,15 +333,18 @@
 
            //获取选中 数据
             var row = $("#sfkzhwhdg").datagrid("getSelected");
-
-           //alert(row.id);
            if(row!=null){
-              $("#sfkzhwhdeleteid").dialog("open");
-               //清空ID
              $('#id').attr('value','');
-             //填充
-            $('#sfkzhwhdeleteform').form('load', row);
-
+             $('#sfkzhwhdeleteform').form('load', row);
+              $.messager.confirm('消息', '是否将团号：'+row.team+'删除?',
+			 function(r){  
+			  if (r){                  
+			                sfkzhwhdelect();
+			              
+			           }          
+			                });
+			                
+			                return;
            }
               }
            //修改

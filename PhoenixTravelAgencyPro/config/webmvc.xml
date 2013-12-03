@@ -121,6 +121,7 @@
      <mvc:view-controller path="wswfcx.do" view-name="F.A.D/wswfcx"/>
      <mvc:view-controller path="sfkzhwh.do" view-name="F.A.D/sfkzhwh"/>
      <mvc:view-controller path="bzhlsz.do" view-name="F.A.D/bzhlsz"/>
+     <mvc:view-controller path="tuandui.do" view-name="F.A.D/tuandui"/>
 	 <!-- 资源中心 -->    
      <mvc:view-controller path="ZiyuanJiudian.do" view-name="Ziyuan/ZiyuanJiudian"/>
      <mvc:view-controller path="ZiyuanJiaotong.do" view-name="Ziyuan/ZiyuanJiaotong"/>

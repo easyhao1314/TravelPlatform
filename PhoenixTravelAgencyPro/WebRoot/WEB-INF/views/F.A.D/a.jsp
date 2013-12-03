@@ -26,7 +26,6 @@
 </head>
 
 <body>
-	<!-- 如果在正式开发环境下 url可以为后台的请求，地址 -->
 	<div id="asousuo" class="easyui-dialog" title="查询"
 		data-options="modal:true,closed:true,iconCls:'icon-save',buttons:[{
 			text:'查询',
@@ -57,10 +56,7 @@
 	    	</table>
 	    	</div>
 	    	
-	    	<div id="dgtb">	 
-	    	
-	    		
-	    		 	
+	    	<div id="dgtb">	     		 	
 	    	<a href="javascript:caiwufkspselecta();" class="easyui-linkbutton" iconCls="icon-add" plain="true">审批确认</a>  
 		    <a href="javascript:caiwufkspselectb();" class="easyui-linkbutton" iconCls="icon-add" plain="true">取消付款</a> 
 		    <a href="javascript:void(0);"  onclick="javascript:$('#asousuo').dialog('open');" class="easyui-linkbutton" iconCls="icon-save" plain="true">查询</a> 	

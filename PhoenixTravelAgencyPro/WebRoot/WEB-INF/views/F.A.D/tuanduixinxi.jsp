@@ -32,9 +32,9 @@ href="js/themes/default/easyui.css">
   <div id="tb1">
            <a
 href="javascript:xinxisaveopen();" class="easyui-linkbutton"
-iconCls="icon-add" plain="true">新增(面板模式)</a>&nbsp;&nbsp;| <a
+iconCls="icon-add" plain="true">新增</a> <a
 href="javascript:xinxidelectopen();" class="easyui-linkbutton"
-iconCls="icon-cut" plain="true">删除</a>&nbsp;&nbsp;|&nbsp;
+iconCls="icon-cut" plain="true">删除</a>
 <a href="javascript:xinxiupdateopen();" class="easyui-linkbutton"
 iconCls="icon-save" plain="true">修改</a>
 </div>
@@ -43,9 +43,9 @@ iconCls="icon-save" plain="true">修改</a>
      <div id="tb2">
 <a
 href="javascript:xxfksaveopen();" class="easyui-linkbutton"
-iconCls="icon-add" plain="true">新增(面板模式)</a>&nbsp;&nbsp;| <a
+iconCls="icon-add" plain="true">新增</a> <a
 href="javascript:xxfkdeleteopen();" class="easyui-linkbutton"
-iconCls="icon-cut" plain="true">删除</a>&nbsp;&nbsp;|
+iconCls="icon-cut" plain="true">删除</a>
 <a href="javascript:xxfkupdateopen();" class="easyui-linkbutton"
 iconCls="icon-save" plain="true">修改</a>
 </div>

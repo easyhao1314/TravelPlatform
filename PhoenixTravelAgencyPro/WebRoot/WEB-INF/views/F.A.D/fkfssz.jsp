@@ -26,51 +26,23 @@
 </head>
 
 <body>
-	<!-- 如果在正式开发环境下 url可以为后台的请求，地址 -->
-   <table>
-	    		<tr>
-	    			<!-- <td>付款方式描述:<input class="easyui-validatebox" type="text" name="name" ></input></td> 
-	    		
-	    			<td>
-	    		<div style="padding:5px;border:1px solid #ddd;">
-		<a href="#" class="easyui-linkbutton" data-options="toggle:true,group:'g1'">Button 1</a>
-	             </div>
-	    			
-	    		</td>
-	    		-->
-	    		</tr>
-	    	
-	    		
-	    	</table>
-	
-	    		
-	    	
-	    	</table>
-	    	<div class="easyui-panel" title="付款方式"
-		style="height:480px;width: auto;">
-	<table id="dg" class="easyui-datagrid"
+     <div id="fkfsszdbtb">	  
+             <a href="javascript:addMianBanMoshi()" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>  	
+		     <a href="javascript:werhuSelectId();" class="easyui-linkbutton" iconCls="icon-save" plain="true">修改</a>  
+		     <a href="javascript:shanchu('+row.id+');" class="easyui-linkbutton" iconCls="icon-cancel" plain="true">删除</a>  
+     </div>
+	<table id="fkfsszdg" class="easyui-datagrid"
 		data-options="url:'fenghuang/caiwufukuanselect.do',border:false,singleSelect:true,fit:true,fitColumns:true"
-		pagination="true" toolbar="#currencyDatagridtoolbar">
+		pagination="true" toolbar="#fkfsszdbtb">
 		<thead>
 			<tr>
 			    <th data-options="field:'id'" width="200px" hidden="true">ID</th>
-				<th data-options="field:'fukuanfangshi',editor:'text'" width="200px">付款方式名称:</th>
-				<th data-options="field:'miaoshu',editor:'text'" width="200px">付款方式描述:</th>	
+				<th data-options="field:'fukuanfangshi'" width="200px">付款方式名称:</th>
+				<th data-options="field:'miaoshu'" width="200px">付款方式描述:</th>	
 		     </tr>
-		</thead>
+		</thead> 
 	</table>
-	<div id="currencyDatagridtoolbar">
-		     <a href="javascript:addMianBanMoshi()" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>  
-	
-		
-		     <a href="javascript:werhuSelectId();" class="easyui-linkbutton" iconCls="icon-add" plain="true">修改</a>  
-		
-		
-		     <a href="javascript:shanchu('+row.id+');" class="easyui-linkbutton" iconCls="icon-add" plain="true">删除</a>  
-		
-	</div>
-	
-	<div id="xiugai" class="easyui-dialog" title="修改"
+	<div id="fkfsszxiugai" class="easyui-dialog" title="修改"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:500px;height:200px;padding:10px;">
 		<form id="dicFrome" method="post">
@@ -93,10 +65,10 @@
 				</tr>
 				<tr>
 					<td colspan="4s" align="center"><a
-						href="javascript:caiwuxiugai()" class="easyui-linkbutton"
+						href="javascript:caiwufkfsszxiugai()" class="easyui-linkbutton"
 						iconCls="icon-ok">保存</a> 
-						<a href="javascript:void(0)" class="easyui-linkbutton"
-							iconCls="icon-undo" onclick="$('#dicFrome')[0].reset();">重置</a></td>
+						<a href="javascript:fkfsszxiugaizclose();"
+						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
 				</tr>
 			</table>
 			<input id="dicType" name="dicType" type="hidden">
@@ -130,8 +102,8 @@
 					<td colspan="4s" align="center"><a
 						href="javascript:Saveweihu()" class="easyui-linkbutton"
 						iconCls="icon-ok">保存</a> 
-                      <a href="javascript:void(0)" class="easyui-linkbutton"
-							iconCls="icon-undo" onclick="$('#dicFrome').form('clear')">重置</a></td> 
+                      <a href="javascript:fkfsszsavezclose();"
+						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td> 
 				</tr>
 			</table>
 			<input id="dicType" name="dicType" type="hidden">
@@ -140,67 +112,54 @@
 	
 	
 	<script type="text/javascript">
-	function shanchu() {
-		var row = $("#dg").datagrid("getSelected");
-			if (row) {
-				var param = {
+	
+	
+	        function fkfsszxiugaizclose(){
+			$("#fkfsszxiugai").dialog("close");
+		    }
+		     function fkfsszsavezclose(){
+			$("#sz").dialog("close");
+		    }
+	
+		//删除
+		function shanchu() {
+			//准备回显的数据
+			var row = $("#fkfsszdg").datagrid("getSelected");
+			var param = {
 					"id" :  row.id
 				};
-
-				$.ajax({
-					url : "fenghuang/deletefukuan.do?",
-					data : param,
-					dataType : "json",
-					success : function(data) {
-						if (data.success) {
-							$.messager.alert("删除成功", "删除成功！", "info");
-							$("#dg").datagrid('reload');
-						} else {
-							$.messager.alert("删除失败", "删除失败!", "error");
-						}
-					},
-					error : function() {
-						$.messager.alert("删除失败", "服务器请求失败!", "error");
-					}
-				});
-			}
-		}
-		
-		
-		
-		
-		//按id查询
-		function werhuSelectId(id) {
-          //通过主键，查询该操作，并处于编辑状态。 是否打开tab，还是直接弹出window 
-			$("#xiugai").dialog("open");
-			//准备回显的数据
-			var row = $("#dg").datagrid("getSelected");
-			//alert(row.id);
+			 $.messager.confirm('消息', '是否将团号：'+row.fukuanfangshi+'删除?',
+			 function(r){  
+			  if (r){                  
+			         
+			          $.ajax({
+			           url:'fenghuang/deletefukuan.do',
+			           date:row.id,
+			           data : param,
+			           dateType:"json",
+			           success:function(data){
+			           $('#fkfsszdg').datagrid("reload");
+			           $.messager.alert('消息','删除成功');	
+			          }
+			          });    
+			           }          
+			                });
+			                
+			                return;	
+		               }
 			
-			if(row){
-				var param = {
-					"id" : row.id
-				};
-				
-				$.ajax({
-					url : "fenghuang/caiwufukuanselect.do",
-					data : param,
-					dataType : "json",
-					success : function(data) {
-		
-					   $('#dicFrome').form('load',data.rows[0]);
-				
-					},
-					error : function() {
-						$.messager.alert("查询失败", "服务器请求失败!", "error");
-					}
-				});
+		function werhuSelectId(id) {
+		var row = $("#fkfsszdg").datagrid("getSelected");
+		 $('#id').attr('value','');
+		if(row!=null){
+		$("#fkfsszxiugai").dialog("open");
+		 $('#dicFrome').form('load', row);
+		 }
+		 
 		}
-		}
-		
 		
 		 //修改
-		function caiwuxiugai() {
+		function caiwufkfsszxiugai() {
 			$("#dicFrome").form('submit', {
 				url : 'fenghuang/updatefukuan.do',
 				onSubmit : function() {
@@ -213,17 +172,16 @@
 					var result = $.parseJSON(data) ;
 
 					if (result.success) {
-					  $("#xiugai").dialog('close');
+					  $("#fkfsszxiugai").dialog('close');
 						$.messager.alert("修改成功", "修改成功！", "info"); 
-						$("#dg").datagrid('reload');
+						$("#fkfsszdg").datagrid('reload');
 					} else {
 						$.messager.alert("修改失败", "修改失败!", "error");
-						$("#dg").datagrid('reload');
+						$("#fkfsszdg").datagrid('reload');
 					}
 				}
 			});
 		}
-		
 		
 		//添加	
 		function addMianBanMoshi() {
@@ -244,10 +202,10 @@
 					if (result.success) {
 						$.messager.alert("保存成功", "保存成功！", "info");
 						$('#sz').dialog('close');
-						$('#dg').datagrid('reload');
+						$('#fkfsszdg').datagrid('reload');
 					} else {
 						$.messager.alert("保存失败", "保存失败!", "error");
-						$('#dg').datagrid('reload');
+						$('#fkfsszdg').datagrid('reload');
 					}
 				}
 			});

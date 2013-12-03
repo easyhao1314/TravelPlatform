@@ -58,7 +58,7 @@
 	    	</table>
 	 </div>
 	    	
-	    	<div id="dgtb">
+	    	<div id="fukuanshenhedgtb">
 	    	
 	    	<a href="javascript:caiwufkshselect();" class="easyui-linkbutton" iconCls="icon-add" plain="true">付款确认</a>
 		    <a href="javascript:caiwufkshselecta();" class="easyui-linkbutton" iconCls="icon-add" plain="true">取消付款</a>
@@ -67,9 +67,9 @@
 			<a href="javascript:cufkshselect(2)" class="easyui-linkbutton" iconCls="icon-search" plain="true">待确认收款</a>
 	    	</div>
 	
-	<table id="dg" class="easyui-datagrid"
+	<table id="fukuanshenhedg" class="easyui-datagrid"
 		data-options="url:'fenghuang/caiwuqrfkselect.do?shenfenid=3&&ysyfid=2&&caiwuid=1',border:false,singleSelect:true,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
-		pagination="true" toolbar="#dgtb">
+		pagination="true" toolbar="#fukuanshenhedgtb">
 		<thead>
 			<tr>  
 				<th data-options="field:'fukuantime'" width="40">付款日期</th>
@@ -181,11 +181,11 @@
 		function onClickRow(index) {
 			if (editIndex != index) {
 				if (endEditing()) {
-					$('#dg').datagrid('selectRow', index).datagrid('beginEdit',
+					$('#fukuanshenhedg').datagrid('selectRow', index).datagrid('beginEdit',
 							index);
 					editIndex = index;
 				} else {
-					$('#dg').datagrid('selectRow', editIndex);
+					$('#fukuanshenhedg').datagrid('selectRow', editIndex);
 				}
 			}
 		}
@@ -194,8 +194,8 @@
 	//条件查询
 		function cufkshselect(id){
 		
-		console.info($('#dg').datagrid('options'));
-		var opts = $('#dg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
+		console.info($('#fukuanshenhedg').datagrid('options'));
+		var opts = $('#fukuanshenhedg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
 			var param = {
 				team: $("#team").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
 				tuanduimc: $("#tuanduimc").val() ,
@@ -212,7 +212,7 @@
 					type : 'POST' ,
 					dataType : 'json' ,
 					success : function(data){
-						$('#dg').datagrid('loadData',data);
+						$('#fukuanshenhedg').datagrid('loadData',data);
 					}
 				});
 		}
@@ -240,7 +240,7 @@
 		function caiwufkshselect(id) {
            //通过主键，查询该操作，并处于编辑状态。 是否打开tab，还是直接弹出window 
 			//准备回显的数据
-			var row = $("#dg").datagrid("getSelected");
+			var row = $("#fukuanshenhedg").datagrid("getSelected");
 			$('#id').attr('value','');
 		    $('#xg').form('load', row);
 			 $.messager.confirm('消息', '是否将团号：'+row.team+'确认付款?',
@@ -270,10 +270,10 @@
 					if (result.success) {
 					  $("#caiwufkshid").dialog('close');
 						$.messager.alert("修改成功", "修改成功！", "info"); 
-						$("#dg").datagrid('reload');
+						$("#fukuanshenhedg").datagrid('reload');
 					} else {
 						$.messager.alert("修改失败", "修改失败!", "error");
-						$("#dg").datagrid('reload');
+						$("#fukuanshenhedg").datagrid('reload');
 					}
 				}
 			});
@@ -286,7 +286,7 @@
           //通过主键，查询该操作，并处于编辑状态。 是否打开tab，还是直接弹出window 
 			
 			//获取选中 数据
-			var row = $("#dg").datagrid("getSelected");
+			var row = $("#fukuanshenhedg").datagrid("getSelected");
 			$('#id').attr('value','');
 		    $('#quxiaoform').form('load',row);
 			//alert(row.id);
@@ -319,10 +319,10 @@
 					if (result.success) {
 					  $("#caiwuquxiao").dialog('close');
 						$.messager.alert("修改成功", "修改成功！", "info"); 
-						$("#dg").datagrid('reload');
+						$("#fukuanshenhedg").datagrid('reload');
 					} else {
 						$.messager.alert("修改失败", "修改失败!", "error");
-						$("#dg").datagrid('reload');
+						$("#fukuanshenhedg").datagrid('reload');
 					}
 				}
 			});
