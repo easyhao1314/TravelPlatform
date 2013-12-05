@@ -38,7 +38,7 @@ iconCls="icon-cut" plain="true">删除</a>
 <a href="javascript:xinxiupdateopen();" class="easyui-linkbutton"
 iconCls="icon-save" plain="true">修改</a>
 </div>
-    <div class="easyui-panel" title="团队收款" style="height:240px;width: auto;">
+    <div class="easyui-panel" title="团队收款" style="height:290px;width: auto;">
     
      <div id="tb2">
 <a
@@ -78,9 +78,9 @@ pagination="true" toolbar="#tb1">
 </div>	
 
 
- <div class="easyui-panel" title="团队付款" style="height:240px;width: auto;">
+ <div class="easyui-panel" title="团队付款" style="height:290px;width: auto;">
 <table id="tuanduixinxidg" class="easyui-datagrid"
-data-options="url:'fenghuang/caiwutuanduifeiyong.do?team=${param.team}&&ysyfid=2&&shenfenid=3',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
+data-options="url:'fenghuang/caiwutuanduifeiyong.do?tuanduimc=${param.tuanduimc}&&ysyfid=2&&shenfenid=3',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 pagination="true" toolbar="#tb2">
 <thead>
 <tr>
@@ -107,7 +107,23 @@ pagination="true" toolbar="#tb2">
 
 <!--***************************************收款添加******************************************************-->
 <div id="tdxxsaveid" class="easyui-dialog" title="团队信息添加"
-		data-options="modal:true,closed:true,iconCls:'icon-save'"
+		data-options="modal:true,closed:true,iconCls:'icon-save',buttons:[{
+			text:'确定',
+			iconCls:'icon-search',
+			handler:function(){
+			$('#tdxxsaveid').dialog('close');
+			xinxisave();
+			}
+			},
+			{
+			text:'关闭',
+			iconCls:'icon-cancel',
+			handler:function(){
+			$('#tdxxsaveid').dialog('close');
+		
+			}
+			}
+		]"
 		style="width:500px;height:250px;padding:10px;">
 		<form id="tdxxsaveform" action="">
 			<table align="left">
@@ -179,7 +195,7 @@ pagination="true" toolbar="#tb2">
 				<tr>
 				
 					<td> 
-					<input id="caiwuid" name="caiwuid"  value="1" hidden="true"
+					<input id="caiwuid" name="caiwuid"  value="6" hidden="true"
 						class="easyui-validatebox">
 						</div></td>
 						
@@ -191,12 +207,12 @@ pagination="true" toolbar="#tb2">
 				<tr>
 				
 					<td> 
-					<input id="shenfenid" name="shenfenid" hidden="true"
+					<input id="shenfenid" name="shenfenid" value="1" hidden="true"
 						class="easyui-validatebox">
 						</div></td>
 						
 					<td>
-					<input id="fpxk" name="fpxk"  value="0" hidden="true"
+					<input id="fpxk" name="fpxk"  value="0" hidden="true" hidden="true"
 						class="easyui-validatebox">
 						</div></td>
 				</tr>
@@ -208,7 +224,7 @@ pagination="true" toolbar="#tb2">
 						</div></td>
 						
 					<td>
-					<input id="tuanduimctest" name="tuanduimc" hidden="true" 
+					<input id="tuanduimctest" name="tuanduimc" hidden="true"
 						class="easyui-validatebox">
 						</div></td>
 				</tr>
@@ -228,110 +244,30 @@ pagination="true" toolbar="#tb2">
 						</div></td>
 				
 				</tr>
-				<tr>
-					<td colspan="4s" align="center"><a
-						href="javascript:xinxisave();" class="easyui-linkbutton"
-						iconCls="icon-ok">确认</a><a href="javascript:$('#tdxxsaveid').dialog('close');"
-						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
-				</tr>
 			</table>
 			
 		</form>
 	</div>
 <!-- ************************************************************************************************* -->
-<!--***************************************收款删除******************************************************-->
-<div id="tdxxshanchuid" class="easyui-dialog" title="团队信息添加"
-		data-options="modal:true,closed:true,iconCls:'icon-save'"
-		style="width:500px;height:250px;padding:10px;">
-		<form id="tdxxshanchuform" action="">
-			<table align="left">
-			<tr>
-					
-							<!-- ID -->
-					
-					<td>	<input id="id" name="id" hidden="true"
-						class="easyui-validatebox">
-						</div></td>
-						
-							<!-- shanchus -->
-					
-					<td>	<input id="shanchu"  name="shanchu"  value="2" hidden="true"
-						class="easyui-validatebox">
-						</div></td>
-						
-				</tr>
-				<tr>
-					<td><div class="fitem">
-							<label>应付款项:</label>
-					</td>
-					<td>	<input id="kxsm" name="kxsm"  onfocus=this.blur()
-						class="easyui-validatebox">
-						</div></td>
-						<td><div class="fitem">
-							<label>收款账户:</label>
-					</td>
-					<td>
-						<input id="zhanghaoid" name="zhanghaoid" onfocus=this.blur()
-						class="easyui-validatebox">
-						</div></td>
-				</tr>
-				<tr>
-					<td><div class="fitem">
-							<label>收款单位:</label>
-					</td>
-					<td>
-						<input id="khmc" name="khmc" onfocus=this.blur()
-						class="easyui-validatebox">
-						</div></td>
-						<td><div class="fitem">
-							<label>应收日期:</label>
-					</td>
-					<td>
-						<input id="yushoutime" name="yushoutime" onfocus=this.blur()
-						class="easyui-validatebox">
-						</div></td>
-				</tr>
-				
-				<tr>
-					<td><div class="fitem">
-							<label>金额:</label>
-					</td>
-					<td>
-					<input id="yingshou" name="yingshou" onfocus=this.blur()
-						class="easyui-validatebox">
-						</div></td>
-						<td><div class="fitem">
-							<label>单位:</label>
-					</td>
-					<td>	<input id="huilv" name="huilv" onfocus=this.blur()
-						class="easyui-validatebox">
-						</div></td>
-				</tr>
-				<tr>
-					<td><div class="fitem">
-							<label>备注:</label>
-					</td>
-					<td>
-					<input id="beizhu" name="beizhu" onfocus=this.blur()	
-						class="easyui-validatebox">
-						</div></td>
-					
-				</tr>
-					<tr>
-					<td colspan="4s" align="center"><a
-						href="javascript:xinxidelect();" class="easyui-linkbutton"
-						iconCls="icon-ok">确认</a> <a href="javascript:$('#tdxxshanchuid').dialog('close');"
-						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
-				</tr>
-			</table>
-			
-		</form>
-	</div>
-<!-- *********************************************************************************************** -->
-
 <!--***************************************收款修改******************************************************-->
-<div id="tdxxupdateid" class="easyui-dialog" title="团队信息添加"
-		data-options="modal:true,closed:true,iconCls:'icon-save'"
+<div id="tdxxupdateid" class="easyui-dialog" title="团队信息修改"
+		data-options="modal:true,closed:true,iconCls:'icon-save',buttons:[{
+			text:'确定',
+			iconCls:'icon-search',
+			handler:function(){
+			$('#tdxxupdateid').dialog('close');
+			xinxiupdate();
+			}
+			},
+			{
+			text:'关闭',
+			iconCls:'icon-cancel',
+			handler:function(){
+			$('#tdxxupdateid').dialog('close');
+		
+			}
+			}
+		]"
 		style="width:500px;height:250px;padding:10px;">
 		<form id="tdxxupdateform" action="">
 			<table align="left">
@@ -409,14 +345,7 @@ pagination="true" toolbar="#tb2">
 						</div></td>
 					
 				</tr>
-				<tr>
-					<td colspan="4s" align="center"><a
-						href="javascript:xinxiupdate();" class="easyui-linkbutton"
-						iconCls="icon-ok">确认</a> <a href="javascript:$('#tdxxupdateid').dialog('close');"
-						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
-				</tr>
 			</table>
-			
 		</form>
 	</div>
 	
@@ -424,7 +353,23 @@ pagination="true" toolbar="#tb2">
 	
 	<!--***************************************付款添加******************************************************-->
 <div id="tdxxfkid" class="easyui-dialog" title="团队信息添加"
-		data-options="modal:true,closed:true,iconCls:'icon-save'"
+		data-options="modal:true,closed:true,iconCls:'icon-save',buttons:[{
+			text:'确定',
+			iconCls:'icon-search',
+			handler:function(){
+			$('#tdxxfkid').dialog('close');
+			xxfksave();
+			}
+			},
+			{
+			text:'关闭',
+			iconCls:'icon-cancel',
+			handler:function(){
+			$('#tdxxfkid').dialog('close');
+		
+			}
+			}
+		]"
 		style="width:500px;height:250px;padding:10px;">
 		<form id="tdxxfkform" action="">
 			<table align="left">
@@ -507,7 +452,7 @@ pagination="true" toolbar="#tb2">
 					<tr>
 					
 					<td> 
-					<input id="teamatest" name="team" hidden="true"hidden="true"
+					<input id="teamatest" name="team" hidden="true"
 						class="easyui-validatebox">
 						</div></td>
 						 
@@ -526,112 +471,34 @@ pagination="true" toolbar="#tb2">
 					
 					<td> 
 					<input id="ysyfid" name="ysyfid" value="2"hidden="true"
-						class="easyui-validatebox">
-						
+						class="easyui-validatebox">		
 						</div></td>
 				
-				</tr>
-				<tr>
-					<td colspan="4s" align="center"><a
-						href="javascript:xxfksave();" class="easyui-linkbutton"
-						iconCls="icon-ok">确认</a> <a href="javascript:$('#tdxxfkid').dialog('close');"
-						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
 				</tr>
 			</table>
 			
 		</form>
 	</div>
 <!-- ************************************************************************************************* -->		
-<!--***************************************付款删除******************************************************-->
-<div id="xxfkshanchuid" class="easyui-dialog" title="团队信息添加"
-		data-options="modal:true,closed:true,iconCls:'icon-save'"
-		style="width:500px;height:250px;padding:10px;">
-		<form id="xxfkshanchuform" action="">
-			<table align="left">
-			<tr>
-					
-							<!-- ID -->
-					
-					<td>	<input id="id" name="id" hidden="true"
-						class="easyui-validatebox">
-						</div></td>
-						
-							<!-- shanchus -->
-					
-					<td>	<input id="shanchu"  name="shanchu"  value="2" hidden="true"
-						class="easyui-validatebox">
-						</div></td>
-						
-				</tr>
-				<tr>
-					<td><div class="fitem">
-							<label>应付款项:</label>
-					</td>
-					<td>	
-					<input id="kxsm"  name="kxsm" class="easyui-combobox" data-options="url:'fenghuang/caiwufukuanxiangxiala.do',
-					valueField:'id',
-					textField:'name',
-					panelHeight:'auto',
-					editable:false" required="true" onfocus=this.blur()>
-						</div></td>
-						
-				</tr>
-				<tr>
-					<td><div class="fitem">
-							<label>收款单位:</label>
-					</td>
-					<td>
-						<input id="khmc" name="khmc" onfocus=this.blur()
-						class="easyui-validatebox">
-						</div></td>
-						<td><div class="fitem">
-							<label>应收日期:</label>
-					</td>
-					<td>
-						<input id="yushoutime" name="yushoutime" onfocus=this.blur()
-						class="easyui-validatebox">
-						</div></td>
-				</tr>
-				
-				<tr>
-					<td><div class="fitem">
-							<label>金额:</label>
-					</td>
-					<td>
-					<input id="yfk" name="yfk" onfocus=this.blur()
-						class="easyui-validatebox">
-						</div></td>
-						<td><div class="fitem">
-							<label>单位:</label>
-					</td>
-					<td>	<input id="huilv" name="huilv" onfocus=this.blur()
-						class="easyui-validatebox">
-						</div></td>
-				</tr>
-				<tr>
-					<td><div class="fitem">
-							<label>备注:</label>
-					</td>
-					<td>
-					<input id="beizhu" name="beizhu" onfocus=this.blur()	
-						class="easyui-validatebox">
-						</div></td>
-					
-				</tr>
-					<tr>
-					<td colspan="4s" align="center"><a
-						href="javascript:xxfkdelete();" class="easyui-linkbutton"
-						iconCls="icon-ok">确认</a> <a href="javascript:$('#xxfkshanchuid').dialog('close');"
-						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
-				</tr>
-			</table>
-			
-		</form>
-	</div>
-<!-- *********************************************************************************************** -->
 <!--***************************************付款修改******************************************************-->
-<div id="tdxxfkxiugaiid" class="easyui-dialog" title="团队信息添加"
-		data-options="modal:true,closed:true,iconCls:'icon-save'"
+<div id="tdxxfkxiugaiid" class="easyui-dialog" title="团队信息修改"
+		data-options="modal:true,closed:true,iconCls:'icon-save',buttons:[{
+			text:'确定',
+			iconCls:'icon-search',
+			handler:function(){
+			$('#tdxxfkxiugaiform').dialog('close');
+			xxfkupdate();
+			}
+			},
+			{
+			text:'关闭',
+			iconCls:'icon-cancel',
+			handler:function(){
+			$('#tdxxfkxiugaiform').dialog('close');
+		
+			}
+			}
+		]"
 		style="width:500px;height:250px;padding:10px;">
 		<form id="tdxxfkxiugaiform" action="">
 			<table align="left">
@@ -698,19 +565,10 @@ pagination="true" toolbar="#tb2">
 					<input id="beizhu" name="beizhu" 
 						class="easyui-validatebox">
 						</div></td>
-					
-				</tr>
-					<tr>
-					<td colspan="4s" align="center"><a
-						href="javascript:xxfkupdate();" class="easyui-linkbutton"
-						iconCls="icon-ok">确认</a> <a href="javascript:$('#tdxxfkxiugaiid').dialog('close');"
-						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
 				</tr>
 			</table>
-			
 		</form>
 	</div>
-
 <!-- *********************************************************************************************** -->
 <script type="text/javascript">
 
@@ -752,18 +610,16 @@ function shenfen(val,row){
 }
 /***Jquery读取input id action 读取 name/
 /*************************************************添加*****************************************************/
-	function xinxisaveopen() {
-	       
-			var team='${param.team}';
-	        $('#tuanduimctest').attr('value','${param.tuanNo}');
-	         $('#shenfenid').attr('value','${param.shenfenid}');
-			$("#tdxxsaveid").dialog("open");
-		    $("#team").val(team);
-			
-		}
-        function closeEditDic() {
+ function closeEditDic() {
 			$("#tdxxsaveid").dialog("close");
 		} 
+	      function xinxisaveopen() {    
+	      var team='${param.team}';
+		  var tuanduimc='${param.tuanduimc}';
+		  $("#tdxxsaveid").dialog("open");
+		  $('#tdxxsaveform').form('load',{"team":team,"tuanduimc":tuanduimc});			
+		}
+       
 		function xinxisave() {
 			$('#tdxxsaveform').form('submit', {
 				url : 'fenghuang/inserttuanbiao.do',
@@ -789,54 +645,24 @@ function shenfen(val,row){
 /*******************************************删除********************************************************/
          //按id查询
 		function xinxidelectopen(id) {
-          //通过主键，查询该操作，并处于编辑状态。 是否打开tab，还是直接弹出window 
-			
-			//获取选中 数据
-			var row = $("#xinxidg").datagrid("getSelected");
-			//alert(row.id);
-		if(row!=null){
-		$("#tdxxshanchuid").dialog("open");
-		//清空ID
-		//$('#id').attr('value','');
-		//填充{"id":row.id}
-		 $('#tdxxshanchuform').form('load',{"id":row.id,"kxsm":row.kxsm,"zhanghaoid":row.zhanghaoid,"khmc":row.khmc,"yushoutime":row.yushoutime,"yingshou":row.yingshou,"huilv":row.huilv,"beizhu":row.beizhu,"id":row.id});
-		}
-		}
-		
-		
-		//修改
-			function xinxidelect() {
-			var shanchu = $("#shanchu").val();
-			$("#tdxxshanchuform").form('submit', {
-				url : 'fenghuang/updateqrfk.do?shanchu='+shanchu,
-				onSubmit : function() {
-					return $(this).form('validate');
-				},
-				success : function(data) {//data 是一个字符串  $.ajax(success:function(data):是一个对象)
-					console.info(data);
-					//var result = val('(' + data + ')');//吧字符串转换为对象
-					var result = $.parseJSON(data) ;
-
-					if (result.success) {
-					  $("#tdxxshanchuid").dialog('close');
-						$.messager.alert("修改成功", "修改成功！", "info"); 
-						$("#xinxidg").datagrid('reload');
-					} else {
-						$.messager.alert("修改失败", "修改失败!", "error");
-						$("#xinxidg").datagrid('reload');
-					}
-				}
-			});
+	    var row = $("#xinxidg").datagrid("getSelected");
+		$.messager.confirm('消息', '是否将团名：'+row.team+'确认删除?',
+	    function(r){  
+	    if (r){                  
+		$.ajax({
+		url:'fenghuang/updateqrfk.do?shanchu='+2+'&id='+row.id,
+		date:row.id,
+        dateType:"json",
+		success:function(data){
+		$('#xinxidg').datagrid("reload");
+	    $.messager.alert('消息','删除成功');
+	    }
+		} );     
+		}          
+		});	                
+		 return;		
 		}
 		
-
-
-/*****************************************************************************************************/
-
-
-
-
-
 /*************************************************修改*****************************************************/
    //按id查询
 		function xinxiupdateopen(id) {
@@ -887,12 +713,10 @@ function shenfen(val,row){
 
 /*************************************************付款添加*****************************************************/
 	function xxfksaveopen() {
-			var team='${param.team}';
-	        $('#tuandui').attr('value','${param.tuanNo}');
-			$("#tdxxfkid").dialog("open");
-		    $("#teamatest").val(team);
-			
-				
+	var team='${param.team}';
+	    var tuanduimc='${param.tuanduimc}';
+        $("#tdxxfkid").dialog("open");
+	    $('#tdxxfkform').form('load',{"team":team,"tuanduimc":tuanduimc});		
 		}
         function closeEditDic() {
 			$("#tdfkinsertid").dialog("close");
@@ -929,67 +753,31 @@ function shenfen(val,row){
 /*******************************************付款删除********************************************************/
          //按id查询
 		function xxfkdeleteopen(id) {
-          //通过主键，查询该操作，并处于编辑状态。 是否打开tab，还是直接弹出window 
-			
-			//获取选中 数据
-			var row = $("#tuanduixinxidg").datagrid("getSelected");
-			//alert(row.id);
-		if(row!=null){
-		$("#xxfkshanchuid").dialog("open");
-		//清空ID
-		//$('#id').attr('value','');
-		//填充{"id":row.id}
-		 $('#xxfkshanchuform').form('load',{"id":row.id,"kxsm":row.kxsm,"khmc":row.khmc,"yushoutime":row.yushoutime,"yfk":row.yfk,"huilv":row.huilv,"beizhu":row.beizhu,"id":row.id});
-		}
-		}
-		
-		
-		//修改
-			function xxfkdelete() {
-			var shanchu = $("#shanchu").val();
-			$("#xxfkshanchuform").form('submit', {
-				url : 'fenghuang/updateqrfk.do?shanchu='+shanchu,
-				onSubmit : function() {
-					return $(this).form('validate');
-				},
-				success : function(data) {//data 是一个字符串  $.ajax(success:function(data):是一个对象)
-					console.info(data);
-					//var result = val('(' + data + ')');//吧字符串转换为对象
-					var result = $.parseJSON(data) ;
-
-					if (result.success) {
-					  $("#xxfkshanchuid").dialog('close');
-						$.messager.alert("修改成功", "修改成功！", "info"); 
-						$("#tuanduixinxidg").datagrid('reload');
-					} else {
-						$.messager.alert("修改失败", "修改失败!", "error");
-						$("#tuanduixinxidg").datagrid('reload');
-					}
-				}
-			});
-		}
-		
-
-
+	    var row = $("#tuanduixinxidg").datagrid("getSelected");
+	    $.messager.confirm('消息', '是否将团名：'+row.team+'确认删除?',
+	    function(r){  
+	    if (r){                  
+		$.ajax({
+		url:'fenghuang/updateqrfk.do?shanchu='+2+'&id='+row.id,
+		date:row.id,
+        dateType:"json",
+		success:function(data){
+		$('#tuanduixinxidg').datagrid("reload");
+	    $.messager.alert('消息','删除成功');
+	    }
+		} );     
+		}          
+		});	                
+		 return;		
+		}		
 /*****************************************************************************************************/
-
-
-
-
-
 /************************************************付款修改*****************************************************/
- //按id查询
+        //按id查询
 		function xxfkupdateopen(id) {
-          //通过主键，查询该操作，并处于编辑状态。 是否打开tab，还是直接弹出window 
-			
-			//获取选中 数据
 		var row = $("#tuanduixinxidg").datagrid("getSelected");
-			//alert(row.id);
+		 
 		if(row!=null){
 		$("#tdxxfkxiugaiid").dialog("open");
-		//清空ID
-		//$('#id').attr('value','');
-		//填充{"id":row.id}
 		 $('#tdxxfkxiugaiform').form('load',row);
 		}
 		}
@@ -1016,16 +804,6 @@ function shenfen(val,row){
 				}
 			});
 		}
-/*******************************************************************************************************/
-
-
-
-/*************************************************添加*****************************************************/
-/*******************************************************************************************************/
-
-
-
-/*************************************************添加*****************************************************/
 /*******************************************************************************************************/
 
 </script>

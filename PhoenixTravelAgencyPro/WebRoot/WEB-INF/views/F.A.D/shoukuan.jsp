@@ -66,8 +66,8 @@
 	    	   <a href="javascript:shoukuanopen(7);" class="easyui-linkbutton" iconCls="icon-add" plain="true">审批确认</a>  
 		       <a href="javascript:shoukuanopen(6);" class="easyui-linkbutton" iconCls="icon-add" plain="true">取消付款</a>	   
 		       <a href="javascript:void(0);" onclick="javascript:$('#shoukuansousuo').dialog('open');" class="easyui-linkbutton" iconCls="icon-save" plain="true">查询</a>  	  
-	           <a href="javascript:shoukuanselect(6)" class="easyui-linkbutton" iconCls="icon-search" plain="true">已确认收款</a>
-			   <a href="javascript:shoukuanselect(7)" class="easyui-linkbutton" iconCls="icon-search" plain="true">待确认收款</a>
+	           <a href="javascript:shoukuanselect(6)" class="easyui-linkbutton" iconCls="icon-search" plain="true">待确认收款</a>
+			   <a href="javascript:shoukuanselect(7)" class="easyui-linkbutton" iconCls="icon-search" plain="true">已确认收款</a>
 	    	  </div>
 	<table id="shoukuandg" class="easyui-datagrid"
 		data-options="url:'fenghuang/caiwuqrfkselect.do?ysyfid=1&&caiwuid=6&&shenfenid=5',border:false,singleSelect:true,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
@@ -206,7 +206,6 @@
 			var row = $("#shoukuandg").datagrid("getSelected");
 		    $('#id').attr('value','');
 		     row.caiwuid=id;
-		     alert(row.caiwuid);
 		     if(row.caiwuid==7){
 		     $.messager.confirm('消息', '是否将团号：'+row.team+'收款审批通过?',
 			 function(r){  

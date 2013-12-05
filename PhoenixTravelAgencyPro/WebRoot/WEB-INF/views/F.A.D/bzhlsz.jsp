@@ -79,7 +79,23 @@
 		</thead>
 	</table>
 	<div id="bzhlszid" class="easyui-dialog" title="汇率添加"
-		data-options="modal:true,closed:true,iconCls:'icon-save'"
+		data-options="modal:true,closed:true,iconCls:'icon-save',buttons:[{
+			text:'确定',
+			iconCls:'icon-search',
+			handler:function(){
+			$('#bzhlszid').dialog('close');
+			bzhlszsave();
+			}
+			},
+			{
+			text:'关闭',
+			iconCls:'icon-cancel',
+			handler:function(){
+			$('#bzhlszid').dialog('close');
+		
+			}
+			}
+		]"
 		style="width:500px;height:250px;padding:10px;">
 		<form id="bzhlszform" method="post">
 			<table align="left">
@@ -140,14 +156,7 @@
 				<td><input name="id" id="id" class="easyui-numberbox"  hidden="true">
 						</div></td>
 				</tr>
-				<tr>
-					<td colspan="4s" align="center"><a
-						href="javascript:bzhlszsave();" class="easyui-linkbutton"
-						iconCls="icon-ok">保存</a> <a href="javascript:bzhlszclose();"
-						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
-				</tr>
 			</table>
-			<input id="dicType" name="dicType" type="hidden">
 		</form>
 	</div>
 <!-- ************************************************************************************************************************************************************ -->	
@@ -187,11 +196,9 @@
 		      var a = $("#id").val();
 		      var dizhi;
 		      if(a==null||""==a){
-		      alert(a);
 		       dizhi='fenghuang/bizhonghuilvinsert.do';
 		      }
 		      else{
-		      alert(a);
 		     dizhi='fenghuang/bizhonghuilvupdate.do';
 		      }
 			$('#bzhlszform').form('submit', {
@@ -243,15 +250,13 @@
 			           dateType:"json",
 			           success:function(data){
 			           $('#bzhlszdg').datagrid("reload");
-			           $.messager.alert('消息','付款成功');	
+			           $.messager.alert('消息','删除成功');	
 			          }
-			          });    
-			              
+			          });    			              
 			           }          
 			                });
 			                
 			                return;
-            
            }
               }
 

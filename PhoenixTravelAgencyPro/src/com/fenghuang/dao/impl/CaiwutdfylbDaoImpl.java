@@ -29,8 +29,8 @@ public class CaiwutdfylbDaoImpl extends BaseDao implements IcaiwutdfylbDao{
 	@Override
 	public boolean updatetdfy(Tuanbiao tuanbiao) throws Exception {
 		// TODO Auto-generated method stub
-		 String sql = "update tuanbiao set kxsm=?,zhanghaoid=?,yfk=?,khmc=?,yushoutime=?,yingshou=?,huilvID=?,beizhu=? where id=?";
-		   int  rs=this.update(sql,tuanbiao.getKxsm(), tuanbiao.getZhanghaoid(),tuanbiao.getYfk(), tuanbiao.getKhmc(), tuanbiao.getYushoutime(),tuanbiao.getYingshou(), tuanbiao.getHuilvID(), tuanbiao.getBeizhu(),tuanbiao.getId());
+		 String sql = "update tuanbiao set kxsm=?,zhanghaoid=?,yfk=?,khmc=?,yushoutime=?,fukuantime=?,yingshou=?,huilvID=?,beizhu=? where id=?";
+		   int  rs=this.update(sql,tuanbiao.getKxsm(), tuanbiao.getZhanghaoid(),tuanbiao.getYfk(), tuanbiao.getKhmc(), tuanbiao.getYushoutime(),tuanbiao.getFukuantime(),tuanbiao.getYingshou(), tuanbiao.getHuilvID(), tuanbiao.getBeizhu(),tuanbiao.getId());
 		   return rs>0;
 	}
 

@@ -28,7 +28,7 @@
 <div id="tb">
 		<a
 			href="javascript:sfkzhwhopen();" class="easyui-linkbutton"
-			iconCls="icon-add" plain="true">新增</a><a
+			iconCls="icon-search" plain="true">新增</a><a
 			href="javascript:sfkzhwhdelectopen();" class="easyui-linkbutton"
 			iconCls="icon-cut" plain="true">删除</a>
 		<a href="javascript:sfkzhwhupdateopen();" class="easyui-linkbutton"
@@ -40,19 +40,35 @@
 		pagination="true" toolbar="#tb">
 		<thead>
 			<tr> 
-			    <th data-options="field:'id',editor:'text'" width="5" >编号</th>
-				<th data-options="field:'zhanghaoming',editor:'text'" width="10">账号名称</th>
-				<th data-options="field:'yongtu',editor:'text'" width="10">用途</th>
-				<th data-options="field:'bizhong',editor:'text'" width="10">币种</th>
-				<th data-options="field:'huming',editor:'text'" width="10">户名</th>
-				<th data-options="field:'zhanghao',editor:'text'" width="10">账号</th>
-				<th data-options="field:'kaihuhang',editor:'text'" width="10">开户行</th>
+			   
+				<th data-options="field:'zhanghaoming'" width="10">账号名称</th>
+				<th data-options="field:'yongtu'" width="10">用途</th>
+				<th data-options="field:'bizhong'" width="10">币种</th>
+				<th data-options="field:'huming'" width="10">户名</th>
+				<th data-options="field:'zhanghao'" width="10">账号</th>
+				<th data-options="field:'kaihuhang'" width="10">开户行</th>
 				<th data-options="field:'shiyongshuoming',editor:'text'" width="10">使用说明</th>
 			</tr>
 		</thead>
 	</table>
 	<div id="sfkzhwhid" class="easyui-dialog" title="账号添加"
-		data-options="modal:true,closed:true,iconCls:'icon-save'"
+		data-options="modal:true,closed:true,iconCls:'icon-save',buttons:[{
+			text:'确定',
+			iconCls:'icon-search',
+			handler:function(){
+			$('#sfkzhwhid').dialog('close');
+			sfkzhwhsave();
+			}
+			},
+			{
+			text:'关闭',
+			iconCls:'icon-cancel',
+			handler:function(){
+			$('#sfkzhwhid').dialog('close');
+		
+			}
+			}
+		]"
 		style="width:500px;height:250px;padding:10px;">
 		<form id="sfkzhwhform" action="">
 			<table align="left">
@@ -108,16 +124,8 @@
 					<td><input id="shiyongshuoming" name="shiyongshuoming" 
 						class="easyui-validatebox">
 						</div></td>
-				</tr>
-				
-				<tr>
-					<td colspan="4s" align="center"><a
-						href="javascript:sfkzhwhsave();" class="easyui-linkbutton"
-						iconCls="icon-ok">确认</a> <a href="javascript:sfkzhwhclose();"
-						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
-				</tr>
+				</tr>				
 			</table>
-			<input id="searchDicType" name="dicType" type="hidden">
 		</form>
 	</div>
 
@@ -125,7 +133,7 @@
 <div id="sfkzhwhdeleteid" class="easyui-dialog" title="账号删除"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:500px;height:200px;padding:10px;">
-		<form id="sfkzhwhdeleteform" action="">
+		<form id="sfkzhwhdeleteform">
 			<table align="left">
 				<tr>
 					<td><div class="fitem">
@@ -193,7 +201,23 @@
 	</div>
 <!-- ********************************************************************************************** -->
 <div id="sfkzhwhupdateid" class="easyui-dialog" title="账号修改"
-		data-options="modal:true,closed:true,iconCls:'icon-save'"
+		data-options="modal:true,closed:true,iconCls:'icon-save',buttons:[{
+			text:'确定',
+			iconCls:'icon-search',
+			handler:function(){
+			$('#sfkzhwhupdateid').dialog('close');
+			sfkzhwhupdate();
+			}
+			},
+			{
+			text:'关闭',
+			iconCls:'icon-cancel',
+			handler:function(){
+			$('#sfkzhwhupdateid').dialog('close');
+		
+			}
+			}
+		]"
 		style="width:500px;height:210px;padding:10px;">
 		<form id="sfkzhwhupdateform" action="">
 			<table align="left">
@@ -253,16 +277,8 @@
 					<td><input id="shiyongshuoming" name="shiyongshuoming" 
 						class="easyui-validatebox">
 						</div></td>
-				</tr>
-				
-				<tr>
-					<td colspan="4s" align="center"><a
-						href="javascript:sfkzhwhupdate();" class="easyui-linkbutton"
-						iconCls="icon-ok">确认</a> <a href="javascript:bzhlszxiugaiclose();"
-						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
-				</tr>
+				</tr>			
 			</table>
-			<input id="searchDicType" name="dicType" type="hidden">
 		</form>
 	</div>
 
@@ -336,14 +352,13 @@
            if(row!=null){
              $('#id').attr('value','');
              $('#sfkzhwhdeleteform').form('load', row);
-              $.messager.confirm('消息', '是否将团号：'+row.team+'删除?',
+              $.messager.confirm('消息', '是否将账号名：'+row.zhanghaoming
+              +'删除?',
 			 function(r){  
 			  if (r){                  
-			                sfkzhwhdelect();
-			              
+			                sfkzhwhdelect();              
 			           }          
-			                });
-			                
+			                });   
 			                return;
            }
               }

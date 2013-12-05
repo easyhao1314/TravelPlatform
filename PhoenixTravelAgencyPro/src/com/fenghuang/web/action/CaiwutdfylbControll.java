@@ -90,23 +90,30 @@ public class CaiwutdfylbControll {
 	@ResponseBody
 	public Map<String,Object> xiugai(HttpServletRequest request,
 			HttpServletResponse response,String id,String yingshou,String yishou,
-			String kxsm,String zhanghaoid,String khmc,String yushoutime,int huilvID,String beizhu,
-			String yfk
+			String kxsm,String zhanghaoid,String khmc,String yushoutime,String huilvID,String beizhu,
+			String yfk,String fukuantime
 			){
 		Map<String, Object> result = new HashMap<String, Object>();
 		boolean isSuccess = false;
 		Tuanbiao tuanbiao = new Tuanbiao();
 		try {
+			if(fukuantime!=null&&!"".equals(fukuantime)){
 			DateFormat format1 = new SimpleDateFormat("yyyy-MM-dd"); 
-			Date dategroupdate = format1.parse(yushoutime);
+			Date dategroupdate = format1.parse(fukuantime);
 			tuanbiao.setYushoutime(dategroupdate);
+			}
+			if(fukuantime!=null&&!"".equals(fukuantime)){
+				DateFormat format1 = new SimpleDateFormat("yyyy-MM-dd"); 
+				Date dategroupdate = format1.parse(fukuantime);
+				tuanbiao.setYushoutime(dategroupdate);
+				}
 			if(yingshou!=null&&!"".equals(yingshou)){
 			tuanbiao.setYingshou(Integer.parseInt(yingshou));
 			}
 			if(yishou!=null&&!"".equals(yishou)){
 				tuanbiao.setYishou(Integer.parseInt(yishou));
 			}
-			tuanbiao.setHuilvID(huilvID);
+			tuanbiao.setHuilvID(Integer.parseInt(huilvID));
 			tuanbiao.setBeizhu(beizhu);
 			tuanbiao.setKxsm(kxsm);
 			tuanbiao.setZhanghaoid(Integer.parseInt(zhanghaoid));

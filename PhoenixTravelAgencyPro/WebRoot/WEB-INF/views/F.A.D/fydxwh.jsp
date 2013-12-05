@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+	<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -57,12 +57,12 @@
 	    	</table>
           </div>
 	  <div id="fydxwhtb">
-	         <a href="javascript:void(0);"  onclick="javascript:$('#fydxwhsousuo').dialog('open');" class="easyui-linkbutton" iconCls="icon-save" plain="true">查询</a> 	
-		     <a href="javascript:addMianBanMoshi()" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>  
-		     <a href="javascript:werhuSelectId();" class="easyui-linkbutton" iconCls="icon-add" plain="true">修改</a>  		
-		     <a href="javascript:shanchu('+row.id+');" class="easyui-linkbutton" iconCls="icon-cancel" plain="true">删除</a>  	
+	         <a href="javascript:void(0);"  onclick="javascript:$('#fydxwhsousuo').dialog('open');" class="easyui-linkbutton" iconCls="icon-search" plain="true">查询</a> 	
+		     <a href="javascript:addMianBanMoshi()"  onclick="javascript:$('#fydxwhsave').dialog('open');" class="easyui-linkbutton" iconCls="icon-add" plain="true">添加</a>
+		     <a href="javascript:werhuSelectId();" class="easyui-linkbutton" iconCls="icon-save" plain="true">修改</a>  		
+		     <a href="javascript:shanchu('+row.id+');" class="easyui-linkbutton" iconCls="icon-cut" plain="true">删除</a>  	
 	</div>	
-	<table id="dg" class="easyui-datagrid"
+	<table id="fydxwhdg" class="easyui-datagrid"
 		data-options="url:'fenghuang/caiwuweihu.do',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 		pagination="true" toolbar="#fydxwhtb">
 		<thead>
@@ -76,10 +76,25 @@
 			</tr>
 		</thead>
 	</table>
-	
-	<div id="addweihu" class="easyui-dialog" title="新增业务字段"
-		data-options="modal:true,closed:true,iconCls:'icon-save'"
-		style="width:500px;height:250px;padding:10px;">
+	<div id="addweihu" class="easyui-dialog" title="费用大类维护添加"
+		data-options="modal:true,closed:true,iconCls:'icon-save',buttons:[{
+			text:'确定',
+			iconCls:'icon-search',
+			handler:function(){
+			$('#addweihu').dialog('close');
+			Saveweihu();
+			}
+			},
+			{
+			text:'关闭',
+			iconCls:'icon-cancel',
+			handler:function(){
+			$('#addweihu').dialog('close');
+		
+			}
+			}
+		]"
+		style="width:500px;height:200px;padding:10px;">
 		<form id="dicFrome" method="post">
 			<table align="left">
 				<tr>
@@ -88,6 +103,78 @@
 					</td>
 					<td><input name="bianhao" class="easyui-validatebox"
 						>
+						</div></td>
+					<td><div class="fitem">
+							<label>付款性质:</label>
+					</td>
+					<td><input name="xingzhi" class="easyui-validatebox"
+						>
+						</div></td>
+						
+				</tr>
+				
+				<tr>
+					<td><div class="fitem">
+							<label>收支类型:</label>
+					</td>
+					<td><input name="shouzhi" class="easyui-validatebox">
+						</div></td>
+					<td><div class="fitem">
+							<label>费用说明:</label>
+					</td>
+					<td><input name="shuoming" class="easyui-validatebox"
+					>
+						</div></td>
+				</tr>
+				<tr>
+					<td><div class="fitem">
+							<label>对应审批流程:</label>
+					</td>
+					<td><input name="liucheng" class="easyui-validatebox">
+						</div></td>
+					<td><div class="fitem">
+							<label>父类:</label>
+					</td>
+					<td><input name="fulei" class="easyui-validatebox"
+						>
+						</div></td>
+				</tr>
+		
+			</table>
+		</form>
+	</div>
+	
+	
+	
+	<div id="xiugai" class="easyui-dialog" title="修改"
+		data-options="modal:true,closed:true,iconCls:'icon-save',buttons:[{
+			text:'确定',
+			iconCls:'icon-search',
+			handler:function(){
+			$('#xiugai').dialog('close');
+			caiwuxiugai();
+			}
+			},
+			{
+			text:'关闭',
+			iconCls:'icon-cancel',
+			handler:function(){
+			$('#xiugai').dialog('close');
+		
+			}
+			}
+		]"
+		style="width:500px;height:200px;padding:10px;">
+		<form id="weihuxiugai" method="post">
+		
+			<table align="left">
+				<tr>
+					<td>
+					<input id="id" name="id" class="easyui-validatebox" hidden="true">
+					<div class="fitem">
+							<label>编号:</label>
+					</td>
+					<td><input name="bianhao" class="easyui-validatebox">
 						</div></td>
 					<td><div class="fitem">
 							<label>付款性质:</label>
@@ -124,75 +211,6 @@
 						>
 						</div></td>
 				</tr>
-				<tr>
-					<td colspan="4s" align="center"><a
-						href="javascript:Saveweihu()" class="easyui-linkbutton"
-						iconCls="icon-ok">保存</a> 
-                      <a href="javascript:void(0)" class="easyui-linkbutton"
-							iconCls="icon-undo" onclick="$('#dicFrome').form('clear')">重置</a></td> 
-				</tr>
-			</table>
-			<input id="dicType" name="dicType" type="hidden">
-		</form>
-	</div>
-	
-	
-	
-	<div id="xiugai" class="easyui-dialog" title="修改"
-		data-options="modal:true,closed:true,iconCls:'icon-save'"
-		style="width:500px;height:200px;padding:10px;">
-		<form id="weihuxiugai" method="post">
-			<table align="left">
-				<tr>
-					<td>
-					<input id="id" name="id" class="easyui-validatebox" hidden="true">
-					<div class="fitem">
-							<label>编号:</label>
-					</td>
-					<td><input name="bianhao" class="easyui-validatebox">
-						</div></td>
-					<td><div class="fitem">
-							<label>名称:</label>
-					</td>
-					<td><input name="xingzhi" class="easyui-validatebox"
-						>
-						</div></td>
-						
-				</tr>
-				
-				<tr>
-					<td><div class="fitem">
-							<label>帮助提示:</label>
-					</td>
-					<td><input name="shouzhi" class="easyui-validatebox">
-						</div></td>
-					<td><div class="fitem">
-							<label>显示顺序:</label>
-					</td>
-					<td><input name="shuoming" class="easyui-numberbox"
-					>
-						</div></td>
-				</tr>
-				<tr>
-					<td><div class="fitem">
-							<label>帮助提示:</label>
-					</td>
-					<td><input name="liucheng" class="easyui-validatebox">
-						</div></td>
-					<td><div class="fitem">
-							<label>显示顺序:</label>
-					</td>
-					<td><input name="fulei" class="easyui-numberbox"
-						>
-						</div></td>
-				</tr>
-				<tr>
-					<td colspan="4s" align="center"><a
-						href="javascript:caiwuxiugai()" class="easyui-linkbutton"
-						iconCls="icon-ok">保存</a> 
-						<a href="javascript:void(0)" class="easyui-linkbutton"
-							iconCls="icon-undo" onclick="$('#weihuxiugai').form('clear')">重置</a></td>
-				</tr>
 			</table>
 			<input id="dicType" name="dicType" type="hidden">
 		</form>
@@ -219,17 +237,36 @@
 					if (result.success) {
 						$.messager.alert("保存成功", "保存成功！", "info");
 						$('#addweihu').dialog('close');
-						$('#dg').datagrid('reload');
+						$('#fydxwhdg').datagrid('reload');
 					} else {
 						$.messager.alert("保存失败", "保存失败!", "error");
-						$('#dg').datagrid('reload');
+						$('#fydxwhdg').datagrid('reload');
 					}
 				}
 			});
 		}
 //删除
 		function shanchu() {
-		var row = $("#dg").datagrid("getSelected");
+		var row = $("#fydxwhdg").datagrid("getSelected");
+	    $.messager.confirm('消息', '是否将：'+row.xingzhi+'确认删除?',
+	    function(r){  
+	    if (r){                  
+		$.ajax({
+		url:'fenghuang/deleteweihu.do?id='+row.id,
+		date:row.id,
+        dateType:"json",
+		success:function(data){
+		$('#fydxwhdg').datagrid("reload");
+	    $.messager.alert('消息','删除成功');
+	    }
+		} );     
+		}          
+		});	           
+		
+		
+		
+		/*
+		var row = $("#fydxwhdg").datagrid("getSelected");
 			if (row) {
 				var param = {
 					"id" :  row.id
@@ -242,7 +279,7 @@
 					success : function(data) {
 						if (data.success) {
 							$.messager.alert("删除成功", "删除成功！", "info");
-							$("#dg").datagrid('reload');
+							$("#fydxwhdg").datagrid('reload');
 						} else {
 							$.messager.alert("删除失败", "删除失败!", "error");
 						}
@@ -251,14 +288,14 @@
 						$.messager.alert("删除失败", "服务器请求失败!", "error");
 					}
 				});
-			}
+			}*/
 		}
 
 	
 //模糊查询
 		function dijieSelectLike(){
-		console.info($('#dg').datagrid('options'));
-		var opts = $('#dg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
+		console.info($('#fydxwhdg').datagrid('options'));
+		var opts = $('#fydxwhdg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
 			var param = {
 				bianhao: $("#bianhao").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
 				xingzhi: $("#xingzhi").val() ,
@@ -273,18 +310,15 @@
 					type : 'POST' ,
 					dataType : 'json' ,
 					success : function(data){
-						$('#dg').datagrid('loadData',data);
+						$('#fydxwhdg').datagrid('loadData',data);
 					}
 				});
 		}
 		//按id查询
 		function werhuSelectId(id) {
-          //通过主键，查询该操作，并处于编辑状态。 是否打开tab，还是直接弹出window 
-			$("#xiugai").dialog("open");
-			//准备回显的数据
-			var row = $("#dg").datagrid("getSelected");
-			//alert(row.id);
-		
+			var row = $("#fydxwhdg").datagrid("getSelected");
+			if(row!=null){
+		    $("#xiugai").dialog("open");
 			if(row){
 				var param = {
 					"id" : row.id
@@ -305,6 +339,7 @@
 				});
 		}
 		}
+		}
 		 //修改
 		function caiwuxiugai() {
 			$("#weihuxiugai").form('submit', {
@@ -320,10 +355,10 @@
 					if (result.success) {
 					  $("#xiugai").dialog('close');
 						$.messager.alert("修改成功", "修改成功！", "info"); 
-						$("#dg").datagrid('reload');
+						$("#fydxwhdg").datagrid('reload');
 					} else {
 						$.messager.alert("修改失败", "修改失败!", "error");
-						$("#dg").datagrid('reload');
+						$("#fydxwhdg").datagrid('reload');
 					}
 				}
 			});

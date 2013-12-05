@@ -29,7 +29,7 @@
      <div id="fkfsszdbtb">	  
              <a href="javascript:addMianBanMoshi()" class="easyui-linkbutton" iconCls="icon-add" plain="true">新增</a>  	
 		     <a href="javascript:werhuSelectId();" class="easyui-linkbutton" iconCls="icon-save" plain="true">修改</a>  
-		     <a href="javascript:shanchu('+row.id+');" class="easyui-linkbutton" iconCls="icon-cancel" plain="true">删除</a>  
+		     <a href="javascript:shanchu('+row.id+');" class="easyui-linkbutton" iconCls="icon-cut" plain="true">删除</a>  
      </div>
 	<table id="fkfsszdg" class="easyui-datagrid"
 		data-options="url:'fenghuang/caiwufukuanselect.do',border:false,singleSelect:true,fit:true,fitColumns:true"
@@ -43,7 +43,23 @@
 		</thead> 
 	</table>
 	<div id="fkfsszxiugai" class="easyui-dialog" title="修改"
-		data-options="modal:true,closed:true,iconCls:'icon-save'"
+		data-options="modal:true,closed:true,iconCls:'icon-save',buttons:[{
+			text:'确定',
+			iconCls:'icon-search',
+			handler:function(){
+			$('#fkfsszxiugai').dialog('close');
+			caiwufkfsszxiugai();
+			}
+			},
+			{
+			text:'关闭',
+			iconCls:'icon-cancel',
+			handler:function(){
+			$('#fkfsszxiugai').dialog('close');
+		
+			}
+			}
+		]"
 		style="width:500px;height:200px;padding:10px;">
 		<form id="dicFrome" method="post">
 			<table align="left">
@@ -63,21 +79,29 @@
 						</div></td>
 						
 				</tr>
-				<tr>
-					<td colspan="4s" align="center"><a
-						href="javascript:caiwufkfsszxiugai()" class="easyui-linkbutton"
-						iconCls="icon-ok">保存</a> 
-						<a href="javascript:fkfsszxiugaizclose();"
-						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
-				</tr>
 			</table>
-			<input id="dicType" name="dicType" type="hidden">
 		</form>
 	</div>
 	
 	
 	<div id="sz" class="easyui-dialog" title="添加付款方式"
-		data-options="modal:true,closed:true,iconCls:'icon-save'"
+		data-options="modal:true,closed:true,iconCls:'icon-save',iconCls:'icon-save',buttons:[{
+			text:'确定',
+			iconCls:'icon-search',
+			handler:function(){
+			$('#sz').dialog('close');
+			Saveweihu();
+			}
+			},
+			{
+			text:'关闭',
+			iconCls:'icon-cancel',
+			handler:function(){
+			$('#sz').dialog('close');
+		
+			}
+			}
+		]"
 		style="width:500px;height:200px;padding:10px;">
 		<form id="tianjia" method="post">
 			<table align="left">
@@ -93,17 +117,7 @@
 					</td>
 					<td><input name="miaoshu" class="easyui-validatebox"
 						>
-						</div></td>
-						
-				</tr>
-				
-				
-				<tr>
-					<td colspan="4s" align="center"><a
-						href="javascript:Saveweihu()" class="easyui-linkbutton"
-						iconCls="icon-ok">保存</a> 
-                      <a href="javascript:fkfsszsavezclose();"
-						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td> 
+						</div></td>	
 				</tr>
 			</table>
 			<input id="dicType" name="dicType" type="hidden">
