@@ -57,31 +57,31 @@ public class Tuanbiao {
    /** 应收
     * 
     * @pdOid 88614fe3-6ec6-431a-b65c-424de2f3c0bc */
-   public double yingshou;
+   public float yingshou;
    /** 已收
     * 
     * @pdOid 6fab1b6a-cc43-491d-a619-cf6fefcf238d */
-   public double yishou;
+   public float yishou;
    /** 已付
     * 
     * @pdOid 6387ee87-fcac-428e-91fb-a3fd8df96717 */
-   public double yifu;
+   public float yifu;
    /** 退款
     * 
     * @pdOid 8457dd37-0760-46f6-a7cc-b2e3908cb661 */
-   public double tuikuan;
+   public float tuikuan;
    /** 返佣
     * 
     * @pdOid ac4fe577-1915-4748-85ce-382d638d5b62 */
-   public double fanyong;
+   public float fanyong;
    /** 预计利润
     * 
     * @pdOid 0d96ef10-f4c2-4d40-bd6f-e62794ede2e4 */
-   public double yujilirun;
+   public float yujilirun;
    /** 实际利润
     * 
     * @pdOid 6421bccf-6f05-4bf2-8bfe-a3e660931e05 */
-   public double shijilirun;
+   public float shijilirun;
    /** 单号
     * 
     * @pdOid 13fd8e75-6766-498c-98e0-2e73bbdee6b0 */
@@ -133,35 +133,35 @@ public class Tuanbiao {
    /** 订单金额
     * 
     * @pdOid 872ed341-b61c-4347-a2e9-7568ff89357e */
-   public double ddje;
+   public float ddje;
    /** 返款
     * 
     * @pdOid 20b9cf36-4dab-44a5-b2e4-10b9e6b5edb6 */
-   public double fankuan;
+   public float fankuan;
    /** 押金
     * 
     * @pdOid e7cb3ecd-03e0-40d4-920c-6b451b1b406c */
-   public double yajin;
+   public float yajin;
    /** 采购金额
     * 
     * @pdOid b349e5c9-db6b-4961-b4f9-19ea91fbf656 */
-   public double cgje;
+   public float cgje;
    /** 采购利润
     * 
     * @pdOid cb3b36e8-2c01-429e-9e3a-4b8ed6c07b46 */
-   public double cglr;
+   public float cglr;
    /** 支出
     * 
     * @pdOid 95e6ebb4-5bac-4bab-9a3c-58b28835f2bb */
-   public double zhichu;
+   public float zhichu;
    /** 毛利
     * 
     * @pdOid a6db619c-5ba7-4bef-a4b6-fe3453c6b839 */
-   public double maoli;
+   public float maoli;
    /** 毛利率
     * 
     * @pdOid 14d91535-18c6-4de5-a24c-fdba28e77f58 */
-   public double maolilv;
+   public float maolilv;
    /** 备注
     * 
     * @pdOid cf0389b4-223e-488c-8163-04ad7619c168 */
@@ -169,15 +169,15 @@ public class Tuanbiao {
    /** 应付
     * 
     * @pdOid 62845769-d277-4716-81e6-8b765f6116ef */
-   public double yfk;
+   public float yfk;
    /** 报价
     * 
     * @pdOid c6e560c4-94e0-47c8-b534-51cc78cb3da1 */
-   public double baojia;
+   public float baojia;
    /** 成本
     * 
     * @pdOid 3c0b0009-bdd8-4da5-9dab-a098efeb9f1b */
-   public double chengben;
+   public float chengben;
    /** 团队名称
     * 
     * @pdOid 5cda6606-39eb-4515-998a-659bd9d8c5fe */
@@ -252,46 +252,46 @@ public java.util.Date getHuituantime() {
 public void setHuituantime(java.util.Date huituantime) {
 	this.huituantime = huituantime;
 }
-public double getYingshou() {
+public float getYingshou() {
 	return yingshou;
 }
-public void setYingshou(double yingshou) {
+public void setYingshou(float yingshou) {
 	this.yingshou = yingshou;
 }
-public double getYishou() {
+public float getYishou() {
 	return yishou;
 }
-public void setYishou(double yishou) {
+public void setYishou(float yishou) {
 	this.yishou = yishou;
 }
-public double getYifu() {
+public float getYifu() {
 	return yifu;
 }
-public void setYifu(double yifu) {
+public void setYifu(float yifu) {
 	this.yifu = yifu;
 }
-public double getTuikuan() {
+public float getTuikuan() {
 	return tuikuan;
 }
-public void setTuikuan(double tuikuan) {
+public void setTuikuan(float tuikuan) {
 	this.tuikuan = tuikuan;
 }
-public double getFanyong() {
+public float getFanyong() {
 	return fanyong;
 }
-public void setFanyong(double fanyong) {
+public void setFanyong(float fanyong) {
 	this.fanyong = fanyong;
 }
-public double getYujilirun() {
+public float getYujilirun() {
 	return yujilirun;
 }
-public void setYujilirun(double yujilirun) {
+public void setYujilirun(float yujilirun) {
 	this.yujilirun = yujilirun;
 }
-public double getShijilirun() {
+public float getShijilirun() {
 	return shijilirun;
 }
-public void setShijilirun(double shijilirun) {
+public void setShijilirun(float shijilirun) {
 	this.shijilirun = shijilirun;
 }
 public java.lang.String getDanhao() {
@@ -366,52 +366,52 @@ public int getRenshu() {
 public void setRenshu(int renshu) {
 	this.renshu = renshu;
 }
-public double getDdje() {
+public float getDdje() {
 	return ddje;
 }
-public void setDdje(double ddje) {
+public void setDdje(float ddje) {
 	this.ddje = ddje;
 }
-public double getFankuan() {
+public float getFankuan() {
 	return fankuan;
 }
-public void setFankuan(double fankuan) {
+public void setFankuan(float fankuan) {
 	this.fankuan = fankuan;
 }
-public double getYajin() {
+public float getYajin() {
 	return yajin;
 }
-public void setYajin(double yajin) {
+public void setYajin(float yajin) {
 	this.yajin = yajin;
 }
-public double getCgje() {
+public float getCgje() {
 	return cgje;
 }
-public void setCgje(double cgje) {
+public void setCgje(float cgje) {
 	this.cgje = cgje;
 }
-public double getCglr() {
+public float getCglr() {
 	return cglr;
 }
-public void setCglr(double cglr) {
+public void setCglr(float cglr) {
 	this.cglr = cglr;
 }
-public double getZhichu() {
+public float getZhichu() {
 	return zhichu;
 }
-public void setZhichu(double zhichu) {
+public void setZhichu(float zhichu) {
 	this.zhichu = zhichu;
 }
-public double getMaoli() {
+public float getMaoli() {
 	return maoli;
 }
-public void setMaoli(double maoli) {
+public void setMaoli(float maoli) {
 	this.maoli = maoli;
 }
-public double getMaolilv() {
+public float getMaolilv() {
 	return maolilv;
 }
-public void setMaolilv(double maolilv) {
+public void setMaolilv(float maolilv) {
 	this.maolilv = maolilv;
 }
 public java.lang.String getBeizhu() {
@@ -420,22 +420,22 @@ public java.lang.String getBeizhu() {
 public void setBeizhu(java.lang.String beizhu) {
 	this.beizhu = beizhu;
 }
-public double getYfk() {
+public float getYfk() {
 	return yfk;
 }
-public void setYfk(double yfk) {
+public void setYfk(float yfk) {
 	this.yfk = yfk;
 }
-public double getBaojia() {
+public float getBaojia() {
 	return baojia;
 }
-public void setBaojia(double baojia) {
+public void setBaojia(float baojia) {
 	this.baojia = baojia;
 }
-public double getChengben() {
+public float getChengben() {
 	return chengben;
 }
-public void setChengben(double chengben) {
+public void setChengben(float chengben) {
 	this.chengben = chengben;
 }
 public java.lang.String getTuanduimc() {

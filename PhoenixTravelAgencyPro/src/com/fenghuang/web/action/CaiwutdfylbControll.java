@@ -108,17 +108,17 @@ public class CaiwutdfylbControll {
 				tuanbiao.setYushoutime(dategroupdate);
 				}
 			if(yingshou!=null&&!"".equals(yingshou)){
-			tuanbiao.setYingshou(Integer.parseInt(yingshou));
+			tuanbiao.setYingshou(Float.parseFloat(yingshou));
 			}
 			if(yishou!=null&&!"".equals(yishou)){
-				tuanbiao.setYishou(Integer.parseInt(yishou));
+				tuanbiao.setYishou(Float.parseFloat(yishou));
 			}
 			tuanbiao.setHuilvID(Integer.parseInt(huilvID));
 			tuanbiao.setBeizhu(beizhu);
 			tuanbiao.setKxsm(kxsm);
 			tuanbiao.setZhanghaoid(Integer.parseInt(zhanghaoid));
 			tuanbiao.setKhmc(khmc);
-			tuanbiao.setYfk(Integer.parseInt(yfk));
+			tuanbiao.setYfk(Float.parseFloat(yfk));
 			tuanbiao.setId(Integer.parseInt(id));
 			isSuccess = icaiwutdfylbService.updatetdfy(tuanbiao);
 			isSuccess=true;

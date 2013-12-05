@@ -130,7 +130,7 @@ public class CaiwuqrfkController {
 		tuanbiao.setCaozuo(caozuo);
 		tuanbiao.setXiaoshou(caozuo);
 		if(yishou!=null && !"".equals(yishou)){
-			tuanbiao.setYishou(Integer.parseInt(yishou));
+			tuanbiao.setYishou(Float.parseFloat(yishou));
 		}
 		if(teamatest!=null&&!"".equals(teamatest)){
 			tuanbiao.setTeam(teamatest);
@@ -139,7 +139,7 @@ public class CaiwuqrfkController {
 		tuanbiao.setTeam(team);
 		}
 		if(ddje!=null&&!"".equals(ddje)){
-			tuanbiao.setDdje(Integer.parseInt(ddje));
+			tuanbiao.setDdje(Float.parseFloat(ddje));
 		}
 		if(kxsm!=null&&!"".equals(kxsm)){
 		tuanbiao.setKxsm(kxsm);	
@@ -168,7 +168,7 @@ public class CaiwuqrfkController {
 		tuanbiao.setZhanghaoid(Integer.parseInt(zhanghaoid));
 		}
 		if(yfk!=null&&!"".equals(yfk)){
-			tuanbiao.setYfk(Integer.parseInt(yfk));
+			tuanbiao.setYfk(Float.parseFloat(yfk));
 		}
 			
 		if(khmc!=null&&!"".equals(khmc)){
@@ -183,7 +183,7 @@ public class CaiwuqrfkController {
 			tuanbiao.setYushoutime(new Date());
 		
 		if(yingshou!=null&&!"".equals(yingshou)){
-		    tuanbiao.setYingshou(Double.parseDouble(yingshou));
+		    tuanbiao.setYingshou(Float.parseFloat(yingshou));
 		}
 		if(huilvid!=null&&!"".equals(huilvid)){
 		    tuanbiao.setHuilvID(Integer.parseInt(huilvid));

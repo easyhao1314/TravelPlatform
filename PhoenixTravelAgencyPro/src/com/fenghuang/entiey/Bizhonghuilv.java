@@ -25,23 +25,24 @@ public class Bizhonghuilv {
    /** 现金汇率
     * 
     * @pdOid 9b84900e-16c5-4a30-8de7-ef7e3778a35a */
-   public double xianjinhuilv;
+   public float xianjinhuilv;
    /** 对公收款/换汇汇率
     * 
     * @pdOid b6c38cf1-e56f-4747-afaa-82826610d2bf */
-   public double gongshou;
+   
+   public float gongshou;
    /** 中行折算价/基准价
     * 
     * @pdOid d2445907-fa38-402b-9939-78d8eb9a29e1 */
-   public double zhonghang;
+   public float zhonghang;
    /** 公司最低汇率标准
     * 
     * @pdOid 4cbcfdba-a760-4cca-a6cc-c720cc309a50 */
-   public double zuidihuilv;
+   public float zuidihuilv;
    /** 汇率
     * 
     * @pdOid d54cbb8d-4e21-4807-b5fe-f918f42b5c61 */
-   public double huilv;
+   public float huilv;
    /** 简写
     * 
     * @pdOid c96aeaaa-9db8-4b7e-bed6-fb446d3ad626 */
@@ -53,7 +54,7 @@ public class Bizhonghuilv {
    /** 单位
     * 
     * @pdOid e9830caf-5791-4c9a-8ec3-3b9324cf46a1 */
-   public double danwei;
+   public float danwei;
 public long getId() {
 	return id;
 }
@@ -72,34 +73,34 @@ public java.util.Date getRiqi() {
 public void setRiqi(java.util.Date riqi) {
 	this.riqi = riqi;
 }
-public double getXianjinhuilv() {
+public float getXianjinhuilv() {
 	return xianjinhuilv;
 }
-public void setXianjinhuilv(double xianjinhuilv) {
+public void setXianjinhuilv(float xianjinhuilv) {
 	this.xianjinhuilv = xianjinhuilv;
 }
-public double getGongshou() {
+public float getGongshou() {
 	return gongshou;
 }
-public void setGongshou(double gongshou) {
+public void setGongshou(float gongshou) {
 	this.gongshou = gongshou;
 }
-public double getZhonghang() {
+public float getZhonghang() {
 	return zhonghang;
 }
-public void setZhonghang(double zhonghang) {
+public void setZhonghang(float zhonghang) {
 	this.zhonghang = zhonghang;
 }
-public double getZuidihuilv() {
+public float getZuidihuilv() {
 	return zuidihuilv;
 }
-public void setZuidihuilv(double zuidihuilv) {
+public void setZuidihuilv(float zuidihuilv) {
 	this.zuidihuilv = zuidihuilv;
 }
-public double getHuilv() {
+public float getHuilv() {
 	return huilv;
 }
-public void setHuilv(double huilv) {
+public void setHuilv(float huilv) {
 	this.huilv = huilv;
 }
 public java.lang.String getJianxie() {
@@ -114,10 +115,10 @@ public java.lang.String getJianxiemingchen() {
 public void setJianxiemingchen(java.lang.String jianxiemingchen) {
 	this.jianxiemingchen = jianxiemingchen;
 }
-public double getDanwei() {
+public float getDanwei() {
 	return danwei;
 }
-public void setDanwei(double danwei) {
+public void setDanwei(float danwei) {
 	this.danwei = danwei;
 }
    
