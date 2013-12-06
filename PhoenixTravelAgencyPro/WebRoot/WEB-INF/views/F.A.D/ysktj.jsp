@@ -61,26 +61,24 @@
 	    	  <a href="javascript:void(0);" onclick="javascript:$('#ysktjsousuo').dialog('open');" class="easyui-linkbutton" iconCls="icon-save" plain="true">查询</a> 
 	    	</div>
 	<table id="dgysktjselect" class="easyui-datagrid"
-		data-options="url:'fenghuang/caiwutdfylbselect.do?ysyfid=1',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
+		data-options="url:'fenghuang/caiwutdfylbselect.do?ysyfid=1',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20,collapsible:true"
 		pagination="true" toolbar="#ysktjdgtb">
 		<thead>
 			<tr> 
 				<th data-options="field:'team'" width="50">团队名称</th>
 				<th data-options="field:'tuanduimc'" width="80">团号</th>
-				<th data-options="field:'kxsm'" width="50">款项说明</th>
 				<th data-options="field:'khmc'" width="50" hidden="true">客户名称</th>
 				<th data-options="field:'yushoutime'" width="50">预售日期</th>
 				<th data-options="field:'huilv'" width="30">汇率</th>
 				<th data-options="field:'bizhong'" width="30">币种</th>
 				<th data-options="field:'syingshou'" width="50">应收</th>
 			    <th data-options="field:'syishou'" width="40">已收</th>
-			    <th data-options="field:'aaaa',formatter:yskjs" width="40">未收</th>
+			    <th data-options="field:'weishou'" width="40">未收</th>
 				<th data-options="field:'ykfp',formatter:ysktjfp"width="50">已开发票</th>
 				<th data-options="field:'fpxk',formatter:ysktjxk" width="50">发票许可</th>
 				<th data-options="field:'xiaoshouyuan'" width="30">销售确认</th>
 				<th data-options="field:'caiwuid',formatter:ysktjbeizhu" width="30">财务确认</th>
 				<th data-options="field:'fuzeren'" width="50">责任人</th>
-			
 			</tr>
 		</thead>
 	</table>	
@@ -107,13 +105,12 @@
 		   	 if(row.caiwuid==7){shouke="已审核";}
 		     return '<div onclick="shoukeclick(event,'+row.tuanNo+')" style="width: auto;">'+shouke+'</div>';
 		   }
+		   function zhuanhuan(val,row){
+		        var a=null;
+		        a=row.huilv;
+		        a.toFixed(2);
 	
-	function yskjs(val,row){
-var a=parseInt(row.syingshou);
-var b=parseInt(row.syishou);
-var c=(a-b);
-return '<div style="width: auto;">'+c+'</div>';
-}
+		   }
 		function onClickRow(index) {
 			if (editIndex != index) {
 				if (endEditing()) {

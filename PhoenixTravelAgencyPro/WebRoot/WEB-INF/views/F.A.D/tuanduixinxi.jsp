@@ -62,9 +62,9 @@ pagination="true" toolbar="#tb1">
                                   <th data-options="field:'yushoutime',editor:'text'" width="80">预收日期</th>
                                   <th data-options="field:'huilv',editor:'text'" width="50">汇率</th>
                                   <th data-options="field:'bizhong',editor:'text'" width="50">币种</th>
-                                  <th data-options="field:'yingshou',editor:'text'" width="50">应收</th>
-                                  <th data-options="field:'yishou',editor:'text'" width="50">已收</th>
-                                  <th data-options="field:'weifu',formatter:caigoulirun" width="50">未付</th>	
+                                  <th data-options="field:'syingshou',editor:'text'" width="50">应收</th>
+                                  <th data-options="field:'syishou',editor:'text'" width="50">已收</th>
+                                  <th data-options="field:'weifu'" width="50">未付</th>	
                                   <th data-options="field:'ykfp',formatter:xinxiykfp" width="50">已开发票</th>
                                   <th data-options="field:'fpxk',formatter:xinxifpxk" width="50">发票许可</th>
                                   <th data-options="field:'a',editor:'numberbox'" width="50">销售确认</th>
@@ -90,9 +90,9 @@ pagination="true" toolbar="#tb2">
                        <th data-options="field:'fukuantime',editor:'text'" width="80">预付日期</th>
                        <th data-options="field:'huilv',editor:'text'" width="50">汇率</th>
                        <th data-options="field:'bizhong',editor:'text'" width="50">币种</th>
-                       <th data-options="field:'yfk',editor:'text'" width="50">应付</th>
-                       <th data-options="field:'yifu',editor:'text'" width="50">已付</th>
-                       <th data-options="field:'a',formatter:lirun" width="50">未付</th>	
+                       <th data-options="field:'syfk',editor:'text'" width="50">应付</th>
+                       <th data-options="field:'syifu',editor:'text'" width="50">已付</th>
+                       <th data-options="field:'weifu'" width="50">未付</th>	
                        <th data-options="field:'ykfp',formatter:xinxiykfp" width="50">已开发票</th>
                        <th data-options="field:'fpxk',formatter:xinxifpxk" width="50">发票许可</th>
                        <th data-options="field:'a',editor:'numberbox'" width="50">销售确认</th>
@@ -486,7 +486,8 @@ pagination="true" toolbar="#tb2">
 			text:'确定',
 			iconCls:'icon-search',
 			handler:function(){
-			$('#tdxxfkxiugaiform').dialog('close');
+			$('#id').attr('value','');		
+			$('#tdxxfkxiugaiid').dialog('close');
 			xxfkupdate();
 			}
 			},
@@ -494,7 +495,7 @@ pagination="true" toolbar="#tb2">
 			text:'关闭',
 			iconCls:'icon-cancel',
 			handler:function(){
-			$('#tdxxfkxiugaiform').dialog('close');
+			$('#tdxxfkxiugaiid').dialog('close');
 		
 			}
 			}
@@ -590,20 +591,8 @@ pagination="true" toolbar="#tb2">
 		   	 if(row.fpxk==1){shouke="已开发票";}
 		     return '<div onclick="shoukeclick(event,'+row.tuanNo+')" style="width: auto;">'+shouke+'</div>';
 		   }
-//销售利润
-function lirun(val,row){
-var a=parseInt(row.yfk);
-var b=parseInt(row.yifu);
-var c=(a-b);
-return '<div style="width: auto;">'+c+'</div>';
-}
-//采购利润
-function caigoulirun(val,row){
-var a=parseInt(row.yingshou);
-var b=parseInt(row.yishou);
-var c=(a-b);
-return '<div style="width: auto;">'+c+'</div>';
-}
+
+
 function shenfen(val,row){
      var a=parseString(row[0].tuanduimc);
      return 
@@ -743,13 +732,6 @@ function shenfen(val,row){
 			});
 		}
 /*******************************************************************************************************/
-
-
-
-
-
-
-
 /*******************************************付款删除********************************************************/
          //按id查询
 		function xxfkdeleteopen(id) {

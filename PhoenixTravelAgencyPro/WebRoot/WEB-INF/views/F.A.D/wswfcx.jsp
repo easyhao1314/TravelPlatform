@@ -67,7 +67,7 @@
 				<th data-options="field:'kxsm'" width="5">款项</th>
 				<th data-options="field:'syingshou'" width="10">应收金额</th>
 				<th data-options="field:'syishou'" width="10">已收金额</th>
-				<th data-options="field:'09',formatter:wswfcxjisuan" width="10">未收金额</th>
+				<th data-options="field:'weishou'" width="10">未收金额</th>
 				<th data-options="field:'fuzeren'" width="10">经手人</th>	
 			</tr>
 		</thead>

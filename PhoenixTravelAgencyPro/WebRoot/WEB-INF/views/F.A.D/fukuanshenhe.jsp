@@ -77,7 +77,7 @@
 				<th data-options="field:'tuanduimc'" width="50">团队名称</th>
 				<th data-options="field:'khmc'" width="50">供应商名称</th>
 				<th data-options="field:'kxsm'" width="">款项</th>
-				<th data-options="field:'yfk'" width="50">金额</th>
+				<th data-options="field:'syfk'" width="50">金额</th>
 				<th data-options="field:'xiaoshouyuan'" width="50">销售</th>
 				<th data-options="field:'review',formatter:cwfkbz" width="50">财务审核</th>
 				<th data-options="field:'confirmed',formatter:cwfkbz2" width="50">出纳确认</th>

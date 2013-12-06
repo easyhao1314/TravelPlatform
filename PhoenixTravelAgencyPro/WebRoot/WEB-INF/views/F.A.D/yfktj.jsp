@@ -70,18 +70,15 @@
 				<th data-options="field:'id'" width="50" hidden="true"></th>
 				<th data-options="field:'team'" width="50">团号</th>
 				<th data-options="field:'tuanduimc'" width="50">团队名称</th>
-				<th data-options="field:'kxsm'" width="50">款项说明</th>
 				<th data-options="field:'khmc'" width="">客户名称</th>
 				<th data-options="field:'yushoutime'" width="50">预售日期</th>
-			
 				<th data-options="field:'huilv'" width="50">汇率</th>
 				<th data-options="field:'bizhong'" width="50">币种</th>
-				<th data-options="field:'yfk'" width="50">应付款</th>
-				<th data-options="field:'yifu'" width="50">已付</th>
-				<th data-options="field:'09',formatter:yfktjjisuan" width="50">未付</th>
+				<th data-options="field:'syfk'" width="50">应付款</th>
+				<th data-options="field:'syifu'" width="50">已付</th>
+				<th data-options="field:'weifu'" width="50">未付</th>
 				<th data-options="field:'ykfp',formatter:yfktjykfp" width="50">已开发票</th>
 				<th data-options="field:'fpxk',formatter:yfktjfpxk" width="50">发票许可</th>
-				
 				<th data-options="field:'aaa'" width="50">销售确认</th>
 			    <th data-options="field:'confirmed',formatter:yfktjconfirmed" width="50">财务确认</th>
 			    <th data-options="field:'fuzeren',editor:'numberbox'" width="50">责任人</th>
@@ -104,27 +101,18 @@
 	  //备注
 		   function yfktjykfp(val,row){
 		   var shouke=null;
-		   	 if(row.ykfp==0){shouke="未审核";}
-		   	 if(row.ykfp==1){shouke="已审核";}
+		   	 if(row.ykfp==0){shouke="未开发票";}
+		   	 if(row.ykfp==1){shouke="已开发票";}
 		     return '<div onclick="shoukeclick(event,'+row.tuanNo+')" style="width: auto;">'+shouke+'</div>';
 		   }
 	
 	  //备注
 		   function yfktjfpxk(val,row){
 		   var shouke=null;
-		   	 if(row.fpxk==0){shouke="未审核";}
-		   	 if(row.fpxk==1){shouke="已审核";}
+		   	 if(row.fpxk==0){shouke="未开发票";}
+		   	 if(row.fpxk==1){shouke="已开发票";}
 		     return '<div onclick="shoukeclick(event,'+row.tuanNo+')" style="width: auto;">'+shouke+'</div>';
 		   }
-	
-	
-	
-	function yfktjjisuan(val,row){
-      var a=parseInt(row.yfk);
-        var b=parseInt(row.yifu);
-       var c=(a-b);
-        return '<div style="width: auto;">'+c+'</div>';
-        }
 		function onClickRow(index) {
 			if (editIndex != index) {
 				if (endEditing()) {

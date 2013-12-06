@@ -74,7 +74,7 @@
 				<th data-options="field:'tuanduimc'" width="10px">团队名称</th>
 				<th data-options="field:'khmc'" width="10px">供应商名称</th>
 				<th data-options="field:'kxsm'" width="10px">款项</th>
-				<th data-options="field:'yfk'" width="10px">金额</th>
+				<th data-options="field:'syfk'" width="10px">金额</th>
 			
 				<th data-options="field:'caozuo'" width="10px">提交人</th>
 				<th data-options="field:'review',formatter:cwfksp" width="10px">财务审核</th>

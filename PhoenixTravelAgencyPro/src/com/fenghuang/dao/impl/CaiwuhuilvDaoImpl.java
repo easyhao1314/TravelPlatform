@@ -47,7 +47,7 @@ public class CaiwuhuilvDaoImpl extends BaseDao implements IcaiwuhuilvDao {
 			int numPerPage, Bizhonghuilv bizhonghuilv) throws Exception {
 		// TODO Auto-generated method stub
 		
-		StringBuffer sql=new StringBuffer("select * from bizhonghuilv where 1=1 ");
+		StringBuffer sql=new StringBuffer("SELECT id,bizhong,riqi,xianjinhuilv,gongshou,zhonghang,zuidihuilv,huilv+huilv-huilv as huilv,jianxie,jianxiemingchen,danwei FROM bizhonghuilv where 1=1");
 		if(bizhonghuilv.getId()!=0 && !"".equals(bizhonghuilv.getId())){
 			sql.append(" and id='");
 			sql.append(bizhonghuilv.getId());
