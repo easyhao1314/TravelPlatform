@@ -92,23 +92,23 @@
 					
 					<td><input id="id" name="id" hidden="true"
 						class="easyui-validatebox">
-						</div></td>
+						</td>
 					
 					<td>
 					<input id="caiwuid" name="caiwuid"   value="4" hidden="true"
 						class="easyui-validatebox">
 						<input id="caiwuidaction" name="caiwuida"   value="4" hidden="true"
 						class="easyui-validatebox">
-						</div></td>
+						</td>
 				</tr>
 					<tr>
-					<td><div class="fitem">
+					<td>
 							<label>团名:</label>
 					</td>
 					<td>
 					<input id="team" name="team" 
 						class="easyui-validatebox" onfocus=this.blur() >
-						</div></td>
+						</td>
 				</tr>
 				<tr>
 					<td colspan="4s" align="center"><a
@@ -130,20 +130,20 @@
 					
 					<td><input id="id" name="id" hidden="true"
 						class="easyui-validatebox">
-						</div></td>
+						</td>
 					
 					<td><input id="caiwuidssss"  name="caiwuid" value="2“
 						class="easyui-validatebox">
-						</div></td>
+					</td>
 				</tr>
 				<tr>
-					<td><div class="fitem">
+					<td>
 							<label>团名:</label>
 					</td>
 					<td>
 					<input id="team" name="team" 
 						class="easyui-validatebox" onfocus=this.blur() >
-						</div></td>
+						</td>
 				</tr>
 				<tr>
 					<td colspan="4s" align="center"><a
@@ -156,21 +156,6 @@
 
 	</div>
 	<script type="text/javascript">
-		
-		 //关闭
-		   function aclose(){
-			$("#caiwufksp").dialog("close");
-		    }
-		     //关闭
-		   function bclose(){
-			$("#caiwufkspa").dialog("close");
-		    }
-		
-		
-		
-		
-		
-		
 		function onClickRow(index) {
 			if (editIndex != index) {
 				if (endEditing()) {

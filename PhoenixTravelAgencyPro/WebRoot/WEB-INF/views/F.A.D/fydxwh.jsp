@@ -98,54 +98,51 @@
 		<form id="dicFrome" method="post">
 			<table align="left">
 				<tr>
-					<td><div class="fitem">
+					<td>
 							<label>编号:</label>
 					</td>
 					<td><input name="bianhao" class="easyui-validatebox"
 						>
-						</div></td>
-					<td><div class="fitem">
+				   </td>
+					<td>
 							<label>付款性质:</label>
 					</td>
 					<td><input name="xingzhi" class="easyui-validatebox"
 						>
-						</div></td>
+					</td>
 						
 				</tr>
 				
 				<tr>
-					<td><div class="fitem">
+					<td>
 							<label>收支类型:</label>
 					</td>
 					<td><input name="shouzhi" class="easyui-validatebox">
-						</div></td>
-					<td><div class="fitem">
+					</td>
+					<td>
 							<label>费用说明:</label>
 					</td>
 					<td><input name="shuoming" class="easyui-validatebox"
 					>
-						</div></td>
+					</td>
 				</tr>
 				<tr>
-					<td><div class="fitem">
+					<td>
 							<label>对应审批流程:</label>
 					</td>
 					<td><input name="liucheng" class="easyui-validatebox">
-						</div></td>
-					<td><div class="fitem">
+					</td>
+					<td>
 							<label>父类:</label>
 					</td>
 					<td><input name="fulei" class="easyui-validatebox"
 						>
-						</div></td>
+					</td>
 				</tr>
 		
 			</table>
 		</form>
-	</div>
-	
-	
-	
+	</div>			
 	<div id="xiugai" class="easyui-dialog" title="修改"
 		data-options="modal:true,closed:true,iconCls:'icon-save',buttons:[{
 			text:'确定',
@@ -171,48 +168,48 @@
 				<tr>
 					<td>
 					<input id="id" name="id" class="easyui-validatebox" hidden="true">
-					<div class="fitem">
+					
 							<label>编号:</label>
 					</td>
 					<td><input name="bianhao" class="easyui-validatebox">
-						</div></td>
-					<td><div class="fitem">
+						</td>
+					<td>
 							<label>付款性质:</label>
 					</td>
 					<td><input name="xingzhi" class="easyui-validatebox"
 						>
-						</div></td>
+						</td>
 						
 				</tr>
 				
 				<tr>
-					<td><div class="fitem">
+					<td>
 							<label>收支类型:</label>
 					</td>
 					<td><input name="shouzhi" class="easyui-validatebox">
-						</div></td>
-					<td><div class="fitem">
+						</td>
+					<td>
 							<label>费用说明:</label>
 					</td>
 					<td><input name="shuoming" class="easyui-numberbox"
 					>
-						</div></td>
+						</td>
 				</tr>
 				<tr>
-					<td><div class="fitem">
+					<td>
 							<label>对应审批流程:</label>
 					</td>
 					<td><input name="liucheng" class="easyui-validatebox">
-						</div></td>
-					<td><div class="fitem">
+						</td>
+					<td>
 							<label>父类:</label>
 					</td>
 					<td><input name="fulei" class="easyui-numberbox"
 						>
-						</div></td>
+					</td>
 				</tr>
 			</table>
-			<input id="dicType" name="dicType" type="hidden">
+
 		</form>
 	</div>
 	
@@ -262,36 +259,7 @@
 		} );     
 		}          
 		});	           
-		
-		
-		
-		/*
-		var row = $("#fydxwhdg").datagrid("getSelected");
-			if (row) {
-				var param = {
-					"id" :  row.id
-				};
-
-				$.ajax({
-					url : "fenghuang/deleteweihu.do?",
-					data : param,
-					dataType : "json",
-					success : function(data) {
-						if (data.success) {
-							$.messager.alert("删除成功", "删除成功！", "info");
-							$("#fydxwhdg").datagrid('reload');
-						} else {
-							$.messager.alert("删除失败", "删除失败!", "error");
-						}
-					},
-					error : function() {
-						$.messager.alert("删除失败", "服务器请求失败!", "error");
-					}
-				});
-			}*/
-		}
-
-	
+		}	
 //模糊查询
 		function dijieSelectLike(){
 		console.info($('#fydxwhdg').datagrid('options'));
@@ -347,9 +315,9 @@
 				onSubmit : function() {
 					return $(this).form('validate');
 				},
-				success : function(data) {//data 是一个字符串  $.ajax(success:function(data):是一个对象)
+				success : function(data) {
 					console.info(data);
-					//var result = val('(' + data + ')');//吧字符串转换为对象
+					
 					var result = $.parseJSON(data) ;
 
 					if (result.success) {

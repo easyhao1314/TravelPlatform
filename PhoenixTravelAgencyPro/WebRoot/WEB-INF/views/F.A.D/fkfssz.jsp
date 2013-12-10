@@ -65,18 +65,16 @@
 			<table align="left">
 				<tr>
 					<td>
-					<input id="id" name="id" class="easyui-validatebox" hidden="true">
-					<div class="fitem">
-							<label>付款方式名称:</label>
+					<input id="id" name="id" class="easyui-validatebox" hidden="true">					
+					<label>付款方式名称:</label>
 					</td>
 					<td><input name="fukuanfangshi" class="easyui-validatebox">
-						</div></td>
-					<td><div class="fitem">
-							<label>付款描述:</label>
+				   </td>
+					<td>
+					<label>付款描述:</label>
 					</td>
-					<td><input name="miaoshu" class="easyui-validatebox"
-						>
-						</div></td>
+					<td><input name="miaoshu" class="easyui-validatebox">
+					</td>
 						
 				</tr>
 			</table>
@@ -106,25 +104,20 @@
 		<form id="tianjia" method="post">
 			<table align="left">
 				<tr>
-					<td><div class="fitem">
-							<label>付款方式:</label>
+					<td>
+				    <label>付款方式:</label>
 					</td>
-					<td><input name="fukuanfangshi" class="easyui-validatebox"
-						>
-						</div></td>
-					<td><div class="fitem">
-							<label>付款描述:</label>
+					<td><input name="fukuanfangshi" class="easyui-validatebox">
 					</td>
-					<td><input name="miaoshu" class="easyui-validatebox"
-						>
-						</div></td>	
+					<td>
+					<label>付款描述:</label>
+					</td>
+					<td><input name="miaoshu" class="easyui-validatebox">
+					</td>	
 				</tr>
 			</table>
-			<input id="dicType" name="dicType" type="hidden">
 		</form>
 	</div>
-	
-	
 	<script type="text/javascript">
 	
 	

@@ -94,29 +94,26 @@
 			<table  align="center">
 				<tr>
 					<td>
-					<input id="id" name="id" class="easyui-validatebox" onfocus=this.blur() hidden="true">
-					<div class="fitem">
-							
+					<input id="id" name="id" class="easyui-validatebox" onfocus=this.blur() hidden="true">							
 					</td>
 					<td><input id="fkshid" value="2"  class="easyui-validatebox" hidden="true" onfocus=this.blur()>
-						</div></td> 
-						
+				</td> 						
 				</tr>
 				<tr>
-					<td><div class="fitem">
+					<td>
 							<label>团号:</label>
 					</td>
 					<td>
 					<input id="team" name="team" 
 						class="easyui-validatebox" onfocus=this.blur() >
-						</div></td>
-				<td><div class="fitem">
+						</td>
+				<td>
 							<label>团名:</label>
 					</td>
 					<td>
 					<input id="tuanduimc" name="tuanduimc" 
 						class="easyui-validatebox" onfocus=this.blur() >
-						</div></td>
+					</td>
 				</tr>
 				<tr>
 					<td colspan="4s" align="center"><a
@@ -139,21 +136,19 @@
 				<tr>
 					<td>
 					<input id="id" name="id" class="easyui-validatebox" onfocus=this.blur() hidden="true">
-					<div class="fitem">
-							
 					</td>
 					<td><input id="quxiao" value="1"  class="easyui-validatebox" hidden="true" onfocus=this.blur()>
-						</div></td> 
+				</td> 
 						
 				</tr>
 				<tr>
-					<td><div class="fitem">
+					<td>
 							<label>团名:</label>
 					</td>
 					<td>
 					<input id="team" name="team" 
 						class="easyui-validatebox" onfocus=this.blur()>
-						</div></td>
+					</td>
 				</tr>
 				<tr>
 					<td colspan="4s" align="center"><a

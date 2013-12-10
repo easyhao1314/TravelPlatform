@@ -26,11 +26,8 @@ href="js/themes/default/easyui.css">
 <script type="text/javascript" src="js/jquery.json.js"></script>
 </head>
   <body>
-
-
-  
   <div id="tb1">
-           <a
+<a
 href="javascript:xinxisaveopen();" class="easyui-linkbutton"
 iconCls="icon-add" plain="true">新增</a> <a
 href="javascript:xinxidelectopen();" class="easyui-linkbutton"
@@ -49,62 +46,56 @@ iconCls="icon-cut" plain="true">删除</a>
 <a href="javascript:xxfkupdateopen();" class="easyui-linkbutton"
 iconCls="icon-save" plain="true">修改</a>
 </div>
-    
-  
 <table id="xinxidg" class="easyui-datagrid"
 data-options="url:'fenghuang/caiwutuanduifeiyong.do?tuanduimc=${param.tuanduimc}&&ysyfid=1&&shenfenid=4',border:false,singleSelect:true,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
 pagination="true" toolbar="#tb1">
 <thead>
 <tr>
-                                  <th data-options="field:'id',editor:'text'" width="50">单号</th>
-                                  <th data-options="field:'kxsm',editor:'text'" width="50">款项说明</th>
-                                  <th data-options="field:'khmc',editor:'text'" width="50">客户名称</th>
-                                  <th data-options="field:'yushoutime',editor:'text'" width="80">预收日期</th>
-                                  <th data-options="field:'huilv',editor:'text'" width="50">汇率</th>
-                                  <th data-options="field:'bizhong',editor:'text'" width="50">币种</th>
-                                  <th data-options="field:'syingshou',editor:'text'" width="50">应收</th>
-                                  <th data-options="field:'syishou',editor:'text'" width="50">已收</th>
-                                  <th data-options="field:'weifu'" width="50">未付</th>	
+                                  <th data-options="field:'id'" width="50">单号</th>
+                                  <th data-options="field:'kxsm'" width="50">款项说明</th>
+                                  <th data-options="field:'khmc'" width="50">客户名称</th>
+                                  <th data-options="field:'yushoutime'" width="80">预收日期</th>
+                                  <th data-options="field:'huilv'" width="50">汇率</th>
+                                  <th data-options="field:'bizhong'" width="50">币种</th>
+                                  <th data-options="field:'syingshou'" width="50">应收</th>
+                                  <th data-options="field:'syishou'" width="50">已收</th>
+                                  <th data-options="field:'ysweifu'" width="50">未付</th>	
                                   <th data-options="field:'ykfp',formatter:xinxiykfp" width="50">已开发票</th>
                                   <th data-options="field:'fpxk',formatter:xinxifpxk" width="50">发票许可</th>
-                                  <th data-options="field:'a',editor:'numberbox'" width="50">销售确认</th>
+                                  <th data-options="field:'xiaoshouyuan'" width="50">销售确认</th>
                                   <th data-options="field:'confirmed',formatter:xinxiconfirmed" width="50">财务确认</th>
-                                  <th data-options="field:'beizhu',editor:'numberbox'" width="50">备注</th>
-                                  <th data-options="field:'fuzeren',editor:'numberbox'" width="50">责任人</th>
-                                 
+                                  <th data-options="field:'beizhu'" width="50">备注</th>
+                                  <th data-options="field:'fuzeren'" width="50">责任人</th>
 </tr>
 </thead>
 </table>
 </div>	
-
-
  <div class="easyui-panel" title="团队付款" style="height:290px;width: auto;">
 <table id="tuanduixinxidg" class="easyui-datagrid"
 data-options="url:'fenghuang/caiwutuanduifeiyong.do?tuanduimc=${param.tuanduimc}&&ysyfid=2&&shenfenid=3',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 pagination="true" toolbar="#tb2">
 <thead>
 <tr>
-                       <th data-options="field:'id',editor:'text'" width="50">单号</th>
-                       <th data-options="field:'kxsm',editor:'text'" width="50">款项说明</th>
-                       <th data-options="field:'khmc',editor:'text'" width="50">供应商名称</th>
-                       <th data-options="field:'fukuantime',editor:'text'" width="80">预付日期</th>
-                       <th data-options="field:'huilv',editor:'text'" width="50">汇率</th>
-                       <th data-options="field:'bizhong',editor:'text'" width="50">币种</th>
-                       <th data-options="field:'syfk',editor:'text'" width="50">应付</th>
-                       <th data-options="field:'syifu',editor:'text'" width="50">已付</th>
+                       <th data-options="field:'id'" width="50">单号</th>
+                       <th data-options="field:'kxsm'" width="50">款项说明</th>
+                       <th data-options="field:'khmc'" width="50">供应商名称</th>
+                       <th data-options="field:'fukuantime'" width="80">预付日期</th>
+                       <th data-options="field:'huilv'" width="50">汇率</th>
+                       <th data-options="field:'bizhong'" width="50">币种</th>
+                       <th data-options="field:'syfk'" width="50">应付</th>
+                       <th data-options="field:'syifu'" width="50">已付</th>
                        <th data-options="field:'weifu'" width="50">未付</th>	
                        <th data-options="field:'ykfp',formatter:xinxiykfp" width="50">已开发票</th>
                        <th data-options="field:'fpxk',formatter:xinxifpxk" width="50">发票许可</th>
-                       <th data-options="field:'a',editor:'numberbox'" width="50">销售确认</th>
+                       <th data-options="field:'xiaoshouyuan'" width="50">销售确认</th>
                        <th data-options="field:'yujilirun',formatter:xinxiconfirmed" width="50">财务确认</th>
-                       <th data-options="field:'beizhu',editor:'numberbox'" width="50">备注</th>
-                       <th data-options="field:'fuzeren',editor:'numberbox'" width="50">责任人</th>
+                       <th data-options="field:'beizhu'" width="50">备注</th>
+                       <th data-options="field:'fuzeren'" width="50">责任人</th>
                       
 </tr>
 </thead>
 </table>
 </div>
-
 <!--***************************************收款添加******************************************************-->
 <div id="tdxxsaveid" class="easyui-dialog" title="团队信息添加"
 		data-options="modal:true,closed:true,iconCls:'icon-save',buttons:[{
@@ -128,17 +119,17 @@ pagination="true" toolbar="#tb2">
 		<form id="tdxxsaveform" action="">
 			<table align="left">
 				<tr>
-					<td><div class="fitem">
-							<label>应付款项:</label>
+					<td>
+					<label>应付款项:</label>
 					</td>
 					<td><input id="kxsm"  name="kxsm" class="easyui-combobox" data-options="url:'fenghuang/caiwushoukuanxiangxiala.do',
 					valueField:'name',
 					textField:'name',
 					panelHeight:'auto',
 					editable:false" required="true">
-						</div></td>
-						<td><div class="fitem">
-							<label>收款账户:</label>
+					</td>
+					<td>
+					<label>收款账户:</label>
 					</td>
 					<td>
 					<input id="zhanghaoid"  name="zhanghaoid" class="easyui-combobox" data-options="url:'fenghuang/caiwusfkzhwhselect.do',
@@ -146,103 +137,90 @@ pagination="true" toolbar="#tb2">
 					textField:'zhanghaoming',
 					panelHeight:'auto',
 					editable:false" required="true">
-						</div></td>
+				</td>
 				</tr>
 				<tr>
-					<td><div class="fitem">
-							<label>收款单位:</label>
+					<td>
+					<label>收款单位:</label>
 					</td>
 					<td>
-						<input id="khmc" name="khmc" required="true"
+					<input id="khmc" name="khmc" required="true"
 						class="easyui-validatebox" >
-						</div></td>
-						<td><div class="fitem">
-							<label>应收日期:</label>
+					</td>
+					<td>
+					<label>应收日期:</label>
 					</td>
 					<td>
 					<input id="yushoutime" name="yushoutime" type="text" class="easyui-datebox" required="required">
-						</div></td>
+					</td>
 				</tr>
-				
 				<tr>
-					<td><div class="fitem">
-							<label>金额:</label>
+					<td>
+					<label>金额:</label>
 					</td>
 					<td>
 					<input id="yingshou" name="yingshou" required="true"
-						class="easyui-validatebox" >
-						</div></td>
-						<td><div class="fitem">
-							<label>单位:</label>
+					class="easyui-validatebox" >
+					</td>
+					<td>
+					<label>单位:</label>
 					</td>
 					<td><input id="huilvid"  name="huilvid" class="easyui-combobox" data-options="url:'fenghuang/caiwuhuilvxiala.do',
 					valueField:'id',
 					textField:'bizhong',
 					panelHeight:'auto',
 					editable:false" required="true">
-						</div></td>
+				</td>
 				</tr>
 				<tr>
-					<td><div class="fitem">
-							<label>备注:</label>
+					<td>
+					<label>备注:</label>
 					</td>
 					<td>
 					<input id="beizhu" name="beizhu" 
 						class="easyui-validatebox">
-						</div></td>
-					
+					</td>
 				</tr>
-				<tr>
-				
+				<tr>				
 					<td> 
-					<input id="caiwuid" name="caiwuid"  value="6" hidden="true"
+					<input id="caiwuid" name="caiwuid"   hidden="true"
 						class="easyui-validatebox">
-						</div></td>
-						
+					</td>						
 					<td>
-					<input id="shanchu" name="shanchu" value="1" hidden="true"
+					<input id="shanchu" name="shanchu"  hidden="true"
 						class="easyui-validatebox">
-						</div></td>
+						</td>
 				</tr>
-				<tr>
-				
-					<td> 
-					<input id="shenfenid" name="shenfenid" value="1" hidden="true"
+				<tr>			
+				<td> 
+				<input id="shenfenid" name="shenfenid"  hidden="true"
 						class="easyui-validatebox">
-						</div></td>
-						
-					<td>
-					<input id="fpxk" name="fpxk"  value="0" hidden="true" hidden="true"
-						class="easyui-validatebox">
-						</div></td>
+				</td>						
+				<td>
+				<input id="fpxk" name="fpxk"  value="0"  hidden="true"
+				class="easyui-validatebox">
+				</td>
 				</tr>
-					<tr>
-					
-					<td> 
-					<input id="team" name="team" hidden="true"
-						class="easyui-validatebox">
-						</div></td>
+				<tr>					
+				<td> 
+				<input id="team" name="team" hidden="true"
+				class="easyui-validatebox">
+			    </td>
 						
 					<td>
 					<input id="tuanduimctest" name="tuanduimc" hidden="true"
 						class="easyui-validatebox">
-						</div></td>
+					</td>
 				</tr>
-					<tr>
+				<tr>
 				<td>
-							<!-- 已开发票: -->
-					
-					<input id="ykfp" name="ykfp" value="0"  hidden="true"
+				<input id="ykfp" name="ykfp" value="0"  hidden="true"
 						class="easyui-validatebox">
-						</div></td>
-						
-							<!-- YSYFID  hidden="true"-->
-					
-					<td> 
-					<input id="ysyfid" name="ysyfid" value="1" hidden="true"
+				</td>
+				<td> 
+					<input id="ysyfid" name="ysyfid"  hidden="true"
 						class="easyui-validatebox">
-						</div></td>
-				
+				</td>			
 				</tr>
 			</table>
 			
@@ -272,7 +250,7 @@ pagination="true" toolbar="#tb2">
 		<form id="tdxxupdateform" action="">
 			<table align="left">
 				<tr>
-					<td><div class="fitem">
+					<td>
 							<label>应付款项:</label>
 					</td>
 					<td><input id="kxsm"  name="kxsm" class="easyui-combobox" data-options="url:'fenghuang/caiwushoukuanxiangxiala.do',
@@ -280,8 +258,8 @@ pagination="true" toolbar="#tb2">
 					textField:'name',
 					panelHeight:'auto',
 					editable:false" required="true">
-						</div></td>
-						<td><div class="fitem">
+						</td>
+						<td>
 							<label>收款账户:</label>
 					</td>
 					<td>
@@ -290,33 +268,33 @@ pagination="true" toolbar="#tb2">
 					textField:'zhanghaoming',
 					panelHeight:'auto',
 					editable:false">
-						</div></td>
+						</td>
 				</tr>
 				<tr>
-					<td><div class="fitem">
+					<td>
 							<label>收款单位:</label>
 					</td>
 					<td>
 						<input id="khmc" name="khmc" 
 						class="easyui-validatebox" required="true">
-						</div></td>
-						<td><div class="fitem">
+						</td>
+						<td>
 							<label>应收日期:</label>
 					</td>
 					<td>
 					<input id="yushoutime" name="yushoutime" type="text" class="easyui-datebox" required="required">
-						</div></td>
+					</td>
 				</tr>
 				
 				<tr>
-					<td><div class="fitem">
+					<td>
 							<label>金额:</label>
 					</td>
 					<td>
 					<input id="yingshou" name="yingshou" 
 						class="easyui-validatebox" required="true">
-						</div></td>
-						<td><div class="fitem">
+						</td>
+						<td>
 							<label>单位:</label>
 					</td>
 					<td><input id="huilvID"  name="huilvID" class="easyui-combobox" data-options="url:'fenghuang/caiwuhuilvxiala.do',
@@ -324,35 +302,32 @@ pagination="true" toolbar="#tb2">
 					textField:'bizhong',
 					panelHeight:'auto',
 					editable:false">
-						</div></td>
+				</td>
 				</tr>
 				<tr>
-					<td><div class="fitem">
+					<td>
 							<label>备注:</label>
 					</td>
 					<td>
 					<input id="beizhu" name="beizhu" 
 						class="easyui-validatebox">
-						</div></td>
+					</td>
 					
 					<td>
 					<input id="id" name="id" hidden="true"
 						class="easyui-validatebox">
-						</div></td>
+						</td>
 						<td>
 					<input id="yfk" name="yfk" hidden="true"
 						class="easyui-validatebox">
-						</div></td>
+					</td>
 					
 				</tr>
 			</table>
 		</form>
-	</div>
-	
-	
-	
+	</div>			
 	<!--***************************************付款添加******************************************************-->
-<div id="tdxxfkid" class="easyui-dialog" title="团队信息添加"
+<div id="tdxxfkid" class="easyui-dialog" title="团队付款添加"
 		data-options="modal:true,closed:true,iconCls:'icon-save',buttons:[{
 			text:'确定',
 			iconCls:'icon-search',
@@ -374,38 +349,38 @@ pagination="true" toolbar="#tb2">
 		<form id="tdxxfkform" action="">
 			<table align="left">
 				<tr>
-					<td><div class="fitem">
+					<td>
 							<label>应付款项:</label>
 					</td>
 					<td><input id="kxsmtree"   class="easyui-combotree"  data-options="url:'js/demo/combotree/fukuanTree.json',method:'get',required:true">
     			<input title="款项说明" type="hidden" id="kuanxiang" name="kxsm" class="easyui-validatebox">
-						</div></td>
-						<td><div class="fitem">
+						</td>
+						<td>
 							<label>收款单位:</label>
 					</td>
 					<td>
 					<input id="khmc" name="khmc" 
 						class="easyui-validatebox">
-						</div></td>
+					</td>
 				</tr>
 				<tr>
-						<td><div class="fitem">
+						<td>
 							<label>应付日期:</label>
 					</td>
 					<td>
 					<input id="fukuantime" name="fukuantime" type="text" class="easyui-datebox" required="required">
-						</div></td>
+						</td>
 				</tr>
 				
 				<tr>
-					<td><div class="fitem">
+					<td>
 							<label>金额:</label>
 					</td>
 					<td>
 					<input id="yfk" name="yfk" required="true"
 						class="easyui-validatebox" >
-						</div></td>
-						<td><div class="fitem">
+						</td>
+						<td>
 							<label>单位:</label>
 					</td>
 					<td><input id="huilvid"  name="huilvid" class="easyui-combobox" data-options="url:'fenghuang/caiwuhuilvxiala.do',
@@ -413,70 +388,63 @@ pagination="true" toolbar="#tb2">
 					textField:'bizhong',
 					panelHeight:'auto',
 					editable:false" required="true">
-						</div></td>
+				</td>
 				</tr>
 				<tr>
-					<td><div class="fitem">
+					<td>
 							<label>备注:</label>
 					</td>
 					<td>
 					<input id="beizhu" name="beizhu" 
 						class="easyui-validatebox">
-						</div></td>
+						</td>
 					
 				</tr>
 				<tr>
 				
 					<td> 
-					<input id="caiwuid" name="caiwuid"  value="1" hidden="true"
+					<input id="caiwuid" name="caiwuid"  hidden="true"
 						class="easyui-validatebox">
-						</div></td>
+						</td>
 						
 					<td>
-					<input id="shanchu" name="shanchu" value="1" hidden="true"
+					<input id="shanchu" name="shanchu"  hidden="true"
 						class="easyui-validatebox">
-						</div></td>
+					</td>
 				</tr>
 				<tr>
 				
 					<td> 
-					<input id="shenfenid" name="shenfenid" value="3" hidden="true"
+					<input id="shenfenid" name="shenfenid"  hidden="true"
 						class="easyui-validatebox">
-						</div></td>
+					</td>
 						
 					<td>
-					<input id="fpxk" name="fpxk"  value="0" hidden="true" hidden="true"
+					<input id="fpxk" name="fpxk"  hidden="true" 
 						class="easyui-validatebox">
-						</div></td>
+						</td>
 				</tr>
 					<tr>
 					
 					<td> 
 					<input id="teamatest" name="team" hidden="true"
 						class="easyui-validatebox">
-						</div></td>
+						</td>
 						 
 					<td><input id="tuandui" name="tuanduimc" hidden="true" class="easyui-validatebox">
-						</div></td>
+						</td>
 				</tr>
 					<tr>
 				<td>
-							<!-- 已开发票: -->
-					
-					<input id="ykfp" name="ykfp" value="0"  hidden="true"
+					<input id="ykfp" name="ykfp"  hidden="true"
 						class="easyui-validatebox">
-						</div></td>
-						
-							<!-- YSYFID  hidden="true"-->
-					
-					<td> 
-					<input id="ysyfid" name="ysyfid" value="2"hidden="true"
+				</td>
+				<td> 
+					<input id="ysyfid" name="ysyfid" hidden="true"
 						class="easyui-validatebox">		
-						</div></td>
-				
+				</td>				
 				</tr>
-			</table>
-			
+			</table>			
 		</form>
 	</div>
 <!-- ************************************************************************************************* -->		
@@ -510,11 +478,11 @@ pagination="true" toolbar="#tb2">
 						class="easyui-validatebox">
 						<input id="zhanghaoid" name="zhanghaoid"  hidden="true"
 						class="easyui-validatebox">
-						</div></td>
+						</td>
 			</tr>
 				<tr>
 				
-					<td><div class="fitem">
+					<td>
 							<label>应付款项:</label>
 					</td>
 					<td><input id="kxsm"  name="kxsm" class="easyui-combobox" data-options="url:'fenghuang/caiwufukuanxiangxiala.do',
@@ -522,33 +490,33 @@ pagination="true" toolbar="#tb2">
 					textField:'name',
 					panelHeight:'auto',
 					editable:false" required="true">
-						</div></td>
-						<td><div class="fitem">
+						</td>
+						<td>
 							<label>收款单位:</label>
 					</td>
 					<td>
 					<input id="khmc" name="khmc" 
 						class="easyui-validatebox">
-						</div></td>
+					</td>
 				</tr>
 				<tr>
-						<td><div class="fitem">
+					<td>
 							<label>应收日期:</label>
 					</td>
 					<td>
 					<input id="fukuantime" name="fukuantime" type="text" class="easyui-datebox" required="required">
-						</div></td>
+				</td>
 				</tr>
 				
 				<tr>
-					<td><div class="fitem">
+					<td>
 							<label>金额:</label>
 					</td>
 					<td>
 					<input id="yfk" name="yfk" required="true"
 						class="easyui-validatebox" >
-						</div></td>
-						<td><div class="fitem">
+					</td>
+						<td>
 							<label>单位:</label>
 					</td>
 					<td><input id="huilvID"  name="huilvID" class="easyui-combobox" data-options="url:'fenghuang/caiwuhuilvxiala.do',
@@ -556,16 +524,16 @@ pagination="true" toolbar="#tb2">
 					textField:'bizhong',
 					panelHeight:'auto',
 					editable:false" required="true">
-						</div></td>
+				</td>
 				</tr>
 				<tr>
-					<td><div class="fitem">
+					<td>
 							<label>备注:</label>
 					</td>
 					<td>
 					<input id="beizhu" name="beizhu" 
 						class="easyui-validatebox">
-						</div></td>
+				</td>
 				</tr>
 			</table>
 		</form>
@@ -599,14 +567,12 @@ function shenfen(val,row){
 }
 /***Jquery读取input id action 读取 name/
 /*************************************************添加*****************************************************/
- function closeEditDic() {
-			$("#tdxxsaveid").dialog("close");
-		} 
-	      function xinxisaveopen() {    
+	      function xinxisaveopen() {
+	       $("#tdxxsaveform").form("clear");
+	       $("#tdxxsaveid").dialog("open");	  
 	      var team='${param.team}';
 		  var tuanduimc='${param.tuanduimc}';
-		  $("#tdxxsaveid").dialog("open");
-		  $('#tdxxsaveform').form('load',{"team":team,"tuanduimc":tuanduimc});			
+		  $('#tdxxsaveform').form('load',{"team":team,"tuanduimc":tuanduimc,"caiwuid":6,"shanchu":1,"shenfenid":1,"fpxk":0,"ysyfid":1});			
 		}
        
 		function xinxisave() {
@@ -702,15 +668,16 @@ function shenfen(val,row){
 
 /*************************************************付款添加*****************************************************/
 	function xxfksaveopen() {
-	var team='${param.team}';
+	    $("#tdxxfkid").dialog("open");
+
+        $("#tdxxfkform").form("clear");
+	    var team='${param.team}';
 	    var tuanduimc='${param.tuanduimc}';
-        $("#tdxxfkid").dialog("open");
-	    $('#tdxxfkform').form('load',{"team":team,"tuanduimc":tuanduimc});		
+
+	    $('#tdxxfkform').form('load',{"team":team,"tuanduimc":tuanduimc,"caiwuid":1,"shanchu":1,"shenfenid":3,"fpxk":0,"ysyfid":2});		
 		}
-        function closeEditDic() {
-			$("#tdfkinsertid").dialog("close");
-		} 
 		function xxfksave() {
+	    $('#id').attr('value','');
 		var val = $('#kxsmtree').combotree('getText');
 		$('#kuanxiang').val(val);
 			$('#tdxxfkform').form('submit', {

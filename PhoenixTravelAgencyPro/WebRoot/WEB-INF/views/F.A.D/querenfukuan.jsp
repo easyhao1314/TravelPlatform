@@ -72,14 +72,14 @@
 		pagination="true" toolbar="#querenfukuandgtb" >
 		<thead>
 			<tr>	 
-				<th data-options="field:'fukuantime',editor:'text'" width="50px">付款日期</th>
-				<th data-options="field:'zhanghaoid',editor:'text'" width="50px">账号</th>
-				<th data-options="field:'team',editor:'text'" width="50px">团号</th>
-				<th data-options="field:'tuanduimc',editor:'text'" width="50px">团队名称</th>
-				<th data-options="field:'khmc',editor:'text'" width="50px">供应商名称</th>
-				<th data-options="field:'kxsm',editor:'text'" width="50px">款项</th>
-				<th data-options="field:'syfk',editor:'text'" width="50px">金额</th>
-				<th data-options="field:'caozuo',editor:'numberbox'" width="50px">提交人</th>
+				<th data-options="field:'fukuantime'" width="50px">付款日期</th>
+				<th data-options="field:'zhanghaoid'" width="50px">账号</th>
+				<th data-options="field:'team'" width="50px">团号</th>
+				<th data-options="field:'tuanduimc'" width="50px">团队名称</th>
+				<th data-options="field:'khmc'" width="50px">供应商名称</th>
+				<th data-options="field:'kxsm'" width="50px">款项</th>
+				<th data-options="field:'syfk'" width="50px">金额</th>
+				<th data-options="field:'xiaoshouyuan'" width="50px">提交人</th>
 				<th data-options="field:'review',formatter:shenhezhuanhuan" width="50px">财务审核</th>
 				<th data-options="field:'cashier',formatter:openshouke" width="50px">出纳确认</th>
 			
@@ -95,21 +95,20 @@
 				<tr>
 					<td>
 					<input id="id" name="id" class="easyui-validatebox" onfocus=this.blur() hidden="true">
-					<div class="fitem">
 							
 					</td>
 					<td><input id="caiwu" value="5"  class="easyui-validatebox" hidden="true">
-						</div></td> 
+				</td> 
 						
 				</tr>
 					<tr>
-					<td><div class="fitem">
+					<td>
 							<label>团名:</label>
 					</td>
 					<td>
 					<input id="team" name="team" 
 						class="easyui-validatebox" onfocus=this.blur() >
-						</div></td>
+				</td>
 				</tr>
 				<tr>
 					<td colspan="4s" align="center"><a
@@ -132,21 +131,20 @@
 				<tr>
 					<td>
 					<input id="id" name="id" class="easyui-validatebox"  hidden="true">
-					<div class="fitem">
 							
 					</td>
 					<td><input id="caiwu2" value="4"  class="easyui-validatebox" hidden="true">
-						</div></td> 
+					</td> 
 						
 				</tr>
 				<tr>
-					<td><div class="fitem">
+					<td>
 							<label>团名:</label>
 					</td>
 					<td>
 					<input id="team" name="team" 
 						class="easyui-validatebox" onfocus=this.blur() >
-						</div></td>
+					</td>
 				</tr>
 				<tr>
 					<td colspan="4s" align="center"><a

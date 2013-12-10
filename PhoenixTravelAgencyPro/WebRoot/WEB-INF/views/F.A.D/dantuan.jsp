@@ -65,14 +65,14 @@
 		pagination="true" toolbar="#dantuandgtb">
 		<thead>
 			<tr>
-				<th data-options="field:'team',editor:'text'" width="50">团号</th>
-				<th data-options="field:'tuanduimc',editor:'text'" width="50">团队名称</th>
-				<th data-options="field:'suppliers',editor:'text'" width="50">回团时间</th>
-				<th data-options="field:'khmc',editor:'text'" width="">客户/联系人</th>
-				<th data-options="field:'xiaoshou',editor:'text'" width="50">销售专员</th>			
-				<th data-options="field:'aa',editor:'numberbox'" width="">状态</th>
-				<th data-options="field:'renshu',editor:'numberbox'" width="50">人数</th>
-				<th data-options="field:'bizhong',editor:'numberbox'" width="50">币种</th>
+				<th data-options="field:'team'" width="50">团号</th>
+				<th data-options="field:'tuanduimc'" width="50">团队名称</th>
+				<th data-options="field:'suppliers'" width="50">回团时间</th>
+				<th data-options="field:'khmc'" width="">客户/联系人</th>
+				<th data-options="field:'xiaoshouyuan'" width="50">销售专员</th>			
+				<th data-options="field:'aa'" width="">状态</th>
+				<th data-options="field:'renshu'" width="50">人数</th>
+				<th data-options="field:'bizhong'" width="50">币种</th>
 				
 			
 			</tr>

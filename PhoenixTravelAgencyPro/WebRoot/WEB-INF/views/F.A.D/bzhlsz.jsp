@@ -100,61 +100,61 @@
 		<form id="bzhlszform" method="post">
 			<table align="left">
 				<tr>
-					<td><div class="fitem">
+					<td>
 							<label>币种:</label>
 					</td>
 					<td><input name="bizhong" id="bizhong" class="easyui-validatebox"
 						required="true">
-						</div></td>
-					<td><div class="fitem">
+					</td>
+					<td>
 							<label>日期:</label>
 					</td>
 					<td><input id="htsj" name="riqi" type="text" class="easyui-datebox" required="required">
-						</div></td>
+				</td>
 				</tr>
 				<tr>
-					<td><div class="fitem">
+					<td>
 							<label>汇率:</label>
 					</td>
 					<td><input name="huilv" class="easyui-validatebox">
-						</div></td>
-					<td><div class="fitem">
+					</td>
+					<td>
 							<label>单位:</label>
 					</td>
 					<td><input name="danwei" class="easyui-numberbox"
 						required="true">
-						</div></td>
+				</td>
 				</tr>
 					<tr>
-					<td><div class="fitem">
+					<td>
 							<label>现金收款/换汇汇率:</label>
 					</td>
 					<td><input name="xianjinhuilv" class="easyui-validatebox">
-						</div></td>
-					<td><div class="fitem">
+					</td>
+					<td>
 							<label>对公收款/换汇汇率:</label>
 					</td>
 					<td><input name="gongshou" class="easyui-numberbox"
 						required="true">
-						</div></td>
+					</td>
 				</tr>
 					<tr>
-					<td><div class="fitem">
+					<td>
 							<label>中行折算价/基准价:</label>
 					</td>
 					<td><input name="zhonghang" class="easyui-validatebox">
-						</div></td>
-					<td><div class="fitem">
+					</td>
+					<td>
 							<label>公司最低汇率标准:</label>
 					</td>
 					<td><input name="zuidihuilv" class="easyui-numberbox"
 						required="true">
-						</div></td>
+					</td>
 						
 				</tr>
 				<tr>
 				<td><input name="id" id="id" class="easyui-numberbox"  hidden="true">
-						</div></td>
+				</td>
 				</tr>
 			</table>
 		</form>
@@ -221,19 +221,6 @@
 		}
 		
 /*******************************************删除********************************************************/
-  
-           //关闭
-		   function bzhlszclose(){
-			$("#bzhlszid").dialog("close");
-		    }
-		     //关闭
-		   function bzhlszclosea(){
-			$("#bzhlszdeleteid").dialog("close");
-		    }
-		     //关闭
-		   function bzhlszcloseb(){
-			$("#bzhlszupdateid").dialog("close");
-		    }
            //按id查询
            function bzhlszdelectopen() {
             var row = $("#bzhlszdg").datagrid("getSelected");
@@ -259,9 +246,6 @@
 			                return;
            }
               }
-
-
-
 	</script>
 </body>
 </html>
