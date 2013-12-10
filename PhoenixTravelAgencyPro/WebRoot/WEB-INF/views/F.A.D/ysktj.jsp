@@ -73,7 +73,7 @@
 				<th data-options="field:'bizhong'" width="30">币种</th>
 				<th data-options="field:'syingshou'" width="50">应收</th>
 			    <th data-options="field:'syishou'" width="40">已收</th>
-			    <th data-options="field:'weishou'" width="40">未收</th>
+			    <th data-options="field:'ysweifu'" width="40">未收</th>
 				<th data-options="field:'ykfp',formatter:ysktjfp"width="50">已开发票</th>
 				<th data-options="field:'fpxk',formatter:ysktjxk" width="50">发票许可</th>
 				<th data-options="field:'xiaoshouyuan'" width="30">销售确认</th>

@@ -79,7 +79,7 @@
 				<th data-options="field:'tuanduimc'" width="10px">团号</th>
 				<th data-options="field:'khmc'" width="10px">客户名称</th>
 				<th data-options="field:'kxsm'" width="10px">款项</th>
-				<th data-options="field:'yishou'" width="10px">金额</th>
+				<th data-options="field:'syishou'" width="10px">金额</th>
 			
 				<th data-options="field:'xiaoshouyuan'" width="10px">操作人</th>
 				<th data-options="field:'beizhu'" width="10px">备注</th>

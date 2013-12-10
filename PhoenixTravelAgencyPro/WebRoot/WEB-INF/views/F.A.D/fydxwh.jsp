@@ -220,9 +220,6 @@
 			$("#addweihu").dialog("open");
 			$("#dicFrome").form("clear");
 		}
-        function closeEditDic() {
-			$("#addweihu").dialog("close");
-		} 
 		function Saveweihu() {
 			$('#dicFrome').form('submit', {
 				url : 'fenghuang/weihutianjia.do',

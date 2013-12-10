@@ -71,9 +71,9 @@
 				<th data-options="field:'xiaoshouyuan'" width="50">销售专员</th>			
 				<th data-options="field:'renshu'" width="50">人数</th>
 				<th data-options="field:'bizhong'" width="50">币种</th>
-				<th data-options="field:'yingshou'" width="50">应收</th>
-				<th data-options="field:'yishou'" width="50">已收</th>
-				<th data-options="field:'09',formatter:sanpinhesuan" width="50">未收</th>
+				<th data-options="field:'syingshou'" width="50">应收</th>
+				<th data-options="field:'syishou'" width="50">已收</th>
+				<th data-options="field:'ysweifu'" width="50">未收</th>
 				<th data-options="field:'beizhu'" width="50">备注</th>
 			
 			</tr>

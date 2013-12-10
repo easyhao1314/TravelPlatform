@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+ <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -164,15 +164,7 @@
 	
 	
 	<script type="text/javascript">	
-	      //关闭
-		   function fukuanshenheclose(){
-			$("#caiwufkshid").dialog("close");
-		    }
-	
-	       //关闭
-		   function fukuanshenheclose1(){
-			$("#caiwuquxiao").dialog("close");
-		    }
+
 		function onClickRow(index) {
 			if (editIndex != index) {
 				if (endEditing()) {

@@ -118,16 +118,7 @@
 			</table>
 		</form>
 	</div>
-	<script type="text/javascript">
-	
-	
-	        function fkfsszxiugaizclose(){
-			$("#fkfsszxiugai").dialog("close");
-		    }
-		     function fkfsszsavezclose(){
-			$("#sz").dialog("close");
-		    }
-	
+	<script type="text/javascript">	
 		//删除
 		function shanchu() {
 			//准备回显的数据
@@ -195,9 +186,7 @@
 			$("#sz").dialog("open");
 			$("#tianjia").form("clear");
 		}
-        function closeEditDic() {
-			$("#sz").dialog("close");
-		} 
+     
 		function Saveweihu() {
 			$('#tianjia').form('submit', {
 				url : 'fenghuang/insertfukuan.do',

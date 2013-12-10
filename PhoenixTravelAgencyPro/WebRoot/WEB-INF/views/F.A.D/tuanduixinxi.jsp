@@ -59,7 +59,7 @@ pagination="true" toolbar="#tb1">
                                   <th data-options="field:'bizhong'" width="50">币种</th>
                                   <th data-options="field:'syingshou'" width="50">应收</th>
                                   <th data-options="field:'syishou'" width="50">已收</th>
-                                  <th data-options="field:'ysweifu'" width="50">未付</th>	
+                                  <th data-options="field:'ysweifu'" width="50">未收</th>	
                                   <th data-options="field:'ykfp',formatter:xinxiykfp" width="50">已开发票</th>
                                   <th data-options="field:'fpxk',formatter:xinxifpxk" width="50">发票许可</th>
                                   <th data-options="field:'xiaoshouyuan'" width="50">销售确认</th>
@@ -354,22 +354,16 @@ pagination="true" toolbar="#tb2">
 					</td>
 					<td><input id="kxsmtree"   class="easyui-combotree"  data-options="url:'js/demo/combotree/fukuanTree.json',method:'get',required:true">
     			<input title="款项说明" type="hidden" id="kuanxiang" name="kxsm" class="easyui-validatebox">
-						</td>
-						<td>
-							<label>收款单位:</label>
-					</td>
+				</td>
 					<td>
-					<input id="khmc" name="khmc" 
-						class="easyui-validatebox">
-					</td>
-				</tr>
-				<tr>
-						<td>
 							<label>应付日期:</label>
 					</td>
 					<td>
 					<input id="fukuantime" name="fukuantime" type="text" class="easyui-datebox" required="required">
-						</td>
+					</td>
+						
+				</tr>
+				<tr>		
 				</tr>
 				
 				<tr>
@@ -391,6 +385,13 @@ pagination="true" toolbar="#tb2">
 				</td>
 				</tr>
 				<tr>
+				<td>
+							<label>收款单位:</label>
+					</td>
+					<td>
+					<input id="khmc" name="khmc" 
+						class="easyui-validatebox">
+					</td>
 					<td>
 							<label>备注:</label>
 					</td>

@@ -152,7 +152,6 @@
 						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
 				</tr>
 			</table>
-			<input id="dicType" name="dicType" type="hidden">
 		</form>
 	</div>
 	
