@@ -299,11 +299,6 @@
 				});
 			}
 		}
-		function closeEditDic() {
-			$('#editDic').dialog('close');
-		} 
-
-		//
 		function searchDiJi() {
 			$("#searchDic").dialog("open");
 			$("#searchForm").form("clear");
@@ -319,9 +314,6 @@
 
 		}
 
-		function closedSearch() {
-			$('#searchDic').dialog('close');
-		}
 	</script>
 </body>
 </html>

@@ -73,15 +73,15 @@
 		<form id="sfkzhwhform" action="">
 			<table align="left">
 				<tr>
-					<td><div class="fitem">
+					<td>
 							<label>名称:</label>
 					</td>
 					<td><input id="zhanghaoming" name="zhanghaoming" 
 						class="easyui-validatebox">
-						</div></td>
+					</td>
 				</tr>
 				<tr>
-					<td><div class="fitem">
+					<td>
 							<label>币种:</label>
 					</td>
 					<td><input id="bizhongid"  name="bizhongid" class="easyui-combobox" data-options="url:'fenghuang/caiwuhuilvxiala.do',
@@ -89,41 +89,41 @@
 					textField:'bizhong',
 					panelHeight:'auto',
 					editable:false">
-						</div></td>
-					<td><div class="fitem">
+					</td>
+					<td>
 							<label>用途:</label>
 					</td>
 					<td><input id="yongtu" name="yongtu" 
 						class="easyui-validatebox">
-						</div></td>
+					</td>
 				</tr>
 					<tr>
-					<td><div class="fitem">
+					<td>
 							<label>开户行:</label>
 					</td>
 					<td><input id="kaihuhang" name="kaihuhang"
 						class="easyui-validatebox">
-						</div></td>
-					<td><div class="fitem">
+					</td>
+					<td>
 							<label>户名:</label>
 					</td>
 					<td><input id="huming" name="huming" 
 						class="easyui-validatebox">
-						</div></td>
+					</td>
 				</tr>
 				<tr>
-					<td><div class="fitem">
+					<td>
 							<label>账号:</label>
 					</td>
 					<td><input id="zhanghao" name="zhanghao"
 						class="easyui-validatebox">
-						</div></td>
-					<td><div class="fitem">
+					</td>
+					<td>
 							<label>账号说明:</label>
 					</td>
 					<td><input id="shiyongshuoming" name="shiyongshuoming" 
 						class="easyui-validatebox">
-						</div></td>
+				</td>
 				</tr>				
 			</table>
 		</form>
@@ -136,57 +136,57 @@
 		<form id="sfkzhwhdeleteform">
 			<table align="left">
 				<tr>
-					<td><div class="fitem">
+					<td>
 							<label>名称:</label>
 					</td>
 					<td><input id="zhanghaoming" name="zhanghaoming" onfocus=this.blur()
 						class="easyui-validatebox">
-						</div></td>
+					</td>
 					<td><input id="id" name="id" onfocus=this.blur() hidden="true"
 						class="easyui-validatebox">
-						</div></td>
+					</td>
 				</tr>
 				<tr>
-					<td><div class="fitem">
+					<td>
 							<label>币种:</label>
 					</td>
 					<td><input id="bizhongid" name="bizhongid" onfocus=this.blur()
 						class="easyui-validatebox">
-						</div></td>
-					<td><div class="fitem">
+					</td>
+					<td>
 							<label>用途:</label>
 					</td>
 					<td><input id="yongtu" name="yongtu" onfocus=this.blur()
 						class="easyui-validatebox">
-						</div></td>
+					</td>
 				</tr>
 					<tr>
-					<td><div class="fitem">
+					<td>
 							<label>开户行:</label>
 					</td>
 					<td><input id="kaihuhang" name="kaihuhang"onfocus=this.blur()
 						class="easyui-validatebox">
-						</div></td>
-					<td><div class="fitem">
+					</td>
+					<td>
 							<label>户名:</label>
 					</td>
 					<td><input id="huming" name="huming" onfocus=this.blur()
 						class="easyui-validatebox">
-						</div></td>
+				</td>
 				</tr>
 				<tr>
-					<td><div class="fitem">
+					<td>
 							<label>账号:</label>
 					</td>
 					<td><input id="zhanghao" name="zhanghao"onfocus=this.blur()
 						class="easyui-validatebox">
-						</div></td>
-					<td><div class="fitem">
+					</td>
+					<td>
 							<label>账号说明:</label>
 					</td>
 					<td><input id="shiyongshuoming" name="shiyongshuoming" onfocus=this.blur()
 						class="easyui-validatebox" >
-						</div></td>
+					</td>
 				</tr>
 				
 				<tr>
@@ -222,19 +222,19 @@
 		<form id="sfkzhwhupdateform" action="">
 			<table align="left">
 				<tr>
-					<td><div class="fitem">
+					<td>
 							<label>名称:</label>
 					</td>
 					<td><input id="zhanghaoming" name="zhanghaoming" 
 						class="easyui-validatebox">
-						</div></td>
+					</td>
 						
 					<td><input id="id" name="id" 
 						class="easyui-validatebox" hidden="true">
-						</div></td>
+					</td>
 				</tr>
 				<tr>
-					<td><div class="fitem">
+					<td>
 							<label>币种:</label>
 					</td>
 					<td><input id="bizhongid"  name="bizhongid" class="easyui-combobox" data-options="url:'fenghuang/caiwuhuilvxiala.do',
@@ -242,62 +242,47 @@
 					textField:'bizhong',
 					panelHeight:'auto',
 					editable:false">
-						</div></td>
-					<td><div class="fitem">
+					</td>
+					<td>
 							<label>用途:</label>
 					</td>
 					<td><input id="yongtu" name="yongtu" 
 						class="easyui-validatebox">
-						</div></td>
+				</td>
 				</tr>
 					<tr>
-					<td><div class="fitem">
+					<td>
 							<label>开户行:</label>
 					</td>
 					<td><input id="kaihuhang" name="kaihuhang"
 						class="easyui-validatebox">
-						</div></td>
-					<td><div class="fitem">
+					</td>
+					<td>
 							<label>户名:</label>
 					</td>
 					<td><input id="huming" name="huming" 
 						class="easyui-validatebox">
-						</div></td>
+					</td>
 				</tr>
 				<tr>
-					<td><div class="fitem">
+					<td>
 							<label>账号:</label>
 					</td>
 					<td><input id="zhanghao" name="zhanghao"
 						class="easyui-validatebox">
-						</div></td>
-					<td><div class="fitem">
+					</td>
+					<td>
 							<label>账号说明:</label>
 					</td>
 					<td><input id="shiyongshuoming" name="shiyongshuoming" 
 						class="easyui-validatebox">
-						</div></td>
+					</td>
 				</tr>			
 			</table>
 		</form>
 	</div>
 
-	<script type="text/javascript">
-	
-	        //关闭
-		   function sfkzhwhclose(){
-			$("#sfkzhwhid").dialog("close");
-		    }
-		     //关闭
-		   function bzhlszxiugaiclose(){
-			$("#sfkzhwhupdateid").dialog("close");
-		    }
-	
-	
-	
-	
-	
-		
+	<script type="text/javascript">	
 		function onClickRow(index) {
 			if (editIndex != index) {
 				if (endEditing()) {

@@ -93,18 +93,18 @@
 		<form id="shoukuanxiugaiform" action="">
 			<table align="left">
 				<tr>
-					<td><div class="fitem">
+					<td>
 							<label>编号:</label>
 					</td>
 					<td><input id="id" name="id"
 						class="easyui-validatebox">
-						</div></td>
-					<td><div class="fitem">
+					</td>
+					<td>
 							<label>名称:</label>
 					</td>
 					<td><input id="caiwuid" name="caiwuid" 
 						class="easyui-validatebox">
-						</div></td>
+				</td>
 				</tr>
 				
 				<tr>
@@ -119,12 +119,6 @@
 	
 	
 	<script type="text/javascript">
-	  //关闭
-		   function shoukuanclose(){
-			$("#shoukuanxiugai").dialog("close");
-		    }
-	
-	
 		function caiwuqueren(val,row){
 			var caiwu = '未确认';
 			if(row.confirmed==2){

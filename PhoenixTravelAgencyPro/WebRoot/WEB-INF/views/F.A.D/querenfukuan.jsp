@@ -54,9 +54,7 @@
 	    			<td>团号:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="easyui-validatebox" type="text" name="tuanduimc" id="tuanduimc" style="width:200px"></input></td>
 	    			<td>		
 	    		   </td>
-	    		</tr>
-	    	
-	    		
+	    		</tr>		
 	    	</table>
 	    	</div>
 	    	<div id="querenfukuandgtb">	
@@ -159,15 +157,6 @@
 	</div>
 	
 	<script type="text/javascript">
-	//关闭
-		function closedialog(){
-			$("#xiugai").dialog("close");
-		}
-		//关闭
-		function closedialog2(){
-			$("#xiugai2").dialog("close");
-		}
-		
 		function onClickRow(index) {
 			if (editIndex != index) {
 				if (endEditing()) {
