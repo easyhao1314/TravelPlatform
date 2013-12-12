@@ -62,7 +62,7 @@
 			iconCls="icon-save" plain="true">修改</a>
 	</div>
 	   <table id="bzhlszdg" class="easyui-datagrid"
-		data-options="url:'fenghuang/bizhonghuilv.do',border:false,singleSelect:false,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
+		data-options="url:'fenghuang/bizhonghuilv.do',border:false,singleSelect:true,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
 		pagination="true" toolbar="#bzhlszdgtb">
 		<thead>	
 			<tr>
@@ -189,17 +189,16 @@
 			$("#bzhlszid").dialog("open");
 			$("#bzhlszform").form("clear");
 		}
-        function closeEditDic() {
-			$("#bzhlszid").dialog("close");
-		} 
 		function bzhlszsave() {
 		      var a = $("#id").val();
 		      var dizhi;
 		      if(a==null||""==a){
 		       dizhi='fenghuang/bizhonghuilvinsert.do';
+		       alert(a);
 		      }
-		      else{
+		      else if(a!=null||!""==a){
 		     dizhi='fenghuang/bizhonghuilvupdate.do';
+		     alert(a+'aaaaaa');
 		      }
 			$('#bzhlszform').form('submit', {
 				url : dizhi,

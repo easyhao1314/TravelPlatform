@@ -74,6 +74,7 @@
 		pagination="true" toolbar="#shoukuandgtb">
 		<thead>
 			<tr>	 
+			    <th data-options="field:'id'" width="10px">收款日期</th>
 			    <th data-options="field:'yushoutime'" width="10px">收款日期</th>
 				<th data-options="field:'team'" width="10px">团名</th>
 				<th data-options="field:'tuanduimc'" width="10px">团号</th>
