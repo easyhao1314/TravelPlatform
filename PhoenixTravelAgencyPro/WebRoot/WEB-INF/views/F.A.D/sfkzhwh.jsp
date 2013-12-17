@@ -361,10 +361,10 @@
 
                if (result.success) {
                $("#sfkzhwhdeleteid").dialog('close');
-                 $.messager.alert("修改成功", "修改成功！", "info");
+                 $.messager.alert("删除", "删除成功！", "info");
                 $("#sfkzhwhdg").datagrid('reload');
                } else {
-                  $.messager.alert("修改失败", "修改失败!", "error");
+                  $.messager.alert("删除", "删除失败!", "error");
                  $("#sfkzhwhdg").datagrid('reload');
                   }
 }
@@ -378,21 +378,10 @@
 /*******************************************修改********************************************************/
            //按id查询
            function sfkzhwhupdateopen() {
-          //通过主键，查询该操作，并处于编辑状态。 是否打开tab，还是直接弹出window
-
-
-
-           //获取选中 数据
-            var row = $("#sfkzhwhdg").datagrid("getSelected");
-
-           //alert(row.id);
+           var row = $("#sfkzhwhdg").datagrid("getSelected");
            if(row!=null){
-              $("#sfkzhwhupdateid").dialog("open");
-               //清空ID
-             $('#id').attr('value','');
-             //填充
-            $('#sfkzhwhupdateform').form('load', row);
-
+           $("#sfkzhwhupdateid").dialog("open");
+           $('#sfkzhwhupdateform').form('load', row);
            }
               }
            //修改
@@ -402,9 +391,8 @@
                    onSubmit : function() {
                return $(this).form('validate');
               },
-               success : function(data) {//data 是一个字符串 $.ajax(success:function(data):是一个对象)
+               success : function(data) {
                console.info(data);
-            //var result = val('(' + data + ')');//吧字符串转换为对象
              var result = $.parseJSON(data) ;
 
                if (result.success) {

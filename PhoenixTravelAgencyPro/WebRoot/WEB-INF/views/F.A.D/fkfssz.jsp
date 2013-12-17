@@ -148,7 +148,6 @@
 			
 		function werhuSelectId(id) {
 		var row = $("#fkfsszdg").datagrid("getSelected");
-		 $('#id').attr('value','');
 		if(row!=null){
 		$("#fkfsszxiugai").dialog("open");
 		 $('#dicFrome').form('load', row);

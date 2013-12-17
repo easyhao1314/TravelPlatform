@@ -81,7 +81,7 @@
 				<th data-options="field:'fpxk',formatter:yfktjfpxk" width="50">发票许可</th>
 				<th data-options="field:'aaa'" width="50">销售确认</th>
 			    <th data-options="field:'confirmed',formatter:yfktjconfirmed" width="50">财务确认</th>
-			    <th data-options="field:'fuzeren',editor:'numberbox'" width="50">责任人</th>
+			    <th data-options="field:'zerenren'" width="50">责任人</th>
 			</tr>
 		</thead>
 	</table>

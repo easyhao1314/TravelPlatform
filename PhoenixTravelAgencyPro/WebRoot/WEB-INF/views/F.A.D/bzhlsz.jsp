@@ -32,6 +32,7 @@
 			iconCls:'icon-search',
 			handler:function(){
 			$('#bzhlszsousuo').dialog('close');
+			
 			cwfkspselect();
 			}
 			},
@@ -65,8 +66,7 @@
 		data-options="url:'fenghuang/bizhonghuilv.do',border:false,singleSelect:true,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
 		pagination="true" toolbar="#bzhlszdgtb">
 		<thead>	
-			<tr>
-			  
+			<tr>			  
 				<th data-options="field:'bizhong',editor:'text'" width="50">币种</th>
 				<th data-options="field:'riqi',editor:'text'" width="50">日期</th>
 				<th data-options="field:'huilv',editor:'text'" width="50">汇率</th>
@@ -83,6 +83,10 @@
 			text:'确定',
 			iconCls:'icon-search',
 			handler:function(){
+			var row = $('#bzhlszdg').datagrid('getSelected');
+			if(row!=null){
+			$('#bzhlszid').dialog('close');
+			}
 			$('#bzhlszid').dialog('close');
 			bzhlszsave();
 			}
@@ -92,7 +96,6 @@
 			iconCls:'icon-cancel',
 			handler:function(){
 			$('#bzhlszid').dialog('close');
-		
 			}
 			}
 		]"
@@ -178,10 +181,9 @@
             var row = $("#bzhlszdg").datagrid("getSelected");
            if(row!=null){
               $("#bzhlszid").dialog("open");
-             $('#id').attr('value','');
             $('#bzhlszform').form('load', row);
            }
-              }
+           }
               
 /*****************************************************************************************************/   
 			//添加		
@@ -194,11 +196,9 @@
 		      var dizhi;
 		      if(a==null||""==a){
 		       dizhi='fenghuang/bizhonghuilvinsert.do';
-		       alert(a);
 		      }
 		      else if(a!=null||!""==a){
 		     dizhi='fenghuang/bizhonghuilvupdate.do';
-		     alert(a+'aaaaaa');
 		      }
 			$('#bzhlszform').form('submit', {
 				url : dizhi,
@@ -218,7 +218,6 @@
 				}
 			});
 		}
-		
 /*******************************************删除********************************************************/
            //按id查询
            function bzhlszdelectopen() {

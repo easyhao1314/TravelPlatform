@@ -4,7 +4,6 @@ String path = request.getContextPath();
 String basePath = request.getScheme() + "://"
 + request.getServerName() + ":" + request.getServerPort()
 + path + "/";
-String a=(String)request.getParameter("team");
 
 %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -65,7 +64,7 @@ pagination="true" toolbar="#tb1">
                                   <th data-options="field:'xiaoshouyuan'" width="50">销售确认</th>
                                   <th data-options="field:'confirmed',formatter:xinxiconfirmed" width="50">财务确认</th>
                                   <th data-options="field:'beizhu'" width="50">备注</th>
-                                  <th data-options="field:'fuzeren'" width="50">责任人</th>
+                                  <th data-options="field:'zerenren'" width="50">责任人</th>
 </tr>
 </thead>
 </table>
@@ -90,7 +89,7 @@ pagination="true" toolbar="#tb2">
                        <th data-options="field:'xiaoshouyuan'" width="50">销售确认</th>
                        <th data-options="field:'yujilirun',formatter:xinxiconfirmed" width="50">财务确认</th>
                        <th data-options="field:'beizhu'" width="50">备注</th>
-                       <th data-options="field:'fuzeren'" width="50">责任人</th>
+                       <th data-options="field:'zerenren'" width="50">责任人</th>
                       
 </tr>
 </thead>
@@ -120,7 +119,7 @@ pagination="true" toolbar="#tb2">
 			<table align="left">
 				<tr>
 					<td>
-					<label>应付款项:</label>
+					<label>应付款项:</label>	
 					</td>
 					<td><input id="kxsm"  name="kxsm" class="easyui-combobox" data-options="url:'fenghuang/caiwushoukuanxiangxiala.do',
 					valueField:'name',
@@ -173,6 +172,29 @@ pagination="true" toolbar="#tb2">
 				</td>
 				</tr>
 				<tr>
+				<td>
+				<label>发票开取:</label>
+				</td>
+				<td>
+				<select id="ykfp" name="ykfp" class="easyui-combobox" data-options="panelHeight:'auto',
+					editable:false" required="true" style="width:130px"> 
+                <option value="1">开发票</option> 
+                <option value="0">不开发票</option> 
+                </select> 
+				</td>
+				<td>
+				<labke>发票许可:</labke>
+				</td>
+				<td>
+				<select id="fpxk" name="fpxk" class="easyui-combobox" data-options="panelHeight:'auto',
+					editable:false" required="true" style="width:130px"> 
+                <option value="1">开发票</option> 
+                <option value="0">不开发票</option> 
+                </select> 
+				</td>
+				</tr>
+				
+				<tr>
 					<td>
 					<label>备注:</label>
 					</td>
@@ -181,6 +203,7 @@ pagination="true" toolbar="#tb2">
 						class="easyui-validatebox">
 					</td>
 				</tr>
+				
 				<tr>				
 					<td> 
 					<input id="caiwuid" name="caiwuid"   hidden="true"
@@ -196,10 +219,6 @@ pagination="true" toolbar="#tb2">
 				<input id="shenfenid" name="shenfenid"  hidden="true"
 						class="easyui-validatebox">
 				</td>						
-				<td>
-				<input id="fpxk" name="fpxk"  value="0"  hidden="true"
-				class="easyui-validatebox">
-				</td>
 				</tr>
 				<tr>					
 				<td> 
@@ -211,17 +230,19 @@ pagination="true" toolbar="#tb2">
 					<input id="tuanduimctest" name="tuanduimc" hidden="true"
 						class="easyui-validatebox">
 					</td>
+					<td>
+					<input id="xiaoshou" name="xiaoshou" hidden="true"
+						class="easyui-validatebox">
+					</td>
 				</tr>
 				<tr>
-				<td>
-				<input id="ykfp" name="ykfp" value="0"  hidden="true"
-						class="easyui-validatebox">
-				</td>
+
 				<td> 
 					<input id="ysyfid" name="ysyfid"  hidden="true"
 						class="easyui-validatebox">
 				</td>			
 				</tr>
+				
 			</table>
 			
 		</form>
@@ -375,7 +396,7 @@ pagination="true" toolbar="#tb2">
 						class="easyui-validatebox" >
 						</td>
 						<td>
-							<label>单位:</label>
+					<label>单位:</label>
 					</td>
 					<td><input id="huilvid"  name="huilvid" class="easyui-combobox" data-options="url:'fenghuang/caiwuhuilvxiala.do',
 					valueField:'id',
@@ -419,7 +440,10 @@ pagination="true" toolbar="#tb2">
 					<input id="shenfenid" name="shenfenid"  hidden="true"
 						class="easyui-validatebox">
 					</td>
-						
+					<td> 
+					<input id="xiaoshou" name="xiaoshou"  hidden="true"
+						class="easyui-validatebox">
+					</td>	
 					<td>
 					<input id="fpxk" name="fpxk"  hidden="true" 
 						class="easyui-validatebox">
@@ -572,10 +596,10 @@ function shenfen(val,row){
 	       $("#tdxxsaveform").form("clear");
 	       $("#tdxxsaveid").dialog("open");	  
 	      var team='${param.team}';
-		  var tuanduimc='${param.tuanduimc}';
-		  $('#tdxxsaveform').form('load',{"team":team,"tuanduimc":tuanduimc,"caiwuid":6,"shanchu":1,"shenfenid":1,"fpxk":0,"ysyfid":1});			
+		  var tuanduimc='${param.tuanduimc}';	  
+		  var xiaoshou='${param.xiaoshou}';
+		  $('#tdxxsaveform').form('load',{"team":team,"tuanduimc":tuanduimc,"caiwuid":6,"shanchu":1,"shenfenid":1,"ysyfid":1,"xiaoshou":xiaoshou});			
 		}
-       
 		function xinxisave() {
 			$('#tdxxsaveform').form('submit', {
 				url : 'fenghuang/inserttuanbiao.do',
@@ -670,15 +694,13 @@ function shenfen(val,row){
 /*************************************************付款添加*****************************************************/
 	function xxfksaveopen() {
 	    $("#tdxxfkid").dialog("open");
-
         $("#tdxxfkform").form("clear");
 	    var team='${param.team}';
 	    var tuanduimc='${param.tuanduimc}';
-
-	    $('#tdxxfkform').form('load',{"team":team,"tuanduimc":tuanduimc,"caiwuid":1,"shanchu":1,"shenfenid":3,"fpxk":0,"ysyfid":2});		
+        var xiaoshou='${param.xiaoshou}';
+	    $('#tdxxfkform').form('load',{"team":team,"tuanduimc":tuanduimc,"caiwuid":1,"shanchu":1,"shenfenid":3,"fpxk":0,"ysyfid":2,"xiaoshou":xiaoshou});		
 		}
 		function xxfksave() {
-	    $('#id').attr('value','');
 		var val = $('#kxsmtree').combotree('getText');
 		$('#kuanxiang').val(val);
 			$('#tdxxfkform').form('submit', {

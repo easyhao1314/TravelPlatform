@@ -78,7 +78,6 @@ pagination="true" toolbar="#querenfukuandgtb"  sortName="id" rownumbers="true" s
 </table>
 <script type="text/javascript">
 
-
 function onClickRow(index) {
 if (editIndex != index) {
 if (endEditing()) {
@@ -123,7 +122,7 @@ function caiwutdfyselecta(id) {
 //获取选中 数据
 var row = $("#tuanduifeiyongdg").datagrid("getSelected");
 if(row!=null){
-var url= "tuanduixinxi.do?team="+row.team+"&tuanduimc="+row.tuanduimc+"&shenfenid="+row.shenfenid;
+var url= "tuanduixinxi.do?team="+row.team+"&tuanduimc="+row.tuanduimc+"&shenfenid="+row.shenfenid+"&xiaoshou="+row.xiaoshou;
        var tab = $('#tt').tabs('getSelected');
 if (tab){
 var index = $('#tt').tabs('getTabIndex', tab);

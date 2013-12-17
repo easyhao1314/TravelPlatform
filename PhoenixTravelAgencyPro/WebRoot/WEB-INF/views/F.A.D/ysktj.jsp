@@ -78,7 +78,7 @@
 				<th data-options="field:'fpxk',formatter:ysktjxk" width="50">发票许可</th>
 				<th data-options="field:'xiaoshouyuan'" width="30">销售确认</th>
 				<th data-options="field:'caiwuid',formatter:ysktjbeizhu" width="30">财务确认</th>
-				<th data-options="field:'fuzeren'" width="50">责任人</th>
+				<th data-options="field:'zerenren'" width="50">责任人</th>
 			</tr>
 		</thead>
 	</table>	
