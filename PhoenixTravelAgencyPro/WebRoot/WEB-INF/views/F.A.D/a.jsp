@@ -110,14 +110,7 @@
 						class="easyui-validatebox" onfocus=this.blur() >
 						</td>
 				</tr>
-				<tr>
-					<td colspan="4s" align="center"><a
-						href="javascript:fkspupdatea();" class="easyui-linkbutton"
-						iconCls="icon-ok">确认</a> <a href="javascript:aclose();"
-						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
-				</tr>
 			</table>
-			<input id="searchDicType" name="dicType" type="hidden">
 		</form>
 	</div>
 	
@@ -145,25 +138,17 @@
 						class="easyui-validatebox" onfocus=this.blur() >
 						</td>
 				</tr>
-				<tr>
-					<td colspan="4s" align="center"><a
-						href="javascript:fkspupdateb();" class="easyui-linkbutton"
-						iconCls="icon-ok">确认</a> <a href="javascript:bclose();"
-						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
-				</tr>
 			</table>
-			<input id="searchDicType" name="dicType" type="hidden">
-
 	</div>
 	<script type="text/javascript">
 		function onClickRow(index) {
 			if (editIndex != index) {
 				if (endEditing()) {
-					$('#dg').datagrid('selectRow', index).datagrid('beginEdit',
+					$('#fkspdg').datagrid('selectRow', index).datagrid('beginEdit',
 							index);
 					editIndex = index;
 				} else {
-					$('#dg').datagrid('selectRow', editIndex);
+					$('#fkspdg').datagrid('selectRow', editIndex);
 				}
 			}
 		}
@@ -278,7 +263,6 @@
 			var param={
 			};
 			
-			
 			$.ajax({
 			url:'fenghuang/updatefksp.do?caiwuid='+2+'&id='+row.id,
 			date:param,
@@ -286,11 +270,8 @@
 			success:function(data){
 			$('#fkspdg').datagrid("reload");
 			  $.messager.alert('消息','取消成功');	
-			}
-			
-			});
-			
-			
+			}		
+			});						
 		}
 		
 	

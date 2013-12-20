@@ -4,7 +4,6 @@ String path = request.getContextPath();
 String basePath = request.getScheme() + "://"
 + request.getServerName() + ":" + request.getServerPort()
 + path + "/";
-
 %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -56,9 +55,9 @@ pagination="true" toolbar="#tb1">
                                   <th data-options="field:'yushoutime'" width="80">预收日期</th>
                                   <th data-options="field:'huilv'" width="50">汇率</th>
                                   <th data-options="field:'bizhong'" width="50">币种</th>
-                                  <th data-options="field:'syingshou'" width="50">应收</th>
-                                  <th data-options="field:'syishou'" width="50">已收</th>
-                                  <th data-options="field:'ysweifu'" width="50">未收</th>	
+                                  <th data-options="field:'syingshou'" width="50">应收（RMB）</th>
+                                  <th data-options="field:'syishou'" width="50">已收（RMB）</th>
+                                  <th data-options="field:'ysweifu'" width="50">未收（RMB）</th>	
                                   <th data-options="field:'ykfp',formatter:xinxiykfp" width="50">已开发票</th>
                                   <th data-options="field:'fpxk',formatter:xinxifpxk" width="50">发票许可</th>
                                   <th data-options="field:'xiaoshouyuan'" width="50">销售确认</th>
@@ -81,9 +80,9 @@ pagination="true" toolbar="#tb2">
                        <th data-options="field:'fukuantime'" width="80">预付日期</th>
                        <th data-options="field:'huilv'" width="50">汇率</th>
                        <th data-options="field:'bizhong'" width="50">币种</th>
-                       <th data-options="field:'syfk'" width="50">应付</th>
-                       <th data-options="field:'syifu'" width="50">已付</th>
-                       <th data-options="field:'weifu'" width="50">未付</th>	
+                       <th data-options="field:'syfk'" width="50">应付(RMB)</th>
+                       <th data-options="field:'syifu'" width="50">已付(RMB)</th>
+                       <th data-options="field:'weifu'" width="50">未付(RMB)</th>	
                        <th data-options="field:'ykfp',formatter:xinxiykfp" width="50">已开发票</th>
                        <th data-options="field:'fpxk',formatter:xinxifpxk" width="50">发票许可</th>
                        <th data-options="field:'xiaoshouyuan'" width="50">销售确认</th>
@@ -272,7 +271,7 @@ pagination="true" toolbar="#tb2">
 			<table align="left">
 				<tr>
 					<td>
-							<label>应付款项:</label>
+				    <label>应付款项:</label>
 					</td>
 					<td><input id="kxsm"  name="kxsm" class="easyui-combobox" data-options="url:'fenghuang/caiwushoukuanxiangxiala.do',
 					valueField:'name',
@@ -326,6 +325,28 @@ pagination="true" toolbar="#tb2">
 				</td>
 				</tr>
 				<tr>
+				<td>
+				<label>发票开取:</label>
+				</td>
+				<td>
+				<select id="ykfp" name="ykfp" class="easyui-combobox" data-options="panelHeight:'auto',
+					editable:false" required="true" style="width:130px"> 
+                <option value="1">开发票</option> 
+                <option value="0">不开发票</option> 
+                </select> 
+				</td>
+				<td>
+				<labke>发票许可:</labke>
+				</td>
+				<td>
+				<select id="fpxk" name="fpxk" class="easyui-combobox" data-options="panelHeight:'auto',
+					editable:false" required="true" style="width:130px"> 
+                <option value="1">开发票</option> 
+                <option value="0">不开发票</option> 
+                </select> 
+				</td>
+				</tr>
+				<tr>
 					<td>
 							<label>备注:</label>
 					</td>
@@ -342,7 +363,6 @@ pagination="true" toolbar="#tb2">
 					<input id="yfk" name="yfk" hidden="true"
 						class="easyui-validatebox">
 					</td>
-					
 				</tr>
 			</table>
 		</form>
@@ -407,6 +427,29 @@ pagination="true" toolbar="#tb2">
 				</tr>
 				<tr>
 				<td>
+				<label>发票开取:</label>
+				</td>
+				<td>
+				<select id="ykfp" name="ykfp" class="easyui-combobox" data-options="panelHeight:'auto',
+					editable:false" required="true" style="width:130px"> 
+                <option value="1">开发票</option> 
+                <option value="0">不开发票</option> 
+                </select> 
+				</td>
+				<td>
+				<labke>发票许可:</labke>
+				</td>
+				<td>
+				<select id="fpxk" name="fpxk" class="easyui-combobox" data-options="panelHeight:'auto',
+					editable:false" required="true" style="width:130px"> 
+                <option value="1">开发票</option> 
+                <option value="0">不开发票</option> 
+                </select> 
+				</td>
+				</tr>
+				
+				<tr>
+				<td>
 							<label>收款单位:</label>
 					</td>
 					<td>
@@ -444,10 +487,6 @@ pagination="true" toolbar="#tb2">
 					<input id="xiaoshou" name="xiaoshou"  hidden="true"
 						class="easyui-validatebox">
 					</td>	
-					<td>
-					<input id="fpxk" name="fpxk"  hidden="true" 
-						class="easyui-validatebox">
-						</td>
 				</tr>
 					<tr>
 					
@@ -460,10 +499,6 @@ pagination="true" toolbar="#tb2">
 						</td>
 				</tr>
 					<tr>
-				<td>
-					<input id="ykfp" name="ykfp"  hidden="true"
-						class="easyui-validatebox">
-				</td>
 				<td> 
 					<input id="ysyfid" name="ysyfid" hidden="true"
 						class="easyui-validatebox">		
@@ -551,6 +586,30 @@ pagination="true" toolbar="#tb2">
 					editable:false" required="true">
 				</td>
 				</tr>
+					<tr>
+				<td>
+				<label>发票开取:</label>
+				</td>
+				<td>
+				<select id="ykfp" name="ykfp" class="easyui-combobox" data-options="panelHeight:'auto',
+					editable:false" required="true" style="width:130px"> 
+                <option value="1">开发票</option> 
+                <option value="0">不开发票</option> 
+                </select> 
+				</td>
+				<td>
+				<labke>发票许可:</labke>
+				</td>
+				<td>
+				<select id="fpxk" name="fpxk" class="easyui-combobox" data-options="panelHeight:'auto',
+					editable:false" required="true" style="width:130px"> 
+                <option value="1">开发票</option> 
+                <option value="0">不开发票</option> 
+                </select> 
+				</td>
+				</tr>
+				
+				
 				<tr>
 					<td>
 							<label>备注:</label>
@@ -698,7 +757,7 @@ function shenfen(val,row){
 	    var team='${param.team}';
 	    var tuanduimc='${param.tuanduimc}';
         var xiaoshou='${param.xiaoshou}';
-	    $('#tdxxfkform').form('load',{"team":team,"tuanduimc":tuanduimc,"caiwuid":1,"shanchu":1,"shenfenid":3,"fpxk":0,"ysyfid":2,"xiaoshou":xiaoshou});		
+	    $('#tdxxfkform').form('load',{"team":team,"tuanduimc":tuanduimc,"caiwuid":1,"shanchu":1,"shenfenid":3,"ysyfid":2,"xiaoshou":xiaoshou});		
 		}
 		function xxfksave() {
 		var val = $('#kxsmtree').combotree('getText');

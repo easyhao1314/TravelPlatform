@@ -53,9 +53,7 @@ public class CaiwufukuanController {
 			returnValue.put("rows", currencyRows);
 			JsonConfig config = new JsonConfig();
 	     	config.registerJsonValueProcessor(Timestamp.class,new DateJsonValueProcessor("yyyy-MM-dd"));
-	     			//把MAP转换成JSON，返回到前台
 	     	JSONObject fromObject = JSONObject.fromObject(returnValue,config);
-	     	System.out.println(fromObject);
 			return fromObject;
 		} catch (Exception e) {
 

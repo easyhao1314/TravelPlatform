@@ -61,7 +61,7 @@
 	    	  <a href="javascript:void(0);" onclick="javascript:$('#ysktjsousuo').dialog('open');" class="easyui-linkbutton" iconCls="icon-save" plain="true">查询</a> 
 	    	</div>
 	<table id="dgysktjselect" class="easyui-datagrid"
-		data-options="url:'fenghuang/caiwutdfylbselect.do?ysyfid=1',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20,collapsible:true"
+		data-options="url:'fenghuang/caiwutdfylbselect.do?',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20,collapsible:true"
 		pagination="true" toolbar="#ysktjdgtb">
 		<thead>
 			<tr> 

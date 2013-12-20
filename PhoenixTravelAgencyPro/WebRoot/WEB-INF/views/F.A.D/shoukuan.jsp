@@ -45,9 +45,8 @@
 			}
 		]"
 		style="width:300px;height:180px;padding:10px;">
-	<!-- 如果在正式开发环境下 url可以为后台的请求，地址 -->
    <table>
-	    		<tr>
+	    		    <tr>
 	    		   	<td>团队名称:<input class="easyui-validatebox" type="text" name="team" id="team" style="width:200px"></input></td>
 	    		   	</tr>
 	    		   	<tr>
@@ -56,6 +55,7 @@
 	    			<tr>
 	    			<td><input class="easyui-validatebox" type="text" name="caozuo" id="zhi" hidden="true ></input></td>
 	    			</tr>
+	    			<tr>
 	    			<td>
 	    			<!-- hidden="true" -->
 	    		    </td>
@@ -107,13 +107,7 @@
 						class="easyui-validatebox">
 				</td>
 				</tr>
-				
-				<tr>
-					<td colspan="4s" align="center"><a
-						href="javascript:shoukuanupdate();" class="easyui-linkbutton"
-						iconCls="icon-ok">确认</a> <a href="javascript:shoukuanclose();"
-						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
-				</tr>
+
 			</table>
 		</form>
 	</div>

@@ -60,19 +60,19 @@ href="js/themes/default/easyui.css">
 <!-- 如果在正式开发环境下 url可以为后台的请求，地址 -->
 <table id="tuanduifeiyongdg" class="easyui-datagrid"
 data-options="url:'fenghuang/caiwutdfylbselect.do',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
-pagination="true" toolbar="#querenfukuandgtb"  sortName="id" rownumbers="true" sortOrder="asc">
+pagination="true" toolbar="#querenfukuandgtb"  >
 <thead>
 <tr>
-<th data-options="field:'tuanduimc'" sortable="true" width="15">团号</th>
+<th data-options="field:'tuanduimc'"  width="15">团号</th>
 <th data-options="field:'team'" width="10">团名</th>
-<th data-options="field:'chutuantime'" sortable="true" width="10">出团日期</th>
-<th data-options="field:'huituantime'" sortable="true" width="10">回团日期</th>
+<th data-options="field:'chutuantime'"  width="10">出团日期</th>
+<th data-options="field:'huituantime'"  width="10">回团日期</th>
 <th data-options="field:'xiaoshouyuan'" width="10">操作人</th>
-<th data-options="field:'syingshou'" sortable="true" width="10">应收</th>
-<th data-options="field:'syishou'" width="10">已收</th>
-<th data-options="field:'syfk'" width="10">应付</th>	
-<th data-options="field:'syifu'" width="10">已付</th>
-<th data-options="field:'yuji'">预计利润</th>
+<th data-options="field:'syingshou'" width="10">应收(RMB)</th>
+<th data-options="field:'syishou'" width="10">已收(RMB)</th>
+<th data-options="field:'syfk'" width="10" style="color:red">应付(RMB)</th>	
+<th data-options="field:'syifu'" width="10">已付(RMB)</th>
+<th data-options="field:'yuji'">预计利润(RMB)</th>
 </tr>
 </thead>
 </table>

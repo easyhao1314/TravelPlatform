@@ -39,8 +39,7 @@
 		data-options="url:'fenghuang/skzhanghaoselect.do',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 		pagination="true" toolbar="#tb">
 		<thead>
-			<tr> 
-			   
+			<tr> 		   
 				<th data-options="field:'zhanghaoming'" width="10">账号名称</th>
 				<th data-options="field:'yongtu'" width="10">用途</th>
 				<th data-options="field:'bizhong'" width="10">币种</th>
@@ -74,7 +73,7 @@
 			<table align="left">
 				<tr>
 					<td>
-							<label>名称:</label>
+					<label>名称:</label>
 					</td>
 					<td><input id="zhanghaoming" name="zhanghaoming" 
 						class="easyui-validatebox">
@@ -99,13 +98,13 @@
 				</tr>
 					<tr>
 					<td>
-							<label>开户行:</label>
+					<label>开户行:</label>
 					</td>
 					<td><input id="kaihuhang" name="kaihuhang"
 						class="easyui-validatebox">
 					</td>
 					<td>
-							<label>户名:</label>
+					<label>户名:</label>
 					</td>
 					<td><input id="huming" name="huming" 
 						class="easyui-validatebox">
@@ -188,15 +187,7 @@
 						class="easyui-validatebox" >
 					</td>
 				</tr>
-				
-				<tr>
-					<td colspan="4s" align="center"><a
-						href="javascript:sfkzhwhdelect();" class="easyui-linkbutton"
-						iconCls="icon-ok">确认</a> <a href="javascript:closedSearch();"
-						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
-				</tr>
 			</table>
-			<input id="searchDicType" name="dicType" type="hidden">
 		</form>
 	</div>
 <!-- ********************************************************************************************** -->

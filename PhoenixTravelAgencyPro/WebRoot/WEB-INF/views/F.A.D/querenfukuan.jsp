@@ -108,15 +108,7 @@
 						class="easyui-validatebox" onfocus=this.blur() >
 				</td>
 				</tr>
-				<tr>
-					<td colspan="4s" align="center"><a
-						href="javascript:caiwuxiugai()" class="easyui-linkbutton"
-						iconCls="icon-ok">确认</a> 
-						<a href="javascript:closedialog();"
-						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td></td>
-				</tr>
 			</table>
-			<input id="dicType" name="dicType" type="hidden">
 		</form>
 	</div>
 	
@@ -143,13 +135,6 @@
 					<input id="team" name="team" 
 						class="easyui-validatebox" onfocus=this.blur() >
 					</td>
-				</tr>
-				<tr>
-					<td colspan="4s" align="center"><a
-						href="javascript:caiwuxiugai2()" class="easyui-linkbutton"
-						iconCls="icon-ok">确认</a> 
-						<a href="javascript:closedialog2();"
-						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td>
 				</tr>
 			</table>
 		</form>

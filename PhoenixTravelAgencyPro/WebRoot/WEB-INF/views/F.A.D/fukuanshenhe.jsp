@@ -52,14 +52,11 @@
 	    		</tr>
 	    		<tr>
 	    		   	<td>团号：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="easyui-validatebox" type="text" name="tuanduimc"  id="tuanduimc" style="width:200px"></input></td>			
-	    		</tr>
-	    	
-	    		
+	    		</tr>	    		
 	    	</table>
 	 </div>
 	    	
 	    	<div id="fukuanshenhedgtb">
-	    	
 	    	<a href="javascript:caiwufkshselect();" class="easyui-linkbutton" iconCls="icon-add" plain="true">付款确认</a>
 		    <a href="javascript:caiwufkshselecta();" class="easyui-linkbutton" iconCls="icon-add" plain="true">取消付款</a>
 	    	<a href="javascript:void(0);" onclick="javascript:$('#fukuanshenhesousuo').dialog('open');" class="easyui-linkbutton" iconCls="icon-save" plain="true">查询</a>  
@@ -115,15 +112,7 @@
 						class="easyui-validatebox" onfocus=this.blur() >
 					</td>
 				</tr>
-				<tr>
-					<td colspan="4s" align="center"><a
-						href="javascript:fkshupdate()" class="easyui-linkbutton"
-						iconCls="icon-ok">确认</a> 
-						 <a href="javascript:fukuanshenheclose();"
-						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td></td>
-				</tr>
 			</table>
-			<input id="dicType" name="dicType" type="hidden">
 		</form>
 	</div>
 	
@@ -150,15 +139,7 @@
 						class="easyui-validatebox" onfocus=this.blur()>
 					</td>
 				</tr>
-				<tr>
-					<td colspan="4s" align="center"><a
-						href="javascript:fkshupdate2()" class="easyui-linkbutton"
-						iconCls="icon-ok">确认</a> 
-						<a href="javascript:fukuanshenheclose1();"
-						class="easyui-linkbutton" iconCls="icon-cancel">取消</a></td></td>
-				</tr>
 			</table>
-			<input id="dicType" name="dicType" type="hidden">
 		</form>
 	</div>
 	
