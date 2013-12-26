@@ -21,7 +21,7 @@ public class CaiwufkqrDaoImpl extends BaseDao implements IcaiwufkqrDao {
 	}
 	@Override
 	public boolean savefkqr(Tuanbiao tuanbiao) throws Exception {
-		// TODO Auto-generated method stub                                   5                                               10                                      15                                             20                                   25                               30                           35                              40                                               5         10        5         20        5         25        30        35        40
+		// TODO Auto-generated method stub                              
 		String sql="insert into tuanbiao (" +
 				"payment,team,suppliers,caozuo,xiaoshou,caiwuid,zhanghaoid,shenfenid,chutuantime,huituantime," +
 				"yingshou,yishou,yifu,tuikuan,fanyong,yujilirun,shijilirun,danhao,fukuantime,yushoutime," +
@@ -76,7 +76,7 @@ public class CaiwufkqrDaoImpl extends BaseDao implements IcaiwufkqrDao {
 	public Pagination<Tuanbiao> getPaginationfkqr(int currentPage,
 			int numPerPage, Tuanbiao tuanbiao) throws Exception {
 		// TODO Auto-generated method stub
-		StringBuffer sql=new StringBuffer("SELECT  jiantuanren.userName as zerenren,users.userName as xiaoshouyuan,ss.userName,t.*,ROUND(t.yingshou*b.huilv,2) as syingshou,ROUND(t.yishou*b.huilv,2) as syishou,ROUND(t.yfk*b.huilv,2) as syfk,ROUND(t.yifu*b.huilv,2) as syifu,f.cashier,f.confirmed,f.review,f.`status`,b.bizhong,b.huilv+b.huilv-b.huilv as huilv,sanpinzhongxin.tuanName as sanpintuanName,dantuan.tuanName AS dantuanName,ROUND(yfk*huilv-yifu*huilv,2) as weifu,ROUND(yingshou*huilv-yishou*huilv,2) as ysweifu FROM tuanbiao AS t LEFT JOIN sanpinzhongxin ON t.tuanduimc=sanpinzhongxin.tuanNo LEFT JOIN finance AS f on t.caiwuid=f.id LEFT JOIN bizhonghuilv AS b on t.huilvID=b.id LEFT JOIN users AS ss ON ss.id=t.caozuo  LEFT JOIN dantuanxinxi as dantuan on t.tuanduimc=dantuan.tuanNO LEFT JOIN users on t.xiaoshou=users.id LEFT JOIN users as jiantuanren ON jiantuanren.id=sanpinzhongxin.jiantuanren where t.shanchu=1 ");
+		StringBuffer sql=new StringBuffer("SELECT  jiantuanren.userName as zerenren,users.userName as xiaoshouyuan,ss.userName,t.*,ROUND(t.yingshou*b.huilv,2) as syingshou,ROUND(t.yishou*b.huilv,2) as syishou,ROUND(t.yfk*b.huilv,2) as syfk,ROUND(t.yifu*b.huilv,2) as syifu,f.cashier,f.confirmed,f.review,f.`status`,b.bizhong,b.huilv+b.huilv-b.huilv as huilv,sanpinzhongxin.tuanName as sanpintuanName,dantuan.tuanName AS dantuanName,ROUND(yfk*huilv-yifu*huilv,2) as weifu,ROUND(yingshou*huilv-yishou*huilv,2) as ysweifu FROM tuanbiao AS t LEFT JOIN sanpinzhongxin ON t.tuanduimc=sanpinzhongxin.tuanNo LEFT JOIN finance AS f on t.caiwuid=f.id LEFT JOIN bizhonghuilv AS b on t.huilvID=b.id LEFT JOIN users AS ss ON ss.id=t.caozuo  LEFT JOIN dantuanxinxi as dantuan on t.tuanduimc=dantuan.tuanNO LEFT JOIN users on t.xiaoshou=users.id LEFT JOIN users as jiantuanren ON jiantuanren.id=sanpinzhongxin.jiantuanren where t.shanchu=1  ");
       if(tuanbiao.getId()!=0 && !"".equals(tuanbiao.getId())){
 			sql.append(" and t.id='");
 			sql.append(tuanbiao.getId());

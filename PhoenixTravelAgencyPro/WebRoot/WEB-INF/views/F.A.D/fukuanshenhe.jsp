@@ -1,4 +1,4 @@
- <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -26,7 +26,6 @@
 </head>
 
 <body>
-	<!-- 如果在正式开发环境下 url可以为后台的请求，地址 -->
 	<div id="fukuanshenhesousuo" class="easyui-dialog" title="查询"
 		data-options="modal:true,closed:true,iconCls:'icon-save',buttons:[{
 			text:'查询',
@@ -40,12 +39,12 @@
 			text:'关闭',
 			iconCls:'icon-cancel',
 			handler:function(){
-			$('#fukuanshenhesousuo').dialog('close');
-		
+			$('#fukuanshenhesousuo').dialog('close');		
 			}
 			}
 		]"
 		style="width:300px;height:180px;padding:10px;">
+		
             <table>
 	    		<tr>
 	    		   	<td>团队名称：<input class="easyui-validatebox" type="text" name="team"  id="team" style="width:200px"></input></td>
@@ -60,16 +59,15 @@
 	    	<a href="javascript:caiwufkshselect();" class="easyui-linkbutton" iconCls="icon-add" plain="true">付款确认</a>
 		    <a href="javascript:caiwufkshselecta();" class="easyui-linkbutton" iconCls="icon-add" plain="true">取消付款</a>
 	    	<a href="javascript:void(0);" onclick="javascript:$('#fukuanshenhesousuo').dialog('open');" class="easyui-linkbutton" iconCls="icon-save" plain="true">查询</a>  
-	    	<a href="javascript:cufkshselect(1)" class="easyui-linkbutton" iconCls="icon-search" plain="true">已确认收款</a>
-			<a href="javascript:cufkshselect(2)" class="easyui-linkbutton" iconCls="icon-search" plain="true">待确认收款</a>
+	    	<a href="javascript:cufkshselect(1)" class="easyui-linkbutton" iconCls="icon-search" plain="true">待确认审批</a>
+			<a href="javascript:cufkshselect(2)" class="easyui-linkbutton" iconCls="icon-search" plain="true">已确认审批</a>
 	    	</div>
-	
 	<table id="fukuanshenhedg" class="easyui-datagrid"
 		data-options="url:'fenghuang/caiwuqrfkselect.do?shenfenid=3&&ysyfid=2&&caiwuid=1',border:false,singleSelect:true,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
-		pagination="true" toolbar="#fukuanshenhedgtb">
+		pagination="true" toolbar="#fukuanshenhedgtb" >
 		<thead>
 			<tr>  
-				<th data-options="field:'fukuantime'" width="40">付款日期</th>
+				<th data-options="field:'fukuantime'" width="40" class="thtable">付款日期</th>
 				<th data-options="field:'team'" width="50">团号</th>
 				<th data-options="field:'tuanduimc'" width="50">团队名称</th>
 				<th data-options="field:'khmc'" width="50">供应商名称</th>
@@ -78,13 +76,11 @@
 				<th data-options="field:'xiaoshouyuan'" width="50">销售</th>
 				<th data-options="field:'review',formatter:cwfkbz" width="50">财务审核</th>
 				<th data-options="field:'confirmed',formatter:cwfkbz2" width="50">出纳确认</th>
-			
 			</tr>
 		</thead>
 	</table>
 	
-	
-	<div id="caiwufkshid" class="easyui-dialog" title="付款审核确认"
+	<div id="caiwufkshid" class="easyui-dialog" title="付款审核确认" 
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
 		style="width:500px;height:200px;padding:10px;">
 		<form id="xg" method="post" >
@@ -115,7 +111,6 @@
 			</table>
 		</form>
 	</div>
-	
 	
 	<div id="caiwuquxiao" class="easyui-dialog" title="付款审核取消"
 		data-options="modal:true,closed:true,iconCls:'icon-save'"
@@ -162,11 +157,22 @@
 	//条件查询
 		function cufkshselect(id){
 		
+		//document.getElementById("fukuanshenhedg").style.color="red";
+		// $("#fukuanshenhedg tr").css("color","red"); 
+       // $span.css("color","red");
+		//var $span = $("table");
+       // $span.css("color","red");
+		/*var jihe = $("#fukuanshenhedg").datagrid('getRows');
+		
+		for(var i=0;i<jihe.length;i++){
+		    
+		   $jihe[i].team.css("color","red");  
+		} **/
 		console.info($('#fukuanshenhedg').datagrid('options'));
 		var opts = $('#fukuanshenhedg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
 			var param = {
 				team: $("#team").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
-				tuanduimc: $("#tuanduimc").val() ,
+				tuanduimc: $("#tuanduimc").val(),
 				caiwuid: id,
                 shenfenid:3,
                 ysyfid:2,
@@ -189,15 +195,14 @@
 		   var shouke=null;
 		   	 if(row.confirmed==1){shouke="未付款";}
 		   	 if(row.confirmed==2){shouke="已付款";}
-		   	 
+	
 		     return '<div onclick="shoukeclick(event,'+row.tuanNo+')" style="width: auto;">'+shouke+'</div>';
 		   }
 		   //备注
 		   function cwfkbz(val,row){
 		   var shouke=null;
-		   	 if(row.review==1){shouke="未审核";}
-		   	 if(row.review==2){shouke="已审核";}
-		     return '<div onclick="shoukeclick(event,'+row.tuanNo+')" style="width: auto;">'+shouke+'</div>';
+		   	 if(row.review==1){shouke="未审核"; return '<div onclick="shoukeclick(event,'+row.tuanNo+')" style="width: auto;color:blue">'+shouke+'</div>';}
+		   	 if(row.review==2){shouke="已审核"; return '<div onclick="shoukeclick(event,'+row.tuanNo+')" style="width: auto;color:red">'+shouke+'</div>';}	    
 		   }
 		   
 		   
@@ -295,9 +300,6 @@
 				}
 			});
 		}
-		
-		
-		
 	</script>
 </body>
 </html>

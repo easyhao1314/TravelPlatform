@@ -60,8 +60,8 @@
 	    	<a href="javascript:caiwufkspselecta();" class="easyui-linkbutton" iconCls="icon-add" plain="true">审批确认</a>  
 		    <a href="javascript:caiwufkspselectb();" class="easyui-linkbutton" iconCls="icon-add" plain="true">取消付款</a> 
 		    <a href="javascript:void(0);"  onclick="javascript:$('#asousuo').dialog('open');" class="easyui-linkbutton" iconCls="icon-save" plain="true">查询</a> 	
-			<a href="javascript:cwfkspselect(2)" class="easyui-linkbutton" iconCls="icon-search" plain="true">已确认收款</a>
-			<a href="javascript:cwfkspselect(4)" class="easyui-linkbutton" iconCls="icon-search" plain="true">待确认收款</a>
+			<a href="javascript:cwfkspselect(2)" class="easyui-linkbutton" iconCls="icon-search" plain="true">待确认审批</a>
+			<a href="javascript:cwfkspselect(4)" class="easyui-linkbutton" iconCls="icon-search" plain="true">已确认审批</a>
 	</div>
 	<table id="fkspdg" class="easyui-datagrid"
 		data-options="url:'fenghuang/fukuanshenhe.do?shenfenid=3&ysyfid=2&caiwuid=2',border:false,singleSelect:true,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"

@@ -61,8 +61,8 @@
 		      <a href="javascript:werhuSelectId();" class="easyui-linkbutton" iconCls="icon-add" plain="true">付款确认</a>  
 		      <a href="javascript:werhuSelectId2();" class="easyui-linkbutton" iconCls="icon-add" plain="true">取消付款</a>
 		      <a href="javascript:void(0);" onclick="javascript:$('#qurenfukuansousuo').dialog('open');" class="easyui-linkbutton" iconCls="icon-save" plain="true">查询</a> 
-		      <a href="javascript:dijieSelectLike(4)" class="easyui-linkbutton" iconCls="icon-search" plain="true">待确认收款</a>
-			  <a href="javascript:dijieSelectLike(5)" class="easyui-linkbutton" iconCls="icon-search" plain="true">已收款</a> 		
+		      <a href="javascript:dijieSelectLike(4)" class="easyui-linkbutton" iconCls="icon-search" plain="true">待确认审批</a>
+			  <a href="javascript:dijieSelectLike(5)" class="easyui-linkbutton" iconCls="icon-search" plain="true">已确认审批</a> 		
 	         </div>
 	   
 	<table id="qurenfukuandg" class="easyui-datagrid"
