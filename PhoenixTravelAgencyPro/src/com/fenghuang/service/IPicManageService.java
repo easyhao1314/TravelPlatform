@@ -22,4 +22,6 @@ public interface IPicManageService {
 	
 	public Pagination<PicManage> getPicManagePagination(int currentPage,
 			int numPerPage,String searchName);
+	public boolean deletePicManageDao(PicManage picManage)throws Exception;
+	public boolean updatePicManageDao(PicManage picManage)throws Exception;
 }

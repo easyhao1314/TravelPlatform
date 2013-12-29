@@ -39,4 +39,16 @@ public class PicManageServiceImpl implements IPicManageService {
 		return iPicManageDao.getPicManagePagination(currentPage, numPerPage, searchName);
 	}
 
+	@Override
+	public boolean deletePicManageDao(PicManage picManage) throws Exception {
+		// TODO Auto-generated method stub
+		return iPicManageDao.deletePicManageDao(picManage);
+	}
+
+	@Override
+	public boolean updatePicManageDao(PicManage picManage) throws Exception {
+		// TODO Auto-generated method stub
+		return iPicManageDao.updatePicManageDao(picManage);
+	}
+
 }

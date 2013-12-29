@@ -60,4 +60,18 @@ public class PicManageDaoImpl extends BaseDao implements IPicManageDao {
 		return pics;
 	}
 
+	@Override
+	public boolean deletePicManageDao(PicManage picManage) throws Exception {
+		// TODO Auto-generated method stub
+		StringBuffer sql = new StringBuffer("DELETE From picmanage where id=?");
+		int rs = this.update(sql.toString(),picManage.getId());
+		return rs>0;
+	}
+
+	@Override
+	public boolean updatePicManageDao(PicManage picManage) throws Exception {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

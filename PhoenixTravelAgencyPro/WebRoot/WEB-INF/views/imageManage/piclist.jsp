@@ -24,7 +24,28 @@
 
 </head>
 <body>
-   <div class="easyui-panel" title="图片查询"
+    <div id="tupianchaxundlg" class="easyui-dialog" title="查询窗口" data-options="iconCls:'icon-search',closed:true,buttons: 
+	 			[{
+                    text:'搜索',
+                    iconCls:'icon-search',
+                    handler:function(){
+                    searchDepartment();
+                    searchDepartmentReset();
+                    }
+                },{
+                    text:'关闭',
+                    iconCls:'icon-cancel',
+                    handler:function(){
+                    $('#tupianchaxundlg').dialog('close');
+                    }
+                }]" style="width:400px;height:200px;padding:10px">
+    <div class="demo-info">
+        <div class="demo-tip icon-tip"></div>
+        <div>在此处搜索图片的名字,已关键字为准进行模糊查找。</div>
+    </div>
+        <input id="searchName" name="searchName" class="easyui-validatebox" style="width: 300px; text-align: center; margin-left: 30px;">
+    </div>
+<!--    <div class="easyui-panel" title="图片查询"
 		style="height:100px;padding:10px;width:auto;"
 		data-options="closable:false,tools:'#searchpanel'" align="center">
 		<table>
@@ -37,16 +58,18 @@
 			</tr>
 		</table>
 	</div>
+	
+	
 	<div id="searchpanel">
 		<a href="javascript:void(0)" iconCls="icon-search"
 			onclick="javascript:searchDepartment();"></a> <a href="javascript:void(0)"
 			iconCls="icon-undo" onclick="javascript:searchDepartmentReset()"></a>
+		
 	</div>
-
-	<div class="easyui-panel" title="图片列表"
-		style="height:480px;width: auto;">
+ -->
+	
  	<table id="dgPicManage" class="easyui-datagrid" 
-		data-options="url:'fenghuang/getPicManages.do',border:false,singleSelect:false,fit:true,fitColumns:true,pageSize:20"
+		data-options="url:'fenghuang/getPicManages.do',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 		pagination="true" toolbar="#dgPicToolbar">
 		<thead>
 			<tr>
@@ -55,8 +78,8 @@
 			</tr>
 		</thead>
 	</table>
-	</div>
 	<div id="dgPicToolbar">
+			 <a href="javascript:void(0);" onclick="javascript:$('#tupianchaxundlg').dialog('open');" class="easyui-linkbutton" iconCls="icon-search" plain="true">搜索</a>  
 		     <a href="javascript:newUpload();" class="easyui-linkbutton" iconCls="icon-add" plain="true">上传</a>  
 		</div>
 	<script type="text/javascript">
@@ -67,6 +90,7 @@
 
 	
 function searchDepartment(){
+searchName:$("#searchName").val();
 	$('#dgPicManage').datagrid('load',{
 		searchName:$("#searchName").val()	
 	});

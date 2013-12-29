@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fenghuang.entiey.Approval;
 import com.fenghuang.entiey.PicManage;
 import com.fenghuang.service.IPicManageService;
 import com.fenghuang.util.Pagination;
@@ -52,6 +53,22 @@ public class PicManageController {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	@RequestMapping("fenghuang/deletePicManages.do")
+	@ResponseBody
+	public Map<String,Object> deletePicManages(HttpServletRequest request,
+			HttpServletResponse response,String id){
+		boolean isSuccess = false;
+		Map<String,Object> result = new HashMap<String, Object>();
+		try {
+			isSuccess=true;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			isSuccess=false;
+			e.printStackTrace();
+		}
+		result.put("success", isSuccess);
+		return result;
 	}
 	
 	
