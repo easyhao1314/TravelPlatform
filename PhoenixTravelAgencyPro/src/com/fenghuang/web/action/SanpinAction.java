@@ -111,13 +111,13 @@ public class SanpinAction {
 				sanpin.setTargetpopulation(Long.parseLong(targetpopulation));
 			}
 			if(groupflight!=null && !"".equals(groupflight)){
-				sanpin.setGroupflight(groupflight);
+				sanpin.setGroupflight(groupflight.trim());
 			}
 			if(Departurecity!=null && !"".equals(Departurecity)){
 				sanpin.setDeparturecity(Long.parseLong(Departurecity));
 			}
 			if(Tourflight!=null && !"".equals(Tourflight)){
-				sanpin.setTourflight(Tourflight);
+				sanpin.setTourflight(Tourflight.trim());
 			}
 			if(TerminalCity!=null && !"".equals(TerminalCity)){
 				sanpin.setTerminalCity(Long.parseLong(TerminalCity));

@@ -66,8 +66,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<td><div class="fitem">
 						<strong><label>维护人:</label></strong>
 				</td>
-				<td><strong><input name="userName" class="easyui-validatebox"></strong>
-					
+				<td><strong><input name="userName" readOnly class="easyui-validatebox"></strong>
+					<input name="xingchengku" type="hidden" readOnly class="easyui-validatebox">
+					<input name="weihuren"  type="hidden" class="easyui-validatebox">
 				</td>
 			</tr>
 			<tr>
