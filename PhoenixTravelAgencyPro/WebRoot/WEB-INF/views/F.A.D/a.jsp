@@ -70,8 +70,8 @@
 			<tr>	 
 			    
 				<th data-options="field:'fukuantime'" width="10px">付款日期</th>
-				<th data-options="field:'team'" width="10px">团号</th>
-				<th data-options="field:'tuanduimc'" width="10px">团队名称</th>
+				<th data-options="field:'team'" width="10px">团名</th>
+				<th data-options="field:'tuanduimc'" width="10px">团号</th>
 				<th data-options="field:'khmc'" width="10px">供应商名称</th>
 				<th data-options="field:'kxsm'" width="10px">款项</th>
 				<th data-options="field:'syfk'" width="10px">应付金额</th>

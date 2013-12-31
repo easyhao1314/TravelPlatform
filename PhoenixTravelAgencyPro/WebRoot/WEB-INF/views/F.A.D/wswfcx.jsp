@@ -62,8 +62,8 @@
 			<tr> 
 			    <th data-options="field:'fukuantime',editor:'text'" width="10" hidden="true" >应收账期</th>
 		 		<th data-options="field:'yushoutime',formatter:wswfcxshijian" width="10">应收应付账期</th>
-				<th data-options="field:'team'" width="10">团号</th>
-				<th data-options="field:'tuanduimc'" width="10">团队名称</th>
+				<th data-options="field:'team'" width="10">团名</th>
+				<th data-options="field:'tuanduimc'" width="10">团号</th>
 				<th data-options="field:'kxsm'" width="5">款项</th>
 				<th data-options="field:'syingshou'" width="10">应收金额</th>
 				<th data-options="field:'syishou'" width="10">已收金额</th>
