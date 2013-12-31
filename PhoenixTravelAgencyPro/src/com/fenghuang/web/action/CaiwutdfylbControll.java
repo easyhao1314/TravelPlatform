@@ -91,12 +91,14 @@ public class CaiwutdfylbControll {
 	public Map<String,Object> xiugai(HttpServletRequest request,
 			HttpServletResponse response,String id,String yingshou,String yishou,
 			String kxsm,String zhanghaoid,String khmc,String yushoutime,String huilvID,String beizhu,
-			String yfk,String fukuantime,String ykfp,String fpxk
-			){
+			String yfk,String fukuantime,String ykfp,String fpxk,String syingshou,String syishou,String huilv){
 		Map<String, Object> result = new HashMap<String, Object>();
 		boolean isSuccess = false;
 		Tuanbiao tuanbiao = new Tuanbiao();
 		try {
+			yingshou=syingshou;
+			System.out.println(huilv);
+			System.out.println(yingshou);
 			if(fukuantime!=null&&!"".equals(fukuantime)){
 			DateFormat format1 = new SimpleDateFormat("yyyy-MM-dd"); 
 			Date dategroupdate = format1.parse(fukuantime);

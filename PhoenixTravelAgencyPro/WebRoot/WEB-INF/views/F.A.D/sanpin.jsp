@@ -65,7 +65,7 @@
 		pagination="true" toolbar="#ysktjdgtb">
 		<thead>
 			<tr>
-				<th data-options="field:'sanpintuanName'" width="50">团队名称</th>
+				<th data-options="field:'team'" width="50">团队名称</th>
 				<th data-options="field:'tuanduimc'" width="50">团号</th>
 				<th data-options="field:'khmc'" width="" >客户/联系人</th>
 				<th data-options="field:'xiaoshouyuan'" width="50">销售专员</th>			

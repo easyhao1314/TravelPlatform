@@ -111,18 +111,39 @@ public class CaiwuhuilvControll {
 		boolean isSuccess = false;
 		Bizhonghuilv bizhonghuilv = new Bizhonghuilv();
 		try {
+			if(bizhonghuilv!=null&&!"".equals(bizhonghuilv)){
 			bizhonghuilv.setBizhong(bizhong);
+			}
+			if(riqi!=null&&!"".equals(riqi)){
 			DateFormat format1 = new SimpleDateFormat("yyyy-MM-dd"); 
 		    Date dategroupdate = format1.parse(riqi);
 			bizhonghuilv.setRiqi(dategroupdate);
+			}
+			if(xianjinhuilv!=null&&!"".equals(xianjinhuilv)){
 			bizhonghuilv.setXianjinhuilv(Float.parseFloat(xianjinhuilv));
+			}
+			if(gongshou!=null&&!"".equals(gongshou)){
 			bizhonghuilv.setGongshou(Float.parseFloat(gongshou));
+			}
+			if(zhonghang!=null&&!"".equals(zhonghang)){
 			bizhonghuilv.setZhonghang(Float.parseFloat(zhonghang));
+			}
+			if(zuidihuilv!=null&&!"".equals(zuidihuilv)){
 			bizhonghuilv.setZuidihuilv(Float.parseFloat(zuidihuilv));
+			}
+			if(huilv!=null&&!"".equals(huilv)){
 			bizhonghuilv.setHuilv(Float.parseFloat(huilv));
+			}
+			if(jianxie!=null&&!"".equals(jianxie)){
 			bizhonghuilv.setJianxie(jianxie);
+			}
+			if(jianxiemingchen!=null&&!"".equals(jianxiemingchen)){
 			bizhonghuilv.setJianxiemingchen(jianxiemingchen);
+			}
+			if(danwei!=null&&!"".equals(danwei)){
 			bizhonghuilv.setDanwei(Float.parseFloat(danwei));
+			}
+			
 			bizhonghuilv.setId(id);
 			isSuccess = icaiwuhuilvService.updatehuilv(bizhonghuilv);
 			isSuccess=true;
