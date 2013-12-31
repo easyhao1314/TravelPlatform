@@ -75,7 +75,7 @@
 		<thead>
 			<tr>	 
 			    <th data-options="field:'yushoutime'" width="10px">收款日期</th>
-				<th data-options="field:'team'" width="10px">团名</th>
+				<th data-options="field:'sanpinName'" width="10px">团名</th>
 				<th data-options="field:'tuanduimc'" width="10px">团号</th>
 				<th data-options="field:'khmc'" width="10px">客户名称</th>
 				<th data-options="field:'kxsm'" width="10px">款项</th>

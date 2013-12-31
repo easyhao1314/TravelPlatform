@@ -63,9 +63,9 @@ pagination="true" toolbar="#querenfukuandgtb"  >
 <thead>
 <tr>
 <th data-options="field:'tuanduimc'"  width="15">团号</th>
-<th data-options="field:'team'" width="10">团名</th>
-<th data-options="field:'chutuantime'"  width="10">出团日期</th>
-<th data-options="field:'huituantime'"  width="10">回团日期</th>
+<th data-options="field:'sanpinName'" width="10">团名</th>
+<th data-options="field:'sanpinchutuan'"  width="10">出团日期</th>
+<th data-options="field:'sanpinhuituan'"  width="10">回团日期</th>
 <th data-options="field:'xiaoshouyuan'" width="10">操作人</th>
 <th data-options="field:'syingshou'" width="10">应收(RMB)</th>
 <th data-options="field:'syishou'" width="10">已收(RMB)</th>
