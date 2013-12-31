@@ -76,7 +76,8 @@
 				<th data-options="field:'tuanduimc'" width="50px">团队名称</th>
 				<th data-options="field:'khmc'" width="50px">供应商名称</th>
 				<th data-options="field:'kxsm'" width="50px">款项</th>
-				<th data-options="field:'syfk'" width="50px">金额</th>
+				<th data-options="field:'syfk'" width="50px">应付金额</th>
+				<th data-options="field:'syifu'" width="50px">已付金额</th>
 				<th data-options="field:'xiaoshouyuan'" width="50px">提交人</th>
 				<th data-options="field:'review',formatter:shenhezhuanhuan" width="50px">财务审核</th>
 				<th data-options="field:'cashier',formatter:openshouke" width="50px">出纳确认</th>
@@ -152,9 +153,9 @@
 				}
 			}
 		} 
-		//条件查询
-		function dijieSelectLike(id){
 		
+		//条件查询
+		function dijieSelectLike(id){		
 		console.info($('#qurenfukuandg').datagrid('options'));
 		var opts = $('#qurenfukuandg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
 			var param = {
@@ -202,15 +203,13 @@
 			                
 			                return;	
 		               }
-			
 		
 			//按id查询
 		function werhuSelectId2(id) {
 			var row = $("#qurenfukuandg").datagrid("getSelected");
 			 $.messager.confirm('消息', '是否将团号：'+row.team+'确认付款?',
 			 function(r){  
-			  if (r){                  
-			         
+			  if (r){                      
 			          $.ajax({
 			           url:'fenghuang/updatefksp.do?caiwuid='+4+'&id='+row.id,
 			           date:row.id,
@@ -221,11 +220,9 @@
 			          }
 			          });    
 			           }          
-			                });
-			                
-			                return;	
-						
-		}
+			                });  
+			                return;						
+	               	}
 		
 		function openshouke(val,row){
 		   var shouke=null;

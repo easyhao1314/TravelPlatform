@@ -113,7 +113,7 @@ pagination="true" toolbar="#tb2">
 			}
 			}
 		]"
-		style="width:500px;height:250px;padding:10px;">
+		style="width:500px;height:280px;padding:10px;">
 		<form id="tdxxsaveform" action="">
 			<table align="left">
 				<tr>
@@ -154,7 +154,7 @@ pagination="true" toolbar="#tb2">
 				</tr>
 				<tr>
 					<td>
-					<label>金额:</label>
+					<label>应收金额:</label>
 					</td>
 					<td>
 					<input id="yingshou" name="yingshou" required="true"
@@ -169,6 +169,15 @@ pagination="true" toolbar="#tb2">
 					panelHeight:'auto',
 					editable:false" required="true">
 				</td>
+				</tr>
+				<tr>
+					<td>
+					<label>已收金额:</label>
+					</td>
+					<td>
+					<input id="yishou" name="yishou" required="true"
+					class="easyui-validatebox" >
+					</td>
 				</tr>
 				<tr>
 				<td>
@@ -308,10 +317,10 @@ pagination="true" toolbar="#tb2">
 				
 				<tr>
 					<td>
-							<label>金额:</label>
+							<label>应收金额:</label>
 					</td>
 					<td>
-					<input id="yingshou" name="yingshou" 
+					<input id="syingshou" name="syingshou" 
 						class="easyui-validatebox" required="true">
 						</td>
 						<td>
@@ -322,6 +331,14 @@ pagination="true" toolbar="#tb2">
 					textField:'bizhong',
 					panelHeight:'auto',
 					editable:false">
+				</td>
+				</tr>
+				<tr>
+					<td>
+					<label>已收金额:</label>
+					</td>
+					<td>
+					<input id="syishou" name="syishou" class="easyui-validatebox" required="true">
 				</td>
 				</tr>
 				<tr>
@@ -363,6 +380,14 @@ pagination="true" toolbar="#tb2">
 					<input id="yfk" name="yfk" hidden="true"
 						class="easyui-validatebox">
 					</td>
+				</tr>
+				<tr>
+				<td>
+							<label>汇率:</label>
+					</td>
+				<td>
+				<input id="huilv" name="huilv" class="easyui-validatebox">
+				</td>
 				</tr>
 			</table>
 		</form>
@@ -712,9 +737,6 @@ function shenfen(val,row){
 			//alert(row.id);
 		if(row!=null){
 		$("#tdxxupdateid").dialog("open");
-		//清空ID
-		//$('#id').attr('value','');
-		//填充{"id":row.id}
 		 $('#tdxxupdateform').form('load',row);
 		}
 		}
@@ -823,7 +845,6 @@ function shenfen(val,row){
 				success : function(data) {//data 是一个字符串  $.ajax(success:function(data):是一个对象
 					//var result = val('(' + data + ')');//吧字符串转换为对象
 					var result = $.parseJSON(data) ;
-
 					if (result.success) {
 					  $("#tdxxfkxiugaiid").dialog('close');
 						$.messager.alert("修改成功", "修改成功！", "info"); 

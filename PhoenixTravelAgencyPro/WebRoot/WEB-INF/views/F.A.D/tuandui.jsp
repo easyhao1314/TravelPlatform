@@ -57,7 +57,6 @@ href="js/themes/default/easyui.css">
  <a href="javascript:void(0);" onclick="javascript:$('#tuanduisousuo').dialog('open');" class="easyui-linkbutton" iconCls="icon-save" plain="true">查询</a> 
  <a href="javascript:caiwutdfyselecta();" class="easyui-linkbutton"iconCls="icon-search" plain="true">查看</a>
 </div>
-<!-- 如果在正式开发环境下 url可以为后台的请求，地址 -->
 <table id="tuanduifeiyongdg" class="easyui-datagrid"
 data-options="url:'fenghuang/caiwutdfylbselect.do',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 pagination="true" toolbar="#querenfukuandgtb"  >

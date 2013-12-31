@@ -122,7 +122,7 @@ public class CaiwuqrfkController {
 	@RequestMapping("fenghuang/inserttuanbiao.do")
 	@ResponseBody    
 	public Map<String,Object> addCustom(HttpServletRequest request,HttpServletResponse response,
-		   String team,String kxsm,String zhanghaoid,String khmc,String yushoutime,String yingshou,String huilvid,String beizhu,String ysyfid,String shanchu,String caiwuid,String shenfenid,String fuzeren,String tuanduimc,String yfk,String teamatest,String fukuantime,String chutuantime,String huituantime,String renshu,String ddje,String yishou,String caozuo,String xiaoshou,String ykfp,String fpxk){
+		   String team,String kxsm,String zhanghaoid,String khmc,String yushoutime,String yingshou,String huilvid,String beizhu,String ysyfid,String shanchu,String caiwuid,String shenfenid,String fuzeren,String tuanduimc,String yfk,String teamatest,String fukuantime,String chutuantime,String huituantime,String renshu,String ddje,String yishou,String caozuo,String xiaoshou,String ykfp,String fpxk,String yifu){
 		Map<String, Object> result = new HashMap<String, Object>();
 		boolean isSuccess = false;
 		try {
@@ -131,6 +131,9 @@ public class CaiwuqrfkController {
 		tuanbiao.setXiaoshou(caozuo);
 		if(yishou!=null && !"".equals(yishou)){
 			tuanbiao.setYishou(Float.parseFloat(yishou));
+		}
+		if(yifu!=null&&!"".equals(yifu)){
+			tuanbiao.setYifu(Float.parseFloat(yifu));
 		}
 		if(teamatest!=null&&!"".equals(teamatest)){
 			tuanbiao.setTeam(teamatest);
