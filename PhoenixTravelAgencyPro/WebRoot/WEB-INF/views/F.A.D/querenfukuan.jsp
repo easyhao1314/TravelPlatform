@@ -72,8 +72,8 @@
 			<tr>	 
 				<th data-options="field:'fukuantime'" width="50px">付款日期</th>
 				<th data-options="field:'zhanghaoid'" width="50px">账号</th>
-				<th data-options="field:'team'" width="50px">团号</th>
-				<th data-options="field:'tuanduimc'" width="50px">团队名称</th>
+				<th data-options="field:'team'" width="50px">团名</th>
+				<th data-options="field:'tuanduimc'" width="50px">团号</th>
 				<th data-options="field:'khmc'" width="50px">供应商名称</th>
 				<th data-options="field:'kxsm'" width="50px">款项</th>
 				<th data-options="field:'syfk'" width="50px">应付金额</th>

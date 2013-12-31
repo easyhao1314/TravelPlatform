@@ -43,7 +43,7 @@
 			}
 		]"
 		style="width:300px;height:180px;padding:10px;">
-		
+			
             <table>
 	    		<tr>
 	    		   	<td>团队名称：<input class="easyui-validatebox" type="text" name="team"  id="team" style="width:200px"></input></td>
@@ -67,8 +67,8 @@
 		<thead>
 			<tr>  
 				<th data-options="field:'fukuantime'" width="40" class="thtable">付款日期</th>
-				<th data-options="field:'team'" width="50">团号</th>
-				<th data-options="field:'tuanduimc'" width="50">团队名称</th>
+				<th data-options="field:'team'" width="50">团名</th>
+				<th data-options="field:'tuanduimc'" width="50">团号</th>
 				<th data-options="field:'khmc'" width="50">供应商名称</th>
 				<th data-options="field:'kxsm'" width="">款项</th>
 				<th data-options="field:'syfk'" width="50">应付金额</th>
@@ -297,14 +297,6 @@
 				}
 			});
 		}
-		function cellStyler(value,row,index){
-		 var shouke=null;
-		if(row.review==1){
-		shouke=row.review;
-		shouke="aaa";
-	    return'<div>shouke</div> background-color:#ffee00;color:red'; 
-	    }   
-	     }
 	</script>
 </body>
 </html>

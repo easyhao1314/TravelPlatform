@@ -68,8 +68,8 @@
 		<thead>
 			<tr> 
 				<th data-options="field:'id'" width="50" hidden="true"></th>
-				<th data-options="field:'team'" width="50">团号</th>
-				<th data-options="field:'tuanduimc'" width="50">团队名称</th>
+				<th data-options="field:'team'" width="50">团名</th>
+				<th data-options="field:'tuanduimc'" width="50">团号</th>
 				<th data-options="field:'khmc'" width="">客户名称</th>
 				<th data-options="field:'yushoutime'" width="50">预售日期</th>
 				<th data-options="field:'huilv'" width="50">汇率</th>
