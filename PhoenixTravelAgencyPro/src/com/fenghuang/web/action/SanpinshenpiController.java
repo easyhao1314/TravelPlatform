@@ -97,7 +97,8 @@ public class SanpinshenpiController {
 	Sanpinshenpi s= new Sanpinshenpi();
 	s.setId(Integer.parseInt(id));
 	s.setShenpiyijian(yijian);
-	s.setShenpiuserid(Long.parseLong(shenpiren));
+	Object userid = request.getSession().getAttribute("userId");
+	s.setShenpiuserid(Long.parseLong(userid.toString()));
 	s.setShenpijieguo(Integer.parseInt(jieguo));
 	s.setTuanNo(tuanNo);
 	boolean isSuccess = false;

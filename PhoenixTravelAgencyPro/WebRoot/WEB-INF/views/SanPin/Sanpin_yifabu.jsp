@@ -56,19 +56,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div data-options="iconCls:'icon-edit'" onClick="updateshouke(4)">已出团</div>
 		<div data-options="iconCls:'icon-edit'" onClick="updateshouke(5)">已回团</div>
 	</div>
+	<div id="shenpitijiaodlg" class="easyui-dialog" title="提交备注说明" style="width:480px;height:320px;padding:10px"
+            data-options="
+                iconCls: 'icon-save',closed:true,
+                buttons: [{
+                    text:'提交',
+                    iconCls:'icon-ok',
+                    handler:function(){
+                     sanpinshenpiwindowsubmit();
+                    }
+                },{
+                    text:'取消',
+                    iconCls:'icon-cancel',
+                    handler:function(){
+                        $('#shenpitijiaodlg').dialog('close');
+                    }
+                }]
+            ">
+        	<textarea id="shenpibeizhu" style="width: 445px; height: 225px;"></textarea>
+    </div>
 	
-	<div id="sanpinshenpiwindow" class="easyui-window" title="提交审批申请" data-options="modal:true,closed:true,iconCls:'icon-save'" style="width:700px;height:400px;padding:10px;">
-        <form id="sanpinshenpiform" action="">
-        	<input id="tuanNo" name="tuanNo" type="hidden" class="easyui-validatebox">
-        	备注说明：<br>
-        	<textarea id="shenpibeizhu" name="beizhu" style="width: 600px; height: 300px;"></textarea>
-        	
-        </form>
-    <div data-options="region:'south',border:false" style="text-align:right;padding:5px 0 0;">
-                <a class="easyui-linkbutton" data-options="iconCls:'icon-ok'" href="javascript:void(0)" onclick="javascript:sanpinshenpiwindowsubmit();">提交</a>
-                <a class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" href="javascript:void(0)" onclick="javascript:$('#sanpinshenpiwindow').window('close');">取消</a>
-    </div>
-    </div>
+	
+	
+	
+	
     
     
 	<!-- 应付款窗口 -->
@@ -179,12 +190,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    	  		var row = $('#sanpinyifabudg').datagrid('getSelected');
    	  		if(row.length==0){return;}
    	  		$('#tuanNo').attr('value',row.tuanNo);
-   	  		$('#sanpinshenpiwindow').dialog('open');
+   	  		$('#shenpibeizhu').val("");
+   	  		$('#shenpitijiaodlg').dialog('open');
    	  }
    	  function sanpinshenpiwindowsubmit(){
    	  var row = $('#sanpinyifabudg').datagrid('getSelected');
    	  var shenpibeizhu = $('#shenpibeizhu').val();
-   	  alert(row.tuanNo);
    	  var url = "fenghuang/addsanpinshenpi.do?shenpituanNo="+row.tuanNo+"&shenpibeizhu="+shenpibeizhu;
    	      	$.ajax({
    	      		url:url,
@@ -192,6 +203,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    	      		datatype:"json",
    	      		success:function(data){
    	      			$.messager.alert("保存成功", "保存成功!", "info");
+   	      			$('#shenpitijiaodlg').dialog('close');
    	      		},
    	      		error : function() {
 						$.messager.alert("修改失败", "服务器请求失败!", "error");
@@ -244,17 +256,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    				var url= "Sanpin_mingxi.do?tuanNo="+tuanNo+"&tuanName="+tuanName+"&xianid="+xlid;
    				window.open (url, 'newwindow', 'height=100, width=400, top=0,left=0, toolbar=no, menubar=no, scrollbars=yes, resizable=no,location=no, status=no'); 
    				return;
-       var tab = $('#tt').tabs('getSelected'); 
-		if (tab){  
-	                 var index = $('#tt').tabs('getTabIndex', tab); 
-	                 $('#tt').tabs('close', index);  
-	       } 
-	       
-	       $('#tt').tabs('add', {
-				         title : tuanName+"详细信息",
-				         href : url,
-				      //  closable : true,
-				         }); 
    			}
    		function fukuandialogopen(){
    		var row = $('#sanpinyifabudg').datagrid('getSelected');
