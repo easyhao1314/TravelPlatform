@@ -26,12 +26,12 @@
 </head>
 
 <body>
-        <div id="sapinsousuo" class="easyui-dialog" title="查询"
+        <div id="tongjisanpinsousuo" class="easyui-dialog" title="查询"
 		data-options="modal:true,closed:true,iconCls:'icon-save',buttons:[{
 			text:'查询',
 			iconCls:'icon-search',
 			handler:function(){
-			$('#sapinsousuo').dialog('close');
+			$('#tongjisanpinsousuo').dialog('close');
 			sanpinselect();
 			}
 			},
@@ -39,7 +39,7 @@
 			text:'关闭',
 			iconCls:'icon-cancel',
 			handler:function(){
-			$('#sapinsousuo').dialog('close');
+			$('#tongjisanpinsousuo').dialog('close');
 		
 			}
 			}
@@ -47,41 +47,32 @@
 		style="width:300px;height:180px;padding:10px;">
                     <table>
 	    		    <tr>
-	    		   	<td>团队名称:<input class="easyui-validatebox" type="text" name="team"  id="team" style="width:200px"></input></td>
+	    		   	<td>销售:<input class="easyui-validatebox" type="text" name="xiaoshouyuan"  id="xiaoshouyuan" style="width:200px"></input></td>
 	    		   	</tr>
 	    		   	<tr>
-	    			<td>团号:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="easyui-validatebox" type="text" name="tuanduimc" id="tuanduimc" style="width:200px"></input></td>
+	    			<td>年份:<input class="easyui-validatebox" type="text" name="tuanduimc" id="tuanduimc" style="width:200px"></input></td>
 	    			<td>			
 	    		    </td>
 	    		    </tr>    		
 	    	      </table>
 	    	      </div>
 	    	      <div id="ysktjdgtb">	
-	    	  <a href="javascript:void(0);" onclick="javascript:$('#sapinsousuo').dialog('open');" class="easyui-linkbutton" iconCls="icon-save" plain="true">查询</a> 
+	    	  <a href="javascript:void(0);" onclick="javascript:$('#tongjisanpinsousuo').dialog('open');" class="easyui-linkbutton" iconCls="icon-save" plain="true">查询</a> 
 	    	</div>
-	<!-- 如果在正式开发环境下 url可以为后台的请求，地址 -->
 	<table id="sanpindg" class="easyui-datagrid"
-		data-options="url:'fenghuang/caiwuqrfkselect.do?shenfenid=1&&ysyfid=1',border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
+		data-options="url:'fenghuang/tongjizhongxinsanpinselect.do',fitColumns:true,singleSelect:true,rownumbers:true,showFooter:true,border:false,singleSelect:true,fit:true,fitColumns:true,pageSize:20"
 		pagination="true" toolbar="#ysktjdgtb">
 		<thead>
 			<tr>
-				<th data-options="field:'team'" width="50">团队名称</th>
-				<th data-options="field:'tuanduimc'" width="50">团号</th>
-				<th data-options="field:'khmc'" width="" >客户/联系人</th>
-				<th data-options="field:'xiaoshouyuan'" width="50">销售专员</th>			
-				<th data-options="field:'renshu'" width="50">人数</th>
-				<th data-options="field:'bizhong'" width="50">币种</th>
-				<th data-options="field:'syingshou'" width="50">应收</th>
-				<th data-options="field:'syishou'" width="50">已收</th>
-				<th data-options="field:'ysweifu'" width="50">未收</th>
-				<th data-options="field:'beizhu'" width="50">备注</th>
-			
-			</tr>
+				
+				<th data-options="field:'xiaoshouyuan'" width="50">销售员</th>
+				<th data-options="field:'khmc'" width="50" >客户</th>
+				<th data-options="field:'renshu'" width="50" >人头数</th>
+			</tr>		
 		</thead>
+
 	</table>
-	
 	<script type="text/javascript">
-	
 		function onClickRow(index) {
 			if (editIndex != index) {
 				if (endEditing()) {
@@ -95,19 +86,18 @@
 		}
 		
 		
-			function sanpinselect(id){
+		function cwfkspselect(id){
+		
 		console.info($('#sanpindg').datagrid('options'));
 		var opts = $('#sanpindg').datagrid('options') ;//options中有分页信息：pageNumber:相当于后台的Page , pageSize:相当于后台的rows
 			var param = {
-				team: $("#team").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
-				tuanduimc: $("#tuanduimc").val() ,
-                shenfenid:1,
+				xiaoshouyuan: $("#xiaoshouyuan").val(),//获取databox的值   ,传递Id：$('#combo_id').combobox('getValue')，传递值：$('#combo_id').combobox('getText')
 				page:  opts.pageNumber ,
 				rows:  opts.pageSize
 			};
 		console.info(param);
 				$.ajax({
-					url : 'fenghuang/caiwuqrfkselect.do' ,
+					url : 'fenghuang/fkspselect.do' ,
 					data :  param,
 					type : 'POST' ,
 					dataType : 'json' ,
@@ -115,7 +105,7 @@
 						$('#sanpindg').datagrid('loadData',data);
 					}
 				});
-		}	
+		}
 	</script>
 </body>
 </html>

@@ -70,7 +70,7 @@
 			   <a href="javascript:shoukuanselect(7)" class="easyui-linkbutton" iconCls="icon-search" plain="true">已确认收款</a>
 	    	  </div>
 	<table id="shoukuandg" class="easyui-datagrid"
-		data-options="url:'fenghuang/caiwuqrfkselect.do?ysyfid=1&&caiwuid=6&&shenfenid=5',border:false,singleSelect:true,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
+		data-options="url:'fenghuang/caiwuqrfkselect.do?ysyfid=1&&caiwuid=6&&shenfenid=1',border:false,singleSelect:true,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
 		pagination="true" toolbar="#shoukuandgtb">
 		<thead>
 			<tr>	 
@@ -80,7 +80,6 @@
 				<th data-options="field:'khmc'" width="10px">客户名称</th>
 				<th data-options="field:'kxsm'" width="10px">款项</th>
 				<th data-options="field:'syishou'" width="10px">金额</th>
-			
 				<th data-options="field:'xiaoshouyuan'" width="10px">操作人</th>
 				<th data-options="field:'beizhu'" width="10px">备注</th>
 				<th data-options="field:'confirmed',formatter:caiwuqueren" width="10px">财务确认</th>
@@ -114,11 +113,8 @@
 	
 	<script type="text/javascript">
 		function caiwuqueren(val,row){
-			var caiwu = '未确认';
-			if(row.confirmed==2){
-				caiwu='已确认';
-			}
-			return caiwu;
+		 if(row.confirmed==1){shouke="未审核"; return '<div onclick="shoukeclick(event,'+row.tuanNo+')" style="width: auto;background-color:#ffee00;color:red">'+shouke+'</div>';}
+		 if(row.confirmed==2){shouke="已审核"; return '<div onclick="shoukeclick(event,'+row.tuanNo+')" style="width: auto;background-color:#40FF00;color:red">'+shouke+'</div>';}	    
 			
 		}
 		function onClickRow(index) {

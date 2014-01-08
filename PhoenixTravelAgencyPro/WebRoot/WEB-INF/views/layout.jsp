@@ -127,11 +127,15 @@
 					<li iconCls="icon-gears"><a
 						href="javascript:open1('收款确认','shoukuan.do');">收款确认</a></li>
 				</ul>
-				<ul>
-
-				</ul>
 			</li>
-
+            <li iconCls="icon-base"><span>统计中心</span>
+            <ul>
+			<li iconCls="icon-gears"><a href="javascript:open1('销售客户-散拼统计','Tongjizhongxinsanpin.do');">销售客户-散拼统计</a></li>
+			</ul>
+			 <ul>
+			<li iconCls="icon-gears"><a href="javascript:open1('销售客户-单团统计','tongjizhongxindantuan.do');">销售客户-单团统计</a></li>
+			</ul>
+            </li>
 			<li iconCls="icon-base"><span>散拼中心</span>
 				<ul>
 					<li iconCls="icon-gears"><a

@@ -216,7 +216,7 @@
 			var row = $("#fukuanshenhedg").datagrid("getSelected");
 			$('#id').attr('value','');
 		    $('#xg').form('load', row);
-			 $.messager.confirm('消息', '是否将团号：'+row.team+'确认付款?',
+			 $.messager.confirm('消息', '是否将团号：'+row.team+'审核通过?',
 			 function(r){  
 			  if (r){                  
 			                fkshupdate();
@@ -242,10 +242,10 @@
 
 					if (result.success) {
 					  $("#caiwufkshid").dialog('close');
-						$.messager.alert("修改成功", "修改成功！", "info"); 
+						$.messager.alert("审核通过", "审核成功！", "info"); 
 						$("#fukuanshenhedg").datagrid('reload');
 					} else {
-						$.messager.alert("修改失败", "修改失败!", "error");
+						$.messager.alert("审核失败", "审核失败!", "error");
 						$("#fukuanshenhedg").datagrid('reload');
 					}
 				}
@@ -263,7 +263,7 @@
 			$('#id').attr('value','');
 		    $('#quxiaoform').form('load',row);
 			//alert(row.id);
-			 $.messager.confirm('消息', '是否将团号：'+row.team+'取消付款?',
+			 $.messager.confirm('消息', '是否将团名：'+row.team+'取消通过?',
 			 function(r){  
 			  if (r){                  
 			                fkshupdate2();
@@ -288,10 +288,10 @@
 
 					if (result.success) {
 					  $("#caiwuquxiao").dialog('close');
-						$.messager.alert("修改成功", "修改成功！", "info"); 
+						$.messager.alert("消息","取消成功", "info"); 
 						$("#fukuanshenhedg").datagrid('reload');
 					} else {
-						$.messager.alert("修改失败", "修改失败!", "error");
+						$.messager.alert("消息", "取消失败!", "error");
 						$("#fukuanshenhedg").datagrid('reload');
 					}
 				}

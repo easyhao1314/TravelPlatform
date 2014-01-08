@@ -49,15 +49,14 @@ data-options="url:'fenghuang/caiwutuanduifeiyong.do?tuanduimc=${param.tuanduimc}
 pagination="true" toolbar="#tb1">
 <thead>
 <tr>
-                                  <th data-options="field:'id'" width="50">单号</th>
                                   <th data-options="field:'kxsm'" width="50">款项说明</th>
                                   <th data-options="field:'khmc'" width="50">客户名称</th>
                                   <th data-options="field:'yushoutime'" width="80">预收日期</th>
                                   <th data-options="field:'huilv'" width="50">汇率</th>
                                   <th data-options="field:'bizhong'" width="50">币种</th>
-                                  <th data-options="field:'syingshou'" width="50">应收（RMB）</th>
-                                  <th data-options="field:'syishou'" width="50">已收（RMB）</th>
-                                  <th data-options="field:'ysweifu'" width="50">未收（RMB）</th>	
+                                  <th data-options="field:'syingshou',formatter:aaaaa" width="100">应收 </th>
+                                  <th data-options="field:'syishou',formatter:yishoustyle" width="100">已收</th>
+                                  <th data-options="field:'ysweifu',formatter:weishoustyle" width="50">未收（RMB）</th>	
                                   <th data-options="field:'ykfp',formatter:xinxiykfp" width="50">已开发票</th>
                                   <th data-options="field:'fpxk',formatter:xinxifpxk" width="50">发票许可</th>
                                   <th data-options="field:'xiaoshouyuan'" width="50">销售确认</th>
@@ -320,7 +319,7 @@ pagination="true" toolbar="#tb2">
 							<label>应收金额:</label>
 					</td>
 					<td>
-					<input id="syingshou" name="syingshou" 
+					<input id="yingshou" name="yingshou" 
 						class="easyui-validatebox" required="true">
 						</td>
 						<td>
@@ -338,7 +337,7 @@ pagination="true" toolbar="#tb2">
 					<label>已收金额:</label>
 					</td>
 					<td>
-					<input id="syishou" name="syishou" class="easyui-validatebox" required="true">
+					<input id="yishou" name="yishou" class="easyui-validatebox" required="true">
 				</td>
 				</tr>
 				<tr>
@@ -656,6 +655,7 @@ pagination="true" toolbar="#tb2">
 		   	 if(row.ykfp==1){shouke="已开发票";}
 		     return '<div onclick="shoukeclick(event,'+row.tuanNo+')" style="width: auto;">'+shouke+'</div>';
 		   }
+   
    function xinxiconfirmed(val,row){
 		   var shouke=null;
 		   	 if(row.confirmed==1){shouke="未确认";}
@@ -729,6 +729,7 @@ function shenfen(val,row){
 		
 /*************************************************修改*****************************************************/
    //按id查询
+        var a=null;
 		function xinxiupdateopen(id) {
           //通过主键，查询该操作，并处于编辑状态。 是否打开tab，还是直接弹出window 
 			
@@ -740,7 +741,7 @@ function shenfen(val,row){
 		 $('#tdxxupdateform').form('load',row);
 		}
 		}
-		
+			
 		
 		//修改
 			function xinxiupdate() {
@@ -837,6 +838,7 @@ function shenfen(val,row){
 			
 		//修改
 			function xxfkupdate() {
+			
 			$("#tdxxfkxiugaiform").form('submit', {
 				url : 'fenghuang/caiwutdfylbupdate.do',
 				onSubmit : function() {
@@ -855,6 +857,23 @@ function shenfen(val,row){
 					}
 				}
 			});
+		}
+		function aaaaa(val,row){
+		return row.bizhong+":"+row.yingshou+"/"+"RMB:"+row.syingshou;
+		}
+		function yishoustyle(val,row){
+		return row.bizhong+":"+row.yishou+"/"+"RMB:"+row.syishou;
+		}
+		function weishoustyle(val,row){
+		var yings = Number(row.yingshou);
+		var yis = Number(row.yishou);
+		var weishou=yings-yis;
+		
+		var syings = Number(row.syingshou);
+		var syis = Number(row.syishou);
+		var sweishou=syings-syis;
+		
+		return row.bizhong+":"+weishou+"/RMB:"+sweishou;
 		}
 /*******************************************************************************************************/
 

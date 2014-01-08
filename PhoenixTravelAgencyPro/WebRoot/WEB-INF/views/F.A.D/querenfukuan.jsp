@@ -185,7 +185,7 @@
 			//准备回显的数据
 			var row = $("#qurenfukuandg").datagrid("getSelected");
 			
-			 $.messager.confirm('消息', '是否将团号：'+row.team+'确认付款?',
+			 $.messager.confirm('消息', '是否将团名：'+row.team+'确认付款?',
 			 function(r){  
 			  if (r){                  
 			         
@@ -226,9 +226,8 @@
 		
 		function openshouke(val,row){
 		   var shouke=null;
-		   	 if(row.cashier==1){shouke="未付款";}
-		   	 if(row.cashier==2){shouke="已付款";}
-		     return '<div onclick="shoukeclick(event,'+row.tuanNo+')" style="width: auto;">'+shouke+'</div>';
+		     if(row.cashier==1){shouke="未审核"; return '<div onclick="shoukeclick(event,'+row.tuanNo+')" style="width: auto;background-color:#ffee00;color:red">'+shouke+'</div>';}
+		   	 if(row.cashier==2){shouke="已审核"; return '<div onclick="shoukeclick(event,'+row.tuanNo+')" style="width: auto;background-color:#40FF00;color:red">'+shouke+'</div>';}	    
 		   }
 		   function shenhezhuanhuan(val,row){
 		   var shouke=null;

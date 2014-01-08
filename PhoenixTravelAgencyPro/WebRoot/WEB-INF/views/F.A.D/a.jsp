@@ -164,9 +164,8 @@
 		   
           function cwfksp2(val,row){
 		   var shouke=null;
-		   	 if(row.confirmed==1){shouke="未审核";}
-		   	 if(row.confirmed==2){shouke="已审核";}
-		     return '<div onclick="shoukeclick(event,'+row.tuanNo+')" style="width: auto;">'+shouke+'</div>';
+		   if(row.confirmed==1){shouke="未审核"; return '<div onclick="shoukeclick(event,'+row.tuanNo+')" style="width: auto;background-color:#ffee00;color:red">'+shouke+'</div>';}
+		   if(row.confirmed==2){shouke="已审核"; return '<div onclick="shoukeclick(event,'+row.tuanNo+')" style="width: auto;background-color:#40FF00;color:red">'+shouke+'</div>';}	    	 
 		   }
 		   
 		   //条件查询
@@ -205,7 +204,7 @@
 		    $('#id').attr('value','');
 		    //填充
 		    $('#spform').form('load', row);
-		      $.messager.confirm('消息', '是否将团号：'+row.team+'确认审批通过?',
+		      $.messager.confirm('消息', '团名：'+row.team+'确认审批通过?',
 			 function(r){  
 			  if (r){                  
 			                fkspupdatea();
@@ -227,7 +226,7 @@
 			dateType:"json",
 			success:function(data){
 			 $('#fkspdg').datagrid("reload");
-			  $.messager.alert('消息','确认审批通过');	
+			  $.messager.alert('消息','团名:'+row.team+'审批通过');	
 			}
 			
 			});
@@ -247,7 +246,7 @@
 		$('#id').attr('value','');
 		//填充
 		$('#caiwuidssss').attr('value',2);
-		  $.messager.confirm('消息', '是否将团号：'+row.team+'确认审批通过?',
+		  $.messager.confirm('消息', '团名：'+row.team+'确认取消通过?',
 			 function(r){  
 			  if (r){                  
 			                fkspupdateb();
@@ -269,7 +268,7 @@
 			dateType:"json",
 			success:function(data){
 			$('#fkspdg').datagrid("reload");
-			  $.messager.alert('消息','取消成功');	
+			  $.messager.alert('消息','团名:'+row.team+'取消成功');	
 			}		
 			});						
 		}

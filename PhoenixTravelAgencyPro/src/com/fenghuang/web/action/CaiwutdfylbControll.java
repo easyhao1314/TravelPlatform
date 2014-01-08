@@ -21,8 +21,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fenghuang.entiey.Bizhonghuilv;
 import com.fenghuang.entiey.Tuanbiao;
-import com.fenghuang.service.IcaiwuskqrSerice;
+import com.fenghuang.service.IcaiwuhuilvService;
 import com.fenghuang.service.IcaiwutdfylbService;
 import com.fenghuang.util.DateJsonValueProcessor;
 import com.fenghuang.util.Pagination;
@@ -31,6 +32,8 @@ import com.fenghuang.util.Pagination;
 public class CaiwutdfylbControll {
 	@Autowired 
 	private IcaiwutdfylbService icaiwutdfylbService;
+	@Autowired
+	private	IcaiwuhuilvService icaiwuhuilvService;
 	@RequestMapping("fenghuang/caiwutdfylbselect.do")
 	@ResponseBody
 	public Map<String, Object> getCurrencyList(HttpServletRequest request,
@@ -91,14 +94,35 @@ public class CaiwutdfylbControll {
 	public Map<String,Object> xiugai(HttpServletRequest request,
 			HttpServletResponse response,String id,String yingshou,String yishou,
 			String kxsm,String zhanghaoid,String khmc,String yushoutime,String huilvID,String beizhu,
-			String yfk,String fukuantime,String ykfp,String fpxk,String syingshou,String syishou,String huilv){
+			String yfk,String fukuantime,String ykfp,String fpxk,String syingshou,String syishou,String huilv,String yifu){
 		Map<String, Object> result = new HashMap<String, Object>();
 		boolean isSuccess = false;
 		Tuanbiao tuanbiao = new Tuanbiao();
+		
 		try {
+			Double c=null;
+		    if(syingshou!=null&&!"".equals(syingshou)){
 			yingshou=syingshou;
-			System.out.println(huilv);
-			System.out.println(yingshou);
+		    }
+			if(huilvID!=null&&!"".equals(huilvID)){			
+				Integer rows = 1;
+				Integer page=1;
+				Bizhonghuilv bizhonghuilv = new Bizhonghuilv();
+				bizhonghuilv.setId(Integer.parseInt(huilvID));		
+				Pagination<Bizhonghuilv> pagination = icaiwuhuilvService.getPaginationfkqr(page, rows, bizhonghuilv);
+				List<Map<String, Object>> a = pagination.getResultList();
+				Object a1 =a.get(0).get("huilv").toString();
+				 c = Double.parseDouble(a1.toString());
+				 if(Double.parseDouble(huilv)!=c){
+				if(c>=1){
+					c=1/c;		
+				}
+				 }
+				 else{
+					 c=1.0;
+				 }
+				tuanbiao.setHuilvID(Integer.parseInt(huilvID));
+			}
 			if(fukuantime!=null&&!"".equals(fukuantime)){
 			DateFormat format1 = new SimpleDateFormat("yyyy-MM-dd"); 
 			Date dategroupdate = format1.parse(fukuantime);
@@ -110,19 +134,40 @@ public class CaiwutdfylbControll {
 				tuanbiao.setYushoutime(dategroupdate);
 				}
 			if(yingshou!=null&&!"".equals(yingshou)){
-			tuanbiao.setYingshou(Float.parseFloat(yingshou));
+				c=Double.parseDouble(yingshou)*c;	
+			tuanbiao.setYingshou(c.floatValue());
 			}
 			if(yishou!=null&&!"".equals(yishou)){
-				tuanbiao.setYishou(Float.parseFloat(yishou));
+				c=Double.parseDouble(yishou)*c;
+				tuanbiao.setYishou(c.floatValue());
 			}
+			if(ykfp!=null&&!"".equals(ykfp)){
 			tuanbiao.setYkfp(Integer.parseInt(ykfp));
+			}
+			if(fpxk!=null&&!"".equals(fpxk)){
 			tuanbiao.setFpxk(Integer.parseInt(fpxk));
-			tuanbiao.setHuilvID(Integer.parseInt(huilvID));
+			}
+			if(yifu!=null&&!"".equals(yifu)){
+				c=Double.parseDouble(yifu)*c;
+				tuanbiao.setYifu(c.floatValue());
+			}
+			if(beizhu!=null&&!"".equals(beizhu)){
 			tuanbiao.setBeizhu(beizhu);
+			}
+			if(kxsm!=null&&!"".equals(kxsm)){
 			tuanbiao.setKxsm(kxsm);
+			}
+			if(zhanghaoid!=null&&!"".equals(zhanghaoid)){
 			tuanbiao.setZhanghaoid(Integer.parseInt(zhanghaoid));
+			}
+			if(khmc!=null&&!"".equals(khmc)){
 			tuanbiao.setKhmc(khmc);
-			tuanbiao.setYfk(Float.parseFloat(yfk));
+			}
+			if(yfk!=null&&!"".equals(yfk)){
+		    c=Double.parseDouble(yfk)*c;
+		    tuanbiao.setYfk(c.floatValue());
+			}
+			
 			tuanbiao.setId(Integer.parseInt(id));
 			isSuccess = icaiwutdfylbService.updatetdfy(tuanbiao);
 			isSuccess=true;

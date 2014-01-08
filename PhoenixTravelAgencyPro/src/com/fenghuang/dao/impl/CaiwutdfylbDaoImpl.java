@@ -39,7 +39,6 @@ public class CaiwutdfylbDaoImpl extends BaseDao implements IcaiwutdfylbDao{
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 	@Override
 	public Pagination<Tuanbiao> getPaginationfkqr(int currentPage,
 			int numPerPage, Tuanbiao tuanbiao) throws Exception {
