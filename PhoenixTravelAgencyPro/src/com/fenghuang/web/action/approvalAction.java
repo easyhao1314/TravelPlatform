@@ -124,4 +124,23 @@ public class approvalAction {
 		result.put("success", isSuccess);
 		return result;
 	}
+	
+	@RequestMapping("fenghuang/updateApproval.do")
+	@ResponseBody
+	public Map<String,Object> updateApproval(HttpServletRequest request,
+			HttpServletResponse response){
+		Approval a = new Approval();
+		boolean isSuccess = false;
+		Map<String,Object> result = new HashMap<String, Object>();
+		try {
+			is.ApprovalUpdate(a);
+			isSuccess=true;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			isSuccess=false;
+			e.printStackTrace();
+		}
+		result.put("success", isSuccess);
+		return result;
+	}
 }

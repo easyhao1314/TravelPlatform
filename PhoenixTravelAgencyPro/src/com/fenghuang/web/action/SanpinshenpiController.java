@@ -73,10 +73,10 @@ public class SanpinshenpiController {
 	
 	@RequestMapping("fenghuang/addsanpinshenpi.do")
 	@ResponseBody
-	public Map<String,Object> addsanpinshenpi(HttpServletRequest request,HttpServletResponse response,String tuanNo,String beizhu) {
+	public Map<String,Object> addsanpinshenpi(HttpServletRequest request,HttpServletResponse response,String shenpituanNo,String shenpibeizhu) {
 	Sanpinshenpi s= new Sanpinshenpi();
-	s.setBeizhu(beizhu);
-	s.setTuanNo(tuanNo);
+	s.setBeizhu(shenpibeizhu);
+	s.setTuanNo(shenpituanNo);
 	boolean isSuccess = false;
 	Map<String,Object> result = new HashMap<String, Object>();
 	try {

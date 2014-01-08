@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -276,8 +277,18 @@ public class SanpinAction {
 					}
 				}
 			}
+			//测试
+			
+			List<Map<String,Object>> l =  new ArrayList();
+			Map<String, Object> m= new HashMap<String, Object>();
+			m.put("tuanNo", "test");
+			l.add(m);
+			
+			returnValue.put("footer",l);
+			//测试END
 			returnValue.put("total",  pagination.getTotalRows());
-			returnValue.put("rows", testUsers);	
+			returnValue.put("rows", testUsers);
+
 			JsonConfig config = new JsonConfig();
 	     	config.registerJsonValueProcessor(Timestamp.class,new DateJsonValueProcessor("yyyy-MM-dd"));
 	     			//把MAP转换成JSON，返回到前台

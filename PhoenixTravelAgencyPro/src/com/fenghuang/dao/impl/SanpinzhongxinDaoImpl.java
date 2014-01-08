@@ -283,6 +283,10 @@ public class SanpinzhongxinDaoImpl extends BaseDao implements ISanpinzhongxinDao
 			sb.append(",beizhu=?");
 			list.add(sanpin.getBeizhu());
 		}
+		if(sanpin.getGroupdatebeizhu()!=null && !"".equals(sanpin.getGroupdatebeizhu())){
+			sb.append(",groupdatebeizhu=?");
+			list.add(sanpin.getGroupdatebeizhu());
+		}
 		if(sanpin.tuanNo!=null && !"".equals(sanpin.getTuanNo())){
 			sb.append(" where tuanNo=?");
 			list.add(sanpin.getTuanNo());

@@ -36,11 +36,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<th data-options="field:'ck',checkbox:true"></th>
 				<th data-options="field:'shenqingDate'" width="50">申请日期</th>
 				<th data-options="field:'shiwu',formatter:tuituanshiwu" width="50">事务说明</th>
-				<th data-options="field:'shenqingren'" width="50">申请人</th>
+				<th data-options="field:'userName'" width="50">申请人</th>
 				<th data-options="field:'shenpiDate'" width="50">审批日期</th>
 				<th data-options="field:'shenheren'" width="50">审核人</th>
 				<th data-options="field:'approvalStatus',formatter:shenpiStatus" width="50">审批状态</th>
-				<th data-options="field:'shenpitype'" width="50">审批类型</th>
+				<th data-options="field:'approvaltype'" width="50">审批类型</th>
 				<th data-options="field:'approvaltuanNo'" width="50">申请团号</th>
 				<th data-options="field:'beizhu'" width="50">操作</th>
 			</tr>

@@ -195,8 +195,7 @@
 	var row = $("#dg").datagrid("getSelected");
 			$.messager.confirm('提示', '系统会删除该行程的所有日程！！，是否继续?', function(r){
 							if (r){
-							}
-					$.ajax({
+								$.ajax({
 					url :"fenghuang/deletexianlu.do?xianid="+row.xianid,
 					data :row.xianid,
 					dataType : "json",
@@ -206,6 +205,8 @@
 					}
 					
 					});
+							}
+					
 			});
 	}
 	

@@ -42,12 +42,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<td><strong><input id="userName" name="userName" readonly="readonly" class="easyui-validatebox"></strong>
 					
 				</td>
+				<td><div class="fitem">
+						<strong><label>目标人群:</label></strong>
+				</td>
+				<td><strong><input name="renqun" readonly="readonly" class="easyui-validatebox"></strong>
+					
+				</td>
+				
+				<td><div class="fitem">
+						<strong><label>产品品牌:</label></strong>
+				</td>
+				<td><strong><input name="prand" readonly="readonly" class="easyui-validatebox"></strong>
+					
+				</td>
 			</tr>
 		<tr>
 				<td><div class="fitem">
-						<strong><label>出团日期:</label></strong>
+						<strong><label>大客户价:</label></strong>
 				</td>
-				<td><strong><input name="groupdate" readonly="readonly" class="easyui-validatebox"></strong>
+				<td><strong><input name="dakehujia" readonly="readonly" class="easyui-validatebox"></strong>
 					
 				</td>
 				<td><div class="fitem">
@@ -57,11 +70,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					
 				</td>
 				<td><div class="fitem">
+						<strong><label>儿童占床:</label></strong>
+				</td>
+				<td><strong><input  readonly="readonly" name="ertongzhanchuang" class="easyui-validatebox"></strong>
+					
+				</td>
+				<td><div class="fitem">
+						<strong><label>儿童不占床:</label></strong>
+				</td>
+				<td><strong><input name="ertongbuzhanchuang" readonly="readonly" class="easyui-validatebox"></strong>
+					
+				</td>
+				<td><div class="fitem">
 						<strong><label>自备签价:</label></strong>
 				</td>
 				<td><strong><input name="zibeiqianjia" readonly="readonly" class="easyui-validatebox"></strong>
 					
 				</td>
+				
 			</tr>
 			<tr>
 				<td><div class="fitem">
@@ -80,6 +106,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<strong><label>确认人数:</label></strong>
 				</td>
 				<td><strong><input name="tdjb" readonly="readonly" class="easyui-validatebox"></strong>
+					
+				</td>
+				<td><div class="fitem">
+						<strong><label>出团日期:</label></strong>
+				</td>
+				<td><strong><input name="groupdate" readonly="readonly" class="easyui-validatebox"></strong>
 					
 				</td>
 			</tr>
@@ -120,28 +152,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<th data-options="field:'ck',checkbox:true">id</th>
 				<th data-options="field:'name',editor:'text'" width="80">姓名</th>
 				<th data-options="field:'sex',editor:'text', formatter:function(value,row){
-	var sexinfo = '女';
-	if(row.sex=15){
-		sexinfo='男';
-	}
-return sexinfo;
+return row.sexName;
 },
-editor:{
-type:'combobox',
-editable:false,
-options:{
-valueField:'value',
-textField:'label',
-data: [{
-			label: '男',
-			value: '15'
-		},
-		{
-			label: '女',
-			value: '16'
-		}],
-		panelHeight:'auto'
-}
+                        editor:{
+                            type:'combobox',
+                            options:{
+                                valueField:'sex',
+                                textField:'sex',
+                                url:'js/demo/combobox/combobox_data1.json',
+                                required:true
+                            }
+
+
+
+
+
+
+
 }">性别</th>
 				<th data-options="field:'sfzn',editor:'text'" width="80">证件号</th>
 				<th data-options="field:'telePhone',editor:'text'" width="80">联系电话</th>
@@ -215,7 +242,7 @@ return zhuantuanshenpi;
         <form id="sanpincaiwuform" action="">
         	<input title="款项说明" type="hidden" id="kuanxiangshuoming" name="kxsm" class="easyui-validatebox">
         	款项：<input id="kuanxiang" class="easyui-combotree"  data-options="url:'js/demo/combotree/sanpincaiwukuanxiang.json',method:'get',required:true" style="width:200px;"><br><br>
-        	金额：<input id="yishou" name="yishou"  style="width: 300px;"data-options="required:true" class="easyui-numberspinner" min="1" max="10000000"><br><br>
+        	金额：<input id="yishou" name="yishou"  style="width: 300px;"data-options="required:true" class="easyui-numberspinner" min="1" max="10000000" required><br><br>
         	备注：<input id="beizhu" name="beizhu"  style="width: 300px;" class="easyui-validatebox"><br><br>
         	<input id="tuanNo" name="tuanduimc" type="hidden" value="${param.tuanNo }"  class="easyui-validatebox">
         	<input id="yingshou" name="yingshou" type="hidden"  class="easyui-validatebox">
@@ -321,7 +348,7 @@ return sexinfo;
 		$('#tuanNo').attr('value',$('#tNo').val());
 		var tName = $('#tName').val();
 		$('#tuanName').attr('value',tName);
-		
+		document.forms["sanpincaiwuform"].reset();
 		$('#fukuandlg').dialog('open');
 		
 	}
@@ -330,12 +357,13 @@ return sexinfo;
 		$('#kuanxiangshuoming').val(val);
 		var bmid = $('#bmid').val();
 		var yishou = $('#yishou').val();
-		if(val=='押金' || val=='全款包含押金'){
+		if(val=='押金'){
 		$.ajax({
 					url :"fenghuang/updatebaomingshenpi.do?bmid="+bmid+"&yajin="+1,
 					data : bmid,
 					dataType : "json",
 					success : function(data) {
+					$('#fukuandlg').dialog('close');
 					$('#sanpincaiwudg').datagrid('reload');
 					},
 					error : function() {
@@ -536,9 +564,9 @@ var url = "fenghuang/Sanpinliebiao.do?tuanNo="+'<%=request.getParameter("tuanNo"
 			}
 			
 			var param = {
-					"shiwu" : "用户角色"+"提交",
-					"shenqingren" : 1,
-					"shenpiren" : 1,
+					"shiwu" : "用户角色提交",
+					"shenqingren" : '${sessionScope.userId}',
+					
 					"beizhu" : "客人名单: "+row.kehuname,
 					"approvaltype" : approvaltype,
 					"tuanNo" : '${param.tuanNo}',

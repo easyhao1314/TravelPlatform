@@ -55,7 +55,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <form id="sanpinshenpiform" action="">
         	<input id="id" name="id" type="hidden" class="easyui-validatebox">
         	<input id="userid" type="hidden" value="${sessionScope.userId}" class="easyui-validatebox">
-        	<input id="tuanNo" type="hidden"  class="easyui-validatebox">
+        	<input id="shenpituanNo" type="hidden"  class="easyui-validatebox">
         	审核意见：<br>
         	<textarea id="yijian" name="yijian" rows="20" cols="100%"></textarea>
         	

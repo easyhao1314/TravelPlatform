@@ -189,8 +189,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
     <input id="xianid" type="hidden">
 	<div id="mmsanpincaozuo" class="easyui-menu" style="width:120px;">
-		<div data-options="iconCls:'icon-edit'" onClick="zhuanjidiao()">转到计调报价</div>
-		<div data-options="iconCls:'icon-search'"  onClick="chajidiao()">查看订单进度</div>
+		<!-- <div data-options="iconCls:'icon-edit'" onClick="zhuanjidiao()">转到计调报价</div>
+		<div data-options="iconCls:'icon-search'"  onClick="chajidiao()">查看订单进度</div> -->
 		<div><span>行程</span>
     <div>
     <div onClick="shedingxingcheng()" data-options="iconCls:'icon-add'">生成行程</div>

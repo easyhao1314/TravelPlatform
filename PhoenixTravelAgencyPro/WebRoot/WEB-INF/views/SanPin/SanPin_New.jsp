@@ -25,9 +25,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-	<script src="js/ckeditor/ckeditor.js"></script>
-	<link href="js/ckeditor/sample.css" rel="stylesheet">
+	<script src="ckeditor/ckeditor.js"></script>
+	<link href="ckeditor/samples/sample.css" rel="stylesheet">
 	
+	<script>
+
+		var editor, html = '';
+
+		function createEditor() {
+			if ( editor )
+				return;
+
+			// Create a new editor inside the <div id="editor">, setting its value to html
+			var config = {};
+			editor = CKEDITOR.appendTo( 'editor', config, html );
+		}
+
+		function removeEditor() {
+			if ( !editor )
+				return;
+
+			// Retrieve the editor contents. In an Ajax application, this data would be
+			// sent to the server or used in any other way.
+			document.getElementById( 'editorcontents' ).innerHTML = html = editor.getData();
+			document.getElementById( 'contents' ).style.display = '';
+
+			// Destroy the editor.
+			editor.destroy();
+			editor = null;
+		}
+
+	</script>
 	
 
   </head>
@@ -50,19 +78,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </table>
   <table>
    	<tr>
-  	<td>线路名称：</td><td><input class="easyui-validatebox" type="text" required="true" name="tuanName" ></input></td>
+  	<td>线路名称：</td><td><input  name="tuanName" class="easyui-validatebox" type="text"  data-options="required:true" ></input></td>
   	<td></td><td></td>
   	<td>出团编号：</td><td>根据地域类型生成<input name="tuanNo" type="hidden" class="easyui-validatebox"   readonly="readonly"   ></td>
   	</tr>
   	<tr>
-  	<td>全程天数：</td><td><input id="ss" name="numberday" class="easyui-numberspinner" min="1" max="100" required="true" style="width:133px;"></input></td>
+  	<td>全程天数：</td><td><input id="ss" name="numberday" class="easyui-numberspinner" min="1" max="100"    data-options="required:true" ></input></td>
   	<td></td><td></td>
   	<td>全程国家数：</td><td><input id="ss" name="numbercountry" class="easyui-numberspinner" min="1" max="100"  style="width:133px;"></input></td>
   	</tr>
   	<tr>
-  	<td>出团日期：</td><td><input id="dd" name="groupdate" class="easyui-datebox"  ></input></td>
+  	<td>出团日期：</td><td><input id="dd" name="groupdate" class="easyui-datebox"   ></input></td>
   	<td></td><td></td>
-  	<td>预收人数：</td><td><input id="ss" name="numbermaster" class="easyui-numberspinner" min="1" max="100" style="width:133px;" required="true"></input></td>
+  	<td>预收人数：</td><td><input id="ss" name="numbermaster" class="easyui-numberspinner" min="1" max="100" data-options="required:true"></input></td>
   	</tr>
   	  	<tr>
   	  	
@@ -158,6 +186,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    预报人数: <input name="predict" class="easyui-numberspinner" min="1" max="100" style="width:133px;" ></input><font color="FF0000">最大数值为：100</font>
 
   </div>
+  
+  
+  
+  
+  
+  
+  
         <div>
         <h4>扩展信息</h4>
         		<%
@@ -255,4 +290,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 	</script>
   </body>
+  
 </html>

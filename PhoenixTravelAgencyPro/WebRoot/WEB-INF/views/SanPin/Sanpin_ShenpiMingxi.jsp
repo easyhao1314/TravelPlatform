@@ -201,8 +201,6 @@ return zhuantuanshenpi;
   	return '<a href="javascript:updateshenpi(2);" style="text-decoration:none; width:auto;">通过</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:updateshenpi(3);" style="text-decoration:none; width:auto;">驳回</a>';
   	}
   	function updateshenpi(jieguo){
-  		alert('${param.abmid}');
-  		alert(jieguo);
   		
   		var url = "fenghuang/updatebaomingshenpi.do?bmid="+'${param.abmid}';
   		if('${param.shenpitype}'==2){url+="&zhuantuan="+jieguo;}
@@ -214,12 +212,20 @@ return zhuantuanshenpi;
 					data : '${param.abmid}',
 					dataType : "json",
 					success : function(data) {
-						if (data.success) {
-							$.messager.alert("成功", "审批通过！", "info");
-							$("#caozuodg").datagrid('reload');
-						} else {
-							$.messager.alert("错误", "审批失败!", "error");
-						}
+						//$.ajax({
+			
+					//			url : "fenghuang/updateApproval.do",
+					//			data : 1,
+					//			dataType : "json",
+						//		success : function(data) {
+
+						//		},
+						//		error : function() {
+						//		$.messager.alert("查询失败", "服务器请求失败!", "error");
+						//		}
+						//			});
+										$("#caozuodg").datagrid('reload');
+						
 					},
 					error : function() {
 						$.messager.alert("失败", "服务器请求失败!", "error");

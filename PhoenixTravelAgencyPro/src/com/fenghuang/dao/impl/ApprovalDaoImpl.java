@@ -33,11 +33,24 @@ public class ApprovalDaoImpl extends BaseDao implements IapprovalDao {
 	@Override
 	public boolean ApprovalUpdate(Approval a) throws Exception {
 		// TODO Auto-generated method stub
-		String sql="";
+		String sql="update Approval SET shenpitype=shenpitype+1-1";
 		StringBuffer sb = new StringBuffer(sql);
 		List l = new ArrayList();
+		if(a.getShenheren()!=0){
+			sb.append(",shenheren=?");
+			l.add(a.getShenheren());
+		}
+		if(a.getShenpiDate()!=null && !"".equals(a.getShenpiDate())){
+			sb.append(",shenpidate=?");
+			l.add(a.getShenpiDate());
+		}
+		if(a.getApprovalStatus()!=0){
+			sb.append(",approvalStatus=?");
+			l.add(a.getApprovalStatus());
+		}
 		
-		return false;
+		int num = this.update(sb.toString(),l.toArray());
+		return num>0;
 	}
 
 	@Override
@@ -49,7 +62,7 @@ public class ApprovalDaoImpl extends BaseDao implements IapprovalDao {
 	public Pagination<Approval> getByQueryConditionPagination(int currentPage, int numPerPage,Approval a)
 			throws Exception {
 		// TODO Auto-generated method stub
-		String sql = "select *  from approval where 1=1";
+		String sql = "select approval.*,users.userName,CASE shenpitype WHEN '1' THEN '退团' WHEN '2' THEN '转团' ELSE '报名' END AS approvaltype  from approval LEFT JOIN users ON users.id=shenqingren where 1=1";
 		StringBuffer sb = new StringBuffer(sql);
 		if(a.getApprovalStatus()!=0){
 			sb.append(" AND approvalStatus = '"+a.getApprovalStatus()+"'");

@@ -19,18 +19,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-	<style type="text/css">
-		.aao{
-			background-image: url("Image/ao.png");
-		}
-	</style>
-
   </head>
   
   <body>
 	<div id="fabutb">
 		<a href="javascript:quxiaofabu();" class="easyui-linkbutton"
-			iconCls="icon-cut" plain="true">取消发布该团</a>
+			iconCls="icon-cut" plain="true">取消发布该团</a>&nbsp;&nbsp;|
+		<a href="javascript:fukuandialogopen();" class="easyui-linkbutton"
+			iconCls="icon-remove" plain="true">请求付款</a>
 		
 	</div>
     <table id="sanpinyifabudg" class="easyui-datagrid"
@@ -46,8 +42,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<th data-options="field:'tonghang'" width="50">同行价</th>
 				<th data-options="field:'zhikejia'" width="50">直客价</th>
 				<th data-options="field:'numbermaster',formatter:yushouyishou"  width="50">预收/已收</th>
+				<th data-options="field:'prand'" width="50">产品品牌</th>
 				<th data-options="field:'shoukestate',formatter:openshouke" width="50">收客状态</th>
-				<th data-options="field:'productbrand',hidden:true" width="50">产品品牌_隐藏的</th>
+				
 			</tr>
 		</thead>
 	</table>
@@ -64,7 +61,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <form id="sanpinshenpiform" action="">
         	<input id="tuanNo" name="tuanNo" type="hidden" class="easyui-validatebox">
         	备注说明：<br>
-        	<textarea id="beizhu" name="beizhu" rows="20" cols="100%"></textarea>
+        	<textarea id="shenpibeizhu" name="beizhu" style="width: 600px; height: 300px;"></textarea>
         	
         </form>
     <div data-options="region:'south',border:false" style="text-align:right;padding:5px 0 0;">
@@ -72,6 +69,71 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <a class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" href="javascript:void(0)" onclick="javascript:$('#sanpinshenpiwindow').window('close');">取消</a>
     </div>
     </div>
+    
+    
+	<!-- 应付款窗口 -->
+	
+	<div id="fukuan" class="easyui-dialog" title="应付款窗口" data-options="iconCls:'icon-save',closed:true,buttons: [{
+                    text:'提交',
+                    iconCls:'icon-ok',
+                    handler:function(){
+                        caozuozhongxinsave();
+                    }
+                },{
+                    text:'关闭',
+                    iconCls:'icon-cancel',
+                    handler:function(){
+                        $('#fukuan').dialog('close');
+                    }
+                }]" style="width:500px;height:300px;padding:10px;">
+                <div class="demo-info">
+        <div class="demo-tip icon-tip"></div>
+        <div>提示：应付款最大金额为100万</div>
+    </div>
+        <form id="fukuanform" action="">
+        	<table  style="width: 400px;">
+        	<tr>
+        		<td>应付款项： 
+        		<input id="kxsm"   class="easyui-combotree"  data-options="url:'js/demo/combotree/fukuanTree.json',method:'get',required:true" style="width:320px;">
+    			<input title="款项说明" type="hidden" id="kuanxiang" name="kxsm" class="easyui-validatebox">
+    			</td>
+        	</tr>
+        	<tr>
+        	<td>收款单位：<input name="khmc" class="easyui-validatebox" required style="width:320px;"  /></td>
+        	</tr>
+        	<tr>
+        	<td>应付日期： <input id="fukuantime" name="fukuantime" type="text" class="easyui-datebox" required="required" style="width:320px;"></td>
+        	</tr>
+        	<tr>
+        	<td>金&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;额：<input  name="yfk" class="easyui-numberspinner" min="0" max="1000000"    data-options="required:true" style="width:320px;" ></input></td>
+        	</tr>
+        	<tr>
+        	<td>备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注：<input name="beizhu" class="easyui-validatebox" style="width: 320px;" /></td>
+        	</tr>
+        	
+        	
+        	<tr>
+        	<td>
+        	<input id="huituantime"  name="huituantime" class="easyui-validatebox" type="hidden" style="width: 150px;" />
+        	<input id="shenfenid" type="hidden" name="shenfenid" value="3" class="easyui-validatebox" style="width: 150px;" />
+        	<input id="shanchu" type="hidden" name="shanchu" value="1" class="easyui-validatebox" style="width: 150px;" />
+        	<input id="fpxk" type="hidden" name="fpxk" value="0" class="easyui-validatebox" style="width: 150px;" />
+			<input id="ykfp" type="hidden" name="ykfp" value="0" class="easyui-validatebox" style="width: 150px;" />
+        	<input id="ykfp" type="hidden" name="ysyfid" value="2" class="easyui-validatebox" style="width: 150px;" />
+        	<input id="caiwuid" type="hidden" name="caiwuid" value="1" class="easyui-validatebox" style="width: 150px;" />
+        	<input id="team" type="hidden" name="team"  class="easyui-validatebox" style="width: 150px;" />
+        	<input id="huilvid" type="hidden" name="huilvid" value="1" class="easyui-validatebox" style="width: 150px;" />
+        	<input id="tuanduimc" name="tuanduimc" type="hidden" class="easyui-validatebox" >
+        	<input  name="xiaoshou" value="${sessionScope.userId}" type="hidden" class="easyui-validatebox" >
+        	</td>
+        	</tr>
+        	</table>
+        </form>
+        
+    </div>
+	<!-- 应付款窗口END -->
+	
+	
 	
 	
 	
@@ -117,9 +179,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    	  		var row = $('#sanpinyifabudg').datagrid('getSelected');
    	  		if(row.length==0){return;}
    	  		$('#tuanNo').attr('value',row.tuanNo);
-   	  		$('#sanpinshenpiwindow').window('open');
+   	  		$('#sanpinshenpiwindow').dialog('open');
    	  }
    	  function sanpinshenpiwindowsubmit(){
+   	  var row = $('#sanpinyifabudg').datagrid('getSelected');
+   	  var shenpibeizhu = $('#shenpibeizhu').val();
+   	  alert(row.tuanNo);
+   	  var url = "fenghuang/addsanpinshenpi.do?shenpituanNo="+row.tuanNo+"&shenpibeizhu="+shenpibeizhu;
+   	      	$.ajax({
+   	      		url:url,
+   	      		data:row.tuanNo,
+   	      		datatype:"json",
+   	      		success:function(data){
+   	      			$.messager.alert("保存成功", "保存成功!", "info");
+   	      		},
+   	      		error : function() {
+						$.messager.alert("修改失败", "服务器请求失败!", "error");
+				}
+   	      	
+   	      	});
+   	  
+   	  return;
    	  	$('#sanpinshenpiform').form('submit', {
 				url : 'fenghuang/addsanpinshenpi.do',
 				onSubmit : function() {
@@ -140,7 +220,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    	  }
    	  
    	  function baoming(val,row){
-   	  return '<a class="aao" href="javascript:yifabubaoming(\''+row.tuanNo+'\')" style="text-decoration:none;background-image:url(\'Image/tu.png\'); width:141px; height:21px; padding-left: 10px ; display:block;  ">'+row.tuanName+'</a>';
+   	  return '<a href="javascript:yifabubaoming(\''+row.tuanNo+'\')" style="text-decoration:none;  ">'+row.tuanName+'</a>';
    	  }
    	  function yifabubaoming(tuanNo){
    	   var url= "Sanpin_yibufabaoming.do?tuanNo="+tuanNo;
@@ -158,7 +238,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    	      }
    	    function xingcheng(val,row){
    	    //<a style="background-image: url('Image/tu.png'); width:140px; height:21px; padding-left: 10px ; display:block; " >TH-202022003332</a>
-   	    return '<a href="javascript:openSanpinDetail(\''+row.tuanNo+'\',\''+row.tuanName+'\',\''+row.xlid+'\')" style="text-decoration:none; background-image:url(\'Image/tu.png\'); width:141px; height:21px; padding-left: 10px ; display:block; ">'+row.tuanNo+'</a>';
+   	    return '<a href="javascript:openSanpinDetail(\''+row.tuanNo+'\',\''+row.tuanName+'\',\''+row.xlid+'\')" style="text-decoration:none;  ">'+row.tuanNo+'</a>';
    	    }
    	    function openSanpinDetail(tuanNo,tuanName,xlid){
    				var url= "Sanpin_mingxi.do?tuanNo="+tuanNo+"&tuanName="+tuanName+"&xianid="+xlid;
@@ -176,6 +256,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				      //  closable : true,
 				         }); 
    			}
+   		function fukuandialogopen(){
+   		var row = $('#sanpinyifabudg').datagrid('getSelected');
+   	$('#tuanduimc').attr('value',row.tuanNo);
+	$('#team').attr('value',row.tuanName);
+	$('#chutuantime').attr('value',row.chutuantime);
+	$('#huituantime').attr('value',row.huituantime);
+   				$('#fukuan').dialog('open');
+   		}
+   		
+   		//付款保存
+   		function caozuozhongxinsave() {
+		var val = $('#kxsm').combotree('getText');
+		$('#kuanxiang').val(val);
+			$('#fukuanform').form('submit', {
+				url : 'fenghuang/inserttuanbiao.do',
+				onSubmit : function() {
+					return $(this).form('validate');
+				},
+				success : function(result) {
+					var result = eval('(' + result + ')');
+					if (result.success) {
+						$.messager.alert("保存成功", "保存成功！", "info");
+						$('#fukuan').dialog('close');
+					} else {
+						$.messager.alert("保存失败", "保存失败!", "error");
+					}
+				}
+			});
+		}
 	</script>
   </body>
 </html>

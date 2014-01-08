@@ -238,7 +238,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						 		+'<tr><td width="%75" >'+data.rows[i].richenganpai+'</td><td id="ss"  width="15%"> <div id="sanpintupian'+i+'"><img   alt="暂无图片" src="'+data.rows[i].richengtupian+'" width="170px" height="120px" onclick="openrichengtupiandlg('+data.rows[i].riid+')" style=""></div></td></tr>' 
 
 								+''
-						 		+'<tr><td>早：'+data.rows[i].zaos+' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;午：'+data.rows[i].zhongs+' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 晚：'+data.rows[i].wans+'</td><td>住宿：'+data.rows[i].jiudian+'</td></tr>'
+						 		+'<tr><td>早：'+data.rows[i].zaos+''+data.rows[i].zao+' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;午：'+data.rows[i].zhongs+' '+data.rows[i].zhong+' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 晚：'+data.rows[i].wans+' '+data.rows[i].zao+'</td><td>住宿：'+data.rows[i].jiudian+' </td></tr>'
     							+'</table>';
     							
 						
