@@ -67,12 +67,12 @@
 					<li iconCls="icon-gears"><a
 						href="javascript:open1('付款审核','fukuanshenhe.do');">付款 审核</a></li>
 				</ul>
-				<ul>
+				<!-- <ul>
 					<li iconCls="icon-gears"><a
 						href="javascript:open1('付款审批','a.do');">付款审批</a></li>
 				</ul>
 
-
+                -->
 
 				<ul>
 					<li iconCls="icon-gears"><a

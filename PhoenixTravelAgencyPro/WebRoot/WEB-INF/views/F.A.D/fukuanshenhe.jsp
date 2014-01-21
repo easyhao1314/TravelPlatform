@@ -59,7 +59,7 @@
 		    <a href="javascript:caiwufkshselecta();" class="easyui-linkbutton" iconCls="icon-add" plain="true">取消付款</a>
 	    	<a href="javascript:void(0);" onclick="javascript:$('#fukuanshenhesousuo').dialog('open');" class="easyui-linkbutton" iconCls="icon-save" plain="true">查询</a>  
 	    	<a href="javascript:cufkshselect(1)" class="easyui-linkbutton" iconCls="icon-search" plain="true">待确认审批</a>
-			<a href="javascript:cufkshselect(2)" class="easyui-linkbutton" iconCls="icon-search" plain="true">已确认审批</a>
+			<a href="javascript:cufkshselect(4)" class="easyui-linkbutton" iconCls="icon-search" plain="true">已确认审批</a>
 	    	</div>
 	<table id="fukuanshenhedg" class="easyui-datagrid"
 		data-options="url:'fenghuang/caiwuqrfkselect.do?shenfenid=3&&ysyfid=2&&caiwuid=1',border:false,singleSelect:true,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
@@ -75,7 +75,8 @@
 				<th data-options="field:'syifu'" width="50">已付金额</th>
 				<th data-options="field:'xiaoshouyuan'" width="50">销售</th>
 				<th data-options="field:'review',formatter:cwfkbz" width="50">财务审核</th>
-				<th data-options="field:'confirmed',formatter:cwfkbz2" width="50">出纳确认</th>
+				<th data-options="field:'cashier',formatter:cwfkbz2" width="50">出纳确认</th>
+				 <th data-options="field:'tuanpiandizhi',formatter:abc" width="50px">图片地址</th>
 			</tr>
 		</thead>
 	</table>
@@ -89,7 +90,7 @@
 					<td>
 					<input id="id" name="id" class="easyui-validatebox" onfocus=this.blur() hidden="true">							
 					</td>
-					<td><input id="fkshid" value="2"  class="easyui-validatebox" hidden="true" onfocus=this.blur()>
+					<td><input id="fkshid" value="4"  class="easyui-validatebox" hidden="true" onfocus=this.blur()>
 				</td> 						
 				</tr>
 				<tr>
@@ -192,9 +193,9 @@
 		}
 		//备注
 		function cwfkbz2(val,row){
-		   var shouke=null;
-		   	 if(row.confirmed==1){shouke="未付款";}
-		   	 if(row.confirmed==2){shouke="已付款";}
+		    var shouke=null;
+		   	 if(row.cashier==1){shouke="未确认";}
+		   	 if(row.cashier==2){shouke="已确认";}
 	
 		     return '<div onclick="shoukeclick(event,'+row.tuanNo+')" style="width: auto;">'+shouke+'</div>';
 		   }
@@ -205,8 +206,14 @@
 		   	 if(row.review==2){shouke="已审核"; return '<div onclick="shoukeclick(event,'+row.tuanNo+')" style="width: auto;background-color:#40FF00;color:red">'+shouke+'</div>';}	    
 		   }
 		   
-		   
-
+		   function abc(val,row){
+	       var url = row.tupiandizhi;
+	       // <div onclick="dakai("dd")" ><img alt="修改" src="'+row.tupiandizhi+'" width="100px" height="100px"></div>
+            return '<a href="javascript:void(0);" onclick="dakai(\''+url+'\')"><img alt="修改" src="'+row.tupiandizhi+'" width="100px" height="50px"></a>';
+	       }
+           function dakai(url){
+           window.open('tupian.jsp?url='+url);
+           }
 		
 		
 		//按id查询
@@ -297,6 +304,9 @@
 				}
 			});
 		}
+		
+		
+	
 	</script>
 </body>
 </html>

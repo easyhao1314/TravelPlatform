@@ -195,9 +195,11 @@
 		      var a = $("#id").val();
 		      var dizhi;
 		      if(a==null||""==a){
+		    //  alert(a);
 		       dizhi='fenghuang/bizhonghuilvinsert.do';
 		      }
 		      else if(a!=null||!""==a){
+		     // alert(a);
 		     dizhi='fenghuang/bizhonghuilvupdate.do';
 		      }
 			$('#bzhlszform').form('submit', {
@@ -208,11 +210,10 @@
 				success : function(result) {
 					var result = eval('(' + result + ')');
 					if (result.success) {
-						$.messager.alert("保存成功", "保存成功！", "info");
-						$('#bzhlszid').dialog('close');
+						$.messager.alert("消息", "修改成功！", "info");
 						$('#bzhlszdg').datagrid('reload');
 					} else {
-						$.messager.alert("保存失败", "保存失败!", "error");
+						$.messager.alert("消息", "修改失败!", "error");
 						$('#bzhlszdg').datagrid('reload');
 					}
 				}

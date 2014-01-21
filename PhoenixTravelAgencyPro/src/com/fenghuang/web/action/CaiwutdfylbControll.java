@@ -101,6 +101,7 @@ public class CaiwutdfylbControll {
 		
 		try {
 			Double c=null;
+			Double b=null;
 		    if(syingshou!=null&&!"".equals(syingshou)){
 			yingshou=syingshou;
 		    }
@@ -113,13 +114,16 @@ public class CaiwutdfylbControll {
 				List<Map<String, Object>> a = pagination.getResultList();
 				Object a1 =a.get(0).get("huilv").toString();
 				 c = Double.parseDouble(a1.toString());
-				 if(Double.parseDouble(huilv)!=c){
+				 if(Double.parseDouble(huilv)>c){
+					 c=Double.parseDouble(huilv);
+				 }
+				 else if(Double.parseDouble(huilv)==c){
+					  c=1.0;
+				 }
+				 else if(Double.parseDouble(huilv)!=c){
 				if(c>=1){
 					c=1/c;		
 				}
-				 }
-				 else{
-					 c=1.0;
 				 }
 				tuanbiao.setHuilvID(Integer.parseInt(huilvID));
 			}
@@ -134,12 +138,16 @@ public class CaiwutdfylbControll {
 				tuanbiao.setYushoutime(dategroupdate);
 				}
 			if(yingshou!=null&&!"".equals(yingshou)){
-				c=Double.parseDouble(yingshou)*c;	
-			tuanbiao.setYingshou(c.floatValue());
+				b=Double.parseDouble(yingshou)*c;	
+			tuanbiao.setYingshou(b.floatValue());
 			}
 			if(yishou!=null&&!"".equals(yishou)){
-				c=Double.parseDouble(yishou)*c;
-				tuanbiao.setYishou(c.floatValue());
+				System.out.println(c);
+				System.out.println(yishou);
+				b=Double.parseDouble(yishou)*c;
+				System.out.println(b);
+				tuanbiao.setYishou(b.floatValue());
+				System.out.println(tuanbiao.getYishou());
 			}
 			if(ykfp!=null&&!"".equals(ykfp)){
 			tuanbiao.setYkfp(Integer.parseInt(ykfp));
@@ -148,8 +156,8 @@ public class CaiwutdfylbControll {
 			tuanbiao.setFpxk(Integer.parseInt(fpxk));
 			}
 			if(yifu!=null&&!"".equals(yifu)){
-				c=Double.parseDouble(yifu)*c;
-				tuanbiao.setYifu(c.floatValue());
+				b=Double.parseDouble(yifu)*c;
+				tuanbiao.setYifu(b.floatValue());
 			}
 			if(beizhu!=null&&!"".equals(beizhu)){
 			tuanbiao.setBeizhu(beizhu);
@@ -164,8 +172,8 @@ public class CaiwutdfylbControll {
 			tuanbiao.setKhmc(khmc);
 			}
 			if(yfk!=null&&!"".equals(yfk)){
-		    c=Double.parseDouble(yfk)*c;
-		    tuanbiao.setYfk(c.floatValue());
+		    b=Double.parseDouble(yfk)*c;
+		    tuanbiao.setYfk(b.floatValue());
 			}
 			
 			tuanbiao.setId(Integer.parseInt(id));

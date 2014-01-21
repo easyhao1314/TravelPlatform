@@ -48,7 +48,7 @@ iconCls="icon-save" plain="true">修改</a>
 data-options="url:'fenghuang/caiwutuanduifeiyong.do?tuanduimc=${param.tuanduimc}&&ysyfid=1&&shenfenid=4',border:false,singleSelect:true,fit:true,fitColumns:true, onClickRow: onClickRow,pageSize:20"
 pagination="true" toolbar="#tb1">
 <thead>
-<tr>
+<tr> 
                                   <th data-options="field:'kxsm'" width="50">款项说明</th>
                                   <th data-options="field:'khmc'" width="50">客户名称</th>
                                   <th data-options="field:'yushoutime'" width="80">预收日期</th>
@@ -59,10 +59,10 @@ pagination="true" toolbar="#tb1">
                                   <th data-options="field:'ysweifu',formatter:weishoustyle" width="50">未收（RMB）</th>	
                                   <th data-options="field:'ykfp',formatter:xinxiykfp" width="50">已开发票</th>
                                   <th data-options="field:'fpxk',formatter:xinxifpxk" width="50">发票许可</th>
-                                  <th data-options="field:'xiaoshouyuan'" width="50">销售确认</th>
+                                  <th data-options="field:'xiaoshouyuan'" width="50">前台</th>
                                   <th data-options="field:'confirmed',formatter:xinxiconfirmed" width="50">财务确认</th>
                                   <th data-options="field:'beizhu'" width="50">备注</th>
-                                  <th data-options="field:'zerenren'" width="50">责任人</th>
+                                  <th data-options="field:'zerenren'" width="50">销售</th>
 </tr>
 </thead>
 </table>
@@ -84,10 +84,10 @@ pagination="true" toolbar="#tb2">
                        <th data-options="field:'weifu'" width="50">未付(RMB)</th>	
                        <th data-options="field:'ykfp',formatter:xinxiykfp" width="50">已开发票</th>
                        <th data-options="field:'fpxk',formatter:xinxifpxk" width="50">发票许可</th>
-                       <th data-options="field:'xiaoshouyuan'" width="50">销售确认</th>
+                       <th data-options="field:'xiaoshouyuan'" width="50">计调</th>
                        <th data-options="field:'yujilirun',formatter:xinxiconfirmed" width="50">财务确认</th>
                        <th data-options="field:'beizhu'" width="50">备注</th>
-                       <th data-options="field:'zerenren'" width="50">责任人</th>
+                       <th data-options="field:'zerenren'" width="50">销售</th>
                       
 </tr>
 </thead>
@@ -664,8 +664,8 @@ pagination="true" toolbar="#tb2">
 		   }  
  function xinxifpxk(val,row){
 		   var shouke=null;
-		   	 if(row.fpxk==0){shouke="未开发票";}
-		   	 if(row.fpxk==1){shouke="已开发票";}
+		   	 if(row.fpxk==0){shouke="无";}
+		   	 if(row.fpxk==1){shouke="有";}
 		     return '<div onclick="shoukeclick(event,'+row.tuanNo+')" style="width: auto;">'+shouke+'</div>';
 		   }
 

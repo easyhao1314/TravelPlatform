@@ -79,9 +79,9 @@
 				<th data-options="field:'weifu'" width="50">未付</th>
 				<th data-options="field:'ykfp',formatter:yfktjykfp" width="50">已开发票</th>
 				<th data-options="field:'fpxk',formatter:yfktjfpxk" width="50">发票许可</th>
-				<th data-options="field:'aaa'" width="50">销售确认</th>
+				<th data-options="field:'aaa'" width="50">销售</th>
 			    <th data-options="field:'confirmed',formatter:yfktjconfirmed" width="50">财务确认</th>
-			    <th data-options="field:'zerenren'" width="50">责任人</th>
+			    <th data-options="field:'zerenren'" width="50">负责人</th>
 			</tr>
 		</thead>
 	</table>
@@ -109,8 +109,8 @@
 	  //备注
 		   function yfktjfpxk(val,row){
 		   var shouke=null;
-		   	 if(row.fpxk==0){shouke="未开发票";}
-		   	 if(row.fpxk==1){shouke="已开发票";}
+		   	 if(row.fpxk==0){shouke="无";}
+		   	 if(row.fpxk==1){shouke="有";}
 		     return '<div onclick="shoukeclick(event,'+row.tuanNo+')" style="width: auto;">'+shouke+'</div>';
 		   }
 		function onClickRow(index) {

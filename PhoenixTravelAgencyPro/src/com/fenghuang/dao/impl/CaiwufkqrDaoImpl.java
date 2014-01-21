@@ -24,7 +24,7 @@ public class CaiwufkqrDaoImpl extends BaseDao implements IcaiwufkqrDao {
 		// TODO Auto-generated method stub                              
 		String sql="insert into tuanbiao (" +
 				"payment,team,suppliers,caozuo,xiaoshou,caiwuid,zhanghaoid,shenfenid,chutuantime,huituantime," +
-				"yingshou,yishou,yifu,tuikuan,fanyong,yujilirun,shijilirun,danhao,fukuantime,yushoutime," +
+				"yingshou,yishou,yifu,tuikuan,fanyong,tuanpiandizhi,shijilirun,danhao,fukuantime,yushoutime," +
 				"huilvID,ykfp,fpxk,fuzeren,zhuangtai,ysyfID,khmc,kxsm,renshu,ddje," +
 				"fankuan,yajin,cgje,cglr,zhichu,maoli,maolilv,beizhu,yfk,baojia," +
 				"chengben,tuanduimc,shanchu) values(" +
@@ -36,7 +36,7 @@ public class CaiwufkqrDaoImpl extends BaseDao implements IcaiwufkqrDao {
 		int a=this.update(sql,tuanbiao.getPayment(),tuanbiao.getTeam(),tuanbiao.getSuppliers(),tuanbiao.getCaozuo(),tuanbiao.getXiaoshou(),
 				tuanbiao.getCaiwuid(),tuanbiao.getZhanghaoid(),tuanbiao.getShenfenid(),tuanbiao.getChutuantime(),tuanbiao.getHuituantime(),
 				tuanbiao.getYingshou(),tuanbiao.getYishou(),tuanbiao.getYifu(),tuanbiao.getTuikuan(),tuanbiao.getFanyong(),
-				tuanbiao.getYujilirun(),tuanbiao.getShijilirun(),tuanbiao.getDanhao(),tuanbiao.getFukuantime(),tuanbiao.getYushoutime(),
+				tuanbiao.getTupiandizhi(),tuanbiao.getShijilirun(),tuanbiao.getDanhao(),tuanbiao.getFukuantime(),tuanbiao.getYushoutime(),
 				tuanbiao.getHuilvID(),tuanbiao.getYkfp(),tuanbiao.getFpxk(),tuanbiao.getFuzeren(),tuanbiao.getZhuangtai(),
 				tuanbiao.getYsyfID(),tuanbiao.getKhmc(),tuanbiao.getKxsm(),tuanbiao.getRenshu(),tuanbiao.getDdje(),
 				tuanbiao.getFankuan(),tuanbiao.getYajin(),tuanbiao.getCgje(),tuanbiao.getCglr(),tuanbiao.getZhichu(),

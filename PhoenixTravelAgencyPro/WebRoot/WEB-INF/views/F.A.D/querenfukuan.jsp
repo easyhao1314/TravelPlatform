@@ -81,7 +81,7 @@
 				<th data-options="field:'xiaoshouyuan'" width="50px">提交人</th>
 				<th data-options="field:'review',formatter:shenhezhuanhuan" width="50px">财务审核</th>
 				<th data-options="field:'cashier',formatter:openshouke" width="50px">出纳确认</th>
-			
+			   
 			</tr>
 		</thead>
 	</table>

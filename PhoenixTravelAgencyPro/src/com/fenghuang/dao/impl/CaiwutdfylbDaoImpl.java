@@ -29,8 +29,8 @@ public class CaiwutdfylbDaoImpl extends BaseDao implements IcaiwutdfylbDao{
 	@Override
 	public boolean updatetdfy(Tuanbiao tuanbiao) throws Exception {
 		// TODO Auto-generated method stub
-		 String sql = "update tuanbiao set kxsm=?,zhanghaoid=?,yfk=?,khmc=?,yushoutime=?,fukuantime=?,yingshou=?,huilvID=?,beizhu=?,ykfp=?,fpxk=? where id=?";
-		   int  rs=this.update(sql,tuanbiao.getKxsm(), tuanbiao.getZhanghaoid(),tuanbiao.getYfk(), tuanbiao.getKhmc(), tuanbiao.getYushoutime(),tuanbiao.getFukuantime(),tuanbiao.getYingshou(), tuanbiao.getHuilvID(), tuanbiao.getBeizhu(),tuanbiao.getYkfp(),tuanbiao.getFpxk(),tuanbiao.getId());
+		 String sql = "update tuanbiao set kxsm=?,zhanghaoid=?,yfk=?,khmc=?,yushoutime=?,fukuantime=?,yingshou=?,huilvID=?,beizhu=?,ykfp=?,fpxk=?,yishou=?,yfk=?,yifu=? where id=?";
+		   int  rs=this.update(sql,tuanbiao.getKxsm(), tuanbiao.getZhanghaoid(),tuanbiao.getYfk(), tuanbiao.getKhmc(), tuanbiao.getYushoutime(),tuanbiao.getFukuantime(),tuanbiao.getYingshou(), tuanbiao.getHuilvID(), tuanbiao.getBeizhu(),tuanbiao.getYkfp(),tuanbiao.getFpxk(),tuanbiao.getYishou(),tuanbiao.getYfk(),tuanbiao.getYifu(),tuanbiao.getId());
 		   return rs>0;
 	}
 
@@ -43,7 +43,7 @@ public class CaiwutdfylbDaoImpl extends BaseDao implements IcaiwutdfylbDao{
 	public Pagination<Tuanbiao> getPaginationfkqr(int currentPage,
 			int numPerPage, Tuanbiao tuanbiao) throws Exception {
 		// TODO Auto-generated method stub
-		StringBuffer sql=new StringBuffer("SELECT z.tuanName AS sanpinName,z.groupdate as sanpinchutuan,z.Tourdate as sanpinhuituan, jiantuanren.userName as zerenren,t.*,f.cashier,f.confirmed,f.review,f.`status`,sum(ROUND(t.yingshou*b.huilv,2)) as syingshou ,sum(ROUND(t.yishou*b.huilv,2)) as syishou,sum(ROUND(t.yifu*b.huilv,2)) as syifu ,sum(ROUND(t.yfk*b.huilv,2)) as syfk ,s.userName as xiaoshouyuan,b.huilv+b.huilv-b.huilv as huilv,b.bizhong as bizhong,sum(ROUND(t.yingshou*b.huilv-t.yishou*b.huilv,2)) as weishou,sum(ROUND(t.yfk*b.huilv-t.yifu*b.huilv,2)) as weifu,sum(ROUND(t.yingshou*b.huilv-t.yfk*b.huilv,2)) as yuji from tuanbiao AS t LEFT JOIN users AS s ON s.id=t.xiaoshou LEFT JOIN bizhonghuilv as b on t.huilvID=b.id LEFT JOIN finance as f on t.caiwuid=f.id LEFT JOIN sanpinzhongxin ON t.tuanduimc = sanpinzhongxin.tuanNo LEFT JOIN users as jiantuanren ON jiantuanren.id=sanpinzhongxin.jiantuanren LEFT JOIN sanpinzhongxin as z on z.tuanNo=t.tuanduimc  where shanchu=1  ");
+		StringBuffer sql=new StringBuffer("SELECT z.tuanName AS sanpinName,z.groupdate as sanpinchutuan,z.Tourdate as sanpinhuituan, jiantuanren.userName as zerenren,t.*,f.cashier,f.confirmed,f.review,f.`status`,sum(ROUND(t.yingshou*b.huilv,2)) as syingshou ,sum(ROUND(t.yishou*b.huilv,2)) as syishou,sum(ROUND(t.yifu*b.huilv,2)) as syifu ,sum(ROUND(t.yfk*b.huilv,2)) as syfk ,s.userName as xiaoshouyuan,b.huilv+b.huilv-b.huilv as huilv,b.bizhong as bizhong,sum(ROUND(t.yingshou*b.huilv-t.yishou*b.huilv,2)) as weishou,sum(ROUND(t.yfk*b.huilv-t.yifu*b.huilv,2)) as weifu,sum(ROUND(t.yingshou*b.huilv-t.yfk*b.huilv,2)) as yuji from tuanbiao AS t LEFT JOIN users AS s ON s.id=t.xiaoshou LEFT JOIN bizhonghuilv as b on t.huilvID=b.id LEFT JOIN finance as f on t.caiwuid=f.id INNER JOIN sanpinzhongxin ON t.tuanduimc = sanpinzhongxin.tuanNo LEFT JOIN users as jiantuanren ON jiantuanren.id=sanpinzhongxin.jiantuanren LEFT JOIN sanpinzhongxin as z on z.tuanNo=t.tuanduimc  where shanchu=1   ");
 		 if(tuanbiao.getTeam()!=null&&!"".equals(tuanbiao.getTeam())){
 	    	   
 			    sql.append(" and t.team like '");

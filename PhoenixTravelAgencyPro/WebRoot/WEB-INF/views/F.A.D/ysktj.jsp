@@ -76,9 +76,9 @@
 			    <th data-options="field:'weishou'" width="40">未收</th>
 				<th data-options="field:'ykfp',formatter:ysktjfp"width="50">已开发票</th>
 				<th data-options="field:'fpxk',formatter:ysktjxk" width="50">发票许可</th>
-				<th data-options="field:'xiaoshouyuan'" width="30">销售确认</th>
+				<th data-options="field:'xiaoshouyuan'" width="30">销售</th>
 				<th data-options="field:'caiwuid',formatter:ysktjbeizhu" width="30">财务确认</th>
-				<th data-options="field:'zerenren'" width="50">责任人</th>
+				<th data-options="field:'zerenren'" width="50">负责人</th>
 			</tr>
 		</thead>
 	</table>	
@@ -93,8 +93,8 @@
 	
 	function ysktjxk(val,row){
 		   var shouke=null;
-		   	 if(row.fpxk==0){shouke="未开发票";}
-		   	 if(row.fpxk==1){shouke="已开发票";}
+		   	 if(row.fpxk==0){shouke="无";}
+		   	 if(row.fpxk==1){shouke="有";}
 		     return '<div onclick="shoukeclick(event,'+row.tuanNo+')" style="width: auto;">'+shouke+'</div>';
 		   }
 	

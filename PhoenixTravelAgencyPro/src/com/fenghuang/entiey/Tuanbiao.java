@@ -74,10 +74,17 @@ public class Tuanbiao {
     * 
     * @pdOid ac4fe577-1915-4748-85ce-382d638d5b62 */
    public float fanyong;
-   /** 预计利润
+   /** 图片地址
     * 
     * @pdOid 0d96ef10-f4c2-4d40-bd6f-e62794ede2e4 */
-   public float yujilirun;
+public java.lang.String tupiandizhi;
+   
+   public java.lang.String getTupiandizhi() {
+   return tupiandizhi;
+   }
+   public void setTupiandizhi(java.lang.String tupiandizhi) {
+   this.tupiandizhi = tupiandizhi;
+   }
    /** 实际利润
     * 
     * @pdOid 6421bccf-6f05-4bf2-8bfe-a3e660931e05 */
@@ -282,12 +289,7 @@ public float getFanyong() {
 public void setFanyong(float fanyong) {
 	this.fanyong = fanyong;
 }
-public float getYujilirun() {
-	return yujilirun;
-}
-public void setYujilirun(float yujilirun) {
-	this.yujilirun = yujilirun;
-}
+
 public float getShijilirun() {
 	return shijilirun;
 }
