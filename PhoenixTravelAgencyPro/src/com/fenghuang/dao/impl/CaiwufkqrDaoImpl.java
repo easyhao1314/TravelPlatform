@@ -24,7 +24,7 @@ public class CaiwufkqrDaoImpl extends BaseDao implements IcaiwufkqrDao {
 		// TODO Auto-generated method stub                              
 		String sql="insert into tuanbiao (" +
 				"payment,team,suppliers,caozuo,xiaoshou,caiwuid,zhanghaoid,shenfenid,chutuantime,huituantime," +
-				"yingshou,yishou,yifu,tuikuan,fanyong,tuanpiandizhi,shijilirun,danhao,fukuantime,yushoutime," +
+				"yingshou,yishou,yifu,tuikuan,fanyong,tupiandizhi,shijilirun,danhao,fukuantime,yushoutime," +
 				"huilvID,ykfp,fpxk,fuzeren,zhuangtai,ysyfID,khmc,kxsm,renshu,ddje," +
 				"fankuan,yajin,cgje,cglr,zhichu,maoli,maolilv,beizhu,yfk,baojia," +
 				"chengben,tuanduimc,shanchu) values(" +
