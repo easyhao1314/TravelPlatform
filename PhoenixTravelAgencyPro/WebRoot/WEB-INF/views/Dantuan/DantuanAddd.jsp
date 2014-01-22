@@ -32,7 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<form id="addForm" method="post">
 			<table align="left">
 				<tr>
-<td><div class="fitem"><label>客户名称:</label></td><td>	<select name="khId" class="easyui-combogrid" style="width:250px" data-options="
+<td><div class="fitem"><label>客户名称:</label></td><td>	<select id="kehu" name="khId" class="easyui-combogrid"  style="width:250px" data-options="
 			panelWidth: 500,
 			idField: 'id',
 			textField: 'name',
@@ -42,8 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				{field:'name',title:'客户名称',width:120},
 				{field:'lxr',title:'联系人',width:80,align:'right'},
 				{field:'telePhone',title:'联系电话',width:80,align:'right'},
-				{field:'cjtime',title:'添加时间',width:200},
-				{field:'status',title:'Status',width:60,align:'center'}
+				{field:'cjtime',title:'添加时间',width:200}
 			]],
 			fitColumns: true
 		">
@@ -461,9 +460,11 @@ data-options="
 				success : function(result) {
 					var result = eval('(' + result + ')');
 					if (result.success) {
-					$('#addKehu').dialog('close');					
+					$('#addKehu').dialog('close');		
+					$('#kehu').combogrid('reload');			
 						$.messager.alert("保存成功", "保存成功！", "info");
-						  $("#khId").combobox("reload");
+						
+						
 						 var  kehuname=$("#kehuname").val();					
 					     $("#khId").combobox('setValue', kehuname); 								
 					} else {

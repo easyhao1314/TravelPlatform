@@ -19,33 +19,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-<link rel="stylesheet" type="text/css"
-	href="js/themes/default/easyui.css">
-<link rel="stylesheet" type="text/css" href="js/themes/icon.css">
-<link rel="stylesheet" type="text/css" href="js/demo/demo.css">
-<!-- 这里主要是jquery的js文件  -->
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/jquery.easyui.min.js"></script>
-<script type="text/javascript" src="js/locale/easyui-lang-zh_CN.js"></script>
-<script type="text/javascript" src="js/jquery.json.js"></script>
-<script type="text/javascript" src="js/datagrid-groupview.js"></script>
+<link href="pirobox/css_pirobox/style_1/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="pirobox/css/css.css"/>
+<link rel="stylesheet" type="text/css" href="pirobox/content/css/default.css"/>
+<link rel="stylesheet" type="text/css" href="pirobox/css/sansation/stylesheet.css"/>
+<script type="text/javascript" src="pirobox/js/jquery.min.js"></script>
+<script type="text/javascript" src="pirobox/js/jquery-ui-1.8.2.custom.min.js"></script>
+<script type="text/javascript" src="pirobox/js/pirobox_extended.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$().piroBox_ext({
+	piro_speed : 700,
+		bg_alpha : 0.5,
+		piro_scroll : true // pirobox always positioned at the center of the page
+	});
+});
+</script>
   </head>
   
   <body>
-	<table class="easyui-datagrid" title="Footer Rows in DataGrid" style="width:700px;height:220px"
-			data-options="
-				url: 'fenghuang/Sanpinliebiao.do',
-				fitColumns: true,
-				singleSelect: true,
-				rownumbers: true,
-				showFooter: true
-			" pagination="true">
-		<thead>
-			<tr>
-				<th data-options="field:'tuanNo',width:80">tuanNo</th>
-			</tr>
-		</thead>
-	</table>
-
+<a href="pirobox/img/27.jpg" rel="gallery"  class="pirobox_gall" title="Lights"><img src="pirobox/img/27s.jpg"  /></a>
+<a href="pirobox/img/29.jpg" rel="gallery"  class="pirobox_gall" title="Sun salutation."><img src="pirobox/img/29s.jpg"  /></a>
+<a href="pirobox/img/30.jpg" rel="gallery"  class="pirobox_gall" title="Bonfire"><img src="pirobox/img/30s.jpg"  /></a>
   </body>
 </html>

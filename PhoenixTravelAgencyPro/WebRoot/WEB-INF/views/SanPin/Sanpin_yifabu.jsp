@@ -19,6 +19,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+	<link href="pirobox/css_pirobox/style_1/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="pirobox/css/css.css"/>
+<link rel="stylesheet" type="text/css" href="pirobox/content/css/default.css"/>
+<link rel="stylesheet" type="text/css" href="pirobox/css/sansation/stylesheet.css"/>
+<script type="text/javascript" src="pirobox/js/jquery.min.js"></script>
+<script type="text/javascript" src="pirobox/js/jquery-ui-1.8.2.custom.min.js"></script>
+<script type="text/javascript" src="pirobox/js/pirobox_extended.js"></script>
+<script type="text/javascript">
+
+</script>
   </head>
   
   <body>
@@ -84,7 +94,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
 	<!-- 应付款窗口 -->
 	
-	<div id="fukuan" class="easyui-dialog" title="应付款窗口" data-options="iconCls:'icon-save',closed:true,buttons: [{
+	<div id="fukuan" class="easyui-dialog" title="应付款窗口" data-options="iconCls:'icon-save',modal:true,closed:true,buttons: [{
                     text:'提交',
                     iconCls:'icon-ok',
                     handler:function(){
@@ -121,6 +131,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	<tr>
         	<td>备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注：<input name="beizhu" class="easyui-validatebox" style="width: 320px;" /></td>
         	</tr>
+        	<tr>
+        	<td> <a href="javascript:void(0)"  class="easyui-linkbutton" onclick="tupianfujiandialogopen()">打开图片附件选择窗口</a></td>
+        	</tr>
         	
         	
         	<tr>
@@ -135,6 +148,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	<input id="team" type="hidden" name="team"  class="easyui-validatebox" style="width: 150px;" />
         	<input id="huilvid" type="hidden" name="huilvid" value="1" class="easyui-validatebox" style="width: 150px;" />
         	<input id="tuanduimc" name="tuanduimc" type="hidden" class="easyui-validatebox" >
+        	<input id="tupiandizhi" name="tupiandizhi" type="hidden" class="easyui-validatebox" >
         	<input  name="xiaoshou" value="${sessionScope.userId}" type="hidden" class="easyui-validatebox" >
         	</td>
         	</tr>
@@ -144,11 +158,103 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
 	<!-- 应付款窗口END -->
 	
+	<!-- 图片选择窗口 -->
+	<div id="tupianfujian" class="easyui-dialog" title="图片附件选择窗口" data-options="modal:true,closed:true,buttons: 
+	 			[{
+                    text:'确定',
+                    iconCls:'icon-ok',
+                    handler:function(){
+                    $('#tupianfujian').dialog('close');
+                    }
+                }]" style="width:500px;height:650px;padding:10px">
+		        <table id="dgPicManage" class="easyui-datagrid" 
+		data-options="url:'fenghuang/getPicManages.do',border:true,singleSelect:true,fit:true,fitColumns:true,pageSize:10"
+		pagination="true" toolbar="#dgPicToolbar">
+		<thead>
+			<tr>
+				<th data-options="field:'url',formatter:onOperateStyle" width="80">图片</th>
+			    <th data-options="field:'searchName'" width="80">图片名称</th>
+			</tr>
+		</thead>
+	</table>
+    </div>	
+    
+	<div id="tupianfujiantb">
+      <input id="tupiansearchName" name="searchName" class="easyui-validatebox" ><a href="javascript:void(0)" class="easyui-linkbutton" onclick="searchtupianfujian()">Submit</a>
+        </div>
 	
 	
 	
-	
+	 <div id="tupianchaxundlg" class="easyui-dialog" title="查询窗口" data-options="iconCls:'icon-search',modal:true,closed:true,buttons: 
+	 			[{
+                    text:'搜索',
+                    iconCls:'icon-search',
+                    handler:function(){
+                    searchDepartment();
+                    searchDepartmentReset();
+                    }
+                },{
+                    text:'关闭',
+                    iconCls:'icon-cancel',
+                    handler:function(){
+                    $('#tupianchaxundlg').dialog('close');
+                    }
+                }]" style="width:400px;height:200px;padding:10px">
+    <div class="demo-info">
+        <div class="demo-tip icon-tip"></div>
+        <div>在此处搜索图片的名字,已关键字为准进行模糊查找。</div>
+    </div>
+        <input id="searchName" name="searchName" class="easyui-validatebox" style="width: 300px; text-align: center; margin-left: 30px;">
+    </div>
+		<div id="dgPicToolbar">
+			 <a href="javascript:void(0);" onclick="javascript:$('#tupianchaxundlg').dialog('open');" class="easyui-linkbutton" iconCls="icon-search" plain="true">搜索</a>  
+ 
+		</div>
+		
+		
+	<div id="testdiv">
+		<div class="lb-overlay" id="i1">
+							<a href="#page" class="lb-close">关闭</a>
+							<img src="dengxiang/images/full/1.jpg" alt="image01" />
+						</div>
+	</div>	
 	<script type="text/javascript">
+	
+
+
+function searchDepartment(){
+searchName:$("#searchName").val();
+	$('#dgPicManage').datagrid('load',{
+		searchName:$("#searchName").val()	
+	});
+	
+}
+	function searchDepartmentReset(){
+		searchName:$("#searchName").val();
+}
+	function tupianfujiandialogopen(){
+		$('#tupianfujian').dialog('open');
+	}
+	
+	
+	
+	
+	
+	
+	
+		function onOperateStyle(val,row,index){
+       var returnStyleValue='<img alt="修改" src="'+row.url+'" width="100px" height="100px">';
+		   
+       return returnStyleValue;
+         }
+         
+         
+         
+         
+         
+         
+         
+         
 	function updateshouke(shoukeid){
    	      	var tuanNo = $('#shoukeinput').val();
    	      	var url = "fenghuang/upsanpin.do?tuanNo="+tuanNo+"&shoukestate="+shoukeid;
@@ -263,11 +369,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	$('#team').attr('value',row.tuanName);
 	$('#chutuantime').attr('value',row.chutuantime);
 	$('#huituantime').attr('value',row.huituantime);
+	
+	
+	
    				$('#fukuan').dialog('open');
    		}
    		
    		//付款保存
    		function caozuozhongxinsave() {
+		var tupianrow = $('#dgPicManage').datagrid('getSelected');
+		if(tupianrow!=null){
+		$('#tupiandizhi').attr('value',tupianrow.url);
+		}
+		else{
+			alert('为选择');
+		}
+		
+		
 		var val = $('#kxsm').combotree('getText');
 		$('#kuanxiang').val(val);
 			$('#fukuanform').form('submit', {

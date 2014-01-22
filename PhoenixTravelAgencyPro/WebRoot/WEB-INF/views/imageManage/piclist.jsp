@@ -13,14 +13,22 @@
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
-<link rel="stylesheet" type="text/css"
-	href="js/themes/default/easyui.css">
-<link rel="stylesheet" type="text/css" href="js/themes/icon.css">
-<link rel="stylesheet" type="text/css" href="js/demo/demo.css">
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/jquery.easyui.min.js"></script>
-<script type="text/javascript" src="js/locale/easyui-lang-zh_CN.js"></script>
-<script type="text/javascript" src="js/jquery.json.js"></script>
+<link href="pirobox/css_pirobox/style_1/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="pirobox/css/css.css"/>
+<link rel="stylesheet" type="text/css" href="pirobox/content/css/default.css"/>
+<link rel="stylesheet" type="text/css" href="pirobox/css/sansation/stylesheet.css"/>
+<script type="text/javascript" src="pirobox/js/jquery.min.js"></script>
+<script type="text/javascript" src="pirobox/js/jquery-ui-1.8.2.custom.min.js"></script>
+<script type="text/javascript" src="pirobox/js/pirobox_extended.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$().piroBox_ext({
+	piro_speed : 700,
+		bg_alpha : 0.5,
+		piro_scroll : true // pirobox always positioned at the center of the page
+	});
+});
+</script>
 
 </head>
 <body>
