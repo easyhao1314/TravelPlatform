@@ -45,11 +45,11 @@ public class FileUploadController {
 	/**
 	 * 写文件的缓存大小
 	 */
-	private static final int BUFFER_SIZE = 2 * 1024;
+	private static final int BUFFER_SIZE = 6 * 1024;
 	/**
 	 * 限制文件大小
 	 */
-	private static final int UPLOAD_SIZE_THRESHOLD = 1024 * 1024 * 100;
+	private static final int UPLOAD_SIZE_THRESHOLD = 1024 * 1024 * 1000;
 
 	@RequestMapping("fenghuang/uploadFile.do")
 	@ResponseBody

@@ -148,7 +148,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	<input id="team" type="hidden" name="team"  class="easyui-validatebox" style="width: 150px;" />
         	<input id="huilvid" type="hidden" name="huilvid" value="1" class="easyui-validatebox" style="width: 150px;" />
         	<input id="tuanduimc" name="tuanduimc" type="hidden" class="easyui-validatebox" >
-        	<input id="tupiandizhi" name="tupiandizhi" type="hidden" class="easyui-validatebox" >
+        	<input id="tupiandizhi" name="tupiandizhi"  class="easyui-validatebox" >
         	<input  name="xiaoshou" value="${sessionScope.userId}" type="hidden" class="easyui-validatebox" >
         	</td>
         	</tr>
@@ -164,7 +164,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     text:'确定',
                     iconCls:'icon-ok',
                     handler:function(){
-                    $('#tupianfujian').dialog('close');
+                    tupianxuanze();
+                    
                     }
                 }]" style="width:500px;height:650px;padding:10px">
 		        <table id="dgPicManage" class="easyui-datagrid" 
@@ -210,17 +211,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			 <a href="javascript:void(0);" onclick="javascript:$('#tupianchaxundlg').dialog('open');" class="easyui-linkbutton" iconCls="icon-search" plain="true">搜索</a>  
  
 		</div>
-		
-		
-	<div id="testdiv">
-		<div class="lb-overlay" id="i1">
-							<a href="#page" class="lb-close">关闭</a>
-							<img src="dengxiang/images/full/1.jpg" alt="image01" />
-						</div>
-	</div>	
 	<script type="text/javascript">
 	
-
+function tupianxuanze(){
+	var tupianrow = $('#dgPicManage').datagrid('getSelected');
+	$('#tupiandizhi').attr('value',tupianrow.url);
+	$('#tupianfujian').dialog('close');
+}
 
 function searchDepartment(){
 searchName:$("#searchName").val();
@@ -377,13 +374,7 @@ searchName:$("#searchName").val();
    		
    		//付款保存
    		function caozuozhongxinsave() {
-		var tupianrow = $('#dgPicManage').datagrid('getSelected');
-		if(tupianrow!=null){
-		$('#tupiandizhi').attr('value',tupianrow.url);
-		}
-		else{
-			alert('为选择');
-		}
+		
 		
 		
 		var val = $('#kxsm').combotree('getText');

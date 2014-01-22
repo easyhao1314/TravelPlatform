@@ -23,7 +23,7 @@ $(function(){
 				{title: "Image files", extensions: "jpg,gif,png"},
 				{title: "Zip files", extensions: "zip"}
 			],
-			resize: {width: 320, height: 240, quality: 90},
+			resize: {width: 1320, height: 1240, quality: 90},
 	
 			// Flash settings
 			flash_swf_url : 'js/plupload/plupload.flash.swf',

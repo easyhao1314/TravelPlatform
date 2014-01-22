@@ -26,6 +26,6 @@
 
 <body>
 
-<img alt="图片名称" src="${param.url}" width="auto" height="auto">
+<img alt="图片名称" src="${param.url}" >
 </body>
 </html>
