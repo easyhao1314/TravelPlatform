@@ -211,6 +211,9 @@
 		   function abc(val,row){
 	       var url = row.tupiandizhi;
 	       //alert(url);
+	       if(url==''){
+	       		return '暂无图片';
+	       }
             return '<a href="javascript:void(0);" onclick="dakai(\''+url+'\')"><img alt="修改" src="'+row.tupiandizhi+'" width="100px" height="50px"></a>';
 	       }
            function dakai(url){

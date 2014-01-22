@@ -148,7 +148,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	<input id="team" type="hidden" name="team"  class="easyui-validatebox" style="width: 150px;" />
         	<input id="huilvid" type="hidden" name="huilvid" value="1" class="easyui-validatebox" style="width: 150px;" />
         	<input id="tuanduimc" name="tuanduimc" type="hidden" class="easyui-validatebox" >
-        	<input id="tupiandizhi" name="tupiandizhi"  class="easyui-validatebox" >
+        	<input id="tupiandizhi" name="tupiandizhi" type="hidden"  class="easyui-validatebox" >
         	<input  name="xiaoshou" value="${sessionScope.userId}" type="hidden" class="easyui-validatebox" >
         	</td>
         	</tr>
@@ -375,9 +375,23 @@ searchName:$("#searchName").val();
    		//付款保存
    		function caozuozhongxinsave() {
 		
-		
-		
-		var val = $('#kxsm').combotree('getText');
+		var tupiandizhijs = $('#tupiandizhi').val();
+		if(tupiandizhijs==''){
+		 $.messager.confirm('提示', '没有选择图片，是否继续？', function(r){
+                if (r){
+                   fukuanformcomit(); 
+                }
+                else{
+                	return;
+                }
+            });
+		}
+		if(tupiandizhijs!=''){
+			fukuanformcomit();
+		}
+				}
+	function fukuanformcomit(){
+	var val = $('#kxsm').combotree('getText');
 		$('#kuanxiang').val(val);
 			$('#fukuanform').form('submit', {
 				url : 'fenghuang/inserttuanbiao.do',
@@ -394,7 +408,8 @@ searchName:$("#searchName").val();
 					}
 				}
 			});
-		}
+        
+	}
 	</script>
   </body>
 </html>
