@@ -31,8 +31,7 @@
 			text:'查询',
 			iconCls:'icon-search',
 			handler:function(){
-			$('#bzhlszsousuo').dialog('close');
-			
+			$('#bzhlszsousuo').dialog('close');			
 			cwfkspselect();
 			}
 			},
