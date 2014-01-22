@@ -69,6 +69,8 @@
 				<th data-options="field:'fukuantime'" width="40" class="thtable">付款日期</th>
 				<th data-options="field:'team'" width="50">团名</th>
 				<th data-options="field:'tuanduimc'" width="50">团号</th>
+				
+				<th data-options="field:'departName'" width="50">部门</th>
 				<th data-options="field:'khmc'" width="50">供应商名称</th>
 				<th data-options="field:'kxsm'" width="">款项</th>
 				<th data-options="field:'syfk'" width="50">应付金额</th>
@@ -76,7 +78,7 @@
 				<th data-options="field:'xiaoshouyuan'" width="50">销售</th>
 				<th data-options="field:'review',formatter:cwfkbz" width="50">财务审核</th>
 				<th data-options="field:'cashier',formatter:cwfkbz2" width="50">出纳确认</th>
-				 <th data-options="field:'tuanpiandizhi',formatter:abc" width="50px">图片地址</th>
+				<th data-options="field:'tuanpiandizhi',formatter:abc" width="50px">图片地址</th>
 			</tr>
 		</thead>
 	</table>
@@ -208,7 +210,7 @@
 		   
 		   function abc(val,row){
 	       var url = row.tupiandizhi;
-	       alert(url);
+	       //alert(url);
             return '<a href="javascript:void(0);" onclick="dakai(\''+url+'\')"><img alt="修改" src="'+row.tupiandizhi+'" width="100px" height="50px"></a>';
 	       }
            function dakai(url){
